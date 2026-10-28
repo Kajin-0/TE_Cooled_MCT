@@ -13,3 +13,4 @@ jobs:
       - run: python -m pip install -e '.[dev]'
       - run: pytest -q
       - run: python -m tecooledmct.cli --quick --out outputs/ci-demo
+      - run: python -m tecooledmct.geometry_demo --out outputs/ci-pellet

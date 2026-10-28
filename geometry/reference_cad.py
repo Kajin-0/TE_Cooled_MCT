@@ -7,8 +7,19 @@ from pathlib import Path
 import math
 import json
 import cadquery as cq
+import argparse
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from tecooledmct.geometry_sweep import TECGeometry
+parser=argparse.ArgumentParser(description="Parametric illustrative TO66/TEC STEP generator")
+parser.add_argument("--pellet-scale",type=float,default=1.0)
+parser.add_argument("--pellet-side-mm",type=float,default=0.4)
+parser.add_argument("--out",default=None)
+args=parser.parse_args()
+ref=TECGeometry()
+g=TECGeometry(leg_lengths_mm=tuple(x*args.pellet_scale for x in ref.leg_lengths_mm),leg_side_mm=args.pellet_side_mm).validate()
 
-OUT = Path(__file__).resolve().parent / "generated"
+OUT = Path(args.out) if args.out else Path(__file__).resolve().parent / "generated"
 OUT.mkdir(parents=True, exist_ok=True)
 M = {"metal": cq.Color(0.72,0.74,0.77), "glass": cq.Color(0.2,0.45,0.55),
      "gold": cq.Color(0.84,0.66,0.29), "ceramic": cq.Color(0.90,0.91,0.88),
@@ -55,7 +66,7 @@ for i,(x,y) in enumerate(xy,1):
 # 3.8 mm overall, 44 P-N couples; stage split 28/12/4 is inferred.
 base=.65
 ceramic_t=.22
-stage_leg_h=(1.07,.82,.64)
+stage_leg_h=g.leg_lengths_mm
 ceramics=(6.4,4.55,3.25,2.4)
 counts=((8,7),(6,4),(4,2))
 pitches=(.58,.55,.57)
@@ -75,12 +86,14 @@ for stage in range(3):
             # Copper pad blocks abut the leg and ceramic surfaces. This is
             # a visual pad model, NOT a verified internal electrical netlist.
             place(label+"_lower_pad",block(.44,.44,contact_h,x,y,z+contact_h/2),"gold")
-            place(label+"_BiTe",block(.40,.40,stage_leg_h[stage],x,y,z+contact_h+stage_leg_h[stage]/2),"p" if (i+j)%2 else "n")
+            place(label+"_BiTe",block(g.leg_side_mm,g.leg_side_mm,stage_leg_h[stage],x,y,z+contact_h+stage_leg_h[stage]/2),"p" if (i+j)%2 else "n")
             place(label+"_upper_pad",block(.44,.44,contact_h,x,y,z+contact_h+stage_leg_h[stage]+contact_h/2),"gold")
     z+=contact_h+stage_leg_h[stage]+contact_h
 place("ceramic_plate_3_top",block(2.4,2.4,ceramic_t,0,0,z+ceramic_t/2),"ceramic")
 z+=ceramic_t
-assert abs((z-base)-3.8)<1e-7, (z-base)
+assert abs((z-base)-(3.8+sum(stage_leg_h)-sum(ref.leg_lengths_mm)))<1e-7, (z-base)
+
+if z+.26 >= 8.60: raise ValueError("Detector collides with cap/window")
 
 place("cold_die_attach",block(1.25,1.25,.08,0,0,z+.04),"gold")
 place("MCT_photoconductor_1mm",block(1.,1.,.12,0,0,z+.14),"die")
@@ -98,7 +111,8 @@ core.save(str(OUT/"TO66_TEC_core_reference.step"))
 full.save(str(OUT/"TO66_TEC_full_reference.step"))
 (OUT/"geometry_manifest.json").write_text(json.dumps({
     "geometry_status":"illustrative, NOT simulation-qualified",
-    "TEC_overall_height_mm":3.8,"leg_count":sum(a*b for a,b in counts),
+    "TEC_overall_height_mm":z-base, "pellet_scale":args.pellet_scale,
+    "leg_lengths_mm":g.leg_lengths_mm, "leg_side_mm":g.leg_side_mm,"leg_count":sum(a*b for a,b in counts),
     "couple_counts_estimated":[28,12,4],"stage_sides_mm":ceramics,
     "pin_count":9,"named_core_parts":len(parts),
     "limitations":["ellipse approximates header taper","no validated TEC series netlist",

@@ -34,3 +34,12 @@ Manufacturer reference: TEC Microsystems 3MC04-044-05 (2019), hot 6.4 × 6.4 mm;
 - Real package gas species/pressure model, kinetic regimes, and mixture transport.
 - FEM-ready geometry, electrical connectivity, contact mesh and BC.
 - Experimental hot/cold temperature and current/voltage correlation.
+
+## Phase 1a additions
+- Read docs/geometry_sensitivity.md and tecooledmct/geometry_sweep.py and pellet_fvm.py.
+- Do not say that changing a STEP assembly automatically runs a multiphysics analysis.
+- geometry_sweep reruns a lumped network with dimensional R and K changes; pellet_fvm spatially solves one leg only.
+- Peltier and Seebeck effects are still reduced to effective junction terms; no full 3D electrical field across the package.
+- Run `pytest -q` and `python -m tecooledmct.geometry_demo --out outputs/pellet-study`.
+- When reporting efficiency, compare *minimum input power at a fixed detector target temperature*, not only electrical power at a fixed current.
+- Treat 28/12/4 stage pair split and effective R/K/S as uncertain.

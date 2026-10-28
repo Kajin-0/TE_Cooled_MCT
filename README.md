@@ -66,3 +66,28 @@ The 4-node solver couples the TEC stages with detector heating, pressure-depende
 - See `docs/physics_and_sources.md` for equations and assumptions.
 
 **Safety:** This repository is for operational modeling, not opening, heating or processing HgCdTe-containing hermetic packages.
+## Phase 1a: geometry sensitivity and a spatial pellet solver (added 2026-10-28)
+
+**The original Phase 0 network does not solve from CAD.** We now distinguish three workflows:
+
+1. `tecooledmct.geometry_sweep`: a **geometry-parameterized, four-node TEC network**. Each stage's length and cross-sectional area modify effective transport coefficients through R~L/A and K~A/L. This is *not FEM* and its effective material parameters still derive from the Phase 0 fitted model.
+2. `tecooledmct.pellet_fvm`: a **real 3D spatial finite-volume temperature-field solve** for *one representative thermoelectric leg*. It resolves Joule heating, spatial conduction, and gas-coupled sidewalls on a voxel mesh. Peltier terms are applied to the end-face heat budgets, not solved as an all-domain electrical PDE. Boundary temperatures come from the network, so the two solvers are **not fully coupled**.
+3. `geometry/reference_cad.py`: exports reference STEP assemblies with **the same leg height/width inputs**. These are visual geometry exports, not validated FEM meshes.
+
+Run:
+
+```bash
+python -m tecooledmct.geometry_demo --out outputs/pellet-study
+# Optional CadQuery separately installed:
+python geometry/reference_cad.py --pellet-scale 0.70 --out outputs/CAD_70pct
+python geometry/reference_cad.py --pellet-scale 1.30 --out outputs/CAD_130pct
+```
+
+Results include temperature-versus-height, input power versus height, inferred electrical resistance, current reoptimization to a 200 K target, a 3D pellet temperature slice, mesh-resolved axial temperature profiles, CSV and JSON.
+
+**Illustrative nominal example (300 K ambient, 0.65 A, Ar, unverified geometry):**
+- 70% pellet height: 206.9 K and 1.22 W at fixed current; minimum ~1.69 W to hit 200 K.
+- 100% height: 195.5 K and 1.62 W at fixed current; minimum ~1.23 W to hit 200 K.
+- 130% height: 192.5 K and 1.98 W at fixed current; minimum ~1.00 W to hit 200 K.
+
+**Interpretation:** This does not establish a physical optimum. Real electrical contact and thermal interface resistances, changing cap clearances/gas conduction, manufacturing feasibility, temperature-dependent material data, and measured performance could reverse the trend. See [geometry study notes](docs/geometry_sensitivity.md).
