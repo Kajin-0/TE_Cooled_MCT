@@ -1,9 +1,9 @@
-# Fully coupled 3D TEC FEM and HgCdTe detector co-simulation roadmap
+# Fully coupled 3D TEC FEM and TO-66 package thermal-model roadmap
 
 Status: PLANNED, NOT IMPLEMENTED. Baseline date 2026-10-28.
 
 ## Objectives
-Create a reproducible, genuinely spatial thermoelectric finite-element simulation of the three-stage 44-couple TEC, alumina plates, copper links, solder, detector, Kovar header, enclosure, and gas/radiation environment. Report datasheet validation and novel spatial insights. Optionally couple its detector temperature to a separate HgCdTe transport solver LSDDTS in Kajin-0/mct-refactor.
+Create a reproducible, genuinely spatial thermoelectric finite-element simulation of the three-stage 44-couple TEC, alumina plates, copper links, solder, detector, Kovar header, enclosure, and gas/radiation environment. Report datasheet validation and novel spatial insights. Use a compact HgCdTe die material/heat-load model. LSDDTS integration is deferred indefinitely by user direction.
 
 ## Recommended stack
 - CAD: parameterized OpenCascade/CadQuery; keep visual reference and separate solver-grade geometry.
@@ -30,7 +30,7 @@ G2 Full three-stage TEC: 88 legs, all copper pads and actual stage series connec
 
 G3 Complete package heat paths: Kovar header, solder-to-header, die attach, Au wires, thermistor, MCT die, cap and spectral window. Add radiative view-factor matrix and equivalent optical baffles; run inert gas conduction first (N2 Ar Kr and mixtures, plus pressure and Knudsen limits). Add CFD only if convection is shown material by Rayleigh/geometry assessment. Identify heat flow to hot side and ambient.
 
-G4 LSDDTS bridge: do NOT change existing LSDDTS production authority semantics. Need transport results at specified Tchip, composition x, detector bias and optical conditions. Export terminal I, dark R, optical absorption and provenance with classification; treat current illuminated response as diagnostic-only where so labeled. Compute electrical heating by Vterminal*Iterminal using consistent passive sign and no second V^2/R. Optical heat is only the thermalized absorbed energy, not a carrier-generation rate. Iteratively exchange Tchip and net die heat until changes <0.05K and <0.5% relative power. Under-relax near steep R(T). Reject extrapolation outside validated LSDDTS temperature domain and propagate diagnostic-only status to combined reports.
+G4 Compact HgCdTe thermal die: assign composition-dependent k(T,x), Cp(T,x), density, geometry, die attach and measured or assumed emissivity. Apply electrical heating from V*I (or V²/R; never both) and optical heating with declared thermalized absorbed fraction. Sweep die temperature, bond-wire and contact heat leakage and any user-provided compact R(T,V). Do not connect to LSDDTS.
 
 G5 Qualification: mesh convergence at representative points, thermodynamic residual, parameter-identifiability, material uncertainty, gas law applicability, temperature dependent P/N and HgCdTe properties, comparison against withheld OEM curve points and independent physical device data.
 
@@ -49,20 +49,23 @@ Value-added spatial and coupled plots:
 8. COP, min Pin needed for target T, Pareto frontier vs pellet length/area and drive current.
 9. Gas backfill species/mixtures, pressure, cap/window temperature, aperture diameter/baffle geometry vs detector T.
 10. S(T), sigma(T), k(T) perturbations, solder/contact resistances, CTE/stress, transient cooldown and controller response.
-11. Coupled detector R(T), I-V, bias self-heating, optical response versus cooler current, plus source authority warnings.
+11. Detector die and mount temperature, simple bias self-heating and optical deposited power versus cooler current; no semiconductor transport model.
 12. Sensitivity, uncertainty and identifiability charts; machine-readable provenance, mesh IDs, physics version, vendor datasheet source, measured-data status.
 
 ## HgCdTe die physical materials
 Heckman, Gonzalez and Guha, Applied Optics 47, 578-582 (2008), report x=0.29 bulk: thermal k=2.41 W/m/K (90K), 1.61 (148K), 0.973 (298K), cp=0.130/0.146/0.176 J/g/K, density 6.83 g/cm3 (298K). For x=0.23 they report k=1.01 W/mK at 298K. Interpolate only in supported composition and temperature windows with source-tagged uncertainty; detector multilayer thermal interfaces matter as much as bulk die k.
 
 ## Resource/reproducibility plan
-Run tiny single-couple mesh first, then full 3-stage with coarse mesh, then local contact refinement. Do expensive sweeps at coarse mesh with representative high-resolution rechecks, cache by hash. Pin versions of Gmsh, Elmer, material records, source SHA, selected LSDDTS output hash. Export CSV, JSON, VTK/PyVista, HTML plots; optional PDF report.
+Run tiny single-couple mesh first, then full 3-stage with coarse mesh, then local contact refinement. Do expensive sweeps at coarse mesh with representative high-resolution rechecks, cache by hash. Pin versions of Gmsh, Elmer, material records, source SHA, compact HgCdTe thermal material and load-source identifier. Export CSV, JSON, VTK/PyVista, HTML plots; optional PDF report.
 
 ## Sources
 Elmer solver: https://github.com/ElmerCSC/elmerfem/blob/devel/fem/src/modules/ThermoElectricSolver.F90
 Gmsh: https://gmsh.info/doc/texinfo/gmsh.html
 TEC: https://www.tec-microsystems.com/Download/Datasheets/Thermoelectric%20Coolers/MC04%20Series/3MC04-044-05_Datasheet_2019.pdf
 HgCdTe: https://opg.optica.org/ao/abstract.cfm?uri=ao-47-4-578
-LSDDTS: https://github.com/Kajin-0/mct-refactor
+OpenFOAM multi-region heat transfer (conditional use): https://openfoam.org/release/13/
 
-STOP: Never describe current geometry-sensitive 4-node plus single-pellet FVM as the full coupled FEM. Never promote diagnostic LSDDTS signals to validated combined outputs.
+STOP: Never describe current geometry-sensitive 4-node plus single-pellet FVM as the full coupled FEM. Do not modify, invoke or connect LSDDTS absent a new explicit request.
+
+## OpenFOAM decision
+Use Elmer FEM for full 3D thermoelectric solids (Seebeck, Peltier, Joule and Fourier conduction), not stock OpenFOAM. Use OpenFOAM separately for cavity gas flow and solid-fluid conjugate heat transfer if the Rayleigh screen and pure conduction comparison show meaningful convection. OpenFOAM Foundation 13 supports modular foamMultiRun with fluid and solid modules; OpenCFD variants provide chtMultiRegionFoam. Pin one distribution/version. For low pressure Knudsen regimes use appropriate rarefied corrections rather than no-slip continuum CFD. See docs/OPENFOAM_FEASIBILITY.md.

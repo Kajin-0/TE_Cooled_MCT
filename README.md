@@ -109,3 +109,7 @@ print(result['stage_k'])
 Sourced bulk materials and provenance: `tecooledmct/materials.py`. Includes p/n-type Bi-Te literature examples, 96% and 99.5% alumina ceramic proxies, Kovar header alloy, 4N gold bond wire, Sn95Sb5 *proxy* solder, and copper. The source-matched 3MC04-044-05 contains hot-extruded Bi-Te, Al2O3(100%), Sn-Sb internal solder, Au plated contacts and bare AWG32 terminal wires, but proprietary material-property curves are **not disclosed**.
 
 Read [materials and provenance](docs/materials_and_provenance.md). A 1-D material-layer resistance demonstration is supported; **these layers are not yet connected to 3D package transport or automatically to the four-node network**. The optional literature P/N solver still assumes temperature-independent values near room temperature, so its cold-stage numbers are only sensitivity examples, not production predictions. Do not compare results against the OEM profile as independent validation.
+
+## Active project focus: standalone TO-66 thermoelectric multiphysics
+
+Elmer FEM + Gmsh will solve the 3D cooler and solids. OpenFOAM is optional for sealed-cavity gas convection and conjugate heat transfer only if screening warrants it. The HgCdTe detector is modeled as a compact material-and-heat-load domain (k(T,x), density, heat capacity, die attach, electrical and optical heating). There is **no active LSDDTS integration**; do not change or connect that repository without a new explicit request. See docs/OPENFOAM_FEASIBILITY.md and docs/MCT_COMPACT_THERMAL_MODEL.md.

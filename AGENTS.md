@@ -52,3 +52,6 @@ Manufacturer reference: TEC Microsystems 3MC04-044-05 (2019), hot 6.4 × 6.4 mm;
 - Kovar header composition, purity and actual plating need verification per actual package; Sn95Sb5 is only a proxy for unspecified OEM Sn-Sb solder.
 - Bulk alumina, Kovar, solder and gold do NOT yet determine the main four-node model's stage temperatures; 1-D resistance estimates are diagnostic only.
 - Run pytest -q and source-backed material profile tests; keep baseline regression passing.
+
+## Current scope priority, 2026-10-28
+Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat old coupling contract as dormant speculative documentation only. Build and validate Elmer/Gmsh TEC/package FEM first. Model MCT with sourced thermal properties and optional simple bias-dependent thermal load; no device carrier-transport PDE. OpenFOAM should be reserved for relevant gas convection/CHT cases after a conduction-only baseline and Rayleigh/Knudsen screening. Do not describe CFD or full FEM as already implemented.
