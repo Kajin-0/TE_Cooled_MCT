@@ -1,0 +1,1163 @@
+ELMER SOLVER (v 26.2) STARTED AT: 2026/10/28 21:27:28
+ParCommInit: Initialize #PEs: 1
+MAIN: 
+MAIN: =============================================================
+MAIN: ElmerSolver finite element software, Welcome!
+MAIN: This program is free software licensed under (L)GPL
+MAIN: Copyright 1st April 1995 - , CSC - IT Center for Science Ltd.
+MAIN: Webpage http://www.csc.fi/elmer, Email elmeradm@csc.fi
+MAIN: Version: 26.2-unknown (Rev: unknown, Compiled: 2026-10-28)
+MAIN:  Running one task without MPI parallelization.
+MAIN:  Running with just one thread per task.
+MAIN: =============================================================
+MAIN: 
+MAIN: 
+MAIN: -------------------------------------
+MAIN: Reading Model: case.sif
+LoadInputFile: Scanning input file: case.sif
+LoadInputFile: Scanning only size info
+LoadInputFile: First time visiting
+LoadInputFile: Reading base load of sif file
+LoadInputFile: Loading input file: case.sif
+LoadInputFile: Reading base load of sif file
+Loading user function library: [/work/outputs/fem-g2c/library_thomson/G2cMaterial]...[PHeat]
+Loading user function library: [/work/outputs/fem-g2c/library_thomson/G2cMaterial]...[PElectric]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 1]
+Loading user function library: [/work/outputs/fem-g2c/library_thomson/G2cMaterial]...[PSeebeck]
+Loading user function library: [/work/outputs/fem-g2c/library_thomson/G2cMaterial]...[NHeat]
+Loading user function library: [/work/outputs/fem-g2c/library_thomson/G2cMaterial]...[NElectric]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 2]
+Loading user function library: [/work/outputs/fem-g2c/library_thomson/G2cMaterial]...[NSeebeck]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 3]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 4]
+LoadInputFile: Number of BCs: 4
+LoadInputFile: Number of Body Forces: 1
+LoadInputFile: Number of Initial Conditions: 1
+LoadInputFile: Number of Materials: 4
+LoadInputFile: Number of Equations: 1
+LoadInputFile: Number of Solvers: 1
+LoadInputFile: Number of Bodies: 1
+WARNING:: LoadInputFile: > Material 2 < not used in any Body!
+WARNING:: LoadInputFile: > Material 3 < not used in any Body!
+WARNING:: LoadInputFile: > Material 4 < not used in any Body!
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Init0]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Init0]
+LoadMesh: Loading serial mesh!
+ElmerMeshReader: Performing step: 1
+ElmerMeshReader: Base mesh name: /work/outputs/fem-g2c/thomson_rod/.
+ReadHeaderFile: Reading header info from file: /work/outputs/fem-g2c/thomson_rod/./mesh.header
+InitializeMesh: Number of nodes in mesh: 2717
+InitializeMesh: Number of bulk elements in mesh: 12077
+InitializeMesh: Number of boundary elements in mesh: 2912
+InitializeMesh: Initial number of max element nodes: 4
+ElmerMeshReader: Performing step: 2
+ReadNodesFile: Reading nodes from file: /work/outputs/fem-g2c/thomson_rod/./mesh.nodes
+SetMeshDimension: Dimension of mesh is: 3
+SetMeshDimension: Max dimension of mesh is: 3
+ElmerMeshReader: Performing step: 3
+ReadElementsFile: Reading bulk elements from file: /work/outputs/fem-g2c/thomson_rod/./mesh.elements
+ElmerMeshReader: Performing step: 4
+ReadBoundaryFile: Reading boundary elements from file: /work/outputs/fem-g2c/thomson_rod/./mesh.boundary
+PermuteNodeNumbering: Performing node mapping
+MapBodiesAndBCs: Remapping bodies
+MapBodiesAndBCs: Minimum initial body index: 1
+MapBodiesAndBCs: Maximum initial body index: 1
+MapBodiesAndBCs: Remapping boundaries
+MapBodiesAndBCs: Minimum initial boundary index: 101
+MapBodiesAndBCs: Maximum initial boundary index: 105
+WARNING:: MapBodiesAndBCs: Multiple BCs have same > Target Boundaries < entry : 101
+WARNING:: MapBodiesAndBCs: Multiple BCs have same > Target Boundaries < entry : 102
+ElmerMeshReader: Performing step: 5
+ElmerMeshReader: Performing step: 6
+LoadMesh: Loading mesh done
+PElementMaps::InitializeMappings: Initializing mappings for elements
+NonNodalElements: Requested elements require creation of edges
+FindMeshEdges: Determining faces in 3D mesh
+FindMeshFaces3D: Number of faces found: 25610
+FindMeshEdges: Determining edges in 3D mesh
+FindMeshEdges3D: Number of edges found: 16249
+NonNodalElements: Why the heck did we allocate the edges and faces?!
+ReleaseMeshFaceTables: Releasing number of faces: 25610
+LoadMesh: Preparing mesh done
+LoadMesh: Elapsed REAL time:     0.1394 (s)
+MeshStabParams: Computing stabilization parameters
+MeshStabParams: Elapsed REAL time:     0.0015 (s)
+MAIN: -------------------------------------
+AddVtuOutputSolverHack: Adding ResultOutputSolver to write VTU output in file: fields
+AppendNewSolver: Increasing number of solvers to: 2
+AddMeshCoordinates: Setting mesh coordinates and time
+AddSolvers: Setting up 2 solvers
+AddSolvers: Setting up solver 1: thermoelectric
+AddEquationBasics: Using procedure: ThermoElectricSolver ThermoElectricSolver
+AddEquationBasics: Setting up solver: thermoelectric
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Init]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Init]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_bulk]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_bulk]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver]
+AddEquationBasics: Creating standard variable: pot[temperature:1 potential:1]
+SetGlobalBubblesFlag: Setting global bubbles to true because of element type chosen!
+OptimizeBandwidth: ---------------------------------------------------------
+OptimizeBandwidth: Computing matrix structure for: thermoelectric
+OptimizeBandwidth: Initial bandwidth for thermoelectric: 2672
+OptimizeBandwidth: Optimized bandwidth for thermoelectric: 266
+OptimizeBandwidth: ---------------------------------------------------------
+AddSolvers: Setting up solver 2: internalvtuoutputsolver
+AddEquationBasics: Using procedure: ResultOutputSolve ResultOutputSolver
+AddEquationBasics: Setting up solver: internalvtuoutputsolver
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Init]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Init]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_bulk]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_bulk]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver]
+AddEquationBasics: Creating global variable: vtu_internal_dummy
+AddTimeEtc: Setting time and other global variables
+MAIN: Random seed initialized to: 314159265
+SetInitialConditions: Setting up initial conditions (if any)
+MAIN: Number of timesteps to be saved: 1
+MAIN: 
+MAIN: -------------------------------------
+MAIN:  Steady state iteration:            1
+MAIN: -------------------------------------
+MAIN: 
+SingleSolver: Attempting to call solver: 1
+SingleSolver: Solver Equation string is: thermoelectric
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96706421580393
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96706421580393
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=1) (NRM,RELC): (  203.15463      2.0000000     ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    203.15463469223423
+ThermoElectricSolver:  Relative Change :    2.0000000000000000
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96503352214512
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96503352214512
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=2) (NRM,RELC): (  205.06008     0.93354972E-02 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06007834687995
+ThermoElectricSolver:  Relative Change :    9.3354971968545759E-003
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96579022763899
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96579022763899
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=3) (NRM,RELC): (  205.04541     0.71535873E-04 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.04540971989269
+ThermoElectricSolver:  Relative Change :    7.1535872667329850E-005
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96579805383570
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96579805383570
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=4) (NRM,RELC): (  205.06701     0.10535699E-03 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06701382604103
+ThermoElectricSolver:  Relative Change :    1.0535699436535339E-004
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580212008769
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580212008769
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=5) (NRM,RELC): (  205.06790     0.43323338E-05 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06790224671960
+ThermoElectricSolver:  Relative Change :    4.3323337943075784E-006
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580249842967
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580249842967
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=6) (NRM,RELC): (  205.06782     0.39671586E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06782089304741
+ThermoElectricSolver:  Relative Change :    3.9671585573490735E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243544108
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243544108
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=7) (NRM,RELC): (  205.06785     0.13847423E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06784928965868
+ThermoElectricSolver:  Relative Change :    1.3847423345430657E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243565265
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243565265
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=8) (NRM,RELC): (  205.06783     0.85574330E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783174111567
+ThermoElectricSolver:  Relative Change :    8.5574329789041814E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243540683
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243540683
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=9) (NRM,RELC): (  205.06784     0.37919077E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783951709872
+ThermoElectricSolver:  Relative Change :    3.7919077004425501E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534007
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534007
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=10) (NRM,RELC): (  205.06783     0.41702043E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783096535094
+ThermoElectricSolver:  Relative Change :    4.1702043485970697E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534939
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534939
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=11) (NRM,RELC): (  205.06785     0.11169256E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06785386990367
+ThermoElectricSolver:  Relative Change :    1.1169256215994150E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534933
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534933
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=12) (NRM,RELC): (  205.06935     0.72953266E-05 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06934991232905
+ThermoElectricSolver:  Relative Change :    7.2953265959616571E-006
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=13) (NRM,RELC): (  205.06784     0.73648234E-05 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783961833506
+ThermoElectricSolver:  Relative Change :    7.3648234422059183E-006
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=14) (NRM,RELC): (  205.06785     0.36972824E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06784720027227
+ThermoElectricSolver:  Relative Change :    3.6972823653610157E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=15) (NRM,RELC): (  205.06783     0.81092362E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783057083692
+ThermoElectricSolver:  Relative Change :    8.1092361634552967E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=16) (NRM,RELC): (  205.06788     0.22249057E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06787619650072
+ThermoElectricSolver:  Relative Change :    2.2249057104219398E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=17) (NRM,RELC): (  205.06783     0.20974990E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783318353772
+ThermoElectricSolver:  Relative Change :    2.0974990482883519E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=18) (NRM,RELC): (  205.06790     0.33763741E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06790242212080
+ThermoElectricSolver:  Relative Change :    3.3763740668942813E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=19) (NRM,RELC): (  205.06784     0.31040654E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783876771209
+ThermoElectricSolver:  Relative Change :    3.1040654258099799E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=20) (NRM,RELC): (  205.06789     0.25802491E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06789168032981
+ThermoElectricSolver:  Relative Change :    2.5802491121973221E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=21) (NRM,RELC): (  205.06785     0.22620925E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06784529208130
+ThermoElectricSolver:  Relative Change :    2.2620924891295875E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=22) (NRM,RELC): (  205.06787     0.97836647E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06786535523264
+ThermoElectricSolver:  Relative Change :    9.7836646839333025E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=23) (NRM,RELC): (  205.06783     0.16876311E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783074734406
+ThermoElectricSolver:  Relative Change :    1.6876311381162763E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=24) (NRM,RELC): (  205.06789     0.28262748E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06788870515726
+ThermoElectricSolver:  Relative Change :    2.8262748377530642E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=25) (NRM,RELC): (  205.06783     0.28402996E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783045974032
+ThermoElectricSolver:  Relative Change :    2.8402996479384638E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=26) (NRM,RELC): (  205.06799     0.76640604E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06798762502464
+ThermoElectricSolver:  Relative Change :    7.6640604107685689E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=27) (NRM,RELC): (  205.06783     0.76490845E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783076684854
+ThermoElectricSolver:  Relative Change :    7.6490844770798054E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=28) (NRM,RELC): (  205.06787     0.21316123E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06787447936344
+ThermoElectricSolver:  Relative Change :    2.1316122608070235E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=29) (NRM,RELC): (  205.06785     0.10609706E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06785272226551
+ThermoElectricSolver:  Relative Change :    1.0609706242567911E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=30) (NRM,RELC): (  205.06786     0.46205045E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06786219743515
+ThermoElectricSolver:  Relative Change :    4.6205045252609346E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=31) (NRM,RELC): (  205.06784     0.10935358E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783977253122
+ThermoElectricSolver:  Relative Change :    1.0935358138437719E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=32) (NRM,RELC): (  205.06783     0.38886572E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783179814605
+ThermoElectricSolver:  Relative Change :    3.8886572043022000E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=33) (NRM,RELC): (  205.06783     0.35824722E-08 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783106349624
+ThermoElectricSolver:  Relative Change :    3.5824721859075433E-009
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=34) (NRM,RELC): (  205.06803     0.98172552E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06803238391791
+ThermoElectricSolver:  Relative Change :    9.8172551882902236E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=35) (NRM,RELC): (  205.06785     0.90950249E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06784587411667
+ThermoElectricSolver:  Relative Change :    9.0950248991119640E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=36) (NRM,RELC): (  205.06783     0.71764543E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783115751699
+ThermoElectricSolver:  Relative Change :    7.1764542825650514E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=37) (NRM,RELC): (  205.06783     0.11366746E-08 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783092442160
+ThermoElectricSolver:  Relative Change :    1.1366745856430554E-009
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=38) (NRM,RELC): (  205.08586     0.87891778E-04 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.08585549279459
+ThermoElectricSolver:  Relative Change :    8.7891777984209867E-005
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=39) (NRM,RELC): (  205.06783     0.87889337E-04 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783142493711
+ThermoElectricSolver:  Relative Change :    8.7889337252731558E-005
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=40) (NRM,RELC): (  205.06783     0.43316420E-08 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783053665669
+ThermoElectricSolver:  Relative Change :    4.3316419789823204E-009
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=41) (NRM,RELC): (  205.06783     0.14590274E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783352865253
+ThermoElectricSolver:  Relative Change :    1.4590273923205022E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=42) (NRM,RELC): (  205.06783     0.11043193E-08 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783330219216
+ThermoElectricSolver:  Relative Change :    1.1043193291735643E-009
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=43) (NRM,RELC): (  205.06783     0.12225294E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783079517771
+ThermoElectricSolver:  Relative Change :    1.2225293543643811E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=44) (NRM,RELC): (  205.06796     0.63637416E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06796129508794
+ThermoElectricSolver:  Relative Change :    6.3637416067641428E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=45) (NRM,RELC): (  205.06786     0.49311796E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06786017241868
+ThermoElectricSolver:  Relative Change :    4.9311795737402149E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=46) (NRM,RELC): (  205.06783     0.13309912E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783287806945
+ThermoElectricSolver:  Relative Change :    1.3309911663835131E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=47) (NRM,RELC): (  205.06788     0.24357859E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06788282820906
+ThermoElectricSolver:  Relative Change :    2.4357858971656635E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=48) (NRM,RELC): (  205.06783     0.24818899E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783193262450
+ThermoElectricSolver:  Relative Change :    2.4818899077976380E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=49) (NRM,RELC): (  205.06789     0.29679794E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06789279634316
+ThermoElectricSolver:  Relative Change :    2.9679793779967173E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=50) (NRM,RELC): (  205.06784     0.26197381E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783907393367
+ThermoElectricSolver:  Relative Change :    2.6197380679260970E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=51) (NRM,RELC): (  205.06783     0.23969594E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783415854090
+ThermoElectricSolver:  Relative Change :    2.3969593895962988E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=52) (NRM,RELC): (  205.06784     0.13088039E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783684247674
+ThermoElectricSolver:  Relative Change :    1.3088039019584726E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=53) (NRM,RELC): (  205.06783     0.27847623E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783113182510
+ThermoElectricSolver:  Relative Change :    2.7847622535890575E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=54) (NRM,RELC): (  205.06784     0.52906501E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06784198124680
+ThermoElectricSolver:  Relative Change :    5.2906500995005386E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=55) (NRM,RELC): (  205.06783     0.55590511E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783058142091
+ThermoElectricSolver:  Relative Change :    5.5590511416389814E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=56) (NRM,RELC): (  205.06784     0.24214322E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783554699953
+ThermoElectricSolver:  Relative Change :    2.4214322409407334E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=57) (NRM,RELC): (  205.06784     0.22816245E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06784022587755
+ThermoElectricSolver:  Relative Change :    2.2816244917501766E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=58) (NRM,RELC): (  205.06783     0.44919188E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783101439692
+ThermoElectricSolver:  Relative Change :    4.4919187852423594E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=59) (NRM,RELC): (  205.06784     0.66626096E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06784467726629
+ThermoElectricSolver:  Relative Change :    6.6626095645317865E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 288 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 288
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    158.96580243534936
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: Nonlinear iteration did not converge to tolerance
+ComputeChange: NS (ITER=60) (NRM,RELC): (  205.06784     0.23331400E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.06783989274646
+ThermoElectricSolver:  Relative Change :    2.3331399880542398E-008
+ComputeNorm: Computing norm of solution
+ComputeChange: SS (ITER=1) (NRM,RELC): (  205.06784      2.0000000     ) :: thermoelectric
+SaveResult: -----------------------------------------
+SaveResult: Saving results to file: ./solution.result
+SaveResult: Done writing results file
+SaveResult: -----------------------------------------
+SingleSolver: Attempting to call solver: 0
+SingleSolver: Solver Equation string is: internalvtuoutputsolver
+ResultOutputSolver: -------------------------------------
+ResultOutputSolver: Saving with prefix: fields
+ResultOutputSolver: Dimension of mesh is: 3
+ResultOutputSolver: Working on mesh 1: . with 2717 nodes
+ResultOutputSolver: Creating list for saving - if not present
+CreateListForSaving: Field Variables for Saving
+CreateListForSaving: Scalar Field 1: temperature
+CreateListForSaving: Scalar Field 2: potential
+ResultOutputSolver: Saving in unstructured VTK XML (.vtu) format
+VtuOutputSolver: Saving results in VTK XML format with prefix: fields
+VtuOutputSolver: Saving number of partitions: 1
+SolverOutputDirectory: Creating directory: /work/outputs/fem-g2c/thomson_rod
+VtuOutputSolver: Full filename base is: /work/outputs/fem-g2c/thomson_rod/fields
+GenerateSaveMask: Number of active elements 14989 out of 14989
+GenerateSaveMask: Number of geometry nodes 2717 out of 2717
+VtuOutputSolver: Total number of elements to save: 14989
+VtuOutputSolver: Total number of geometry nodes to save: 2717
+VtuOutputSolver: Total number of dof nodes to save: 2717
+VtuOutputSolver: Setting offset for boundary entities: 100
+VtuOutputSolver: Writing the vtu file: /work/outputs/fem-g2c/thomson_rod/fields_t0001.vtu
+AscBinWriteInit: Initializing buffered ascii/binary writing
+AscBinWriteInit: Writing in binary
+AscBinWriteInit: Writing in double precision
+AscBinWriteInit: Writing to unit number: 58
+AscBinWriteInit: Size of buffer is: 2717
+WriteVtuFile: Writing nodal fields
+WriteVtuFile: Saving 1-component variable: temperature
+WriteVtuFile: Saving 1-component variable: potential
+WriteVtuFile: Number of nodal fields written: 2
+WriteVtuFile: Writing elemental fields
+WriteVtuFile: Number of elemental fields written: 0
+WriteVtuFile: Writing entity IDs for bodies and boundaries
+WriteVtuFile: Writing coordinates for each used node
+WriteVtuFile: Writing the elemental connectivity data
+WriteVtuFile: Writing nodal fields
+WriteVtuFile: Saving 1-component variable: temperature
+WriteVtuFile: Saving 1-component variable: potential
+WriteVtuFile: Writing elemental fields
+AscBinWriteFree: Terminating buffered ascii/binary writing
+VtuOutputSolver: All done for now
+ResultOutputSolver: -------------------------------------
+ReloadInputFile: Reloading input file
+LoadInputFile: Loading input file:
+MAIN: Reporting unused list entries for sif improvement!
+MAIN: If you do not want these lines undefine > DEVEL_LISTUSAGE < !
+   Unused keywords:
+       Boundary Condition 3  electric flux
+       Material 2            heat conductivity
+       Material 2            electric conductivity
+       Material 2            seebeck coefficient
+       Material 2            density
+       Material 2            heat capacity
+       Material 3            heat conductivity
+       Material 3            electric conductivity
+       Material 3            seebeck coefficient
+       Material 3            density
+       Material 3            heat capacity
+       Material 4            heat conductivity
+       Material 4            electric conductivity
+       Material 4            seebeck coefficient
+       Material 4            density
+       Material 4            heat capacity
+MAIN: *** Elmer Solver: ALL DONE ***
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Finalize]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Finalize]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Finalize]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Finalize]
+MAIN: The end
+SOLVER TOTAL TIME(CPU,REAL):        18.13       19.36
+ELMER SOLVER FINISHED AT: 2026/10/28 21:27:48

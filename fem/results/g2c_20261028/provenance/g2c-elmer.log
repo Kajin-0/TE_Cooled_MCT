@@ -1,0 +1,57 @@
+source_0: Tc=282.8964529 V=0.0423407016 energy=8.69e-09 cut=0.00627223597914589
+source_1: Tc=282.8965958 V=0.0423439688 energy=8e-09 cut=0.0009985382745265892
+source_2: Tc=282.8970302 V=0.0423449593 energy=8.64e-09 cut=0.0012981513206407336
+source_3: Tc=282.8973566 V=0.0423454217 energy=8.57e-09 cut=0.0004373050757067176
+constant_regression: Tc=286.4253619 V=0.0279254272 energy=-1.05e-09 cut=0.000438479502706951
+source_frozen_300: Tc=282.4460406 V=0.0448522882 energy=2.35e-09 cut=0.0004369029507735045
+synthetic_variable: Tc=286.7054592 V=0.0271291947 energy=2.5e-10 cut=0.0004385992094972646
+
+thomson_rod: Tc=285.0000000 V=0.00296428571 energy=4.08e-10 cut=1.4487863047307759e-05
+{
+  "passed": true,
+  "checks": {
+    "all_mesh_audits_pass": true,
+    "constant_temperature_regression": true,
+    "constant_voltage_regression": true,
+    "source_cold_mesh_change_below_1pct_lift": true,
+    "local_source_temperature_changes_solution": true,
+    "thomson_continuum_temperature_below_5mK": true,
+    "thomson_continuum_voltage_below_2uV": true,
+    "thomson_not_omitted": true,
+    "source_0_actual_solver_zero_exit": true,
+    "source_0_material_range": true,
+    "source_0_energy_work": true,
+    "source_0_current": true,
+    "source_1_actual_solver_zero_exit": true,
+    "source_1_material_range": true,
+    "source_1_energy_work": true,
+    "source_1_current": true,
+    "source_2_actual_solver_zero_exit": true,
+    "source_2_material_range": true,
+    "source_2_energy_work": true,
+    "source_2_current": true,
+    "source_3_actual_solver_zero_exit": true,
+    "source_3_material_range": true,
+    "source_3_energy_work": true,
+    "source_3_current": true,
+    "constant_regression_actual_solver_zero_exit": true,
+    "constant_regression_material_range": true,
+    "constant_regression_energy_work": true,
+    "constant_regression_current": true,
+    "source_frozen_300_actual_solver_zero_exit": true,
+    "source_frozen_300_material_range": true,
+    "source_frozen_300_energy_work": true,
+    "source_frozen_300_current": true,
+    "synthetic_variable_actual_solver_zero_exit": true,
+    "synthetic_variable_material_range": true,
+    "synthetic_variable_energy_work": true,
+    "synthetic_variable_current": true,
+    "thomson_rod_actual_solver_zero_exit": true,
+    "thomson_rod_material_range": true,
+    "thomson_rod_energy_work": true,
+    "thomson_rod_current": true,
+    "fine_source_component_currents_below_half_pct": true,
+    "fine_source_bath_energy_below_1pct": true,
+    "source_hashes_unchanged": true
+  }
+}

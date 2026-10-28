@@ -1,0 +1,381 @@
+{
+  "passed": true,
+  "checks": {
+    "real_Elmer_exit_zero": true,
+    "actual_local_T_in_40_300K_source_interval": true,
+    "actual_BiTe_below_200K_exercised": true,
+    "all_15_currents_below_0p5pct": true,
+    "global_energy_and_work_below_1pct": true,
+    "sources_unchanged": true
+  },
+  "cases": {
+    "source_low_temperature": {
+      "current_a": 0.02,
+      "load_w": null,
+      "fixed_cold_k": 190.0,
+      "hot_k": 200.0,
+      "elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+      "couples": 4,
+      "boundary_case": "fixed_hot_fixed_cold",
+      "profile_id": "zhang2025_he_digitized_40_300_v2r1",
+      "profile_status": "published_sample_plot_digitization",
+      "profile_interval_k": [
+        40,
+        300
+      ],
+      "profile_freeze_k": null,
+      "initial_state": "uniform initial temperature",
+      "coefficients": "local nodal T functions; coefficients interpolated at quadrature as in pinned ThermoElectricSolver",
+      "thomson": "implicit in divergence(T*S(T)*J); no additional duplicate source",
+      "oem_grade_matched": false,
+      "nodes": 4180,
+      "tetrahedra": 14545,
+      "dofs": 8360,
+      "cold_mean_k": 189.99999999999994,
+      "cold_min_k": 189.99999999999997,
+      "cold_max_k": 190.00000000000003,
+      "temperature_min_k": 189.99999999999997,
+      "temperature_max_k": 200.00000000000003,
+      "profile_body_temperature_ranges_k": {
+        "leg_00_N": [
+          190.03285539219266,
+          199.9568219730142
+        ],
+        "leg_01_P": [
+          190.02896996646254,
+          199.97193742967175
+        ],
+        "leg_02_N": [
+          190.0324164468591,
+          199.96844077921904
+        ],
+        "leg_03_P": [
+          190.0292685773061,
+          199.97166166970237
+        ],
+        "leg_04_N": [
+          190.03250826947843,
+          199.9686546934061
+        ],
+        "leg_05_P": [
+          190.02872554722316,
+          199.97195797487876
+        ],
+        "leg_06_N": [
+          190.03141136212753,
+          199.9684772898206
+        ],
+        "leg_07_P": [
+          190.02841684579488,
+          199.96706675113492
+        ]
+      },
+      "voltage_v": 0.017204980964550035,
+      "electrical_input_w": 0.0003440996192910007,
+      "volume_j_dot_e_w": 0.0003440996192639266,
+      "joule_w": 0.00010165446449665158,
+      "hot_out_w": -0.015478321371493499,
+      "cold_out_w": 0.015822420932366334,
+      "energy_relative_residual": -3.692112994003948e-09,
+      "power_work_relative_residual": -1.7111224923064958e-12,
+      "bath_gradient_energy_relative_residual": 0.0010250114047967497,
+      "return_current_a": 0.020000000004600078,
+      "current_absolute_error_a": 4.600077263550162e-12,
+      "free_thermal_residual_l1_w": 2.8966176448752413e-09,
+      "free_current_residual_l1_a": 1.1645728480985582e-09,
+      "cuts": {
+        "leg_00_N": {
+          "current_a": 0.020042929031817466,
+          "relative_error": 0.0021464515908732953,
+          "absolute_error_a": 4.292903181746591e-05,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_01_P": {
+          "current_a": 0.02000999055621705,
+          "relative_error": 0.000499527810852475,
+          "absolute_error_a": 9.990556217049501e-06,
+          "area_m2": 1.5999999999999992e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_02_N": {
+          "current_a": 0.02003260966017773,
+          "relative_error": 0.0016304830088863936,
+          "absolute_error_a": 3.260966017772787e-05,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_03_P": {
+          "current_a": 0.020005539627111903,
+          "relative_error": 0.00027698135559514614,
+          "absolute_error_a": 5.539627111902923e-06,
+          "area_m2": 1.6000000000000008e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_04_N": {
+          "current_a": 0.02000015573570011,
+          "relative_error": 7.786785005507724e-06,
+          "absolute_error_a": 1.5573570011015447e-07,
+          "area_m2": 1.600000000000001e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_05_P": {
+          "current_a": 0.019978772850861436,
+          "relative_error": 0.0010613574569282372,
+          "absolute_error_a": 2.1227149138564744e-05,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_06_N": {
+          "current_a": 0.0200407642539394,
+          "relative_error": 0.0020382126969699724,
+          "absolute_error_a": 4.076425393939945e-05,
+          "area_m2": 1.6000000000000003e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_07_P": {
+          "current_a": 0.020029605864337722,
+          "relative_error": 0.0014802932168860722,
+          "absolute_error_a": 2.9605864337721444e-05,
+          "area_m2": 1.6000000000000008e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "bridge_00_cold": {
+          "current_a": 0.019996807604603584,
+          "relative_error": 0.00015961976982080406,
+          "absolute_error_a": 3.192395396416081e-06,
+          "area_m2": 4.0000000000000014e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_01_hot": {
+          "current_a": 0.01999453571836656,
+          "relative_error": 0.00027321408167194777,
+          "absolute_error_a": 5.4642816334389555e-06,
+          "area_m2": 4.000000000000001e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_02_cold": {
+          "current_a": 0.019999318269598405,
+          "relative_error": 3.408652007978741e-05,
+          "absolute_error_a": 6.817304015957482e-07,
+          "area_m2": 4.000000000000002e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_03_hot": {
+          "current_a": 0.01999727594113965,
+          "relative_error": 0.00013620294301748548,
+          "absolute_error_a": 2.7240588603497096e-06,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_04_cold": {
+          "current_a": 0.01999633343869271,
+          "relative_error": 0.00018332806536458524,
+          "absolute_error_a": 3.6665613072917047e-06,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_05_hot": {
+          "current_a": 0.019993430519807575,
+          "relative_error": 0.00032847400962127127,
+          "absolute_error_a": 6.569480192425425e-06,
+          "area_m2": 4.000000000000001e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_06_cold": {
+          "current_a": 0.019993544787015167,
+          "relative_error": 0.0003227606492416796,
+          "absolute_error_a": 6.4552129848335915e-06,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        }
+      },
+      "max_cut_relative_error": 0.0021464515908732953,
+      "field_source": "fields_t0001.vtu",
+      "actual_material_interval_passed": true,
+      "joule_by_domain_w": {
+        "leg_00_N": 1.059226242462208e-05,
+        "leg_01_P": 1.4606883659929882e-05,
+        "leg_02_N": 1.0592446993402032e-05,
+        "leg_03_P": 1.4606874201313748e-05,
+        "leg_04_N": 1.0592422092687638e-05,
+        "leg_05_P": 1.4606886299812139e-05,
+        "leg_06_N": 1.0592402393049582e-05,
+        "leg_07_P": 1.4606738305650458e-05,
+        "bridge_00_cold": 1.1577321290618192e-07,
+        "bridge_01_hot": 1.1580066390078386e-07,
+        "bridge_02_cold": 1.157537057305218e-07,
+        "bridge_03_hot": 1.1585067612646415e-07,
+        "bridge_04_cold": 1.1575679091853529e-07,
+        "bridge_05_hot": 1.1580060215892255e-07,
+        "bridge_06_cold": 1.1576725466810656e-07,
+        "terminal_in": 2.3572083060733203e-08,
+        "terminal_out": 2.3473136713592262e-08,
+        "hot_alumina": 1.3496213617545344e-19,
+        "cold_alumina": 1.1971559084283636e-19
+      },
+      "contact_joule_w": 0.0,
+      "extra_contact_joule_w": 0.0,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 2.609878791961819,
+        "cpu_s": 2.546094,
+        "peak_rss_kib": 68920,
+        "timed_out": false,
+        "nonlinear_iterations": 8,
+        "nonlinear_last_relative_change": 1.6461266573806652e-11
+      },
+      "sif_sha256": "c7cd6b3373d3e2267f276541f08188c0079d0b2f0bfec2c6ce15319e1bd8f6e8",
+      "vtu_sha256": "bd79e0d2f707311257451c5e3053d07d5ecc746ba244ee14ee547808ad4fb8b5",
+      "mesh_path": "/work/outputs/fem-g2c-low-temperature/mesh",
+      "case_path": "/work/outputs/fem-g2c-low-temperature/source_low_temperature"
+    }
+  },
+  "source_sha256": {
+    "tecooledmct/fem_g2c_mesh.py": "309e83f10bba1253082e9cce2c62e13207e2bf9f847c5e5774c1fa955b290f82",
+    "tecooledmct/fem_g2c_stack.py": "c25abd4ed462fa5600d568e9295abdb8957d722b3a0710ab595f9fd42c198540",
+    "tecooledmct/fem_g2c.py": "da1205d91f61f650f2136aa8379ce1e94ae2891d580aaed970e9b0b4afb84cfe",
+    "tecooledmct/fem_g2c_contact_refine.py": "a0f65457b6e365734df99077dfa0f89c3e81a5e2f0a4c9bcef3cf2a97a01bd09",
+    "tecooledmct/fem_g2c_contact_reverify.py": "a69c6d996e91800e1eaa449c84ad8fe662f28baf93a68885b26e36503e3185b8",
+    "tecooledmct/fem_g2c_low_temperature.py": "c1fbffe12ef1e025ca870966daf80535ca39e1e4c146355958705fa051fef533",
+    "tecooledmct/fem_g2c_contact.py": "87b9aafae0ae23f5be7cf21be121928a2009928716a55c6fec6200a37001300f",
+    "tecooledmct/fem_g2c_post.py": "107d738d9dd1586421bb765823809e4fa8b5a07589141d492f62d79203d7346d",
+    "tecooledmct/g2c_qualification.py": "f772ab83414c5825a42470047720a667ad1b8e4b5e9822fbd4910eaafb9750ba",
+    "tecooledmct/fem_g2c_run.py": "255991459009f5549ce6f5682869c49dfa624a29ffc88f66800c9c8ebb13ef79",
+    "tecooledmct/material_profiles.py": "b332771e082c5e389cfdb819b184cd710f8ae7992cb597cf37b26aabc06ee7d6",
+    "data/g2c/low_temperature_extension_registry.json": "4ad0d6a48fd72d742505d5f139e1b8c6db946a8e32560c3d663fdf4fd7405a5f",
+    "data/g2c/retrieval.json": "2a2ef57ca6ce6b751e716e972f781fb82077a0fce8f2e67445d1bd60315f6ec0",
+    "data/g2c/oem2019_vector_paths.json": "33b3bc39cdac1edfeeadc4da8dcc01f304d4b25c0aaca8afb6a1a2e568c379a9",
+    "data/g2c/zhang2025_he_40_300_v2.json": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+    "data/g2c/source_registry.json": "69844d52f00dbb2d8a86b16d3171671b110bb4809c256bbed5e7a1f0232f3360",
+    "data/g2c/oem2019_curves_v1.json": "b6de59e07ad02dde83d5ddeb880e650cd74f73557d63d2ba8b35ba94b214b1e0",
+    "data/g2c/zhang2025_he_v1.json": "3e264fd6cfbae604136fcba92f44a67998a083ef803d606739d6e9aab02a9375",
+    "tests/test_material_profiles_low.py": "8ec4c551a771c970dfdb43c4605f64a279e57114406bf45d050cdf9cdb9497c9"
+  },
+  "mesh_audits": [
+    {
+      "passed": true,
+      "nodes": 4180,
+      "tetrahedra": 14545,
+      "volumes_m3": {
+        "leg_00_N": 1.6000000000000002e-10,
+        "leg_01_P": 1.6000000000000002e-10,
+        "leg_02_N": 1.6000000000000002e-10,
+        "leg_03_P": 1.6000000000000012e-10,
+        "leg_04_N": 1.6000000000000012e-10,
+        "leg_05_P": 1.6000000000000002e-10,
+        "leg_06_N": 1.6000000000000007e-10,
+        "leg_07_P": 1.6000000000000007e-10,
+        "bridge_00_cold": 4.800000000000005e-11,
+        "bridge_01_hot": 4.800000000000004e-11,
+        "bridge_02_cold": 4.800000000000006e-11,
+        "bridge_03_hot": 4.800000000000008e-11,
+        "bridge_04_cold": 4.8000000000000073e-11,
+        "bridge_05_hot": 4.800000000000005e-11,
+        "bridge_06_cold": 4.800000000000007e-11,
+        "terminal_in": 1.6000000000000006e-11,
+        "terminal_out": 1.6000000000000016e-11,
+        "hot_alumina": 8.400000000000001e-10,
+        "cold_alumina": 8.400000000000008e-10
+      },
+      "mesh_graph": {
+        "nodes": 17,
+        "edges": 16,
+        "unique_path": true,
+        "degrees": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2,
+          "11": 2,
+          "12": 2,
+          "13": 2,
+          "14": 2,
+          "15": 2,
+          "16": 1,
+          "17": 1
+        }
+      },
+      "contact_areas_m2": {
+        "1:16": 1.6000000000000003e-07,
+        "1:9": 1.6e-07,
+        "2:9": 1.6000000000000003e-07,
+        "2:10": 1.6000000000000003e-07,
+        "3:11": 1.5999999999999998e-07,
+        "3:10": 1.6e-07,
+        "4:11": 1.6000000000000008e-07,
+        "4:12": 1.6000000000000006e-07,
+        "5:12": 1.6000000000000014e-07,
+        "5:13": 1.6000000000000003e-07,
+        "6:14": 1.6000000000000006e-07,
+        "6:13": 1.6000000000000006e-07,
+        "7:15": 1.6000000000000006e-07,
+        "7:14": 1.6000000000000003e-07,
+        "8:15": 1.6000000000000006e-07,
+        "8:17": 1.6000000000000006e-07,
+        "9:19": 4.800000000000001e-07,
+        "10:18": 4.800000000000002e-07,
+        "11:19": 4.800000000000002e-07,
+        "12:18": 4.800000000000001e-07,
+        "13:19": 4.800000000000002e-07,
+        "14:18": 4.800000000000001e-07,
+        "15:19": 4.800000000000002e-07,
+        "16:18": 1.6000000000000003e-07,
+        "17:18": 1.6000000000000003e-07
+      },
+      "unintended_point_edge_connections": 0,
+      "mesh_size_m": 0.00012,
+      "gmsh_version": "4.13.1",
+      "elmer_tetra_mapping": {
+        "passed": true,
+        "nodes": 4180,
+        "tetrahedra": 14545,
+        "body_ids_preserved": true
+      }
+    }
+  ],
+  "protected_integrity": {
+    "passed": true,
+    "checked": {
+      "g1_20261028": {
+        "source_files": 8,
+        "artifacts": 128
+      },
+      "g2a_20261028": {
+        "source_files": 4,
+        "artifacts": 106
+      },
+      "g2b_geometry_20261028": {
+        "source_files": 3,
+        "artifacts": 11
+      }
+    },
+    "connected_g2b_unchanged": true
+  },
+  "scope": "200 K / 190 K fixed ceramic faces, +0.02 A; local source interpolation genuinely exercised below 200 K. Not a predicted device cold temperature or an OEM fit."
+}

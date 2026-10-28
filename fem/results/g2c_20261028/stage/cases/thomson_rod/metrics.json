@@ -1,0 +1,91 @@
+{
+  "current_a": 0.1,
+  "load_w": null,
+  "fixed_cold_k": 285.0,
+  "hot_k": 295.0,
+  "elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+  "couples": 1,
+  "boundary_case": "fixed_hot_fixed_cold",
+  "profile_id": "synthetic_Thomson_manufactured_rod",
+  "profile_status": "SYNTHETIC FUNCTION TEST ONLY",
+  "profile_interval_k": [
+    200.0,
+    300.0
+  ],
+  "profile_freeze_k": null,
+  "initial_state": "uniform initial temperature",
+  "coefficients": "local nodal T functions; coefficients interpolated at quadrature as in pinned ThermoElectricSolver",
+  "thomson": "implicit in divergence(T*S(T)*J); no additional duplicate source",
+  "oem_grade_matched": false,
+  "nodes": 2717,
+  "tetrahedra": 12077,
+  "dofs": 5434,
+  "cold_mean_k": 285.0,
+  "cold_min_k": 284.99999999999994,
+  "cold_max_k": 285.00000000000006,
+  "temperature_min_k": 284.99999999999994,
+  "temperature_max_k": 295.00000000000006,
+  "profile_body_temperature_ranges_k": {
+    "manufactured_P_rod": [
+      284.99999999999994,
+      295.00000000000006
+    ]
+  },
+  "voltage_v": 0.0029642857149421603,
+  "electrical_input_w": 0.00029642857149421605,
+  "volume_j_dot_e_w": 0.0002964285715373845,
+  "joule_w": 0.00044642861340170347,
+  "hot_out_w": -0.006610854160892423,
+  "cold_out_w": 0.006907282735208117,
+  "energy_relative_residual": 4.0847877676928726e-10,
+  "power_work_relative_residual": 6.2496979961913054e-12,
+  "bath_gradient_energy_relative_residual": -0.0018173691634240572,
+  "return_current_a": 0.10000000000117074,
+  "current_absolute_error_a": 1.1707301794672276e-12,
+  "free_thermal_residual_l1_w": 5.982392161460529e-11,
+  "free_current_residual_l1_a": 8.944750240144519e-11,
+  "cuts": {
+    "manufactured_P_rod": {
+      "current_a": 0.09999855121369527,
+      "relative_error": 1.4487863047307759e-05,
+      "absolute_error_a": 1.4487863047307759e-06,
+      "area_m2": 1.6000000000000008e-07,
+      "expected_area_m2": 1.6e-07,
+      "kind": "leg"
+    }
+  },
+  "max_cut_relative_error": 1.4487863047307759e-05,
+  "field_source": "fields_t0001.vtu",
+  "actual_material_interval_passed": true,
+  "joule_by_domain_w": {
+    "manufactured_P_rod": 0.0004464286134017036
+  },
+  "contact_joule_w": 0.0,
+  "extra_contact_joule_w": 0.0,
+  "solver_status": {
+    "command": [
+      "ElmerSolver",
+      "case.sif"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 3.4133359430124983,
+    "cpu_s": 3.327845,
+    "peak_rss_kib": 226980,
+    "timed_out": false,
+    "nonlinear_iterations": 10,
+    "nonlinear_last_relative_change": 2.068360151329745e-10
+  },
+  "sif_sha256": "fe91b08a83c03149552973c6cabb4a8b1cee3365c6f547494fc06248cc7e8cd1",
+  "vtu_sha256": "7e45182cd7f41178a6b60fa43c9b355c47aa2c665fffb680d47b31e83d145f69",
+  "mesh_path": "/work/outputs/fem-g2c/rod_mesh",
+  "case_path": "/work/outputs/fem-g2c/thomson_rod",
+  "analytic": {
+    "max_nodal_temperature_error_k": 0.0008767922412289408,
+    "voltage_v": 0.0029642857142857144,
+    "voltage_error_v": 6.564458178426325e-13,
+    "nonzero_thomson_effect_vs_constant_S_k": 0.15111461969996753,
+    "bvp_status": 0,
+    "equation": "k*T''=J*T*dS/dT*T'-J^2/sigma",
+    "thomson_S_slope_v_k2": 1e-06
+  }
+}

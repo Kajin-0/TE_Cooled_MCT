@@ -1,0 +1,57 @@
+{
+  "Id": "sha256:24aa962831260903f1aeeb5209969ae012efab09d188cd8aac99f2f55f739195",
+  "RepoTags": [
+    "tecooledmct-fem:26.2.1"
+  ],
+  "RepoDigests": [
+    "tecooledmct-fem@sha256:24aa962831260903f1aeeb5209969ae012efab09d188cd8aac99f2f55f739195"
+  ],
+  "Comment": "buildkit.dockerfile.v0",
+  "Created": "2026-10-28T16:35:59.511308709Z",
+  "Config": {
+    "Env": [
+      "PATH=/opt/elmer/bin:/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "ELMER_HOME=/opt/elmer",
+      "OPENBLAS_NUM_THREADS=1",
+      "OMP_NUM_THREADS=1",
+      "MPLBACKEND=Agg"
+    ],
+    "Cmd": [
+      "/bin/bash"
+    ],
+    "WorkingDir": "/work",
+    "Labels": {
+      "org.opencontainers.image.version": "24.04"
+    }
+  },
+  "Architecture": "amd64",
+  "Os": "linux",
+  "Size": 459888144,
+  "RootFS": {
+    "Type": "layers",
+    "Layers": [
+      "sha256:bec87777bc2fb2edcdf9af11df1531469e7df911309c1413082b18fcb8610278",
+      "sha256:f980a79c9cbef766688bea809699c2c4d15e8b46136982cb2694d2777aaf6f0b",
+      "sha256:74a33bfb643314895a3b673f7ceaa7ccdbd58b9072e60de460271f8d09f7dc76",
+      "sha256:f71e409cdae2cbe9c68128f8e94ad4f479f2ebb0a9b44415b71b61abb9099c8d",
+      "sha256:68f0e99c652fb057471d05d17fc329b31fb1c1fea9e10a80076f50a405609c8d",
+      "sha256:e55abcc9c8fea30900a801e7d90094f2b4dd5e505321566deebe3ce780b5961c"
+    ]
+  },
+  "Metadata": {
+    "LastTagTime": "2026-10-28T16:36:08.05994946Z"
+  },
+  "Descriptor": {
+    "mediaType": "application/vnd.oci.image.index.v1+json",
+    "digest": "sha256:24aa962831260903f1aeeb5209969ae012efab09d188cd8aac99f2f55f739195",
+    "size": 856
+  },
+  "Identity": {
+    "Build": [
+      {
+        "Ref": "7ap2suul5t2jn8e16io9jm9am",
+        "CreatedAt": "2026-10-28T16:36:09.920296414Z"
+      }
+    ]
+  }
+}

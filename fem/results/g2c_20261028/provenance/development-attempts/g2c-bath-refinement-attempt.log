@@ -1,0 +1,48 @@
+source_0: Tc=287.2896092 V=0.0316568471 energy=1.45e-08 cut=0.004051043956136008
+source_1: Tc=287.2900030 V=0.0316601396 energy=1.76e-08 cut=0.00042479560312252973
+constant_regression: Tc=286.4243881 V=0.0279248458 energy=-1.5e-10 cut=0.0003302421002499001
+source_frozen_300: Tc=287.2011222 V=0.0328747818 energy=-2.42e-10 cut=0.00032940750077203873
+synthetic_variable: Tc=286.7045380 V=0.0271285181 energy=9.87e-10 cut=0.0003302889972145451
+
+thomson_rod: Tc=285.0000000 V=0.00296428571 energy=4.08e-10 cut=1.4487863047307759e-05
+{
+  "passed": false,
+  "checks": {
+    "all_mesh_audits_pass": true,
+    "constant_temperature_regression": true,
+    "constant_voltage_regression": true,
+    "source_cold_mesh_change_below_1pct_lift": true,
+    "local_source_temperature_changes_solution": true,
+    "thomson_continuum_temperature_below_5mK": true,
+    "thomson_continuum_voltage_below_2uV": true,
+    "thomson_not_omitted": true,
+    "source_0_actual_solver_zero_exit": true,
+    "source_0_material_range": true,
+    "source_0_energy_work": true,
+    "source_0_current": true,
+    "source_1_actual_solver_zero_exit": true,
+    "source_1_material_range": true,
+    "source_1_energy_work": true,
+    "source_1_current": true,
+    "constant_regression_actual_solver_zero_exit": true,
+    "constant_regression_material_range": true,
+    "constant_regression_energy_work": true,
+    "constant_regression_current": true,
+    "source_frozen_300_actual_solver_zero_exit": true,
+    "source_frozen_300_material_range": true,
+    "source_frozen_300_energy_work": true,
+    "source_frozen_300_current": true,
+    "synthetic_variable_actual_solver_zero_exit": true,
+    "synthetic_variable_material_range": true,
+    "synthetic_variable_energy_work": true,
+    "synthetic_variable_current": true,
+    "thomson_rod_actual_solver_zero_exit": true,
+    "thomson_rod_material_range": true,
+    "thomson_rod_energy_work": true,
+    "thomson_rod_current": true,
+    "fine_source_component_currents_below_half_pct": true,
+    "fine_source_bath_energy_below_1pct": false,
+    "source_hashes_unchanged": true
+  }
+}
+G2c numerical qualification checks failed

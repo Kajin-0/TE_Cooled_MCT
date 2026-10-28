@@ -1,0 +1,38 @@
+{
+  "current_a": 0.0,
+  "load_w": null,
+  "fixed_cold_k": 285.0,
+  "hot_k": 295.0,
+  "elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+  "couples": 4,
+  "boundary_case": "fixed_hot_fixed_cold",
+  "profile_id": "g1_constant_regression",
+  "profile_status": "SYNTHETIC FUNCTION TEST ONLY",
+  "profile_interval_k": [
+    200.0,
+    300.0
+  ],
+  "profile_freeze_k": null,
+  "coefficients": "local nodal T functions; coefficients interpolated at quadrature as in pinned ThermoElectricSolver",
+  "thomson": "implicit in divergence(T*S(T)*J); no additional duplicate source",
+  "oem_grade_matched": false,
+  "contact": {
+    "electrical_ohm_m2": 0.0,
+    "thermal_m2_k_w": 0.0,
+    "thickness_m": 2e-05,
+    "material_status": "assumed interface; no OEM measurement",
+    "electrical_resistance_ohm": 0.0,
+    "thermal_resistance_k_w": 0.0,
+    "layer_sigma_s_m": null,
+    "layer_k_w_mk": null,
+    "zero_limit": "null means ideal continuity, not zero conductivity",
+    "joule_location": "I^2 R must be dissipated inside explicitly meshed contact domains",
+    "solver_gate": "ACTUAL EXPLICIT 3D TRANSITION DOMAINS"
+  },
+  "transition_model": {
+    "thickness_m": 2e-05,
+    "seebeck": "same as adjacent BiTe, assumed phenomenological transition zone",
+    "solder_grade": "not assigned",
+    "zero_excess_limit": "same continuum as original leg, no removed BiTe resistance/thermopower"
+  }
+}

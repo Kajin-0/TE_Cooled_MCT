@@ -1,0 +1,245 @@
+ELMER SOLVER (v 26.2) STARTED AT: 2026/10/28 21:30:14
+ParCommInit: Initialize #PEs: 1
+MAIN: 
+MAIN: =============================================================
+MAIN: ElmerSolver finite element software, Welcome!
+MAIN: This program is free software licensed under (L)GPL
+MAIN: Copyright 1st April 1995 - , CSC - IT Center for Science Ltd.
+MAIN: Webpage http://www.csc.fi/elmer, Email elmeradm@csc.fi
+MAIN: Version: 26.2-unknown (Rev: unknown, Compiled: 2026-10-28)
+MAIN:  Running one task without MPI parallelization.
+MAIN:  Running with just one thread per task.
+MAIN: =============================================================
+MAIN: 
+MAIN: 
+MAIN: -------------------------------------
+MAIN: Reading Model: case.sif
+LoadInputFile: Scanning input file: case.sif
+LoadInputFile: Scanning only size info
+LoadInputFile: First time visiting
+LoadInputFile: Reading base load of sif file
+LoadInputFile: Loading input file: case.sif
+LoadInputFile: Reading base load of sif file
+Loading user function library: [/work/outputs/fem-g2c/library_source_frozen/G2cMaterial]...[PHeat]
+Loading user function library: [/work/outputs/fem-g2c/library_source_frozen/G2cMaterial]...[PElectric]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 1]
+Loading user function library: [/work/outputs/fem-g2c/library_source_frozen/G2cMaterial]...[PSeebeck]
+Loading user function library: [/work/outputs/fem-g2c/library_source_frozen/G2cMaterial]...[NHeat]
+Loading user function library: [/work/outputs/fem-g2c/library_source_frozen/G2cMaterial]...[NElectric]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 2]
+Loading user function library: [/work/outputs/fem-g2c/library_source_frozen/G2cMaterial]...[NSeebeck]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 3]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 4]
+LoadInputFile: Number of BCs: 4
+LoadInputFile: Number of Body Forces: 1
+LoadInputFile: Number of Initial Conditions: 1
+LoadInputFile: Number of Materials: 4
+LoadInputFile: Number of Equations: 1
+LoadInputFile: Number of Solvers: 1
+LoadInputFile: Number of Bodies: 19
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Init0]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Init0]
+LoadMesh: Loading serial mesh!
+ElmerMeshReader: Performing step: 1
+ElmerMeshReader: Base mesh name: /work/outputs/fem-g2c/source_frozen_300/.
+ReadHeaderFile: Reading header info from file: /work/outputs/fem-g2c/source_frozen_300/./mesh.header
+InitializeMesh: Number of nodes in mesh: 4180
+InitializeMesh: Number of bulk elements in mesh: 14545
+InitializeMesh: Number of boundary elements in mesh: 8184
+InitializeMesh: Initial number of max element nodes: 4
+ElmerMeshReader: Performing step: 2
+ReadNodesFile: Reading nodes from file: /work/outputs/fem-g2c/source_frozen_300/./mesh.nodes
+SetMeshDimension: Dimension of mesh is: 3
+SetMeshDimension: Max dimension of mesh is: 3
+ElmerMeshReader: Performing step: 3
+ReadElementsFile: Reading bulk elements from file: /work/outputs/fem-g2c/source_frozen_300/./mesh.elements
+ElmerMeshReader: Performing step: 4
+ReadBoundaryFile: Reading boundary elements from file: /work/outputs/fem-g2c/source_frozen_300/./mesh.boundary
+PermuteNodeNumbering: Performing node mapping
+MapBodiesAndBCs: Remapping bodies
+MapBodiesAndBCs: Minimum initial body index: 1
+MapBodiesAndBCs: Maximum initial body index: 19
+MapBodiesAndBCs: Remapping boundaries
+MapBodiesAndBCs: Minimum initial boundary index: 101
+MapBodiesAndBCs: Maximum initial boundary index: 1025
+ElmerMeshReader: Performing step: 5
+ElmerMeshReader: Performing step: 6
+LoadMesh: Loading mesh done
+PElementMaps::InitializeMappings: Initializing mappings for elements
+NonNodalElements: Requested elements require creation of edges
+FindMeshEdges: Determining faces in 3D mesh
+FindMeshFaces3D: Number of faces found: 32472
+FindMeshEdges: Determining edges in 3D mesh
+FindMeshEdges3D: Number of edges found: 22113
+NonNodalElements: Why the heck did we allocate the edges and faces?!
+ReleaseMeshFaceTables: Releasing number of faces: 32472
+LoadMesh: Preparing mesh done
+LoadMesh: Elapsed REAL time:     0.1381 (s)
+MeshStabParams: Computing stabilization parameters
+MeshStabParams: Elapsed REAL time:     0.0021 (s)
+MAIN: -------------------------------------
+AddVtuOutputSolverHack: Adding ResultOutputSolver to write VTU output in file: fields
+AppendNewSolver: Increasing number of solvers to: 2
+AddMeshCoordinates: Setting mesh coordinates and time
+AddSolvers: Setting up 2 solvers
+AddSolvers: Setting up solver 1: thermoelectric
+AddEquationBasics: Using procedure: ThermoElectricSolver ThermoElectricSolver
+AddEquationBasics: Setting up solver: thermoelectric
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Init]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Init]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_bulk]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_bulk]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver]
+AddEquationBasics: Creating standard variable: pot[temperature:1 potential:1]
+SetGlobalBubblesFlag: Setting global bubbles to true because of element type chosen!
+OptimizeBandwidth: ---------------------------------------------------------
+OptimizeBandwidth: Computing matrix structure for: thermoelectric
+OptimizeBandwidth: Initial bandwidth for thermoelectric: 4107
+OptimizeBandwidth: Optimized bandwidth for thermoelectric: 226
+OptimizeBandwidth: ---------------------------------------------------------
+AddSolvers: Setting up solver 2: internalvtuoutputsolver
+AddEquationBasics: Using procedure: ResultOutputSolve ResultOutputSolver
+AddEquationBasics: Setting up solver: internalvtuoutputsolver
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Init]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Init]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_bulk]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_bulk]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver]
+AddEquationBasics: Creating global variable: vtu_internal_dummy
+AddTimeEtc: Setting time and other global variables
+MAIN: Random seed initialized to: 314159265
+SetInitialConditions: Setting up initial conditions (if any)
+MAIN: Number of timesteps to be saved: 1
+MAIN: 
+MAIN: -------------------------------------
+MAIN:  Steady state iteration:            1
+MAIN: -------------------------------------
+MAIN: 
+SingleSolver: Attempting to call solver: 1
+SingleSolver: Solver Equation string is: thermoelectric
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 408 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    80407.654743891762
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 408
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    80407.654743891762
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=1) (NRM,RELC): (  209.03456      2.0000000     ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    209.03455954345097
+ThermoElectricSolver:  Relative Change :    2.0000000000000000
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 408 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    80407.654743891762
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 408
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    80407.654743891762
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=2) (NRM,RELC): (  205.81608     0.15516338E-01 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.81607817271637
+ThermoElectricSolver:  Relative Change :    1.5516338065444247E-002
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 408 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    80407.654743891762
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 408
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    80407.654743891762
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=3) (NRM,RELC): (  205.91924     0.50110804E-03 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.91924011171619
+ThermoElectricSolver:  Relative Change :    5.0110803916292984E-004
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 408 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    80407.654743891762
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 408
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    80407.654743891762
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=4) (NRM,RELC): (  205.91924     0.11434936E-09 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    205.91924008816946
+ThermoElectricSolver:  Relative Change :    1.1434935634156586E-010
+ComputeNorm: Computing norm of solution
+ComputeChange: SS (ITER=1) (NRM,RELC): (  205.91924      2.0000000     ) :: thermoelectric
+SaveResult: -----------------------------------------
+SaveResult: Saving results to file: ./solution.result
+SaveResult: Done writing results file
+SaveResult: -----------------------------------------
+SingleSolver: Attempting to call solver: 0
+SingleSolver: Solver Equation string is: internalvtuoutputsolver
+ResultOutputSolver: -------------------------------------
+ResultOutputSolver: Saving with prefix: fields
+ResultOutputSolver: Dimension of mesh is: 3
+ResultOutputSolver: Working on mesh 1: . with 4180 nodes
+ResultOutputSolver: Creating list for saving - if not present
+CreateListForSaving: Field Variables for Saving
+CreateListForSaving: Scalar Field 1: temperature
+CreateListForSaving: Scalar Field 2: potential
+ResultOutputSolver: Saving in unstructured VTK XML (.vtu) format
+VtuOutputSolver: Saving results in VTK XML format with prefix: fields
+VtuOutputSolver: Saving number of partitions: 1
+SolverOutputDirectory: Creating directory: /work/outputs/fem-g2c/source_frozen_300
+VtuOutputSolver: Full filename base is: /work/outputs/fem-g2c/source_frozen_300/fields
+GenerateSaveMask: Number of active elements 22729 out of 22729
+GenerateSaveMask: Number of geometry nodes 4180 out of 4180
+VtuOutputSolver: Total number of elements to save: 22729
+VtuOutputSolver: Total number of geometry nodes to save: 4180
+VtuOutputSolver: Total number of dof nodes to save: 4180
+VtuOutputSolver: Setting offset for boundary entities: 100
+VtuOutputSolver: Writing the vtu file: /work/outputs/fem-g2c/source_frozen_300/fields_t0001.vtu
+AscBinWriteInit: Initializing buffered ascii/binary writing
+AscBinWriteInit: Writing in binary
+AscBinWriteInit: Writing in double precision
+AscBinWriteInit: Writing to unit number: 58
+AscBinWriteInit: Size of buffer is: 4180
+WriteVtuFile: Writing nodal fields
+WriteVtuFile: Saving 1-component variable: temperature
+WriteVtuFile: Saving 1-component variable: potential
+WriteVtuFile: Number of nodal fields written: 2
+WriteVtuFile: Writing elemental fields
+WriteVtuFile: Number of elemental fields written: 0
+WriteVtuFile: Writing entity IDs for bodies and boundaries
+WriteVtuFile: Writing coordinates for each used node
+WriteVtuFile: Writing the elemental connectivity data
+WriteVtuFile: Writing nodal fields
+WriteVtuFile: Saving 1-component variable: temperature
+WriteVtuFile: Saving 1-component variable: potential
+WriteVtuFile: Writing elemental fields
+AscBinWriteFree: Terminating buffered ascii/binary writing
+VtuOutputSolver: All done for now
+ResultOutputSolver: -------------------------------------
+ReloadInputFile: Reloading input file
+LoadInputFile: Loading input file:
+MAIN: Reporting unused list entries for sif improvement!
+MAIN: If you do not want these lines undefine > DEVEL_LISTUSAGE < !
+   Unused keywords:
+MAIN: *** Elmer Solver: ALL DONE ***
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Finalize]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Finalize]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Finalize]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Finalize]
+MAIN: The end
+SOLVER TOTAL TIME(CPU,REAL):         1.34        1.43
+ELMER SOLVER FINISHED AT: 2026/10/28 21:30:15

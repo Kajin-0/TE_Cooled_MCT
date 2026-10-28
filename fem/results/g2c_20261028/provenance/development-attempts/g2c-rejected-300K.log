@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/fem_g2c_run.py", line 118, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/work/tecooledmct/fem_g2c_run.py", line 66, in main
+    cases[f'source_{i}']=solve(out,f'source_{i}',mesh,source,libs['source'])
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/fem_g2c_run.py", line 47, in solve
+    status=execute_solver(case)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/fem_g2b_physics.py", line 174, in execute_solver
+    raise RuntimeError(f"Actual coupled solve FAILED: {case}; see solver.log/status")
+RuntimeError: Actual coupled solve FAILED: /work/outputs/fem-g2c/source_0; see solver.log/status

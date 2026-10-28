@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/fem_g2c_contact.py", line 148, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/work/tecooledmct/fem_g2c_contact.py", line 141, in main
+    result=run(args.out.resolve(),Path(old['mesh_path']),old)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/fem_g2c_contact.py", line 74, in run
+    if quality.min()<.01:raise ValueError('Thin layer mesh quality below gate')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Thin layer mesh quality below gate

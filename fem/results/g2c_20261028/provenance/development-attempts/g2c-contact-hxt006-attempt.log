@@ -1,0 +1,27 @@
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+
+contact zero_excess Tc 286.4254488959105 V 0.02792545434026002 Joule layers 3.2964961476869385e-05
+contact electrical Tc 285.0 V 0.03478918813483036 Joule layers 0.00028296436953609836
+contact fixed_reference Tc 285.0 V 0.029789085396263525 Joule layers 3.2964845413480546e-05
+contact passive_reference Tc 285.0 V 0.013078350883028965 Joule layers 1.1519673882585144e-10
+contact thermal Tc 285.0 V 0.013081860908227575 Joule layers 1.087820324214275e-10
+contact coupled Tc 286.2420221691674 V 0.033168521454547246 Joule layers 0.0002829644471477633
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/fem_g2c_contact.py", line 131, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/work/tecooledmct/fem_g2c_contact.py", line 124, in main
+    result=run(args.out.resolve(),Path(old['mesh_path']),old)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/fem_g2c_contact.py", line 112, in run
+    if not result['passed']:raise RuntimeError('Contact transition numerical verification failed')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Contact transition numerical verification failed

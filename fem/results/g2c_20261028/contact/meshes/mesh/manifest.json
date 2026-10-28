@@ -1,0 +1,1218 @@
+{
+  "config": {
+    "couples": 4,
+    "columns": 4,
+    "leg_width_m": 0.0004,
+    "leg_height_m": 0.001,
+    "gap_m": 0.0004,
+    "copper_m": 0.0001,
+    "ceramic_m": 0.0002,
+    "margin_m": 0.0001
+  },
+  "bodies": [
+    {
+      "id": 1,
+      "name": "leg_00_N",
+      "kind": "leg",
+      "box_m": [
+        0.0,
+        0.0,
+        0.00012,
+        0.0004,
+        0.0004,
+        0.00096
+      ],
+      "material": "N",
+      "order": 0,
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.000600013,
+      "current_sign": 1,
+      "cut_area_m2": 1.6e-07
+    },
+    {
+      "id": 2,
+      "name": "leg_01_P",
+      "kind": "leg",
+      "box_m": [
+        0.0008,
+        0.0,
+        0.00012,
+        0.0004,
+        0.0004,
+        0.00096
+      ],
+      "material": "P",
+      "order": 1,
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.000600013,
+      "current_sign": -1,
+      "cut_area_m2": 1.6e-07
+    },
+    {
+      "id": 3,
+      "name": "leg_02_N",
+      "kind": "leg",
+      "box_m": [
+        0.0016,
+        0.0,
+        0.00012,
+        0.0004,
+        0.0004,
+        0.00096
+      ],
+      "material": "N",
+      "order": 2,
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.000600013,
+      "current_sign": 1,
+      "cut_area_m2": 1.6e-07
+    },
+    {
+      "id": 4,
+      "name": "leg_03_P",
+      "kind": "leg",
+      "box_m": [
+        0.0024000000000000002,
+        0.0,
+        0.00012,
+        0.0004,
+        0.0004,
+        0.00096
+      ],
+      "material": "P",
+      "order": 3,
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.000600013,
+      "current_sign": -1,
+      "cut_area_m2": 1.6e-07
+    },
+    {
+      "id": 5,
+      "name": "leg_04_N",
+      "kind": "leg",
+      "box_m": [
+        0.0024000000000000002,
+        0.0008,
+        0.00012,
+        0.0004,
+        0.0004,
+        0.00096
+      ],
+      "material": "N",
+      "order": 4,
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.000600013,
+      "current_sign": 1,
+      "cut_area_m2": 1.6e-07
+    },
+    {
+      "id": 6,
+      "name": "leg_05_P",
+      "kind": "leg",
+      "box_m": [
+        0.0016,
+        0.0008,
+        0.00012,
+        0.0004,
+        0.0004,
+        0.00096
+      ],
+      "material": "P",
+      "order": 5,
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.000600013,
+      "current_sign": -1,
+      "cut_area_m2": 1.6e-07
+    },
+    {
+      "id": 7,
+      "name": "leg_06_N",
+      "kind": "leg",
+      "box_m": [
+        0.0008,
+        0.0008,
+        0.00012,
+        0.0004,
+        0.0004,
+        0.00096
+      ],
+      "material": "N",
+      "order": 6,
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.000600013,
+      "current_sign": 1,
+      "cut_area_m2": 1.6e-07
+    },
+    {
+      "id": 8,
+      "name": "leg_07_P",
+      "kind": "leg",
+      "box_m": [
+        0.0,
+        0.0008,
+        0.00012,
+        0.0004,
+        0.0004,
+        0.00096
+      ],
+      "material": "P",
+      "order": 7,
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.000600013,
+      "current_sign": -1,
+      "cut_area_m2": 1.6e-07
+    },
+    {
+      "id": 9,
+      "name": "bridge_00_cold",
+      "kind": "bridge",
+      "box_m": [
+        0.0,
+        0.0,
+        0.0011,
+        0.0012000000000000001,
+        0.0004,
+        0.0001
+      ],
+      "material": "Cu",
+      "order": 0,
+      "side": "cold",
+      "cut_axis": 0,
+      "cut_coordinate_m": 0.0006000204000000001,
+      "current_sign": 1,
+      "cut_area_m2": 4e-08
+    },
+    {
+      "id": 10,
+      "name": "bridge_01_hot",
+      "kind": "bridge",
+      "box_m": [
+        0.0008,
+        0.0,
+        0.0,
+        0.0012000000000000001,
+        0.0004,
+        0.0001
+      ],
+      "material": "Cu",
+      "order": 1,
+      "side": "hot",
+      "cut_axis": 0,
+      "cut_coordinate_m": 0.0014000204000000002,
+      "current_sign": 1,
+      "cut_area_m2": 4e-08
+    },
+    {
+      "id": 11,
+      "name": "bridge_02_cold",
+      "kind": "bridge",
+      "box_m": [
+        0.0016,
+        0.0,
+        0.0011,
+        0.0012000000000000001,
+        0.0004,
+        0.0001
+      ],
+      "material": "Cu",
+      "order": 2,
+      "side": "cold",
+      "cut_axis": 0,
+      "cut_coordinate_m": 0.0022000204,
+      "current_sign": 1,
+      "cut_area_m2": 4e-08
+    },
+    {
+      "id": 12,
+      "name": "bridge_03_hot",
+      "kind": "bridge",
+      "box_m": [
+        0.0024000000000000002,
+        0.0,
+        0.0,
+        0.0004,
+        0.0012000000000000001,
+        0.0001
+      ],
+      "material": "Cu",
+      "order": 3,
+      "side": "hot",
+      "cut_axis": 1,
+      "cut_coordinate_m": 0.0006000204000000001,
+      "current_sign": 1,
+      "cut_area_m2": 4e-08
+    },
+    {
+      "id": 13,
+      "name": "bridge_04_cold",
+      "kind": "bridge",
+      "box_m": [
+        0.0016,
+        0.0008,
+        0.0011,
+        0.0012000000000000001,
+        0.0004,
+        0.0001
+      ],
+      "material": "Cu",
+      "order": 4,
+      "side": "cold",
+      "cut_axis": 0,
+      "cut_coordinate_m": 0.0022000204,
+      "current_sign": -1,
+      "cut_area_m2": 4e-08
+    },
+    {
+      "id": 14,
+      "name": "bridge_05_hot",
+      "kind": "bridge",
+      "box_m": [
+        0.0008,
+        0.0008,
+        0.0,
+        0.0012000000000000001,
+        0.0004,
+        0.0001
+      ],
+      "material": "Cu",
+      "order": 5,
+      "side": "hot",
+      "cut_axis": 0,
+      "cut_coordinate_m": 0.0014000204000000002,
+      "current_sign": -1,
+      "cut_area_m2": 4e-08
+    },
+    {
+      "id": 15,
+      "name": "bridge_06_cold",
+      "kind": "bridge",
+      "box_m": [
+        0.0,
+        0.0008,
+        0.0011,
+        0.0012000000000000001,
+        0.0004,
+        0.0001
+      ],
+      "material": "Cu",
+      "order": 6,
+      "side": "cold",
+      "cut_axis": 0,
+      "cut_coordinate_m": 0.0006000204000000001,
+      "current_sign": -1,
+      "cut_area_m2": 4e-08
+    },
+    {
+      "id": 16,
+      "name": "terminal_in",
+      "kind": "terminal",
+      "box_m": [
+        0.0,
+        0.0,
+        0.0,
+        0.0004,
+        0.0004,
+        0.0001
+      ],
+      "material": "Cu",
+      "side": "hot",
+      "boundary": 103
+    },
+    {
+      "id": 17,
+      "name": "terminal_out",
+      "kind": "terminal",
+      "box_m": [
+        0.0,
+        0.0008,
+        0.0,
+        0.0004,
+        0.0004,
+        0.0001
+      ],
+      "material": "Cu",
+      "side": "hot",
+      "boundary": 104
+    },
+    {
+      "id": 18,
+      "name": "hot_alumina",
+      "kind": "ceramic",
+      "box_m": [
+        -0.0001,
+        -0.0001,
+        -0.0002,
+        0.0030000000000000005,
+        0.0014000000000000002,
+        0.0002
+      ],
+      "material": "Alumina"
+    },
+    {
+      "id": 19,
+      "name": "cold_alumina",
+      "kind": "ceramic",
+      "box_m": [
+        -0.0001,
+        -0.0001,
+        0.0012000000000000001,
+        0.0030000000000000005,
+        0.0014000000000000002,
+        0.0002
+      ],
+      "material": "Alumina"
+    },
+    {
+      "id": 20,
+      "name": "leg_00_N_bottom_transition",
+      "kind": "contact_layer",
+      "material": "N_contact",
+      "box_m": [
+        0.0,
+        0.0,
+        0.0001,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00011000026000000001,
+      "current_sign": 1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 1
+    },
+    {
+      "id": 21,
+      "name": "leg_00_N_top_transition",
+      "kind": "contact_layer",
+      "material": "N_contact",
+      "box_m": [
+        0.0,
+        0.0,
+        0.00108,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00109000026,
+      "current_sign": 1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 1
+    },
+    {
+      "id": 22,
+      "name": "leg_01_P_bottom_transition",
+      "kind": "contact_layer",
+      "material": "P_contact",
+      "box_m": [
+        0.0008,
+        0.0,
+        0.0001,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00011000026000000001,
+      "current_sign": -1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 2
+    },
+    {
+      "id": 23,
+      "name": "leg_01_P_top_transition",
+      "kind": "contact_layer",
+      "material": "P_contact",
+      "box_m": [
+        0.0008,
+        0.0,
+        0.00108,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00109000026,
+      "current_sign": -1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 2
+    },
+    {
+      "id": 24,
+      "name": "leg_02_N_bottom_transition",
+      "kind": "contact_layer",
+      "material": "N_contact",
+      "box_m": [
+        0.0016,
+        0.0,
+        0.0001,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00011000026000000001,
+      "current_sign": 1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 3
+    },
+    {
+      "id": 25,
+      "name": "leg_02_N_top_transition",
+      "kind": "contact_layer",
+      "material": "N_contact",
+      "box_m": [
+        0.0016,
+        0.0,
+        0.00108,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00109000026,
+      "current_sign": 1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 3
+    },
+    {
+      "id": 26,
+      "name": "leg_03_P_bottom_transition",
+      "kind": "contact_layer",
+      "material": "P_contact",
+      "box_m": [
+        0.0024000000000000002,
+        0.0,
+        0.0001,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00011000026000000001,
+      "current_sign": -1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 4
+    },
+    {
+      "id": 27,
+      "name": "leg_03_P_top_transition",
+      "kind": "contact_layer",
+      "material": "P_contact",
+      "box_m": [
+        0.0024000000000000002,
+        0.0,
+        0.00108,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00109000026,
+      "current_sign": -1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 4
+    },
+    {
+      "id": 28,
+      "name": "leg_04_N_bottom_transition",
+      "kind": "contact_layer",
+      "material": "N_contact",
+      "box_m": [
+        0.0024000000000000002,
+        0.0008,
+        0.0001,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00011000026000000001,
+      "current_sign": 1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 5
+    },
+    {
+      "id": 29,
+      "name": "leg_04_N_top_transition",
+      "kind": "contact_layer",
+      "material": "N_contact",
+      "box_m": [
+        0.0024000000000000002,
+        0.0008,
+        0.00108,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00109000026,
+      "current_sign": 1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 5
+    },
+    {
+      "id": 30,
+      "name": "leg_05_P_bottom_transition",
+      "kind": "contact_layer",
+      "material": "P_contact",
+      "box_m": [
+        0.0016,
+        0.0008,
+        0.0001,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00011000026000000001,
+      "current_sign": -1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 6
+    },
+    {
+      "id": 31,
+      "name": "leg_05_P_top_transition",
+      "kind": "contact_layer",
+      "material": "P_contact",
+      "box_m": [
+        0.0016,
+        0.0008,
+        0.00108,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00109000026,
+      "current_sign": -1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 6
+    },
+    {
+      "id": 32,
+      "name": "leg_06_N_bottom_transition",
+      "kind": "contact_layer",
+      "material": "N_contact",
+      "box_m": [
+        0.0008,
+        0.0008,
+        0.0001,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00011000026000000001,
+      "current_sign": 1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 7
+    },
+    {
+      "id": 33,
+      "name": "leg_06_N_top_transition",
+      "kind": "contact_layer",
+      "material": "N_contact",
+      "box_m": [
+        0.0008,
+        0.0008,
+        0.00108,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00109000026,
+      "current_sign": 1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 7
+    },
+    {
+      "id": 34,
+      "name": "leg_07_P_bottom_transition",
+      "kind": "contact_layer",
+      "material": "P_contact",
+      "box_m": [
+        0.0,
+        0.0008,
+        0.0001,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00011000026000000001,
+      "current_sign": -1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 8
+    },
+    {
+      "id": 35,
+      "name": "leg_07_P_top_transition",
+      "kind": "contact_layer",
+      "material": "P_contact",
+      "box_m": [
+        0.0,
+        0.0008,
+        0.00108,
+        0.0004,
+        0.0004,
+        2e-05
+      ],
+      "cut_axis": 2,
+      "cut_coordinate_m": 0.00109000026,
+      "current_sign": -1,
+      "cut_area_m2": 1.6e-07,
+      "parent_leg": 8
+    }
+  ],
+  "contacts": [
+    {
+      "bodies": [
+        16,
+        20
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1039
+    },
+    {
+      "bodies": [
+        9,
+        21
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1018
+    },
+    {
+      "bodies": [
+        9,
+        23
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1019
+    },
+    {
+      "bodies": [
+        10,
+        22
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1021
+    },
+    {
+      "bodies": [
+        10,
+        24
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1022
+    },
+    {
+      "bodies": [
+        11,
+        25
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1024
+    },
+    {
+      "bodies": [
+        11,
+        27
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1025
+    },
+    {
+      "bodies": [
+        12,
+        26
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1027
+    },
+    {
+      "bodies": [
+        12,
+        28
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1028
+    },
+    {
+      "bodies": [
+        13,
+        29
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1030
+    },
+    {
+      "bodies": [
+        13,
+        31
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1031
+    },
+    {
+      "bodies": [
+        14,
+        30
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1033
+    },
+    {
+      "bodies": [
+        14,
+        32
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1034
+    },
+    {
+      "bodies": [
+        15,
+        33
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1036
+    },
+    {
+      "bodies": [
+        15,
+        35
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1037
+    },
+    {
+      "bodies": [
+        17,
+        34
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1041
+    },
+    {
+      "bodies": [
+        9,
+        19
+      ],
+      "area_m2": 4.800000000000001e-07,
+      "electrical": false,
+      "boundary_id": 1017
+    },
+    {
+      "bodies": [
+        10,
+        18
+      ],
+      "area_m2": 4.800000000000001e-07,
+      "electrical": false,
+      "boundary_id": 1020
+    },
+    {
+      "bodies": [
+        11,
+        19
+      ],
+      "area_m2": 4.800000000000001e-07,
+      "electrical": false,
+      "boundary_id": 1023
+    },
+    {
+      "bodies": [
+        12,
+        18
+      ],
+      "area_m2": 4.800000000000001e-07,
+      "electrical": false,
+      "boundary_id": 1026
+    },
+    {
+      "bodies": [
+        13,
+        19
+      ],
+      "area_m2": 4.800000000000001e-07,
+      "electrical": false,
+      "boundary_id": 1029
+    },
+    {
+      "bodies": [
+        14,
+        18
+      ],
+      "area_m2": 4.800000000000001e-07,
+      "electrical": false,
+      "boundary_id": 1032
+    },
+    {
+      "bodies": [
+        15,
+        19
+      ],
+      "area_m2": 4.800000000000001e-07,
+      "electrical": false,
+      "boundary_id": 1035
+    },
+    {
+      "bodies": [
+        16,
+        18
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": false,
+      "boundary_id": 1038
+    },
+    {
+      "bodies": [
+        17,
+        18
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": false,
+      "boundary_id": 1040
+    },
+    {
+      "bodies": [
+        1,
+        20
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1001
+    },
+    {
+      "bodies": [
+        1,
+        21
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1002
+    },
+    {
+      "bodies": [
+        2,
+        22
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1003
+    },
+    {
+      "bodies": [
+        2,
+        23
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1004
+    },
+    {
+      "bodies": [
+        3,
+        24
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1005
+    },
+    {
+      "bodies": [
+        3,
+        25
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1006
+    },
+    {
+      "bodies": [
+        4,
+        26
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1007
+    },
+    {
+      "bodies": [
+        4,
+        27
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1008
+    },
+    {
+      "bodies": [
+        5,
+        28
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1009
+    },
+    {
+      "bodies": [
+        5,
+        29
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1010
+    },
+    {
+      "bodies": [
+        6,
+        30
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1011
+    },
+    {
+      "bodies": [
+        6,
+        31
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1012
+    },
+    {
+      "bodies": [
+        7,
+        32
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1013
+    },
+    {
+      "bodies": [
+        7,
+        33
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1014
+    },
+    {
+      "bodies": [
+        8,
+        34
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1015
+    },
+    {
+      "bodies": [
+        8,
+        35
+      ],
+      "area_m2": 1.6e-07,
+      "electrical": true,
+      "boundary_id": 1016
+    }
+  ],
+  "conductor_path": [
+    16,
+    20,
+    1,
+    21,
+    9,
+    23,
+    2,
+    22,
+    10,
+    24,
+    3,
+    25,
+    11,
+    27,
+    4,
+    26,
+    12,
+    28,
+    5,
+    29,
+    13,
+    31,
+    6,
+    30,
+    14,
+    32,
+    7,
+    33,
+    15,
+    35,
+    8,
+    34,
+    17
+  ],
+  "terminals": [
+    16,
+    17
+  ],
+  "terminal_planes": {
+    "103": {
+      "body": 16,
+      "axis": 0,
+      "coordinate_m": 0.0,
+      "area_m2": 4e-08
+    },
+    "104": {
+      "body": 17,
+      "axis": 0,
+      "coordinate_m": 0.0,
+      "area_m2": 4e-08
+    }
+  },
+  "hot_body": 18,
+  "cold_body": 19,
+  "cold_area_m2": 4.200000000000001e-06,
+  "hot_z_m": -0.0002,
+  "cold_z_m": 0.0014000000000000002,
+  "material_properties_si": {
+    "P": [
+      1.5,
+      140000.0,
+      0.00016,
+      7529.0,
+      544.0
+    ],
+    "N": [
+      1.5,
+      165500.0,
+      -0.00017,
+      7529.0,
+      544.0
+    ],
+    "Cu": [
+      400.0,
+      58139534.883720934,
+      0.0,
+      8960.0,
+      385.0
+    ],
+    "Alumina": [
+      30.0,
+      1e-12,
+      0.0,
+      3900.0,
+      880.0
+    ]
+  },
+  "units": "SI",
+  "contacts_assumed": "shared interfaces plus explicit opt-in resistive transition domains; not OEM solder",
+  "status": "verification geometry, not a measured OEM netlist",
+  "graph_audit": {
+    "nodes": 33,
+    "edges": 32,
+    "unique_path": true,
+    "degrees": {
+      "1": 2,
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2,
+      "7": 2,
+      "8": 2,
+      "9": 2,
+      "10": 2,
+      "11": 2,
+      "12": 2,
+      "13": 2,
+      "14": 2,
+      "15": 2,
+      "16": 1,
+      "17": 1,
+      "20": 2,
+      "21": 2,
+      "22": 2,
+      "23": 2,
+      "24": 2,
+      "25": 2,
+      "26": 2,
+      "27": 2,
+      "28": 2,
+      "29": 2,
+      "30": 2,
+      "31": 2,
+      "32": 2,
+      "33": 2,
+      "34": 2,
+      "35": 2
+    }
+  },
+  "graph": {
+    "nodes": 33,
+    "edges": 32,
+    "unique_path": true,
+    "degrees": {
+      "1": 2,
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2,
+      "7": 2,
+      "8": 2,
+      "9": 2,
+      "10": 2,
+      "11": 2,
+      "12": 2,
+      "13": 2,
+      "14": 2,
+      "15": 2,
+      "16": 1,
+      "17": 1,
+      "20": 2,
+      "21": 2,
+      "22": 2,
+      "23": 2,
+      "24": 2,
+      "25": 2,
+      "26": 2,
+      "27": 2,
+      "28": 2,
+      "29": 2,
+      "30": 2,
+      "31": 2,
+      "32": 2,
+      "33": 2,
+      "34": 2,
+      "35": 2
+    }
+  },
+  "transition_model": {
+    "thickness_m": 2e-05,
+    "seebeck": "same as adjacent BiTe, assumed phenomenological transition zone",
+    "solder_grade": "not assigned",
+    "zero_excess_limit": "same continuum as original leg, no removed BiTe resistance/thermopower"
+  }
+}

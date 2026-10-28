@@ -1,0 +1,2271 @@
+{
+  "schema_version": 1,
+  "source_sha256": {
+    "tecooledmct/fem_g2c_mesh.py": "309e83f10bba1253082e9cce2c62e13207e2bf9f847c5e5774c1fa955b290f82",
+    "tecooledmct/fem_g2c_stack.py": "c25abd4ed462fa5600d568e9295abdb8957d722b3a0710ab595f9fd42c198540",
+    "tecooledmct/fem_g2c.py": "da1205d91f61f650f2136aa8379ce1e94ae2891d580aaed970e9b0b4afb84cfe",
+    "tecooledmct/fem_g2c_contact_refine.py": "a0f65457b6e365734df99077dfa0f89c3e81a5e2f0a4c9bcef3cf2a97a01bd09",
+    "tecooledmct/fem_g2c_low_temperature.py": "c1fbffe12ef1e025ca870966daf80535ca39e1e4c146355958705fa051fef533",
+    "tecooledmct/fem_g2c_contact.py": "87b9aafae0ae23f5be7cf21be121928a2009928716a55c6fec6200a37001300f",
+    "tecooledmct/fem_g2c_post.py": "107d738d9dd1586421bb765823809e4fa8b5a07589141d492f62d79203d7346d",
+    "tecooledmct/g2c_qualification.py": "f772ab83414c5825a42470047720a667ad1b8e4b5e9822fbd4910eaafb9750ba",
+    "tecooledmct/fem_g2c_run.py": "255991459009f5549ce6f5682869c49dfa624a29ffc88f66800c9c8ebb13ef79",
+    "tecooledmct/material_profiles.py": "b332771e082c5e389cfdb819b184cd710f8ae7992cb597cf37b26aabc06ee7d6",
+    "data/g2c/low_temperature_extension_registry.json": "4ad0d6a48fd72d742505d5f139e1b8c6db946a8e32560c3d663fdf4fd7405a5f",
+    "data/g2c/retrieval.json": "2a2ef57ca6ce6b751e716e972f781fb82077a0fce8f2e67445d1bd60315f6ec0",
+    "data/g2c/oem2019_vector_paths.json": "33b3bc39cdac1edfeeadc4da8dcc01f304d4b25c0aaca8afb6a1a2e568c379a9",
+    "data/g2c/zhang2025_he_40_300_v2.json": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+    "data/g2c/source_registry.json": "69844d52f00dbb2d8a86b16d3171671b110bb4809c256bbed5e7a1f0232f3360",
+    "data/g2c/oem2019_curves_v1.json": "b6de59e07ad02dde83d5ddeb880e650cd74f73557d63d2ba8b35ba94b214b1e0",
+    "data/g2c/zhang2025_he_v1.json": "3e264fd6cfbae604136fcba92f44a67998a083ef803d606739d6e9aab02a9375",
+    "tests/test_g2c_qualification.py": "74647f36a8ff3b2d83405eef0e10b1aeb870a5b993de3cc22030f1a6c464cc47",
+    "tests/test_fem_g2c.py": "3341271615c84b5a87c3396a7f260cee7dc7f0f92b405c6083940dc49ae68968",
+    "tests/test_material_profiles.py": "9ddaa8a6b6b657e8bf87f7bb39662ac739ba2278a23a89867817374c65ae45d2"
+  },
+  "protected_integrity": {
+    "passed": true,
+    "checked": {
+      "g1_20261028": {
+        "source_files": 8,
+        "artifacts": 128
+      },
+      "g2a_20261028": {
+        "source_files": 4,
+        "artifacts": 106
+      },
+      "g2b_geometry_20261028": {
+        "source_files": 3,
+        "artifacts": 11
+      }
+    },
+    "connected_g2b_unchanged": true
+  },
+  "verification": {
+    "passed": true,
+    "checks": {
+      "all_mesh_audits_pass": true,
+      "constant_temperature_regression": true,
+      "constant_voltage_regression": true,
+      "source_cold_mesh_change_below_1pct_lift": true,
+      "local_source_temperature_changes_solution": true,
+      "thomson_continuum_temperature_below_5mK": true,
+      "thomson_continuum_voltage_below_2uV": true,
+      "thomson_not_omitted": true,
+      "source_0_actual_solver_zero_exit": true,
+      "source_0_material_range": true,
+      "source_0_energy_work": true,
+      "source_0_current": true,
+      "source_1_actual_solver_zero_exit": true,
+      "source_1_material_range": true,
+      "source_1_energy_work": true,
+      "source_1_current": true,
+      "source_2_actual_solver_zero_exit": true,
+      "source_2_material_range": true,
+      "source_2_energy_work": true,
+      "source_2_current": true,
+      "source_3_actual_solver_zero_exit": true,
+      "source_3_material_range": true,
+      "source_3_energy_work": true,
+      "source_3_current": true,
+      "constant_regression_actual_solver_zero_exit": true,
+      "constant_regression_material_range": true,
+      "constant_regression_energy_work": true,
+      "constant_regression_current": true,
+      "source_frozen_300_actual_solver_zero_exit": true,
+      "source_frozen_300_material_range": true,
+      "source_frozen_300_energy_work": true,
+      "source_frozen_300_current": true,
+      "synthetic_variable_actual_solver_zero_exit": true,
+      "synthetic_variable_material_range": true,
+      "synthetic_variable_energy_work": true,
+      "synthetic_variable_current": true,
+      "thomson_rod_actual_solver_zero_exit": true,
+      "thomson_rod_material_range": true,
+      "thomson_rod_energy_work": true,
+      "thomson_rod_current": true,
+      "fine_source_component_currents_below_half_pct": true,
+      "fine_source_bath_energy_below_1pct": true,
+      "source_hashes_unchanged": true
+    }
+  },
+  "cases": {
+    "source_0": {
+      "current_a": 0.05,
+      "load_w": 0.002,
+      "fixed_cold_k": null,
+      "hot_k": 295.0,
+      "elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+      "couples": 4,
+      "boundary_case": "fixed_hot_load",
+      "profile_id": "zhang2025_he_digitized_v1r1",
+      "profile_status": "published_sample_plot_digitization",
+      "profile_interval_k": [
+        200,
+        300
+      ],
+      "profile_freeze_k": null,
+      "initial_state": "uniform initial temperature",
+      "coefficients": "local nodal T functions; coefficients interpolated at quadrature as in pinned ThermoElectricSolver",
+      "thomson": "implicit in divergence(T*S(T)*J); no additional duplicate source",
+      "oem_grade_matched": false,
+      "nodes": 1433,
+      "tetrahedra": 4460,
+      "dofs": 2866,
+      "cold_mean_k": 282.89645286596334,
+      "cold_min_k": 282.88753277518583,
+      "cold_max_k": 282.9039651967045,
+      "temperature_min_k": 282.8822745041574,
+      "temperature_max_k": 295.01918598116686,
+      "profile_body_temperature_ranges_k": {
+        "leg_00_N": [
+          282.8975119832798,
+          295.001384094422
+        ],
+        "leg_01_P": [
+          282.88725661343153,
+          295.01364139219675
+        ],
+        "leg_02_N": [
+          282.89451694485797,
+          295.00487988285454
+        ],
+        "leg_03_P": [
+          282.88229285812093,
+          295.0148018578242
+        ],
+        "leg_04_N": [
+          282.8975776649279,
+          295.00531555672967
+        ],
+        "leg_05_P": [
+          282.88729196634847,
+          295.0136093408942
+        ],
+        "leg_06_N": [
+          282.8945032385643,
+          295.0049898086856
+        ],
+        "leg_07_P": [
+          282.8822745041574,
+          295.01918598116686
+        ]
+      },
+      "voltage_v": 0.04234070161650048,
+      "electrical_input_w": 0.002117035080825024,
+      "volume_j_dot_e_w": 0.002117035081262322,
+      "joule_w": 0.0011612618394958346,
+      "hot_out_w": 0.004117035099213193,
+      "cold_out_w": -0.002,
+      "energy_relative_residual": 8.68581214935224e-09,
+      "power_work_relative_residual": 2.065616224706414e-10,
+      "bath_gradient_energy_relative_residual": -0.03640633658605059,
+      "return_current_a": 0.04999999999462379,
+      "current_absolute_error_a": 5.376213363383897e-12,
+      "free_thermal_residual_l1_w": 1.0373726996118134e-09,
+      "free_current_residual_l1_a": 2.040222339239355e-09,
+      "cuts": {
+        "leg_00_N": {
+          "current_a": 0.04972903194299069,
+          "relative_error": 0.005419361140186207,
+          "absolute_error_a": 0.00027096805700931037,
+          "area_m2": 1.6e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_01_P": {
+          "current_a": 0.04968910304142776,
+          "relative_error": 0.0062179391714448085,
+          "absolute_error_a": 0.0003108969585722404,
+          "area_m2": 1.6e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_02_N": {
+          "current_a": 0.04972929892729355,
+          "relative_error": 0.005414021454129003,
+          "absolute_error_a": 0.00027070107270645016,
+          "area_m2": 1.6e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_03_P": {
+          "current_a": 0.049688255088818155,
+          "relative_error": 0.006234898223636959,
+          "absolute_error_a": 0.00031174491118184794,
+          "area_m2": 1.6000000000000008e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_04_N": {
+          "current_a": 0.0497252864634343,
+          "relative_error": 0.005494270731314088,
+          "absolute_error_a": 0.0002747135365657044,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_05_P": {
+          "current_a": 0.049692850416504106,
+          "relative_error": 0.006142991669917941,
+          "absolute_error_a": 0.00030714958349589705,
+          "area_m2": 1.5999999999999998e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_06_N": {
+          "current_a": 0.04972427042259636,
+          "relative_error": 0.0055145915480728225,
+          "absolute_error_a": 0.0002757295774036411,
+          "area_m2": 1.6000000000000008e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_07_P": {
+          "current_a": 0.04968638820104271,
+          "relative_error": 0.00627223597914589,
+          "absolute_error_a": 0.0003136117989572945,
+          "area_m2": 1.6000000000000003e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "bridge_00_cold": {
+          "current_a": 0.050119419023852474,
+          "relative_error": 0.0023883804770494232,
+          "absolute_error_a": 0.00011941902385247116,
+          "area_m2": 4.000000000000002e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_01_hot": {
+          "current_a": 0.050144331702340075,
+          "relative_error": 0.0028866340468014506,
+          "absolute_error_a": 0.00014433170234007253,
+          "area_m2": 4e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_02_cold": {
+          "current_a": 0.050141115150809434,
+          "relative_error": 0.002822303016188632,
+          "absolute_error_a": 0.0001411151508094316,
+          "area_m2": 4.000000000000002e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_03_hot": {
+          "current_a": 0.05009611923113782,
+          "relative_error": 0.001922384622756318,
+          "absolute_error_a": 9.61192311378159e-05,
+          "area_m2": 4.000000000000002e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_04_cold": {
+          "current_a": 0.05019389462761424,
+          "relative_error": 0.0038778925522847674,
+          "absolute_error_a": 0.00019389462761423837,
+          "area_m2": 4.000000000000002e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_05_hot": {
+          "current_a": 0.050118033471660224,
+          "relative_error": 0.0023606694332044265,
+          "absolute_error_a": 0.00011803347166022132,
+          "area_m2": 4.000000000000001e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_06_cold": {
+          "current_a": 0.050202542932673934,
+          "relative_error": 0.004050858653478623,
+          "absolute_error_a": 0.00020254293267393114,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        }
+      },
+      "max_cut_relative_error": 0.00627223597914589,
+      "field_source": "fields_t0001.vtu",
+      "actual_material_interval_passed": true,
+      "joule_by_domain_w": {
+        "leg_00_N": 0.00011217367971003869,
+        "leg_01_P": 0.00017681705241245996,
+        "leg_02_N": 0.00011217353517061218,
+        "leg_03_P": 0.0001768150995737804,
+        "leg_04_N": 0.00011217444098159023,
+        "leg_05_P": 0.00017681683342737328,
+        "leg_06_N": 0.00011217354320590955,
+        "leg_07_P": 0.00017681762657593625,
+        "bridge_00_cold": 7.158241957314782e-07,
+        "bridge_01_hot": 7.162733906543042e-07,
+        "bridge_02_cold": 7.160140941365727e-07,
+        "bridge_03_hot": 7.162414687554243e-07,
+        "bridge_04_cold": 7.157322841172094e-07,
+        "bridge_05_hot": 7.163174550021929e-07,
+        "bridge_06_cold": 7.156627392057068e-07,
+        "terminal_in": 1.4459564063732815e-07,
+        "terminal_out": 1.4336716989260675e-07,
+        "hot_alumina": 9.000263246542644e-19,
+        "cold_alumina": 7.538486091754618e-19
+      },
+      "contact_joule_w": 0.0,
+      "extra_contact_joule_w": 0.0,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 1.810107427998446,
+        "cpu_s": 1.6078469999999998,
+        "peak_rss_kib": 54932,
+        "timed_out": false,
+        "nonlinear_iterations": 13,
+        "nonlinear_last_relative_change": 5.565872443840165e-10
+      },
+      "sif_sha256": "684a3db04183e59be9b6feb5abdbcd592e6a66c06facb6def025e240aec9e709",
+      "vtu_sha256": "b1bf99d3a76812fde8f3933cd81da0f24466e278ce5491f51836a60db515c445",
+      "mesh_path": "/work/outputs/fem-g2c/mesh_0",
+      "case_path": "/work/outputs/fem-g2c/source_0"
+    },
+    "source_1": {
+      "current_a": 0.05,
+      "load_w": 0.002,
+      "fixed_cold_k": null,
+      "hot_k": 295.0,
+      "elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+      "couples": 4,
+      "boundary_case": "fixed_hot_load",
+      "profile_id": "zhang2025_he_digitized_v1r1",
+      "profile_status": "published_sample_plot_digitization",
+      "profile_interval_k": [
+        200,
+        300
+      ],
+      "profile_freeze_k": null,
+      "initial_state": "uniform initial temperature",
+      "coefficients": "local nodal T functions; coefficients interpolated at quadrature as in pinned ThermoElectricSolver",
+      "thomson": "implicit in divergence(T*S(T)*J); no additional duplicate source",
+      "oem_grade_matched": false,
+      "nodes": 4180,
+      "tetrahedra": 14545,
+      "dofs": 8360,
+      "cold_mean_k": 282.89659580508777,
+      "cold_min_k": 282.8876249858433,
+      "cold_max_k": 282.9037545319839,
+      "temperature_min_k": 282.88234485207335,
+      "temperature_max_k": 295.02059694847026,
+      "profile_body_temperature_ranges_k": {
+        "leg_00_N": [
+          282.8973300360677,
+          295.0012085228879
+        ],
+        "leg_01_P": [
+          282.8867773148174,
+          295.01467422816194
+        ],
+        "leg_02_N": [
+          282.8946775407924,
+          295.00530474720046
+        ],
+        "leg_03_P": [
+          282.88234485207335,
+          295.01529399525606
+        ],
+        "leg_04_N": [
+          282.8973453084461,
+          295.00538022665654
+        ],
+        "leg_05_P": [
+          282.88675642055995,
+          295.0147969501154
+        ],
+        "leg_06_N": [
+          282.89479027745233,
+          295.00532464895247
+        ],
+        "leg_07_P": [
+          282.882485057371,
+          295.02059694847026
+        ]
+      },
+      "voltage_v": 0.04234396879218183,
+      "electrical_input_w": 0.0021171984396090916,
+      "volume_j_dot_e_w": 0.002117198439569163,
+      "joule_w": 0.0011613628282456222,
+      "hot_out_w": 0.0041171984565449155,
+      "cold_out_w": -0.002,
+      "energy_relative_residual": 7.999166974733144e-09,
+      "power_work_relative_residual": -1.8859150460548878e-11,
+      "bath_gradient_energy_relative_residual": 0.011066308064126416,
+      "return_current_a": 0.05000000000903428,
+      "current_absolute_error_a": 9.034280268327421e-12,
+      "free_thermal_residual_l1_w": 1.3903120983229651e-09,
+      "free_current_residual_l1_a": 2.1492506900281094e-09,
+      "cuts": {
+        "leg_00_N": {
+          "current_a": 0.05004992691372633,
+          "relative_error": 0.0009985382745265892,
+          "absolute_error_a": 4.992691372632946e-05,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_01_P": {
+          "current_a": 0.050011898886712265,
+          "relative_error": 0.00023797773424524826,
+          "absolute_error_a": 1.1898886712262413e-05,
+          "area_m2": 1.5999999999999992e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_02_N": {
+          "current_a": 0.050038065161783746,
+          "relative_error": 0.0007613032356748595,
+          "absolute_error_a": 3.8065161783742973e-05,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_03_P": {
+          "current_a": 0.05000605891109617,
+          "relative_error": 0.00012117822192334038,
+          "absolute_error_a": 6.058911096167019e-06,
+          "area_m2": 1.6000000000000008e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_04_N": {
+          "current_a": 0.050000137419195415,
+          "relative_error": 2.7483839082353967e-06,
+          "absolute_error_a": 1.3741919541176983e-07,
+          "area_m2": 1.600000000000001e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_05_P": {
+          "current_a": 0.04997287131847176,
+          "relative_error": 0.0005425736305648965,
+          "absolute_error_a": 2.7128681528244825e-05,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_06_N": {
+          "current_a": 0.05004766636185559,
+          "relative_error": 0.0009533272371117785,
+          "absolute_error_a": 4.7666361855588923e-05,
+          "area_m2": 1.6000000000000003e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_07_P": {
+          "current_a": 0.050035637912704246,
+          "relative_error": 0.000712758254084872,
+          "absolute_error_a": 3.56379127042436e-05,
+          "area_m2": 1.6000000000000008e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "bridge_00_cold": {
+          "current_a": 0.04999195164681973,
+          "relative_error": 0.0001609670636054661,
+          "absolute_error_a": 8.048353180273304e-06,
+          "area_m2": 4.0000000000000014e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_01_hot": {
+          "current_a": 0.049986298435025604,
+          "relative_error": 0.0002740312994879701,
+          "absolute_error_a": 1.3701564974398506e-05,
+          "area_m2": 4.000000000000001e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_02_cold": {
+          "current_a": 0.049998176428700865,
+          "relative_error": 3.647142598275921e-05,
+          "absolute_error_a": 1.8235712991379605e-06,
+          "area_m2": 4.000000000000002e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_03_hot": {
+          "current_a": 0.04999314026260162,
+          "relative_error": 0.00013719474796766717,
+          "absolute_error_a": 6.859737398383359e-06,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_04_cold": {
+          "current_a": 0.04999075190878311,
+          "relative_error": 0.00018496182433783148,
+          "absolute_error_a": 9.248091216891574e-06,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_05_hot": {
+          "current_a": 0.049983525965785834,
+          "relative_error": 0.00032948068428337307,
+          "absolute_error_a": 1.6474034214168654e-05,
+          "area_m2": 4.000000000000001e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_06_cold": {
+          "current_a": 0.04998384758064901,
+          "relative_error": 0.00032304838701979754,
+          "absolute_error_a": 1.6152419350989877e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        }
+      },
+      "max_cut_relative_error": 0.0009985382745265892,
+      "field_source": "fields_t0001.vtu",
+      "actual_material_interval_passed": true,
+      "joule_by_domain_w": {
+        "leg_00_N": 0.00011217555012617121,
+        "leg_01_P": 0.00017682483743936543,
+        "leg_02_N": 0.00011217562595583816,
+        "leg_03_P": 0.00017682289539859195,
+        "leg_04_N": 0.00011217640137271813,
+        "leg_05_P": 0.000176824366573322,
+        "leg_06_N": 0.00011217569461521337,
+        "leg_07_P": 0.0001768258507523823,
+        "bridge_00_cold": 7.237741462578993e-07,
+        "bridge_01_hot": 7.238689280134314e-07,
+        "bridge_02_cold": 7.236815111137653e-07,
+        "bridge_03_hot": 7.240406659726437e-07,
+        "bridge_04_cold": 7.236865514959937e-07,
+        "bridge_05_hot": 7.238443339837747e-07,
+        "bridge_06_cold": 7.237558491975904e-07,
+        "terminal_in": 1.4782283358255481e-07,
+        "terminal_out": 1.4713119240188437e-07,
+        "hot_alumina": 8.174375299407558e-19,
+        "cold_alumina": 7.249647016509243e-19
+      },
+      "contact_joule_w": 0.0,
+      "extra_contact_joule_w": 0.0,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 4.009749435004778,
+        "cpu_s": 3.981483,
+        "peak_rss_kib": 73748,
+        "timed_out": false,
+        "nonlinear_iterations": 13,
+        "nonlinear_last_relative_change": 3.3813493375828445e-10
+      },
+      "sif_sha256": "43dfa7b0c1cf6e98e4e7b8ed10e0022804287df57acdc30185d283e16f1e454b",
+      "vtu_sha256": "a08657f177a62f4ccf1a8fe78800e00aa2e77bfb2167762ec3c39e128157dc04",
+      "mesh_path": "/work/outputs/fem-g2c/mesh_1",
+      "case_path": "/work/outputs/fem-g2c/source_1"
+    },
+    "source_2": {
+      "current_a": 0.05,
+      "load_w": 0.002,
+      "fixed_cold_k": null,
+      "hot_k": 295.0,
+      "elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+      "couples": 4,
+      "boundary_case": "fixed_hot_load",
+      "profile_id": "zhang2025_he_digitized_v1r1",
+      "profile_status": "published_sample_plot_digitization",
+      "profile_interval_k": [
+        200,
+        300
+      ],
+      "profile_freeze_k": null,
+      "initial_state": "uniform initial temperature",
+      "coefficients": "local nodal T functions; coefficients interpolated at quadrature as in pinned ThermoElectricSolver",
+      "thomson": "implicit in divergence(T*S(T)*J); no additional duplicate source",
+      "oem_grade_matched": false,
+      "nodes": 9748,
+      "tetrahedra": 37469,
+      "dofs": 19496,
+      "cold_mean_k": 282.89703016098713,
+      "cold_min_k": 282.8880798794941,
+      "cold_max_k": 282.9042402655543,
+      "temperature_min_k": 282.882392608645,
+      "temperature_max_k": 295.0212992354111,
+      "profile_body_temperature_ranges_k": {
+        "leg_00_N": [
+          282.8977103610159,
+          295.00118183785764
+        ],
+        "leg_01_P": [
+          282.8867893982913,
+          295.01529236488034
+        ],
+        "leg_02_N": [
+          282.8949823609373,
+          295.0054662266012
+        ],
+        "leg_03_P": [
+          282.882392608645,
+          295.0159505984813
+        ],
+        "leg_04_N": [
+          282.89777736576144,
+          295.00561177279064
+        ],
+        "leg_05_P": [
+          282.88688543439696,
+          295.0152880022923
+        ],
+        "leg_06_N": [
+          282.89494897380087,
+          295.00550820166046
+        ],
+        "leg_07_P": [
+          282.88239290305114,
+          295.0212992354111
+        ]
+      },
+      "voltage_v": 0.04234495932770212,
+      "electrical_input_w": 0.002117247966385106,
+      "volume_j_dot_e_w": 0.0021172479665450532,
+      "joule_w": 0.0011613939976013441,
+      "hot_out_w": 0.004117247984676232,
+      "cold_out_w": -0.002,
+      "energy_relative_residual": 8.63910429137546e-09,
+      "power_work_relative_residual": 7.554483219527899e-11,
+      "bath_gradient_energy_relative_residual": -0.005056006765441686,
+      "return_current_a": 0.050000000014461615,
+      "current_absolute_error_a": 1.4461612463101403e-11,
+      "free_thermal_residual_l1_w": 1.4914671417645556e-09,
+      "free_current_residual_l1_a": 2.3114189657305346e-09,
+      "cuts": {
+        "leg_00_N": {
+          "current_a": 0.049987684717847244,
+          "relative_error": 0.0002463056430551669,
+          "absolute_error_a": 1.2315282152758344e-05,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_01_P": {
+          "current_a": 0.05000113993840964,
+          "relative_error": 2.2798768192777707e-05,
+          "absolute_error_a": 1.1399384096388854e-06,
+          "area_m2": 1.600000000000001e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_02_N": {
+          "current_a": 0.04999486967685581,
+          "relative_error": 0.0001026064628838197,
+          "absolute_error_a": 5.130323144190985e-06,
+          "area_m2": 1.6000000000000003e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_03_P": {
+          "current_a": 0.04999465588707133,
+          "relative_error": 0.00010688225857341527,
+          "absolute_error_a": 5.344112928670763e-06,
+          "area_m2": 1.6000000000000014e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_04_N": {
+          "current_a": 0.05000221688941064,
+          "relative_error": 4.433778821269496e-05,
+          "absolute_error_a": 2.216889410634748e-06,
+          "area_m2": 1.6000000000000008e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_05_P": {
+          "current_a": 0.05001716421783545,
+          "relative_error": 0.0003432843567088839,
+          "absolute_error_a": 1.7164217835444195e-05,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_06_N": {
+          "current_a": 0.05000092713337204,
+          "relative_error": 1.8542667440807348e-05,
+          "absolute_error_a": 9.271333720403674e-07,
+          "area_m2": 1.6000000000000003e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_07_P": {
+          "current_a": 0.050059785447251454,
+          "relative_error": 0.001195708945029017,
+          "absolute_error_a": 5.978544725145085e-05,
+          "area_m2": 1.5999999999999998e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "bridge_00_cold": {
+          "current_a": 0.05006490756603204,
+          "relative_error": 0.0012981513206407336,
+          "absolute_error_a": 6.490756603203668e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_01_hot": {
+          "current_a": 0.050015170531998256,
+          "relative_error": 0.00030341063996505713,
+          "absolute_error_a": 1.5170531998252856e-05,
+          "area_m2": 4.000000000000001e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_02_cold": {
+          "current_a": 0.050003896452483175,
+          "relative_error": 7.792904966344438e-05,
+          "absolute_error_a": 3.896452483172219e-06,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_03_hot": {
+          "current_a": 0.050033969564521795,
+          "relative_error": 0.0006793912904358435,
+          "absolute_error_a": 3.396956452179217e-05,
+          "area_m2": 4.0000000000000014e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_04_cold": {
+          "current_a": 0.05006362466367604,
+          "relative_error": 0.0012724932735207195,
+          "absolute_error_a": 6.362466367603598e-05,
+          "area_m2": 4.000000000000002e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_05_hot": {
+          "current_a": 0.05005966850066334,
+          "relative_error": 0.0011933700132667202,
+          "absolute_error_a": 5.966850066333601e-05,
+          "area_m2": 4.0000000000000014e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_06_cold": {
+          "current_a": 0.049990160175924496,
+          "relative_error": 0.0001967964815101364,
+          "absolute_error_a": 9.83982407550682e-06,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        }
+      },
+      "max_cut_relative_error": 0.0012981513206407336,
+      "field_source": "fields_t0001.vtu",
+      "actual_material_interval_passed": true,
+      "joule_by_domain_w": {
+        "leg_00_N": 0.00011217612246617871,
+        "leg_01_P": 0.00017682658393091907,
+        "leg_02_N": 0.0001121762201534482,
+        "leg_03_P": 0.0001768247358438246,
+        "leg_04_N": 0.00011217698401746894,
+        "leg_05_P": 0.00017682659262946275,
+        "leg_06_N": 0.00011217624129150188,
+        "leg_07_P": 0.0001768279006899082,
+        "bridge_00_cold": 7.264290870180288e-07,
+        "bridge_01_hot": 7.26531937261987e-07,
+        "bridge_02_cold": 7.264008616327099e-07,
+        "bridge_03_hot": 7.26518422783179e-07,
+        "bridge_04_cold": 7.264088348699336e-07,
+        "bridge_05_hot": 7.265275722121377e-07,
+        "bridge_06_cold": 7.265054778122636e-07,
+        "terminal_in": 1.4897558426079382e-07,
+        "terminal_out": 1.4831880078103374e-07,
+        "hot_alumina": 7.707039420365629e-19,
+        "cold_alumina": 6.584079082459125e-19
+      },
+      "contact_joule_w": 0.0,
+      "extra_contact_joule_w": 0.0,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 13.01955856999848,
+        "cpu_s": 12.892159,
+        "peak_rss_kib": 163584,
+        "timed_out": false,
+        "nonlinear_iterations": 13,
+        "nonlinear_last_relative_change": 3.0773776733998465e-10
+      },
+      "sif_sha256": "b5578eea64b7c9c3c800908124eb06a4c78dcfaf0ef9612d3b0e890780ef92e5",
+      "vtu_sha256": "ee8fa02577eb3a2448d8c0b16fd0b55dbb7a6cff2ecd373f6d58e562d3d910ed",
+      "mesh_path": "/work/outputs/fem-g2c/mesh_2",
+      "case_path": "/work/outputs/fem-g2c/source_2"
+    },
+    "source_3": {
+      "current_a": 0.05,
+      "load_w": 0.002,
+      "fixed_cold_k": null,
+      "hot_k": 295.0,
+      "elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+      "couples": 4,
+      "boundary_case": "fixed_hot_load",
+      "profile_id": "zhang2025_he_digitized_v1r1",
+      "profile_status": "published_sample_plot_digitization",
+      "profile_interval_k": [
+        200,
+        300
+      ],
+      "profile_freeze_k": null,
+      "initial_state": "uniform initial temperature",
+      "coefficients": "local nodal T functions; coefficients interpolated at quadrature as in pinned ThermoElectricSolver",
+      "thomson": "implicit in divergence(T*S(T)*J); no additional duplicate source",
+      "oem_grade_matched": false,
+      "nodes": 19187,
+      "tetrahedra": 82096,
+      "dofs": 38374,
+      "cold_mean_k": 282.8973566232045,
+      "cold_min_k": 282.88843814121776,
+      "cold_max_k": 282.90453943470527,
+      "temperature_min_k": 282.8825662302606,
+      "temperature_max_k": 295.0221209194204,
+      "profile_body_temperature_ranges_k": {
+        "leg_00_N": [
+          282.89790409088397,
+          295.00115876581276
+        ],
+        "leg_01_P": [
+          282.88685978163863,
+          295.01577562269324
+        ],
+        "leg_02_N": [
+          282.8952419761757,
+          295.00564453009594
+        ],
+        "leg_03_P": [
+          282.8825662302606,
+          295.01634043295195
+        ],
+        "leg_04_N": [
+          282.8979785572498,
+          295.00578900119393
+        ],
+        "leg_05_P": [
+          282.88692787867734,
+          295.01575881920274
+        ],
+        "leg_06_N": [
+          282.8952738062152,
+          295.0056720351588
+        ],
+        "leg_07_P": [
+          282.8826424853462,
+          295.0221209194204
+        ]
+      },
+      "voltage_v": 0.04234542170821562,
+      "electrical_input_w": 0.002117271085410781,
+      "volume_j_dot_e_w": 0.0021172710864824557,
+      "joule_w": 0.0011614065955012532,
+      "hot_out_w": 0.0041172711035538075,
+      "cold_out_w": -0.002,
+      "energy_relative_residual": 8.569061705250286e-09,
+      "power_work_relative_residual": 5.061585520570304e-10,
+      "bath_gradient_energy_relative_residual": 0.0006099166155674298,
+      "return_current_a": 0.0500000000530827,
+      "current_absolute_error_a": 5.308269795945009e-11,
+      "free_thermal_residual_l1_w": 1.5550498942095679e-09,
+      "free_current_residual_l1_a": 2.8347907389291228e-09,
+      "cuts": {
+        "leg_00_N": {
+          "current_a": 0.04999845774745426,
+          "relative_error": 3.0845050914829475e-05,
+          "absolute_error_a": 1.5422525457414737e-06,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_01_P": {
+          "current_a": 0.049999368475907136,
+          "relative_error": 1.2630481857345277e-05,
+          "absolute_error_a": 6.315240928672639e-07,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_02_N": {
+          "current_a": 0.050005021876750586,
+          "relative_error": 0.00010043753501165487,
+          "absolute_error_a": 5.021876750582743e-06,
+          "area_m2": 1.5999999999999995e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_03_P": {
+          "current_a": 0.04999941461080043,
+          "relative_error": 1.1707783991454779e-05,
+          "absolute_error_a": 5.853891995727389e-07,
+          "area_m2": 1.6e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_04_N": {
+          "current_a": 0.050003116867537827,
+          "relative_error": 6.233735075647506e-05,
+          "absolute_error_a": 3.116867537823753e-06,
+          "area_m2": 1.600000000000002e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_05_P": {
+          "current_a": 0.05000640779708853,
+          "relative_error": 0.00012815594177054135,
+          "absolute_error_a": 6.407797088527067e-06,
+          "area_m2": 1.6000000000000008e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_06_N": {
+          "current_a": 0.05000637069603867,
+          "relative_error": 0.00012741392077339486,
+          "absolute_error_a": 6.370696038669743e-06,
+          "area_m2": 1.6000000000000003e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_07_P": {
+          "current_a": 0.04999303638238004,
+          "relative_error": 0.00013927235239921676,
+          "absolute_error_a": 6.963617619960838e-06,
+          "area_m2": 1.5999999999999998e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "bridge_00_cold": {
+          "current_a": 0.0499805748604146,
+          "relative_error": 0.00038850279170804525,
+          "absolute_error_a": 1.9425139585402262e-05,
+          "area_m2": 4.000000000000002e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_01_hot": {
+          "current_a": 0.04998198164889391,
+          "relative_error": 0.0003603670221218047,
+          "absolute_error_a": 1.8018351106090236e-05,
+          "area_m2": 4.000000000000001e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_02_cold": {
+          "current_a": 0.049981755895595434,
+          "relative_error": 0.00036488208809137834,
+          "absolute_error_a": 1.8244104404568917e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_03_hot": {
+          "current_a": 0.049981310297689575,
+          "relative_error": 0.0003737940462085476,
+          "absolute_error_a": 1.868970231042738e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_04_cold": {
+          "current_a": 0.049982012963392185,
+          "relative_error": 0.0003597407321563606,
+          "absolute_error_a": 1.798703660781803e-05,
+          "area_m2": 4.000000000000004e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_05_hot": {
+          "current_a": 0.04998194623215524,
+          "relative_error": 0.0003610753568952796,
+          "absolute_error_a": 1.805376784476398e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_06_cold": {
+          "current_a": 0.04997813474621467,
+          "relative_error": 0.0004373050757067176,
+          "absolute_error_a": 2.186525378533588e-05,
+          "area_m2": 4.0000000000000014e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        }
+      },
+      "max_cut_relative_error": 0.0004373050757067176,
+      "field_source": "fields_t0001.vtu",
+      "actual_material_interval_passed": true,
+      "joule_by_domain_w": {
+        "leg_00_N": 0.00011217635720713409,
+        "leg_01_P": 0.00017682753963287474,
+        "leg_02_N": 0.00011217651568559807,
+        "leg_03_P": 0.0001768257599780788,
+        "leg_04_N": 0.00011217724089083177,
+        "leg_05_P": 0.00017682760246410964,
+        "leg_06_N": 0.00011217653531220184,
+        "leg_07_P": 0.0001768292494809876,
+        "bridge_00_cold": 7.273228264787036e-07,
+        "bridge_01_hot": 7.275061190693249e-07,
+        "bridge_02_cold": 7.273315930789551e-07,
+        "bridge_03_hot": 7.273744044823639e-07,
+        "bridge_04_cold": 7.274312591089978e-07,
+        "bridge_05_hot": 7.274751550343541e-07,
+        "bridge_06_cold": 7.273392757099382e-07,
+        "terminal_in": 1.4914714921682743e-07,
+        "terminal_out": 1.4886706725719582e-07,
+        "hot_alumina": 7.396905661389894e-19,
+        "cold_alumina": 6.395356773263507e-19
+      },
+      "contact_joule_w": 0.0,
+      "extra_contact_joule_w": 0.0,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 45.05075248098001,
+        "cpu_s": 45.031777000000005,
+        "peak_rss_kib": 412996,
+        "timed_out": false,
+        "nonlinear_iterations": 13,
+        "nonlinear_last_relative_change": 2.7688754861121065e-10
+      },
+      "sif_sha256": "96bdc57c2e46d23148268d7e293bd2f81f27d4625137e5bc10f0bb82fa5e7fb6",
+      "vtu_sha256": "2dfe628279cecf91cf34f5a2d534204950772733a499b1676d76c4aad0bf2f8e",
+      "mesh_path": "/work/outputs/fem-g2c/mesh_3",
+      "case_path": "/work/outputs/fem-g2c/source_3"
+    },
+    "constant_regression": {
+      "current_a": 0.05,
+      "load_w": 0.002,
+      "fixed_cold_k": null,
+      "hot_k": 295.0,
+      "elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+      "couples": 4,
+      "boundary_case": "fixed_hot_load",
+      "profile_id": "g1_constant_regression",
+      "profile_status": "SYNTHETIC FUNCTION TEST ONLY",
+      "profile_interval_k": [
+        200.0,
+        300.0
+      ],
+      "profile_freeze_k": null,
+      "initial_state": "uniform initial temperature",
+      "coefficients": "local nodal T functions; coefficients interpolated at quadrature as in pinned ThermoElectricSolver",
+      "thomson": "implicit in divergence(T*S(T)*J); no additional duplicate source",
+      "oem_grade_matched": false,
+      "nodes": 19187,
+      "tetrahedra": 82096,
+      "dofs": 38374,
+      "cold_mean_k": 286.42536193691774,
+      "cold_min_k": 286.4228351553025,
+      "cold_max_k": 286.4282368986891,
+      "temperature_min_k": 286.4183360853819,
+      "temperature_max_k": 295.0110790996666,
+      "profile_body_temperature_ranges_k": {
+        "leg_00_N": [
+          286.4183543846431,
+          295.0110790996666
+        ],
+        "leg_01_P": [
+          286.42129850765207,
+          295.00735450189313
+        ],
+        "leg_02_N": [
+          286.4196485489445,
+          295.00898011074247
+        ],
+        "leg_03_P": [
+          286.42137249880693,
+          295.00755283603183
+        ],
+        "leg_04_N": [
+          286.4183360853819,
+          295.0092781974459
+        ],
+        "leg_05_P": [
+          286.421285843956,
+          295.007340667324
+        ],
+        "leg_06_N": [
+          286.4196959886356,
+          295.0089985860042
+        ],
+        "leg_07_P": [
+          286.42142524940965,
+          295.0080651487042
+        ]
+      },
+      "voltage_v": 0.027925427179749416,
+      "electrical_input_w": 0.001396271358987471,
+      "volume_j_dot_e_w": 0.001396271359502285,
+      "joule_w": 0.0008294650535923833,
+      "hot_out_w": 0.0033962713568943927,
+      "cold_out_w": -0.002,
+      "energy_relative_residual": -1.046539157417703e-09,
+      "power_work_relative_residual": 2.5740705140303577e-10,
+      "bath_gradient_energy_relative_residual": -0.00043928412103363956,
+      "return_current_a": 0.0500000000290436,
+      "current_absolute_error_a": 2.9043593918753885e-11,
+      "free_thermal_residual_l1_w": 1.0190167423155301e-08,
+      "free_current_residual_l1_a": 1.123037057152731e-09,
+      "cuts": {
+        "leg_00_N": {
+          "current_a": 0.050000064524697706,
+          "relative_error": 1.2904939540592242e-06,
+          "absolute_error_a": 6.452469770296121e-08,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_01_P": {
+          "current_a": 0.049999985371720096,
+          "relative_error": 2.925655981367292e-07,
+          "absolute_error_a": 1.4628279906836461e-08,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_02_N": {
+          "current_a": 0.050000140379589796,
+          "relative_error": 2.8075917958558794e-06,
+          "absolute_error_a": 1.4037958979279397e-07,
+          "area_m2": 1.5999999999999995e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_03_P": {
+          "current_a": 0.05000025441719225,
+          "relative_error": 5.088343844883436e-06,
+          "absolute_error_a": 2.544171922441718e-07,
+          "area_m2": 1.6e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_04_N": {
+          "current_a": 0.04999983600864807,
+          "relative_error": 3.2798270387102146e-06,
+          "absolute_error_a": 1.6399135193551073e-07,
+          "area_m2": 1.600000000000002e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_05_P": {
+          "current_a": 0.05000033703655429,
+          "relative_error": 6.740731085808083e-06,
+          "absolute_error_a": 3.3703655429040413e-07,
+          "area_m2": 1.6000000000000008e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_06_N": {
+          "current_a": 0.04999960006782106,
+          "relative_error": 7.998643578865927e-06,
+          "absolute_error_a": 3.9993217894329636e-07,
+          "area_m2": 1.6000000000000003e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_07_P": {
+          "current_a": 0.04999996786211495,
+          "relative_error": 6.427577010914565e-07,
+          "absolute_error_a": 3.2137885054572823e-08,
+          "area_m2": 1.5999999999999998e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "bridge_00_cold": {
+          "current_a": 0.04998052042110804,
+          "relative_error": 0.0003895915778392989,
+          "absolute_error_a": 1.9479578891964944e-05,
+          "area_m2": 4.000000000000002e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_01_hot": {
+          "current_a": 0.049981917105759804,
+          "relative_error": 0.00036165788480396754,
+          "absolute_error_a": 1.8082894240198377e-05,
+          "area_m2": 4.000000000000001e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_02_cold": {
+          "current_a": 0.049981704620747705,
+          "relative_error": 0.0003659075850459548,
+          "absolute_error_a": 1.829537925229774e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_03_hot": {
+          "current_a": 0.049981243618331124,
+          "relative_error": 0.0003751276333775755,
+          "absolute_error_a": 1.8756381668878774e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_04_cold": {
+          "current_a": 0.04998195892673878,
+          "relative_error": 0.00036082146522439795,
+          "absolute_error_a": 1.8041073261219898e-05,
+          "area_m2": 4.000000000000004e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_05_hot": {
+          "current_a": 0.04998187823060223,
+          "relative_error": 0.0003624353879554121,
+          "absolute_error_a": 1.8121769397770604e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_06_cold": {
+          "current_a": 0.049978076024864655,
+          "relative_error": 0.000438479502706951,
+          "absolute_error_a": 2.192397513534755e-05,
+          "area_m2": 4.0000000000000014e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        }
+      },
+      "max_cut_relative_error": 0.000438479502706951,
+      "field_source": "fields_t0001.vtu",
+      "actual_material_interval_passed": true,
+      "joule_by_domain_w": {
+        "leg_00_N": 9.44117535766204e-05,
+        "leg_01_P": 0.00011160786882436814,
+        "leg_02_N": 9.441179954417628e-05,
+        "leg_03_P": 0.00011160788154144656,
+        "leg_04_N": 9.441181919185164e-05,
+        "leg_05_P": 0.00011160786827133637,
+        "leg_06_N": 9.441179823730243e-05,
+        "leg_07_P": 0.00011160787533075471,
+        "bridge_00_cold": 7.269209669895788e-07,
+        "bridge_01_hot": 7.270445946279067e-07,
+        "bridge_02_cold": 7.269523271100321e-07,
+        "bridge_03_hot": 7.269049957033895e-07,
+        "bridge_04_cold": 7.270309855090624e-07,
+        "bridge_05_hot": 7.270093174711822e-07,
+        "bridge_06_cold": 7.269552370704805e-07,
+        "terminal_in": 1.4900034289503136e-07,
+        "terminal_out": 1.485703071504435e-07,
+        "hot_alumina": 3.2165213012695836e-19,
+        "cold_alumina": 2.78167336739259e-19
+      },
+      "contact_joule_w": 0.0,
+      "extra_contact_joule_w": 0.0,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 14.225424424977973,
+        "cpu_s": 14.064422,
+        "peak_rss_kib": 412832,
+        "timed_out": false,
+        "nonlinear_iterations": 4,
+        "nonlinear_last_relative_change": 3.3419951329581945e-10
+      },
+      "sif_sha256": "91f5581571a4723a9fbf33b662953cb0c85caa67bf6d543ab576b4be3ac527ce",
+      "vtu_sha256": "b0a606e3901ca9c369e2aaa541579bdbbf0cb8954e471f3abb2742c78050a142",
+      "mesh_path": "/work/outputs/fem-g2c/mesh_3",
+      "case_path": "/work/outputs/fem-g2c/constant_regression"
+    },
+    "source_frozen_300": {
+      "current_a": 0.05,
+      "load_w": 0.002,
+      "fixed_cold_k": null,
+      "hot_k": 295.0,
+      "elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+      "couples": 4,
+      "boundary_case": "fixed_hot_load",
+      "profile_id": "zhang2025_he_digitized_v1r1",
+      "profile_status": "published_sample_plot_digitization",
+      "profile_interval_k": [
+        200,
+        300
+      ],
+      "profile_freeze_k": 300.0,
+      "initial_state": "uniform initial temperature",
+      "coefficients": "local nodal T functions; coefficients interpolated at quadrature as in pinned ThermoElectricSolver",
+      "thomson": "implicit in divergence(T*S(T)*J); no additional duplicate source",
+      "oem_grade_matched": false,
+      "nodes": 19187,
+      "tetrahedra": 82096,
+      "dofs": 38374,
+      "cold_mean_k": 282.44604064863677,
+      "cold_min_k": 282.4370843030585,
+      "cold_max_k": 282.4532586881834,
+      "temperature_min_k": 282.4312045980725,
+      "temperature_max_k": 295.0225894496561,
+      "profile_body_temperature_ranges_k": {
+        "leg_00_N": [
+          282.44661430402857,
+          295.00138807879165
+        ],
+        "leg_01_P": [
+          282.4355163073945,
+          295.01614309715035
+        ],
+        "leg_02_N": [
+          282.4439376736756,
+          295.00587627324614
+        ],
+        "leg_03_P": [
+          282.4312045980725,
+          295.0167198417473
+        ],
+        "leg_04_N": [
+          282.4466885670013,
+          295.0060266293118
+        ],
+        "leg_05_P": [
+          282.4355842497579,
+          295.0161246784076
+        ],
+        "leg_06_N": [
+          282.4439704198802,
+          295.0059042742869
+        ],
+        "leg_07_P": [
+          282.4312826174966,
+          295.0225894496561
+        ]
+      },
+      "voltage_v": 0.044852288200994246,
+      "electrical_input_w": 0.0022426144100497125,
+      "volume_j_dot_e_w": 0.0022426144113531716,
+      "joule_w": 0.0012318879600659413,
+      "hot_out_w": 0.004242614415316072,
+      "cold_out_w": -0.002,
+      "energy_relative_residual": 2.3483124756456514e-09,
+      "power_work_relative_residual": 5.812230006832726e-10,
+      "bath_gradient_energy_relative_residual": 0.0005750363758778037,
+      "return_current_a": 0.05000000004633226,
+      "current_absolute_error_a": 4.6332257475079075e-11,
+      "free_thermal_residual_l1_w": 1.018864548224844e-10,
+      "free_current_residual_l1_a": 1.4284394134219167e-09,
+      "cuts": {
+        "leg_00_N": {
+          "current_a": 0.050000046444062245,
+          "relative_error": 9.288812448382533e-07,
+          "absolute_error_a": 4.6444062241912665e-08,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_01_P": {
+          "current_a": 0.049999989961803805,
+          "relative_error": 2.0076392395762532e-07,
+          "absolute_error_a": 1.0038196197881266e-08,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_02_N": {
+          "current_a": 0.050000096440613796,
+          "relative_error": 1.928812275869829e-06,
+          "absolute_error_a": 9.644061379349145e-08,
+          "area_m2": 1.5999999999999995e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_03_P": {
+          "current_a": 0.05000018009766323,
+          "relative_error": 3.601953264542601e-06,
+          "absolute_error_a": 1.8009766322713006e-07,
+          "area_m2": 1.6e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_04_N": {
+          "current_a": 0.04999988454426188,
+          "relative_error": 2.309114762455433e-06,
+          "absolute_error_a": 1.1545573812277166e-07,
+          "area_m2": 1.600000000000002e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_05_P": {
+          "current_a": 0.050000234323631106,
+          "relative_error": 4.686472622056348e-06,
+          "absolute_error_a": 2.343236311028174e-07,
+          "area_m2": 1.6000000000000008e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_06_N": {
+          "current_a": 0.049999724779985856,
+          "relative_error": 5.504400282935196e-06,
+          "absolute_error_a": 2.752200141467598e-07,
+          "area_m2": 1.6000000000000003e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_07_P": {
+          "current_a": 0.04999998505983234,
+          "relative_error": 2.9880335331022856e-07,
+          "absolute_error_a": 1.4940167665511428e-08,
+          "area_m2": 1.5999999999999998e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "bridge_00_cold": {
+          "current_a": 0.04998059428760593,
+          "relative_error": 0.00038811424788148807,
+          "absolute_error_a": 1.9405712394074404e-05,
+          "area_m2": 4.000000000000002e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_01_hot": {
+          "current_a": 0.049981982686713305,
+          "relative_error": 0.00036034626573394624,
+          "absolute_error_a": 1.8017313286697312e-05,
+          "area_m2": 4.000000000000001e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_02_cold": {
+          "current_a": 0.04998177469336249,
+          "relative_error": 0.00036450613275021415,
+          "absolute_error_a": 1.8225306637510708e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_03_hot": {
+          "current_a": 0.04998131065938006,
+          "relative_error": 0.0003737868123988852,
+          "absolute_error_a": 1.868934061994426e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_04_cold": {
+          "current_a": 0.049982030778008536,
+          "relative_error": 0.00035938443982933,
+          "absolute_error_a": 1.79692219914665e-05,
+          "area_m2": 4.000000000000004e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_05_hot": {
+          "current_a": 0.049981948017409884,
+          "relative_error": 0.0003610396518023695,
+          "absolute_error_a": 1.8051982590118476e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_06_cold": {
+          "current_a": 0.04997815485246133,
+          "relative_error": 0.0004369029507735045,
+          "absolute_error_a": 2.1845147538675225e-05,
+          "area_m2": 4.0000000000000014e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        }
+      },
+      "max_cut_relative_error": 0.0004369029507735045,
+      "field_source": "fields_t0001.vtu",
+      "actual_material_interval_passed": true,
+      "joule_by_domain_w": {
+        "leg_00_N": 0.00011786429027234511,
+        "leg_01_P": 0.00018876015428629495,
+        "leg_02_N": 0.00011786425235403877,
+        "leg_03_P": 0.00018876018139039793,
+        "leg_04_N": 0.00011786425400386058,
+        "leg_05_P": 0.00018876015437594915,
+        "leg_06_N": 0.00011786425244711704,
+        "leg_07_P": 0.00018876008875614016,
+        "bridge_00_cold": 7.274327685146776e-07,
+        "bridge_01_hot": 7.275336092532074e-07,
+        "bridge_02_cold": 7.274472425531838e-07,
+        "bridge_03_hot": 7.273934153999179e-07,
+        "bridge_04_cold": 7.275421231522082e-07,
+        "bridge_05_hot": 7.274980265118492e-07,
+        "bridge_06_cold": 7.274485559623287e-07,
+        "terminal_in": 1.491621738953269e-07,
+        "terminal_out": 1.488742645550623e-07,
+        "hot_alumina": 8.298745760540414e-19,
+        "cold_alumina": 7.17491633628271e-19
+      },
+      "contact_joule_w": 0.0,
+      "extra_contact_joule_w": 0.0,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 21.432224243995734,
+        "cpu_s": 21.331458,
+        "peak_rss_kib": 415652,
+        "timed_out": false,
+        "nonlinear_iterations": 6,
+        "nonlinear_last_relative_change": 7.245790139580466e-12
+      },
+      "sif_sha256": "2b36a3eaf35bdcf816469349195b7285825c330875ffbd0a08689dd757466e3b",
+      "vtu_sha256": "9dae3b6bf26957accf367f6a47433fc1bf73f7418d1b0908cdca9eb7995ef216",
+      "mesh_path": "/work/outputs/fem-g2c/mesh_3",
+      "case_path": "/work/outputs/fem-g2c/source_frozen_300"
+    },
+    "synthetic_variable": {
+      "current_a": 0.05,
+      "load_w": 0.002,
+      "fixed_cold_k": null,
+      "hot_k": 295.0,
+      "elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+      "couples": 4,
+      "boundary_case": "fixed_hot_load",
+      "profile_id": "synthetic_variable_test",
+      "profile_status": "SYNTHETIC FUNCTION TEST ONLY",
+      "profile_interval_k": [
+        200.0,
+        300.0
+      ],
+      "profile_freeze_k": null,
+      "initial_state": "uniform initial temperature",
+      "coefficients": "local nodal T functions; coefficients interpolated at quadrature as in pinned ThermoElectricSolver",
+      "thomson": "implicit in divergence(T*S(T)*J); no additional duplicate source",
+      "oem_grade_matched": false,
+      "nodes": 19187,
+      "tetrahedra": 82096,
+      "dofs": 38374,
+      "cold_mean_k": 286.7054591916256,
+      "cold_min_k": 286.70295476757707,
+      "cold_max_k": 286.70833395513927,
+      "temperature_min_k": 286.6984612381168,
+      "temperature_max_k": 295.0109383268506,
+      "profile_body_temperature_ranges_k": {
+        "leg_00_N": [
+          286.69847876559305,
+          295.0109383268506
+        ],
+        "leg_01_P": [
+          286.70138667511713,
+          295.0072737532451
+        ],
+        "leg_02_N": [
+          286.69976213037506,
+          295.00886850475183
+        ],
+        "leg_03_P": [
+          286.70144672780714,
+          295.00747011085843
+        ],
+        "leg_04_N": [
+          286.6984612381168,
+          295.00916267031994
+        ],
+        "leg_05_P": [
+          286.70137445156314,
+          295.00726022734074
+        ],
+        "leg_06_N": [
+          286.69980918912455,
+          295.00888677733155
+        ],
+        "leg_07_P": [
+          286.7014988865422,
+          295.0079814852948
+        ]
+      },
+      "voltage_v": 0.027129194724165376,
+      "electrical_input_w": 0.0013564597362082688,
+      "volume_j_dot_e_w": 0.0013564597365190452,
+      "joule_w": 0.000818175794117906,
+      "hot_out_w": 0.003356459736707426,
+      "cold_out_w": -0.002,
+      "energy_relative_residual": 2.495785696166042e-10,
+      "power_work_relative_residual": 1.5538818062127424e-10,
+      "bath_gradient_energy_relative_residual": -0.0004329115075620005,
+      "return_current_a": 0.050000000023360816,
+      "current_absolute_error_a": 2.3360813283801463e-11,
+      "free_thermal_residual_l1_w": 2.661027696523671e-10,
+      "free_current_residual_l1_a": 1.4001113530541068e-09,
+      "cuts": {
+        "leg_00_N": {
+          "current_a": 0.0499995633808487,
+          "relative_error": 8.732383026122115e-06,
+          "absolute_error_a": 4.3661915130610573e-07,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_01_P": {
+          "current_a": 0.04999984571212932,
+          "relative_error": 3.085757413617829e-06,
+          "absolute_error_a": 1.5428787068089145e-07,
+          "area_m2": 1.6000000000000006e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_02_N": {
+          "current_a": 0.050001727171738404,
+          "relative_error": 3.454343476802513e-05,
+          "absolute_error_a": 1.7271717384012564e-06,
+          "area_m2": 1.5999999999999995e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_03_P": {
+          "current_a": 0.05000007833536754,
+          "relative_error": 1.5667073507974472e-06,
+          "absolute_error_a": 7.833536753987236e-08,
+          "area_m2": 1.6e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_04_N": {
+          "current_a": 0.05000088007397296,
+          "relative_error": 1.760147945908952e-05,
+          "absolute_error_a": 8.80073972954476e-07,
+          "area_m2": 1.600000000000002e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_05_P": {
+          "current_a": 0.0500019520092156,
+          "relative_error": 3.904018431200029e-05,
+          "absolute_error_a": 1.9520092156000146e-06,
+          "area_m2": 1.6000000000000008e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_06_N": {
+          "current_a": 0.05000173623756932,
+          "relative_error": 3.472475138641129e-05,
+          "absolute_error_a": 1.7362375693205645e-06,
+          "area_m2": 1.6000000000000003e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "leg_07_P": {
+          "current_a": 0.04999820946333593,
+          "relative_error": 3.581073328151607e-05,
+          "absolute_error_a": 1.7905366640758036e-06,
+          "area_m2": 1.5999999999999998e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        },
+        "bridge_00_cold": {
+          "current_a": 0.049980514673541095,
+          "relative_error": 0.0003897065291781632,
+          "absolute_error_a": 1.948532645890816e-05,
+          "area_m2": 4.000000000000002e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_01_hot": {
+          "current_a": 0.049981916412160626,
+          "relative_error": 0.0003616717567875294,
+          "absolute_error_a": 1.808358783937647e-05,
+          "area_m2": 4.000000000000001e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_02_cold": {
+          "current_a": 0.04998169904031214,
+          "relative_error": 0.00036601919375725545,
+          "absolute_error_a": 1.8300959687862772e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_03_hot": {
+          "current_a": 0.04998124312256236,
+          "relative_error": 0.00037513754875290184,
+          "absolute_error_a": 1.8756877437645092e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_04_cold": {
+          "current_a": 0.04998195357941811,
+          "relative_error": 0.00036092841163778977,
+          "absolute_error_a": 1.804642058188949e-05,
+          "area_m2": 4.000000000000004e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_05_hot": {
+          "current_a": 0.04998187730866745,
+          "relative_error": 0.00036245382665112125,
+          "absolute_error_a": 1.8122691332556062e-05,
+          "area_m2": 4.000000000000003e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        },
+        "bridge_06_cold": {
+          "current_a": 0.04997807003952514,
+          "relative_error": 0.0004385992094972646,
+          "absolute_error_a": 2.192996047486323e-05,
+          "area_m2": 4.0000000000000014e-08,
+          "expected_area_m2": 4e-08,
+          "kind": "bridge"
+        }
+      },
+      "max_cut_relative_error": 0.0004385992094972646,
+      "field_source": "fields_t0001.vtu",
+      "actual_material_interval_passed": true,
+      "joule_by_domain_w": {
+        "leg_00_N": 9.311796035329154e-05,
+        "leg_01_P": 0.00011007944757520277,
+        "leg_02_N": 9.311792862422794e-05,
+        "leg_03_P": 0.00011007946934830592,
+        "leg_04_N": 9.311788458075986e-05,
+        "leg_05_P": 0.00011007944566336632,
+        "leg_06_N": 9.311793089924889e-05,
+        "leg_07_P": 0.00011007951325392553,
+        "bridge_00_cold": 7.268873580209118e-07,
+        "bridge_01_hot": 7.270335374593011e-07,
+        "bridge_02_cold": 7.269173562475863e-07,
+        "bridge_03_hot": 7.268965786461257e-07,
+        "bridge_04_cold": 7.26997048755544e-07,
+        "bridge_05_hot": 7.269997196639139e-07,
+        "bridge_06_cold": 7.269219870825038e-07,
+        "terminal_in": 1.4899409429169185e-07,
+        "terminal_out": 1.4856613940939118e-07,
+        "hot_alumina": 3.035680495430994e-19,
+        "cold_alumina": 2.625333821774093e-19
+      },
+      "contact_joule_w": 0.0,
+      "extra_contact_joule_w": 0.0,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 35.64984253793955,
+        "cpu_s": 35.618221000000005,
+        "peak_rss_kib": 412832,
+        "timed_out": false,
+        "nonlinear_iterations": 10,
+        "nonlinear_last_relative_change": 1.8916358345352227e-10
+      },
+      "sif_sha256": "ad6a466e00b9854a4e0690fa50e116d2a251d854b606830cba3bae9c88e64912",
+      "vtu_sha256": "dac92d746e1cc9c57890dbf035ad4362832a9796adfe3db92b10777fbb45ca67",
+      "mesh_path": "/work/outputs/fem-g2c/mesh_3",
+      "case_path": "/work/outputs/fem-g2c/synthetic_variable"
+    },
+    "thomson_rod": {
+      "current_a": 0.1,
+      "load_w": null,
+      "fixed_cold_k": 285.0,
+      "hot_k": 295.0,
+      "elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+      "couples": 1,
+      "boundary_case": "fixed_hot_fixed_cold",
+      "profile_id": "synthetic_Thomson_manufactured_rod",
+      "profile_status": "SYNTHETIC FUNCTION TEST ONLY",
+      "profile_interval_k": [
+        200.0,
+        300.0
+      ],
+      "profile_freeze_k": null,
+      "initial_state": "uniform initial temperature",
+      "coefficients": "local nodal T functions; coefficients interpolated at quadrature as in pinned ThermoElectricSolver",
+      "thomson": "implicit in divergence(T*S(T)*J); no additional duplicate source",
+      "oem_grade_matched": false,
+      "nodes": 2717,
+      "tetrahedra": 12077,
+      "dofs": 5434,
+      "cold_mean_k": 285.0,
+      "cold_min_k": 284.99999999999994,
+      "cold_max_k": 285.00000000000006,
+      "temperature_min_k": 284.99999999999994,
+      "temperature_max_k": 295.00000000000006,
+      "profile_body_temperature_ranges_k": {
+        "manufactured_P_rod": [
+          284.99999999999994,
+          295.00000000000006
+        ]
+      },
+      "voltage_v": 0.0029642857149421603,
+      "electrical_input_w": 0.00029642857149421605,
+      "volume_j_dot_e_w": 0.0002964285715373845,
+      "joule_w": 0.00044642861340170347,
+      "hot_out_w": -0.006610854160892423,
+      "cold_out_w": 0.006907282735208117,
+      "energy_relative_residual": 4.0847877676928726e-10,
+      "power_work_relative_residual": 6.2496979961913054e-12,
+      "bath_gradient_energy_relative_residual": -0.0018173691634240572,
+      "return_current_a": 0.10000000000117074,
+      "current_absolute_error_a": 1.1707301794672276e-12,
+      "free_thermal_residual_l1_w": 5.982392161460529e-11,
+      "free_current_residual_l1_a": 8.944750240144519e-11,
+      "cuts": {
+        "manufactured_P_rod": {
+          "current_a": 0.09999855121369527,
+          "relative_error": 1.4487863047307759e-05,
+          "absolute_error_a": 1.4487863047307759e-06,
+          "area_m2": 1.6000000000000008e-07,
+          "expected_area_m2": 1.6e-07,
+          "kind": "leg"
+        }
+      },
+      "max_cut_relative_error": 1.4487863047307759e-05,
+      "field_source": "fields_t0001.vtu",
+      "actual_material_interval_passed": true,
+      "joule_by_domain_w": {
+        "manufactured_P_rod": 0.0004464286134017036
+      },
+      "contact_joule_w": 0.0,
+      "extra_contact_joule_w": 0.0,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 3.4133359430124983,
+        "cpu_s": 3.327845,
+        "peak_rss_kib": 226980,
+        "timed_out": false,
+        "nonlinear_iterations": 10,
+        "nonlinear_last_relative_change": 2.068360151329745e-10
+      },
+      "sif_sha256": "fe91b08a83c03149552973c6cabb4a8b1cee3365c6f547494fc06248cc7e8cd1",
+      "vtu_sha256": "7e45182cd7f41178a6b60fa43c9b355c47aa2c665fffb680d47b31e83d145f69",
+      "mesh_path": "/work/outputs/fem-g2c/rod_mesh",
+      "case_path": "/work/outputs/fem-g2c/thomson_rod",
+      "analytic": {
+        "max_nodal_temperature_error_k": 0.0008767922412289408,
+        "voltage_v": 0.0029642857142857144,
+        "voltage_error_v": 6.564458178426325e-13,
+        "nonzero_thomson_effect_vs_constant_S_k": 0.15111461969996753,
+        "bvp_status": 0,
+        "equation": "k*T''=J*T*dS/dT*T'-J^2/sigma",
+        "thomson_S_slope_v_k2": 1e-06
+      }
+    }
+  },
+  "mesh_audits": [
+    {
+      "passed": true,
+      "nodes": 1433,
+      "tetrahedra": 4460,
+      "volumes_m3": {
+        "leg_00_N": 1.6000000000000004e-10,
+        "leg_01_P": 1.6000000000000002e-10,
+        "leg_02_N": 1.5999999999999996e-10,
+        "leg_03_P": 1.6000000000000007e-10,
+        "leg_04_N": 1.6000000000000015e-10,
+        "leg_05_P": 1.6e-10,
+        "leg_06_N": 1.600000000000001e-10,
+        "leg_07_P": 1.6000000000000007e-10,
+        "bridge_00_cold": 4.8000000000000054e-11,
+        "bridge_01_hot": 4.800000000000002e-11,
+        "bridge_02_cold": 4.800000000000006e-11,
+        "bridge_03_hot": 4.800000000000007e-11,
+        "bridge_04_cold": 4.800000000000007e-11,
+        "bridge_05_hot": 4.800000000000004e-11,
+        "bridge_06_cold": 4.8000000000000073e-11,
+        "terminal_in": 1.6000000000000022e-11,
+        "terminal_out": 1.6000000000000022e-11,
+        "hot_alumina": 8.399999999999998e-10,
+        "cold_alumina": 8.400000000000011e-10
+      },
+      "mesh_graph": {
+        "nodes": 17,
+        "edges": 16,
+        "unique_path": true,
+        "degrees": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2,
+          "11": 2,
+          "12": 2,
+          "13": 2,
+          "14": 2,
+          "15": 2,
+          "16": 1,
+          "17": 1
+        }
+      },
+      "contact_areas_m2": {
+        "1:9": 1.6000000000000006e-07,
+        "1:16": 1.6e-07,
+        "2:9": 1.6000000000000003e-07,
+        "2:10": 1.6000000000000003e-07,
+        "3:11": 1.6e-07,
+        "3:10": 1.5999999999999998e-07,
+        "4:12": 1.6000000000000008e-07,
+        "4:11": 1.6000000000000008e-07,
+        "5:12": 1.600000000000001e-07,
+        "5:13": 1.600000000000001e-07,
+        "6:13": 1.6e-07,
+        "6:14": 1.6000000000000003e-07,
+        "7:14": 1.6000000000000003e-07,
+        "7:15": 1.6000000000000008e-07,
+        "8:15": 1.6000000000000006e-07,
+        "8:17": 1.6000000000000003e-07,
+        "9:19": 4.800000000000001e-07,
+        "10:18": 4.800000000000001e-07,
+        "11:19": 4.800000000000002e-07,
+        "12:18": 4.800000000000002e-07,
+        "13:19": 4.800000000000002e-07,
+        "14:18": 4.800000000000001e-07,
+        "15:19": 4.800000000000001e-07,
+        "16:18": 1.6e-07,
+        "17:18": 1.6000000000000006e-07
+      },
+      "unintended_point_edge_connections": 0,
+      "mesh_size_m": 0.00022,
+      "gmsh_version": "4.13.1",
+      "elmer_tetra_mapping": {
+        "passed": true,
+        "nodes": 1433,
+        "tetrahedra": 4460,
+        "body_ids_preserved": true
+      }
+    },
+    {
+      "passed": true,
+      "nodes": 4180,
+      "tetrahedra": 14545,
+      "volumes_m3": {
+        "leg_00_N": 1.6000000000000002e-10,
+        "leg_01_P": 1.6000000000000002e-10,
+        "leg_02_N": 1.6000000000000002e-10,
+        "leg_03_P": 1.6000000000000012e-10,
+        "leg_04_N": 1.6000000000000012e-10,
+        "leg_05_P": 1.6000000000000002e-10,
+        "leg_06_N": 1.6000000000000007e-10,
+        "leg_07_P": 1.6000000000000007e-10,
+        "bridge_00_cold": 4.800000000000005e-11,
+        "bridge_01_hot": 4.800000000000004e-11,
+        "bridge_02_cold": 4.800000000000006e-11,
+        "bridge_03_hot": 4.800000000000008e-11,
+        "bridge_04_cold": 4.8000000000000073e-11,
+        "bridge_05_hot": 4.800000000000005e-11,
+        "bridge_06_cold": 4.800000000000007e-11,
+        "terminal_in": 1.6000000000000006e-11,
+        "terminal_out": 1.6000000000000016e-11,
+        "hot_alumina": 8.400000000000001e-10,
+        "cold_alumina": 8.400000000000008e-10
+      },
+      "mesh_graph": {
+        "nodes": 17,
+        "edges": 16,
+        "unique_path": true,
+        "degrees": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2,
+          "11": 2,
+          "12": 2,
+          "13": 2,
+          "14": 2,
+          "15": 2,
+          "16": 1,
+          "17": 1
+        }
+      },
+      "contact_areas_m2": {
+        "1:16": 1.6000000000000003e-07,
+        "1:9": 1.6e-07,
+        "2:9": 1.6000000000000003e-07,
+        "2:10": 1.6000000000000003e-07,
+        "3:11": 1.5999999999999998e-07,
+        "3:10": 1.6e-07,
+        "4:11": 1.6000000000000008e-07,
+        "4:12": 1.6000000000000006e-07,
+        "5:12": 1.6000000000000014e-07,
+        "5:13": 1.6000000000000003e-07,
+        "6:14": 1.6000000000000006e-07,
+        "6:13": 1.6000000000000006e-07,
+        "7:15": 1.6000000000000006e-07,
+        "7:14": 1.6000000000000003e-07,
+        "8:15": 1.6000000000000006e-07,
+        "8:17": 1.6000000000000006e-07,
+        "9:19": 4.800000000000001e-07,
+        "10:18": 4.800000000000002e-07,
+        "11:19": 4.800000000000002e-07,
+        "12:18": 4.800000000000001e-07,
+        "13:19": 4.800000000000002e-07,
+        "14:18": 4.800000000000001e-07,
+        "15:19": 4.800000000000002e-07,
+        "16:18": 1.6000000000000003e-07,
+        "17:18": 1.6000000000000003e-07
+      },
+      "unintended_point_edge_connections": 0,
+      "mesh_size_m": 0.00012,
+      "gmsh_version": "4.13.1",
+      "elmer_tetra_mapping": {
+        "passed": true,
+        "nodes": 4180,
+        "tetrahedra": 14545,
+        "body_ids_preserved": true
+      }
+    },
+    {
+      "passed": true,
+      "nodes": 9748,
+      "tetrahedra": 37469,
+      "volumes_m3": {
+        "leg_00_N": 1.6000000000000002e-10,
+        "leg_01_P": 1.6000000000000007e-10,
+        "leg_02_N": 1.6000000000000002e-10,
+        "leg_03_P": 1.6000000000000012e-10,
+        "leg_04_N": 1.6000000000000012e-10,
+        "leg_05_P": 1.6000000000000002e-10,
+        "leg_06_N": 1.6000000000000007e-10,
+        "leg_07_P": 1.6000000000000004e-10,
+        "bridge_00_cold": 4.800000000000004e-11,
+        "bridge_01_hot": 4.800000000000003e-11,
+        "bridge_02_cold": 4.800000000000004e-11,
+        "bridge_03_hot": 4.800000000000005e-11,
+        "bridge_04_cold": 4.800000000000006e-11,
+        "bridge_05_hot": 4.800000000000003e-11,
+        "bridge_06_cold": 4.800000000000006e-11,
+        "terminal_in": 1.6000000000000022e-11,
+        "terminal_out": 1.600000000000002e-11,
+        "hot_alumina": 8.400000000000004e-10,
+        "cold_alumina": 8.400000000000007e-10
+      },
+      "mesh_graph": {
+        "nodes": 17,
+        "edges": 16,
+        "unique_path": true,
+        "degrees": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2,
+          "11": 2,
+          "12": 2,
+          "13": 2,
+          "14": 2,
+          "15": 2,
+          "16": 1,
+          "17": 1
+        }
+      },
+      "contact_areas_m2": {
+        "1:16": 1.6000000000000006e-07,
+        "1:9": 1.6000000000000003e-07,
+        "2:9": 1.6000000000000006e-07,
+        "2:10": 1.6000000000000003e-07,
+        "3:10": 1.6000000000000006e-07,
+        "3:11": 1.6000000000000003e-07,
+        "4:12": 1.6000000000000003e-07,
+        "4:11": 1.6000000000000008e-07,
+        "5:12": 1.6000000000000022e-07,
+        "5:13": 1.600000000000002e-07,
+        "6:14": 1.6000000000000006e-07,
+        "6:13": 1.6000000000000003e-07,
+        "7:15": 1.600000000000001e-07,
+        "7:14": 1.6000000000000008e-07,
+        "8:15": 1.6000000000000003e-07,
+        "8:17": 1.6000000000000003e-07,
+        "9:19": 4.800000000000004e-07,
+        "10:18": 4.8e-07,
+        "11:19": 4.800000000000002e-07,
+        "12:18": 4.800000000000004e-07,
+        "13:19": 4.800000000000003e-07,
+        "14:18": 4.800000000000001e-07,
+        "15:19": 4.800000000000004e-07,
+        "16:18": 1.5999999999999998e-07,
+        "17:18": 1.6000000000000006e-07
+      },
+      "unintended_point_edge_connections": 0,
+      "mesh_size_m": 8e-05,
+      "gmsh_version": "4.13.1",
+      "elmer_tetra_mapping": {
+        "passed": true,
+        "nodes": 9748,
+        "tetrahedra": 37469,
+        "body_ids_preserved": true
+      }
+    },
+    {
+      "passed": true,
+      "nodes": 19187,
+      "tetrahedra": 82096,
+      "volumes_m3": {
+        "leg_00_N": 1.6000000000000002e-10,
+        "leg_01_P": 1.6000000000000004e-10,
+        "leg_02_N": 1.6000000000000002e-10,
+        "leg_03_P": 1.6000000000000007e-10,
+        "leg_04_N": 1.6000000000000012e-10,
+        "leg_05_P": 1.6000000000000002e-10,
+        "leg_06_N": 1.6000000000000004e-10,
+        "leg_07_P": 1.6000000000000004e-10,
+        "bridge_00_cold": 4.800000000000004e-11,
+        "bridge_01_hot": 4.8000000000000035e-11,
+        "bridge_02_cold": 4.8000000000000054e-11,
+        "bridge_03_hot": 4.800000000000005e-11,
+        "bridge_04_cold": 4.800000000000007e-11,
+        "bridge_05_hot": 4.800000000000004e-11,
+        "bridge_06_cold": 4.800000000000006e-11,
+        "terminal_in": 1.6000000000000013e-11,
+        "terminal_out": 1.6000000000000016e-11,
+        "hot_alumina": 8.400000000000003e-10,
+        "cold_alumina": 8.400000000000007e-10
+      },
+      "mesh_graph": {
+        "nodes": 17,
+        "edges": 16,
+        "unique_path": true,
+        "degrees": {
+          "1": 2,
+          "2": 2,
+          "3": 2,
+          "4": 2,
+          "5": 2,
+          "6": 2,
+          "7": 2,
+          "8": 2,
+          "9": 2,
+          "10": 2,
+          "11": 2,
+          "12": 2,
+          "13": 2,
+          "14": 2,
+          "15": 2,
+          "16": 1,
+          "17": 1
+        }
+      },
+      "contact_areas_m2": {
+        "1:16": 1.5999999999999987e-07,
+        "1:9": 1.599999999999999e-07,
+        "2:9": 1.5999999999999995e-07,
+        "2:10": 1.5999999999999998e-07,
+        "3:10": 1.5999999999999995e-07,
+        "3:11": 1.5999999999999992e-07,
+        "4:11": 1.6000000000000016e-07,
+        "4:12": 1.600000000000001e-07,
+        "5:12": 1.6000000000000008e-07,
+        "5:13": 1.6000000000000014e-07,
+        "6:13": 1.5999999999999992e-07,
+        "6:14": 1.6000000000000003e-07,
+        "7:15": 1.6000000000000006e-07,
+        "7:14": 1.6000000000000006e-07,
+        "8:15": 1.6e-07,
+        "8:17": 1.6e-07,
+        "9:19": 4.8e-07,
+        "10:18": 4.800000000000001e-07,
+        "11:19": 4.800000000000001e-07,
+        "12:18": 4.800000000000006e-07,
+        "13:19": 4.799999999999999e-07,
+        "14:18": 4.800000000000004e-07,
+        "15:19": 4.800000000000001e-07,
+        "16:18": 1.5999999999999998e-07,
+        "17:18": 1.5999999999999992e-07
+      },
+      "unintended_point_edge_connections": 0,
+      "mesh_size_m": 6e-05,
+      "gmsh_version": "4.13.1",
+      "elmer_tetra_mapping": {
+        "passed": true,
+        "nodes": 19187,
+        "tetrahedra": 82096,
+        "body_ids_preserved": true
+      }
+    }
+  ],
+  "oem_comparison": {
+    "fit_performed": false,
+    "calibration_points_used": 0,
+    "split": "validation_holdout",
+    "comparisons": [
+      {
+        "source_point_id": "0-0-delta_t_k-0.1",
+        "split": "validation_holdout",
+        "field": "delta_t_k",
+        "current_a": 0.1,
+        "load_w": 0,
+        "source_value": 31.853739388668117,
+        "fem_value": 38.916197584193526,
+        "residual": 7.062458195525409,
+        "relative_residual": 0.22171519988130056,
+        "source_reading_bound": 2.3522670357206206,
+        "nominal_error_gate": 0.1,
+        "within_nominal_gate": false,
+        "qualification_status": "diagnostic comparison only; gas/radiation/mounting omitted, inferred geometry, unmatched material grade",
+        "fem_origin": "preserved actual constant G2b zero_load_positive, a7a8991 source/evidence lineage"
+      },
+      {
+        "source_point_id": "0-0-voltage_v-0.1",
+        "split": "validation_holdout",
+        "field": "voltage_v",
+        "current_a": 0.1,
+        "load_w": 0,
+        "source_value": 0.4408688904067082,
+        "fem_value": 0.5710506858899318,
+        "residual": 0.13018179548322362,
+        "relative_residual": 0.29528460346369406,
+        "source_reading_bound": 0.12673912623881556,
+        "nominal_error_gate": 0.05,
+        "within_nominal_gate": true,
+        "qualification_status": "diagnostic comparison only; gas/radiation/mounting omitted, inferred geometry, unmatched material grade",
+        "fem_origin": "preserved actual constant G2b zero_load_positive, a7a8991 source/evidence lineage"
+      }
+    ],
+    "device_validation_passed": false,
+    "reason": "No independent grade/geometry/contact/environment qualification or calibrated family; diagnostic discrepancies do not identify unique parameters."
+  },
+  "contact_plan": {
+    "electrical_ohm_m2": 1e-09,
+    "thermal_m2_k_w": 1e-05,
+    "thickness_m": 1e-05,
+    "material_status": "assumed interface; no OEM measurement",
+    "electrical_resistance_ohm": 0.00625,
+    "thermal_resistance_k_w": 62.50000000000001,
+    "layer_sigma_s_m": 10000.0,
+    "layer_k_w_mk": 1.0,
+    "zero_limit": "null means ideal continuity, not zero conductivity",
+    "joule_location": "I^2 R must be dissipated inside explicitly meshed contact domains",
+    "solver_gate": "NOT EXECUTED; parameters alone are not an interface PDE"
+  },
+  "qualification": {
+    "literature_material_adapter": "VERIFIED",
+    "oem_grade_match": "NOT QUALIFIED",
+    "four_couple_interface_solver": "NOT EXECUTED",
+    "oem_family_validation": "NOT QUALIFIED",
+    "full_stack_source_profile": "NOT EXECUTED IN THIS RUN; coverage gate required"
+  }
+}
