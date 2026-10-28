@@ -64,6 +64,9 @@ def connected_manifest():
         m["bodies"].append({"id": len(m["bodies"])+1, "name": name, "kind": "routing_insulator",
                             "material": "Alumina", "boxes_m": boxes})
     nets = m["stage_nets"]
+    m["original_stage_pad_count"] = m.pop("stage_ports")
+    for net in nets:
+        net["original_six_port_boundary_ids"] = net.pop("port_boundaries")
     path = nets[0]["conductor_path"]+[link_ids[0]]+nets[1]["conductor_path"]+[link_ids[1]]+nets[2]["conductor_path"]
     m["conductor_path"] = path
     m["terminals"] = [path[0], path[-1]]
@@ -205,7 +208,7 @@ def audit_mesh(m, points, cells, bodies, faces, boundaries, qualities):
             "unintended_edge_point_shorts": 0, "routing": "inferred buried Cu and alumina support"}
 
 
-def generate_mesh(out, size_m=.18e-3):
+def generate_mesh(out, size_m=.18e-3, bridge_refine_m=None, controlled_field=False):
     import gmsh
     import meshio
     if not math.isfinite(size_m) or size_m <= 0:
@@ -281,6 +284,36 @@ def generate_mesh(out, size_m=.18e-3):
         gmsh.option.setNumber("Mesh.MeshSizeMax", size_m)
         gmsh.option.setNumber("Mesh.MshFileVersion", 2.2)
         gmsh.option.setNumber("Mesh.Optimize", 1)
+        if controlled_field:
+            # Let the explicit background field govern local resolution instead
+            # of spreading the tiny Cu-gap target over entire leg sidewalls.
+            gmsh.option.setNumber("Mesh.MeshSizeExtendFromBoundary", 0)
+            gmsh.option.setNumber("Mesh.MeshSizeFromPoints", 0)
+            gmsh.option.setNumber("Mesh.MeshSizeFromCurvature", 0)
+        if bridge_refine_m is not None:
+            if not math.isfinite(bridge_refine_m) or bridge_refine_m <= 0:
+                raise ValueError("Positive finite bridge refinement required")
+            fields = []
+            for body in m["bodies"]:
+                if body["kind"] != "bridge":
+                    continue
+                box = body["box_m"]
+                low, high = np.asarray(box[:3]).copy(), np.asarray(box[:3])+box[3:]
+                axis = body["cut_axis"]
+                low[axis] += .4e-3
+                high[axis] -= .4e-3
+                f = gmsh.model.mesh.field.add("Box")
+                for key, value in zip(("XMin","YMin","ZMin"), low):
+                    gmsh.model.mesh.field.setNumber(f, key, float(value)-1e-8)
+                for key, value in zip(("XMax","YMax","ZMax"), high):
+                    gmsh.model.mesh.field.setNumber(f, key, float(value)+1e-8)
+                gmsh.model.mesh.field.setNumber(f, "VIn", bridge_refine_m)
+                gmsh.model.mesh.field.setNumber(f, "VOut", size_m)
+                gmsh.model.mesh.field.setNumber(f, "Thickness", bridge_refine_m)
+                fields.append(f)
+            minimum = gmsh.model.mesh.field.add("Min")
+            gmsh.model.mesh.field.setNumbers(minimum, "FieldsList", fields)
+            gmsh.model.mesh.field.setAsBackgroundMesh(minimum)
         gmsh.model.mesh.generate(3)
         gmsh.model.mesh.optimize("Netgen")
         gmsh.write(str(out/"connected.msh"))
@@ -312,7 +345,8 @@ def generate_mesh(out, size_m=.18e-3):
         faces, boundaries = np.concatenate(faces), np.asarray(boundaries)
         np.savez_compressed(out/"mesh.npz", points=points, cells=cells, bodies=bodies, faces=faces, boundaries=boundaries)
         result = audit_mesh(m, points, cells, bodies, faces, boundaries, np.asarray(qualities))
-        result.update(mesh_size_m=size_m, gmsh_version=gmsh.__version__, elapsed_s=time.monotonic()-started)
+        result.update(mesh_size_m=size_m, bridge_gap_refinement_m=bridge_refine_m, controlled_background_field=controlled_field,
+                      gmsh_version=gmsh.__version__, elapsed_s=time.monotonic()-started)
         m["physical_boundary_names"] = {str(k): names.get(k, f"contact_{k}") for k in surfaces}
         (out/"manifest.json").write_text(json.dumps(m, indent=2)+"\n")
         (out/"audit.json").write_text(json.dumps(result, indent=2)+"\n")

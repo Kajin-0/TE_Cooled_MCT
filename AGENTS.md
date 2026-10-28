@@ -54,7 +54,7 @@ Manufacturer reference: TEC Microsystems 3MC04-044-05 (2019), hot 6.4 × 6.4 mm;
 - Run pytest -q and source-backed material profile tests; keep baseline regression passing.
 
 ## Current scope priority, 2026-10-28
-Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat old coupling contract as dormant speculative documentation only. Build and validate Elmer/Gmsh TEC/package FEM first. Model MCT with sourced thermal properties and optional simple bias-dependent thermal load; no device carrier-transport PDE. OpenFOAM should be reserved for relevant gas convection/CHT cases after a conduction-only baseline and Rayleigh/Knudsen screening. Do not describe CFD or full FEM as already implemented.
+Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat old coupling contract as dormant speculative documentation only. Build and validate Elmer/Gmsh TEC/package FEM first. Model MCT with sourced thermal properties and optional simple bias-dependent thermal load; no device carrier-transport PDE. OpenFOAM should be reserved for relevant gas convection/CHT cases after a conduction-only baseline and Rayleigh/Knudsen screening. The later G1/G2a/G2b sections record implemented solid thermoelectric FEM; package CFD remains unimplemented.
 
 ## Verified G1 checkpoint, 2026-10-28
 
@@ -137,3 +137,57 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
 - Before G2b physics: define stage drives/interstage routes, real BCs, solve and
   verify current/energy/mesh convergence. Contacts, stage allocation, material
   curves and OEM/device holdouts remain missing. G2c stays deferred.
+
+
+## G2b two-terminal coupled checkpoint, 2026-10-28
+
+- Read docs/PHASE1_G2B_TWO_TERMINAL_RESULT.md and
+  docs/G2B_COUPLED_REPRODUCIBILITY.md. This supersedes the geometry-only next-step
+  status above without changing the original six-port generator or its meaning.
+- fem_g2b_connected.py adds two separate assumed buried Cu routes and four
+  alumina supports/collars. Cu is cut from dielectric before fragmentation.
+  Preserve the distinction between inferred construction and verified OEM artwork.
+  These supports/routes create thermal shunts that must remain in the PDE.
+- The actual mesh has 189 material domains and a unique 181-vertex / 180-edge
+  conductor path through all 88 legs, exactly two degree-one external terminals.
+  Orthogonal CSG, OCC and actual tetrahedra agree on volumes/contact areas.
+  fem_g2b_connectivity.py additionally proves face-connected tetrahedra inside
+  every body, and one conductor and one thermal tetrahedron component. A shared
+  body tag alone cannot prove continuity; reject point/edge-only connections.
+- New fem_g2b_physics.py, fem_g2b_post.py and fem_g2b_run.py execute actual coupled
+  Elmer ThermoElectricSolver and independently verify actual T/phi/E/J/q/Joule.
+  Run ./fem/run_g2b.sh python -m tecooledmct.fem_g2b_run, then the supplemental
+  connectivity command in the reproduction guide. This wrapper reuses the pinned
+  image with four CPU / 12 GiB limits; original fem/run.sh remains unchanged.
+- Three actual meshes culminate in 91,538 nodes / 384,121 tetrahedra / 183,076
+  DOFs. With 300 K bottom bath and 2 mW actual top load, +0.1 A gives cold mean
+  262.056237 K / +0.56829253 V; -0.1 A gives 356.989385 K / -0.66503709 V and
+  positive input power. Intermediate ceramic temperatures are solved unknowns.
+- All 30 full checks and 41 tests passed. Regress with
+  ./fem/run.sh env TE_FEM_SMOKE=1 pytest -q plus existing CLI and geometry_demo.
+  Original G1/G2a and six-port source/evidence hashes must remain unchanged.
+  Do not rewrite protected checkpoints to make a new gate pass.
+- Every leg, local bridge and insert has an interior current cut (175 total).
+  Fine driven cuts pass <0.5%, direct bath energy <1%, cold mean/max mesh change
+  <1% of lift and voltage change <1%. Raw terminal-gradient currents and corner
+  peaks remain separate and are not claimed resolved. Zero drive uses 1 microamp
+  absolute current tolerance. Ceramic sigma reduction is independently tested.
+- Stage heat budgets use P1 nodal control volumes through intermediate plates,
+  including relevant routing/ceramic portions. Their conservative transfers are
+  not raw sharp-face gradients or a textbook leg-only stage decomposition.
+- --reuse-mesh re-audits real mesh inputs. --resume reuses only actual completed
+  cases after BC/status/SIF/VTU checks and fresh field verification. Loaded-positive
+  explicitly aliases the identical final convergence execution, not another solve.
+  Warm starts use hashed actual solution.result initial states and still run PDEs.
+- The final nonlinear stopping tolerance is 1e-9, the declared convergence gate.
+  Stronger completed early solves retain their original SIFs/source snapshots.
+  A roundoff plateau and stopped duplicate are incomplete attempts, never successes.
+  Keep the .source archival suffixes to prevent pytest collecting old snapshots.
+- Archive only verified evidence using fem/archive_g2b_coupled.py; it checks source,
+  mesh and actual SIF/VTU hashes. Tracked data is fem/results/g2b_two_terminal_20261028;
+  raw runs remain outputs/fem-g2b-two-terminal and outputs/fem-g2b-connected.
+- All contacts ideal; room-temperature literature constants, inferred 28/12/4
+  stages and manufactured routing remain assumptions. G2c OEM calibration,
+  temperature-dependent grade-matched curves, contact/solder validation and G3
+  package/gas/radiation are later gates. No 113 K / 0.5 W fitted validation claim.
+- Continue in the existing sim session; do not touch LSDDTS or unrelated projects.

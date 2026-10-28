@@ -20,7 +20,15 @@ is a calibrated 44-couple three-stage package simulation.
 
 An [88-leg G2b geometry/mesh proof](docs/PHASE1_G2B_FEASIBILITY.md) now passes
 contact and per-stage circuit audits. It has three isolated stage circuits and
-six ports; no coupled three-stage or module-level two-terminal result is claimed.
+six ports and remains a separate geometry checkpoint.
+
+**G2b two-terminal update:** a separate inferred construction connects all 88
+legs through two insulated internal Cu routes and passes actual mesh topology
+and fully coupled 3D Elmer verification. Three meshes, both current signs,
+zero drive, cold loading and ceramic-leakage sensitivity are checked. See
+[verified results and limits](docs/PHASE1_G2B_TWO_TERMINAL_RESULT.md) and
+[reproduction](docs/G2B_COUPLED_REPRODUCIBILITY.md). G1/G2a are preserved.
+Routing fabrication, OEM calibration and the complete package remain unvalidated.
 
 ## Run
 

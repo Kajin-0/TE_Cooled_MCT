@@ -4,9 +4,11 @@ Status (2026-10-28): G1 single-couple coupled 3D FEM is implemented and numerica
 verified; G2a four-couple single-stage FEM is also verified. See
 [G1 evidence](PHASE1_G1_RESULT.md) and [G2a results](PHASE1_G2A_RESULT.md).
 G2b now has an [88-leg geometry/netlist/mesh feasibility proof](PHASE1_G2B_FEASIBILITY.md)
-with three isolated stage circuits and six ports; its coupled full-TEC solution
-and G3–G5 remain separate gates.
-The full 88-leg, three-stage TEC/package has not been simulated.
+with three isolated stage circuits and six ports, preserved as its own checkpoint.
+A separate [two-terminal 88-leg solid-stack coupled solve](PHASE1_G2B_TWO_TERMINAL_RESULT.md)
+now passes numerical verification with inferred internal routing. G2c OEM/device
+calibration and G3–G5 remain separate gates. The complete TO-66 package has not
+been simulated or physically validated.
 
 ## Objectives
 Create a reproducible, genuinely spatial thermoelectric finite-element simulation of the three-stage 44-couple TEC, alumina plates, copper links, solder, detector, Kovar header, enclosure, and gas/radiation environment. Report datasheet validation and novel spatial insights. Use a compact HgCdTe die material/heat-load model. LSDDTS integration is deferred indefinitely by user direction.
