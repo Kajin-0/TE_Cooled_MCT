@@ -1,0 +1,50 @@
+Mesh 0: 2537 nodes, 8100 tetrahedra; topology PASS
+convergence_0: I=+0.150 A; Tc=277.552758 K; V=0.07947715 V; energy=0.0147; leg cut error=3.163409877438017e-05
+Mesh 1: 5886 nodes, 21860 tetrahedra; topology PASS
+convergence_1: I=+0.150 A; Tc=277.555852 K; V=0.07947908 V; energy=-0.00405; leg cut error=1.4656785333559224e-05
+Mesh 2: 17651 nodes, 74552 tetrahedra; topology PASS
+convergence_2: I=+0.150 A; Tc=277.559043 K; V=0.07948067 V; energy=-0.00135; leg cut error=7.871474324387211e-06
+sweep_m0100: I=-0.100 A; Tc=327.609370 K; V=-0.06954865 V; energy=-0.0016; leg cut error=7.220038063388001e-06
+sweep_m0050: I=-0.050 A; Tc=315.263151 K; V=-0.03667884 V; energy=-0.00104; leg cut error=7.083088115894531e-06
+sweep_p0000: I=+0.000 A; Tc=304.206029 K; V=-0.00550001 V; energy=-0.00083; leg cut error=None
+sweep_p0050: I=+0.050 A; Tc=294.308905 K; V=0.02415747 V; energy=-0.000935; leg cut error=8.029745420384815e-06
+sweep_p0100: I=+0.100 A; Tc=285.459358 K; V=0.05244129 V; energy=-0.00134; leg cut error=7.883532122249237e-06
+sweep_p0150: I=+0.150 A; Tc=277.559043 K; V=0.07948067 V; energy=-0.00135; leg cut error=7.871474324387211e-06
+sweep_p0200: I=+0.200 A; Tc=270.521550 K; V=0.10538915 V; energy=-0.00112; leg cut error=7.891332539367024e-06
+open_circuit: I=+0.000 A; Tc=280.000000 K; V=0.02615871 V; energy=0.00083; leg cut error=None
+clamped_positive: I=+0.200 A; Tc=300.000000 K; V=0.06685593 V; energy=-0.000978; leg cut error=8.87809508243187e-06
+clamped_negative: I=-0.200 A; Tc=300.000000 K; V=-0.06685426 V; energy=0.000689; leg cut error=8.826095356934127e-06
+{
+  "passed": true,
+  "checks": {
+    "all_mesh_and_netlist_audits": true,
+    "all_solver_exits_zero": true,
+    "all_nonlinear_converged": true,
+    "global_energy_below_1pct": true,
+    "finest_bath_gradient_energy_below_1pct": true,
+    "electrical_work_below_1pct": true,
+    "terminal_current_below_half_pct": true,
+    "zero_terminal_current_below_1uA": true,
+    "every_leg_current_below_half_pct": true,
+    "every_bridge_current_below_half_pct": true,
+    "zero_cut_currents_below_1uA": true,
+    "leg_joule_matches_I2R_within_2pct": true,
+    "all_cut_areas_match": true,
+    "all_legs_and_bridges_measured": true,
+    "free_thermal_residual_below_1uW": true,
+    "free_current_residual_below_1uA": true,
+    "alumina_leakage_below_1pA": true,
+    "loaded_polarity_direction": true,
+    "zero_current_passive_warming": true,
+    "open_seebeck_within_1pct": true,
+    "loaded_temperature_reference_within_1pct": true,
+    "loaded_voltage_reference_within_2pct": true,
+    "finest_mean_temperature_change_below_1pct_lift": true,
+    "finest_voltage_change_below_1pct": true,
+    "finest_cold_max_change_below_1pct_lift": true,
+    "clamped_positive_absorbs_cold_heat": true,
+    "clamped_negative_rejects_cold_heat": true,
+    "clamped_voltage_scales_from_G1_within_3pct": true,
+    "open_voltage_scales_from_G1_within_3pct": true
+  }
+}

@@ -1,0 +1,234 @@
+Check Keywords Warn
+Header
+  Mesh DB "/work/outputs/fem-g2a/sweep_p0200" "."
+End
+Simulation
+  Coordinate System = Cartesian 3D
+  Simulation Type = Steady State
+  Steady State Max Iterations = 1
+  Output Intervals(1) = 1
+  Output File = "solution.result"
+  Post File = "fields.vtu"
+End
+Initial Condition 1
+  Temperature = Real 300
+  Potential = Real 0
+End
+Body Force 1
+  Heat Source = Real 0
+  Current Source = Real 0
+End
+Equation 1
+  Active Solvers(1) = 1
+End
+Solver 1
+  Equation = "ThermoElectric"
+  Variable = POT[Temperature:1 Potential:1]
+  Procedure = "ThermoElectricSolver" "ThermoElectricSolver"
+  Element = "p:1"
+  Nonlinear System Convergence Tolerance = 1e-10
+  Nonlinear System Max Iterations = 40
+  Nonlinear System Newton After Iterations = 2
+  Nonlinear System Newton After Tolerance = 1e-7
+  Linear System Solver = Direct
+  Linear System Direct Method = UMFPACK
+  Linear System Row Equilibration = Logical True
+  Linear System Residual Output = 1
+  Steady State Convergence Tolerance = 1e-10
+End
+Body 1
+  Target Bodies(1) = 1
+  Name = "leg_00_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 2
+  Target Bodies(1) = 2
+  Name = "leg_01_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 3
+  Target Bodies(1) = 3
+  Name = "leg_02_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 4
+  Target Bodies(1) = 4
+  Name = "leg_03_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 5
+  Target Bodies(1) = 5
+  Name = "leg_04_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 6
+  Target Bodies(1) = 6
+  Name = "leg_05_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 7
+  Target Bodies(1) = 7
+  Name = "leg_06_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 8
+  Target Bodies(1) = 8
+  Name = "leg_07_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 9
+  Target Bodies(1) = 9
+  Name = "bridge_00_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 10
+  Target Bodies(1) = 10
+  Name = "bridge_01_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 11
+  Target Bodies(1) = 11
+  Name = "bridge_02_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 12
+  Target Bodies(1) = 12
+  Name = "bridge_03_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 13
+  Target Bodies(1) = 13
+  Name = "bridge_04_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 14
+  Target Bodies(1) = 14
+  Name = "bridge_05_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 15
+  Target Bodies(1) = 15
+  Name = "bridge_06_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 16
+  Target Bodies(1) = 16
+  Name = "terminal_in"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 17
+  Target Bodies(1) = 17
+  Name = "terminal_out"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 18
+  Target Bodies(1) = 18
+  Name = "hot_alumina"
+  Equation = 1
+  Material = 4
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 19
+  Target Bodies(1) = 19
+  Name = "cold_alumina"
+  Equation = 1
+  Material = 4
+  Body Force = 1
+  Initial Condition = 1
+End
+Material 1
+  Heat Conductivity = Real 1.5
+  Electric Conductivity = Real 140000
+  Seebeck Coefficient = Real 0.00016
+  Density = Real 7529
+  Heat Capacity = Real 544
+End
+Material 2
+  Heat Conductivity = Real 1.5
+  Electric Conductivity = Real 165500
+  Seebeck Coefficient = Real -0.00017
+  Density = Real 7529
+  Heat Capacity = Real 544
+End
+Material 3
+  Heat Conductivity = Real 400
+  Electric Conductivity = Real 58139534.88372093
+  Seebeck Coefficient = Real 0
+  Density = Real 8960
+  Heat Capacity = Real 385
+End
+Material 4
+  Heat Conductivity = Real 30
+  Electric Conductivity = Real 1e-12
+  Seebeck Coefficient = Real 0
+  Density = Real 3900
+  Heat Capacity = Real 880
+End
+Boundary Condition 1
+  Target Boundaries(1) = 101
+  Temperature = Real 300
+End
+Boundary Condition 2
+  Target Boundaries(1) = 102
+  Heat Flux = Real 1904.761904761904
+End
+Boundary Condition 3
+  Target Boundaries(1) = 103
+  Electric Flux = Real 5000000
+End
+Boundary Condition 4
+  Target Boundaries(1) = 104
+  Potential = Real 0
+End

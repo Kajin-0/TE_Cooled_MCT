@@ -12,6 +12,12 @@ illustrative material properties, not the full three-stage package.
 See [verified G1 results](docs/PHASE1_G1_RESULT.md) and
 [reproduction instructions](docs/FEM_G1_REPRODUCIBILITY.md).
 
+**G2a update:** a real four-couple (eight-leg) series stage now passes coupled
+3D Elmer verification, with explicit alternating hot/cold Cu routing, every-leg
+current/Joule checks and three mesh levels. See [G2a results](docs/PHASE1_G2A_RESULT.md)
+and [reproduction](docs/G2A_REPRODUCIBILITY.md). G1 is preserved; neither milestone
+is a calibrated 44-couple three-stage package simulation.
+
 ## Run
 
 ```bash

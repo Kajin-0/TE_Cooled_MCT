@@ -92,3 +92,30 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   curves and contact sensitivity, then withheld OEM curves. Stage split 28/12/4
   remains inferred. Full TO-66 package, MCT die and gas/radiation are later gates.
 - Preserve all Phase 0/1a/1b behavior and tests; no changes to other repositories.
+
+## G2a multi-couple checkpoint
+
+- Read docs/PHASE1_G2A_RESULT.md and docs/G2A_REPRODUCIBILITY.md. G1 files and
+  all 128 published evidence hashes are unchanged; fem_g2a_run.g1_integrity checks
+  them. Never rewrite G1 source/evidence to make G2 pass.
+- New modules: fem_g2a.py (parametric snake, graph/geometry/mesh audit, SIF),
+  fem_g2a_post.py (actual-field component currents/heat/Joule and weak residuals),
+  fem_g2a_run.py (real coupled runs and 29 gates). The existing pinned image is
+  sufficient; do not reinstall or change shared Docker/bootstrap settings.
+- Four couples: 8 legs, 7 alternating hot/cold Cu links, 2 external hot terminal
+  pads and 2 alumina plates. Actual mesh must prove a unique path with 17 conductor
+  vertices and 16 edges, no illegal overlaps or point/edge shorts. Contacts ideal.
+- Run `./fem/run.sh python -m tecooledmct.fem_g2a_run --out outputs/fem-g2a`
+  and `./fem/run.sh env TE_FEM_SMOKE=1 pytest -q` (30 passed). Existing CLI and
+  geometry_demo must also pass. Changing source during a run invalidates it.
+- Actual fine run: 17,651 nodes, 74,552 tets; 300 K bath and 8 mW cold-face load.
+  +0.15 A gives Tc=277.559043 K and V=79.480673 mV. Finest mean-T change
+  0.003191 K = 0.01422% of lift; fine worst leg current <0.00089%, bridge <0.089%,
+  direct bath energy mismatch <0.161%. Raw terminal-corner flux peaks remain
+  unconverged; do not substitute them for conservative/interior-cut currents.
+- `fem/archive_g2a.py` only accepts verified full runs with matching source and
+  SIF/VTU hashes. Tracked evidence: fem/results/g2a_20261028; full raw outputs
+  remain outputs/fem-g2a. Keep BCs and material assumptions explicit.
+- G2b must first be a geometry/netlist/mesh feasibility proof, after the verified
+  G2a commit. 28/12/4 is still inferred. No full-TEC nonlinear solution is claimed
+  by generating 88 legs. G2c independent OEM/device calibration remains later.

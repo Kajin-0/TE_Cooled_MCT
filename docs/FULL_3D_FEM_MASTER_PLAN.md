@@ -1,7 +1,9 @@
 # Fully coupled 3D TEC FEM and TO-66 package thermal-model roadmap
 
 Status (2026-10-28): G1 single-couple coupled 3D FEM is implemented and numerically
-verified; G2–G5 remain planned. See [G1 evidence and limits](PHASE1_G1_RESULT.md).
+verified; G2a four-couple single-stage FEM is also verified. See
+[G1 evidence](PHASE1_G1_RESULT.md) and [G2a results](PHASE1_G2A_RESULT.md).
+G2b full-TEC feasibility and G3–G5 remain separate gates.
 The full 88-leg, three-stage TEC/package has not been simulated.
 
 ## Objectives
