@@ -119,3 +119,21 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
 - G2b must first be a geometry/netlist/mesh feasibility proof, after the verified
   G2a commit. 28/12/4 is still inferred. No full-TEC nonlinear solution is claimed
   by generating 88 legs. G2c independent OEM/device calibration remains later.
+
+## G2b geometry-only follow-up
+
+- G2a passed and was committed/pushed first at f43d07835c5c58a336f661054b42023eeb5a50d5.
+  Read docs/PHASE1_G2B_FEASIBILITY.md before continuing the full TEC.
+- fem_g2b_geometry.py constructs 88 legs, 85 Cu bridges, six stage pads and four
+  shared ceramic plates, with assumed 28/12/4 couples and 3.8 mm stack height.
+- Actual 0.20 mm mesh: 14,666 nodes / 47,667 tets / 183 domains / 267 contacts.
+  Graph, volumes, contacts and point/edge-short checks pass; ElmerGrid exits zero.
+- This is THREE SEPARATE stage circuits with SIX internal feasibility ports.
+  No module-level two-terminal interstage routing or coupled G2b solve exists.
+  geometry_only.vtu has body IDs only; do not invent temperature/current fields.
+- Reproduce with `./fem/run.sh python -m tecooledmct.fem_g2b_geometry`;
+  combined `TE_FEM_SMOKE=1 pytest -q` passes 32 tests, including actual G1/G2a
+  solver and G2b mesh. Published G1/G2a code/evidence are unchanged.
+- Before G2b physics: define stage drives/interstage routes, real BCs, solve and
+  verify current/energy/mesh convergence. Contacts, stage allocation, material
+  curves and OEM/device holdouts remain missing. G2c stays deferred.

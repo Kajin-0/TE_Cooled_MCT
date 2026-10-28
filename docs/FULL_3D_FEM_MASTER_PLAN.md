@@ -3,7 +3,9 @@
 Status (2026-10-28): G1 single-couple coupled 3D FEM is implemented and numerically
 verified; G2a four-couple single-stage FEM is also verified. See
 [G1 evidence](PHASE1_G1_RESULT.md) and [G2a results](PHASE1_G2A_RESULT.md).
-G2b full-TEC feasibility and G3–G5 remain separate gates.
+G2b now has an [88-leg geometry/netlist/mesh feasibility proof](PHASE1_G2B_FEASIBILITY.md)
+with three isolated stage circuits and six ports; its coupled full-TEC solution
+and G3–G5 remain separate gates.
 The full 88-leg, three-stage TEC/package has not been simulated.
 
 ## Objectives

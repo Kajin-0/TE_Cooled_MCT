@@ -146,3 +146,8 @@ G2a is the verified milestone. Only after its commit is G2b assessed as an
 proof does not establish a converged coupled three-stage solve or the unknown
 OEM interstage electrical wiring. G2c needs independent digitized/device curves
 and physical material/contact data; fitting only 113 K and 0.5 W is excluded.
+
+Follow-up: G2a was committed/pushed as `f43d07835c5c58a336f661054b42023eeb5a50d5`.
+The subsequent [G2b geometry-only proof](PHASE1_G2B_FEASIBILITY.md) passes its
+limited gate. The combined suite has 32 passing tests. G2a numerical evidence
+and source remain those verified above; G2b has no coupled physics result.

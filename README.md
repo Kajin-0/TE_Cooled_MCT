@@ -18,6 +18,10 @@ current/Joule checks and three mesh levels. See [G2a results](docs/PHASE1_G2A_RE
 and [reproduction](docs/G2A_REPRODUCIBILITY.md). G1 is preserved; neither milestone
 is a calibrated 44-couple three-stage package simulation.
 
+An [88-leg G2b geometry/mesh proof](docs/PHASE1_G2B_FEASIBILITY.md) now passes
+contact and per-stage circuit audits. It has three isolated stage circuits and
+six ports; no coupled three-stage or module-level two-terminal result is claimed.
+
 ## Run
 
 ```bash
