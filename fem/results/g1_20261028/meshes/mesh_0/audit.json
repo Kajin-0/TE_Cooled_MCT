@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "nodes": 666,
+  "tetrahedra": 2029,
+  "volumes_m3": {
+    "p_leg": 1.6000000000000002e-10,
+    "n_leg": 1.6000000000000007e-10,
+    "cold_bridge": 4.8000000000000054e-11,
+    "p_hot_pad": 1.6000000000000013e-11,
+    "n_hot_pad": 1.6000000000000016e-11,
+    "hot_alumina": 1.6799999999999996e-10,
+    "cold_alumina": 1.6799999999999994e-10
+  },
+  "contact_areas_m2": {
+    "p_leg:cold_bridge": 1.6000000000000006e-07,
+    "p_leg:p_hot_pad": 1.6e-07,
+    "n_leg:cold_bridge": 1.6000000000000003e-07,
+    "n_leg:n_hot_pad": 1.6000000000000006e-07,
+    "cold_bridge:cold_alumina": 4.8e-07,
+    "p_hot_pad:hot_alumina": 1.6000000000000003e-07,
+    "n_hot_pad:hot_alumina": 1.6e-07
+  },
+  "series_path": "N hot pad -> N leg -> cold Cu bridge -> P leg -> P hot pad",
+  "bridge_removal_disconnects_terminals": true,
+  "contact_resistances": "zero electrical and thermal contact resistance",
+  "alumina_sigma_s_m": 1e-12,
+  "mesh_size_m": 0.00016,
+  "gmsh_version": "4.13.1"
+}

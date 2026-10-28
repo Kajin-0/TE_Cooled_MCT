@@ -4,6 +4,14 @@ Open, reproducible **proof-of-concept multiphysics model** of a three-stage ther
 
 **Phase 0: research prototype, NOT a validated digital twin.** The initial solver is a 4-node steady-state thermoelectric/thermal network and includes exploratory material, gas, radiation, detector loading, electrical, sensitivity and cooldown calculations.
 
+**G1 update (2026-10-28):** a genuine, separately verified **coupled 3D P/N
+thermocouple FEM** now uses Gmsh and Elmer ThermoElectricSolver. It includes two
+Bi-Te legs, a continuous copper bridge, separate terminal pads and thermally
+conducting alumina supports. It is a single-couple numerical benchmark with
+illustrative material properties, not the full three-stage package.
+See [verified G1 results](docs/PHASE1_G1_RESULT.md) and
+[reproduction instructions](docs/FEM_G1_REPRODUCIBILITY.md).
+
 ## Run
 
 ```bash

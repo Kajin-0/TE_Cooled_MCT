@@ -1,6 +1,8 @@
 # Fully coupled 3D TEC FEM and TO-66 package thermal-model roadmap
 
-Status: PLANNED, NOT IMPLEMENTED. Baseline date 2026-10-28.
+Status (2026-10-28): G1 single-couple coupled 3D FEM is implemented and numerically
+verified; G2–G5 remain planned. See [G1 evidence and limits](PHASE1_G1_RESULT.md).
+The full 88-leg, three-stage TEC/package has not been simulated.
 
 ## Objectives
 Create a reproducible, genuinely spatial thermoelectric finite-element simulation of the three-stage 44-couple TEC, alumina plates, copper links, solder, detector, Kovar header, enclosure, and gas/radiation environment. Report datasheet validation and novel spatial insights. Use a compact HgCdTe die material/heat-load model. LSDDTS integration is deferred indefinitely by user direction.

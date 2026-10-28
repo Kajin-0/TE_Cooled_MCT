@@ -55,3 +55,40 @@ Manufacturer reference: TEC Microsystems 3MC04-044-05 (2019), hot 6.4 × 6.4 mm;
 
 ## Current scope priority, 2026-10-28
 Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat old coupling contract as dormant speculative documentation only. Build and validate Elmer/Gmsh TEC/package FEM first. Model MCT with sourced thermal properties and optional simple bias-dependent thermal load; no device carrier-transport PDE. OpenFOAM should be reserved for relevant gas convection/CHT cases after a conduction-only baseline and Rayleigh/Knudsen screening. Do not describe CFD or full FEM as already implemented.
+
+## Verified G1 checkpoint, 2026-10-28
+
+- Read docs/PHASE1_G1_RESULT.md and docs/FEM_G1_REPRODUCIBILITY.md first.
+- Genuine Gmsh/OpenCascade tetrahedral P/N + Cu + alumina coupled FEM is in
+  tecooledmct/fem_g1.py, fem_g1_run.py and fem_g1_post.py. It invokes Elmer's
+  actual ThermoElectricSolver for both T and phi; do not replace it with HeatSolve
+  or a prescribed reduced-order temperature field.
+- Isolated headless installation: fem/bootstrap.sh; runtime: fem/run.sh. Elmer
+  release 26.2.1 source is pinned at a19504ac53ec222e3355e182b08f2ff280c2203a;
+  Gmsh 4.13.1. Host Ubuntu 25.10 sudo needs a password; no PPA was installed.
+- Source and project work remain in /home/User/TE_Cooled_MCT, using the existing
+  sim session. Do not create another session or alter model/settings.
+- Run `./fem/run.sh env TE_FEM_SMOKE=1 pytest -q` (21 tests at this checkpoint),
+  the existing CLI quick check, geometry_demo, and the full FEM runner for physics
+  changes. No solver means optional smoke is skipped; never fabricate results.
+- Full benchmark: `./fem/run.sh python -m tecooledmct.fem_g1_run --out outputs/fem-g1`.
+  `--postprocess-only` recomputes diagnostics from existing actual fields; it does
+  not run the PDE again. Preserve the distinction in validation reports.
+- Positive I enters N hot pad, crosses cold bridge and returns via P hot pad;
+  300 K bottom bath, actual 2 mW top heat flux in loaded sweep. All contacts ideal.
+  Alumina uses sigma=1e-12 S/m; 100-fold lower conductivity sensitivity passes.
+- 666/1441/4223 nodes, 2029/5094/17046 tets; +0.3 A finest Tc=258.757514 K;
+  finest Tc change 0.008813 K. Constants are mixed literature verification inputs,
+  not manufacturer-specific or physical curves valid from 250 to 439 K.
+- Distinguish conservative terminal reactions, interior cut currents and raw
+  element-gradient terminal fluxes. The last still have corner discretization
+  errors (~8%/5.4% at +0.3 A); do not claim local flux convergence from global
+  balance. Fine interior driven-cut error is <0.04%, bath-gradient energy error
+  <0.17%, weak global energy/current checks pass. Zero current uses an absolute
+  section-current gate of 1 microamp, since percentage of zero is undefined.
+- Representative actual meshes, plots, fields, logs, lock versions and checksums
+  are tracked under fem/results/g1_20261028; complete raw run is outputs/fem-g1.
+- G2 is next: verified 88-leg series netlist, three stages, realistic material
+  curves and contact sensitivity, then withheld OEM curves. Stage split 28/12/4
+  remains inferred. Full TO-66 package, MCT die and gas/radiation are later gates.
+- Preserve all Phase 0/1a/1b behavior and tests; no changes to other repositories.
