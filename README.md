@@ -91,3 +91,21 @@ Results include temperature-versus-height, input power versus height, inferred e
 - 130% height: 192.5 K and 1.98 W at fixed current; minimum ~1.00 W to hit 200 K.
 
 **Interpretation:** This does not establish a physical optimum. Real electrical contact and thermal interface resistances, changing cap clearances/gas conduction, manufacturing feasibility, temperature-dependent material data, and measured performance could reverse the trend. See [geometry study notes](docs/geometry_sensitivity.md).
+
+## Phase 1b: sourced material-property profiles (2026-10-28)
+
+The TEC's **default** electrical/thermal solver remains calibrated to two OEM performance endpoints—not an independently measured material-specific FEM model. For material investigation a **separate, explicit uncalibrated literature profile** has been added:
+
+```python
+from tecooledmct.geometry_sweep import TECGeometry, solve_geometry
+from tecooledmct.model import Scenario
+from tecooledmct.material_transport import literature_stage_coefficients, compare_coefficients
+g=TECGeometry()
+print(compare_coefficients(g))
+result=solve_geometry(Scenario(), g, coefficients=literature_stage_coefficients(g))
+print(result['stage_k'])
+```
+
+Sourced bulk materials and provenance: `tecooledmct/materials.py`. Includes p/n-type Bi-Te literature examples, 96% and 99.5% alumina ceramic proxies, Kovar header alloy, 4N gold bond wire, Sn95Sb5 *proxy* solder, and copper. The source-matched 3MC04-044-05 contains hot-extruded Bi-Te, Al2O3(100%), Sn-Sb internal solder, Au plated contacts and bare AWG32 terminal wires, but proprietary material-property curves are **not disclosed**.
+
+Read [materials and provenance](docs/materials_and_provenance.md). A 1-D material-layer resistance demonstration is supported; **these layers are not yet connected to 3D package transport or automatically to the four-node network**. The optional literature P/N solver still assumes temperature-independent values near room temperature, so its cold-stage numbers are only sensitivity examples, not production predictions. Do not compare results against the OEM profile as independent validation.

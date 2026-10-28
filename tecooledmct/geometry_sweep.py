@@ -41,8 +41,9 @@ def transport_geometry(i,I,Tc,Th,coeff):
             "resistance_ohm":R,"conductance_w_per_k":K,
             "alpha_v_per_k":a,"joule_w":I*I*R}
 
-def solve_geometry(s:Scenario,g:TECGeometry):
-    s.validate();c=geometry_coefficients(g)
+def solve_geometry(s:Scenario,g:TECGeometry,coefficients=None):
+    """OEM-fit by default; optionally inject a documented stage-property profile."""
+    s.validate();c=geometry_coefficients(g) if coefficients is None else coefficients
     def evaluate(x):
         t1,t2,t3,th=x
         l=heat_breakdown(s,(t1,t2,t3),th)

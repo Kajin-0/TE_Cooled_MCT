@@ -43,3 +43,12 @@ Manufacturer reference: TEC Microsystems 3MC04-044-05 (2019), hot 6.4 × 6.4 mm;
 - Run `pytest -q` and `python -m tecooledmct.geometry_demo --out outputs/pellet-study`.
 - When reporting efficiency, compare *minimum input power at a fixed detector target temperature*, not only electrical power at a fixed current.
 - Treat 28/12/4 stage pair split and effective R/K/S as uncertain.
+
+## Phase 1b source-backed materials
+- See docs/materials_and_provenance.md, tecooledmct/materials.py, and material_transport.py.
+- OEM-calibrated and literature-derived P/N profiles are separate. The default solver MUST remain unchanged unless requested.
+- Sourced properties carry material grade, measured temperature, source URI, and uncertainty status.
+- Bi-Te hot-extruded OEM composition and S(T),sigma(T),k(T) are unpublished; literature example P/N values are not product claims.
+- Kovar header composition, purity and actual plating need verification per actual package; Sn95Sb5 is only a proxy for unspecified OEM Sn-Sb solder.
+- Bulk alumina, Kovar, solder and gold do NOT yet determine the main four-node model's stage temperatures; 1-D resistance estimates are diagnostic only.
+- Run pytest -q and source-backed material profile tests; keep baseline regression passing.
