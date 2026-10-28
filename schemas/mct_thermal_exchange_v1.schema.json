@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TEC–LSDDTS thermal exchange v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "device"
+  ],
+  "properties": {
+    "schema": {
+      "const": "tecooledmct.lsddts_exchange.v1"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo",
+        "commit",
+        "effective_config_hash",
+        "run_id",
+        "status",
+        "terminal_current_authoritative",
+        "warnings"
+      ],
+      "properties": {
+        "repo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commit": {
+          "type": "string",
+          "minLength": 8
+        },
+        "effective_config_hash": {
+          "type": "string",
+          "minLength": 8
+        },
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "diagnostic_only",
+            "conditionally_authoritative",
+            "failed",
+            "not_evaluated"
+          ]
+        },
+        "terminal_current_authoritative": {
+          "type": "boolean"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geometry_id",
+        "cd_fraction_x",
+        "temperature_k",
+        "bias_voltage_v",
+        "terminal_current_a",
+        "optical_thermalized_w",
+        "heat_to_tec_w"
+      ],
+      "properties": {
+        "geometry_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cd_fraction_x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "temperature_k": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "bias_voltage_v": {
+          "type": "number"
+        },
+        "terminal_current_a": {
+          "type": "number"
+        },
+        "optical_thermalized_w": {
+          "type": "number",
+          "minimum": 0
+        },
+        "heat_to_tec_w": {
+          "type": "number"
+        },
+        "heat_definition": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
