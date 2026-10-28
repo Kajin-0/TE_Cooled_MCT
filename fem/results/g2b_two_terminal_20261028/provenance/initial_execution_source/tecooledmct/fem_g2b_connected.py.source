@@ -1,0 +1,387 @@
+"""Inferred TWO-terminal stack: buried Cu inserts in explicit alumina supports.
+
+The six-port feasibility and G1/G2a sources are used read-only. Exact independent
+orthogonal-cell CSG audits dielectric removal, volumes and all contact areas.
+This assumed construction needs manufacturing validation; it is not OEM artwork.
+"""
+from __future__ import annotations
+
+import argparse
+import copy
+import hashlib
+import json
+import math
+from pathlib import Path
+import time
+
+import numpy as np
+
+from .fem_g1 import tetra_geometry
+from .fem_g2a import mesh_adjacency, validate_path
+from .fem_g2b_geometry import assembly_manifest
+
+
+def mm_box(x0, x1, y0, y1, z0, z1):
+    return [x0*1e-3, y0*1e-3, z0*1e-3, (x1-x0)*1e-3, (y1-y0)*1e-3, (z1-z0)*1e-3]
+
+
+def connected_manifest():
+    m = copy.deepcopy(assembly_manifest())
+    for b in m["bodies"]:
+        b["boxes_m"] = [b["box_m"]]
+    links = [
+        [mm_box(2.125, 2.17, 1.62, 1.68, .0125, .0525),
+         mm_box(2.17, 2.23, 1.62, 1.68, .0125, 1.34),
+         mm_box(-1.67, 2.17, 1.62, 1.68, 1.30, 1.34),
+         mm_box(-1.67, -1.61, -.855, 1.62, 1.30, 1.34),
+         mm_box(-1.67, -1.61, -.855, -.795, 1.34, 1.4725),
+         mm_box(-1.61, -1.575, -.855, -.795, 1.4325, 1.4725)],
+        [mm_box(-1.405, -1.345, 1.025, 1.10, 1.4325, 1.4725),
+         mm_box(-1.405, -1.345, 1.10, 1.16, 1.4325, 2.51),
+         mm_box(-1.405, -1.345, -.305, 1.10, 2.47, 2.51),
+         mm_box(-1.345, -1.06, -.305, -.245, 2.47, 2.51),
+         mm_box(-1.12, -1.06, -.305, -.245, 2.51, 2.6425),
+         mm_box(-1.06, -1.025, -.305, -.245, 2.6025, 2.6425)],
+    ]
+    link_ids = []
+    for i, boxes in enumerate(links):
+        bid = len(m["bodies"])+1
+        link_ids.append(bid)
+        m["bodies"].append({"id": bid, "name": f"buried_interstage_link_{i}",
+                            "kind": "interstage_link", "material": "Cu", "boxes_m": boxes,
+                            "cut_axis": 2, "cut_coordinate_m": (.700013 if i == 0 else 1.900013)*1e-3,
+                            "cut_area_m2": (.06e-3)**2, "current_sign": 1,
+                            "construction": "assumed buried Cu in alumina rib/plate, not OEM"})
+    supports = [
+        ("routing_rib_0", [mm_box(2.125, 2.275, 1.55, 1.75, 0., .065),
+                           mm_box(2.14, 2.275, 1.55, 1.75, .065, 1.2)]),
+        ("exit_collar_0", [mm_box(-1.74, -1.575, -.925, -.725, 1.42, 1.485)]),
+        ("routing_rib_1", [mm_box(-1.475, -1.275, 1.025, 1.225, 1.42, 1.485),
+                           mm_box(-1.475, -1.275, 1.04, 1.225, 1.485, 2.37)]),
+        ("exit_collar_1", [mm_box(-1.19, -1.025, -.375, -.175, 2.59, 2.655)]),
+    ]
+    for name, boxes in supports:
+        m["bodies"].append({"id": len(m["bodies"])+1, "name": name, "kind": "routing_insulator",
+                            "material": "Alumina", "boxes_m": boxes})
+    nets = m["stage_nets"]
+    path = nets[0]["conductor_path"]+[link_ids[0]]+nets[1]["conductor_path"]+[link_ids[1]]+nets[2]["conductor_path"]
+    m["conductor_path"] = path
+    m["terminals"] = [path[0], path[-1]]
+    m["interstage_links"] = link_ids
+    m["terminal_planes"] = {"103": m["terminal_planes"]["210"], "104": m["terminal_planes"]["215"]}
+    m["cold_area_m2"] = m["envelope_sides_m"][-1]**2
+    m["module_two_terminal_wiring"] = "one path through all 88 legs and two insulated buried Cu links"
+    m["status"] = "inferred interstage routing; coupled verification specimen, not OEM design"
+    m["external_ports"] = 2
+    # Contacts now include the dielectric cut-outs and all support/collar contacts.
+    m["contacts"] = []
+    return m
+
+
+def orthogonal_audit(m):
+    """Exact CSG on box boundaries, independent of Gmsh/OCC and the tetra mesh."""
+    def bounds(box):
+        b = np.asarray(box)
+        return np.round(b[:3], 12), np.round(b[:3]+b[3:], 12)
+    axes = [np.unique([v for body in m["bodies"] for box in body["boxes_m"]
+                       for v in (bounds(box)[0][a], bounds(box)[1][a])]) for a in range(3)]
+    shape = tuple(len(a)-1 for a in axes)
+    if np.prod(shape) > 5_000_000:
+        raise ValueError("CSG audit budget exceeded")
+    labels = np.zeros(shape, dtype=np.int16)
+    def slices(box):
+        low, high = bounds(box)
+        return tuple(slice(int(np.searchsorted(a, lo)), int(np.searchsorted(a, hi)))
+                     for a, lo, hi in zip(axes, low, high))
+    conductor = [b for b in m["bodies"] if b["material"] != "Alumina"]
+    dielectric = [b for b in m["bodies"] if b["material"] == "Alumina"]
+    for body in conductor:
+        for box in body["boxes_m"]:
+            target = labels[slices(box)]
+            if np.any(target):
+                raise ValueError(f"Cu/conductor volume overlap in {body['name']}")
+            target[:] = body["id"]
+    for body in dielectric:
+        for box in body["boxes_m"]:
+            target = labels[slices(box)]
+            if np.any((target != 0) & ~np.isin(target, m["interstage_links"])):
+                raise ValueError(f"Illegal dielectric overlap in {body['name']}")
+            target[target == 0] = body["id"]
+    widths = [np.diff(a) for a in axes]
+    weights = widths[0][:, None, None]*widths[1][None, :, None]*widths[2][None, None, :]
+    volumes = np.bincount(labels.ravel(), weights=weights.ravel(), minlength=len(m["bodies"])+1)
+    contacts = {}
+    for axis in range(3):
+        left, right = [slice(None)]*3, [slice(None)]*3
+        left[axis], right[axis] = slice(None, -1), slice(1, None)
+        a, b = labels[tuple(left)], labels[tuple(right)]
+        mask = (a != 0) & (b != 0) & (a != b)
+        area = np.ones(tuple(1 if d == axis else len(widths[d]) for d in range(3)))
+        for d in range(3):
+            if d != axis:
+                sh = [1]*3
+                sh[d] = len(widths[d])
+                area = area*widths[d].reshape(sh)
+        area = np.broadcast_to(area, a.shape)
+        pairs = np.sort(np.column_stack((a[mask], b[mask])), axis=1)
+        for pair in np.unique(pairs, axis=0):
+            val = float(area[mask][np.all(pairs == pair, axis=1)].sum())
+            key = tuple(int(p) for p in pair)
+            contacts[key] = contacts.get(key, 0.)+val
+    cid = {b["id"] for b in conductor}
+    expected_edges = {tuple(sorted(p)) for p in zip(m["conductor_path"], m["conductor_path"][1:])}
+    actual_edges = {p for p in contacts if p[0] in cid and p[1] in cid}
+    if actual_edges != expected_edges:
+        raise ValueError(f"Wrong intended conductor contacts: extra={actual_edges-expected_edges}, missing={expected_edges-actual_edges}")
+    # Also reject illegal zero-area edge/point shorts independently of mesh.
+    atoms = [(body["id"], bounds(box)) for body in conductor for box in body["boxes_m"]]
+    for i, (bid, (lo, hi)) in enumerate(atoms):
+        for other, (low, high) in atoms[i+1:]:
+            if bid == other:
+                continue
+            overlap = np.minimum(hi, high)-np.maximum(lo, low)
+            if np.all(overlap >= -1e-13) and tuple(sorted((bid, other))) not in expected_edges:
+                raise ValueError(f"Unintended conductor edge/point short {bid}:{other}")
+    graph = validate_path(cid, actual_edges, m["terminals"])
+    if len({b for b in m["conductor_path"] if m["bodies"][b-1]["kind"] == "leg"}) != 88:
+        raise ValueError("Not every one of the 88 legs occurs once")
+    m["contacts"] = [{"bodies": list(pair), "area_m2": area, "electrical": pair[0] in cid and pair[1] in cid,
+                       "boundary_id": 1001+i} for i, (pair, area) in enumerate(sorted(contacts.items()))]
+    for body in m["bodies"]:
+        body["expected_volume_m3"] = float(volumes[body["id"]])
+        if body["expected_volume_m3"] <= 0:
+            raise ValueError("Empty CSG body")
+    m["orthogonal_audit"] = {"passed": True, "grid_cells": int(np.prod(shape)), "graph": graph,
+                              "contact_count": len(contacts), "dielectric_link_cutouts_explicit": True}
+    return m["orthogonal_audit"]
+
+
+def audit_mesh(m, points, cells, bodies, faces, boundaries, qualities):
+    volumes, _ = tetra_geometry(points, cells)
+    if not np.isfinite(volumes).all() or np.any(volumes <= 1e-25):
+        raise ValueError("Degenerate tetrahedra")
+    measured_volumes = {}
+    for b in m["bodies"]:
+        measured = float(volumes[bodies == b["id"]].sum())
+        if not math.isclose(measured, b["expected_volume_m3"], rel_tol=1e-7):
+            raise ValueError(f"Actual mesh volume mismatch {b['name']}")
+        measured_volumes[b["name"]] = measured
+    adjacency = mesh_adjacency(cells)
+    if any(len(a) > 2 for a in adjacency.values()):
+        raise ValueError("Nonmanifold mesh")
+    areas = {}
+    for f, adjacent in adjacency.items():
+        if len(adjacent) == 2 and bodies[adjacent[0]] != bodies[adjacent[1]]:
+            pair = tuple(sorted(int(bodies[a]) for a in adjacent))
+            p = points[list(f)]
+            areas[pair] = areas.get(pair, 0.)+np.linalg.norm(np.cross(p[1]-p[0], p[2]-p[0]))/2
+    expected = {tuple(c["bodies"]): c for c in m["contacts"]}
+    if set(areas) != set(expected):
+        raise ValueError(f"Actual contact mismatch extra={set(areas)-set(expected)}, missing={set(expected)-set(areas)}")
+    for pair, area in areas.items():
+        if not math.isclose(area, expected[pair]["area_m2"], rel_tol=1e-7):
+            raise ValueError(f"Mesh contact area mismatch {pair}")
+    for f, tag in zip(faces, boundaries):
+        if len(adjacency.get(tuple(sorted(f)), [])) != (2 if tag >= 1001 else 1):
+            raise ValueError("Nonconformal tagged face")
+    cid = {b["id"] for b in m["bodies"] if b["material"] != "Alumina"}
+    node_bodies = [set() for _ in points]
+    for bid in cid:
+        for node in np.unique(cells[bodies == bid]):
+            node_bodies[node].add(bid)
+    for joined in node_bodies:
+        joined = sorted(joined)
+        for i, a in enumerate(joined):
+            if any((a, b) not in expected for b in joined[i+1:]):
+                raise ValueError("Actual mesh point/edge conductor short")
+    graph = validate_path(cid, [p for p in areas if p[0] in cid and p[1] in cid], m["terminals"])
+    if not np.isfinite(qualities).all() or qualities.min() <= 0:
+        raise ValueError("Inverted/zero-quality tetrahedron")
+    return {"passed": True, "nodes": len(points), "tetrahedra": len(cells), "dofs": 2*len(points),
+            "domains": len(m["bodies"]), "legs": 88, "external_terminals": 2, "electrical_components": 1,
+            "graph": graph, "volumes_m3": measured_volumes,
+            "contact_areas_m2": {f"{a}:{b}": float(v) for (a, b), v in areas.items()},
+            "min_tetra_sicn": float(qualities.min()), "quality_below_001": int(np.sum(qualities < .01)),
+            "unintended_edge_point_shorts": 0, "routing": "inferred buried Cu and alumina support"}
+
+
+def generate_mesh(out, size_m=.18e-3, bridge_refine_m=None):
+    import gmsh
+    import meshio
+    if not math.isfinite(size_m) or size_m <= 0:
+        raise ValueError("Positive finite mesh size required")
+    m = connected_manifest()
+    orthogonal_audit(m)
+    out.mkdir(parents=True, exist_ok=True)
+    started = time.monotonic()
+    gmsh.initialize()
+    gmsh.logger.start()
+    try:
+        gmsh.option.setNumber("General.NumThreads", 1)
+        gmsh.option.setNumber("General.Terminal", 0)
+        gmsh.option.setNumber("Mesh.RandomSeed", 20261028)
+        gmsh.model.add("inferred_two_terminal_88_leg_stack")
+        objects, owners = [], []
+        def fuse_boxes(boxes):
+            shapes = [(3, gmsh.model.occ.addBox(*box)) for box in boxes]
+            return shapes if len(shapes) == 1 else gmsh.model.occ.fuse(shapes[:1], shapes[1:])[0]
+        created = {b["id"]: fuse_boxes(b["boxes_m"]) for b in m["bodies"]}
+        links = [shape for bid in m["interstage_links"] for shape in created[bid]]
+        for body in m["bodies"]:
+            shapes = created[body["id"]]
+            if body["material"] == "Alumina":
+                shapes, _ = gmsh.model.occ.cut(shapes, links, removeObject=True, removeTool=False)
+            objects.extend(shapes)
+            owners.extend([body["id"]]*len(shapes))
+        _, mapping = gmsh.model.occ.fragment(objects[:1], objects[1:])
+        gmsh.model.occ.synchronize()
+        volumes_to_body, body_volumes = {}, {b["id"]: [] for b in m["bodies"]}
+        for bid, fragments in zip(owners, mapping):
+            for dim, volume in fragments:
+                if dim == 3:
+                    if volume in volumes_to_body and volumes_to_body[volume] != bid:
+                        raise ValueError("OCC volume assigned to more than one material")
+                    volumes_to_body[volume] = bid
+                    body_volumes[bid].append(volume)
+        for body in m["bodies"]:
+            tags = sorted(set(body_volumes[body["id"]]))
+            mass = sum(gmsh.model.occ.getMass(3, tag) for tag in tags)
+            if not math.isclose(mass, body["expected_volume_m3"], rel_tol=1e-7):
+                raise ValueError(f"OCC/independent CSG volume mismatch {body['name']}")
+            gmsh.model.addPhysicalGroup(3, tags, body["id"], body["name"])
+        expected = {tuple(c["bodies"]): c for c in m["contacts"]}
+        names = {101: "bottom_300K_bath", 102: "actual_top_heat_load", 103: "current_in",
+                 104: "ground", 105: "adiabatic_electrically_insulated"}
+        surfaces = {tag: [] for tag in names}
+        surfaces.update({c["boundary_id"]: [] for c in m["contacts"]})
+        for _, s in gmsh.model.getEntities(2):
+            up, _ = gmsh.model.getAdjacencies(2, s)
+            pair = tuple(sorted({volumes_to_body[int(v)] for v in up}))
+            center = gmsh.model.occ.getCenterOfMass(2, s)
+            if len(pair) == 2:
+                tag = expected[pair]["boundary_id"]
+            elif len(pair) == 1:
+                tag = 105
+                if abs(center[2]-m["hot_z_m"]) < 1e-11:
+                    tag = 101
+                elif abs(center[2]-m["cold_z_m"]) < 1e-11:
+                    tag = 102
+                else:
+                    for bc, plane in m["terminal_planes"].items():
+                        if pair[0] == plane["body"] and abs(center[plane["axis"]]-plane["coordinate_m"]) < 1e-11:
+                            tag = int(bc)
+            else:
+                raise ValueError("Invalid OCC surface incidence")
+            surfaces[tag].append(s)
+        for tag, ss in surfaces.items():
+            if not ss:
+                raise ValueError(f"Missing physical surface {tag}")
+            gmsh.model.addPhysicalGroup(2, ss, tag, names.get(tag, f"contact_{tag}"))
+        gmsh.option.setNumber("Mesh.MeshSizeMin", size_m*.1)
+        gmsh.option.setNumber("Mesh.MeshSizeMax", size_m)
+        gmsh.option.setNumber("Mesh.MshFileVersion", 2.2)
+        gmsh.option.setNumber("Mesh.Optimize", 1)
+        if bridge_refine_m is not None:
+            if not math.isfinite(bridge_refine_m) or bridge_refine_m <= 0:
+                raise ValueError("Positive finite bridge refinement required")
+            fields = []
+            for body in m["bodies"]:
+                if body["kind"] != "bridge":
+                    continue
+                box = body["box_m"]
+                low, high = np.asarray(box[:3]).copy(), np.asarray(box[:3])+box[3:]
+                axis = body["cut_axis"]
+                low[axis] += .4e-3
+                high[axis] -= .4e-3
+                f = gmsh.model.mesh.field.add("Box")
+                for key, value in zip(("XMin","YMin","ZMin"), low):
+                    gmsh.model.mesh.field.setNumber(f, key, float(value)-1e-8)
+                for key, value in zip(("XMax","YMax","ZMax"), high):
+                    gmsh.model.mesh.field.setNumber(f, key, float(value)+1e-8)
+                gmsh.model.mesh.field.setNumber(f, "VIn", bridge_refine_m)
+                gmsh.model.mesh.field.setNumber(f, "VOut", size_m)
+                gmsh.model.mesh.field.setNumber(f, "Thickness", bridge_refine_m)
+                fields.append(f)
+            minimum = gmsh.model.mesh.field.add("Min")
+            gmsh.model.mesh.field.setNumbers(minimum, "FieldsList", fields)
+            gmsh.model.mesh.field.setAsBackgroundMesh(minimum)
+        gmsh.model.mesh.generate(3)
+        gmsh.model.mesh.optimize("Netgen")
+        gmsh.write(str(out/"connected.msh"))
+        tags, xyz, _ = gmsh.model.mesh.getNodes()
+        points = np.asarray(xyz).reshape(-1, 3)
+        lookup = {int(tag): i for i, tag in enumerate(tags)}
+        def conn(nodes, width):
+            return np.fromiter((lookup[int(n)] for n in nodes), dtype=int).reshape(-1, width)
+        cells, bodies, faces, boundaries, qualities = [], [], [], [], []
+        for volume, bid in volumes_to_body.items():
+            types, elements, arrays = gmsh.model.mesh.getElements(3, volume)
+            for typ, etags, nodes in zip(types, elements, arrays):
+                if typ != 4:
+                    raise ValueError("Linear tetrahedron required")
+                c = conn(nodes, 4)
+                cells.append(c)
+                bodies.extend([bid]*len(c))
+                qualities.extend(gmsh.model.mesh.getElementQualities(etags, "minSICN"))
+        for tag, ss in surfaces.items():
+            for s in ss:
+                types, _, arrays = gmsh.model.mesh.getElements(2, s)
+                for typ, nodes in zip(types, arrays):
+                    if typ != 2:
+                        raise ValueError("Triangle required")
+                    f = conn(nodes, 3)
+                    faces.append(f)
+                    boundaries.extend([tag]*len(f))
+        cells, bodies = np.concatenate(cells), np.asarray(bodies)
+        faces, boundaries = np.concatenate(faces), np.asarray(boundaries)
+        np.savez_compressed(out/"mesh.npz", points=points, cells=cells, bodies=bodies, faces=faces, boundaries=boundaries)
+        result = audit_mesh(m, points, cells, bodies, faces, boundaries, np.asarray(qualities))
+        result.update(mesh_size_m=size_m, bridge_gap_refinement_m=bridge_refine_m,
+                      gmsh_version=gmsh.__version__, elapsed_s=time.monotonic()-started)
+        m["physical_boundary_names"] = {str(k): names.get(k, f"contact_{k}") for k in surfaces}
+        (out/"manifest.json").write_text(json.dumps(m, indent=2)+"\n")
+        (out/"audit.json").write_text(json.dumps(result, indent=2)+"\n")
+        meshio.write(out/"topology.vtu", meshio.Mesh(points, [("tetra", cells)], cell_data={"body_id": [bodies]}))
+        draw_routing(out, m)
+        return result
+    finally:
+        (out/"gmsh.log").write_text("\n".join(gmsh.logger.get())+"\n")
+        gmsh.logger.stop()
+        gmsh.finalize()
+
+
+def draw_routing(out, m):
+    import matplotlib.pyplot as plt
+    from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+    fig = plt.figure(figsize=(10, 7))
+    ax = fig.add_subplot(111, projection="3d")
+    for body in m["bodies"]:
+        for box in body["boxes_m"]:
+            x, y, z, dx, dy, dz = np.asarray(box)*1e3
+            p = np.array([[x, y, z], [x+dx, y, z], [x+dx, y+dy, z], [x, y+dy, z],
+                          [x, y, z+dz], [x+dx, y, z+dz], [x+dx, y+dy, z+dz], [x, y+dy, z+dz]])
+            ids = [[0,1,2,3], [4,5,6,7], [0,1,5,4], [1,2,6,5], [2,3,7,6], [3,0,4,7]]
+            ceramic = body["material"] == "Alumina"
+            color = ("#00aa44" if body["id"] == m["interstage_links"][0] else "#9b00bb") if body["kind"] == "interstage_link" else {"P":"#b33b42", "N":"#3469b0", "Cu":"#bf853c", "Alumina":"#eeeeee"}[body["material"]]
+            ax.add_collection3d(Poly3DCollection([p[i] for i in ids], facecolor=color,
+                    edgecolor="gray" if ceramic else "none", linewidth=.3, alpha=.08 if ceramic else .95))
+    ax.set(xlim=(-3.3,3.3), ylim=(-3.3,3.3), zlim=(-.3,3.7), xlabel="x (mm)", ylabel="y (mm)", zlabel="z (mm)")
+    ax.set_box_aspect((6.4,6.4,3.8))
+    ax.view_init(27, -52)
+    ax.set_title("INFERRED two-terminal routing: 88 legs\nGreen / purple buried Cu links; explicit alumina supports, no external jumper")
+    fig.tight_layout()
+    fig.savefig(out/"routing.png", dpi=170)
+    plt.close(fig)
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--out", type=Path, default=Path("outputs/fem-g2b-connected/mesh_0"))
+    p.add_argument("--size-mm", type=float, default=.18)
+    args = p.parse_args()
+    r = generate_mesh(args.out.resolve(), args.size_mm*1e-3)
+    print(json.dumps({k:v for k,v in r.items() if k not in ("volumes_m3", "contact_areas_m2", "graph")}, indent=2))
+
+
+if __name__ == "__main__":
+    main()

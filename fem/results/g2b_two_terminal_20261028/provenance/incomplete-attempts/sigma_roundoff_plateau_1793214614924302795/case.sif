@@ -1,0 +1,1596 @@
+Check Keywords Warn
+Header
+  Mesh DB "/work/outputs/fem-g2b-two-terminal/leakage_check" "."
+End
+Simulation
+  Coordinate System = Cartesian 3D
+  Simulation Type = Steady State
+  Steady State Max Iterations = 1
+  Output Intervals(1) = 1
+  Restart File = "initial.result"
+  Restart Position = 0
+  Output File = "solution.result"
+  Post File = "fields.vtu"
+End
+Initial Condition 1
+  Temperature = Real 300
+  Potential = Real 0
+End
+Body Force 1
+  Heat Source = Real 0
+  Current Source = Real 0
+End
+Equation 1
+  Active Solvers(1) = 1
+End
+Solver 1
+  Equation = "ThermoElectric"
+  Variable = POT[Temperature:1 Potential:1]
+  Procedure = "ThermoElectricSolver" "ThermoElectricSolver"
+  Element = "p:1"
+  Nonlinear System Convergence Tolerance = 1e-10
+  Nonlinear System Max Iterations = 60
+  Nonlinear System Newton After Iterations = 2
+  Nonlinear System Newton After Tolerance = 1e-7
+  Linear System Solver = Direct
+  Linear System Direct Method = UMFPACK
+  Linear System Row Equilibration = Logical True
+  Linear System Residual Output = 1
+  Steady State Convergence Tolerance = 1e-10
+End
+Body 1
+  Target Bodies(1) = 1
+  Name = "ceramic_0"
+  Equation = 1
+  Material = 4
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 2
+  Target Bodies(1) = 2
+  Name = "ceramic_1"
+  Equation = 1
+  Material = 4
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 3
+  Target Bodies(1) = 3
+  Name = "ceramic_2"
+  Equation = 1
+  Material = 4
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 4
+  Target Bodies(1) = 4
+  Name = "ceramic_3"
+  Equation = 1
+  Material = 4
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 5
+  Target Bodies(1) = 5
+  Name = "stage_0_leg_00_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 6
+  Target Bodies(1) = 6
+  Name = "stage_0_leg_01_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 7
+  Target Bodies(1) = 7
+  Name = "stage_0_leg_02_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 8
+  Target Bodies(1) = 8
+  Name = "stage_0_leg_03_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 9
+  Target Bodies(1) = 9
+  Name = "stage_0_leg_04_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 10
+  Target Bodies(1) = 10
+  Name = "stage_0_leg_05_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 11
+  Target Bodies(1) = 11
+  Name = "stage_0_leg_06_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 12
+  Target Bodies(1) = 12
+  Name = "stage_0_leg_07_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 13
+  Target Bodies(1) = 13
+  Name = "stage_0_leg_08_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 14
+  Target Bodies(1) = 14
+  Name = "stage_0_leg_09_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 15
+  Target Bodies(1) = 15
+  Name = "stage_0_leg_10_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 16
+  Target Bodies(1) = 16
+  Name = "stage_0_leg_11_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 17
+  Target Bodies(1) = 17
+  Name = "stage_0_leg_12_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 18
+  Target Bodies(1) = 18
+  Name = "stage_0_leg_13_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 19
+  Target Bodies(1) = 19
+  Name = "stage_0_leg_14_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 20
+  Target Bodies(1) = 20
+  Name = "stage_0_leg_15_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 21
+  Target Bodies(1) = 21
+  Name = "stage_0_leg_16_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 22
+  Target Bodies(1) = 22
+  Name = "stage_0_leg_17_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 23
+  Target Bodies(1) = 23
+  Name = "stage_0_leg_18_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 24
+  Target Bodies(1) = 24
+  Name = "stage_0_leg_19_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 25
+  Target Bodies(1) = 25
+  Name = "stage_0_leg_20_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 26
+  Target Bodies(1) = 26
+  Name = "stage_0_leg_21_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 27
+  Target Bodies(1) = 27
+  Name = "stage_0_leg_22_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 28
+  Target Bodies(1) = 28
+  Name = "stage_0_leg_23_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 29
+  Target Bodies(1) = 29
+  Name = "stage_0_leg_24_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 30
+  Target Bodies(1) = 30
+  Name = "stage_0_leg_25_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 31
+  Target Bodies(1) = 31
+  Name = "stage_0_leg_26_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 32
+  Target Bodies(1) = 32
+  Name = "stage_0_leg_27_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 33
+  Target Bodies(1) = 33
+  Name = "stage_0_leg_28_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 34
+  Target Bodies(1) = 34
+  Name = "stage_0_leg_29_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 35
+  Target Bodies(1) = 35
+  Name = "stage_0_leg_30_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 36
+  Target Bodies(1) = 36
+  Name = "stage_0_leg_31_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 37
+  Target Bodies(1) = 37
+  Name = "stage_0_leg_32_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 38
+  Target Bodies(1) = 38
+  Name = "stage_0_leg_33_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 39
+  Target Bodies(1) = 39
+  Name = "stage_0_leg_34_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 40
+  Target Bodies(1) = 40
+  Name = "stage_0_leg_35_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 41
+  Target Bodies(1) = 41
+  Name = "stage_0_leg_36_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 42
+  Target Bodies(1) = 42
+  Name = "stage_0_leg_37_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 43
+  Target Bodies(1) = 43
+  Name = "stage_0_leg_38_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 44
+  Target Bodies(1) = 44
+  Name = "stage_0_leg_39_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 45
+  Target Bodies(1) = 45
+  Name = "stage_0_leg_40_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 46
+  Target Bodies(1) = 46
+  Name = "stage_0_leg_41_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 47
+  Target Bodies(1) = 47
+  Name = "stage_0_leg_42_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 48
+  Target Bodies(1) = 48
+  Name = "stage_0_leg_43_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 49
+  Target Bodies(1) = 49
+  Name = "stage_0_leg_44_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 50
+  Target Bodies(1) = 50
+  Name = "stage_0_leg_45_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 51
+  Target Bodies(1) = 51
+  Name = "stage_0_leg_46_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 52
+  Target Bodies(1) = 52
+  Name = "stage_0_leg_47_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 53
+  Target Bodies(1) = 53
+  Name = "stage_0_leg_48_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 54
+  Target Bodies(1) = 54
+  Name = "stage_0_leg_49_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 55
+  Target Bodies(1) = 55
+  Name = "stage_0_leg_50_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 56
+  Target Bodies(1) = 56
+  Name = "stage_0_leg_51_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 57
+  Target Bodies(1) = 57
+  Name = "stage_0_leg_52_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 58
+  Target Bodies(1) = 58
+  Name = "stage_0_leg_53_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 59
+  Target Bodies(1) = 59
+  Name = "stage_0_leg_54_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 60
+  Target Bodies(1) = 60
+  Name = "stage_0_leg_55_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 61
+  Target Bodies(1) = 61
+  Name = "stage_0_bridge_00_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 62
+  Target Bodies(1) = 62
+  Name = "stage_0_bridge_01_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 63
+  Target Bodies(1) = 63
+  Name = "stage_0_bridge_02_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 64
+  Target Bodies(1) = 64
+  Name = "stage_0_bridge_03_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 65
+  Target Bodies(1) = 65
+  Name = "stage_0_bridge_04_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 66
+  Target Bodies(1) = 66
+  Name = "stage_0_bridge_05_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 67
+  Target Bodies(1) = 67
+  Name = "stage_0_bridge_06_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 68
+  Target Bodies(1) = 68
+  Name = "stage_0_bridge_07_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 69
+  Target Bodies(1) = 69
+  Name = "stage_0_bridge_08_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 70
+  Target Bodies(1) = 70
+  Name = "stage_0_bridge_09_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 71
+  Target Bodies(1) = 71
+  Name = "stage_0_bridge_10_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 72
+  Target Bodies(1) = 72
+  Name = "stage_0_bridge_11_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 73
+  Target Bodies(1) = 73
+  Name = "stage_0_bridge_12_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 74
+  Target Bodies(1) = 74
+  Name = "stage_0_bridge_13_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 75
+  Target Bodies(1) = 75
+  Name = "stage_0_bridge_14_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 76
+  Target Bodies(1) = 76
+  Name = "stage_0_bridge_15_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 77
+  Target Bodies(1) = 77
+  Name = "stage_0_bridge_16_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 78
+  Target Bodies(1) = 78
+  Name = "stage_0_bridge_17_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 79
+  Target Bodies(1) = 79
+  Name = "stage_0_bridge_18_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 80
+  Target Bodies(1) = 80
+  Name = "stage_0_bridge_19_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 81
+  Target Bodies(1) = 81
+  Name = "stage_0_bridge_20_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 82
+  Target Bodies(1) = 82
+  Name = "stage_0_bridge_21_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 83
+  Target Bodies(1) = 83
+  Name = "stage_0_bridge_22_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 84
+  Target Bodies(1) = 84
+  Name = "stage_0_bridge_23_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 85
+  Target Bodies(1) = 85
+  Name = "stage_0_bridge_24_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 86
+  Target Bodies(1) = 86
+  Name = "stage_0_bridge_25_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 87
+  Target Bodies(1) = 87
+  Name = "stage_0_bridge_26_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 88
+  Target Bodies(1) = 88
+  Name = "stage_0_bridge_27_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 89
+  Target Bodies(1) = 89
+  Name = "stage_0_bridge_28_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 90
+  Target Bodies(1) = 90
+  Name = "stage_0_bridge_29_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 91
+  Target Bodies(1) = 91
+  Name = "stage_0_bridge_30_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 92
+  Target Bodies(1) = 92
+  Name = "stage_0_bridge_31_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 93
+  Target Bodies(1) = 93
+  Name = "stage_0_bridge_32_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 94
+  Target Bodies(1) = 94
+  Name = "stage_0_bridge_33_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 95
+  Target Bodies(1) = 95
+  Name = "stage_0_bridge_34_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 96
+  Target Bodies(1) = 96
+  Name = "stage_0_bridge_35_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 97
+  Target Bodies(1) = 97
+  Name = "stage_0_bridge_36_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 98
+  Target Bodies(1) = 98
+  Name = "stage_0_bridge_37_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 99
+  Target Bodies(1) = 99
+  Name = "stage_0_bridge_38_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 100
+  Target Bodies(1) = 100
+  Name = "stage_0_bridge_39_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 101
+  Target Bodies(1) = 101
+  Name = "stage_0_bridge_40_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 102
+  Target Bodies(1) = 102
+  Name = "stage_0_bridge_41_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 103
+  Target Bodies(1) = 103
+  Name = "stage_0_bridge_42_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 104
+  Target Bodies(1) = 104
+  Name = "stage_0_bridge_43_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 105
+  Target Bodies(1) = 105
+  Name = "stage_0_bridge_44_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 106
+  Target Bodies(1) = 106
+  Name = "stage_0_bridge_45_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 107
+  Target Bodies(1) = 107
+  Name = "stage_0_bridge_46_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 108
+  Target Bodies(1) = 108
+  Name = "stage_0_bridge_47_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 109
+  Target Bodies(1) = 109
+  Name = "stage_0_bridge_48_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 110
+  Target Bodies(1) = 110
+  Name = "stage_0_bridge_49_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 111
+  Target Bodies(1) = 111
+  Name = "stage_0_bridge_50_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 112
+  Target Bodies(1) = 112
+  Name = "stage_0_bridge_51_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 113
+  Target Bodies(1) = 113
+  Name = "stage_0_bridge_52_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 114
+  Target Bodies(1) = 114
+  Name = "stage_0_bridge_53_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 115
+  Target Bodies(1) = 115
+  Name = "stage_0_bridge_54_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 116
+  Target Bodies(1) = 116
+  Name = "stage_0_terminal_in"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 117
+  Target Bodies(1) = 117
+  Name = "stage_0_terminal_out"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 118
+  Target Bodies(1) = 118
+  Name = "stage_1_leg_00_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 119
+  Target Bodies(1) = 119
+  Name = "stage_1_leg_01_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 120
+  Target Bodies(1) = 120
+  Name = "stage_1_leg_02_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 121
+  Target Bodies(1) = 121
+  Name = "stage_1_leg_03_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 122
+  Target Bodies(1) = 122
+  Name = "stage_1_leg_04_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 123
+  Target Bodies(1) = 123
+  Name = "stage_1_leg_05_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 124
+  Target Bodies(1) = 124
+  Name = "stage_1_leg_06_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 125
+  Target Bodies(1) = 125
+  Name = "stage_1_leg_07_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 126
+  Target Bodies(1) = 126
+  Name = "stage_1_leg_08_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 127
+  Target Bodies(1) = 127
+  Name = "stage_1_leg_09_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 128
+  Target Bodies(1) = 128
+  Name = "stage_1_leg_10_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 129
+  Target Bodies(1) = 129
+  Name = "stage_1_leg_11_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 130
+  Target Bodies(1) = 130
+  Name = "stage_1_leg_12_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 131
+  Target Bodies(1) = 131
+  Name = "stage_1_leg_13_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 132
+  Target Bodies(1) = 132
+  Name = "stage_1_leg_14_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 133
+  Target Bodies(1) = 133
+  Name = "stage_1_leg_15_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 134
+  Target Bodies(1) = 134
+  Name = "stage_1_leg_16_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 135
+  Target Bodies(1) = 135
+  Name = "stage_1_leg_17_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 136
+  Target Bodies(1) = 136
+  Name = "stage_1_leg_18_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 137
+  Target Bodies(1) = 137
+  Name = "stage_1_leg_19_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 138
+  Target Bodies(1) = 138
+  Name = "stage_1_leg_20_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 139
+  Target Bodies(1) = 139
+  Name = "stage_1_leg_21_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 140
+  Target Bodies(1) = 140
+  Name = "stage_1_leg_22_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 141
+  Target Bodies(1) = 141
+  Name = "stage_1_leg_23_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 142
+  Target Bodies(1) = 142
+  Name = "stage_1_bridge_00_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 143
+  Target Bodies(1) = 143
+  Name = "stage_1_bridge_01_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 144
+  Target Bodies(1) = 144
+  Name = "stage_1_bridge_02_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 145
+  Target Bodies(1) = 145
+  Name = "stage_1_bridge_03_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 146
+  Target Bodies(1) = 146
+  Name = "stage_1_bridge_04_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 147
+  Target Bodies(1) = 147
+  Name = "stage_1_bridge_05_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 148
+  Target Bodies(1) = 148
+  Name = "stage_1_bridge_06_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 149
+  Target Bodies(1) = 149
+  Name = "stage_1_bridge_07_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 150
+  Target Bodies(1) = 150
+  Name = "stage_1_bridge_08_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 151
+  Target Bodies(1) = 151
+  Name = "stage_1_bridge_09_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 152
+  Target Bodies(1) = 152
+  Name = "stage_1_bridge_10_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 153
+  Target Bodies(1) = 153
+  Name = "stage_1_bridge_11_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 154
+  Target Bodies(1) = 154
+  Name = "stage_1_bridge_12_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 155
+  Target Bodies(1) = 155
+  Name = "stage_1_bridge_13_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 156
+  Target Bodies(1) = 156
+  Name = "stage_1_bridge_14_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 157
+  Target Bodies(1) = 157
+  Name = "stage_1_bridge_15_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 158
+  Target Bodies(1) = 158
+  Name = "stage_1_bridge_16_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 159
+  Target Bodies(1) = 159
+  Name = "stage_1_bridge_17_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 160
+  Target Bodies(1) = 160
+  Name = "stage_1_bridge_18_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 161
+  Target Bodies(1) = 161
+  Name = "stage_1_bridge_19_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 162
+  Target Bodies(1) = 162
+  Name = "stage_1_bridge_20_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 163
+  Target Bodies(1) = 163
+  Name = "stage_1_bridge_21_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 164
+  Target Bodies(1) = 164
+  Name = "stage_1_bridge_22_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 165
+  Target Bodies(1) = 165
+  Name = "stage_1_terminal_in"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 166
+  Target Bodies(1) = 166
+  Name = "stage_1_terminal_out"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 167
+  Target Bodies(1) = 167
+  Name = "stage_2_leg_00_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 168
+  Target Bodies(1) = 168
+  Name = "stage_2_leg_01_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 169
+  Target Bodies(1) = 169
+  Name = "stage_2_leg_02_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 170
+  Target Bodies(1) = 170
+  Name = "stage_2_leg_03_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 171
+  Target Bodies(1) = 171
+  Name = "stage_2_leg_04_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 172
+  Target Bodies(1) = 172
+  Name = "stage_2_leg_05_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 173
+  Target Bodies(1) = 173
+  Name = "stage_2_leg_06_N"
+  Equation = 1
+  Material = 2
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 174
+  Target Bodies(1) = 174
+  Name = "stage_2_leg_07_P"
+  Equation = 1
+  Material = 1
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 175
+  Target Bodies(1) = 175
+  Name = "stage_2_bridge_00_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 176
+  Target Bodies(1) = 176
+  Name = "stage_2_bridge_01_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 177
+  Target Bodies(1) = 177
+  Name = "stage_2_bridge_02_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 178
+  Target Bodies(1) = 178
+  Name = "stage_2_bridge_03_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 179
+  Target Bodies(1) = 179
+  Name = "stage_2_bridge_04_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 180
+  Target Bodies(1) = 180
+  Name = "stage_2_bridge_05_hot"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 181
+  Target Bodies(1) = 181
+  Name = "stage_2_bridge_06_cold"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 182
+  Target Bodies(1) = 182
+  Name = "stage_2_terminal_in"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 183
+  Target Bodies(1) = 183
+  Name = "stage_2_terminal_out"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 184
+  Target Bodies(1) = 184
+  Name = "buried_interstage_link_0"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 185
+  Target Bodies(1) = 185
+  Name = "buried_interstage_link_1"
+  Equation = 1
+  Material = 3
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 186
+  Target Bodies(1) = 186
+  Name = "routing_rib_0"
+  Equation = 1
+  Material = 4
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 187
+  Target Bodies(1) = 187
+  Name = "exit_collar_0"
+  Equation = 1
+  Material = 4
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 188
+  Target Bodies(1) = 188
+  Name = "routing_rib_1"
+  Equation = 1
+  Material = 4
+  Body Force = 1
+  Initial Condition = 1
+End
+Body 189
+  Target Bodies(1) = 189
+  Name = "exit_collar_1"
+  Equation = 1
+  Material = 4
+  Body Force = 1
+  Initial Condition = 1
+End
+Material 1
+  Heat Conductivity = Real 1.5
+  Electric Conductivity = Real 140000
+  Seebeck Coefficient = Real 0.00016
+  Density = Real 7529
+  Heat Capacity = Real 544
+End
+Material 2
+  Heat Conductivity = Real 1.5
+  Electric Conductivity = Real 165500
+  Seebeck Coefficient = Real -0.00017
+  Density = Real 7529
+  Heat Capacity = Real 544
+End
+Material 3
+  Heat Conductivity = Real 400
+  Electric Conductivity = Real 58139534.88372093
+  Seebeck Coefficient = Real 0
+  Density = Real 8960
+  Heat Capacity = Real 385
+End
+Material 4
+  Heat Conductivity = Real 30
+  Electric Conductivity = Real 1e-14
+  Seebeck Coefficient = Real 0
+  Density = Real 3900
+  Heat Capacity = Real 880
+End
+Boundary Condition 1
+  Target Boundaries(1) = 101
+  Temperature = Real 300
+End
+Boundary Condition 2
+  Target Boundaries(1) = 102
+  Heat Flux = Real 347.2222222222223
+End
+Boundary Condition 3
+  Target Boundaries(1) = 103
+  Electric Flux = Real 3846153.846153846
+End
+Boundary Condition 4
+  Target Boundaries(1) = 104
+  Potential = Real 0
+End

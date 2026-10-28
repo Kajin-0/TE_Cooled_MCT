@@ -1,0 +1,46 @@
+Actual mesh PASS: 26120 nodes / 100463 tets / 52240 DOFs
+Revalidated existing actual solve convergence_0: Tc=262.120959 K
+Actual mesh PASS: 87094 nodes / 368403 tets / 174188 DOFs
+Revalidated existing actual solve convergence_1: Tc=262.048138 K
+Actual mesh PASS: 91538 nodes / 384121 tets / 183076 DOFs
+Revalidated existing actual solve convergence_2: Tc=262.056237 K
+Revalidated existing actual solve convergence_2: Tc=262.056237 K
+Revalidated existing actual solve zero_load_positive: Tc=261.083802 K
+leakage_check: I=+0.100 A, load=2 mW, Tc=262.056238 K, V=0.56829253 V, bath error=0.00456, leg error=9.147673899270736e-05, peak RSS=1639.8 MiB
+loaded_p0050: I=+0.050 A, load=2 mW, Tc=279.799360 K, V=0.29224980 V, bath error=0.00682, leg error=9.256637012719504e-05, peak RSS=1639.7 MiB
+loaded_zero: I=+0.000 A, load=2 mW, Tc=301.059175 K, V=-0.00309095 V, bath error=0.00222, leg error=None, peak RSS=1639.7 MiB
+loaded_negative: I=-0.100 A, load=2 mW, Tc=356.989385 K, V=-0.66503709 V, bath error=0.000534, leg error=0.00010194466091184573, peak RSS=1639.6 MiB
+{
+  "passed": true,
+  "quick_smoke_only": false,
+  "checks": {
+    "actual_mesh_unique_two_terminal_88_leg_path": true,
+    "no_degenerate_or_extreme_sliver_tets": true,
+    "all_solver_exits_zero": true,
+    "nonlinear_converged": true,
+    "global_weak_energy_below_1pct": true,
+    "electrical_work_below_1pct": true,
+    "every_fine_leg_current_below_half_pct": true,
+    "both_fine_interstage_link_currents_below_half_pct": true,
+    "zero_cut_current_absolute_below_1uA": true,
+    "terminal_current_below_half_pct": true,
+    "zero_terminal_current_below_1uA": true,
+    "all_175_component_cuts_recorded": true,
+    "cut_areas_match": true,
+    "free_thermal_residual_below_1uW": true,
+    "free_current_residual_below_1uA": true,
+    "dielectric_leakage_below_1pA": true,
+    "stage_control_volume_energy_below_1uW": true,
+    "finite_positive_absolute_temperatures": true,
+    "positive_drive_cools_and_negative_heats": true,
+    "zero_drive_loaded_face_warms": true,
+    "all_driven_cases_consume_electrical_work": true,
+    "fine_direct_bath_energy_below_1pct": true,
+    "every_fine_bridge_current_below_half_pct": true,
+    "cold_mean_mesh_change_below_1pct_lift": true,
+    "cold_max_mesh_change_below_1pct_lift": true,
+    "voltage_mesh_change_below_1pct": true,
+    "zero_load_colder_than_loaded": true,
+    "ceramic_sigma_100fold_reduction_below_1mK": true
+  }
+}

@@ -1,0 +1,214 @@
+"""G2b constant-property Elmer input, measured execution and independent cascade."""
+from __future__ import annotations
+
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import signal
+import shutil
+import time
+
+import numpy as np
+
+from .fem_g1 import ELMER_COMMIT
+from .fem_g2a import PROPERTIES
+
+
+def protected_integrity():
+    root = Path(__file__).resolve().parents[1]
+    checked = {}
+    for folder, filename in (("g1_20261028", "manifest.json"), ("g2a_20261028", "checksums.json"),
+                             ("g2b_geometry_20261028", "checksums.json")):
+        archive = root/"fem/results"/folder
+        data = json.loads((archive/filename).read_text())
+        for relative, digest in data["source_sha256"].items():
+            if hashlib.sha256((root/relative).read_bytes()).hexdigest() != digest:
+                raise RuntimeError(f"Protected source modified: {relative}")
+        for relative, digest in data["artifacts_sha256"].items():
+            if hashlib.sha256((archive/relative).read_bytes()).hexdigest() != digest:
+                raise RuntimeError(f"Protected artifact modified: {folder}/{relative}")
+        checked[folder] = {"source_files": len(data["source_sha256"]), "artifacts": len(data["artifacts_sha256"])}
+    return {"passed": True, "checked": checked}
+
+
+def write_sif(case, mesh, current, load, alumina_sigma=1e-12, restart_from=None):
+    if not np.isfinite([current, load, alumina_sigma]).all() or load < 0 or alumina_sigma <= 0:
+        raise ValueError("Finite current/load and positive ceramic conductivity required")
+    m = json.loads((mesh/"manifest.json").read_text())
+    case.mkdir(parents=True, exist_ok=True)
+    for source in (mesh/"elmer").glob("mesh.*"):
+        target = case/source.name
+        if not target.exists():
+            target.symlink_to(source.resolve())
+    text = f'''Check Keywords Warn
+Header
+  Mesh DB "{case.resolve()}" "."
+End
+Simulation
+  Coordinate System = Cartesian 3D
+  Simulation Type = Steady State
+  Steady State Max Iterations = 1
+  Output Intervals(1) = 1
+  Output File = "solution.result"
+  Post File = "fields.vtu"
+End
+Initial Condition 1
+  Temperature = Real 300
+  Potential = Real 0
+End
+Body Force 1
+  Heat Source = Real 0
+  Current Source = Real 0
+End
+Equation 1
+  Active Solvers(1) = 1
+End
+Solver 1
+  Equation = "ThermoElectric"
+  Variable = POT[Temperature:1 Potential:1]
+  Procedure = "ThermoElectricSolver" "ThermoElectricSolver"
+  Element = "p:1"
+  Nonlinear System Convergence Tolerance = 1e-10
+  Nonlinear System Max Iterations = 60
+  Nonlinear System Newton After Iterations = 2
+  Nonlinear System Newton After Tolerance = 1e-7
+  Linear System Solver = Direct
+  Linear System Direct Method = UMFPACK
+  Linear System Row Equilibration = Logical True
+  Linear System Residual Output = 1
+  Steady State Convergence Tolerance = 1e-10
+End
+'''
+    material_ids = {name: i for i, name in enumerate(PROPERTIES, 1)}
+    for b in m["bodies"]:
+        text += f'''Body {b['id']}
+  Target Bodies(1) = {b['id']}
+  Name = "{b['name']}"
+  Equation = 1
+  Material = {material_ids[b['material']]}
+  Body Force = 1
+  Initial Condition = 1
+End
+'''
+    for name, props in PROPERTIES.items():
+        text += f"Material {material_ids[name]}\n"
+        for key, value in zip(("Heat Conductivity", "Electric Conductivity", "Seebeck Coefficient",
+                               "Density", "Heat Capacity"), props):
+            if name == "Alumina" and key == "Electric Conductivity":
+                value = alumina_sigma
+            text += f"  {key} = Real {value:.16g}\n"
+        text += "End\n"
+    text += f'''Boundary Condition 1
+  Target Boundaries(1) = 101
+  Temperature = Real 300
+End
+Boundary Condition 2
+  Target Boundaries(1) = 102
+  Heat Flux = Real {load/m['cold_area_m2']:.16g}
+End
+Boundary Condition 3
+  Target Boundaries(1) = 103
+  Electric Flux = Real {current/m['terminal_planes']['103']['area_m2']:.16g}
+End
+Boundary Condition 4
+  Target Boundaries(1) = 104
+  Potential = Real 0
+End
+'''
+    restart_metadata = None
+    if restart_from is not None:
+        initial = Path(restart_from)/"solution.result"
+        if not initial.is_file():
+            raise ValueError("Restart requires an actual solved result file")
+        shutil.copy2(initial, case/"initial.result")
+        text = text.replace('  Output File = "solution.result"',
+                            '  Restart File = "initial.result"\n  Restart Position = 0\n  Output File = "solution.result"')
+        restart_metadata = {"source_case": str(restart_from),
+                            "result_sha256": hashlib.sha256(initial.read_bytes()).hexdigest()}
+    (case/"case.sif").write_text(text)
+    metadata = {"current_a": current, "load_w": load, "hot_k": 300., "elmer_commit": ELMER_COMMIT,
+                "boundary_case": "300K_bottom_bath_actual_top_heat_load", "alumina_sigma_s_m": alumina_sigma,
+                "intermediate_thermal_bc": "none; shared ceramics solved, exposed sides total q.n=0",
+                "routing": "inferred buried Cu in explicit alumina supports", "stage_couples_assumed": [28,12,4],
+                "material_profile": "G1/G2a mixed room-temperature verification constants; no OEM fit",
+                "initial_state": restart_metadata or "300 K, zero potential"}
+    (case/"case.json").write_text(json.dumps(metadata, indent=2)+"\n")
+
+
+def execute_solver(case, timeout=900):
+    """Measure this actual serial solver's wall, CPU and peak RSS via wait4."""
+    started = time.monotonic()
+    with (case/"solver.log").open("w") as log:
+        pid = os.fork()
+        if pid == 0:
+            try:
+                os.chdir(case)
+                os.dup2(log.fileno(), 1)
+                os.dup2(log.fileno(), 2)
+                os.execvp("ElmerSolver", ["ElmerSolver", "case.sif"])
+            finally:
+                os._exit(127)
+        timed_out = False
+        while True:
+            done, status, usage = os.wait4(pid, os.WNOHANG)
+            if done:
+                break
+            if time.monotonic()-started > timeout:
+                os.kill(pid, signal.SIGKILL)  # only this private child, never another process
+                _, status, usage = os.wait4(pid, 0)
+                timed_out = True
+                break
+            time.sleep(.2)
+    text = (case/"solver.log").read_text()
+    code = 124 if timed_out else os.waitstatus_to_exitcode(status)
+    changes = re.findall(r"ThermoElectricSolver:\s+Relative Change\s*:\s*([\d.Ee+\-]+)", text)
+    result = {"command": ["ElmerSolver", "case.sif"], "exit_code": code,
+              "elapsed_s": time.monotonic()-started, "cpu_s": usage.ru_utime+usage.ru_stime,
+              "peak_rss_kib": usage.ru_maxrss, "timed_out": timed_out,
+              "nonlinear_iterations": len(changes),
+              "nonlinear_last_relative_change": float(changes[-1]) if changes else None}
+    (case/"solver-status.json").write_text(json.dumps(result, indent=2)+"\n")
+    if code or re.search(r"\b(FATAL|ERROR):", text, re.I) or not changes or float(changes[-1]) >= 1e-9 or "ALL DONE" not in text:
+        raise RuntimeError(f"Actual coupled solve FAILED: {case}; see solver.log/status")
+    return result
+
+
+def cascade_reference(m, current, load, hot=300.):
+    """Independent stagewise algebra; no ribs/link shunts/spreading or OEM fitting."""
+    coefficients = []
+    for net in m["stage_nets"]:
+        stage = net["stage"]
+        leg = next(b for b in m["bodies"] if b.get("stage") == stage and b["kind"] == "leg")
+        w, height = leg["box_m"][3], net["leg_height_m"]
+        n = net["couples"]
+        alpha = n*(PROPERTIES["P"][2]-PROPERTIES["N"][2])
+        resistance = n*height/w**2*(1/PROPERTIES["P"][1]+1/PROPERTIES["N"][1])
+        conductance = n*w**2/height*(PROPERTIES["P"][0]+PROPERTIES["N"][0])
+        for body in m["bodies"]:
+            if body.get("stage") == stage and body["kind"] == "bridge":
+                axis = body["cut_axis"]
+                resistance += (body["box_m"][axis+3]-w)/(PROPERTIES["Cu"][1]*w*body["box_m"][5])
+        coefficients.append((alpha, resistance, conductance))
+    def budgets(temperatures):
+        t = [hot, *temperatures]
+        output = []
+        for i, (a, r, k) in enumerate(coefficients):
+            qc = a*current*t[i+1]-.5*current**2*r-k*(t[i]-t[i+1])
+            qh = a*current*t[i]+.5*current**2*r-k*(t[i]-t[i+1])
+            voltage = current*r+a*(t[i]-t[i+1])
+            output.append({"cold_heat_w": qc, "hot_heat_w": qh, "voltage_v": voltage})
+        return output
+    def residual(t):
+        q = budgets(t)
+        return np.array([q[0]["cold_heat_w"]-q[1]["hot_heat_w"],
+                         q[1]["cold_heat_w"]-q[2]["hot_heat_w"], q[2]["cold_heat_w"]-load])
+    base = residual(np.zeros(3))
+    matrix = np.column_stack([residual(np.eye(3)[i])-base for i in range(3)])
+    temperatures = np.linalg.solve(matrix, -base)
+    q = budgets(temperatures)
+    return {"plate_temperatures_k": [hot, *temperatures.tolist()], "stages": q,
+            "voltage_v": sum(s["voltage_v"] for s in q),
+            "power_w": current*sum(s["voltage_v"] for s in q), "delta_t_k": hot-temperatures[-1],
+            "assumption": "ideal isothermal stage junctions; excludes routing/support shunts and spreading"}
