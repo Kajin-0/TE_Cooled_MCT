@@ -191,3 +191,75 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   temperature-dependent grade-matched curves, contact/solder validation and G3
   package/gas/radiation are later gates. No 113 K / 0.5 W fitted validation claim.
 - Continue in the existing sim session; do not touch LSDDTS or unrelated projects.
+
+
+## G2c source/material/contact qualification checkpoint
+
+- Read docs/PHASE1_G2C_RESULT.md, docs/G2C_MATERIAL_PROVENANCE.md and
+  docs/G2C_REPRODUCIBILITY.md. All earlier source/evidence must remain unchanged.
+  fem_g2c.intact_checkpoints checks G1/G2a, original six-port and connected G2b.
+- material_profiles.py and data/g2c are opt-in. N-HE-1 and P-HE from Zhang et al.
+  (2025), DOI 10.1088/0256-307X/42/5/056304, have six ingested original plot
+  markers/property at 200..300 K. Rho/S/k refer to the same specimen within each
+  polarity, not a matched module pair or the OEM grade. Preserve sample/process,
+  PDF hash, axes/marker coordinates and reading bounds. Reading bounds are not
+  experimental device confidence intervals. No silent extrapolation.
+- Sigma is reciprocal rho. Goldsmid Table 1 is a partial fixed-thermopower example,
+  not a complete specimen trajectory; Cai remains quarantined pending original
+  units/provenance verification. Never fill missing k/S from conductivity alone.
+- fem_g2c.py compiles real local-T Elmer Procedure functions that Fatal outside
+  coverage. The solver evaluates nodal coefficients then interpolates at Gauss
+  points. fem_g2c_post.py verifies that discretization with actual VTUs and
+  degree-four triangle cuts. Thomson is implicit in div(T*S(T)*J), not another
+  additive heat source. The synthetic rod has an independent continuum BVP.
+- fem_g2c_run.py uses a 295 K bath and actual source, constant/frozen/synthetic
+  checks; synthetic curves are function tests, never measurements. The rejected
+  initial 300 K iterate is a failure record, not a converged device prediction.
+- fem_g2c_contact.py/mesh.py add 16 explicit 20 micrometre transition domains.
+  They assume S equals the adjacent leg and add rho by r_e/t and inverse k by
+  r_th/t. This is a phenomenological transition law, not Sn-Sb solder chemistry.
+  Zero added values recover the original continuum, including thermopower.
+  Verify extra I²R in the actual domains, independent electrical/thermal cases,
+  driven currents, zero-current absolute cuts, graph/volume/face connectivity and
+  SICN. Do not lower a failed gate to publish a contact result. HXT and Netgen
+  produce the final contact mesh; failed meshes remain separately unaccepted.
+- If only the contact zero-current cut gate fails, fem_g2c_contact_refine.py
+  performs finer actual passive solves and re-verifies the completed driven
+  fields. It retains initial failures and distinguishes verification from new
+  execution; do not rerun an unchanged solve just to assign another label.
+- fem_g2c_stack.py reads protected tracked G2b mesh arrays, re-encodes the coarse
+  Gmsh file if needed, re-audits topology/quality and runs ElmerGrid again. The
+  actual Elmer node/tetrahedron/body mapping is checked. It genuinely solves
+  source-backed local-T full-stack physics at 295 K / +0.1 A / zero top load,
+  with ideal interfaces. Separate stage contact tests do not qualify stack solder.
+- New cases may warm-start from a hashed actual solved solution.result and still
+  execute the PDE. Runtime uses existing fem/run_g2b.sh with four CPU / 12 GiB
+  limits. Never modify original wrappers/image or open another tmux session.
+- g2c_qualification.py stores independent SI interface parameters and a full-family
+  reading-bound residual objective. Calibration-reserved .2/.6/1.0 A and withheld
+  .1/.4/.8 A were selected before comparison. Hot temperature/current/load and
+  vacuum/dry-N2 matching is strict. A non-vacuum prediction must explicitly
+  represent its environment. The 295 K source-backed result is not a 300 K
+  holdout. Only the genuine preserved 300 K no-load constant result is compared.
+- No fit, OEM grade match, unique parameter identification or full OEM-family
+  device validation is established. Dimensions/counts, profiles, contacts, routing
+  and environmental heat paths remain confounded. TO-66/package/gas/radiation are
+  separate gates. Do not reinterpret numerical implementation checks as accuracy.
+- Regress with ./fem/run.sh env TE_FEM_SMOKE=1 pytest -q, existing CLI quick and
+  geometry_demo. fem/report_g2c.py and fem/archive_g2c.py require passing full
+  numerical summaries and completed tests; archive validates execution source,
+  SIF/VTU hashes and preserves generated Fortran/compiler/library provenance.
+- Continue only in TE_Cooled_MCT and existing sim. Never touch LSDDTS or other repos.
+
+- Additive opt-in `zhang2025_he_40_300_v2.json` ingests 14 markers/property from
+  40..300 K; its v1 subset is bit-for-bit unchanged. The corrected default stage v1r1 remains
+  200..300 K; the stack and low-temperature check use corrected v2r1. `fem_g2c_low_temperature` genuinely exercises v2 at imposed
+  200/190 K faces; do not describe that 190 K input as attainable device output.
+  Both profiles reject out-of-interval T. Texture/tensor and OEM grade remain unknown.
+
+- Prepublication N-Seebeck negative-axis origin error was corrected before push.
+  Accepted profiles are v1r1/v2r1. Verify original axis endpoints and independent
+  power-factor anchors, not only sign/conservation. All affected source PDEs were
+  rerun; incorrect-input runs remain quarantined. Constant-profile contacts were
+  reverified from actual fields with audited used dependencies; never relabel
+  wrong-input PDE results as corrected without a genuine rerun.

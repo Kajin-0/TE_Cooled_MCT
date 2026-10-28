@@ -30,6 +30,16 @@ zero drive, cold loading and ceramic-leakage sensitivity are checked. See
 [reproduction](docs/G2B_COUPLED_REPRODUCIBILITY.md). G1/G2a are preserved.
 Routing fabrication, OEM calibration and the complete package remain unvalidated.
 
+
+**G2c material qualification:** opt-in temperature-dependent profiles now retain
+original source markers, SI units and strict intervals for identified published
+hot-extruded P/N samples: default v1 covers 200–300 K; additive v2 covers 40–300 K. Local-temperature Elmer, Thomson and explicit
+resistive-transition checks are separate from OEM device validation. The 2019
+OEM curves have a reserved calibration/holdout split; no fit or grade match is
+claimed. See [G2c status](docs/PHASE1_G2C_RESULT.md),
+[source provenance](docs/G2C_MATERIAL_PROVENANCE.md) and
+[reproduction](docs/G2C_REPRODUCIBILITY.md).
+
 ## Run
 
 ```bash
