@@ -149,3 +149,20 @@ Read [materials and provenance](docs/materials_and_provenance.md). A 1-D materia
 ## Active project focus: standalone TO-66 thermoelectric multiphysics
 
 Elmer FEM + Gmsh will solve the 3D cooler and solids. OpenFOAM is optional for sealed-cavity gas convection and conjugate heat transfer only if screening warrants it. The HgCdTe detector is modeled as a compact material-and-heat-load domain (k(T,x), density, heat capacity, die attach, electrical and optical heating). There is **no active LSDDTS integration**; do not change or connect that repository without a new explicit request. See docs/OPENFOAM_FEASIBILITY.md and docs/MCT_COMPACT_THERMAL_MODEL.md.
+
+### G2d: OEM discrepancy and identifiability
+
+[Result and limitations](docs/PHASE1_G2D_RESULT.md) ·
+[Reproduction](docs/G2D_REPRODUCIBILITY.md) ·
+[Traceable evidence](fem/results/g2d_20261029)
+
+The independent calibration/holdout network audit shows exact geometry/material
+nonidentifiability (normalized Jacobian rank8/9). Three genuine 88-leg Elmer
+constant-law sensitivity points at300 K/.2 A pass numerical checks. The strict
+40..300 K source-backed300 K probe rejects an out-of-range local iterate;
+independent above300 K material tables cannot cover the cold legs or identify the
+OEM grade. **OEM-family FEM qualification remains FAILED/BLOCKED.**
+All earlier checkpoints remain intact; full-stack contacts and production device
+accuracy are not established. Run the new opt-in analysis with
+`./fem/run.sh python -m tecooledmct.g2d_analysis`; actual PDE directions use
+`./fem/run_g2b.sh python -m tecooledmct.g2d_fem`.

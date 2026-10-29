@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "files_sha256": {
+    "calibration_reserved.json": "9e870d76769851c2efbb21203de7b93fc47bcfc2117088ded64f1d3537de2af0",
+    "validation_holdout.json": "75c5b357b6e0893cd853b7015d0715bd516263c9189a72ca5644070ab31fe4e2"
+  },
+  "protected_checkpoint": "122a4172ff7661d5f3595e2ae9372afa5ddf7474",
+  "split_preserved_from_g2c": true,
+  "fit_reads_only": "calibration_reserved.json",
+  "holdout_unlock": "only after frozen_fit.json and its SHA256 are written",
+  "pde_directions_preregistered": [
+    {
+      "id": "baseline",
+      "seebeck_scale": 1.0,
+      "k_scale": 1.0,
+      "current_a": 0.2
+    },
+    {
+      "id": "seebeck_minus10",
+      "seebeck_scale": 0.9,
+      "k_scale": 1.0,
+      "current_a": 0.2
+    },
+    {
+      "id": "k_plus10",
+      "seebeck_scale": 1.0,
+      "k_scale": 1.1,
+      "current_a": 0.2
+    }
+  ],
+  "pde_point_conditions": {
+    "hot_k": 300,
+    "load_w": 0,
+    "ambient": "vacuum",
+    "profile": "original constant-law diagnostic; not measured T-dependent OEM grade"
+  },
+  "source_domain_probe": {
+    "hot_k": 300,
+    "current_a": 0.1,
+    "load_w": 0,
+    "profile": "audited G2c v2r1; strict 40..300 K guard"
+  },
+  "fit_interpretation": "Reduced-network diagnostic effective coefficients, never FEM or manufacturer-grade identification",
+  "definitions": {
+    "delta_t_k": "actual hot bath minus cold ceramic mean",
+    "current_a": "total module series current",
+    "load_w": "inward cold-face thermal load",
+    "extrema": "DeltaTmax at Qc=0; Qmax at DeltaT=0, not simultaneous"
+  },
+  "measurement_uncertainty": "Not supplied by OEM. Bounds are chart-reading limits, not standard deviations or confidence intervals."
+}

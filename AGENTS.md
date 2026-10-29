@@ -263,3 +263,33 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   rerun; incorrect-input runs remain quarantined. Constant-profile contacts were
   reverified from actual fields with audited used dependencies; never relabel
   wrong-input PDE results as corrected without a genuine rerun.
+
+## G2d OEM residual and identifiability checkpoint, 2026-10-29
+
+- Read docs/PHASE1_G2D_RESULT.md and docs/G2D_REPRODUCIBILITY.md. Preserve all
+  earlier accepted G1/G2a/G2b/G2c source/tests/evidence. g2d_data.preserve checks
+  the earlier indices including all451 G2c artifact hashes. Do not rewrite them.
+- data/g2d retains original OEM .2/.6/1.0 A calibration versus .1/.4/.8 A holdouts.
+  Only nominal300 K vacuum compares with solid-only physics; literal27 C means
+  a preserved0.15 K rounding caveat. Source-backed295 K is not an OEM comparison.
+- g2d_network/g2d_analysis are independent screening, not FEM. Calibration-only
+  vertical-reading weights avoid held-out slope leakage. A frozen fit precedes
+  scoring; discarded preliminary slope-weight attempt remains unaccepted.
+  Exact aspect*c,rho/c,k*c degeneracy and rank8/9 preclude unique identification.
+  Three-scale network fit hits k bound; it does not qualify grade or 3D accuracy.
+- g2d_fem executes the real strict-source300 K probe (rejected at300.0177887 K),
+  then three real .2 A/300 K/zero-load constant-law 88-leg diagnostics: baseline,
+  S minus10%,k plus10%. All175 cuts/current/energy gates pass on re-audited fine
+  G2b mesh; no new direction-specific refinement or full-stack contact claim.
+- g2d_budget independently reconstructs actual control-volume heat budgets.
+  scripts/audit_g2d_sources.py checks all160 original vector readings and
+  independent HP A-axis table anchors. Above300 K candidate covers298.15..573.15 K,
+  differs from HE/OEM grade and cannot cover cold legs; no stitching/extrapolation.
+- Reproduce ./fem/run.sh python -m tecooledmct.g2d_analysis and
+  ./fem/run_g2b.sh python -m tecooledmct.g2d_fem, then g2d_budget, full
+  TE_FEM_SMOKE=1 pytest -q, CLI quick and geometry_demo. Reuse pinned image/wrappers.
+  fem/report_archive_g2d.py rejects changed source/fields or failed numerical gates.
+- Scoped D1/D2 and three actual PDE directions verified; OEM qualification remains
+  FAILED/BLOCKED. Full-stack transitions, matched-grade full-range curves,
+  alternate geometry/topology meshes, loaded/high-current FEM family, mounting
+  and package/environment validation remain pending. No LSDDTS or other repo work.
