@@ -1,7 +1,20 @@
-"""Small analytic tests for reporting geometry, not additional PDE executions."""
+"""Small analytic tests for repository-only reporting tools; no PDE execution."""
+import importlib.util
+from pathlib import Path
 import numpy as np
 import pytest
-from reports.field_geometry import plane_section,section_values,node_map,cell_map
+
+# reports/ is intentionally outside the installed tecooledmct package. Load its
+# geometry module explicitly so pytest also works without the FEM PYTHONPATH.
+_spec = importlib.util.spec_from_file_location(
+    "report_geometry", Path(__file__).resolve().parents[1] / "reports/field_geometry.py"
+)
+_geometry = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_geometry)
+plane_section = _geometry.plane_section
+section_values = _geometry.section_values
+node_map = _geometry.node_map
+cell_map = _geometry.cell_map
 
 
 def test_true_tetra_section_area_and_affine_field():

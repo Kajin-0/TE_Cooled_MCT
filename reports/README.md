@@ -56,6 +56,8 @@ geometry tests passed (4 tests); the full default suite passed (80 tests, with
 8 optional solver tests skipped). CLI quick and geometry-demo checks also passed.
 These are report/regression checks; historical genuine Elmer executions remain
 the source of the illustrated fields.
+The report test imports its repository-only geometry module directly, so it also
+runs in ordinary CI without the FEM wrapper's repository `PYTHONPATH`.
 
 The report treats G3b as a **scoped checkpoint**. Fine bath-gradient errors of
 1.51–1.66% still exceed the unchanged1% gate; no report or plot repairs that
