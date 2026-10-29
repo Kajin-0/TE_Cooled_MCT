@@ -1,0 +1,360 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,booktabs,tabularx,longtable,graphicx,xcolor,caption,fancyhdr,xurl,seqsplit,hyperref}
+\usepackage[margin=22mm,headheight=14pt]{geometry}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue!45!black,pdftitle={HgCdTe Engineering Assessment: Archived Thermoelectric FEM},pdfauthor={TE Cooled MCT Project},pdfsubject={Scoped numerical assessment; full G3b qualification incomplete}}
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=15
+\providecommand{\reportdata}{reports/generated}
+\input{\reportdata/numerics.tex}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+\setlength{\tabcolsep}{5pt}
+\captionsetup{font=small,labelfont=bf,justification=justified,singlelinecheck=false}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small TE Cooled MCT: Engineering Assessment}\fancyhead[R]{\small Archived FEM evidence}\fancyfoot[C]{\thepage}
+\newcommand{\figfile}[2]{\includegraphics[width=\linewidth,height=#2,keepaspectratio]{\reportdata/figures/#1}}
+\DeclareRobustCommand{\Digest}[1]{\texttt{\expandafter\seqsplit\expandafter{#1}}}
+\newcommand{\MeshSource}{\par\scriptsize Geometry: operator\_h0p1, archive \texttt{\ArchiveShort}. Mesh SHA-256: \Digest{\MeshDigest}.}
+\newcommand{\FieldSource}{\par\scriptsize Case: nitrogen\_patch1; $I=0.1$ A, $T_b=300$ K, $p=100$ Pa N$_2$, detector deposition $2$ mW. Archive \texttt{\ArchiveShort}. Raw VTU SHA-256: \Digest{\RawDigest}.}
+\newcommand{\VectorSource}{\FieldSource\par\scriptsize Derived VTU SHA-256: \Digest{\DerivedDigest}.}
+\newcommand{\figsection}[3]{\begin{figure}[!ht]\centering\figfile{#1}{#2}\caption{#3}\end{figure}}
+\begin{document}
+\thispagestyle{empty}
+{\large TE Cooled MCT Project\par}
+\vspace{12mm}
+{\LARGE\bfseries Thermoelectric HgCdTe Detector\par}
+\vspace{3mm}
+{\Large Mesh-Based Engineering Assessment\par}
+\vspace{4mm}
+{\large Nine-pin TO-66 construction, coupled solid FEM,\par surface radiation and rarefied gas-film paths\par}
+\vspace{9mm}
+Revision 1\hfill 29 October 2026
+\par\rule{\linewidth}{.5pt}
+\textbf{Qualification status: verified scoped checkpoint; full G3b gate D is not qualified.}
+Three converged fine-mesh executions exceed the unchanged independent external-bath
+raw-gradient flux gate of $1\%$. Their errors are $1.51$--$1.66\%$. Conservative
+reaction balance and stable temperatures do not override this failure.
+
+\textbf{Abstract.}
+This assessment rebuilds scientific illustrations directly from revision-controlled
+FEM meshes and actual archived Elmer solution fields. The selected construction
+contains 215 material domains, 88 thermoelectric legs and nine insulated feedthrough
+instances. Ten coarse integrated cases satisfy their per-case numerical checks.
+Two independent conducting-plate Elmer references and 84 full opt-in tests support
+the scoped implementation. The principal illustrations use the accepted
+\texttt{nitrogen\_patch1} execution: \NodeCount\ nodes, \TetCount\ tetrahedra,
+907 exchange patches, a 300 K external header bath, 0.1 A TEC current and 2 mW
+uniform detector deposition at 100 Pa nitrogen. Its die volume mean is
+\FieldDie\ K. This is a numerical result for declared hypotheses, not a measured
+or manufacturer-accurate detector temperature.
+
+The report separates manufactured facts, user-reported hardware, inferred
+construction and verified numerical records. In particular, pre-solder is
+physically present according to the user; the FEM currently substitutes a generic
+50 $\mu$m, $k=2$ W m$^{-1}$ K$^{-1}$ mount. It does not resolve identified metallic
+pre-solder. Spectral window transmission, a thermistor, additional carriers and
+measured package interfaces remain absent.
+
+\vfill
+{\small Archive baseline: \Digest{\ArchiveCommit}.\par
+Generator content digest: \Digest{\GeneratorDigest}.\par
+Conventional scientific typography is used. This project report is not issued,
+reviewed or endorsed by NIST; no NIST logo or branding is used.}
+\clearpage
+{\small\setlength{\parskip}{0pt}\tableofcontents}
+\vspace{8mm}
+\section*{Evidence and interpretation}
+\addcontentsline{toc}{section}{Evidence and interpretation}
+All geometry illustrations come from archived FEM data, not a CAD photograph,
+conceptual drawing or stale pre-Revision-6 rendering. Approved Revision 6 is a
+separate tabulated reference. This build executes neither a solver nor a mesh generator.
+
+Raw and derived VTU nodes are matched bijectively by KD-tree within $10^{-12}$ m;
+actual tetrahedron connectivity and body IDs are checked independently of ordering.
+Derived $T,\phi$ agree with raw fields. Independently reconstructed $\mathbf j$
+and $\mathbf q$ have maximum normalized discrepancies
+\texttt{\JCheckError} and \texttt{\QCheckError}. Volume means and terminal voltage
+reproduce archived records.
+
+``Accepted'' and ``verified'' refer to stated numerical gates, not identified
+material grades, empirical confidence or OEM/device validation. Every unaccepted
+fine execution retains that status throughout this assessment.
+\clearpage
+\section{Actual full-package mesh}
+The conformal mesh includes the inherited 189-domain TEC, header, finite-volume
+mount and attach proxies, MCT die, Au pads, nine glass/pin pairs and an attached
+cap/window. The conductor netlist is a unique 181-vertex, 180-edge two-terminal
+path through all 88 legs. Material interfaces and component connectivity are
+audited in the baseline; the visual Revision 6 assembly is not the FEM master.
+\figsection{full_mesh.png}{138mm}{Actual exterior triangular boundary mesh of the complete solved construction. All displayed triangles belong to the archived tetrahedral mesh. Opaque cap surfaces hide the TEC, as they physically would in this view. Axial hybrid Au/Cu links are not meshed and are not invented as solid wire arcs. \MeshSource}
+The assumed flange envelope is 31.5 by 17.5 mm; the cap outside diameter is
+15.2 mm and its height above the header is 8.6 mm. These family dimensions do
+not identify exact manufactured tooling or a numbered electrical pinout.
+\clearpage
+\section{Actual sliced solids and internal construction}
+The following view removes the negative-$y$ halfspace from the actual mesh.
+Intersection polygons close the cut solids at $y=0$; actual voids remain voids.
+Display clipping changes neither the archived PDE nor its boundary conditions.
+\figsection{package_cutaway.png}{150mm}{True halfspace cutaway of the archived package, closed with actual tetrahedron--plane intersection triangles. Material colours identify solids; they are not temperature values. No conceptual CAD surface or interpolated gas volume is introduced. \MeshSource}
+The external header underside is the only prescribed thermal bath. Pin tops,
+cap, window and TEC ceramics remain solved unknowns. Exterior cap/window and
+isolated pin ends are adiabatic in this checkpoint. Cap/header flange and
+window/rim contacts impose ideal thermal continuity.
+\clearpage
+\section{TEC-scale mesh detail}
+\figsection{tec_cutaway.png}{156mm}{Actual TEC, mount, attach and die solids in a $y\geq0$ cutaway. This union is selected from the original material domains; the mount underside is its real interface with the omitted header. The 28/12/4 couple allocation, buried routes and support construction are inferred. They are not verified OEM artwork. \MeshSource}
+The stack retains 6.4 mm hot and 2.4 mm cold ceramic widths with a nominal
+3.8 mm height. Two heavier TEC supply leads and two fine Au bonds are reduced
+axial thermal operators. Their arcs and distributed gas/radiation exchange are
+absent. Exposed external interstage jumper wires are not introduced.
+\clearpage
+\section{Exact tetrahedral cross-section}
+\figsection{section_mesh.pdf}{155mm}{Actual $y=0$ tetrahedral cross-section, enlarged around the TEC and detector. The plotted \CutTriangles\ section triangles arise from exact mesh-edge intersections; the plane intersects \CutLegs\ of the 88 leg domains. It does not depict every leg in one plane. At coincident faces, a positive-side trace is preferred. No bounding-box rectangles or Delaunay triangulation across voids is used. \MeshSource}
+At this plane, the upper-stage leg rows lie off the section; the intervening
+white regions are actual voids. The 3D cutaway shows all three stages.
+Each cut vertex carries its source tetrahedron's P1 barycentric weights.
+The resulting explicit triangle connectivity preserves gas spaces and contact
+geometry. The same cross-section is used for the scalar and vector figures that
+follow, so registration between mesh and field views is exact.
+\clearpage
+\section{Actual temperature field}
+\figsection{temperature_section.pdf}{156mm}{Temperature contours from actual solved nodal temperatures on the exact solid cross-section. P1 interpolation is confined to each intersected tetrahedron; white regions are unmeshed voids. Colour bands do not imply an independently measured temperature uncertainty. \FieldSource}
+The selected 907-patch case gives a die volume mean of \FieldDie\ K and a cold
+ceramic volume mean of \FieldCold\ K. The difference from the 442-patch nitrogen
+case, 268.878638 K die mean, is a surface-resolution effect at identical bulk
+mesh, not a change in pressure or material calibration.
+\clearpage
+\section{Actual three-dimensional thermal field}
+\figsection{temperature_3d.png}{150mm}{Actual solved temperature on the true $y\geq0$ TEC/attach/MCT cutaway. Each displayed triangle is coloured by its mean P1 nodal temperature; cut-face values are exact edge interpolants. This view exposes all three stages without filling the voids that occur in a central planar section. The dark MCT is the sourced-composition thermal example, not a calibrated manufactured detector. \FieldSource}
+This is a display cut of the original solved construction. No hidden body is
+removed from the physical model and no new temperature boundary is imposed.
+Unmeshed axial wires and reduced gas/radiation operators are represented in the
+solver budget, not invented as resolved geometric features.
+\clearpage
+\section{Electric potential and constitutive equations}
+For the sign convention used in the archived verification,
+\begin{align}
+\mathbf E&=-\nabla\phi,&
+\mathbf j&=\sigma_e(\mathbf E-S\nabla T),& \nabla\!\cdot\mathbf j&=0,\label{eq:j}\\
+\mathbf q&=-k\nabla T+ST\mathbf j,&
+\nabla\!\cdot\mathbf q&=\mathbf j\!\cdot\mathbf E+q'''_{\rm det}.\label{eq:q}
+\end{align}
+Here $\mathbf j\cdot\mathbf E$ is electrical work density; it should not be
+confused with the irreversible Joule density $|\mathbf j|^2/\sigma_e$.
+The selected TEC uses constant mixed verification coefficients, not an
+identified OEM $S(T),\sigma_e(T),k(T)$ dataset.
+\figsection{potential_section.pdf}{119mm}{Actual potential on the P/N/Cu conductor cross-section only. Grey solids are excluded from electrical interpretation. The TEC terminal difference is \FieldVoltage\ V. Tiny package conductivity defines a computational passive extension, not physical metal conductivity or detector carrier transport. \FieldSource}
+\clearpage
+\section{Actual current density}
+\figsection{current_section.pdf}{156mm}{Magnitude of actual cell-mean current density on P/N/Cu domains. Arrows show the direction of its in-plane projection only; magnitude is encoded logarithmically. Non-conducting display regions are grey, not artificial current paths. Local sharp-corner peaks are not claimed converged. \VectorSource}
+All 175 driven interior current cuts in accepted cases meet the $0.5\%$ gate;
+zero-current verification uses an absolute 1 $\mu$A limit. Terminal reactions,
+interior cuts and raw terminal-corner gradients are different diagnostics.
+Global/free current residual limits remain 1 $\mu$A. Package spurious Joule heat
+is below 1 nW, with a separate 100-fold package-conductivity sensitivity.
+\clearpage
+\section{Actual total heat flux}
+\figsection{heat_section.pdf}{156mm}{Magnitude of actual archived cell-mean total heat flux, including $ST\mathbf j$ in thermoelectric material. Arrows show projected direction only. Values below 1 W m$^{-2}$ are grey. The plot is a piecewise cell-mean derived field checked against raw $T,\phi$, not a recovered boundary flux or a gas CFD field. Local peaks do not establish flux convergence. \VectorSource}
+MCT heat is deposited over the actual die volume: 1.5 mW prescribed bias power
+plus 0.5 mW thermally absorbed optical power. No second detector Joule term is
+added. Heat capacity placeholders in the steady SIF do not define a calibrated
+transient model. The failed independent bath-gradient check remains relevant
+even where a temperature plot appears smooth.
+\clearpage
+\section{Coarse operating-point comparisons}
+\figsection{operating_points.pdf}{95mm}{Actual accepted coarse operating points at 0.1 A, 300 K external header bath and 2 mW detector deposition. Exchange-enabled rows use the 442-patch operator; nitrogen, argon and krypton are pure-gas examples at 100 Pa. The final window sensitivity is vacuum with internal grey emissivity 0.8. Archive \texttt{\ArchiveShort}; source records are enumerated in \texttt{report\_inputs.json}.}
+\begin{table}[!ht]\centering\small
+\caption{Accepted coarse cases. Voltages are across the TEC, excluding Cu lead series resistance.}
+\begin{tabular}{lrrrr}\toprule
+Case & Cold (K) & Die mean (K) & TEC (V) & Bath error (\%)\\\midrule
+\OperatingRows
+\bottomrule\end{tabular}\end{table}
+The preserved G3a fine result is separate: die \GThreeADie\ K and cold ceramic
+\GThreeACold\ K. It has a different 199-domain, two-pin geometry without the
+G3b enclosure mechanisms. It must not be merged into the G3b solution or treated
+as an experimental holdout. Fixed-current comparisons do not determine minimum
+input power at a fixed detector target; warmer parasitic-loaded cases can have
+lower Seebeck voltage.
+\clearpage
+\section{Conservative external and internal heat budgets}
+\begin{equation}
+Q_{\rm header}=I V_{\rm TEC}+P_{\rm bias}+P_{\rm optical}
++\sum_{\ell\in\mathrm{Cu\ leads}} I^2R_\ell .\label{eq:budget}
+\end{equation}
+In the representative accepted 907-patch case, $Q_{\rm header}=\HeaderPower$ mW,
+$I V_{\rm TEC}=\TECPower$ mW and lead Joule heat is \LeadJoule\ mW. Detector
+deposition is 2 mW. The conservative global energy residual is
+\texttt{\EnergyResidual} W. This reaction balance is distinct from raw-gradient accuracy.
+\figsection{heat_budget.pdf}{95mm}{Actual accepted nitrogen\_patch1 energy records. Panel (a) contains external electrical/deposited powers and the conservative bath reaction. Panel (b) contains selected signed internal transfers into the die/attach/pads/cold-ceramic group; other TEC surfaces are excluded from that panel. No internal exchange is counted again as external power. \FieldSource}
+\begin{table}[!ht]\centering\small\caption{Signed internal powers into solid groups (mW), nitrogen\_patch1.}
+\begin{tabular}{lrrrrr}\toprule
+Group & Radiation & Gas & Au & Cu axial & Cu Joule\\\midrule
+\BudgetRows
+\bottomrule\end{tabular}\end{table}
+For each axial wire or lead, $G=kA/L$ and $R=\rho_e L/A$; endpoint powers are
+$\pm G(T_w-T_c)+I^2R/2$ for a Cu lead. Au bonds transfer equal/opposite heat
+without modeled detector current. Cap/flange heat inferred from its surface
+budget is conservative but is not an independent cap-gradient cut measurement.
+Whole-package horizontal control volumes include cap, pins and nonlocal sources;
+they are not isolated textbook TEC-stage balances.
+\clearpage
+\section{Radiation and pressure-dependent gas model}
+Diffuse-grey enclosure radiosity is solved nonlocally:
+\begin{align}
+J_i^{\rm rad}&=\epsilon_i\sigma_{\rm SB}T_i^4+
+ (1-\epsilon_i)\sum_j F_{ij}J_j^{\rm rad},\\
+P_i^{\rm rad,in}&=-A_i\left(J_i^{\rm rad}-\sum_jF_{ij}J_j^{\rm rad}\right),\\
+\sum_jF_{ij}&=1,& A_iF_{ij}&=A_jF_{ji}.
+\end{align}
+Deterministic cosine/area rays use first-hit occlusion and actual audited cavity
+facets. Symmetric area balancing preserves visibility zeros. Balanced closure
+below $10^{-10}$ and reciprocal area error below $10^{-15}$ m$^2$ establish
+conservation, not exact view factors. The 907-patch raw reciprocity L1/area is
+about 0.213 and raw weighted closure error about 0.0136; finite ray and patch
+errors remain material numerical limitations.
+
+The gas-film operator is a reduced surface network:
+\begin{align}
+G_{ij}&=\frac{k_g(\overline T_{ij})W_{ij}}
+ {L_{ij}+2\ell_T},&P_i^{\rm gas,in}&=\sum_jG_{ij}(T_j-T_i),\\
+\lambda&=\frac{\mu}{p}\sqrt{\frac{\pi R_g T}{2}},&
+\ell_T&=\frac{2-\alpha}{\alpha}\frac{2\gamma}{\gamma+1}\frac{\lambda}{\mathrm{Pr}},\\
+\mathrm{Kn}&=\lambda/L,&\mu&=\frac{k_g}{C_p+1.25R_g}.
+\end{align}
+$W_{ij}=A_iF_{ij}$ is symmetric; $L_{ij}$ is a harmonic normal-projected first-hit
+flight gap. The model recovers the parallel-plane continuum and Kennard
+free-molecular limits, with exactly zero gas exchange at $p=0$. Eucken viscosity,
+constant ideal-gas $C_p,\gamma$ and accommodation $\alpha=0.8$ are closures, not
+measured package properties. This is not a gas-volume Laplace solve or CFD.
+\begin{table}[!ht]\centering\caption{Ingested dilute-gas conductivity (W m$^{-1}$ K$^{-1}$), NIST Huber [\ref{ref:nist}].}
+\begin{tabular}{lrrr}\toprule Gas & 200 K & 300 K & 400 K\\\midrule
+N$_2$ & .0183 & .0259 & .0326\\ Ar & .0124 & .0177 & .0224\\ Kr & .0064 & .0095 & .0122\\\bottomrule\end{tabular}
+\end{table}
+Interpolation fails outside 200--400 K. Bounding Rayleigh calculations at 100 Pa
+are below one for 1, 3, 8 and 14.2 mm gaps at 250 K with a 100 K temperature
+difference. Atmospheric krypton at 3 mm flags further convection assessment;
+1708 is a horizontal heated-below reference, not a universal cavity threshold.
+
+The thermal window is internally opaque grey ($\tau=0$) and externally adiabatic.
+Spectral LWIR transmission, coatings and ambient radiance are not modeled.
+The prescribed absorbed optical heat is not a window-transmission calculation.
+\clearpage
+\section{Verification verdict: full G3b remains unqualified}
+\figsection{qualification.pdf}{102mm}{Independent external-header raw-gradient bath flux check. Only the coarse representative is accepted. The three fine solutions converge and pass other gates, yet exceed the unchanged $1\%$ criterion. Temperature and voltage insensitivity do not waive this failure. Archive \texttt{\ArchiveShort}; rejected fields remain quarantined.}
+\begin{table}[!ht]\centering\small\caption{Converged but unaccepted fine executions.}
+\begin{tabular}{lrrr}\toprule Case & Nodes & Tetrahedra & Bath error (\%)\\\midrule
+\FailureRows
+\bottomrule\end{tabular}\end{table}
+The representative accepted case has bath-gradient error \FieldBathError\%.
+Fine-mesh localization identified the largest discrepancy near the cold-return
+feedthrough. Header-bath edge refinement and a separate glass/pin/header junction
+study were insufficient. The cause is not fully resolved. No tolerance was
+lowered and conservative reactions were not substituted for the independent test.
+
+The first radiation-plate startup test failed; a corrected iteration startup has
+two genuine Elmer regressions. Exact earlier numerical-source versions and the
+unmixed final physical residuals are retained. Divergence, a timeout, invalid
+cross-mesh potential interpolation and an over-budget mesh proposal remain
+unaccepted evidence, not additional successful executions.
+\clearpage
+\section{Revision 6 alignment and hardware mismatches}
+The approved Revision 6 registry and audit [\ref{ref:rev6}] are a visual reference,
+not the solved mesh. No pre-Revision-6 image is used. The following comparison
+keeps physical hardware statements separate from the numerical construction.
+\begin{table}[!ht]\centering\small\caption{Reference versus actual G3b FEM representation.}
+\begin{tabularx}{\linewidth}{p{29mm}XX}\toprule
+Feature & Approved reference / physical information & Archived G3b FEM\\\midrule
+Family envelope & 31.5 by 17.5 mm header; cap diameter 15.2 mm, height 8.6 mm & Assumed elliptical header and cylindrical cap with the same nominal envelope\\
+TEC & 44 couples / 88 legs; 6.4 and 2.4 mm ceramics; 3.8 mm height & Full 88-leg connected model; 28/12/4 split and buried artwork inferred\\
+Nine feedthroughs & Revision 6 depicts a C arrangement; six functional terminals & Nine generic unnumbered instances; pitch-circle-based positions, not verified C arrangement or pinout\\
+Pin diameter & Primary family drawing: 0.76 mm & 0.44 mm chosen diameter; glass radius 0.55 mm\\
+TEC supply leads & Revision 6 illustrative tinned Cu diameter 0.28 mm & Hybrid Cu diameter 0.202 mm, length 8 mm; constant $k,\rho_e$ proxies\\
+Pre-solder & \textbf{Physically present according to the user}; alloy, thickness and measured transport not qualified & Generic 50 $\mu$m, $k=2$ W m$^{-1}$ K$^{-1}$ mount; not identified metallic pre-solder\\
+Internal solder & OEM Sn--Sb designation; contact artwork not verified & Full G3b interfaces ideal; separate earlier contact studies do not qualify stack solder\\
+Detector / carrier & 1 mm active-area reference; actual supporting carrier stack not established & 1 mm square, 120 $\mu$m MCT with 80 $\mu$m attach; extra carriers and thermistor omitted\\
+Window & 5.9 mm nominal clear diameter; real optical coating data absent & Attached ZnSe candidate; frozen $k=18$ at 298 K, opaque-grey internal thermal hypothesis\\
+CAD gaps & Visual 15/10/6 $\mu$m gaps are not defined FEM contacts & Conformal reconstructed solids; those artificial gaps are not imported\\\bottomrule
+\end{tabularx}\end{table}
+The mount proxy has $R''=t/k=25\times10^{-6}$ m$^2$ K W$^{-1}$, before spatial
+spreading. Physical pre-solder presence does not identify this proxy as a measured
+metallic joint. A grade- and geometry-qualified replacement requires new physics
+verification; this reporting task does not alter the accepted baseline.
+\clearpage
+\section{Actual feedthrough coordinates and material provenance}
+\begin{table}[!ht]\centering\caption{Actual FEM pin-centre coordinates. Instance IDs are construction labels, not OEM electrical pin numbers.}
+\begin{tabular}{rrr}\toprule Instance & $x$ (mm) & $y$ (mm)\\\midrule
+\PinRows
+\bottomrule\end{tabular}\end{table}
+All nine centres lie on a 10.8 mm pitch circle; the first two retain the earlier
+G3a positions. The nonuniform selected angular pattern is not a measured C-layout.
+Each pin is a separate solid surrounded by a separate glass seal.
+\begin{table}[!ht]\centering\small\caption{Source and assumption classification for steady thermal inputs.}
+\begin{tabularx}{\linewidth}{p{26mm}XX}\toprule
+Input & Value / coverage & Classification\\\midrule
+MCT & Hg$_{0.71}$Cd$_{0.29}$Te; $k=2.41,1.61,.973,.790$ at 90,148,298,400 K & Primary Table 2 example [\ref{ref:mct}], local bounded interpolation; actual detector composition unidentified\\
+P/N TEC & Constant mixed $S,\sigma_e,k$ verification law & Not OEM-grade matched or temperature-dependent device qualification\\
+Kovar / Au & Frozen $k=17.3/315$ W m$^{-1}$ K$^{-1}$ & Inherited proxies; plating and low-temperature grade dependence unmeasured\\
+Glass / mount / attach & $k=1/2/1$ W m$^{-1}$ K$^{-1}$ & Unmeasured construction hypotheses\\
+Cap / window & $k=15/18$ W m$^{-1}$ K$^{-1}$ & Stainless-like cap hypothesis; ZnSe vendor room-temperature proxy [\ref{ref:znse}]\\
+Gas & NIST dilute $k(T)$, 200--400 K & Source-backed property; film topology and accommodation remain approximate\\
+Emissivity & P/N .3; alumina/MCT/glass/mount/attach .8; Cu/Au .05; Kovar/pins .1; cap .2; window .1/.8 & Grey hypotheses, not identified coating measurements\\\bottomrule
+\end{tabularx}\end{table}
+The MCT source reports conductivity uncertainty of about 7--14\%; it is not a
+package-temperature confidence interval. No composition interpolation or material
+stitching is introduced. Earlier OEM-family FEM qualification remains failed;
+new pictures do not change that status.
+\clearpage
+\section{Reproducibility and report validation}
+The build reads the immutable G3b archive, G3a summary, source registry and approved
+Revision 6 records. Baseline source, document and artifact hashes are checked
+before figure generation. Compressed fields are checked against both compressed
+and uncompressed digests. Actual node and cell correspondences are validated
+before any contour is drawn. A small analytic geometry test checks intersection
+area, coplanar deduplication, affine P1 interpolation and permuted-node mapping.
+
+\begin{verbatim}
+python3 reports/build_engineering_report.py
+./fem/run.sh pytest -q tests/test_engineering_report.py
+./fem/run.sh pytest -q
+./fem/run.sh python -m tecooledmct.cli --quick \
+    --out outputs/report-quick
+./fem/run.sh python -m tecooledmct.geometry_demo \
+    --out outputs/report-pellet
+\end{verbatim}
+No physics rerun is required or claimed. The host performs LaTeX compilation and
+MuPDF render/text checks; the unchanged pinned image performs scientific-array
+postprocessing. Report validation rejects missing figures, nonfinite field data,
+LaTeX overflow/undefined references, blank or clipped pages, and unintended source
+changes. Raster figures are generated at 600 dpi; section figures retain vector
+geometry. Rendered pages are inspected separately from numerical checks.
+
+\begin{table}[!ht]\centering\small\caption{Exact principal input digests; full path/digest records are machine-readable.}
+\begin{tabularx}{\linewidth}{p{29mm}X}\toprule
+Record & SHA-256\\\midrule
+Mesh NPZ & \Digest{\MeshDigest}\\
+Raw $T,\phi$ VTU & \Digest{\RawDigest}\\
+Derived $T,\phi,\mathbf j,\mathbf q$ VTU & \Digest{\DerivedDigest}\\\bottomrule
+\end{tabularx}\end{table}
+\texttt{report\_inputs.json} records source/field validation, generator digests,
+section definition, figure hashes and the unchanged-baseline audit.
+\texttt{report\_validation.json} records PDF/render checks.
+The PDF and figures are report artifacts; no new solution accuracy is implied.
+\clearpage
+\section*{Sources and audit trail}
+\addcontentsline{toc}{section}{Sources and audit trail}
+\begin{enumerate}
+\item\label{ref:nist} M. L. Huber, \emph{Thermal Conductivity of Gases}, NIST/CRC, 2019. Selected dilute-gas table values only. Original PDF SHA-256 is recorded in \texttt{data/g3b/source\_review.json}.\par\url{https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=926438}
+\item\label{ref:mct} Heckman, Gonzalez and Guha, 2008, primary Table 2, sourced $x=.29$ example; DOI 10.1364/AO.47.000578.\par\url{https://opg.optica.org/ao/abstract.cfm?uri=ao-47-4-578}
+\item\label{ref:znse} Crystran, Zinc Selenide (ZnSe), vendor thermal-conductivity proxy at 298 K.\par\url{https://www.crystran.co.uk/optical-materials/zinc-selenide-znse/}
+\item VIGO Photonics, TO-66 nine-pin family technical drawing; envelope reference, not identified tooling or pinout.\par\url{https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf}
+\item TEC Microsystems, 3MC04-044-05 datasheet, 2019; limiting values occur at distinct conditions.\par\url{https://www.tec-microsystems.com/Download/Datasheets/Thermoelectric%20Coolers/MC04%20Series/3MC04-044-05_Datasheet_2019.pdf}
+\item INL BISON, gas-gap/plenum theory and temperature-jump accommodation models; this report's cavity operator remains a reduction.\par\url{https://mooseframework.inl.gov/bison/theory/gap_plenum_models.html}
+\item\label{ref:rev6} Approved project Revision 6 records: \path{geometry/revision6/engineering_assumptions.json} and \path{docs/rev6_cad_audit.md}. No CAD image is imported.
+\item User report-rebuild work order, 29 October 2026: physical pre-solder presence is user-reported; no measured alloy or transport properties are supplied.
+\item Baseline source/evidence: \path{fem/results/g3b_checkpoint_20261029}, \path{fem/results/g3a_20261029}, \path{data/g3b}. Full G3b qualification remains incomplete. Elmer release 26.2.1 source: \Digest{a19504ac53ec222e3355e182b08f2ff280c2203a}; Gmsh 4.13.1.
+\end{enumerate}
+The full input archive remains authoritative. Accepted and unaccepted records are
+kept separately. All G1--G3b implementation/evidence and LSDDTS are preserved.
+\end{document}
