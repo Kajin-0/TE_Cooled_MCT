@@ -1,0 +1,19 @@
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/fem_g3a_geometry.py", line 145, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,default=Path('outputs/fem-g3a/mesh_0'));p.add_argument('--level',type=int,default=0);a=p.parse_args();generate(a.out.resolve(),a.level)
+                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/fem_g3a_geometry.py", line 120, in generate
+    if not math.isclose(vv,body['expected_volume_m3'],rel_tol=.01 if body.get('package') else 1e-7):raise ValueError('Tetra volume mismatch '+body['name'])
+                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Tetra volume mismatch pin_0

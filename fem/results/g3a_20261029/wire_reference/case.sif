@@ -1,0 +1,35 @@
+Check Keywords Warn
+Header
+ Mesh DB "/work/outputs/fem-g3a/wire_reference" "."
+End
+Simulation
+ Coordinate System = Cartesian 1D
+ Simulation Type = Steady State
+ Steady State Max Iterations = 1
+ Post File = "fields.vtu"
+End
+Body 1
+ Equation = 1
+ Material = 1
+End
+Equation 1
+ Active Solvers(1) = 1
+End
+Solver 1
+ Equation = "Heat Equation"
+ Variable = Temperature
+ Procedure = "HeatSolve" "HeatSolver"
+ Linear System Solver = Direct
+ Linear System Direct Method = UMFPACK
+End
+Material 1
+ Heat Conductivity = Real 1.5462526341887264e-07
+End
+Boundary Condition 1
+ Target Boundaries(1) = 1
+ Heat Flux = Real 0.001
+End
+Boundary Condition 2
+ Target Boundaries(1) = 2
+ Temperature = Real 260
+End

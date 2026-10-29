@@ -1,0 +1,145 @@
+"""Independent conformal OCC package around unchanged G2b box construction."""
+import argparse,json,math,time
+from pathlib import Path
+import numpy as np
+from .g2d_data import ROOT,sha,dump
+from .fem_g3a_data import registry,preserve
+from .fem_g2b_connected import connected_manifest,orthogonal_audit
+from .fem_g2a import mesh_adjacency,validate_path
+from .fem_g1 import tetra_geometry
+from .fem_g2b_connectivity import connectivity
+from .fem_g1_run import execute
+from .fem_g2c_mesh import verify_elmer_tetra_mapping
+
+
+def generate(out,level=0):
+    import gmsh,meshio
+    preserve();p=registry();m=connected_manifest();orthogonal_audit(m);original=len(m['bodies']);by={b['id']:b for b in m['bodies']};contacts={tuple(c['bodies']):dict(c) for c in m['contacts']}
+    mount=p['hot_mount'];header=p['header'];pins=p['feedthroughs'];da=p['die_attach'];die=p['mct'];w=p['wires']
+    zh=m['hot_z_m']-mount['thickness_m'];zb=zh-header['thickness_m'];zc=m['cold_z_m'];m['package_registry']=p;m['original_TEC_domains']=original;m['header_top_m']=zh;m['header_bottom_m']=zb
+    out.mkdir(parents=True,exist_ok=True);started=time.monotonic();gmsh.initialize();gmsh.logger.start()
+    try:
+        gmsh.option.setNumber('General.Terminal',0);gmsh.option.setNumber('General.NumThreads',1);gmsh.model.add('G3a_conformal_package')
+        occ=gmsh.model.occ
+        def fused(boxes):
+            q=[(3,occ.addBox(*b)) for b in boxes];return q if len(q)==1 else occ.fuse(q[:1],q[1:])[0]
+        created={b['id']:fused(b['boxes_m']) for b in m['bodies']};links=[v for i in m['interstage_links'] for v in created[i]]
+        for b in m['bodies']:
+            if b['material']=='Alumina':created[b['id']]=occ.cut(created[b['id']],links,removeTool=False)[0]
+        def add(name,material,kind,shapes,volume,box=None):
+            bid=len(m['bodies'])+1;b={'id':bid,'name':name,'material':material,'kind':kind,'expected_volume_m3':volume,'package':True}
+            if box:b['box_m']=box
+            m['bodies'].append(b);created[bid]=shapes;return bid
+        def box(name,material,kind,b):return add(name,material,kind,[(3,occ.addBox(*b))],float(np.prod(b[3:])),b)
+        a,b=header['ellipse_semiaxes_m'];h=header['thickness_m'];disk=occ.addDisk(0,0,zb,a,b);shape=occ.extrude([(2,disk)],0,0,h);hs=[q for q in shape if q[0]==3]
+        holes=[(3,occ.addCylinder(x,0,zb,0,0,h,header['mount_hole_radius_m'])) for x in header['mount_hole_centers_x_m']]
+        holes +=[(3,occ.addCylinder(x,0,zb,0,0,h,pins['glass_radius_m'])) for x in pins['centers_x_m']]
+        hs=occ.cut(hs,holes)[0];hid=add('Kovar_header','Kovar','header',hs,math.pi*a*b*h-2*math.pi*h*(header['mount_hole_radius_m']**2+pins['glass_radius_m']**2))
+        mid=box('hot_mount','Mount','hot_mount',[-.0032,-.0032,zh,.0064,.0064,mount['thickness_m']]);contacts[tuple(sorted((hid,mid)))]={'bodies':sorted((hid,mid)),'area_m2':.0064**2};contacts[tuple(sorted((1,mid)))]={'bodies':sorted((1,mid)),'area_m2':.0064**2}
+        did=box('die_attach','Attach','die_attach',[-da['width_m']/2,-da['width_m']/2,zc,da['width_m'],da['width_m'],da['thickness_m']]);contacts[(4,did)]={'bodies':[4,did],'area_m2':da['width_m']**2}
+        dm=[-die['width_m']/2,-die['width_m']/2,zc+da['thickness_m'],die['width_m'],die['width_m'],die['thickness_m']]
+        mct=box('MCT_x029','MCT','die',dm);contacts[(did,mct)]={'bodies':[did,mct],'area_m2':die['width_m']**2};m['mct_body']=mct;m['wire_endpoints']=[]
+        for i,x in enumerate(pins['centers_x_m']):
+            ro,ri=pins['glass_radius_m'],pins['pin_radius_m'];outer=occ.addCylinder(x,0,zb,0,0,h,ro);inner=occ.addCylinder(x,0,zb,0,0,h,ri);glass=occ.cut([(3,outer)],[(3,inner)])[0]
+            gi=add(f'glass_{i}','Glass','glass',glass,math.pi*(ro**2-ri**2)*h)
+            lp=h+pins['pin_above_header_m']+pins['pin_below_header_m'];pi=add(f'pin_{i}','Pin','pin',[(3,occ.addCylinder(x,0,zb-pins['pin_below_header_m'],0,0,lp,ri))],math.pi*ri**2*lp)
+            contacts[tuple(sorted((hid,gi)))]={'bodies':sorted((hid,gi)),'area_m2':2*math.pi*ro*h,'curved':True}
+            contacts[(gi,pi)]={'bodies':[gi,pi],'area_m2':2*math.pi*ri*h,'curved':True}
+            pw=w['pad_width_m'];px=w['pad_centers_x_m'][i];pa=box(f'Au_die_pad_{i}','Au','bond_pad',[px-pw/2,-pw/2,dm[2]+dm[5],pw,pw,w['pad_thickness_m']]);contacts[(mct,pa)]={'bodies':[mct,pa],'area_m2':pw**2}
+            m['wire_endpoints'].append({'pin_body':pi,'pad_body':pa,'pin_tag':200+2*i,'pad_tag':201+2*i,'pin_top_z_m':zh+pins['pin_above_header_m'],'pad_top_z_m':dm[2]+dm[5]+w['pad_thickness_m']})
+        objects=[];owners=[]
+        for bid,shapes in created.items():objects+=shapes;owners +=[bid]*len(shapes)
+        _,mapping=occ.fragment(objects[:1],objects[1:]);occ.synchronize();owner={};groups={b['id']:set() for b in m['bodies']}
+        for bid,shapes in zip(owners,mapping):
+            for dim,tag in shapes:
+                if dim!=3:continue
+                if tag in owner and owner[tag]!=bid:raise ValueError('Overlapping material solids')
+                owner[tag]=bid;groups[bid].add(tag)
+        for body in m['bodies']:
+            mass=sum(occ.getMass(3,v) for v in groups[body['id']])
+            if not math.isclose(mass,body['expected_volume_m3'],rel_tol=1e-6):raise ValueError('OCC exact-volume mismatch '+body['name'])
+            gmsh.model.addPhysicalGroup(3,sorted(groups[body['id']]),body['id'],body['name'])
+        for j,c in enumerate(sorted(contacts.values(),key=lambda c:c['bodies']),1001):c['boundary_id']=j
+        m['contacts']=list(contacts.values());surface_groups={};actual_contact={}
+        for _,s in gmsh.model.getEntities(2):
+            up,_=gmsh.model.getAdjacencies(2,s);pair=tuple(sorted({owner[int(v)] for v in up}));center=occ.getCenterOfMass(2,s)
+            if len(pair)==2:
+                if pair not in contacts:raise ValueError('Unexpected solid contact '+str(pair))
+                tag=contacts[pair]['boundary_id'];actual_contact[pair]=actual_contact.get(pair,0)+occ.getMass(2,s)
+            elif len(pair)==1:
+                bid=pair[0];tag=105
+                if bid==hid and abs(center[2]-zb)<1e-10:tag=101
+                for bc,plane in m['terminal_planes'].items():
+                    if bid==plane['body'] and abs(center[plane['axis']]-plane['coordinate_m'])<1e-10:tag=int(bc)
+                for e in m['wire_endpoints']:
+                    if bid==e['pin_body'] and abs(center[2]-e['pin_top_z_m'])<1e-10:tag=e['pin_tag']
+                    if bid==e['pad_body'] and abs(center[2]-e['pad_top_z_m'])<1e-10:tag=e['pad_tag']
+            else:raise ValueError('Nonmanifold OCC face')
+            surface_groups.setdefault(tag,[]).append(s)
+        if set(actual_contact)!=set(contacts):raise ValueError('Missing solid interface')
+        for pair,area in actual_contact.items():
+            if not math.isclose(area,contacts[pair]['area_m2'],rel_tol=1e-6):raise ValueError('OCC contact area mismatch '+str(pair))
+        for tag,ss in surface_groups.items():gmsh.model.addPhysicalGroup(2,ss,tag,f'boundary_{tag}')
+        for tag in (101,103,104,200,201,202,203):
+            if tag not in surface_groups:raise ValueError('Missing declared boundary')
+        gmsh.option.setNumber('Mesh.MeshSizeExtendFromBoundary',0);gmsh.option.setNumber('Mesh.MeshSizeFromPoints',0);gmsh.option.setNumber('Mesh.MeshSizeFromCurvature',0);gmsh.option.setNumber('Mesh.MinimumCirclePoints',36+level*16);gmsh.option.setNumber('Mesh.MshFileVersion',2.2);gmsh.option.setNumber('Mesh.RandomSeed',20261029)
+        fields=[]
+        def field(b,size,outside=.001):
+            f=gmsh.model.mesh.field.add('Box')
+            for k,v in zip(('XMin','YMin','ZMin'),b[:3]):gmsh.model.mesh.field.setNumber(f,k,v-1e-8)
+            for k,v in zip(('XMax','YMax','ZMax'),np.array(b[:3])+b[3:]):gmsh.model.mesh.field.setNumber(f,k,v+1e-8)
+            gmsh.model.mesh.field.setNumber(f,'VIn',size);gmsh.model.mesh.field.setNumber(f,'VOut',outside);gmsh.model.mesh.field.setNumber(f,'Thickness',size*2);fields.append(f)
+        field([-.0033,-.0033,-.00024,.0066,.0066,.0041],.00018 if level==0 else .00014)
+        for body in m['bodies'][:original]:
+            if body['kind']=='bridge':
+                b=np.array(body['box_m']);axis=body['cut_axis'];b[axis]+=.4e-3;b[axis+3]-=.8e-3
+                if b[axis+3]>0:field(b.tolist(),.000035 if level==0 else .000025)
+        field([-.0007,-.0007,zc,.0014,.0014,.0003],.00007 if level==0 else .000045)
+        for x in pins['centers_x_m']:field([x-.0006,-.0006,zb-.002,.0012,.0012,.004],.00023 if level==0 else .00016)
+        f=gmsh.model.mesh.field.add('Min');gmsh.model.mesh.field.setNumbers(f,'FieldsList',fields);gmsh.model.mesh.field.setAsBackgroundMesh(f)
+        gmsh.model.mesh.generate(3);gmsh.model.mesh.optimize('Netgen');gmsh.write(str(out/'connected.msh'))
+        tags,xyz,_=gmsh.model.mesh.getNodes();points=np.asarray(xyz).reshape(-1,3);lookup={int(t):i for i,t in enumerate(tags)}
+        def conn(a,n):return np.array([lookup[int(x)] for x in a]).reshape(-1,n)
+        cells=[];bodies=[];quality=[];faces=[];boundaries=[]
+        for v,bid in owner.items():
+            types,et,ns=gmsh.model.mesh.getElements(3,v)
+            for typ,ee,nn in zip(types,et,ns):
+                if typ!=4:raise ValueError('Only P1 tetrahedra accepted')
+                cc=conn(nn,4);cells.append(cc);bodies.extend([bid]*len(cc));quality.extend(gmsh.model.mesh.getElementQualities(ee,'minSICN'))
+        for tag,ss in surface_groups.items():
+            for s in ss:
+                types,_,ns=gmsh.model.mesh.getElements(2,s)
+                for typ,nn in zip(types,ns):
+                    if typ!=2:raise ValueError('Only P1 triangles')
+                    ff=conn(nn,3);faces.append(ff);boundaries.extend([tag]*len(ff))
+        cells=np.concatenate(cells);bodies=np.array(bodies);faces=np.concatenate(faces);boundaries=np.array(boundaries);vol,_=tetra_geometry(points,cells);adj=mesh_adjacency(cells)
+        cid={b['id'] for b in m['bodies'][:original] if b['material']!='Alumina'};measured={};areas={}
+        if min(quality)<=0:raise ValueError('Nonpositive element quality')
+        for body in m['bodies']:
+            vv=float(vol[bodies==body['id']].sum());measured[body['name']]=vv
+            if not math.isclose(vv,body['expected_volume_m3'],rel_tol=.01 if body.get('package') else 1e-7):raise ValueError('Tetra volume mismatch '+body['name'])
+        for face,aa in adj.items():
+            if len(aa)>2:raise ValueError('Nonmanifold tetra face')
+            if len(aa)==2 and bodies[aa[0]]!=bodies[aa[1]]:
+                pair=tuple(sorted(int(bodies[x]) for x in aa));q=points[list(face)];areas[pair]=areas.get(pair,0)+float(np.linalg.norm(np.cross(q[1]-q[0],q[2]-q[0]))/2)
+        if set(areas)!=set(contacts):raise ValueError('Mesh contacts differ from geometric contacts')
+        for pair,area in areas.items():
+            if not math.isclose(area,contacts[pair]['area_m2'],rel_tol=.01 if contacts[pair].get('curved') else 1e-7):raise ValueError('Actual mesh contact area mismatch '+str(pair))
+        for face,tag in zip(faces,boundaries):
+            if len(adj[tuple(sorted(face))])!=(2 if tag>=1001 else 1):raise ValueError('Nonconformal tagged face')
+        graph=validate_path(cid,[q for q in areas if q[0] in cid and q[1] in cid],m['terminals'])
+        node_bodies=[set() for _ in points]
+        for bid in cid:
+            for node in np.unique(cells[bodies==bid]):node_bodies[node].add(bid)
+        for joined in node_bodies:
+            for x in joined:
+                if any(tuple(sorted((x,y))) not in contacts for y in joined if y!=x):raise ValueError('Point/edge TEC short')
+        proof=connectivity(cells,bodies,cid);audit={'passed':True,'nodes':len(points),'tetrahedra':len(cells),'domains':len(m['bodies']),'min_sicn':float(min(quality)),'graph':graph,'connectivity':proof,'volumes_m3':measured,'actual_contact_areas_m2':{f'{x}:{y}':v for (x,y),v in areas.items()},'package_chordal_volume_area_tolerance':.01,'TEC_box_tolerance':1e-7,'level':level,'elapsed_s':time.monotonic()-started}
+        np.savez_compressed(out/'mesh.npz',points=points,cells=cells,bodies=bodies,faces=faces,boundaries=boundaries);dump(out/'manifest.json',m);dump(out/'audit.json',audit);meshio.write(out/'topology.vtu',meshio.Mesh(points,[('tetra',cells)],cell_data={'body_id':[bodies]}))
+    finally:
+        (out/'gmsh.log').write_text('\n'.join(gmsh.logger.get())+'\n');gmsh.logger.stop();gmsh.finalize()
+    execute(['ElmerGrid','14','2','connected.msh','-out','elmer'],out,'grid');audit['elmer_mapping']=verify_elmer_tetra_mapping(out);audit['mesh_npz_sha256']=sha(out/'mesh.npz');dump(out/'audit.json',audit)
+    print('Actual package mesh PASS',audit['nodes'],audit['tetrahedra'],audit['domains'],flush=True);return audit
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,default=Path('outputs/fem-g3a/mesh_0'));p.add_argument('--level',type=int,default=0);a=p.parse_args();generate(a.out.resolve(),a.level)
