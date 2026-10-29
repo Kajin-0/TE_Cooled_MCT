@@ -166,3 +166,20 @@ All earlier checkpoints remain intact; full-stack contacts and production device
 accuracy are not established. Run the new opt-in analysis with
 `./fem/run.sh python -m tecooledmct.g2d_analysis`; actual PDE directions use
 `./fem/run_g2b.sh python -m tecooledmct.g2d_fem`.
+
+### G3a: coupled TO-66 solid package and hybrid bond wires
+
+[Result](docs/PHASE1_G3A_RESULT.md) · [Reproduction](docs/G3A_REPRODUCIBILITY.md) ·
+[Verified evidence](fem/results/g3a_20261029)
+
+A new199-domain conformal package retains the actual88-leg two-terminal TEC and
+adds Kovar header,mount,die attach,MCT,two glass feedthroughs/pins and Au pads.
+Conservative1D gold bonds couple solved3D endpoint temperatures. This is a
+**3D-solid/1D-wire hybrid**, with the bath on the header underside. Eleven real
+coupled package solves and an independent1D wire check pass numerical gates;
+73 tests pass. At .1 A/2mW,fine die mean is263.389718 K and cold ceramic262.965994 K.
+
+Source MCT x=.29 k(T) is bounded90..400 K. TEC/material/contact geometry remain
+verification proxies; seven pins,carriers,cap/window/gas/radiation and other
+omitted loads prevent manufacturer/device accuracy claims. Earlier evidence is
+unchanged. Run the opt-in commands in the reproduction guide; no LSDDTS coupling.

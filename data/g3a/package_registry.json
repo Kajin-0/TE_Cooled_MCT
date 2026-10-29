@@ -1,0 +1,160 @@
+{
+  "geometry_status": "assumed solver construction, not OEM tooling; actual G2b TEC retained",
+  "header": {
+    "ellipse_semiaxes_m": [
+      0.01575,
+      0.00875
+    ],
+    "thickness_m": 0.0011,
+    "mount_hole_centers_x_m": [
+      -0.0122,
+      0.0122
+    ],
+    "mount_hole_radius_m": 0.00185,
+    "material": "Kovar proxy",
+    "k_w_mk": 17.3
+  },
+  "feedthroughs": {
+    "illustrated_pin_count": 9,
+    "actually_meshed_pin_count": 2,
+    "centers_x_m": [
+      -0.0054,
+      0.0054
+    ],
+    "glass_radius_m": 0.00055,
+    "pin_radius_m": 0.00022,
+    "pin_above_header_m": 0.0009,
+    "pin_below_header_m": 0.002,
+    "pin_k_w_mk": 17.3,
+    "glass_k_w_mk": 1.0,
+    "status": "assumed Kovar pins/glass proxy; remaining seven seals/holes/pins omitted, no fixed pin temperatures"
+  },
+  "hot_mount": {
+    "thickness_m": 5e-05,
+    "k_w_mk": 2.0,
+    "status": "assumed insulating thermal joint; no asserted solder grade"
+  },
+  "die_attach": {
+    "width_m": 0.00125,
+    "thickness_m": 8e-05,
+    "k_w_mk": 1.0,
+    "status": "assumed insulating epoxy-equivalent; no chemistry claim"
+  },
+  "mct": {
+    "width_m": 0.001,
+    "thickness_m": 0.00012,
+    "x": 0.29,
+    "temperature_k": [
+      90,
+      148,
+      298,
+      400
+    ],
+    "k_w_mk": [
+      2.41,
+      1.61,
+      0.973,
+      0.79
+    ],
+    "cp_j_kgk": [
+      130,
+      146,
+      176,
+      194
+    ],
+    "density_kg_m3": 6830,
+    "doi": "10.1364/AO.47.000578",
+    "url": "https://opg.optica.org/ao/abstract.cfm?uri=ao-47-4-578",
+    "source": "Heckman/Gonzalez/Guha (2008), original Table2, x=.29; k derived from measured density/Cp/diffusivity",
+    "source_relative_uncertainty_ranges": {
+      "density": [
+        0.01,
+        0.04
+      ],
+      "cp": [
+        0.05,
+        0.1
+      ],
+      "diffusivity": [
+        0.05,
+        0.1
+      ],
+      "k": [
+        0.07,
+        0.14
+      ]
+    },
+    "policy": "piecewise linear in local nodal T; reject outside90..400 K; no x interpolation; no transient calculation"
+  },
+  "wires": {
+    "type": "hybrid massless 1D Fourier conductance between area-weighted 3D endpoint patches",
+    "number": 2,
+    "diameter_m": 2.5e-05,
+    "length_m": 0.007,
+    "k_w_mk": 315.0,
+    "pad_width_m": 0.00015,
+    "pad_thickness_m": 2e-05,
+    "pad_centers_x_m": [
+      -0.0003,
+      0.0003
+    ],
+    "source_url": "https://www.inseto.com/wp-content/uploads/2022/08/Gold-Wire-Data-Sheet.pdf",
+    "status": "vendor Au bulk proxy, chosen bond length/diameter; no resolved 3D wire arc, no detector electric current/Joule path"
+  },
+  "electrical_package_policy": "S=0 and computational sigma=1e-12 S/m on non-TEC domains, for a connected passive potential extension. This is not physical Au/Kovar conductivity. Fourier thermal model; bound parasitic current/Joule and test100x lower sigma.",
+  "boundaries": "300 K on header underside only; all other external faces insulated except equal/opposite hybrid wire endpoint fluxes; no pin-top clamp",
+  "heating": "uniform actual MCT volume source=(one bias-power representation + absorbed optical thermal power)/volume",
+  "sources": {
+    "geometry": "geometry/reference_cad.py and revision6 assumptions, visual dimensions rebuilt independently",
+    "kovar": "https://www.ametekinterconnect.com/-/media/ametek-ecp/v2/files/cw_datasheets_sds_cfsi/datasheets/kovar.pdf?la=en",
+    "TEC": "protected G2b constant verification properties; no measured wide-T or OEM-grade accuracy"
+  },
+  "missing": [
+    "seven feedthroughs",
+    "cap/window",
+    "gas",
+    "radiation",
+    "thermistor",
+    "TEC supply lead heat leakage",
+    "actual contact chemistry/tensors",
+    "carrier transport",
+    "transients"
+  ],
+  "load_case_definition": {
+    "detector_bias_v": 0.5,
+    "detector_current_a": 0.003,
+    "bias_power_w": 0.0015,
+    "absorbed_optical_thermal_power_w": 0.0005,
+    "total_deposited_power_w": 0.002,
+    "representation": "external prescribed V*I only; no second V^2/R term and no detector-current PDE"
+  },
+  "sensitivity_hypothesis_bounds": {
+    "wire_count": [
+      0,
+      2,
+      4
+    ],
+    "attach_k_w_mk": [
+      0.2,
+      1.0
+    ],
+    "mount_k_w_mk": [
+      0.4,
+      2.0
+    ],
+    "note": "declared engineering assumptions, not measurement uncertainty/confidence; four wires use two parallel bonds per endpoint pair"
+  },
+  "numerical_gates": {
+    "driven_interior_current_relative": 0.005,
+    "zero_cut_absolute_a": 1e-06,
+    "global_energy_absolute_w": 1e-06,
+    "free_current_absolute_a": 1e-06,
+    "free_thermal_absolute_w": 1e-06,
+    "direct_bath_relative": 0.01,
+    "source_free_package_interface_cut_relative": 0.05,
+    "attach_direct_relative": 0.05,
+    "refinement_mean_max_die_relative_to_lift": 0.01,
+    "refinement_voltage_relative": 0.01,
+    "computational_package_joule_w": 1e-09
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "MCT": {
+    "primary_url": "https://opg.optica.org/ao/abstract.cfm?uri=ao-47-4-578",
+    "doi": "10.1364/AO.47.000578",
+    "table": "2, verified primary HTML including90/148/298/400 K x=.29 row",
+    "k_w_mk": [
+      2.41,
+      1.61,
+      0.973,
+      0.79
+    ],
+    "density_at298_kg_m3": 6830,
+    "cp_j_kgk": [
+      130,
+      146,
+      176,
+      194
+    ],
+    "k_definition": "calculated from measured density, diffusivity and Cp; relative source ranges7-14%, no fitted device confidence",
+    "policy": "piecewise-linear local-T interpolation90..400 K; single alloy x=.29, no unsupported composition interpolation"
+  },
+  "gold": {
+    "primary_url": "https://www.inseto.com/wp-content/uploads/2022/08/Gold-Wire-Data-Sheet.pdf",
+    "page": 2,
+    "verified_k_w_mk_at20C": 315,
+    "scope": "vendor bulk proxy, chosen geometry and temperature-independent k not calibrated for detector"
+  },
+  "Kovar": {
+    "primary_url": "https://www.ametekinterconnect.com/-/media/ametek-ecp/v2/files/cw_datasheets_sds_cfsi/datasheets/kovar.pdf?la=en",
+    "fetch_status": "403 during this review; inherited documented17.3 W/mK reference and explicit work-order proxy, not freshly audited grade data"
+  },
+  "package": {
+    "primary_url": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf",
+    "drawing": "ZTM-TO66-Z030, rev9,01.03.2024",
+    "verified_family_facts": "31.5x17.5 mm outer envelope,24.4mm mounting pitch,3.7mm holes,10.8mm pin PCD,9 pins,gold-plated Kovar header",
+    "not_oem_geometry": "ellipse replaces actual flange; two pin positions at+/-5.4mm are symmetric test positions, not numbered product pinout; chosen .44mm pin diameter differs from drawing .76mm; glass/header thickness/die/attach/paths assumed",
+    "missing_product_parts": [
+      "sapphire/silicon element carrier",
+      "POM anti-convection carrier",
+      "humidity absorber",
+      "seven feedthroughs",
+      "cap/window/gas/radiation"
+    ]
+  },
+  "preservation": "Original source URLs and prior materials.py/docs remain byte-identical. No visual STEP imported."
+}

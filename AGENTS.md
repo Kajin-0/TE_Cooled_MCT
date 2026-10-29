@@ -293,3 +293,43 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   FAILED/BLOCKED. Full-stack transitions, matched-grade full-range curves,
   alternate geometry/topology meshes, loaded/high-current FEM family, mounting
   and package/environment validation remain pending. No LSDDTS or other repo work.
+
+## G3a coupled solid package checkpoint, 2026-10-29
+
+- Read docs/PHASE1_G3A_RESULT.md and docs/G3A_REPRODUCIBILITY.md. All accepted
+  G1/G2a/G2b/G2c/G2d source/data/evidence remain immutable. fem_g3a_data.preserve
+  extends the integrity audit through all83 G2d artifacts and execution sources.
+- New fem_g3a_geometry rebuilds protected G2b OCC solids and adds header/mount,
+  die attach,MCT,two glass annuli,two pins,two Au pads:199 conformal domains.
+  Unique181-vertex180-edge path through88 legs and two TEC terminals is retained.
+  Both real meshes audit volumes/contacts/manifoldness/body-face connectivity,
+  graph and actual ElmerGrid mapping. Initial chordal pin-volume failure is
+  unaccepted; curvature sizing fixes it without lowering the declared1% gate.
+- This is a genuine coupled3D-solid/1D-wire HYBRID, not all3D wires. Nonlocal
+  compiled callbacks use current global endpoint temperatures and equal/opposite
+  powers during the ThermoElectricSolver nonlinear solve. Independent1D Elmer
+  Neumann rod verifies k*A/L. Only two of nine illustrated feedthroughs are real
+  domains; four-wire sensitivity adds parallel1D bonds, not new3D pads/pins.
+- Bath300 K is on external header underside only. TEC ceramics/pin tops are
+  unknowns. Package S=0,tiny computational sigma models passive Fourier thermal
+  solids; it is not physical Au/Kovar electrical conductivity or detector current.
+  Bound package Joule and test100-fold lower sigma. The MCT source is one bias
+  representation (V*I) plus absorbed optical thermal power, in W/m3, not density-
+  multiplied Heat Source. No carrier transport or LSDDTS.
+- Source MCT x=.29 local k interpolates Table2 at90/148/298/400 K and fails outside
+  90..400 K. No alloy interpolation. Density/Cp registry is not a transient claim;
+  SIF capacity placeholders are steady-only. TEC remains the original constant
+  verification law, not a newly qualified300 K source-backed/OEM-grade profile.
+- Eleven actual integrated package solves plus independent1D check pass all
+  current/energy/interface/refinement/isolation gates;73 TE_FEM_SMOKE=1 tests,
+  CLI quick and geometry_demo pass. Fine .1 A/2mW die mean263.389718 K,
+  cold ceramic262.965994 K,die-cold .423724 K. Manufacturer accuracy unqualified.
+- Run ./fem/run_g2b.sh python -m tecooledmct.fem_g3a_geometry, then
+  fem_g3a_run with explicit immutable case labels; --resume re-verifies completed
+  genuine fields. fem_g3a_post and fem_g3a_interfaces independently reconstruct
+  heat/current and interior mount/pin cuts. Original G2b bath/top-load placements
+  differ; do not call a cross-phase temperature comparison validation.
+- fem/report_archive_g3a.py rejects failed/changed evidence and preserves prior
+  archives. --out outputs/g3a-reproduced supports non-destructive reproduction.
+  G3a scope excludes seven pins,cap/window/gas/radiation,real carriers,thermistor,
+  TEC supply-lead heat and measured interfaces/grades; no transient accuracy.
