@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "all_bounds_are_hypothesis_limits_not_confidence_intervals": true,
+  "source_manifest": "fem/results/g2b_two_terminal_20261028/meshes/mesh_2/manifest.json",
+  "parameters": [
+    {
+      "id": "leg_aspect",
+      "baseline": 1.0,
+      "bounds": [
+        0.85,
+        1.2
+      ],
+      "scale": 1.0,
+      "status": "inferred geometry",
+      "meaning": "h/A ratio scaling; represented by A=A0/aspect with fixed heights, w=w0/sqrt(aspect). Network only; a real changed mesh requires audit."
+    },
+    {
+      "id": "rho_scale",
+      "baseline": 1.0,
+      "bounds": [
+        0.6,
+        1.7
+      ],
+      "scale": 1.0,
+      "status": "grade-proxy diagnostic, not measurement",
+      "meaning": "both P/N resistivities scaled; Goldsmid versus HE specimens differ. No grade is identified by scaling."
+    },
+    {
+      "id": "seebeck_scale",
+      "baseline": 1.0,
+      "bounds": [
+        0.8,
+        1.3
+      ],
+      "scale": 1.0,
+      "status": "grade-proxy diagnostic, not measurement",
+      "meaning": "P/N signs preserved; independent perturbation is a hypothesis, not a measured correlated material curve."
+    },
+    {
+      "id": "k_scale",
+      "baseline": 1.0,
+      "bounds": [
+        0.7,
+        1.3
+      ],
+      "scale": 1.0,
+      "status": "grade-proxy diagnostic, not measurement",
+      "meaning": "both BiTe conductivities scaled, scalar/isotropic assumption"
+    },
+    {
+      "id": "route_scale",
+      "baseline": 1.0,
+      "bounds": [
+        0.5,
+        2.0
+      ],
+      "scale": 1.0,
+      "status": "inferred internal routing",
+      "meaning": "parallel stage shunts from series rectangular Cu/ceramic path estimates; omits spreading"
+    },
+    {
+      "id": "re_area",
+      "baseline": 0.0,
+      "bounds": [
+        0.0,
+        1e-09
+      ],
+      "scale": 1e-09,
+      "unit": "ohm m2",
+      "status": "unmeasured interface nuisance",
+      "meaning": "4n series interfaces per stage; G2c transition test magnitude, not OEM contact measurement. Full-stack contact PDE pending."
+    },
+    {
+      "id": "rth_area",
+      "baseline": 0.0,
+      "bounds": [
+        0.0,
+        1e-05
+      ],
+      "scale": 1e-05,
+      "unit": "m2 K/W",
+      "status": "unmeasured interface nuisance",
+      "meaning": "two thermal contacts per leg; network series resistance only. Full-stack contact PDE pending."
+    },
+    {
+      "id": "q_extra_w",
+      "baseline": 0.0,
+      "bounds": [
+        0.0,
+        0.02
+      ],
+      "scale": 0.01,
+      "unit": "W",
+      "status": "omitted thermal-load nuisance",
+      "meaning": "constant added top load screening; does not assert measured radiation/lead heat"
+    },
+    {
+      "id": "bath_r",
+      "baseline": 0.0,
+      "bounds": [
+        0.0,
+        5.0
+      ],
+      "scale": 1.0,
+      "unit": "K/W",
+      "status": "unmeasured mounting nuisance",
+      "meaning": "network hot ceramic interface rise R*Qhot; bath means external stabilized surface"
+    }
+  ],
+  "stage_topologies": {
+    "baseline": [
+      28,
+      12,
+      4
+    ],
+    "alternatives": [
+      [
+        26,
+        12,
+        6
+      ],
+      [
+        24,
+        12,
+        8
+      ],
+      [
+        30,
+        10,
+        4
+      ]
+    ],
+    "status": "inferred integer screening only; all sum to 44. No alternative real mesh or OEM netlist claimed."
+  },
+  "known_oem": {
+    "hot_footprint_m": [
+      0.0064,
+      0.0064
+    ],
+    "cold_footprint_m": [
+      0.0024,
+      0.0024
+    ],
+    "height_m": 0.0038,
+    "height_tolerance_m": 0.00015,
+    "couples": 44,
+    "acr_300k_ohm": 2.9,
+    "qmax_300k_vacuum_w": 0.51,
+    "delta_t_max_k": 113,
+    "source": "specific 2019 datasheet; limits at different operating conditions"
+  },
+  "materials": {
+    "constant_reference": "protected G1 mixed room-temperature verification constants, no measured wide-T validity",
+    "source_profile": "audited G2c v2r1 N-HE-1/P-HE, strict 40..300 K; distinct samples, not OEM grade",
+    "forbidden": "stitching unrelated grades or clamping/extrapolating missing properties"
+  },
+  "structural_degeneracy": "aspect*c, rho/c, k*c preserve R and K (zero added contact), alpha unchanged. Width changes by 1/sqrt(c); topology and height are fixed.",
+  "sources": [
+    "data/g2c/source_registry.json",
+    "data/g2c/zhang2025_he_40_300_v2.json",
+    "data/g2c/oem2019_curves_v1.json",
+    "docs/PHASE1_G2C_RESULT.md"
+  ]
+}

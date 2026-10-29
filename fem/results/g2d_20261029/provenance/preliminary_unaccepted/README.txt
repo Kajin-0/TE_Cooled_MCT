@@ -1,0 +1,1 @@
+Preliminary UNACCEPTED: objective used curve-slope reading bounds incorporating neighbouring held-out points. Replaced with calibration vertical-reading bounds only; no model/bounds/directions selected from holdouts. Retained for audit.
