@@ -1,0 +1,278 @@
+{
+  "geometry_status": "assumed solver construction, not OEM tooling; actual G2b TEC retained",
+  "header": {
+    "ellipse_semiaxes_m": [
+      0.01575,
+      0.00875
+    ],
+    "thickness_m": 0.0011,
+    "mount_hole_centers_x_m": [
+      -0.0122,
+      0.0122
+    ],
+    "mount_hole_radius_m": 0.00185,
+    "material": "Kovar proxy",
+    "k_w_mk": 17.3
+  },
+  "feedthroughs": {
+    "illustrated_pin_count": 9,
+    "actually_meshed_pin_count": 9,
+    "centers_x_m": [
+      -0.0054,
+      0.0054
+    ],
+    "glass_radius_m": 0.00055,
+    "pin_radius_m": 0.00022,
+    "pin_above_header_m": 0.0009,
+    "pin_below_header_m": 0.002,
+    "pin_k_w_mk": 17.3,
+    "glass_k_w_mk": 1.0,
+    "status": "unnumbered nine-instance construction; first two retain G3a positions, added seven on10.8mm PCD; not OEM pinout",
+    "centers_xy_m": [
+      [
+        -0.0054,
+        0.0
+      ],
+      [
+        0.0054,
+        0.0
+      ],
+      [
+        0.0043686917696247165,
+        0.003174040362379355
+      ],
+      [
+        0.0016686917696247163,
+        0.00513570518799383
+      ],
+      [
+        -0.0016686917696247157,
+        0.00513570518799383
+      ],
+      [
+        -0.004368691769624716,
+        0.0031740403623793556
+      ],
+      [
+        -0.004368691769624717,
+        -0.0031740403623793543
+      ],
+      [
+        -0.001668691769624717,
+        -0.00513570518799383
+      ],
+      [
+        0.0016686917696247152,
+        -0.00513570518799383
+      ]
+    ]
+  },
+  "hot_mount": {
+    "thickness_m": 5e-05,
+    "k_w_mk": 2.0,
+    "status": "assumed insulating thermal joint; no asserted solder grade"
+  },
+  "die_attach": {
+    "width_m": 0.00125,
+    "thickness_m": 8e-05,
+    "k_w_mk": 1.0,
+    "status": "assumed insulating epoxy-equivalent; no chemistry claim"
+  },
+  "mct": {
+    "width_m": 0.001,
+    "thickness_m": 0.00012,
+    "x": 0.29,
+    "temperature_k": [
+      90,
+      148,
+      298,
+      400
+    ],
+    "k_w_mk": [
+      2.41,
+      1.61,
+      0.973,
+      0.79
+    ],
+    "cp_j_kgk": [
+      130,
+      146,
+      176,
+      194
+    ],
+    "density_kg_m3": 6830,
+    "doi": "10.1364/AO.47.000578",
+    "url": "https://opg.optica.org/ao/abstract.cfm?uri=ao-47-4-578",
+    "source": "Heckman/Gonzalez/Guha (2008), original Table2, x=.29; k derived from measured density/Cp/diffusivity",
+    "source_relative_uncertainty_ranges": {
+      "density": [
+        0.01,
+        0.04
+      ],
+      "cp": [
+        0.05,
+        0.1
+      ],
+      "diffusivity": [
+        0.05,
+        0.1
+      ],
+      "k": [
+        0.07,
+        0.14
+      ]
+    },
+    "policy": "piecewise linear in local nodal T; reject outside90..400 K; no x interpolation; no transient calculation"
+  },
+  "wires": {
+    "type": "hybrid massless 1D Fourier conductance between area-weighted 3D endpoint patches",
+    "number": 2,
+    "diameter_m": 2.5e-05,
+    "length_m": 0.007,
+    "k_w_mk": 315.0,
+    "pad_width_m": 0.00015,
+    "pad_thickness_m": 2e-05,
+    "pad_centers_x_m": [
+      -0.0003,
+      0.0003
+    ],
+    "source_url": "https://www.inseto.com/wp-content/uploads/2022/08/Gold-Wire-Data-Sheet.pdf",
+    "status": "vendor Au bulk proxy, chosen bond length/diameter; no resolved 3D wire arc, no detector electric current/Joule path"
+  },
+  "electrical_package_policy": "S=0 and computational sigma=1e-12 S/m on non-TEC domains, for a connected passive potential extension. This is not physical Au/Kovar conductivity. Fourier thermal model; bound parasitic current/Joule and test100x lower sigma.",
+  "boundaries": "300 K external header underside only; internal cap/window/pins unconstrained. Internal skin has conservative nonlinear radiation/gas and hybrid Au/Cu endpoint powers. Exterior cap/window and isolated pin ends adiabatic.",
+  "heating": "uniform actual MCT volume source=(one bias-power representation + absorbed optical thermal power)/volume",
+  "sources": {
+    "geometry": "geometry/reference_cad.py and revision6 assumptions, visual dimensions rebuilt independently",
+    "kovar": "https://www.ametekinterconnect.com/-/media/ametek-ecp/v2/files/cw_datasheets_sds_cfsi/datasheets/kovar.pdf?la=en",
+    "TEC": "protected G2b constant verification properties; no measured wide-T or OEM-grade accuracy"
+  },
+  "missing": [
+    "thermistor",
+    "actual product pinout/contacts/grades",
+    "carrier/absorber parts",
+    "spectral window transmission and external enclosure exchange",
+    "gas CFD",
+    "carrier transport",
+    "transients"
+  ],
+  "cap": {
+    "outer_radius_m": 0.0076,
+    "inner_radius_m": 0.0071,
+    "height_m": 0.0086,
+    "roof_m": 0.00045,
+    "window_radius_m": 0.00295,
+    "k_w_mk": 15.0,
+    "status": "assumed stainless-steel-like constant thermal proxy; cap roof/side thicknesses not OEM verified"
+  },
+  "window": {
+    "material": "ZnSe candidate",
+    "k_w_mk": 18.0,
+    "reference_temperature_k": 298.0,
+    "source_url": "https://www.crystran.co.uk/optical-materials/zinc-selenide-znse/",
+    "status": "vendor conductivity proxy; no actual coatings or spectral emissivity/transmission qualification",
+    "thermal_radiation_policy": "opaque diffuse gray hypotheses; do not equate optical transmission with thermal IR absorption"
+  },
+  "supply_leads": {
+    "count": 2,
+    "diameter_m": 0.000202,
+    "length_m": 0.008,
+    "k_w_mk": 400.0,
+    "rho_ohm_m": 1.72e-08,
+    "endpoint_pins": [
+      2,
+      3
+    ],
+    "status": "two hybrid thermal Cu leads, assumed8mm length/AWG32 diameter; generic warm pin positions, not product pinout; include I^2R split equally at endpoints",
+    "source": "OEM AWG32 designation inherited; Cu constants protected generic reference"
+  },
+  "radiation": {
+    "model": "opaque diffuse-gray surface radiosity; cosine first-hit rays on audited closed cavity, reciprocal area balancing",
+    "emissivity_hypotheses": {
+      "P": 0.3,
+      "N": 0.3,
+      "Alumina": 0.8,
+      "MCT": 0.8,
+      "Au": 0.05,
+      "Cu": 0.05,
+      "Kovar": 0.1,
+      "Pin": 0.1,
+      "Glass": 0.8,
+      "Steel": 0.2,
+      "ZnSe": 0.1,
+      "Attach": 0.8,
+      "Mount": 0.8
+    },
+    "window_sensitivity_emissivity": 0.8,
+    "outer_boundary": "cap/window externally adiabatic; thermal bath only at header underside. External thermal IR transmission/exchange omitted, not calibrated.",
+    "optical": "0.5mW thermally absorbed optical load specified in die; not a modeled spectral window transmission calculation"
+  },
+  "gas": {
+    "primary_source_url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=926438",
+    "author": "Marcia L. Huber",
+    "source_title": "Thermal Conductivity of Gases, NIST/CRC2019",
+    "table_pdf_page_index": 0,
+    "ingested_temperature_k": [
+      200,
+      300,
+      400
+    ],
+    "k_units_original": "mW m^-1 K^-1",
+    "values_si": {
+      "N2": {
+        "k": [
+          0.0183,
+          0.0259,
+          0.0326
+        ],
+        "R": 296.803,
+        "gamma": 1.4
+      },
+      "Ar": {
+        "k": [
+          0.0124,
+          0.0177,
+          0.0224
+        ],
+        "R": 208.132,
+        "gamma": 1.6666666666666667
+      },
+      "Kr": {
+        "k": [
+          0.0064,
+          0.0095,
+          0.0122
+        ],
+        "R": 99.218,
+        "gamma": 1.6666666666666667
+      }
+    },
+    "status": "dilute limiting k(T); linear interpolation; reject outside200..400K; Huber table generally<3% uncertainty, not calibrated package confidence",
+    "viscosity": "Eucken closure mu=k/(cp+1.25R), not independent measured viscosity",
+    "mean_free_path": "lambda=mu/p*sqrt(pi*R*T/2)",
+    "temperature_jump_each_wall": "(2-alpha)/alpha*2*gamma/(gamma+1)*lambda/Pr",
+    "accommodation_hypothesis": 0.8,
+    "conductance": "Gij=k*Ai*Fij/(normal_projected_harmonic_gap + 2*jump); symmetric positive exchange areas and equal/opposite power; reduced film operator, not gas CFD",
+    "vacuum": "p=0 gives exactly zero gas exchange; no uncorrected continuum k at zero pressure",
+    "actual_case_pressure_pa": 100.0,
+    "regimes": "Kn<.01 continuum; .01.. .1 slip; .1..10 transition; >10 free molecular; pair gaps vary, nominal/actual-gap ranges reported",
+    "reference_theory_url": "https://mooseframework.inl.gov/bison/theory/gap_plenum_models.html",
+    "free_molecular_check": "independent Kennard coefficient alpha/(2-alpha)*(gamma+1)/(gamma-1)*p*sqrt(R/(8*pi*T)) per unit area"
+  },
+  "numerical_limits": {
+    "current_cuts_relative": 0.005,
+    "direct_bath_relative": 0.01,
+    "free_heat_w": 1e-06,
+    "free_current_a": 1e-06,
+    "global_energy_w": 1e-06,
+    "independent_pair_power_balance_w": 1e-09,
+    "package_spurious_joule_w": 1e-09,
+    "mesh_temperature_relative_to_lift": 0.01,
+    "mesh_voltage_relative": 0.01,
+    "patch_temperature_relative_to_lift": 0.01,
+    "patch_voltage_relative": 0.01,
+    "nonlinear_relative_change": 1e-09,
+    "nonlocal_iteration": "depth4 regularized Anderson, same physical fixed point; independent final unaccelerated flux reconstruction"
+  },
+  "interfaces": "Conformal ideal thermal continuity at cap/header flange and window/cap rim; no measured seal/contact resistance. Finite-volume mount and die-attach proxies retain G3a dimensions/k."
+}

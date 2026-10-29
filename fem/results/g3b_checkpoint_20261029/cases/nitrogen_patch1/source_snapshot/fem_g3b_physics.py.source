@@ -1,0 +1,203 @@
+"""Conservative nonlinear Elmer enclosure exchange: 3D solids plus surface operators."""
+import json,math,shutil
+from pathlib import Path
+import numpy as np
+from scipy.sparse import load_npz
+from scipy.spatial import cKDTree
+from .g2d_data import ROOT,sha,dump
+from .fem_g3b_data import registry
+from .fem_g3b_exchange import radiation_matrix,gas_conductances,gas_power,GASES,SIGMA
+from .fem_g3b_reference import write_case as reference_case
+from .fem_g3a_data import wire_conductance
+from .fem_g1_run import execute
+
+
+def emissivities(patches,window=.1):
+    values={'P':.3,'N':.3,'Alumina':.8,'MCT':.8,'Attach':.8,'Mount':.8,'Au':.05,'Cu':.05,'Kovar':.1,'Pin':.1,'Glass':.8,'Steel':.2,'ZnSe':window}
+    return np.array([values[x['material']] for x in patches])
+
+
+def links(patches,current,gold_scale=1.,lead_scale=1.):
+    a=np.array([x['area_m2'] for x in patches]);tags=np.array([x['original_boundary'] for x in patches]);r=registry()['supply_leads'];area=math.pi*r['diameter_m']**2/4;out=[]
+    for name,warm,cold,g,j,s in [('gold0',200,201,wire_conductance(1),0.,gold_scale),('gold1',202,203,wire_conductance(1),0.,gold_scale),('TEClead0',204,103,r['k_w_mk']*area/r['length_m'],current**2*r['rho_ohm_m']*r['length_m']/area,lead_scale),('TEClead1',206,104,r['k_w_mk']*area/r['length_m'],current**2*r['rho_ohm_m']*r['length_m']/area,lead_scale)]:
+        w=a*(tags==warm);c=a*(tags==cold)
+        if not w.sum() or not c.sum():raise ValueError('Missing hybrid endpoint tag')
+        out.append({'name':name,'kind':1 if name.startswith('gold') else 2,'warm':w/w.sum(),'cold':c/c.sum(),'G_w_k':g,'joule_w':j,'scale':s,'warm_tag':warm,'cold_tag':cold})
+    return out
+
+
+def powers(operator,temperature,config):
+    data=np.load(operator/'operators.npz');a=data['areas'];weights=load_npz(operator/'weights.npz');tp=np.asarray(weights@temperature);patches=json.loads((operator/'patches.json').read_text());ep=emissivities(patches,config['window_emissivity']);mechanisms={x:np.zeros(len(a)) for x in ('radiation','gas','gold','lead_conduction','lead_joule')};radiosity=None
+    if config['radiation_on']:
+        f=data['view_factors'];radiosity=np.linalg.solve(np.eye(len(a))-(1-ep[:,None])*f,ep*SIGMA*tp**4);mechanisms['radiation']=-a*(radiosity-f@radiosity)
+    if config['pressure_pa']>0:
+        g=gas_conductances(data['exchange_m2'],data['distance_m'],tp,config['gas'],config['pressure_pa'],config['accommodation']);mechanisms['gas']=gas_power(g,tp)
+    records=[]
+    for link in links(patches,config['current_a'],config['gold_scale'],config['lead_scale']):
+        tw=float(link['warm']@tp);tc=float(link['cold']@tp);q=link['G_w_k']*link['scale']*(tw-tc);power=q*(link['cold']-link['warm']);j=link['joule_w']*link['scale'];mechanisms['gold' if link['kind']==1 else 'lead_conduction']+=power;mechanisms['lead_joule']+=.5*j*(link['warm']+link['cold']);records.append({'name':link['name'],'warm_k':tw,'cold_k':tc,'heat_into_cold_w':q,'joule_w':j,'conductance_w_k':link['G_w_k']*link['scale']})
+    return {'patch_temperature_k':tp,'mechanisms':mechanisms,'patch_power_in_w':sum(mechanisms.values()),'links':records,'radiosity_w_m2':radiosity,'weights':weights}
+
+
+def payload(operator,case,config):
+    data=np.load(operator/'operators.npz');patches=json.loads((operator/'patches.json').read_text());a=data['areas'];weights=load_npz(operator/'weights.npz');r=radiation_matrix(a,data['view_factors'],emissivities(patches,config['window_emissivity'])) if config['radiation_on'] else np.zeros_like(data['view_factors'])
+    with (case/'ExchangeMatrices.bin').open('wb') as f:
+        for x in (r,data['exchange_m2'],data['distance_m']):f.write(np.ascontiguousarray(x.T,dtype='<f8').tobytes())
+    mesh=np.load(operator/'mesh.npz');rows=np.loadtxt(operator/'elmer/mesh.nodes');dist,ix=cKDTree(rows[:,2:5]).query(mesh['points'])
+    if dist.max()>1e-12:raise ValueError('Elmer node map changed')
+    nodeids=rows[ix,0].astype(int);ll=links(patches,config['current_a'],config['gold_scale'],config['lead_scale']);g=GASES[config['gas']]
+    with (case/'ExchangeWeights.dat').open('w') as f:
+        f.write(f'{len(a)} {weights.nnz} {len(ll)}\n');np.savetxt(f,a,fmt='%.17e');np.savetxt(f,weights.indptr+1,fmt='%d');np.savetxt(f,nodeids[weights.indices],fmt='%d');np.savetxt(f,weights.data,fmt='%.17e')
+        for l in ll:
+            f.write(f"{l['kind']} {l['G_w_k']:.17e} {l['joule_w']:.17e}\n");np.savetxt(f,l['warm'],fmt='%.17e');np.savetxt(f,l['cold'],fmt='%.17e')
+        f.write(' '.join(f'{x:.17e}' for x in [config['pressure_pa'],g['R'],g['gamma'],config['accommodation'],config['gold_scale'],config['lead_scale'],*g['k']])+'\n')
+    return {p.name:sha(p) for p in (case/'ExchangeMatrices.bin',case/'ExchangeWeights.dat')}
+
+
+def compile_exchange(operator,out):
+    out.mkdir(parents=True,exist_ok=True);patches=json.loads((operator/'patches.json').read_text());source='''MODULE G3bNonlocal
+ USE DefUtils
+ IMPLICIT NONE
+ INTEGER,SAVE :: n=0,nz=0,nlink=0,laststamp=-999999
+ INTEGER,ALLOCATABLE,SAVE :: ptr(:),nodes(:),kind(:)
+ REAL(KIND=dp),ALLOCATABLE,SAVE :: area(:),wt(:),rm(:,:),wm(:,:),gap(:,:),tw(:,:),tc(:,:),lg(:),lj(:),tp(:),power(:),prad(:),pgas(:),pgold(:),plead(:),pheat(:)
+ REAL(KIND=dp),ALLOCATABLE,SAVE :: hf(:,:),hr(:,:),oldpower(:)
+ INTEGER,SAVE :: nh=0
+ REAL(KIND=dp),SAVE :: pressure,rg,gamma,acc,gs,ls,kk(3),lastnorm=-HUGE(1.0_dp),lastchange=-HUGE(1.0_dp)
+ LOGICAL,SAVE :: initialized=.FALSE.,have_response=.FALSE.
+CONTAINS
+ SUBROUTINE EnsurePowers(Model)
+  TYPE(Model_t) :: Model
+  TYPE(Variable_t),POINTER :: temp,primary
+  INTEGER :: u,i,j,k,it,ii,jj,info,piv(4)
+  REAL(KIND=dp) :: gram(4,4),coeff(4,1),onesum,regular,rnorm
+  REAL(KIND=dp),ALLOCATABLE :: rawpower(:),residual(:),candidate(:)
+  REAL(KIND=dp) :: norm,change,t,kappa,cp,mu,pr,lambda,jump,g,q,joule
+  IF (.NOT.initialized) THEN
+   OPEN(NEWUNIT=u,FILE='ExchangeWeights.dat',STATUS='old',ACTION='read')
+   READ(u,*)n,nz,nlink
+   ALLOCATE(area(n),ptr(n+1),nodes(nz),wt(nz),kind(nlink),tw(n,nlink),tc(n,nlink),lg(nlink),lj(nlink),tp(n),power(n),prad(n),pgas(n),pgold(n),plead(n),pheat(n),rm(n,n),wm(n,n),gap(n,n))
+   ALLOCATE(hf(n,4),hr(n,4),oldpower(n));oldpower=0
+   READ(u,*)area
+   READ(u,*)ptr
+   READ(u,*)nodes
+   READ(u,*)wt
+   DO k=1,nlink
+    READ(u,*)kind(k),lg(k),lj(k)
+    READ(u,*)tw(:,k)
+    READ(u,*)tc(:,k)
+   END DO
+   READ(u,*)pressure,rg,gamma,acc,gs,ls,kk
+   CLOSE(u)
+   OPEN(NEWUNIT=u,FILE='ExchangeMatrices.bin',FORM='unformatted',ACCESS='stream',STATUS='old',ACTION='read')
+   READ(u)rm
+   READ(u)wm
+   READ(u)gap
+   CLOSE(u);initialized=.TRUE.
+  END IF
+  primary => Model % Solver % Variable
+  it=primary % NonlinIter;norm=primary % Norm;change=primary % NonlinChange
+  IF(it==laststamp .AND. norm==lastnorm .AND. change==lastchange) RETURN
+  temp => VariableGet(Model % Mesh % Variables,'Temperature')
+  IF (.NOT.ASSOCIATED(temp)) CALL Fatal('G3bExchange','Missing global Temperature')
+  IF (ANY(temp % Perm(nodes)<=0)) CALL Fatal('G3bExchange','Invalid endpoint/patch node mapping')
+  DO i=1,n
+   tp(i)=SUM(wt(ptr(i):ptr(i+1)-1)*temp % Values(temp % Perm(nodes(ptr(i):ptr(i+1)-1))))
+  END DO
+  prad=-MATMUL(rm,tp**4);pgas=0;pgold=0;plead=0;pheat=0
+  IF(pressure>0) THEN
+   cp=gamma/(gamma-1)*rg
+   DO i=1,n
+    DO j=i+1,n
+     IF(wm(i,j)<=0) CYCLE
+     t=.5_dp*(tp(i)+tp(j))
+     IF(.NOT.(t>=200 .AND. t<=400)) CALL Fatal('G3bGas','Local mean outside NIST200..400 K')
+     IF(t<=300) THEN
+      kappa=kk(1)+(t-200)/100*(kk(2)-kk(1))
+     ELSE
+      kappa=kk(2)+(t-300)/100*(kk(3)-kk(2))
+     END IF
+     mu=kappa/(cp+1.25_dp*rg);pr=mu*cp/kappa;lambda=mu/pressure*SQRT(ACOS(-1.0_dp)*rg*t/2)
+     jump=(2-acc)/acc*2*gamma/(gamma+1)*lambda/pr
+     g=kappa*wm(i,j)/(gap(i,j)+2*jump);q=g*(tp(j)-tp(i));pgas(i)=pgas(i)+q;pgas(j)=pgas(j)-q
+    END DO
+   END DO
+  END IF
+  DO k=1,nlink
+   q=lg(k)*(DOT_PRODUCT(tw(:,k),tp)-DOT_PRODUCT(tc(:,k),tp))
+   IF(kind(k)==1) THEN
+    pgold=pgold+gs*q*(tc(:,k)-tw(:,k))
+   ELSE
+    plead=plead+ls*q*(tc(:,k)-tw(:,k));pheat=pheat+.5_dp*ls*lj(k)*(tw(:,k)+tc(:,k))
+   END IF
+  END DO
+  ALLOCATE(rawpower(n),residual(n),candidate(n))
+  rawpower=prad+pgas+pgold+plead+pheat;residual=rawpower-oldpower;rnorm=SQRT(SUM(residual**2))
+  IF(.NOT.have_response) THEN
+   power=rawpower;have_response=.TRUE.
+  ELSE
+  IF(nh==4) THEN
+   hf(:,1:3)=hf(:,2:4);hr(:,1:3)=hr(:,2:4)
+  ELSE
+   nh=nh+1
+  END IF
+  hf(:,nh)=rawpower;hr(:,nh)=residual
+  IF(nh==1) THEN
+   power=rawpower
+  ELSE
+   gram=0;coeff=0
+   DO ii=1,nh
+    coeff(ii,1)=1
+    DO jj=1,nh
+     gram(ii,jj)=DOT_PRODUCT(hr(:,ii),hr(:,jj))
+    END DO
+   END DO
+   regular=MAX(1.0e-28_dp,MAXVAL(ABS(gram))*1.0e-12_dp)
+   DO ii=1,nh
+    gram(ii,ii)=gram(ii,ii)+regular
+   END DO
+   CALL DGESV(nh,1,gram,4,piv,coeff,4,info)
+   onesum=SUM(coeff(1:nh,1))
+   IF(info/=0 .OR. ABS(onesum)<1.0e-25_dp) THEN
+    power=.4_dp*rawpower+.6_dp*oldpower
+   ELSE
+    coeff(1:nh,1)=coeff(1:nh,1)/onesum
+    IF(SUM(ABS(coeff(1:nh,1)))>20.0_dp) THEN
+     power=.4_dp*rawpower+.6_dp*oldpower
+    ELSE
+     candidate=MATMUL(hf(:,1:nh),coeff(1:nh,1));power=.9_dp*candidate+.1_dp*oldpower
+    END IF
+   END IF
+  END IF
+  END IF
+  oldpower=power
+  DEALLOCATE(rawpower,residual,candidate)
+  OPEN(NEWUNIT=u,FILE='exchange-history.txt',POSITION='append',STATUS='unknown')
+  WRITE(u,'(I8,8(1X,ES24.16))')it,MINVAL(tp),MAXVAL(tp),SUM(prad),SUM(pgas),SUM(pgold),SUM(plead),SUM(pheat),rnorm
+  CLOSE(u)
+  laststamp=it;lastnorm=norm;lastchange=change
+ END SUBROUTINE EnsurePowers
+END MODULE G3bNonlocal
+'''
+    for i,p in enumerate(patches,1):source+=f'''FUNCTION Flux{p['solver_boundary']}(Model,node,T) RESULT(v)
+ USE G3bNonlocal
+ IMPLICIT NONE
+ TYPE(Model_t) :: Model
+ INTEGER :: node
+ REAL(KIND=dp) :: T,v
+ CALL EnsurePowers(Model)
+ v=power({i})/area({i})
+END FUNCTION Flux{p['solver_boundary']}
+'''
+    (out/'Exchange.F90').write_text(source);execute(['elmerf90','-ffree-line-length-none','-o','G3bExchange','Exchange.F90'],out,'compile');return out/'G3bExchange'
+
+
+def write_case(operator,case,current=.1,pbias=.0015,poptical=.0005,gas='N2',pressure=0.,radiation=True,window_eps=.1,gold_scale=1.,lead_scale=1.,sigma=1e-12,restart=None):
+    if gas not in GASES or pressure<0 or not np.isfinite(pressure) or not 0<=window_eps<=1 or lead_scale not in (0.,1.):raise ValueError('Invalid declared enclosure case')
+    config={'current_a':current,'pbias_w':pbias,'poptical_thermal_w':poptical,'gas':gas,'pressure_pa':pressure,'radiation_on':bool(radiation),'window_emissivity':window_eps,'accommodation':.8,'gold_scale':gold_scale,'lead_scale':lead_scale,'package_sigma_s_m':sigma,'operator_path':str(operator)}
+    reference_case(operator,case,current,pbias,poptical,wire_scale=gold_scale,sigma=sigma,restart=restart);hashes=payload(operator,case,config);library=compile_exchange(operator,case/'exchange_library');text=(case/'case.sif').read_text();text=text[:text.index('Boundary Condition 1\n')];text+='Boundary Condition 1\n Target Boundaries(1) = 101\n Temperature = Real 300\nEnd\n';m=json.loads((operator/'manifest.json').read_text());patches=json.loads((operator/'patches.json').read_text())
+    for i,p in enumerate(patches,2):
+        text+=f'Boundary Condition {i}\n Target Boundaries(1) = {p["solver_boundary"]}\n Heat Flux = Variable Temperature\n  Real Procedure "{library.resolve()}" "Flux{p["solver_boundary"]}"\n'
+        if p['original_boundary']==103:text+=f' Electric Flux = Real {current/m["terminal_planes"]["103"]["area_m2"]:.17g}\n'
+        if p['original_boundary']==104:text+=' Potential = Real 0\n'
+        text+='End\n'
+    (case/'case.sif').write_text(text);meta=json.loads((case/'case.json').read_text());meta.update(config,exchange_input_sha256=hashes,enclosure_model='3D solids + nonlocal gray radiosity, rarefied gas films, gold/TEC supply leads; no gas CFD',nonlocal_iteration='depth4 regularized Anderson on boundary powers; same physical fixed point, independently checked by final unaccelerated field residuals',lead_electrical_model='imposed module series I; lumped Cu lead resistance/Joule, not spatial detector/lead current transport');dump(case/'case.json',meta);return config

@@ -1,0 +1,3854 @@
+Check Keywords Warn
+Header
+ Mesh DB "/work/outputs/fem-g3b/argon_0" "."
+End
+Simulation
+ Coordinate System = Cartesian 3D
+ Simulation Type = Steady State
+ Steady State Max Iterations = 1
+ Restart File = "initial.result"
+ Restart Position = 0
+ Output File = "solution.result"
+ Post File = "fields.vtu"
+End
+Initial Condition 1
+ Temperature = Real 300
+ Potential = Real 0
+End
+Equation 1
+ Active Solvers(1) = 1
+End
+Solver 1
+ Equation = "ThermoElectric"
+ Variable = POT[Temperature:1 Potential:1]
+ Procedure = "ThermoElectricSolver" "ThermoElectricSolver"
+ Element = "p:1"
+ Nonlinear System Convergence Tolerance = 1e-9
+ Nonlinear System Max Iterations = 60
+ Nonlinear System Newton After Iterations = 2
+ Nonlinear System Newton After Tolerance = 1e-7
+ Linear System Solver = Direct
+ Linear System Direct Method = UMFPACK
+ Linear System Row Equilibration = Logical True
+End
+Body Force 1
+ Volumetric Heat Source = Real 0
+ Current Source = Real 0
+End
+Body Force 2
+ Volumetric Heat Source = Real 16666666.666666668
+ Current Source = Real 0
+End
+Body 1
+ Target Bodies(1) = 1
+ Equation = 1
+ Material = 4
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 2
+ Target Bodies(1) = 2
+ Equation = 1
+ Material = 4
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 3
+ Target Bodies(1) = 3
+ Equation = 1
+ Material = 4
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 4
+ Target Bodies(1) = 4
+ Equation = 1
+ Material = 4
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 5
+ Target Bodies(1) = 5
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 6
+ Target Bodies(1) = 6
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 7
+ Target Bodies(1) = 7
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 8
+ Target Bodies(1) = 8
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 9
+ Target Bodies(1) = 9
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 10
+ Target Bodies(1) = 10
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 11
+ Target Bodies(1) = 11
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 12
+ Target Bodies(1) = 12
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 13
+ Target Bodies(1) = 13
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 14
+ Target Bodies(1) = 14
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 15
+ Target Bodies(1) = 15
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 16
+ Target Bodies(1) = 16
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 17
+ Target Bodies(1) = 17
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 18
+ Target Bodies(1) = 18
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 19
+ Target Bodies(1) = 19
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 20
+ Target Bodies(1) = 20
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 21
+ Target Bodies(1) = 21
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 22
+ Target Bodies(1) = 22
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 23
+ Target Bodies(1) = 23
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 24
+ Target Bodies(1) = 24
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 25
+ Target Bodies(1) = 25
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 26
+ Target Bodies(1) = 26
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 27
+ Target Bodies(1) = 27
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 28
+ Target Bodies(1) = 28
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 29
+ Target Bodies(1) = 29
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 30
+ Target Bodies(1) = 30
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 31
+ Target Bodies(1) = 31
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 32
+ Target Bodies(1) = 32
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 33
+ Target Bodies(1) = 33
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 34
+ Target Bodies(1) = 34
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 35
+ Target Bodies(1) = 35
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 36
+ Target Bodies(1) = 36
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 37
+ Target Bodies(1) = 37
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 38
+ Target Bodies(1) = 38
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 39
+ Target Bodies(1) = 39
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 40
+ Target Bodies(1) = 40
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 41
+ Target Bodies(1) = 41
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 42
+ Target Bodies(1) = 42
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 43
+ Target Bodies(1) = 43
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 44
+ Target Bodies(1) = 44
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 45
+ Target Bodies(1) = 45
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 46
+ Target Bodies(1) = 46
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 47
+ Target Bodies(1) = 47
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 48
+ Target Bodies(1) = 48
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 49
+ Target Bodies(1) = 49
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 50
+ Target Bodies(1) = 50
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 51
+ Target Bodies(1) = 51
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 52
+ Target Bodies(1) = 52
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 53
+ Target Bodies(1) = 53
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 54
+ Target Bodies(1) = 54
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 55
+ Target Bodies(1) = 55
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 56
+ Target Bodies(1) = 56
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 57
+ Target Bodies(1) = 57
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 58
+ Target Bodies(1) = 58
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 59
+ Target Bodies(1) = 59
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 60
+ Target Bodies(1) = 60
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 61
+ Target Bodies(1) = 61
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 62
+ Target Bodies(1) = 62
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 63
+ Target Bodies(1) = 63
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 64
+ Target Bodies(1) = 64
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 65
+ Target Bodies(1) = 65
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 66
+ Target Bodies(1) = 66
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 67
+ Target Bodies(1) = 67
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 68
+ Target Bodies(1) = 68
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 69
+ Target Bodies(1) = 69
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 70
+ Target Bodies(1) = 70
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 71
+ Target Bodies(1) = 71
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 72
+ Target Bodies(1) = 72
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 73
+ Target Bodies(1) = 73
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 74
+ Target Bodies(1) = 74
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 75
+ Target Bodies(1) = 75
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 76
+ Target Bodies(1) = 76
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 77
+ Target Bodies(1) = 77
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 78
+ Target Bodies(1) = 78
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 79
+ Target Bodies(1) = 79
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 80
+ Target Bodies(1) = 80
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 81
+ Target Bodies(1) = 81
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 82
+ Target Bodies(1) = 82
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 83
+ Target Bodies(1) = 83
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 84
+ Target Bodies(1) = 84
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 85
+ Target Bodies(1) = 85
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 86
+ Target Bodies(1) = 86
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 87
+ Target Bodies(1) = 87
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 88
+ Target Bodies(1) = 88
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 89
+ Target Bodies(1) = 89
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 90
+ Target Bodies(1) = 90
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 91
+ Target Bodies(1) = 91
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 92
+ Target Bodies(1) = 92
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 93
+ Target Bodies(1) = 93
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 94
+ Target Bodies(1) = 94
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 95
+ Target Bodies(1) = 95
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 96
+ Target Bodies(1) = 96
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 97
+ Target Bodies(1) = 97
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 98
+ Target Bodies(1) = 98
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 99
+ Target Bodies(1) = 99
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 100
+ Target Bodies(1) = 100
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 101
+ Target Bodies(1) = 101
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 102
+ Target Bodies(1) = 102
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 103
+ Target Bodies(1) = 103
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 104
+ Target Bodies(1) = 104
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 105
+ Target Bodies(1) = 105
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 106
+ Target Bodies(1) = 106
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 107
+ Target Bodies(1) = 107
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 108
+ Target Bodies(1) = 108
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 109
+ Target Bodies(1) = 109
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 110
+ Target Bodies(1) = 110
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 111
+ Target Bodies(1) = 111
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 112
+ Target Bodies(1) = 112
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 113
+ Target Bodies(1) = 113
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 114
+ Target Bodies(1) = 114
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 115
+ Target Bodies(1) = 115
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 116
+ Target Bodies(1) = 116
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 117
+ Target Bodies(1) = 117
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 118
+ Target Bodies(1) = 118
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 119
+ Target Bodies(1) = 119
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 120
+ Target Bodies(1) = 120
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 121
+ Target Bodies(1) = 121
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 122
+ Target Bodies(1) = 122
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 123
+ Target Bodies(1) = 123
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 124
+ Target Bodies(1) = 124
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 125
+ Target Bodies(1) = 125
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 126
+ Target Bodies(1) = 126
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 127
+ Target Bodies(1) = 127
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 128
+ Target Bodies(1) = 128
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 129
+ Target Bodies(1) = 129
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 130
+ Target Bodies(1) = 130
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 131
+ Target Bodies(1) = 131
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 132
+ Target Bodies(1) = 132
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 133
+ Target Bodies(1) = 133
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 134
+ Target Bodies(1) = 134
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 135
+ Target Bodies(1) = 135
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 136
+ Target Bodies(1) = 136
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 137
+ Target Bodies(1) = 137
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 138
+ Target Bodies(1) = 138
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 139
+ Target Bodies(1) = 139
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 140
+ Target Bodies(1) = 140
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 141
+ Target Bodies(1) = 141
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 142
+ Target Bodies(1) = 142
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 143
+ Target Bodies(1) = 143
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 144
+ Target Bodies(1) = 144
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 145
+ Target Bodies(1) = 145
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 146
+ Target Bodies(1) = 146
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 147
+ Target Bodies(1) = 147
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 148
+ Target Bodies(1) = 148
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 149
+ Target Bodies(1) = 149
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 150
+ Target Bodies(1) = 150
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 151
+ Target Bodies(1) = 151
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 152
+ Target Bodies(1) = 152
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 153
+ Target Bodies(1) = 153
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 154
+ Target Bodies(1) = 154
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 155
+ Target Bodies(1) = 155
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 156
+ Target Bodies(1) = 156
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 157
+ Target Bodies(1) = 157
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 158
+ Target Bodies(1) = 158
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 159
+ Target Bodies(1) = 159
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 160
+ Target Bodies(1) = 160
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 161
+ Target Bodies(1) = 161
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 162
+ Target Bodies(1) = 162
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 163
+ Target Bodies(1) = 163
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 164
+ Target Bodies(1) = 164
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 165
+ Target Bodies(1) = 165
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 166
+ Target Bodies(1) = 166
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 167
+ Target Bodies(1) = 167
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 168
+ Target Bodies(1) = 168
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 169
+ Target Bodies(1) = 169
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 170
+ Target Bodies(1) = 170
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 171
+ Target Bodies(1) = 171
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 172
+ Target Bodies(1) = 172
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 173
+ Target Bodies(1) = 173
+ Equation = 1
+ Material = 2
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 174
+ Target Bodies(1) = 174
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 175
+ Target Bodies(1) = 175
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 176
+ Target Bodies(1) = 176
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 177
+ Target Bodies(1) = 177
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 178
+ Target Bodies(1) = 178
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 179
+ Target Bodies(1) = 179
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 180
+ Target Bodies(1) = 180
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 181
+ Target Bodies(1) = 181
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 182
+ Target Bodies(1) = 182
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 183
+ Target Bodies(1) = 183
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 184
+ Target Bodies(1) = 184
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 185
+ Target Bodies(1) = 185
+ Equation = 1
+ Material = 3
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 186
+ Target Bodies(1) = 186
+ Equation = 1
+ Material = 4
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 187
+ Target Bodies(1) = 187
+ Equation = 1
+ Material = 4
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 188
+ Target Bodies(1) = 188
+ Equation = 1
+ Material = 4
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 189
+ Target Bodies(1) = 189
+ Equation = 1
+ Material = 4
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 190
+ Target Bodies(1) = 190
+ Equation = 1
+ Material = 5
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 191
+ Target Bodies(1) = 191
+ Equation = 1
+ Material = 8
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 192
+ Target Bodies(1) = 192
+ Equation = 1
+ Material = 9
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 193
+ Target Bodies(1) = 193
+ Equation = 1
+ Material = 13
+ Initial Condition = 1
+ Body Force = 2
+End
+Body 194
+ Target Bodies(1) = 194
+ Equation = 1
+ Material = 7
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 195
+ Target Bodies(1) = 195
+ Equation = 1
+ Material = 6
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 196
+ Target Bodies(1) = 196
+ Equation = 1
+ Material = 10
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 197
+ Target Bodies(1) = 197
+ Equation = 1
+ Material = 7
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 198
+ Target Bodies(1) = 198
+ Equation = 1
+ Material = 6
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 199
+ Target Bodies(1) = 199
+ Equation = 1
+ Material = 10
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 200
+ Target Bodies(1) = 200
+ Equation = 1
+ Material = 7
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 201
+ Target Bodies(1) = 201
+ Equation = 1
+ Material = 6
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 202
+ Target Bodies(1) = 202
+ Equation = 1
+ Material = 7
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 203
+ Target Bodies(1) = 203
+ Equation = 1
+ Material = 6
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 204
+ Target Bodies(1) = 204
+ Equation = 1
+ Material = 7
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 205
+ Target Bodies(1) = 205
+ Equation = 1
+ Material = 6
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 206
+ Target Bodies(1) = 206
+ Equation = 1
+ Material = 7
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 207
+ Target Bodies(1) = 207
+ Equation = 1
+ Material = 6
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 208
+ Target Bodies(1) = 208
+ Equation = 1
+ Material = 7
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 209
+ Target Bodies(1) = 209
+ Equation = 1
+ Material = 6
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 210
+ Target Bodies(1) = 210
+ Equation = 1
+ Material = 7
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 211
+ Target Bodies(1) = 211
+ Equation = 1
+ Material = 6
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 212
+ Target Bodies(1) = 212
+ Equation = 1
+ Material = 7
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 213
+ Target Bodies(1) = 213
+ Equation = 1
+ Material = 6
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 214
+ Target Bodies(1) = 214
+ Equation = 1
+ Material = 11
+ Initial Condition = 1
+ Body Force = 1
+End
+Body 215
+ Target Bodies(1) = 215
+ Equation = 1
+ Material = 12
+ Initial Condition = 1
+ Body Force = 1
+End
+Material 1
+ Heat Conductivity = Real 1.5
+ Electric Conductivity = Real 140000
+ Seebeck Coefficient = Real 0.00016000000000000001
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 2
+ Heat Conductivity = Real 1.5
+ Electric Conductivity = Real 165500
+ Seebeck Coefficient = Real -0.00017000000000000001
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 3
+ Heat Conductivity = Real 400
+ Electric Conductivity = Real 58139534.883720934
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 4
+ Heat Conductivity = Real 30
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 5
+ Heat Conductivity = Real 17.300000000000001
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 6
+ Heat Conductivity = Real 17.300000000000001
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 7
+ Heat Conductivity = Real 1
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 8
+ Heat Conductivity = Real 2
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 9
+ Heat Conductivity = Real 1
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 10
+ Heat Conductivity = Real 315
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 11
+ Heat Conductivity = Real 15
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 12
+ Heat Conductivity = Real 18
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 13
+ Heat Conductivity = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/library/G3bReference" "MCTHeat"
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 6830
+ Heat Capacity = Real 1
+End
+Boundary Condition 1
+ Target Boundaries(1) = 101
+ Temperature = Real 300
+End
+Boundary Condition 2
+ Target Boundaries(1) = 20000
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20000"
+End
+Boundary Condition 3
+ Target Boundaries(1) = 20001
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20001"
+End
+Boundary Condition 4
+ Target Boundaries(1) = 20002
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20002"
+End
+Boundary Condition 5
+ Target Boundaries(1) = 20003
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20003"
+End
+Boundary Condition 6
+ Target Boundaries(1) = 20004
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20004"
+End
+Boundary Condition 7
+ Target Boundaries(1) = 20005
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20005"
+End
+Boundary Condition 8
+ Target Boundaries(1) = 20006
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20006"
+End
+Boundary Condition 9
+ Target Boundaries(1) = 20007
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20007"
+End
+Boundary Condition 10
+ Target Boundaries(1) = 20008
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20008"
+End
+Boundary Condition 11
+ Target Boundaries(1) = 20009
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20009"
+End
+Boundary Condition 12
+ Target Boundaries(1) = 20010
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20010"
+End
+Boundary Condition 13
+ Target Boundaries(1) = 20011
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20011"
+End
+Boundary Condition 14
+ Target Boundaries(1) = 20012
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20012"
+End
+Boundary Condition 15
+ Target Boundaries(1) = 20013
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20013"
+End
+Boundary Condition 16
+ Target Boundaries(1) = 20014
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20014"
+End
+Boundary Condition 17
+ Target Boundaries(1) = 20015
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20015"
+End
+Boundary Condition 18
+ Target Boundaries(1) = 20016
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20016"
+End
+Boundary Condition 19
+ Target Boundaries(1) = 20017
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20017"
+End
+Boundary Condition 20
+ Target Boundaries(1) = 20018
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20018"
+End
+Boundary Condition 21
+ Target Boundaries(1) = 20019
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20019"
+End
+Boundary Condition 22
+ Target Boundaries(1) = 20020
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20020"
+End
+Boundary Condition 23
+ Target Boundaries(1) = 20021
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20021"
+End
+Boundary Condition 24
+ Target Boundaries(1) = 20022
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20022"
+End
+Boundary Condition 25
+ Target Boundaries(1) = 20023
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20023"
+End
+Boundary Condition 26
+ Target Boundaries(1) = 20024
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20024"
+End
+Boundary Condition 27
+ Target Boundaries(1) = 20025
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20025"
+End
+Boundary Condition 28
+ Target Boundaries(1) = 20026
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20026"
+End
+Boundary Condition 29
+ Target Boundaries(1) = 20027
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20027"
+End
+Boundary Condition 30
+ Target Boundaries(1) = 20028
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20028"
+End
+Boundary Condition 31
+ Target Boundaries(1) = 20029
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20029"
+End
+Boundary Condition 32
+ Target Boundaries(1) = 20030
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20030"
+End
+Boundary Condition 33
+ Target Boundaries(1) = 20031
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20031"
+End
+Boundary Condition 34
+ Target Boundaries(1) = 20032
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20032"
+End
+Boundary Condition 35
+ Target Boundaries(1) = 20033
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20033"
+End
+Boundary Condition 36
+ Target Boundaries(1) = 20034
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20034"
+End
+Boundary Condition 37
+ Target Boundaries(1) = 20035
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20035"
+End
+Boundary Condition 38
+ Target Boundaries(1) = 20036
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20036"
+End
+Boundary Condition 39
+ Target Boundaries(1) = 20037
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20037"
+End
+Boundary Condition 40
+ Target Boundaries(1) = 20038
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20038"
+End
+Boundary Condition 41
+ Target Boundaries(1) = 20039
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20039"
+End
+Boundary Condition 42
+ Target Boundaries(1) = 20040
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20040"
+End
+Boundary Condition 43
+ Target Boundaries(1) = 20041
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20041"
+End
+Boundary Condition 44
+ Target Boundaries(1) = 20042
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20042"
+End
+Boundary Condition 45
+ Target Boundaries(1) = 20043
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20043"
+End
+Boundary Condition 46
+ Target Boundaries(1) = 20044
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20044"
+End
+Boundary Condition 47
+ Target Boundaries(1) = 20045
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20045"
+End
+Boundary Condition 48
+ Target Boundaries(1) = 20046
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20046"
+End
+Boundary Condition 49
+ Target Boundaries(1) = 20047
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20047"
+End
+Boundary Condition 50
+ Target Boundaries(1) = 20048
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20048"
+End
+Boundary Condition 51
+ Target Boundaries(1) = 20049
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20049"
+End
+Boundary Condition 52
+ Target Boundaries(1) = 20050
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20050"
+End
+Boundary Condition 53
+ Target Boundaries(1) = 20051
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20051"
+End
+Boundary Condition 54
+ Target Boundaries(1) = 20052
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20052"
+End
+Boundary Condition 55
+ Target Boundaries(1) = 20053
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20053"
+End
+Boundary Condition 56
+ Target Boundaries(1) = 20054
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20054"
+End
+Boundary Condition 57
+ Target Boundaries(1) = 20055
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20055"
+End
+Boundary Condition 58
+ Target Boundaries(1) = 20056
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20056"
+End
+Boundary Condition 59
+ Target Boundaries(1) = 20057
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20057"
+End
+Boundary Condition 60
+ Target Boundaries(1) = 20058
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20058"
+End
+Boundary Condition 61
+ Target Boundaries(1) = 20059
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20059"
+End
+Boundary Condition 62
+ Target Boundaries(1) = 20060
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20060"
+End
+Boundary Condition 63
+ Target Boundaries(1) = 20061
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20061"
+End
+Boundary Condition 64
+ Target Boundaries(1) = 20062
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20062"
+End
+Boundary Condition 65
+ Target Boundaries(1) = 20063
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20063"
+End
+Boundary Condition 66
+ Target Boundaries(1) = 20064
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20064"
+End
+Boundary Condition 67
+ Target Boundaries(1) = 20065
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20065"
+End
+Boundary Condition 68
+ Target Boundaries(1) = 20066
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20066"
+End
+Boundary Condition 69
+ Target Boundaries(1) = 20067
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20067"
+End
+Boundary Condition 70
+ Target Boundaries(1) = 20068
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20068"
+End
+Boundary Condition 71
+ Target Boundaries(1) = 20069
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20069"
+End
+Boundary Condition 72
+ Target Boundaries(1) = 20070
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20070"
+End
+Boundary Condition 73
+ Target Boundaries(1) = 20071
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20071"
+End
+Boundary Condition 74
+ Target Boundaries(1) = 20072
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20072"
+End
+Boundary Condition 75
+ Target Boundaries(1) = 20073
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20073"
+End
+Boundary Condition 76
+ Target Boundaries(1) = 20074
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20074"
+End
+Boundary Condition 77
+ Target Boundaries(1) = 20075
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20075"
+End
+Boundary Condition 78
+ Target Boundaries(1) = 20076
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20076"
+End
+Boundary Condition 79
+ Target Boundaries(1) = 20077
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20077"
+End
+Boundary Condition 80
+ Target Boundaries(1) = 20078
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20078"
+End
+Boundary Condition 81
+ Target Boundaries(1) = 20079
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20079"
+End
+Boundary Condition 82
+ Target Boundaries(1) = 20080
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20080"
+End
+Boundary Condition 83
+ Target Boundaries(1) = 20081
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20081"
+End
+Boundary Condition 84
+ Target Boundaries(1) = 20082
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20082"
+End
+Boundary Condition 85
+ Target Boundaries(1) = 20083
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20083"
+End
+Boundary Condition 86
+ Target Boundaries(1) = 20084
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20084"
+End
+Boundary Condition 87
+ Target Boundaries(1) = 20085
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20085"
+End
+Boundary Condition 88
+ Target Boundaries(1) = 20086
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20086"
+End
+Boundary Condition 89
+ Target Boundaries(1) = 20087
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20087"
+End
+Boundary Condition 90
+ Target Boundaries(1) = 20088
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20088"
+End
+Boundary Condition 91
+ Target Boundaries(1) = 20089
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20089"
+End
+Boundary Condition 92
+ Target Boundaries(1) = 20090
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20090"
+End
+Boundary Condition 93
+ Target Boundaries(1) = 20091
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20091"
+End
+Boundary Condition 94
+ Target Boundaries(1) = 20092
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20092"
+End
+Boundary Condition 95
+ Target Boundaries(1) = 20093
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20093"
+End
+Boundary Condition 96
+ Target Boundaries(1) = 20094
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20094"
+End
+Boundary Condition 97
+ Target Boundaries(1) = 20095
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20095"
+End
+Boundary Condition 98
+ Target Boundaries(1) = 20096
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20096"
+End
+Boundary Condition 99
+ Target Boundaries(1) = 20097
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20097"
+End
+Boundary Condition 100
+ Target Boundaries(1) = 20098
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20098"
+End
+Boundary Condition 101
+ Target Boundaries(1) = 20099
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20099"
+End
+Boundary Condition 102
+ Target Boundaries(1) = 20100
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20100"
+End
+Boundary Condition 103
+ Target Boundaries(1) = 20101
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20101"
+End
+Boundary Condition 104
+ Target Boundaries(1) = 20102
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20102"
+End
+Boundary Condition 105
+ Target Boundaries(1) = 20103
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20103"
+End
+Boundary Condition 106
+ Target Boundaries(1) = 20104
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20104"
+End
+Boundary Condition 107
+ Target Boundaries(1) = 20105
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20105"
+End
+Boundary Condition 108
+ Target Boundaries(1) = 20106
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20106"
+End
+Boundary Condition 109
+ Target Boundaries(1) = 20107
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20107"
+End
+Boundary Condition 110
+ Target Boundaries(1) = 20108
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20108"
+End
+Boundary Condition 111
+ Target Boundaries(1) = 20109
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20109"
+End
+Boundary Condition 112
+ Target Boundaries(1) = 20110
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20110"
+End
+Boundary Condition 113
+ Target Boundaries(1) = 20111
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20111"
+End
+Boundary Condition 114
+ Target Boundaries(1) = 20112
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20112"
+End
+Boundary Condition 115
+ Target Boundaries(1) = 20113
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20113"
+End
+Boundary Condition 116
+ Target Boundaries(1) = 20114
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20114"
+End
+Boundary Condition 117
+ Target Boundaries(1) = 20115
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20115"
+End
+Boundary Condition 118
+ Target Boundaries(1) = 20116
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20116"
+End
+Boundary Condition 119
+ Target Boundaries(1) = 20117
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20117"
+End
+Boundary Condition 120
+ Target Boundaries(1) = 20118
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20118"
+End
+Boundary Condition 121
+ Target Boundaries(1) = 20119
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20119"
+End
+Boundary Condition 122
+ Target Boundaries(1) = 20120
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20120"
+End
+Boundary Condition 123
+ Target Boundaries(1) = 20121
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20121"
+End
+Boundary Condition 124
+ Target Boundaries(1) = 20122
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20122"
+End
+Boundary Condition 125
+ Target Boundaries(1) = 20123
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20123"
+End
+Boundary Condition 126
+ Target Boundaries(1) = 20124
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20124"
+End
+Boundary Condition 127
+ Target Boundaries(1) = 20125
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20125"
+End
+Boundary Condition 128
+ Target Boundaries(1) = 20126
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20126"
+End
+Boundary Condition 129
+ Target Boundaries(1) = 20127
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20127"
+End
+Boundary Condition 130
+ Target Boundaries(1) = 20128
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20128"
+End
+Boundary Condition 131
+ Target Boundaries(1) = 20129
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20129"
+End
+Boundary Condition 132
+ Target Boundaries(1) = 20130
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20130"
+End
+Boundary Condition 133
+ Target Boundaries(1) = 20131
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20131"
+End
+Boundary Condition 134
+ Target Boundaries(1) = 20132
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20132"
+End
+Boundary Condition 135
+ Target Boundaries(1) = 20133
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20133"
+End
+Boundary Condition 136
+ Target Boundaries(1) = 20134
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20134"
+End
+Boundary Condition 137
+ Target Boundaries(1) = 20135
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20135"
+End
+Boundary Condition 138
+ Target Boundaries(1) = 20136
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20136"
+End
+Boundary Condition 139
+ Target Boundaries(1) = 20137
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20137"
+End
+Boundary Condition 140
+ Target Boundaries(1) = 20138
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20138"
+End
+Boundary Condition 141
+ Target Boundaries(1) = 20139
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20139"
+End
+Boundary Condition 142
+ Target Boundaries(1) = 20140
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20140"
+End
+Boundary Condition 143
+ Target Boundaries(1) = 20141
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20141"
+End
+Boundary Condition 144
+ Target Boundaries(1) = 20142
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20142"
+End
+Boundary Condition 145
+ Target Boundaries(1) = 20143
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20143"
+End
+Boundary Condition 146
+ Target Boundaries(1) = 20144
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20144"
+End
+Boundary Condition 147
+ Target Boundaries(1) = 20145
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20145"
+End
+Boundary Condition 148
+ Target Boundaries(1) = 20146
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20146"
+End
+Boundary Condition 149
+ Target Boundaries(1) = 20147
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20147"
+End
+Boundary Condition 150
+ Target Boundaries(1) = 20148
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20148"
+End
+Boundary Condition 151
+ Target Boundaries(1) = 20149
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20149"
+End
+Boundary Condition 152
+ Target Boundaries(1) = 20150
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20150"
+End
+Boundary Condition 153
+ Target Boundaries(1) = 20151
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20151"
+End
+Boundary Condition 154
+ Target Boundaries(1) = 20152
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20152"
+End
+Boundary Condition 155
+ Target Boundaries(1) = 20153
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20153"
+End
+Boundary Condition 156
+ Target Boundaries(1) = 20154
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20154"
+End
+Boundary Condition 157
+ Target Boundaries(1) = 20155
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20155"
+End
+Boundary Condition 158
+ Target Boundaries(1) = 20156
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20156"
+End
+Boundary Condition 159
+ Target Boundaries(1) = 20157
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20157"
+End
+Boundary Condition 160
+ Target Boundaries(1) = 20158
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20158"
+End
+Boundary Condition 161
+ Target Boundaries(1) = 20159
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20159"
+End
+Boundary Condition 162
+ Target Boundaries(1) = 20160
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20160"
+End
+Boundary Condition 163
+ Target Boundaries(1) = 20161
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20161"
+End
+Boundary Condition 164
+ Target Boundaries(1) = 20162
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20162"
+End
+Boundary Condition 165
+ Target Boundaries(1) = 20163
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20163"
+End
+Boundary Condition 166
+ Target Boundaries(1) = 20164
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20164"
+End
+Boundary Condition 167
+ Target Boundaries(1) = 20165
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20165"
+End
+Boundary Condition 168
+ Target Boundaries(1) = 20166
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20166"
+End
+Boundary Condition 169
+ Target Boundaries(1) = 20167
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20167"
+End
+Boundary Condition 170
+ Target Boundaries(1) = 20168
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20168"
+End
+Boundary Condition 171
+ Target Boundaries(1) = 20169
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20169"
+End
+Boundary Condition 172
+ Target Boundaries(1) = 20170
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20170"
+End
+Boundary Condition 173
+ Target Boundaries(1) = 20171
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20171"
+End
+Boundary Condition 174
+ Target Boundaries(1) = 20172
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20172"
+End
+Boundary Condition 175
+ Target Boundaries(1) = 20173
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20173"
+End
+Boundary Condition 176
+ Target Boundaries(1) = 20174
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20174"
+End
+Boundary Condition 177
+ Target Boundaries(1) = 20175
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20175"
+End
+Boundary Condition 178
+ Target Boundaries(1) = 20176
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20176"
+End
+Boundary Condition 179
+ Target Boundaries(1) = 20177
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20177"
+End
+Boundary Condition 180
+ Target Boundaries(1) = 20178
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20178"
+End
+Boundary Condition 181
+ Target Boundaries(1) = 20179
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20179"
+End
+Boundary Condition 182
+ Target Boundaries(1) = 20180
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20180"
+End
+Boundary Condition 183
+ Target Boundaries(1) = 20181
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20181"
+End
+Boundary Condition 184
+ Target Boundaries(1) = 20182
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20182"
+End
+Boundary Condition 185
+ Target Boundaries(1) = 20183
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20183"
+End
+Boundary Condition 186
+ Target Boundaries(1) = 20184
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20184"
+End
+Boundary Condition 187
+ Target Boundaries(1) = 20185
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20185"
+End
+Boundary Condition 188
+ Target Boundaries(1) = 20186
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20186"
+End
+Boundary Condition 189
+ Target Boundaries(1) = 20187
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20187"
+End
+Boundary Condition 190
+ Target Boundaries(1) = 20188
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20188"
+End
+Boundary Condition 191
+ Target Boundaries(1) = 20189
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20189"
+End
+Boundary Condition 192
+ Target Boundaries(1) = 20190
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20190"
+End
+Boundary Condition 193
+ Target Boundaries(1) = 20191
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20191"
+End
+Boundary Condition 194
+ Target Boundaries(1) = 20192
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20192"
+End
+Boundary Condition 195
+ Target Boundaries(1) = 20193
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20193"
+End
+Boundary Condition 196
+ Target Boundaries(1) = 20194
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20194"
+End
+Boundary Condition 197
+ Target Boundaries(1) = 20195
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20195"
+End
+Boundary Condition 198
+ Target Boundaries(1) = 20196
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20196"
+End
+Boundary Condition 199
+ Target Boundaries(1) = 20197
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20197"
+End
+Boundary Condition 200
+ Target Boundaries(1) = 20198
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20198"
+End
+Boundary Condition 201
+ Target Boundaries(1) = 20199
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20199"
+End
+Boundary Condition 202
+ Target Boundaries(1) = 20200
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20200"
+End
+Boundary Condition 203
+ Target Boundaries(1) = 20201
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20201"
+End
+Boundary Condition 204
+ Target Boundaries(1) = 20202
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20202"
+End
+Boundary Condition 205
+ Target Boundaries(1) = 20203
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20203"
+End
+Boundary Condition 206
+ Target Boundaries(1) = 20204
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20204"
+End
+Boundary Condition 207
+ Target Boundaries(1) = 20205
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20205"
+End
+Boundary Condition 208
+ Target Boundaries(1) = 20206
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20206"
+End
+Boundary Condition 209
+ Target Boundaries(1) = 20207
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20207"
+End
+Boundary Condition 210
+ Target Boundaries(1) = 20208
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20208"
+End
+Boundary Condition 211
+ Target Boundaries(1) = 20209
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20209"
+End
+Boundary Condition 212
+ Target Boundaries(1) = 20210
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20210"
+End
+Boundary Condition 213
+ Target Boundaries(1) = 20211
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20211"
+End
+Boundary Condition 214
+ Target Boundaries(1) = 20212
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20212"
+End
+Boundary Condition 215
+ Target Boundaries(1) = 20213
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20213"
+End
+Boundary Condition 216
+ Target Boundaries(1) = 20214
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20214"
+End
+Boundary Condition 217
+ Target Boundaries(1) = 20215
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20215"
+End
+Boundary Condition 218
+ Target Boundaries(1) = 20216
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20216"
+End
+Boundary Condition 219
+ Target Boundaries(1) = 20217
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20217"
+End
+Boundary Condition 220
+ Target Boundaries(1) = 20218
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20218"
+End
+Boundary Condition 221
+ Target Boundaries(1) = 20219
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20219"
+End
+Boundary Condition 222
+ Target Boundaries(1) = 20220
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20220"
+End
+Boundary Condition 223
+ Target Boundaries(1) = 20221
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20221"
+End
+Boundary Condition 224
+ Target Boundaries(1) = 20222
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20222"
+End
+Boundary Condition 225
+ Target Boundaries(1) = 20223
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20223"
+End
+Boundary Condition 226
+ Target Boundaries(1) = 20224
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20224"
+End
+Boundary Condition 227
+ Target Boundaries(1) = 20225
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20225"
+End
+Boundary Condition 228
+ Target Boundaries(1) = 20226
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20226"
+End
+Boundary Condition 229
+ Target Boundaries(1) = 20227
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20227"
+End
+Boundary Condition 230
+ Target Boundaries(1) = 20228
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20228"
+End
+Boundary Condition 231
+ Target Boundaries(1) = 20229
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20229"
+End
+Boundary Condition 232
+ Target Boundaries(1) = 20230
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20230"
+End
+Boundary Condition 233
+ Target Boundaries(1) = 20231
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20231"
+End
+Boundary Condition 234
+ Target Boundaries(1) = 20232
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20232"
+End
+Boundary Condition 235
+ Target Boundaries(1) = 20233
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20233"
+End
+Boundary Condition 236
+ Target Boundaries(1) = 20234
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20234"
+End
+Boundary Condition 237
+ Target Boundaries(1) = 20235
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20235"
+End
+Boundary Condition 238
+ Target Boundaries(1) = 20236
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20236"
+End
+Boundary Condition 239
+ Target Boundaries(1) = 20237
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20237"
+End
+Boundary Condition 240
+ Target Boundaries(1) = 20238
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20238"
+End
+Boundary Condition 241
+ Target Boundaries(1) = 20239
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20239"
+End
+Boundary Condition 242
+ Target Boundaries(1) = 20240
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20240"
+End
+Boundary Condition 243
+ Target Boundaries(1) = 20241
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20241"
+End
+Boundary Condition 244
+ Target Boundaries(1) = 20242
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20242"
+End
+Boundary Condition 245
+ Target Boundaries(1) = 20243
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20243"
+End
+Boundary Condition 246
+ Target Boundaries(1) = 20244
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20244"
+End
+Boundary Condition 247
+ Target Boundaries(1) = 20245
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20245"
+End
+Boundary Condition 248
+ Target Boundaries(1) = 20246
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20246"
+End
+Boundary Condition 249
+ Target Boundaries(1) = 20247
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20247"
+End
+Boundary Condition 250
+ Target Boundaries(1) = 20248
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20248"
+End
+Boundary Condition 251
+ Target Boundaries(1) = 20249
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20249"
+End
+Boundary Condition 252
+ Target Boundaries(1) = 20250
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20250"
+End
+Boundary Condition 253
+ Target Boundaries(1) = 20251
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20251"
+End
+Boundary Condition 254
+ Target Boundaries(1) = 20252
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20252"
+End
+Boundary Condition 255
+ Target Boundaries(1) = 20253
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20253"
+End
+Boundary Condition 256
+ Target Boundaries(1) = 20254
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20254"
+End
+Boundary Condition 257
+ Target Boundaries(1) = 20255
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20255"
+End
+Boundary Condition 258
+ Target Boundaries(1) = 20256
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20256"
+End
+Boundary Condition 259
+ Target Boundaries(1) = 20257
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20257"
+End
+Boundary Condition 260
+ Target Boundaries(1) = 20258
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20258"
+End
+Boundary Condition 261
+ Target Boundaries(1) = 20259
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20259"
+End
+Boundary Condition 262
+ Target Boundaries(1) = 20260
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20260"
+End
+Boundary Condition 263
+ Target Boundaries(1) = 20261
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20261"
+End
+Boundary Condition 264
+ Target Boundaries(1) = 20262
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20262"
+End
+Boundary Condition 265
+ Target Boundaries(1) = 20263
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20263"
+End
+Boundary Condition 266
+ Target Boundaries(1) = 20264
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20264"
+End
+Boundary Condition 267
+ Target Boundaries(1) = 20265
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20265"
+End
+Boundary Condition 268
+ Target Boundaries(1) = 20266
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20266"
+End
+Boundary Condition 269
+ Target Boundaries(1) = 20267
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20267"
+End
+Boundary Condition 270
+ Target Boundaries(1) = 20268
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20268"
+End
+Boundary Condition 271
+ Target Boundaries(1) = 20269
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20269"
+End
+Boundary Condition 272
+ Target Boundaries(1) = 20270
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20270"
+End
+Boundary Condition 273
+ Target Boundaries(1) = 20271
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20271"
+End
+Boundary Condition 274
+ Target Boundaries(1) = 20272
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20272"
+End
+Boundary Condition 275
+ Target Boundaries(1) = 20273
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20273"
+End
+Boundary Condition 276
+ Target Boundaries(1) = 20274
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20274"
+End
+Boundary Condition 277
+ Target Boundaries(1) = 20275
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20275"
+End
+Boundary Condition 278
+ Target Boundaries(1) = 20276
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20276"
+End
+Boundary Condition 279
+ Target Boundaries(1) = 20277
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20277"
+End
+Boundary Condition 280
+ Target Boundaries(1) = 20278
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20278"
+End
+Boundary Condition 281
+ Target Boundaries(1) = 20279
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20279"
+End
+Boundary Condition 282
+ Target Boundaries(1) = 20280
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20280"
+End
+Boundary Condition 283
+ Target Boundaries(1) = 20281
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20281"
+End
+Boundary Condition 284
+ Target Boundaries(1) = 20282
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20282"
+End
+Boundary Condition 285
+ Target Boundaries(1) = 20283
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20283"
+End
+Boundary Condition 286
+ Target Boundaries(1) = 20284
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20284"
+End
+Boundary Condition 287
+ Target Boundaries(1) = 20285
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20285"
+End
+Boundary Condition 288
+ Target Boundaries(1) = 20286
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20286"
+End
+Boundary Condition 289
+ Target Boundaries(1) = 20287
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20287"
+End
+Boundary Condition 290
+ Target Boundaries(1) = 20288
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20288"
+End
+Boundary Condition 291
+ Target Boundaries(1) = 20289
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20289"
+End
+Boundary Condition 292
+ Target Boundaries(1) = 20290
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20290"
+End
+Boundary Condition 293
+ Target Boundaries(1) = 20291
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20291"
+End
+Boundary Condition 294
+ Target Boundaries(1) = 20292
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20292"
+End
+Boundary Condition 295
+ Target Boundaries(1) = 20293
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20293"
+End
+Boundary Condition 296
+ Target Boundaries(1) = 20294
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20294"
+End
+Boundary Condition 297
+ Target Boundaries(1) = 20295
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20295"
+End
+Boundary Condition 298
+ Target Boundaries(1) = 20296
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20296"
+End
+Boundary Condition 299
+ Target Boundaries(1) = 20297
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20297"
+End
+Boundary Condition 300
+ Target Boundaries(1) = 20298
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20298"
+End
+Boundary Condition 301
+ Target Boundaries(1) = 20299
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20299"
+End
+Boundary Condition 302
+ Target Boundaries(1) = 20300
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20300"
+End
+Boundary Condition 303
+ Target Boundaries(1) = 20301
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20301"
+End
+Boundary Condition 304
+ Target Boundaries(1) = 20302
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20302"
+End
+Boundary Condition 305
+ Target Boundaries(1) = 20303
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20303"
+End
+Boundary Condition 306
+ Target Boundaries(1) = 20304
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20304"
+End
+Boundary Condition 307
+ Target Boundaries(1) = 20305
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20305"
+End
+Boundary Condition 308
+ Target Boundaries(1) = 20306
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20306"
+End
+Boundary Condition 309
+ Target Boundaries(1) = 20307
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20307"
+End
+Boundary Condition 310
+ Target Boundaries(1) = 20308
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20308"
+End
+Boundary Condition 311
+ Target Boundaries(1) = 20309
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20309"
+End
+Boundary Condition 312
+ Target Boundaries(1) = 20310
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20310"
+End
+Boundary Condition 313
+ Target Boundaries(1) = 20311
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20311"
+End
+Boundary Condition 314
+ Target Boundaries(1) = 20312
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20312"
+End
+Boundary Condition 315
+ Target Boundaries(1) = 20313
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20313"
+End
+Boundary Condition 316
+ Target Boundaries(1) = 20314
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20314"
+End
+Boundary Condition 317
+ Target Boundaries(1) = 20315
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20315"
+End
+Boundary Condition 318
+ Target Boundaries(1) = 20316
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20316"
+End
+Boundary Condition 319
+ Target Boundaries(1) = 20317
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20317"
+End
+Boundary Condition 320
+ Target Boundaries(1) = 20318
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20318"
+End
+Boundary Condition 321
+ Target Boundaries(1) = 20319
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20319"
+End
+Boundary Condition 322
+ Target Boundaries(1) = 20320
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20320"
+End
+Boundary Condition 323
+ Target Boundaries(1) = 20321
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20321"
+End
+Boundary Condition 324
+ Target Boundaries(1) = 20322
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20322"
+End
+Boundary Condition 325
+ Target Boundaries(1) = 20323
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20323"
+End
+Boundary Condition 326
+ Target Boundaries(1) = 20324
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20324"
+End
+Boundary Condition 327
+ Target Boundaries(1) = 20325
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20325"
+End
+Boundary Condition 328
+ Target Boundaries(1) = 20326
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20326"
+End
+Boundary Condition 329
+ Target Boundaries(1) = 20327
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20327"
+End
+Boundary Condition 330
+ Target Boundaries(1) = 20328
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20328"
+End
+Boundary Condition 331
+ Target Boundaries(1) = 20329
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20329"
+End
+Boundary Condition 332
+ Target Boundaries(1) = 20330
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20330"
+End
+Boundary Condition 333
+ Target Boundaries(1) = 20331
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20331"
+End
+Boundary Condition 334
+ Target Boundaries(1) = 20332
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20332"
+End
+Boundary Condition 335
+ Target Boundaries(1) = 20333
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20333"
+End
+Boundary Condition 336
+ Target Boundaries(1) = 20334
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20334"
+End
+Boundary Condition 337
+ Target Boundaries(1) = 20335
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20335"
+End
+Boundary Condition 338
+ Target Boundaries(1) = 20336
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20336"
+End
+Boundary Condition 339
+ Target Boundaries(1) = 20337
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20337"
+End
+Boundary Condition 340
+ Target Boundaries(1) = 20338
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20338"
+End
+Boundary Condition 341
+ Target Boundaries(1) = 20339
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20339"
+End
+Boundary Condition 342
+ Target Boundaries(1) = 20340
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20340"
+End
+Boundary Condition 343
+ Target Boundaries(1) = 20341
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20341"
+End
+Boundary Condition 344
+ Target Boundaries(1) = 20342
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20342"
+End
+Boundary Condition 345
+ Target Boundaries(1) = 20343
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20343"
+End
+Boundary Condition 346
+ Target Boundaries(1) = 20344
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20344"
+End
+Boundary Condition 347
+ Target Boundaries(1) = 20345
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20345"
+End
+Boundary Condition 348
+ Target Boundaries(1) = 20346
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20346"
+End
+Boundary Condition 349
+ Target Boundaries(1) = 20347
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20347"
+End
+Boundary Condition 350
+ Target Boundaries(1) = 20348
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20348"
+End
+Boundary Condition 351
+ Target Boundaries(1) = 20349
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20349"
+End
+Boundary Condition 352
+ Target Boundaries(1) = 20350
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20350"
+End
+Boundary Condition 353
+ Target Boundaries(1) = 20351
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20351"
+End
+Boundary Condition 354
+ Target Boundaries(1) = 20352
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20352"
+End
+Boundary Condition 355
+ Target Boundaries(1) = 20353
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20353"
+End
+Boundary Condition 356
+ Target Boundaries(1) = 20354
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20354"
+End
+Boundary Condition 357
+ Target Boundaries(1) = 20355
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20355"
+End
+Boundary Condition 358
+ Target Boundaries(1) = 20356
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20356"
+End
+Boundary Condition 359
+ Target Boundaries(1) = 20357
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20357"
+End
+Boundary Condition 360
+ Target Boundaries(1) = 20358
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20358"
+End
+Boundary Condition 361
+ Target Boundaries(1) = 20359
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20359"
+End
+Boundary Condition 362
+ Target Boundaries(1) = 20360
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20360"
+End
+Boundary Condition 363
+ Target Boundaries(1) = 20361
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20361"
+End
+Boundary Condition 364
+ Target Boundaries(1) = 20362
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20362"
+End
+Boundary Condition 365
+ Target Boundaries(1) = 20363
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20363"
+End
+Boundary Condition 366
+ Target Boundaries(1) = 20364
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20364"
+End
+Boundary Condition 367
+ Target Boundaries(1) = 20365
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20365"
+End
+Boundary Condition 368
+ Target Boundaries(1) = 20366
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20366"
+End
+Boundary Condition 369
+ Target Boundaries(1) = 20367
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20367"
+End
+Boundary Condition 370
+ Target Boundaries(1) = 20368
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20368"
+End
+Boundary Condition 371
+ Target Boundaries(1) = 20369
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20369"
+End
+Boundary Condition 372
+ Target Boundaries(1) = 20370
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20370"
+End
+Boundary Condition 373
+ Target Boundaries(1) = 20371
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20371"
+End
+Boundary Condition 374
+ Target Boundaries(1) = 20372
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20372"
+End
+Boundary Condition 375
+ Target Boundaries(1) = 20373
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20373"
+End
+Boundary Condition 376
+ Target Boundaries(1) = 20374
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20374"
+End
+Boundary Condition 377
+ Target Boundaries(1) = 20375
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20375"
+End
+Boundary Condition 378
+ Target Boundaries(1) = 20376
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20376"
+End
+Boundary Condition 379
+ Target Boundaries(1) = 20377
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20377"
+End
+Boundary Condition 380
+ Target Boundaries(1) = 20378
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20378"
+End
+Boundary Condition 381
+ Target Boundaries(1) = 20379
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20379"
+End
+Boundary Condition 382
+ Target Boundaries(1) = 20380
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20380"
+End
+Boundary Condition 383
+ Target Boundaries(1) = 20381
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20381"
+End
+Boundary Condition 384
+ Target Boundaries(1) = 20382
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20382"
+End
+Boundary Condition 385
+ Target Boundaries(1) = 20383
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20383"
+End
+Boundary Condition 386
+ Target Boundaries(1) = 20384
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20384"
+End
+Boundary Condition 387
+ Target Boundaries(1) = 20385
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20385"
+End
+Boundary Condition 388
+ Target Boundaries(1) = 20386
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20386"
+End
+Boundary Condition 389
+ Target Boundaries(1) = 20387
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20387"
+End
+Boundary Condition 390
+ Target Boundaries(1) = 20388
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20388"
+End
+Boundary Condition 391
+ Target Boundaries(1) = 20389
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20389"
+End
+Boundary Condition 392
+ Target Boundaries(1) = 20390
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20390"
+End
+Boundary Condition 393
+ Target Boundaries(1) = 20391
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20391"
+End
+Boundary Condition 394
+ Target Boundaries(1) = 20392
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20392"
+End
+Boundary Condition 395
+ Target Boundaries(1) = 20393
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20393"
+End
+Boundary Condition 396
+ Target Boundaries(1) = 20394
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20394"
+End
+Boundary Condition 397
+ Target Boundaries(1) = 20395
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20395"
+End
+Boundary Condition 398
+ Target Boundaries(1) = 20396
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20396"
+End
+Boundary Condition 399
+ Target Boundaries(1) = 20397
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20397"
+End
+Boundary Condition 400
+ Target Boundaries(1) = 20398
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20398"
+End
+Boundary Condition 401
+ Target Boundaries(1) = 20399
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20399"
+End
+Boundary Condition 402
+ Target Boundaries(1) = 20400
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20400"
+End
+Boundary Condition 403
+ Target Boundaries(1) = 20401
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20401"
+End
+Boundary Condition 404
+ Target Boundaries(1) = 20402
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20402"
+End
+Boundary Condition 405
+ Target Boundaries(1) = 20403
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20403"
+End
+Boundary Condition 406
+ Target Boundaries(1) = 20404
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20404"
+End
+Boundary Condition 407
+ Target Boundaries(1) = 20405
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20405"
+End
+Boundary Condition 408
+ Target Boundaries(1) = 20406
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20406"
+End
+Boundary Condition 409
+ Target Boundaries(1) = 20407
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20407"
+End
+Boundary Condition 410
+ Target Boundaries(1) = 20408
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20408"
+End
+Boundary Condition 411
+ Target Boundaries(1) = 20409
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20409"
+End
+Boundary Condition 412
+ Target Boundaries(1) = 20410
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20410"
+End
+Boundary Condition 413
+ Target Boundaries(1) = 20411
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20411"
+End
+Boundary Condition 414
+ Target Boundaries(1) = 20412
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20412"
+End
+Boundary Condition 415
+ Target Boundaries(1) = 20413
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20413"
+End
+Boundary Condition 416
+ Target Boundaries(1) = 20414
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20414"
+End
+Boundary Condition 417
+ Target Boundaries(1) = 20415
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20415"
+End
+Boundary Condition 418
+ Target Boundaries(1) = 20416
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20416"
+End
+Boundary Condition 419
+ Target Boundaries(1) = 20417
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20417"
+End
+Boundary Condition 420
+ Target Boundaries(1) = 20418
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20418"
+End
+Boundary Condition 421
+ Target Boundaries(1) = 20419
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20419"
+End
+Boundary Condition 422
+ Target Boundaries(1) = 20420
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20420"
+End
+Boundary Condition 423
+ Target Boundaries(1) = 20421
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20421"
+End
+Boundary Condition 424
+ Target Boundaries(1) = 20422
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20422"
+End
+Boundary Condition 425
+ Target Boundaries(1) = 20423
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20423"
+End
+Boundary Condition 426
+ Target Boundaries(1) = 20424
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20424"
+End
+Boundary Condition 427
+ Target Boundaries(1) = 20425
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20425"
+End
+Boundary Condition 428
+ Target Boundaries(1) = 20426
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20426"
+End
+Boundary Condition 429
+ Target Boundaries(1) = 20427
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20427"
+End
+Boundary Condition 430
+ Target Boundaries(1) = 20428
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20428"
+End
+Boundary Condition 431
+ Target Boundaries(1) = 20429
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20429"
+End
+Boundary Condition 432
+ Target Boundaries(1) = 20430
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20430"
+End
+Boundary Condition 433
+ Target Boundaries(1) = 20431
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20431"
+ Electric Flux = Real 3846153.8461538465
+End
+Boundary Condition 434
+ Target Boundaries(1) = 20432
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20432"
+ Potential = Real 0
+End
+Boundary Condition 435
+ Target Boundaries(1) = 20433
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20433"
+End
+Boundary Condition 436
+ Target Boundaries(1) = 20434
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20434"
+End
+Boundary Condition 437
+ Target Boundaries(1) = 20435
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20435"
+End
+Boundary Condition 438
+ Target Boundaries(1) = 20436
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20436"
+End
+Boundary Condition 439
+ Target Boundaries(1) = 20437
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20437"
+End
+Boundary Condition 440
+ Target Boundaries(1) = 20438
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20438"
+End
+Boundary Condition 441
+ Target Boundaries(1) = 20439
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20439"
+End
+Boundary Condition 442
+ Target Boundaries(1) = 20440
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20440"
+End
+Boundary Condition 443
+ Target Boundaries(1) = 20441
+ Heat Flux = Variable Temperature
+  Real Procedure "/work/outputs/fem-g3b/argon_0/exchange_library/G3bExchange" "Flux20441"
+End

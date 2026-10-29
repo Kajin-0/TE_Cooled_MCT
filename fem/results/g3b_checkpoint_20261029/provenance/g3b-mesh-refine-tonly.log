@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/fem_g3b_refine.py", line 37, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--operator',type=Path,default=Path('outputs/fem-g3b/operator_h1'));p.add_argument('--case',type=Path,default=Path('outputs/fem-g3b/nitrogen_fine_tonly'));p.add_argument('--initial',type=Path,default=Path('outputs/fem-g3b/nitrogen_patch1'));a=p.parse_args();run(a.operator.resolve(),a.case.resolve(),a.initial.resolve())
+                                                                                                                                                                                                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/fem_g3b_refine.py", line 29, in run
+    status=execute_solver(case,timeout=900)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/fem_g2b_physics.py", line 174, in execute_solver
+    raise RuntimeError(f"Actual coupled solve FAILED: {case}; see solver.log/status")
+RuntimeError: Actual coupled solve FAILED: /work/outputs/fem-g3b/nitrogen_fine_tonly; see solver.log/status

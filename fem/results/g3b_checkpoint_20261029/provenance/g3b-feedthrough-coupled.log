@@ -1,0 +1,11 @@
+nitrogen_feedthrough Tc/die/V 268.3729838612489 268.79854305183704 0.5382605473693018 checks {'all_175_cut_areas': True, 'driven_half_pct_or_zero_1uA_cuts': True, 'current_1uA': True, 'free_thermal_1uW': True, 'free_current_1uA': True, 'global_energy_1uW': True, 'independent_work_1pct': True, 'direct_bath_1pct': False, 'direct_attach_5pct': True, 'package_spurious_joule_1nW': True, 'passive_uniform_if_no_sources': True, 'stage_budget_1uW': True, 'radiation_balance_1nW': True, 'gas_balance_1nW': True, 'hybrid_balance_1nW': True, 'lead_joule_balance_1nW': True, 'radiative_entropy_nonnegative': True, 'immutable_operator_inputs': True}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/fem_g3b_feedthrough_refine.py", line 107, in <module>
+    else:run(a.operator.resolve(),a.case.resolve(),a.source.resolve())
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/fem_g3b_feedthrough_refine.py", line 102, in run
+    if not result['passed']:raise ValueError('Bath-refined acceptance failed')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Bath-refined acceptance failed

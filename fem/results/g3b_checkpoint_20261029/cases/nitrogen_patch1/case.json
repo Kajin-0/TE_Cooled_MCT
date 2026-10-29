@@ -1,0 +1,37 @@
+{
+  "current_a": 0.1,
+  "pbias_w": 0.0015,
+  "poptical_thermal_w": 0.0005,
+  "deposited_power_w": 0.002,
+  "wire_scale": 1.0,
+  "package_sigma_s_m": 1e-12,
+  "attach_k_scale": 1.0,
+  "mount_k_scale": 1.0,
+  "initial_actual_state": {
+    "actual_source_case": "/work/outputs/fem-g3b/nitrogen_0",
+    "actual_vtu_sha256": "e1f8f9aef0d2d42989e29cc20ea304902269bd4fb437be65130f002b6d9932ff",
+    "source_mesh_sha256": "e603effe81a6c7ae11799f6fb36c4adac596bb3fbb9c0c53f8c918b5450927f2",
+    "initial_field_sha256": "2b99d3e63e5228437eef44d93843aeaeffec6a015707f3d312c248ee5293ddf5",
+    "body_node_fallback_count": 578,
+    "method": "per-body piecewise-linear interpolated initial guess, nearest source node outside old chordal hull; not a prescribed/solved final field"
+  },
+  "thermal_bath": "header underside300 K only",
+  "wire_model": "conservative hybrid1D flux callbacks in the coupled global nonlinear solve",
+  "TEC_profile": "original mixed constant verification law, no OEM-grade accuracy",
+  "transient": false,
+  "gas": "N2",
+  "pressure_pa": 100.0,
+  "radiation_on": true,
+  "window_emissivity": 0.1,
+  "accommodation": 0.8,
+  "gold_scale": 1.0,
+  "lead_scale": 1.0,
+  "operator_path": "/work/outputs/fem-g3b/operator_h0p1",
+  "exchange_input_sha256": {
+    "ExchangeMatrices.bin": "8437bb8ecd574486c735166984cc2cf0780f5cb80b49804d5c0d7398c9bb7c1c",
+    "ExchangeWeights.dat": "8145904e62acc6ce0d8ccc66ae87a7664c819eedc6cc9ce07d01074c127c6290"
+  },
+  "enclosure_model": "3D solids + nonlocal gray radiosity, rarefied gas films, gold/TEC supply leads; no gas CFD",
+  "nonlocal_iteration": "depth4 regularized Anderson on boundary powers; same physical fixed point, independently checked by final unaccelerated field residuals",
+  "lead_electrical_model": "imposed module series I; lumped Cu lead resistance/Joule, not spatial detector/lead current transport"
+}

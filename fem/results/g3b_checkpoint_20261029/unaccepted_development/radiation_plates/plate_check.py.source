@@ -1,0 +1,85 @@
+"""Genuine two-body 1D Elmer conduction + compiled gas/rad coupling benchmark."""
+import math,json
+from pathlib import Path
+import numpy as np
+from scipy.optimize import brentq
+from .g2d_data import ROOT,sha,dump
+from .fem_g3b_exchange import SIGMA,radiation_matrix,gas_conductances,gas_power
+from .fem_g3b_physics import compile_exchange
+from .fem_g1_run import execute
+
+
+def run(case,pressure):
+    import meshio
+    case.mkdir(parents=True,exist_ok=True);N=22;L=.001;A=1e-6;ka=1e-6;gsolid=ka/L;current=1
+    nodes=[];elements=[]
+    for body,offset in ((1,0.),(2,.002)):
+        base=0 if body==1 else 11
+        for j in range(11):nodes.append(f'{base+j+1} -1 {offset+L*j/10:.17e} 0 0\n')
+        for j in range(10):elements.append(f'{(body-1)*10+j+1} {body} 202 {base+j+1} {base+j+2}\n')
+    (case/'mesh.nodes').write_text(''.join(nodes));(case/'mesh.elements').write_text(''.join(elements));(case/'mesh.header').write_text('22 20 4\n2\n202 20\n101 4\n');(case/'mesh.boundary').write_text('1 1 1 0 101 1\n2 20000 10 0 101 11\n3 20001 11 0 101 12\n4 2 20 0 101 22\n')
+    op=case/'operator';op.mkdir();dump(op/'patches.json',[{'solver_boundary':20000},{'solver_boundary':20001}]);lib=compile_exchange(op,case/'exchange_library');f=np.array([[0.,1.],[1.,0.]]);r=radiation_matrix([A,A],f,[.8,.4]);w=A*f;gap=np.ones((2,2))*.001
+    with (case/'ExchangeMatrices.bin').open('wb') as s:
+        for v in (r,w,gap):s.write(np.ascontiguousarray(v.T,dtype='<f8').tobytes())
+    with (case/'ExchangeWeights.dat').open('w') as s:
+        s.write('2 2 0\n1\n1\n1\n2\n3\n11\n12\n1\n1\n');s.write(f'{pressure} 296.803 1.4 .8 0 0 .0183 .0259 .0326\n')
+    text=f'''Check Keywords Warn
+Header
+ Mesh DB "{case.resolve()}" "."
+End
+Simulation
+ Coordinate System = Cartesian 1D
+ Simulation Type = Steady State
+ Steady State Max Iterations = 1
+ Post File = "fields.vtu"
+End
+Initial Condition 1
+ Temperature = Real 275
+End
+Equation 1
+ Active Solvers(1) = 1
+End
+Solver 1
+ Equation = "Heat Equation"
+ Variable = Temperature
+ Procedure = "HeatSolve" "HeatSolver"
+ Nonlinear System Convergence Tolerance = 1e-10
+ Nonlinear System Max Iterations = 60
+ Linear System Solver = Direct
+ Linear System Direct Method = UMFPACK
+End
+Body 1
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+End
+Body 2
+ Equation = 1
+ Material = 1
+ Initial Condition = 1
+End
+Material 1
+ Heat Conductivity = Real {ka}
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Boundary Condition 1
+ Target Boundaries(1) = 1
+ Temperature = Real 300
+End
+Boundary Condition 2
+ Target Boundaries(1) = 2
+ Temperature = Real 250
+End
+'''
+    for i,tag in enumerate((20000,20001),3):text+=f'Boundary Condition {i}\n Target Boundaries(1) = {tag}\n Heat Flux = Variable Temperature\n  Real Procedure "{lib.resolve()}" "Flux{tag}"\nEnd\n'
+    (case/'case.sif').write_text(text);status,log=execute(['ElmerSolver','case.sif'],case,'solver');field=sorted(case.glob('fields*.vtu'))[-1];v=meshio.read(field);t=np.asarray(next(a for k,a in v.point_data.items() if k.lower()=='temperature')).ravel();x=v.points[:,0];th=float(t[np.argmin(abs(x-.001))]);tc=float(t[np.argmin(abs(x-.002))])
+    def rate(q):
+        temps=np.array([300-q/gsolid,250+q/gsolid]);qr=float((r@temps**4)[0]);qg=float(-gas_power(gas_conductances(w,gap,temps,'N2',pressure,.8),temps)[0]);return qr+qg-q
+    q=brentq(rate,0,.024,xtol=1e-15);want=np.where(x<=.001,300-q/ka*x,250+q/ka*(.003-x));err=float(abs(t-want).max());qhot=gsolid*(300-th);qcold=gsolid*(tc-250)
+    result={'passed':err<1e-6 and abs(qhot-qcold)<1e-9,'pressure_pa':pressure,'actual_hot_interface_k':th,'actual_cold_interface_k':tc,'analytic_hot_interface_k':300-q/gsolid,'analytic_cold_interface_k':250+q/gsolid,'max_temperature_error_k':err,'actual_hot_conduction_w':qhot,'actual_cold_conduction_w':qcold,'analytic_heat_w':q,'actual_conduction_balance_w':qhot-qcold,'solver_status':status,'sif_sha256':sha(case/'case.sif'),'vtu_sha256':sha(field),'scope':'genuine1D conducting bodies with analytic infinite-parallel-plate view factors; same compiled nonlocal gas/rad law. Flux callbacks normalized to1 for1D powers; physical radiation/gas area1mm2 in coefficient matrices. Not a3D enclosure field.'};dump(case/'verification.json',result);print(json.dumps(result,indent=2),flush=True)
+    if not result['passed']:raise SystemExit('Independent coupled plate verification failed')
+    return result
+
+if __name__=='__main__':
+    for name,p in [('radiation_plates',0.),('gas_radiation_plates',100.)]:run(ROOT/'outputs/fem-g3b'/name,p)

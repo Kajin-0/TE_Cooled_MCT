@@ -1,0 +1,46 @@
+Cosine first-hit cavity patches 0 / 442
+Cosine first-hit cavity patches 100 / 442
+Cosine first-hit cavity patches 200 / 442
+Cosine first-hit cavity patches 300 / 442
+Cosine first-hit cavity patches 400 / 442
+{
+  "passed": true,
+  "patches": 442,
+  "rays": 608256,
+  "raw_ray_row_max_error": 0.0,
+  "raw_ray_area_reciprocity_l1": 0.09417259690270109,
+  "closure": {
+    "iterations": 48,
+    "raw_row_min": 0.6675936272367791,
+    "raw_row_max": 1.185124869124378,
+    "raw_area_weighted_closure_error": 0.005673997778036503,
+    "diagonal_scale_min": 0.8383363330479241,
+    "diagonal_scale_max": 1.4791947620533,
+    "closure_max_error": 9.278888768449178e-11,
+    "reciprocity_max_m2": 1.6940658945086007e-21,
+    "visibility_zeros_preserved": true,
+    "method": "symmetric diagonal area balancing; raw quadrature error and scale corrections reported, no blocked ray restored"
+  },
+  "closed_skin_all_edge_incidence_two": true,
+  "cavity_volume_skin_m3": 1.2511005524267973e-06,
+  "cavity_volume_analytical_m3": 1.2542250782059018e-06,
+  "skin_triangles": 80052,
+  "hit_to_actual_face_center_p95_m": 0.00041977711753148593,
+  "hit_to_actual_face_center_max_m": 0.000792379326157965,
+  "gas_gap_method": "harmonic normal-projected first-hit flight gap; exact parallel-plane spacing, reduced arbitrary-cavity gas-film approximation",
+  "method": "deterministic cosine area rays, first hit in exact orthogonal opaque union/cylinder enclosure; hit assigned to audited same-owner/orientation cavity facets; symmetric area balancing; self-view only from actual returned rays",
+  "elmer_mapping": {
+    "passed": true,
+    "nodes": 109771,
+    "tetrahedra": 429100,
+    "body_ids_preserved": true
+  },
+  "actual_boundary_mapping_verified": true,
+  "level": 0,
+  "source_mesh_sha256": "9c4951a3c20565ec353c88524c3c51c213799b8d6af1d79f5484aa74d48f218b",
+  "mesh_sha256": "e603effe81a6c7ae11799f6fb36c4adac596bb3fbb9c0c53f8c918b5450927f2",
+  "source_sha256": {
+    "tecooledmct/fem_g3b_rays.py": "8bc8a00524f2c11724ffad33e9044062b0ac1792497bdc926c055f43b1f0d81e",
+    "tecooledmct/fem_g3b_exchange.py": "9e827673ec748129a8e69ee493bcc75b0cda30f9fcb7f2d2517abda03415d08f"
+  }
+}

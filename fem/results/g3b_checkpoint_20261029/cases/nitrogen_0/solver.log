@@ -1,0 +1,773 @@
+ELMER SOLVER (v 26.2) STARTED AT: 2026/10/29 04:22:23
+ParCommInit: Initialize #PEs: 1
+MAIN: 
+MAIN: =============================================================
+MAIN: ElmerSolver finite element software, Welcome!
+MAIN: This program is free software licensed under (L)GPL
+MAIN: Copyright 1st April 1995 - , CSC - IT Center for Science Ltd.
+MAIN: Webpage http://www.csc.fi/elmer, Email elmeradm@csc.fi
+MAIN: Version: 26.2-unknown (Rev: unknown, Compiled: 2026-10-28)
+MAIN:  Running one task without MPI parallelization.
+MAIN:  Running with just one thread per task.
+MAIN: =============================================================
+MAIN: 
+MAIN: 
+MAIN: -------------------------------------
+MAIN: Reading Model: case.sif
+LoadInputFile: Scanning input file: case.sif
+LoadInputFile: Scanning only size info
+LoadInputFile: First time visiting
+LoadInputFile: Reading base load of sif file
+LoadInputFile: Loading input file: case.sif
+LoadInputFile: Reading base load of sif file
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/initial_library/G3bInitial]...[InitialT]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/initial_library/G3bInitial]...[InitialPhi]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 1]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 2]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 3]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 4]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 5]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 6]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 7]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 8]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 9]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 10]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 11]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 12]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/library/G3bReference]...[MCTHeat]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 13]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20000]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20001]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20002]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20003]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20004]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20005]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20006]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20007]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20008]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20009]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20010]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20011]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20012]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20013]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20014]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20015]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20016]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20017]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20018]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20019]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20020]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20021]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20022]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20023]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20024]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20025]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20026]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20027]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20028]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20029]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20030]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20031]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20032]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20033]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20034]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20035]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20036]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20037]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20038]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20039]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20040]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20041]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20042]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20043]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20044]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20045]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20046]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20047]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20048]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20049]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20050]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20051]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20052]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20053]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20054]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20055]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20056]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20057]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20058]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20059]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20060]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20061]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20062]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20063]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20064]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20065]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20066]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20067]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20068]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20069]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20070]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20071]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20072]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20073]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20074]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20075]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20076]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20077]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20078]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20079]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20080]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20081]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20082]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20083]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20084]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20085]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20086]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20087]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20088]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20089]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20090]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20091]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20092]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20093]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20094]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20095]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20096]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20097]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20098]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20099]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20100]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20101]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20102]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20103]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20104]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20105]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20106]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20107]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20108]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20109]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20110]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20111]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20112]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20113]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20114]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20115]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20116]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20117]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20118]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20119]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20120]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20121]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20122]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20123]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20124]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20125]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20126]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20127]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20128]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20129]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20130]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20131]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20132]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20133]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20134]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20135]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20136]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20137]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20138]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20139]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20140]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20141]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20142]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20143]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20144]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20145]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20146]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20147]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20148]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20149]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20150]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20151]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20152]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20153]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20154]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20155]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20156]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20157]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20158]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20159]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20160]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20161]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20162]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20163]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20164]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20165]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20166]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20167]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20168]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20169]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20170]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20171]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20172]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20173]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20174]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20175]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20176]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20177]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20178]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20179]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20180]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20181]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20182]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20183]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20184]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20185]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20186]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20187]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20188]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20189]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20190]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20191]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20192]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20193]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20194]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20195]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20196]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20197]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20198]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20199]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20200]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20201]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20202]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20203]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20204]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20205]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20206]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20207]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20208]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20209]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20210]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20211]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20212]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20213]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20214]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20215]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20216]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20217]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20218]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20219]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20220]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20221]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20222]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20223]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20224]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20225]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20226]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20227]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20228]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20229]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20230]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20231]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20232]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20233]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20234]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20235]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20236]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20237]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20238]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20239]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20240]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20241]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20242]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20243]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20244]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20245]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20246]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20247]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20248]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20249]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20250]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20251]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20252]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20253]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20254]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20255]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20256]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20257]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20258]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20259]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20260]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20261]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20262]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20263]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20264]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20265]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20266]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20267]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20268]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20269]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20270]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20271]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20272]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20273]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20274]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20275]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20276]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20277]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20278]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20279]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20280]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20281]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20282]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20283]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20284]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20285]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20286]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20287]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20288]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20289]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20290]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20291]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20292]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20293]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20294]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20295]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20296]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20297]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20298]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20299]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20300]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20301]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20302]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20303]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20304]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20305]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20306]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20307]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20308]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20309]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20310]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20311]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20312]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20313]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20314]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20315]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20316]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20317]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20318]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20319]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20320]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20321]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20322]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20323]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20324]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20325]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20326]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20327]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20328]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20329]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20330]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20331]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20332]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20333]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20334]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20335]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20336]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20337]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20338]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20339]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20340]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20341]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20342]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20343]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20344]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20345]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20346]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20347]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20348]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20349]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20350]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20351]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20352]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20353]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20354]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20355]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20356]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20357]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20358]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20359]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20360]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20361]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20362]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20363]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20364]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20365]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20366]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20367]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20368]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20369]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20370]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20371]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20372]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20373]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20374]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20375]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20376]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20377]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20378]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20379]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20380]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20381]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20382]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20383]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20384]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20385]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20386]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20387]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20388]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20389]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20390]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20391]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20392]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20393]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20394]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20395]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20396]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20397]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20398]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20399]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20400]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20401]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20402]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20403]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20404]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20405]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20406]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20407]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20408]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20409]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20410]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20411]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20412]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20413]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20414]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20415]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20416]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20417]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20418]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20419]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20420]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20421]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20422]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20423]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20424]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20425]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20426]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20427]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20428]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20429]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20430]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20431]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20432]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20433]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20434]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20435]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20436]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20437]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20438]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20439]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20440]
+Loading user function library: [/work/outputs/fem-g3b/nitrogen_0/exchange_library/G3bExchange]...[Flux20441]
+LoadInputFile: Number of BCs: 443
+LoadInputFile: Number of Body Forces: 2
+LoadInputFile: Number of Initial Conditions: 1
+LoadInputFile: Number of Materials: 13
+LoadInputFile: Number of Equations: 1
+LoadInputFile: Number of Solvers: 1
+LoadInputFile: Number of Bodies: 215
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Init0]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Init0]
+LoadMesh: Loading serial mesh!
+ElmerMeshReader: Performing step: 1
+ElmerMeshReader: Base mesh name: /work/outputs/fem-g3b/nitrogen_0/.
+ReadHeaderFile: Reading header info from file: /work/outputs/fem-g3b/nitrogen_0/./mesh.header
+InitializeMesh: Number of nodes in mesh: 109771
+InitializeMesh: Number of bulk elements in mesh: 429100
+InitializeMesh: Number of boundary elements in mesh: 186187
+InitializeMesh: Initial number of max element nodes: 4
+ElmerMeshReader: Performing step: 2
+ReadNodesFile: Reading nodes from file: /work/outputs/fem-g3b/nitrogen_0/./mesh.nodes
+SetMeshDimension: Dimension of mesh is: 3
+SetMeshDimension: Max dimension of mesh is: 3
+ElmerMeshReader: Performing step: 3
+ReadElementsFile: Reading bulk elements from file: /work/outputs/fem-g3b/nitrogen_0/./mesh.elements
+ElmerMeshReader: Performing step: 4
+ReadBoundaryFile: Reading boundary elements from file: /work/outputs/fem-g3b/nitrogen_0/./mesh.boundary
+PermuteNodeNumbering: Performing node mapping
+MapBodiesAndBCs: Remapping bodies
+MapBodiesAndBCs: Minimum initial body index: 1
+MapBodiesAndBCs: Maximum initial body index: 215
+MapBodiesAndBCs: Remapping boundaries
+MapBodiesAndBCs: Minimum initial boundary index: 101
+MapBodiesAndBCs: Maximum initial boundary index: 20441
+ElmerMeshReader: Performing step: 5
+ElmerMeshReader: Performing step: 6
+LoadMesh: Loading mesh done
+PElementMaps::InitializeMappings: Initializing mappings for elements
+NonNodalElements: Requested elements require creation of edges
+FindMeshEdges: Determining faces in 3D mesh
+FindMeshFaces3D: Number of faces found: 921923
+FindMeshEdges: Determining edges in 3D mesh
+FindMeshEdges3D: Number of edges found: 602681
+NonNodalElements: Why the heck did we allocate the edges and faces?!
+ReleaseMeshFaceTables: Releasing number of faces: 921923
+LoadMesh: Preparing mesh done
+LoadMesh: Elapsed REAL time:     5.2507 (s)
+MeshStabParams: Computing stabilization parameters
+MeshStabParams: Elapsed REAL time:     0.0698 (s)
+MAIN: -------------------------------------
+AddVtuOutputSolverHack: Adding ResultOutputSolver to write VTU output in file: fields
+AppendNewSolver: Increasing number of solvers to: 2
+AddMeshCoordinates: Setting mesh coordinates and time
+AddSolvers: Setting up 2 solvers
+AddSolvers: Setting up solver 1: thermoelectric
+AddEquationBasics: Using procedure: ThermoElectricSolver ThermoElectricSolver
+AddEquationBasics: Setting up solver: thermoelectric
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Init]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Init]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_bulk]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_bulk]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver]
+AddEquationBasics: Creating standard variable: pot[temperature:1 potential:1]
+SetGlobalBubblesFlag: Setting global bubbles to true because of element type chosen!
+OptimizeBandwidth: ---------------------------------------------------------
+OptimizeBandwidth: Computing matrix structure for: thermoelectric
+OptimizeBandwidth: Initial bandwidth for thermoelectric: 109185
+OptimizeBandwidth: Optimized bandwidth for thermoelectric: 6386
+OptimizeBandwidth: ---------------------------------------------------------
+AddSolvers: Setting up solver 2: internalvtuoutputsolver
+AddEquationBasics: Using procedure: ResultOutputSolve ResultOutputSolver
+AddEquationBasics: Setting up solver: internalvtuoutputsolver
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Init]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Init]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_bulk]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_bulk]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver]
+AddEquationBasics: Creating global variable: vtu_internal_dummy
+AddTimeEtc: Setting time and other global variables
+MAIN: Random seed initialized to: 314159265
+SetInitialConditions: Setting up initial conditions (if any)
+MAIN: Number of timesteps to be saved: 1
+MAIN: 
+MAIN: -------------------------------------
+MAIN:  Steady state iteration:            1
+MAIN: -------------------------------------
+MAIN: 
+SingleSolver: Attempting to call solver: 1
+SingleSolver: Solver Equation string is: thermoelectric
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1953 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1953
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=1) (NRM,RELC): (  208.88260      2.0000000     ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    208.88260239170685
+ThermoElectricSolver:  Relative Change :    2.0000000000000000
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1953 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1953
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=2) (NRM,RELC): (  208.29888     0.27983940E-02 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    208.29888331310588
+ThermoElectricSolver:  Relative Change :    2.7983939776944156E-003
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1953 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1953
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=3) (NRM,RELC): (  208.33322     0.16481567E-03 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    208.33321706186334
+ThermoElectricSolver:  Relative Change :    1.6481566699522735E-004
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1953 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1953
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=4) (NRM,RELC): (  208.32465     0.41118927E-04 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    208.32465079955199
+ThermoElectricSolver:  Relative Change :    4.1118927408312155E-005
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1953 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1953
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=5) (NRM,RELC): (  208.31809     0.31504400E-04 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    208.31808775972041
+ThermoElectricSolver:  Relative Change :    3.1504400409188765E-005
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1953 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1953
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=6) (NRM,RELC): (  208.31817     0.41076236E-06 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    208.31817332896813
+ThermoElectricSolver:  Relative Change :    4.1076236375763487E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1953 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1953
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=7) (NRM,RELC): (  208.31819     0.80079273E-07 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    208.31819001093660
+ThermoElectricSolver:  Relative Change :    8.0079272684276552E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1953 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1953
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=8) (NRM,RELC): (  208.31819     0.83121647E-08 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    208.31819174251171
+ThermoElectricSolver:  Relative Change :    8.3121646917399297E-009
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1953 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1953
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    79808.703793982000
+SolveLinearSystem: Serial linear System Solver: direct
+DirectSolver: Using direct method: umfpack
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=9) (NRM,RELC): (  208.31819     0.82365470E-09 ) :: thermoelectric
+ThermoElectricSolver:  Result Norm   :    208.31819191409397
+ThermoElectricSolver:  Relative Change :    8.2365469971388856E-010
+ComputeNorm: Computing norm of solution
+ComputeChange: SS (ITER=1) (NRM,RELC): (  208.31819      2.0000000     ) :: thermoelectric
+SaveResult: -----------------------------------------
+SaveResult: Saving results to file: ./solution.result
+SaveResult: Done writing results file
+SaveResult: -----------------------------------------
+SingleSolver: Attempting to call solver: 0
+SingleSolver: Solver Equation string is: internalvtuoutputsolver
+ResultOutputSolver: -------------------------------------
+ResultOutputSolver: Saving with prefix: fields
+ResultOutputSolver: Dimension of mesh is: 3
+ResultOutputSolver: Working on mesh 1: . with 109771 nodes
+ResultOutputSolver: Creating list for saving - if not present
+CreateListForSaving: Field Variables for Saving
+CreateListForSaving: Scalar Field 1: temperature
+CreateListForSaving: Scalar Field 2: potential
+ResultOutputSolver: Saving in unstructured VTK XML (.vtu) format
+VtuOutputSolver: Saving results in VTK XML format with prefix: fields
+VtuOutputSolver: Saving number of partitions: 1
+SolverOutputDirectory: Creating directory: /work/outputs/fem-g3b/nitrogen_0
+VtuOutputSolver: Full filename base is: /work/outputs/fem-g3b/nitrogen_0/fields
+GenerateSaveMask: Number of active elements 615287 out of 615287
+GenerateSaveMask: Number of geometry nodes 109771 out of 109771
+VtuOutputSolver: Total number of elements to save: 615287
+VtuOutputSolver: Total number of geometry nodes to save: 109771
+VtuOutputSolver: Total number of dof nodes to save: 109771
+VtuOutputSolver: Setting offset for boundary entities: 1000
+VtuOutputSolver: Writing the vtu file: /work/outputs/fem-g3b/nitrogen_0/fields_t0001.vtu
+AscBinWriteInit: Initializing buffered ascii/binary writing
+AscBinWriteInit: Writing in binary
+AscBinWriteInit: Writing in double precision
+AscBinWriteInit: Writing to unit number: 58
+AscBinWriteInit: Size of buffer is: 109771
+WriteVtuFile: Writing nodal fields
+WriteVtuFile: Saving 1-component variable: temperature
+WriteVtuFile: Saving 1-component variable: potential
+WriteVtuFile: Number of nodal fields written: 2
+WriteVtuFile: Writing elemental fields
+WriteVtuFile: Number of elemental fields written: 0
+WriteVtuFile: Writing entity IDs for bodies and boundaries
+WriteVtuFile: Writing coordinates for each used node
+WriteVtuFile: Writing the elemental connectivity data
+WriteVtuFile: Writing nodal fields
+WriteVtuFile: Saving 1-component variable: temperature
+WriteVtuFile: Saving 1-component variable: potential
+WriteVtuFile: Writing elemental fields
+AscBinWriteFree: Terminating buffered ascii/binary writing
+VtuOutputSolver: All done for now
+ResultOutputSolver: -------------------------------------
+ReloadInputFile: Reloading input file
+LoadInputFile: Loading input file:
+MAIN: Reporting unused list entries for sif improvement!
+MAIN: If you do not want these lines undefine > DEVEL_LISTUSAGE < !
+   Unused keywords:
+MAIN: *** Elmer Solver: ALL DONE ***
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Finalize]
+Loading user function library: [ThermoElectricSolver]...[ThermoElectricSolver_Finalize]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Finalize]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Finalize]
+MAIN: The end
+SOLVER TOTAL TIME(CPU,REAL):       240.40      248.08
+ELMER SOLVER FINISHED AT: 2026/10/29 04:26:31

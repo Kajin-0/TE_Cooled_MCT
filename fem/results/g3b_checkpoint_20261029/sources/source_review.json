@@ -1,0 +1,75 @@
+{
+  "review_date_utc": "2026-10-29",
+  "status": "source-backed gas conductivity and vendor window conductivity; enclosure/material/accommodation hypotheses are not identified product inputs",
+  "gas_conductivity": {
+    "author": "Marcia L. Huber, NIST",
+    "title": "Thermal Conductivity of Gases (2019)",
+    "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=926438",
+    "retrieved_pdf_sha256": "f8c8ac745e3aa73dd623c77a0f5a40373a3913eb3df7958cb26d82e00b2aedc4",
+    "pdf_page_index": 0,
+    "original_units": "mW m^-1 K^-1",
+    "selected_rows": [
+      "Nitrogen",
+      "Argon",
+      "Krypton"
+    ],
+    "selected_columns_k": [
+      200,
+      300,
+      400
+    ],
+    "unit_conversion_to_si": 0.001,
+    "pressure_domain": "dilute-gas limiting conductivity; source says differences at 100 kPa generally below 1%",
+    "source_uncertainty": "generally less than 3%; not a package temperature confidence interval",
+    "implemented_policy": "linear interpolation only, fail closed outside 200..400 K",
+    "not_ingested": "independent viscosity, accommodation measurements, mixtures or dense-gas transport"
+  },
+  "gap_theory": {
+    "url": "https://mooseframework.inl.gov/bison/theory/gap_plenum_models.html",
+    "use": "primary INL discussion of Kennard temperature-jump/accommodation gas-gap conduction",
+    "implementation_limits": "Eucken viscosity and constant ideal-gas gamma/Cp are declared approximations; harmonic projected first-hit gaps are an enclosure-film reduction, not a gas-volume PDE",
+    "independent_limits_checked": [
+      "zero-pressure exact zero",
+      "continuum parallel-plane kA/L",
+      "Kennard free-molecular linear-pressure coefficient",
+      "actual compiled Elmer conducting-plate solution"
+    ]
+  },
+  "window": {
+    "url": "https://www.crystran.co.uk/optical-materials/zinc-selenide-znse/",
+    "material": "ZnSe candidate, not identified manufactured window",
+    "k_w_mk": 18.0,
+    "reference_temperature_k": 298,
+    "use": "frozen vendor thermal-conductivity proxy",
+    "unqualified": "coatings, spectral LWIR emissivity/absorption/transmission, external radiance, low-temperature grade dependence",
+    "model": "internal opaque diffuse-gray epsilon 0.1 or sensitivity 0.8, tau=0; outer window adiabatic. This does not predict optical transmission."
+  },
+  "geometry": {
+    "url": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf",
+    "source_evidence": "protected data/g3a and fem/results/g3a_20261029 retain original drawing review",
+    "supported": "TO66 nine-pin family envelope",
+    "assumed": "elliptical header, cap flange/roof/window dimensions, glass seals and generic unnumbered pin layout; chosen 0.44 mm pins differ from drawing 0.76 mm",
+    "pinout": "unknown; instance labels are construction IDs, never OEM electrical pin numbers"
+  },
+  "inherited_solid_inputs": {
+    "evidence": "data/g3a/package_registry.json; data/g3a/source_review.json; docs/MCT_COMPACT_THERMAL_MODEL.md",
+    "MCT": "single x=.29 primary Table2 k(T), 90..400 K, no composition interpolation",
+    "TEC": "protected constant mixed verification law; no OEM/device accuracy; G2d failure remains",
+    "cap": "k=15 W/m/K stainless-steel-like hypothesis, not a grade measurement",
+    "Cu_leads": "two assumed 0.202 mm diameter x8 mm hybrid leads, k=400 W/m/K and rho=1.72e-8 ohm m; lumped imposed-series-current resistance/Joule",
+    "omissions": [
+      "thermistor",
+      "carrier/absorber solids",
+      "external enclosure heat exchange",
+      "spectral optical transport",
+      "transients",
+      "carrier transport",
+      "distributed gas/radiation exchange on unmeshed hybrid wire/lead arcs"
+    ]
+  },
+  "radiation_discretization": {
+    "status": "deterministic first-hit cosine rays on analytic CSG; hits assigned to audited same-owner/orientation triangle centers",
+    "correction": "symmetric exchange-area diagonal balancing retains blocked-pair zeros; raw errors and scales retained",
+    "qualification_limit": "reciprocity/closure are conservation checks, not evidence of exact view factors; actual same-bulk patch refinement and bulk refinement bound only the tested operating-point sensitivity"
+  }
+}

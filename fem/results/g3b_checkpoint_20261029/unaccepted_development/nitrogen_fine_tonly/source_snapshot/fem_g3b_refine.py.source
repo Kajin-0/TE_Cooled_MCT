@@ -1,0 +1,37 @@
+"""Real fine-mesh solve with a temperature-only actual-field initial guess.
+
+The earlier per-body T/phi interpolation can smear passive dielectric phi into
+thin Cu routes on a different mesh. Retain that rejected run; use phi=0 only as
+an initial state here, then solve both unknowns with the unchanged physical law.
+"""
+import argparse,json
+from pathlib import Path
+import numpy as np
+from .g2d_data import ROOT,sha,dump
+from .fem_g3b_data import preserve
+from .fem_g3b_physics import write_case
+from .fem_g3b_initial import initialize
+from .fem_g3b_post import postprocess
+from .fem_g2b_physics import execute_solver
+
+
+def run(operator,case,initial):
+    preserve()
+    if case.exists():raise ValueError('Retain previous actual execution; choose another label')
+    names=('data','reference','exchange','physics','initial','refine');sources=[ROOT/'tecooledmct'/f'fem_g3b_{n}.py' for n in names];hashes={str(p.relative_to(ROOT)):sha(p) for p in sources}
+    case.mkdir(parents=True);snap=case/'source_snapshot';snap.mkdir()
+    for p in sources:(snap/(p.name+'.source')).write_bytes(p.read_bytes())
+    write_case(operator,case,gas='N2',pressure=100.)
+    info=initialize(operator,case,initial);fields=np.loadtxt(case/'InitialFields.dat',skiprows=1)
+    fields[:,1]=0.;np.savetxt(case/'InitialFields.dat',fields,fmt='%.17e',header=str(len(fields)),comments='')
+    info.update(initial_field_sha256=sha(case/'InitialFields.dat'),potential_policy='zero initial potential; only temperature interpolated from accepted actual source; final T/phi both solved')
+    meta=json.loads((case/'case.json').read_text());meta['initial_actual_state']=info;dump(case/'case.json',meta)
+    status=execute_solver(case,timeout=900)
+    if any(sha(ROOT/n)!=h for n,h in hashes.items()):raise ValueError('Source changed during actual PDE execution')
+    dump(case/'execution.json',{'source_sha256':hashes,'solver_status':status,'operator_path':str(operator),'mesh_sha256':sha(operator/'mesh.npz'),'sif_sha256':sha(case/'case.sif'),'vtu_sha256':sha(sorted(case.glob('fields*.vtu'))[-1])})
+    result=postprocess(operator,case);result['solver_status']=status;dump(case/'metrics.json',result)
+    if not result['passed']:raise ValueError('Actual fine numerical acceptance failed')
+    return result
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--operator',type=Path,default=Path('outputs/fem-g3b/operator_h1'));p.add_argument('--case',type=Path,default=Path('outputs/fem-g3b/nitrogen_fine_tonly'));p.add_argument('--initial',type=Path,default=Path('outputs/fem-g3b/nitrogen_patch1'));a=p.parse_args();run(a.operator.resolve(),a.case.resolve(),a.initial.resolve())

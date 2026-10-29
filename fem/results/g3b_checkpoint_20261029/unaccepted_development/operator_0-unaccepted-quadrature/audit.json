@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "patches": 1839,
+  "actual_triangles": 79720,
+  "closed_skin_all_edge_incidence_two": true,
+  "gas_volume_skin_m3": 1.251100552426797e-06,
+  "gas_volume_analytical_m3": 1.2542250782059018e-06,
+  "net_oriented_area_m2": [
+    1.419855521447272e-20,
+    6.352747104407253e-22,
+    -8.245170909806069e-19
+  ],
+  "closure": {
+    "iterations": 3513,
+    "raw_row_min": 0.12410766844973244,
+    "raw_row_max": 10.861074307126243,
+    "raw_area_weighted_closure_error": 0.1008402469826992,
+    "diagonal_scale_min": 0.010929210621969464,
+    "diagonal_scale_max": 189.69755237571462,
+    "closure_max_error": 9.959455482544399e-11,
+    "reciprocity_max_m2": 2.117582368135751e-22,
+    "visibility_zeros_preserved": true,
+    "method": "symmetric diagonal area balancing; raw quadrature error and scale corrections reported, no blocked ray restored"
+  },
+  "near_pair_count": 37157,
+  "ray_obstruction_count": 559906,
+  "quadrature_samples_per_near_pair": 64,
+  "far_field": "centroid visibility/kernel; near fields use deterministic area-weighted6D Sobol pair quadrature",
+  "source_mesh_sha256": "ee97da006a9758bd8cc20b7666275f17dd8cf8b94e7ae6393832e539cc5193d7",
+  "mesh_sha256": "1b222a0c5ed247b6e56715974fcd350d9b3963ac8a29590129d7fe4b7f1cfa6f",
+  "elmer_mapping": {
+    "passed": true,
+    "nodes": 108368,
+    "tetrahedra": 422745,
+    "body_ids_preserved": true
+  },
+  "actual_boundary_mapping_verified": true,
+  "patch_level": 0,
+  "source_sha256": {
+    "tecooledmct/fem_g3b_surfaces.py": "c4824737bb20a4d510acfcdd16680a848ad00d3bbb2b6daf248d8ec1ad47e589",
+    "tecooledmct/fem_g3b_exchange.py": "9e827673ec748129a8e69ee493bcc75b0cda30f9fcb7f2d2517abda03415d08f"
+  }
+}
