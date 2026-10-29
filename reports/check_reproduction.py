@@ -23,6 +23,7 @@ def compare(reference, rebuild, output):
         "HgCdTe_Engineering_Assessment.pdf",
         "numerics.tex",
         "report_inputs.json",
+        "verification_matrix.json",
     ] + ["figures/" + name for name in sorted(left["figures"])]
     records = {}
     for name in names:

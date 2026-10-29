@@ -1,0 +1,104 @@
+{
+  "rows": [
+    {
+      "test": "Mesh / topology",
+      "criterion": "Positive cells; conformal contacts; unique two-terminal path",
+      "evidence": "215 domains; 88 legs; 181 vertices / 180 edges",
+      "status": "PASS",
+      "source": "charts/summary.json:mesh_audits.mesh_h0"
+    },
+    {
+      "test": "Field correspondence",
+      "criterion": "Bijective nodes $\\leq10^{-12}$ m; exact cells / bodies",
+      "evidence": "Raw and derived fields agree; $\\mathbf j,\\mathbf q$ reconstructed",
+      "status": "PASS",
+      "source": "report_inputs.json"
+    },
+    {
+      "test": "Interior current cuts",
+      "criterion": "$<0.5\\%$ driven; $<1\\,\\mu$A at zero drive",
+      "evidence": "175 cuts; driven maximum 0.249\\%",
+      "status": "PASS",
+      "source": "cases/*/metrics.json:component_cuts"
+    },
+    {
+      "test": "Current balance",
+      "criterion": "$<10^{-6}$ A",
+      "evidence": "Maximum $1.31\\times10^{-9}$ A",
+      "status": "PASS",
+      "source": "cases/*/metrics.json:current_error_a"
+    },
+    {
+      "test": "Free current residual",
+      "criterion": "$<10^{-6}$ A",
+      "evidence": "Maximum $3.76\\times10^{-8}$ A",
+      "status": "PASS",
+      "source": "cases/*/metrics.json:free_current_residual_l1_a"
+    },
+    {
+      "test": "Free heat residual",
+      "criterion": "$<10^{-6}$ W",
+      "evidence": "Maximum $6.30\\times10^{-9}$ W",
+      "status": "PASS",
+      "source": "cases/*/metrics.json:free_thermal_residual_l1_w"
+    },
+    {
+      "test": "Global energy balance",
+      "criterion": "$<10^{-6}$ W",
+      "evidence": "Maximum $5.51\\times10^{-10}$ W",
+      "status": "PASS",
+      "source": "cases/*/metrics.json:global_energy_error_w"
+    },
+    {
+      "test": "Coarse bath gradient",
+      "criterion": "$<1\\%$ independent direct flux",
+      "evidence": "Worst accepted case 0.844\\%",
+      "status": "PASS",
+      "source": "cases/*/metrics.json:direct_bath_relative_error"
+    },
+    {
+      "test": "Independent plate solves",
+      "criterion": "$<10^{-6}$ K; heat balance $<10^{-9}$ W",
+      "evidence": "Two Elmer references; maximum $3.99\\times10^{-8}$ K",
+      "status": "PASS",
+      "source": "charts/summary.json:independent_plate_checks"
+    },
+    {
+      "test": "Internal exchange balance",
+      "criterion": "$<10^{-9}$ W per mechanism",
+      "evidence": "8 exchange-operator cases; radiation, gas, Au/Cu",
+      "status": "PASS",
+      "source": "cases/{lead_only_0,vacuum_a0,nitrogen_0,argon_0,krypton_0,window_high_0,nitrogen_patch1,package_sigma_100}/metrics.json:checks"
+    },
+    {
+      "test": "Surface refinement",
+      "criterion": "$<1\\%$ of lift; $<1\\%$ voltage change",
+      "evidence": "442 to 907 patches: 0.228\\% lift; 0.089\\% voltage",
+      "status": "PASS",
+      "source": "charts/summary.json:surface_refinement"
+    },
+    {
+      "test": "Fine bath gradient",
+      "criterion": "$<1\\%$ independent direct flux",
+      "evidence": "Three converged meshes: 1.51--1.66\\%",
+      "status": "FAIL",
+      "source": "charts/summary.json:unaccepted_fine_cases"
+    },
+    {
+      "test": "Fine-mesh qualification",
+      "criterion": "Every declared numerical gate must pass",
+      "evidence": "Independent bath-gradient criterion fails",
+      "status": "NOT QUALIFIED",
+      "source": "charts/summary.json:full_g3b_qualified"
+    },
+    {
+      "test": "Manufacturer / device accuracy",
+      "criterion": "Matched materials, interfaces and independent device data",
+      "evidence": "No qualified full-device comparison",
+      "status": "NOT QUALIFIED",
+      "source": "charts/summary.json:device_validated"
+    }
+  ],
+  "source_summary_sha256": "ef93adb2af9dfc70b3267356a18e7ec79626cf97d8a129a4380e25fb20790b31",
+  "full_qualification": false
+}

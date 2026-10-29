@@ -1,9 +1,3 @@
-\newcommand{\ArchiveCommit}{52b30c0f4f92580394fb7b51bcd95a56ebd5d2e4}
-\newcommand{\ArchiveShort}{52b30c0}
-\newcommand{\MeshDigest}{5a553ae83b46f513d6a84a1ecaa88591702e7325b61303602f522feaf693a314}
-\newcommand{\RawDigest}{d0f6627208228940d3ff5445ecf90cc867fc1bfb2c1754ccd5de303ba734c819}
-\newcommand{\DerivedDigest}{468609ebdea5b9f06200612d3b29f480bc555646b35e37c74dedc4ada8a9d73d}
-\newcommand{\GeneratorDigest}{692da9dbf3eef02398623c9bf9a117778dc7ae0d29e7d8a10674d41d789223c1}
 \newcommand{\NodeCount}{109,771}
 \newcommand{\TetCount}{429,100}
 \newcommand{\CutTriangles}{12,160}
@@ -25,18 +19,32 @@ N$_2$, 100 Pa & 268.468131 & 268.878638 & 0.537501409 & +0.41736 \\
 Ar, 100 Pa & 267.939550 & 268.347858 & 0.539885636 & +0.50418 \\
 Kr, 100 Pa & 267.496013 & 267.901465 & 0.541796372 & +0.58561 \\
 Vacuum, window $\epsilon=0.8$ & 266.927891 & 267.330990 & 0.544314237 & +0.67075 \\}
-\newcommand{\FailureRows}{nitrogen\_fine\_verified & 204,855 & 821,874 & 1.655873 \\
-nitrogen\_bath & 239,394 & 967,731 & 1.514122 \\
-nitrogen\_feedthrough & 275,377 & 1,194,385 & 1.583835 \\}
-\newcommand{\PinRows}{0 & -5.400000 & +0.000000 \\
-1 & +5.400000 & +0.000000 \\
-2 & +4.368692 & +3.174040 \\
-3 & +1.668692 & +5.135705 \\
-4 & -1.668692 & +5.135705 \\
-5 & -4.368692 & +3.174040 \\
-6 & -4.368692 & -3.174040 \\
-7 & -1.668692 & -5.135705 \\
-8 & +1.668692 & -5.135705 \\}
+\newcommand{\FailureRows}{Global refinement & 204,855 & 821,874 & 1.655873 \\
+Header-bath refinement & 239,394 & 967,731 & 1.514122 \\
+Feedthrough refinement & 275,377 & 1,194,385 & 1.583835 \\}
+\newcommand{\PinRows}{1 & -5.400000 & +0.000000 \\
+2 & +5.400000 & +0.000000 \\
+3 & +4.368692 & +3.174040 \\
+4 & +1.668692 & +5.135705 \\
+5 & -1.668692 & +5.135705 \\
+6 & -4.368692 & +3.174040 \\
+7 & -4.368692 & -3.174040 \\
+8 & -1.668692 & -5.135705 \\
+9 & +1.668692 & -5.135705 \\}
+\newcommand{\VerificationRows}{Mesh / topology & Positive cells; conformal contacts; unique two-terminal path & 215 domains; 88 legs; 181 vertices / 180 edges & PASS \\
+Field correspondence & Bijective nodes $\leq10^{-12}$ m; exact cells / bodies & Raw and derived fields agree; $\mathbf j,\mathbf q$ reconstructed & PASS \\
+Interior current cuts & $<0.5\%$ driven; $<1\,\mu$A at zero drive & 175 cuts; driven maximum 0.249\% & PASS \\
+Current balance & $<10^{-6}$ A & Maximum $1.31\times10^{-9}$ A & PASS \\
+Free current residual & $<10^{-6}$ A & Maximum $3.76\times10^{-8}$ A & PASS \\
+Free heat residual & $<10^{-6}$ W & Maximum $6.30\times10^{-9}$ W & PASS \\
+Global energy balance & $<10^{-6}$ W & Maximum $5.51\times10^{-10}$ W & PASS \\
+Coarse bath gradient & $<1\%$ independent direct flux & Worst accepted case 0.844\% & PASS \\
+Independent plate solves & $<10^{-6}$ K; heat balance $<10^{-9}$ W & Two Elmer references; maximum $3.99\times10^{-8}$ K & PASS \\
+Internal exchange balance & $<10^{-9}$ W per mechanism & 8 exchange-operator cases; radiation, gas, Au/Cu & PASS \\
+Surface refinement & $<1\%$ of lift; $<1\%$ voltage change & 442 to 907 patches: 0.228\% lift; 0.089\% voltage & PASS \\
+Fine bath gradient & $<1\%$ independent direct flux & Three converged meshes: 1.51--1.66\% & FAIL \\
+Fine-mesh qualification & Every declared numerical gate must pass & Independent bath-gradient criterion fails & NOT QUALIFIED \\
+Manufacturer / device accuracy & Matched materials, interfaces and independent device data & No qualified full-device comparison & NOT QUALIFIED \\}
 \newcommand{\BudgetRows}{Die/attach/Au pads & +0.221092 & +0.312160 & +1.317957 & +0.000000 & +0.000000 \\
 Cold ceramic & +0.942649 & +1.749731 & +0.000000 & +0.000000 & +0.000000 \\
 Cap/window & -2.463572 & -3.989961 & +0.000000 & +0.000000 & +0.000000 \\

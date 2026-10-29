@@ -67,6 +67,44 @@
     "intersected_leg_domains": 8,
     "method": "exact tetrahedron-edge intersections, source-cell P1 weights; positive-side preference at coincident faces; no Delaunay fill"
   },
+  "annotated_results": {
+    "volume_means": [
+      {
+        "body_id": 1,
+        "label": "Hot ceramic",
+        "volume_mean_k": 300.1727318816343,
+        "centroid_z_mm": -0.10999999999999997
+      },
+      {
+        "body_id": 2,
+        "label": "Ceramic 1",
+        "volume_mean_k": 285.78722705598625,
+        "centroid_z_mm": 1.3099666064572306
+      },
+      {
+        "body_id": 3,
+        "label": "Ceramic 2",
+        "volume_mean_k": 277.4938774933039,
+        "centroid_z_mm": 2.4799825089632934
+      },
+      {
+        "body_id": 4,
+        "label": "Cold ceramic",
+        "volume_mean_k": 268.3959683546848,
+        "centroid_z_mm": 3.4699999999999998
+      },
+      {
+        "body_id": 193,
+        "label": "MCT",
+        "volume_mean_k": 268.80688731930826,
+        "centroid_z_mm": 3.7200000000000006
+      }
+    ],
+    "detector_min_k": 268.4785481876217,
+    "detector_max_k": 269.79587014796664,
+    "die_to_cold_k": 0.41091896462347677
+  },
+  "report_revision": 2,
   "software_versions": {
     "python": "3.12.3",
     "numpy": "2.1.3",
@@ -75,13 +113,14 @@
     "meshio": "5.3.5"
   },
   "generator_sha256": {
-    "reports/build_engineering_report.py": "caf2fa4de7f739c6c963b0c5b8b76e473254261e246f5c3e3e6eb0313b277bf5",
+    "reports/build_engineering_report.py": "879d85bdf06fe7fb4f95251bf6f34a54ab18ee3a26353cdba0306922da5f0a1f",
     "reports/field_geometry.py": "8fb0a4db0339af801ee40e1dfc78450a03864e11ac910f4a3ef485906e47e64b",
     "reports/fem_report_data.py": "135978276b29af2abe3449c2c4fd5c1e0306f4872ff8174b34f639ab171e0ba7",
-    "reports/validate_report.py": "3fe3a2486aab84d8749e37208c4b0f6f1330a81c6404be743062d7651ae752f1",
-    "reports/report.tex": "941550433953ee7213b720db2fc16f22fc4f303c74d5cbfc0db09a7ae84f6986"
+    "reports/verification.py": "77db2eaa1d923950f769e70e3ee61f4b82dde2d7b86d5a9e42d00901425b21d6",
+    "reports/validate_report.py": "c60820c87b794b949f52853818652dc582eb4e33a5c917e8c200bb2a974c2b73",
+    "reports/report.tex": "d7c0dc93aaa579de1ab02dca09a2bd7d8b4e9a8b3591b9cf060c68b06cb699ce"
   },
-  "generator_digest": "692da9dbf3eef02398623c9bf9a117778dc7ae0d29e7d8a10674d41d789223c1",
+  "generator_digest": "abe245289571b4dcd628b9f38357542ad4818bda9d328d15e8610c504e787d34",
   "input_sha256": {
     "fem/results/g3b_checkpoint_20261029/checksums.json": "ccd6437634472a9968169e3e8b693c1b9942c4edc230a92f25395f3cd760a5a1",
     "fem/results/g3a_20261029/charts/summary.json": "fbc3a4ecc27e16d961c5e32573daa9b935994ee4f437209e4d15141487d5ac18",
@@ -95,66 +134,81 @@
     "fem/results/g3b_checkpoint_20261029/cases/nitrogen_patch1/execution.json": "ea37c45911ee47bd121fb2ce2f72dabb1b3f2b52d244d1071b04e89f7b586954",
     "data/g3b/source_review.json": "48de82facd01aedb87b8b693f21a3cb8da03b3645b574636de0542175a5e7f11",
     "data/g3b/runtime_lock.json": "9184ef52edcb8a93e3c0bb308b77331f16c0e73a0284d5f65bb2f69d722ba2de",
-    "REPORT_REBUILD_WORK_ORDER.md": "6ce115fe306da0d4cd44908ca6ef968710c78aa1b4d2eaf0b3fd958af2f65bc7"
+    "REPORT_REBUILD_WORK_ORDER.md": "6ce115fe306da0d4cd44908ca6ef968710c78aa1b4d2eaf0b3fd958af2f65bc7",
+    "REPORT_REVISION2_WORK_ORDER.md": "eece867e33a69e9fb2cf1e11f29de9cc2fe0b32c93ac84df48dd402c0234e844"
+  },
+  "derived_sha256": {
+    "numerics.tex": "a7decaf6af7088f1623f01d217236d04c1ef7bb8eb043ad1749294d43cb7de4e",
+    "verification_matrix.json": "67fa80c61935030c715d283355027baf4f545586ae79937b06bc68a92c1351e6"
   },
   "figures": {
     "full_mesh.png": {
-      "sha256": "ffc935d6492394a5c22409ca92110c815df313b93388b1b381aa954f2b4f5462",
+      "sha256": "8dd8c776222be0b7b860b8952a2fc3aea1676d0b1ef0d8b81a682184b4745afb",
       "format": "png",
       "raster_dpi": 600
     },
     "package_cutaway.png": {
-      "sha256": "aaaef81d502c6bad14eecfe7ad6a8255ce8a7af61e1bc4bc9203c0a7cef5b081",
+      "sha256": "db1d24d1a71e52355bc3bfcafa28aa5a3fabebafda536c270a129290bba0dd8c",
       "format": "png",
       "raster_dpi": 600
     },
     "tec_cutaway.png": {
-      "sha256": "63fd4e542e02bd561cd4315709f72e02222964158dc335fe1bd466055d9a12d1",
+      "sha256": "6f39d449594e52afe1afdf902eda1b02a4fe6c018dbcfe781a2653b458a80ba6",
       "format": "png",
       "raster_dpi": 600
     },
     "temperature_3d.png": {
-      "sha256": "f7a63bfedfedcae4012ab48c4b04d0ceee7d7f71feec5584bdc4ffaebcf242e3",
+      "sha256": "c9860e7b6a344f843d328ec923624655bab219a52527c0521060a23f433c3ea2",
       "format": "png",
       "raster_dpi": 600
     },
     "section_mesh.pdf": {
-      "sha256": "b88c21dbbaf4012ca0c82f8e3177cab5a9e608583be8fba983d8e635a398d1b9",
+      "sha256": "745d0b71da4f8b88fb142c48a53f469bcf5536125d1df73c0bf877834d1bf750",
       "format": "pdf",
       "raster_dpi": null
     },
     "temperature_section.pdf": {
-      "sha256": "f48ca4b2f3195c4a30a7e56bdbacc93f53195d54f5ad9bc162ce94ebf5c21bdf",
+      "sha256": "b5f9da6b9983506a066e628d785271c43a0b096154759d67ee60120ddf543ef3",
+      "format": "pdf",
+      "raster_dpi": null
+    },
+    "thermal_detail.pdf": {
+      "sha256": "36c7100040687e6daaa43cdbbf022819b68ba22e3043cabe99c6e1a93e00ec54",
       "format": "pdf",
       "raster_dpi": null
     },
     "potential_section.pdf": {
-      "sha256": "ff2d0fd73cb122d248e242d38c79f5380773330225ea1ed1a11f442463adcb08",
+      "sha256": "a64926e9a7ee86a7ba11af80afd7eac34d9d9adf6d6c3203845dc104cfb221ba",
       "format": "pdf",
       "raster_dpi": null
     },
     "current_section.pdf": {
-      "sha256": "86d6e8f67272483464f2763f52ae2a7891c74ecbe3ddb8d3b46d79cf6e3c8258",
+      "sha256": "db1cf9fce310f7f6acdbe9f6aa47740183482752265af70117123132b9fb393f",
       "format": "pdf",
       "raster_dpi": null
     },
     "heat_section.pdf": {
-      "sha256": "5f475b556feb4762739139611e4e1b2296522ccb77bbc1665f1b8977514c1d94",
+      "sha256": "1fe5b69c880b3a8551ed3c23f98deb312e1a9f585bc649fe4f8576909bd20c47",
+      "format": "pdf",
+      "raster_dpi": null
+    },
+    "field_diagnostics.pdf": {
+      "sha256": "68f4125ef9ed2fe371637126cf3bd56cce8d54089f11d7011da5f5fbb23569c4",
       "format": "pdf",
       "raster_dpi": null
     },
     "operating_points.pdf": {
-      "sha256": "7e7d8b31d354773af8e4e9e34f7c715c5607438292e2595ec6bea0179c61d39f",
+      "sha256": "aabcc44ed3c38c19e7d2853ec3365a024384f07d9e838ad5ba8cf10a36c6bf2e",
       "format": "pdf",
       "raster_dpi": null
     },
     "heat_budget.pdf": {
-      "sha256": "c8735bd23db4d1db06b8ca65d05a3f3e5e4082bef1156cc49c60a7b427ee33cc",
+      "sha256": "b9849f99e8eeb56eb0eba07ee705bd2190fb2d0aa86546fd140f5aa04d43067d",
       "format": "pdf",
       "raster_dpi": null
     },
     "qualification.pdf": {
-      "sha256": "6b0c2356a453c28177bf9eab872a80fa2a6f0163fcc3609a6b2e1878ff7e6b3d",
+      "sha256": "51071fee927f7e6a6ef81ce8a7343348f7a4717c9f87ea43f21c5223265a1637",
       "format": "pdf",
       "raster_dpi": null
     }
