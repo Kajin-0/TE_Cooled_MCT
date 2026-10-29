@@ -333,3 +333,58 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   archives. --out outputs/g3a-reproduced supports non-destructive reproduction.
   G3a scope excludes seven pins,cap/window/gas/radiation,real carriers,thermistor,
   TEC supply-lead heat and measured interfaces/grades; no transient accuracy.
+
+## G3b scoped checkpoint, 2026-10-29 — full qualification NOT complete
+
+- Read docs/PHASE1_G3B_RESULT.md and docs/G3B_REPRODUCIBILITY.md. Preserve all
+  previous source/data/evidence and the new fem/results/g3b_checkpoint_20261029
+  ledger, including source_sha256, document_sha256 and artifact_sha256. Future
+  changes must use new versioned modules/evidence; do not rewrite failed records.
+- Ten selected coarse integrated coupled3D Elmer executions pass all per-case
+  checks; two independent genuine1D conducting-plate exchange references and84
+  TE_FEM_SMOKE=1 tests pass, plus CLI quick and geometry_demo. These are scoped
+  numerical checks, not completed G3b gate D or OEM/device accuracy.
+- Actual215-domain enclosure has nine insulated glass/pin instances, attached
+  cap/window and the preserved181/180 two-terminal path through all88 legs.
+  Exact pinout and manufactured geometry are unknown. Bath remains external
+  header underside300 K only; internal cap/window/pins are solved unknowns.
+- fem_g3b_rays uses deterministic cosine first-hit rays with occlusion and audited
+  closed skin; symmetric area balancing preserves visibility zeros. Retain raw
+  reciprocity/closure errors, scale corrections and hit-mapping distances.
+  Balanced closure proves conservation, not exact view factors. Radiosity,
+  gas films and Au/Cu endpoints update from current global temperature iterates.
+- Gray window epsilon .1/.8 hypotheses are opaque internally (tau0); exterior
+  cap/window are adiabatic. Spectral LWIR transmission/external radiance remain
+  absent. Gas k(T) is NIST200..400 K, fail-closed; Eucken viscosity and alpha=.8
+  are explicit closures. Mean-free-path/jump correction makes p0 exactly zero.
+  At100 Pa Ra<1; atmospheric Kr flags further convection assessment. No CFD.
+- Two hybrid Cu leads include axial conduction and I²R split equally between
+  endpoints. Do not double-count this internal conduction as external power.
+  No distributed wire/lead gas/radiation exchange or spatial lead-current PDE.
+  Package sigma is a computational passive potential extension, not real metal
+  conductivity. Keep package Joule bounds and100-fold sigma sensitivity.
+- **Unaccepted fine points:** nitrogen_fine_verified (204855 nodes/821874 tets,
+  bath error1.65587%), nitrogen_bath (239394/967731,1.51412%),
+  nitrogen_feedthrough (275377/1194385,1.58383%). All converge genuinely and pass
+  other checks, but independent raw bath-gradient error exceeds unchanged1%.
+  Temperature/voltage insensitivity and weak reaction balances cannot waive it.
+  Full G3b qualification remains incomplete; resolve the independent flux defect.
+- Local complete-edge-star bisections preserve volumes, face conformity, the TEC
+  mesh and exact cavity operator. Converged but bath-unaccepted fields may be
+  used ONLY as hashed exact P1-prolongated initial guesses, never accepted final
+  fields. Subsequent cases must independently execute and pass all physical gates.
+- Generic cross-mesh T/phi interpolation produced artificial81.44 W initial
+  Joule and is rejected by fem_g3b_run before execution. Same-bulk patch transfer
+  remains valid. fem_g3b_refine transfers only T and initializes phi0; a900s
+  timeout remains rejected and a separate bounded1800s run converges. Do not
+  confuse solver convergence with numerical acceptance.
+- Two early accepted coarse cases retain exact pre-startup-fix sources/Fortran;
+  verifier permits only the exact three known startup edits byte for byte.
+  All physical sources and unmixed residuals match. Failed zero-initial-flux
+  plate test is retained; corrected startup has two genuine Elmer regressions.
+- Publish only explicit scoped evidence with fem/report_archive_g3b.py
+  --coarse-checkpoint. It rejects changed source/SIF/VTU/mesh, regenerates actual
+  payloads byte-for-byte and validates expected rejected fine statuses separately.
+  --out outputs/g3b-reproduced avoids overwriting immutable published evidence.
+- Continue in TE_Cooled_MCT and existing sim; unchanged pinned Docker/wrappers,
+  four CPU/12GiB, network-none. No LSDDTS, host packages or unrelated repositories.

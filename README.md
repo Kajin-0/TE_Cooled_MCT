@@ -183,3 +183,26 @@ Source MCT x=.29 k(T) is bounded90..400 K. TEC/material/contact geometry remain
 verification proxies; seven pins,carriers,cap/window/gas/radiation and other
 omitted loads prevent manufacturer/device accuracy claims. Earlier evidence is
 unchanged. Run the opt-in commands in the reproduction guide; no LSDDTS coupling.
+
+### G3b: verified enclosure checkpoint; full flux qualification incomplete
+
+[Result](docs/PHASE1_G3B_RESULT.md) · [Reproduction](docs/G3B_REPRODUCIBILITY.md) ·
+[Scoped evidence](fem/results/g3b_checkpoint_20261029)
+
+The215-domain model adds an attached cap/window, all nine glass/pin feedthroughs,
+conservative nonlinear gray radiosity, pressure-dependent N2/Ar/Kr films and
+hybrid Cu TEC supply leads around the full88-leg coupled Elmer model. Ten selected
+coarse integrated executions, two independent Elmer plate references and84 full
+opt-in tests pass. Actual accepted fields, source/mesh/payload hashes and failed
+attempts are archived separately. G1–G3a remain byte-identical; no LSDDTS.
+
+**Full G3b gate D is NOT QUALIFIED.** Three genuinely converged fine executions
+fail the independent direct-bath1% gate:1.65587%,1.51412%,1.58383%. Temperature/
+voltage stability and conservative reaction balance do not override this failure.
+The published result is the narrower verified checkpoint permitted by the work
+order, with the unresolved flux/refinement gate recorded explicitly.
+
+The window is internally opaque gray and externally adiabatic; spectral LWIR
+transmission is absent. Gas films and axial Au/Cu leads are reduced operators,
+not CFD or resolved wire arcs. Constant verification BiTe, unmeasured contacts/
+geometry/emissivities and omitted thermistor/carriers prevent OEM/device accuracy.
