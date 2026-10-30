@@ -514,3 +514,48 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
 - VIGO housing + independent TEC candidate is a synthetic reference, not an
   identified commercial assembly. Existing sim/pinned4CPU/12GiB runtime only;
   no other repository/session, report, LSDDTS or unrelated project work.
+
+## Corrected solid-only coupled thermal checkpoint, 2026-10-30
+
+- Read CORRECTED_GEOMETRY_COUPLED_THERMAL_WORK_ORDER.md,
+  docs/GEOMETRY_CORRECTED_COUPLED_THERMAL_RESULT.md and
+  docs/CORRECTED_COUPLED_THERMAL_REPRODUCIBILITY.md. New corrected_thermal*
+  modules/data are additive; freeze them after publication like earlier sources.
+- Four genuine ThermoElectricSolver executions on EXACT corrected106767node/
+  366156tet/216-domain mesh: zero drive/load;0.1A/2mW Cu OFF; matched Cu ON;
+  Cu ON with passive sigma100x lower. Actual T/phi/J/Fourier/Peltier/Joule,
+  sources/stage budgets, logs/snapshots/UTC/CPU/RSS and fields are archived.
+- Bath is ONLY Kovar underside101,300K. All exposed pin ends adiabatic; pin
+  temperatures solved through3D pin/glass/header. No cap/window/gas/radiation
+  or previous enclosure/operator import; no internal temperature constraints.
+  Detector303 receives1.5mW bias+0.5mW parametric absorbed volumetric heat.
+- Cu1/9 links use actual distinct pin/hot-pad face weights and3.403752mm
+  routes, G=.003691917W/K each; I2R/2 deposited per endpoint. Au7/8 OFF in both
+  comparisons. Pins retain passive computational sigma; physical pin current/
+  shaft Joule not solved. Signal pin cut currents are bounded, not physical
+  detector current predictions. Non-TEC potential colours are numerical only.
+- All primary per-case checks PASS:177 cut areas/current<0.5%, global/stage/
+  free residuals, material bounds and RAW bath1%. OFF/ON rawbath−0.976691%/
+  −0.993773% pass NARROWLY. Original historical fine raw failures remain FAILED.
+- Additional true one-sided die interface5% diagnostics FAIL41.35%/47.83%.
+  Presolder faces pass5%; through-layer averages give57.194mW presolder and
+  2.000mW attach. Do NOT relabel layer averages/reactions as recovered raw flux.
+  metrics.passed refers ONLY to its explicit primary checks; full thermal/device
+  qualification is FALSE, spatial convergence NOT RUN, results EXPLORATORY.
+- OFF die265.592523602K,V.551939871; ON die265.592493295K,V.551939812.
+  Delta−30.307uK is not a resolved cooling benefit. Cu conduction removes
+  .0936554mW from HOT pads; wire Joule adds.0372706mW. Do not compare these
+  solid-only temperatures to enclosed old G3b as if physics/geometry matched.
+- Passive exact300K test passes within4nK. Sigma100x lower changes die.574uK;
+  nominal passive Joule3.43e−15W, max pin-current2.37e−19A. Full117 opt-in tests,
+  CLI/geometry-demo, actual mesh re-encoding/mapping and publication audit pass.
+- fem/archive_corrected_thermal.py --verify protects new and ALL prior ledgers.
+  Archive fem/results/corrected_coupled_thermal_20261030 includes failures and
+  explicit pending gates. Old15-page PDF/reports and all historical sources/
+  archives remain byte-identical. No unrelated repo/session or LSDDTS work.
+- NEXT: new VERSIONED local MCT/attach/cold-ceramic and bath mesh refinement,
+  at least second mesh QoI/flux check (prefer3levels), preserve1%/0.5% gates.
+  Current runner enforces exact original mesh; add a separately audited runner
+  for a new mesh rather than editing this frozen source. Separate Au ON and
+  source-traced enclosure/carriers/new cavity operators remain pending. No OEM
+  accuracy claim or historical scientific PDF update is justified yet.

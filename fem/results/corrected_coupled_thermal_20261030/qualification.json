@@ -1,0 +1,74 @@
+{
+  "status": "verified actual coupled executions; exploratory spatial/local-flux qualification",
+  "actual_executions": [
+    "passive",
+    "cu_off",
+    "cu_on",
+    "cu_on_sigma_low"
+  ],
+  "primary_per_case_checks_passed": true,
+  "local_die_interface_gate_passed": false,
+  "full_thermal_qualification": false,
+  "spatial_convergence_passed": false,
+  "OEM_validated": false,
+  "Au_on_test": "NOT RUN",
+  "new_enclosure_radiation_gas": "NOT RUN; none imported/reused",
+  "historical_fine_raw_bath_gate": "UNCHANGED FAILED1.65587/1.51412/1.58383%; no recovered substitution",
+  "mesh_reference": {
+    "path": "fem/results/geometry_complete_checkpoint_20261030",
+    "mesh_sha256": "a2bc5e347ae026e78a52f13498c41c2ed5032150f9ddb53b2620a86612cf4614"
+  },
+  "matched_ON_minus_OFF_die_K": -3.0306681367164856e-05,
+  "difference_scope": "small output difference, not resolved cooling benefit; local mesh diagnostics fail",
+  "case_summary": [
+    {
+      "case": "passive",
+      "die_mean_k": 299.9999999961789,
+      "cold_ceramic_k": 299.9999999961757,
+      "hot_ceramic_k": 299.9999999999124,
+      "voltage_v": 2.7765875032205377e-11,
+      "hot_out_reaction_w": -4.807073668052785e-11,
+      "hot_out_raw_gradient_w": -4.819516543495741e-11,
+      "direct_bath_relative_error": -4.819516543495741e-07,
+      "worst_raw_cut_relative_error": 0.0,
+      "passed": true
+    },
+    {
+      "case": "cu_off",
+      "die_mean_k": 265.59252360203584,
+      "cold_ceramic_k": 265.4240463938243,
+      "hot_ceramic_k": 300.1148977882757,
+      "voltage_v": 0.5519398709188974,
+      "hot_out_reaction_w": 0.05719398787366897,
+      "hot_out_raw_gradient_w": 0.056635378582946705,
+      "direct_bath_relative_error": -0.009766909728562265,
+      "worst_raw_cut_relative_error": 0.004018238994744211,
+      "passed": true
+    },
+    {
+      "case": "cu_on",
+      "die_mean_k": 265.5924932953545,
+      "cold_ceramic_k": 265.42401609771264,
+      "hot_ceramic_k": 300.1148191647127,
+      "voltage_v": 0.5519398121879562,
+      "hot_out_reaction_w": 0.057231252401726586,
+      "hot_out_raw_gradient_w": 0.05666250327796088,
+      "direct_bath_relative_error": -0.009937726869395987,
+      "worst_raw_cut_relative_error": 0.004018238907450011,
+      "passed": true
+    },
+    {
+      "case": "cu_on_sigma_low",
+      "die_mean_k": 265.59249386916446,
+      "cold_ceramic_k": 265.4240166715116,
+      "hot_ceramic_k": 300.11481913615813,
+      "voltage_v": 0.55193980471714,
+      "hot_out_reaction_w": 0.057231251042125314,
+      "hot_out_raw_gradient_w": 0.056662499728692126,
+      "direct_bath_relative_error": -0.009937775961655463,
+      "worst_raw_cut_relative_error": 0.004018219311053561,
+      "passed": true
+    }
+  ],
+  "image_id": "sha256:24aa962831260903f1aeeb5209969ae012efab09d188cd8aac99f2f55f739195"
+}

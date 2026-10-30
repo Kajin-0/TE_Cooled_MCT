@@ -1,0 +1,147 @@
+{
+  "field_sha256": "751a6c044e6a073999b36ba4612abe4ff34dfc463d2e512753f518df509b84ff",
+  "mesh_sha256": "a2bc5e347ae026e78a52f13498c41c2ed5032150f9ddb53b2620a86612cf4614",
+  "source_sha256": "f70b6c206c9d68d062b07aef726d46de5d5e1a0d073b191f4daf929002de5b2d",
+  "interfaces": [
+    {
+      "bodies": [
+        300,
+        301
+      ],
+      "area_m2": 4.096000000000001e-05,
+      "area_mean_T_k": 300.1077883438252,
+      "z_m": 0.0015000000000000005,
+      "raw_face_Fourier_outward_w": [
+        -0.05603376308417282,
+        0.05726653061456839
+      ],
+      "raw_interface_relative_mismatch": 0.021761065044957895,
+      "five_percent_diagnostic_passed": true
+    },
+    {
+      "bodies": [
+        1,
+        301
+      ],
+      "area_m2": 4.096e-05,
+      "area_mean_T_k": 300.1097831118174,
+      "z_m": 0.001549999999999999,
+      "raw_face_Fourier_outward_w": [
+        0.05608769170437028,
+        -0.05701823190367734
+      ],
+      "raw_interface_relative_mismatch": -0.016454314144177123,
+      "five_percent_diagnostic_passed": true
+    },
+    {
+      "bodies": [
+        4,
+        302
+      ],
+      "area_m2": 9.999999999999997e-07,
+      "area_mean_T_k": 265.43448361551896,
+      "z_m": 0.0053500000000000015,
+      "raw_face_Fourier_outward_w": [
+        -0.0013048938205576861,
+        0.001985060680708828
+      ],
+      "raw_interface_relative_mismatch": 0.41348101311997,
+      "five_percent_diagnostic_passed": false
+    },
+    {
+      "bodies": [
+        302,
+        303
+      ],
+      "area_m2": 9.999999999999997e-07,
+      "area_mean_T_k": 265.4944836155196,
+      "z_m": 0.00538,
+      "raw_face_Fourier_outward_w": [
+        -0.002014099300025538,
+        0.0012367045655086125
+      ],
+      "raw_interface_relative_mismatch": -0.47827846075800645,
+      "five_percent_diagnostic_passed": false
+    }
+  ],
+  "layers": [
+    {
+      "body": 301,
+      "thickness_m": 5e-05,
+      "mean_top_minus_bottom_k": 0.001994767992243851,
+      "layer_average_down_w": 0.05719398787271331,
+      "kA_deltaT_over_thickness_w": 0.0571939878736157,
+      "scope": "through-layer volume average/temperature identity; NOT raw face recovery or an independent bath validation"
+    },
+    {
+      "body": 302,
+      "thickness_m": 3e-05,
+      "mean_top_minus_bottom_k": 0.06000000000062755,
+      "layer_average_down_w": 0.002000000000017432,
+      "kA_deltaT_over_thickness_w": 0.002000000000020918,
+      "scope": "through-layer volume average/temperature identity; NOT raw face recovery or an independent bath validation"
+    }
+  ],
+  "all_extra_interface_checks_passed": false,
+  "ceramic_plates": [
+    {
+      "body": 1,
+      "volume_mean_k": 300.1148977882757,
+      "faces": {
+        "bottom": {
+          "area_m2": 4.096e-05,
+          "area_mean_k": 300.1097831118174
+        },
+        "top": {
+          "area_m2": 4.096000000000001e-05,
+          "area_mean_k": 300.1200229208445
+        }
+      }
+    },
+    {
+      "body": 2,
+      "volume_mean_k": 284.99821229029055,
+      "faces": {
+        "bottom": {
+          "area_m2": 2.0698900000000003e-05,
+          "area_mean_k": 284.99084127148313
+        },
+        "top": {
+          "area_m2": 2.0698900000000003e-05,
+          "area_mean_k": 285.005545484556
+        }
+      }
+    },
+    {
+      "body": 3,
+      "volume_mean_k": 276.08726898797005,
+      "faces": {
+        "bottom": {
+          "area_m2": 1.0558899999999998e-05,
+          "area_mean_k": 276.07900595043935
+        },
+        "top": {
+          "area_m2": 1.0558899999999998e-05,
+          "area_mean_k": 276.09783003669804
+        }
+      }
+    },
+    {
+      "body": 4,
+      "volume_mean_k": 265.4240463938243,
+      "faces": {
+        "bottom": {
+          "area_m2": 5.759999999999999e-06,
+          "area_mean_k": 265.42276931419264
+        },
+        "top": {
+          "area_m2": 5.759999999999999e-06,
+          "area_mean_k": 265.425315610489
+        }
+      }
+    }
+  ],
+  "method": "actual one-sided P1 gradients with nodal k(T) interpolated at true triangle centroids; all selected materials S0",
+  "qualified_device_result": false,
+  "bath_recovery_applied": false
+}
