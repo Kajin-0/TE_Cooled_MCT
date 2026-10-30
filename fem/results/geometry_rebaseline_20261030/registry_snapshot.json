@@ -1,0 +1,425 @@
+{
+  "schema": 1,
+  "identity": {
+    "selected_housing_drawing": "VIGO ZTM-TO66-Z030 Rev9",
+    "selected_independent_TEC_candidate": "TEC Microsystems 3MC04-044-05 (2019)",
+    "assembly_reference": "VIGO-family housing with independent TEC candidate: hypothetical reference test article",
+    "verified_commercial_assembly": false,
+    "compatibility_qualified": false,
+    "prior_geometry_status": "assumed geometry only; no retroactive product validation"
+  },
+  "sources": {
+    "vigo": {
+      "drawing": "ZTM-TO66-Z030",
+      "revision": 9,
+      "date": "2024-03-01",
+      "title": "3TE-TO66(9p)-wW PVI/PCI",
+      "url": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf",
+      "sha256": "1f17637e02eb9ca0c340be6d936a485ae632ef7b12d9d7ea26e7664b42d6fc01",
+      "page": 1
+    },
+    "tec": {
+      "part": "3MC04-044-05",
+      "revision": "2019",
+      "url": "https://www.tec-microsystems.com/Download/Datasheets/Thermoelectric%20Coolers/MC04%20Series/3MC04-044-05_Datasheet_2019.pdf",
+      "sha256": "1cc1075ed76a959b6a21cd24bde1704f72ab22529e77695a00e9b1af86a55492",
+      "page": 1
+    },
+    "hypothesis": {
+      "document": "GEOMETRY_SOURCE_OF_TRUTH_SPEC.md",
+      "description": "Analyst choices for separate reference test article, not measured assembly"
+    }
+  },
+  "dimensions": {
+    "flange_x": {
+      "nominal": 31.5,
+      "tolerance": 0.2,
+      "unit": "mm",
+      "definition": "overall x extent",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 top/bottom views or A-A; line endpoints visually inspected",
+      "simulated": 31.5,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "flange_y": {
+      "nominal": 17.5,
+      "tolerance": 0.2,
+      "unit": "mm",
+      "definition": "overall y extent",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 top/bottom views or A-A; line endpoints visually inspected",
+      "simulated": 17.5,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "hole_pitch": {
+      "nominal": 24.4,
+      "tolerance": 0.2,
+      "unit": "mm",
+      "definition": "mounting-hole centre spacing along x",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 top/bottom views or A-A; line endpoints visually inspected",
+      "simulated": 24.4,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "hole_diameter": {
+      "nominal": 3.7,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "two mounting holes; no explicit local tolerance",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 top/bottom views or A-A; line endpoints visually inspected",
+      "simulated": 3.7,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "pin_pcd": {
+      "nominal": 10.8,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "nine pin centre pitch-circle diameter",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 top/bottom views or A-A; line endpoints visually inspected",
+      "simulated": 10.8,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "pin_diameter": {
+      "nominal": 0.76,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "metal shaft diameter, not glass bore",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 top/bottom views or A-A; line endpoints visually inspected",
+      "simulated": 0.76,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "cap_od": {
+      "nominal": 15.2,
+      "tolerance": 0.2,
+      "unit": "mm",
+      "definition": "case outside diameter at indicated section dimension",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 top/bottom views or A-A; line endpoints visually inspected",
+      "simulated": 15.2,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "header_thickness": {
+      "nominal": 1.5,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "section A-A between header top and underside; explicit drawing dimension",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 top/bottom views or A-A; line endpoints visually inspected",
+      "simulated": 1.5,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "pin_below_header": {
+      "nominal": 12.7,
+      "tolerance": 0.3,
+      "unit": "mm",
+      "definition": "pin bottom to header underside; A-A endpoints",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 top/bottom views or A-A; line endpoints visually inspected",
+      "simulated": 12.7,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "case_top_from_underside": {
+      "nominal": 13.5,
+      "tolerance": 0.3,
+      "unit": "mm",
+      "definition": "case top to header underside; A-A endpoints",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 top/bottom views or A-A; line endpoints visually inspected",
+      "simulated": 13.5,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "pin_step": {
+      "nominal": 36,
+      "tolerance": null,
+      "unit": "degree",
+      "definition": "clockwise bottom-view angle; slot at0 degrees omitted",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 bottom view",
+      "simulated": 36,
+      "absolute_deviation": 0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "central_radius": {
+      "nominal": null,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "central flange convex circular radius inferred from y envelope",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 top contour; inferred max half-width",
+      "simulated": 8.75,
+      "absolute_deviation": null,
+      "certainty": "estimated",
+      "hypothesis_range": [
+        8.65,
+        8.85
+      ]
+    },
+    "ear_radius": {
+      "nominal": null,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "ear radius inferred from x envelope and hole pitch; tooling contour unspecified",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "vigo",
+      "evidence": "p1 top contour; (31.5-24.4)/2",
+      "simulated": 3.55,
+      "absolute_deviation": null,
+      "certainty": "estimated",
+      "hypothesis_range": [
+        3.35,
+        3.75
+      ]
+    },
+    "tec_hot_width": {
+      "nominal": 6.4,
+      "tolerance": 0.1,
+      "unit": "mm",
+      "definition": "hot alumina outside square width",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "tec",
+      "evidence": "p1 mechanical drawing; independent candidate only",
+      "simulated": 6.4,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "tec_cold_width": {
+      "nominal": 2.4,
+      "tolerance": 0.1,
+      "unit": "mm",
+      "definition": "cold alumina outside square width",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "tec",
+      "evidence": "p1 mechanical drawing; independent candidate only",
+      "simulated": 2.4,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "tec_height": {
+      "nominal": 3.8,
+      "tolerance": 0.15,
+      "unit": "mm",
+      "definition": "TEC hot face to cold face",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "tec",
+      "evidence": "p1 mechanical drawing; independent candidate only",
+      "simulated": 3.8,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "lead_diameter": {
+      "nominal": 0.2,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "AWG32 nominal wire diameter shown in drawing",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "tec",
+      "evidence": "p1 mechanical drawing; independent candidate only",
+      "simulated": 0.2,
+      "absolute_deviation": 0.0,
+      "certainty": "OEM",
+      "hypothesis_range": null
+    },
+    "glass_od": {
+      "nominal": null,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "insulating glass outer bore diameter; drawing does not specify",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "hypothesis",
+      "evidence": "explicit geometry hypothesis; not manufacturer dimension",
+      "simulated": 1.3,
+      "absolute_deviation": null,
+      "certainty": "test-only",
+      "hypothesis_range": [
+        1.05,
+        1.8
+      ]
+    },
+    "pin_stub": {
+      "nominal": null,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "internal pin metal projection above header",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "hypothesis",
+      "evidence": "explicit geometry hypothesis; not manufacturer dimension",
+      "simulated": 0.5,
+      "absolute_deviation": null,
+      "certainty": "test-only",
+      "hypothesis_range": [
+        0.2,
+        1.0
+      ]
+    },
+    "ceramic_thickness": {
+      "nominal": null,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "hot/cold ceramic thickness; inferred",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "hypothesis",
+      "evidence": "explicit geometry hypothesis; not manufacturer dimension",
+      "simulated": 0.22,
+      "absolute_deviation": null,
+      "certainty": "test-only",
+      "hypothesis_range": [
+        0.15,
+        0.35
+      ]
+    },
+    "presolder_thickness": {
+      "nominal": null,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "explicit package-to-TEC joint thickness; no alloy claim",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "hypothesis",
+      "evidence": "explicit geometry hypothesis; not manufacturer dimension",
+      "simulated": 0.05,
+      "absolute_deviation": null,
+      "certainty": "test-only",
+      "hypothesis_range": [
+        0.02,
+        0.1
+      ]
+    },
+    "lead_bow_height": {
+      "nominal": null,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "preview lead bowed above endpoints; not OEM routing",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "hypothesis",
+      "evidence": "explicit geometry hypothesis; not manufacturer dimension",
+      "simulated": 0.8,
+      "absolute_deviation": null,
+      "certainty": "test-only",
+      "hypothesis_range": [
+        0.3,
+        2.0
+      ]
+    },
+    "hot_pad_x": {
+      "nominal": null,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "preview pad x on hot ceramic; full series route pending",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "hypothesis",
+      "evidence": "explicit geometry hypothesis; not manufacturer dimension",
+      "simulated": -2.8,
+      "absolute_deviation": null,
+      "certainty": "test-only",
+      "hypothesis_range": [
+        -3.0,
+        -2.5
+      ]
+    },
+    "hot_pad_y": {
+      "nominal": null,
+      "tolerance": null,
+      "unit": "mm",
+      "definition": "preview pad +/-y on hot ceramic; full series route pending",
+      "frame": "top global: origin header underside centre; +z toward cap; +x right ear; bottom view x reverses, y unchanged",
+      "source": "hypothesis",
+      "evidence": "explicit geometry hypothesis; not manufacturer dimension",
+      "simulated": 2.7,
+      "absolute_deviation": null,
+      "certainty": "test-only",
+      "hypothesis_range": [
+        2.4,
+        3.0
+      ]
+    }
+  },
+  "pinout": {
+    "1": "TEC+",
+    "2": "unused",
+    "3": "unused",
+    "4": "unused",
+    "5": "thermistor",
+    "6": "thermistor",
+    "7": "detector",
+    "8": "detector",
+    "9": "TEC-"
+  },
+  "unresolved": [
+    {
+      "dimension": "8.25 +/-0.35 mm",
+      "source": "vigo A-A",
+      "status": "dimension endpoints case top to internal plane; do not equate with cap height until carrier datum reconciled"
+    },
+    {
+      "dimension": "diameter6 mm",
+      "source": "vigo A-A",
+      "status": "section optical/conical opening; window seat, thickness, aperture and transmission not frozen"
+    },
+    {
+      "dimension": "A=5.85/6.75 +/-0.35mm",
+      "source": "vigo table and A-A",
+      "status": "header underside to focal plane, detector optical-size dependent; independent TEC/die stack compatibility not proven"
+    },
+    {
+      "dimension": "internal case/cap walls, window, POM carrier, active carrier, absorber holder",
+      "source": "vigo A-A",
+      "status": "materials listed; geometry absent; omitted from first header geometry mesh"
+    },
+    {
+      "dimension": "28/12/4 stages, traces, intermediate plates, pad metallurgy",
+      "source": "hypothesis",
+      "status": "not supplied by TEC datasheet; no new 88-leg rebaseline physics claimed"
+    }
+  ],
+  "historical_alternative": {
+    "authority": "user initial illustrative CAD, distinct source",
+    "flange_mm": [
+      31.5,
+      14.7
+    ],
+    "cap_od_mm": 12.44,
+    "TEC_hot_width_mm": 6.05,
+    "merged_into_selected_reference": false
+  },
+  "meshing_scope": "header, nine metal/glass feedthroughs, explicit joint and two TEC external ceramics; enclosure/TEC are envelope previews; no revised coupled physics yet",
+  "sink_contact_status": "no new thermal BC; ear-contact versus full underside sink remains unqualified",
+  "pinout_source_view": "BOTTOM; x_top=-x_bottom, y_top=y_bottom, z viewing normal reverses; determinant -1 in projection"
+}

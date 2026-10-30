@@ -414,3 +414,33 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   benchmark PASS as full G3b, device accuracy or local sharp-junction convergence.
 - Keep the15-page Revision2 PDF and all reports/ files unchanged until genuinely
   qualified device physics exists. No LSDDTS/other repository or session work.
+
+## User-priority source geometry rebaseline, 2026-10-30
+
+- Read GEOMETRY_SOURCE_OF_TRUTH_SPEC.md and
+  docs/GEOMETRY_SOURCE_REBASELINE_20261030.md before any more package physics.
+  All previous package studies and the unchanged15-page report are assumed-
+  geometry studies, not OEM device predictions. Preserve every accepted/failed
+  source/field, including the original fine raw bath1% failures.
+- New independent data/geometry_rebaseline/reference_v1.json is the canonical
+  dimension/source/datum/uncertainty registry. VIGO ZTM-TO66-Z030 Rev9 housing
+  plus independent TEC Microsystems3MC04-044-05 is a hypothetical reference
+  article, NOT a verified commercial assembly. Do not splice the separate
+  historical12.44mm/14.7mm illustrative envelope into the selected reference.
+- geometry_registry/source_trace/rebaseline/rebaseline_views construct separate
+  mm CAD arcs and SI Gmsh primitive CSG, compare a source numerical silhouette,
+  and audit actual22-domain header/pins/glass/joint/external-ceramic mesh.
+  Two-ear31.5x17.5mm flange,1.5mm header,9x0.76mm pins; contour radii remain
+  inferred. First actual299576nodes/1479540tets, source discrepancy0.033910mm,
+  worst CAD/mesh volume difference0.311012%. This is partial geometry only.
+- Pinout is BOTTOM view; chosen top mirror x=-x_bottom,y=y_bottom. TEC1/9,
+  detector7/8, thermistor5/6, unused2/3/4. New Cu routes are unconnected previews
+  to hot ceramic coordinates. Old stage2 return must be physically rerouted
+  with its electrical/thermal shunt; moving a thermal endpoint alone is invalid.
+- Revised88-leg circuitry,175 cuts, internal cap/window/carriers, new cavity
+  rays/operators, matched lead-off/on and three-level physics are NOT complete.
+  Do not reuse old radiation/gas operators after geometry changes. Do not claim
+  actual spectral transmission from an opaque window plus imposed heat source.
+- fem/archive_geometry_rebaseline.py publishes verified source geometry only;
+  --verify checks its immutable ledger and protected earlier evidence/report.
+  Continue existing sim/pinned Docker, no other repositories or LSDDTS.
