@@ -2,9 +2,9 @@
 
 Internal implementation/source notes. The single current scientific document is the
 [Revision 3 master](../reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf).
-The public master is continuously updated; earlier frozen-Rev3 statements refer
-only to its sealed original historical bytes. Numerical archives and gates remain immutable.
-
+The authoritative [current project contract](../AGENTS.md) defines read-first order,
+execution ownership and next milestones. The live master is continuously updated;
+sealed historical PDF bytes, numerical archives and original gates remain immutable.
 
 ## Authorized objective and priority
 
@@ -52,9 +52,17 @@ mismatch is a warning about assumptions or missing physics to investigate and
 report; it does not automatically halt development of a plausible synthetic
 reference article.
 
-## Physics and development priorities
+## Current next milestones
 
-**P0 — integrated plausible thermal/electrical reference device**
+First implement bounded native-surface visibility/exchange from corrected source
+faces, retaining the filled-core proxy as a comparator. Then run paired
+mechanisms and contact/bypass/grade/reservoir hypotheses in the existing nonlinear
+five-node package. The contract gives the required audits and the conditional
+later 3D qualification path. OEM calibration and a large remesh are not prerequisites.
+
+## Longer-term physics scope
+
+**Integrated plausible thermal/electrical reference device**
 - Preserve the conformal 88-leg, three-stage 3D TEC, corrected nine-pin
   two-ear Kovar TO-66 header, ceramic stages, presolder, die attach and MCT.
 - Choose and document a coherent nominal source-backed or analog
@@ -75,7 +83,7 @@ reference article.
   nominal current and material-temperature validity). Do not confuse an
   imposed optical-like heat load with transmitted optical radiation.
 
-**P1 — engineering sensitivity and plausibility**
+**Engineering sensitivity and plausibility**
 - Sweep TEC stage split, material-grade analogs, contact thermal resistance,
   mounting/sink resistance, wire geometries, cavity backfill/pressure,
   radiation, detector dissipation and drive current.
@@ -91,7 +99,7 @@ reference article.
   any **numerical-release claim** governed by the existing Rev3 release policy;
   they do not prevent explicitly qualified *exploratory/plausible-model* studies.
 
-**P2 — optional evidence and advanced detector physics**
+**Optional evidence and advanced detector physics**
 - Improve empirical fidelity when measurements, vendor drawings or material
   properties become available. It is advantageous, not required for the
   plausible-reference-device milestone.
@@ -99,23 +107,25 @@ reference article.
   noise, responsivity and D* in separate source-backed increments as useful.
   Without device-specific inputs, label results exploratory.
 
-## Near-term deliverable
+## Continuing deliverable
 
-A reproducible **nominal, low-parasitic, high-parasitic** set of integrated
-operating scenarios, with assumptions table, coupled 3D field results where
-computationally feasible, heat-budget Sankey/data, device temperature/current/
-voltage/power plots, and a concise, candid statement of uncertain inputs.
-Keep the existing simulation environment and practical resource budget.
+Improve the existing nominal/low-parasitic/high-parasitic scenarios, mechanism
+comparisons and assumptions in the same Rev3 master, with heat budgets and
+temperature/current/voltage/power plots. Keep genuine archived solid-only 3D
+fields distinct from reduced transport and preliminary enclosure exchange.
+Maintain the internal methods guides coherently within the existing resource budget.
 
 ## What must not change
 
 Historical G1–G3b/G2d and later accepted or rejected evidence, exact archived
-fields, all reported raw-flux failures, and the approved Revision 3 REVIEW DRAFT
-remain preserved. Neither the old raw bath<1% nor cold-interface<5% criterion
+fields, all reported raw-flux failures, Rev2 and the sealed original 15-page Rev3
+snapshot remain preserved. The live Rev3 is expressly authorized to evolve in place;
+its historical PDF identity is recorded separately. Neither the raw bath<1% nor
+the cold-interface<5% criterion
 is retroactively relaxed; an exploratory result is not a numerical release.
 Do not touch unrelated repositories, LSDDTS or existing protected snapshots.
 
-**Continuation instruction:** This policy is the newest primary user objective.
+**Continuation instruction:** Apply the authoritative current contract with this policy.
 The earlier OEM-first document remains useful as an independent-validation
 reference and source inventory, but its "next milestone must be OEM validation"
 priority does not override this policy.

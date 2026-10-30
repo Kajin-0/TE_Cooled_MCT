@@ -4,6 +4,8 @@ The sole current public report is
 `reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf`.
 The compatibility filename is stable; title, headers and content identify the
 Revision 3 engineering master. This guide is internal, not a parallel report.
+The [current project contract](../AGENTS.md) governs continuation and demotes
+previous milestone instructions to historical context; it does not alter sealed evidence.
 
 ## Source and historical separation
 

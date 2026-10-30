@@ -2,9 +2,9 @@
 
 Internal implementation/source notes. The single current scientific document is the
 [Revision 3 master](../reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf).
-The public master is continuously updated; earlier frozen-Rev3 statements refer
-only to its sealed original historical bytes. Numerical archives and gates remain immutable.
-
+The authoritative [current project contract](../AGENTS.md) defines read-first order,
+execution ownership and next milestones. The live master is continuously updated;
+sealed historical PDF bytes, numerical archives and original gates remain immutable.
 
 This guide covers the current opt-in implementations and their limits. The
 [package guide](INTEGRATED_REFERENCE_THERMAL_20261030.md) defines the five-node
@@ -224,9 +224,9 @@ blocked-ray tests accompany package hot/cold/reservoir conservation checks.
 
 | Verification layer | Actual result | What it establishes |
 | --- | --- | --- |
-| Focused transport/exchange/compatibility suite | 131 passed | Analytic limits, independent BVP and ray/heat/domain/negative controls |
-| Full pinned opt-in regression | 286 passed in 340.38 s; 14 third-party deprecation warnings | Existing genuine Elmer smoke plus all current tests |
-| Full archive verifier | Passed | Historical source/field ledgers, original failures and approved Rev3 preserved |
+| Transport/exchange/compatibility checkpoint suite | 131 passed | Analytic limits, independent BVP and ray/heat/domain/negative controls |
+| Latest recorded full pinned opt-in regression | 300 passed in 338.73 s; 14 third-party deprecation warnings | Genuine Elmer smoke plus report gates; logs in master verification records |
+| Full archive verifier | Passed | Historical source/field ledgers, original failures and sealed original Rev3 preserved; live master separately verified |
 | Legacy CLI and geometry demo | Passed | Existing demonstration workflows remain runnable |
 | Documentation links and new figures | Checked | Current local links resolve; figures retain failed-interval gaps |
 | Current proxy/package global balance | Maximum 1.41e-11 W over accepted grid cases | Conservative reduced implementation, not device accuracy |
@@ -245,8 +245,9 @@ constant, corrective-checkpoint and sealed FEM data are untouched. Full verifica
 ./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/current-model/legacy-geometry
 ```
 
-Next priorities are native-surface exchange without filled interstage voids,
+The current contract orders next priorities: native-surface exchange without filled interstage voids,
 paired mechanism tests and contact/bypass/reservoir sensitivity. Keep improving
 these current guides and README with each increment. Preserve all frozen source,
-actual fields, original raw 1% bath / 5% interface failures and approved Rev2/Rev3;
-no reduced-model milestone constitutes numerical-release or OEM validation.
+actual fields, original raw 1% bath / 5% interface failures, Rev2 and sealed original
+Rev3 bytes. Improve the live Rev3 in place; no reduced-model milestone constitutes
+numerical-release or OEM validation.

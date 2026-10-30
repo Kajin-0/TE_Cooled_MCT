@@ -1,914 +1,143 @@
-# Agent continuation / engineering contract
-
-## Mission
-Build a truthful, testable multiphysics model of a three-stage TEC-cooled HgCdTe detector in a nine-pin TO-66 package. Physics verification, reproducibility, parameter provenance and quantified limits outrank visual fidelity.
-
-## Single master engineering report — controlling user direction
-
-- Maintain ONE current standalone Revision 3 engineering master, continuously
-  improved in place at `reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf`.
-  The legacy filename is stable; public title/content say Revision 3, not DRAFT.
-  Do not propose Revision 4, new report editions or competing public PDFs.
-- The user's current authorization expressly supersedes earlier instructions
-  below to freeze the public Rev3. Those historical freeze statements now
-  protect ONLY the original sealed snapshot and all numerical/source archives.
-- Original 15-page Rev3 bytes remain at the existing sealed historical artifact
-  identified by `reports/historical/rev3_original.json`; its original digest
-  and every old numerical/archive gate MUST still pass. Rev2 is unchanged.
-- Public PDF: standalone scientific/engineering prose; sources/assumptions,
-  equations/units, model coverage, real geometry/fields, budgets, sensitivity,
-  failed gates and conclusions. NO usernames, paths, filenames, hashes,
-  repository links, agent/Codex chatter, development diary, TODOs or CI.
-  Public scientific citations/DOIs are expected. No OEM or release certification.
-- Explicitly separate actual 88-leg 3D solid-only fields from five-node
-  nonlinear transport and filled-core gas/radiation proxy; candidate enclosure
-  solids are not a joined solved cavity. Preserve numerical vs physical limits.
-- Use `reports/master` workflow; see `docs/MASTER_REPORT_REPRODUCIBILITY.md`.
-  Rebuild source-derived figures, validate text/provenance/typesetting,
-  check reproducibility, render and inspect EVERY page before publication.
-  README points first to this ONE master; other mutable notes are internal.
-- Continue all editing/building/testing/commits/pushes through this existing
-  sim:0.0 Codex session, with no extra agents/sessions or unrelated repo work.
-- Current master: 28 pages, every page rendered/inspected; PDF and all 40
-  figure files reproduce exactly. Report-focused checks: 32 PASS; full pinned
-  opt-in: 300 PASS including real Elmer smoke. Archive guard and legacy demos
-  PASS. Machine records: `reports/master/verification/summary.json`.
-
-## Read first
-README.md; the canonical master PDF; docs/MASTER_REPORT_REPRODUCIBILITY.md; docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md; docs/INTEGRATED_REFERENCE_THERMAL_20261030.md; docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md. Historical source/roadmap/CAD documents below describe their original checkpoints, not the current priority ordering.
-
-## Current baseline
-- tecooledmct/model.py: four-node steady-state thermal/electrical solver.
-- tecooledmct/experiments.py: gas comparisons, uncertainty, transient dynamics.
-- tecooledmct/cli.py: parameter sweeps, figures, JSON reports.
-- tests/test_model.py: conservation, anchor, input and trend checks.
-- geometry/revision6/engineering_assumptions.json: original visual-CAD specifications. **Not** validated solver geometry.
-
-Manufacturer reference: TEC Microsystems 3MC04-044-05 (2019), hot 6.4 × 6.4 mm; cold 2.4 × 2.4 mm; height 3.8 ± 0.15 mm; 44 couples; ΔTmax ~113 K; Qmax ~0.5 W; AC resistance ~2.9 Ω. All maximum values occur at different conditions. Per-stage 28/12/4 allocation and intermediate geometry are **inferred**.
-
-## Mandatory rules
-1. Distinguish manufacturer-documented, fitted, assumed, and measured inputs. Track units, sources, temperature/pressure domain and uncertainty.
-2. Preserve SI units internally. Conserve energy at each stage; Qh-Qc=I*V.
-3. Fitting two manufacturer limits is **not** validation of loaded/temperature-dependent curves. Digitize additional data and reserve holdouts.
-4. Do not claim Krypton or mixtures are optimal for *production* from thermal conductivity alone; purity, outgassing, sealing, spectral loss and reliability matter.
-5. Monte Carlo percentile ranges from chosen priors are not empirical confidence intervals.
-6. Do not use the visual Revision 6 STEP as a simulation mesh without repaired gaps/contact definitions and verified stage connectivity.
-7. Never add exposed external TEC jumpers. The cooler has two heavier tinned leads and separate detector/thermistor bonds; interstage conductors belong inside validated on-ceramic metallization.
-8. Run pytest -q and python -m tecooledmct.cli --quick --out outputs/check for each change.
-9. Favor open NumPy/SciPy, and Gmsh/Elmer/FEniCSx/OpenFOAM where justified.
-10. Report convergence, assumptions, and failure modes; do not claim accuracy from visual plausibility.
-
-## Next checkpoints
-- Manufacturer curve digitization (Q-I-ΔT, V-I), joint fit and holdout.
-- True multi-surface radiation plus aperture shielding and cold-baffle conduction.
-- Temperature-dependent MCT R(T,V), optical absorption and real thermistor calibration.
-- Real package gas species/pressure model, kinetic regimes, and mixture transport.
-- FEM-ready geometry, electrical connectivity, contact mesh and BC.
-- Experimental hot/cold temperature and current/voltage correlation.
-
-## Phase 1a additions
-- Read docs/geometry_sensitivity.md and tecooledmct/geometry_sweep.py and pellet_fvm.py.
-- Do not say that changing a STEP assembly automatically runs a multiphysics analysis.
-- geometry_sweep reruns a lumped network with dimensional R and K changes; pellet_fvm spatially solves one leg only.
-- Peltier and Seebeck effects are still reduced to effective junction terms; no full 3D electrical field across the package.
-- Run `pytest -q` and `python -m tecooledmct.geometry_demo --out outputs/pellet-study`.
-- When reporting efficiency, compare *minimum input power at a fixed detector target temperature*, not only electrical power at a fixed current.
-- Treat 28/12/4 stage pair split and effective R/K/S as uncertain.
-
-## Phase 1b source-backed materials
-- See docs/materials_and_provenance.md, tecooledmct/materials.py, and material_transport.py.
-- OEM-calibrated and literature-derived P/N profiles are separate. The default solver MUST remain unchanged unless requested.
-- Sourced properties carry material grade, measured temperature, source URI, and uncertainty status.
-- Bi-Te hot-extruded OEM composition and S(T),sigma(T),k(T) are unpublished; literature example P/N values are not product claims.
-- Kovar header composition, purity and actual plating need verification per actual package; Sn95Sb5 is only a proxy for unspecified OEM Sn-Sb solder.
-- Bulk alumina, Kovar, solder and gold do NOT yet determine the main four-node model's stage temperatures; 1-D resistance estimates are diagnostic only.
-- Run pytest -q and source-backed material profile tests; keep baseline regression passing.
-
-## Current scope priority, 2026-10-28
-Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat old coupling contract as dormant speculative documentation only. Build and validate Elmer/Gmsh TEC/package FEM first. Model MCT with sourced thermal properties and optional simple bias-dependent thermal load; no device carrier-transport PDE. OpenFOAM should be reserved for relevant gas convection/CHT cases after a conduction-only baseline and Rayleigh/Knudsen screening. The later G1/G2a/G2b sections record implemented solid thermoelectric FEM; package CFD remains unimplemented.
-
-## Verified G1 checkpoint, 2026-10-28
-
-- Read docs/PHASE1_G1_RESULT.md and docs/FEM_G1_REPRODUCIBILITY.md first.
-- Genuine Gmsh/OpenCascade tetrahedral P/N + Cu + alumina coupled FEM is in
-  tecooledmct/fem_g1.py, fem_g1_run.py and fem_g1_post.py. It invokes Elmer's
-  actual ThermoElectricSolver for both T and phi; do not replace it with HeatSolve
-  or a prescribed reduced-order temperature field.
-- Isolated headless installation: fem/bootstrap.sh; runtime: fem/run.sh. Elmer
-  release 26.2.1 source is pinned at a19504ac53ec222e3355e182b08f2ff280c2203a;
-  Gmsh 4.13.1. Host Ubuntu 25.10 sudo needs a password; no PPA was installed.
-- Source and project work remain in /home/User/TE_Cooled_MCT, using the existing
-  sim session. Do not create another session or alter model/settings.
-- Run `./fem/run.sh env TE_FEM_SMOKE=1 pytest -q` (21 tests at this checkpoint),
-  the existing CLI quick check, geometry_demo, and the full FEM runner for physics
-  changes. No solver means optional smoke is skipped; never fabricate results.
-- Full benchmark: `./fem/run.sh python -m tecooledmct.fem_g1_run --out outputs/fem-g1`.
-  `--postprocess-only` recomputes diagnostics from existing actual fields; it does
-  not run the PDE again. Preserve the distinction in validation reports.
-- Positive I enters N hot pad, crosses cold bridge and returns via P hot pad;
-  300 K bottom bath, actual 2 mW top heat flux in loaded sweep. All contacts ideal.
-  Alumina uses sigma=1e-12 S/m; 100-fold lower conductivity sensitivity passes.
-- 666/1441/4223 nodes, 2029/5094/17046 tets; +0.3 A finest Tc=258.757514 K;
-  finest Tc change 0.008813 K. Constants are mixed literature verification inputs,
-  not manufacturer-specific or physical curves valid from 250 to 439 K.
-- Distinguish conservative terminal reactions, interior cut currents and raw
-  element-gradient terminal fluxes. The last still have corner discretization
-  errors (~8%/5.4% at +0.3 A); do not claim local flux convergence from global
-  balance. Fine interior driven-cut error is <0.04%, bath-gradient energy error
-  <0.17%, weak global energy/current checks pass. Zero current uses an absolute
-  section-current gate of 1 microamp, since percentage of zero is undefined.
-- Representative actual meshes, plots, fields, logs, lock versions and checksums
-  are tracked under fem/results/g1_20261028; complete raw run is outputs/fem-g1.
-- G2 is next: verified 88-leg series netlist, three stages, realistic material
-  curves and contact sensitivity, then withheld OEM curves. Stage split 28/12/4
-  remains inferred. Full TO-66 package, MCT die and gas/radiation are later gates.
-- Preserve all Phase 0/1a/1b behavior and tests; no changes to other repositories.
-
-## G2a multi-couple checkpoint
-
-- Read docs/PHASE1_G2A_RESULT.md and docs/G2A_REPRODUCIBILITY.md. G1 files and
-  all 128 published evidence hashes are unchanged; fem_g2a_run.g1_integrity checks
-  them. Never rewrite G1 source/evidence to make G2 pass.
-- New modules: fem_g2a.py (parametric snake, graph/geometry/mesh audit, SIF),
-  fem_g2a_post.py (actual-field component currents/heat/Joule and weak residuals),
-  fem_g2a_run.py (real coupled runs and 29 gates). The existing pinned image is
-  sufficient; do not reinstall or change shared Docker/bootstrap settings.
-- Four couples: 8 legs, 7 alternating hot/cold Cu links, 2 external hot terminal
-  pads and 2 alumina plates. Actual mesh must prove a unique path with 17 conductor
-  vertices and 16 edges, no illegal overlaps or point/edge shorts. Contacts ideal.
-- Run `./fem/run.sh python -m tecooledmct.fem_g2a_run --out outputs/fem-g2a`
-  and `./fem/run.sh env TE_FEM_SMOKE=1 pytest -q` (30 passed). Existing CLI and
-  geometry_demo must also pass. Changing source during a run invalidates it.
-- Actual fine run: 17,651 nodes, 74,552 tets; 300 K bath and 8 mW cold-face load.
-  +0.15 A gives Tc=277.559043 K and V=79.480673 mV. Finest mean-T change
-  0.003191 K = 0.01422% of lift; fine worst leg current <0.00089%, bridge <0.089%,
-  direct bath energy mismatch <0.161%. Raw terminal-corner flux peaks remain
-  unconverged; do not substitute them for conservative/interior-cut currents.
-- `fem/archive_g2a.py` only accepts verified full runs with matching source and
-  SIF/VTU hashes. Tracked evidence: fem/results/g2a_20261028; full raw outputs
-  remain outputs/fem-g2a. Keep BCs and material assumptions explicit.
-- G2b must first be a geometry/netlist/mesh feasibility proof, after the verified
-  G2a commit. 28/12/4 is still inferred. No full-TEC nonlinear solution is claimed
-  by generating 88 legs. G2c independent OEM/device calibration remains later.
-
-## G2b geometry-only follow-up
-
-- G2a passed and was committed/pushed first at f43d07835c5c58a336f661054b42023eeb5a50d5.
-  Read docs/PHASE1_G2B_FEASIBILITY.md before continuing the full TEC.
-- fem_g2b_geometry.py constructs 88 legs, 85 Cu bridges, six stage pads and four
-  shared ceramic plates, with assumed 28/12/4 couples and 3.8 mm stack height.
-- Actual 0.20 mm mesh: 14,666 nodes / 47,667 tets / 183 domains / 267 contacts.
-  Graph, volumes, contacts and point/edge-short checks pass; ElmerGrid exits zero.
-- This is THREE SEPARATE stage circuits with SIX internal feasibility ports.
-  No module-level two-terminal interstage routing or coupled G2b solve exists.
-  geometry_only.vtu has body IDs only; do not invent temperature/current fields.
-- Reproduce with `./fem/run.sh python -m tecooledmct.fem_g2b_geometry`;
-  combined `TE_FEM_SMOKE=1 pytest -q` passes 32 tests, including actual G1/G2a
-  solver and G2b mesh. Published G1/G2a code/evidence are unchanged.
-- Before G2b physics: define stage drives/interstage routes, real BCs, solve and
-  verify current/energy/mesh convergence. Contacts, stage allocation, material
-  curves and OEM/device holdouts remain missing. G2c stays deferred.
-
-
-## G2b two-terminal coupled checkpoint, 2026-10-28
-
-- Read docs/PHASE1_G2B_TWO_TERMINAL_RESULT.md and
-  docs/G2B_COUPLED_REPRODUCIBILITY.md. This supersedes the geometry-only next-step
-  status above without changing the original six-port generator or its meaning.
-- fem_g2b_connected.py adds two separate assumed buried Cu routes and four
-  alumina supports/collars. Cu is cut from dielectric before fragmentation.
-  Preserve the distinction between inferred construction and verified OEM artwork.
-  These supports/routes create thermal shunts that must remain in the PDE.
-- The actual mesh has 189 material domains and a unique 181-vertex / 180-edge
-  conductor path through all 88 legs, exactly two degree-one external terminals.
-  Orthogonal CSG, OCC and actual tetrahedra agree on volumes/contact areas.
-  fem_g2b_connectivity.py additionally proves face-connected tetrahedra inside
-  every body, and one conductor and one thermal tetrahedron component. A shared
-  body tag alone cannot prove continuity; reject point/edge-only connections.
-- New fem_g2b_physics.py, fem_g2b_post.py and fem_g2b_run.py execute actual coupled
-  Elmer ThermoElectricSolver and independently verify actual T/phi/E/J/q/Joule.
-  Run ./fem/run_g2b.sh python -m tecooledmct.fem_g2b_run, then the supplemental
-  connectivity command in the reproduction guide. This wrapper reuses the pinned
-  image with four CPU / 12 GiB limits; original fem/run.sh remains unchanged.
-- Three actual meshes culminate in 91,538 nodes / 384,121 tetrahedra / 183,076
-  DOFs. With 300 K bottom bath and 2 mW actual top load, +0.1 A gives cold mean
-  262.056237 K / +0.56829253 V; -0.1 A gives 356.989385 K / -0.66503709 V and
-  positive input power. Intermediate ceramic temperatures are solved unknowns.
-- All 30 full checks and 41 tests passed. Regress with
-  ./fem/run.sh env TE_FEM_SMOKE=1 pytest -q plus existing CLI and geometry_demo.
-  Original G1/G2a and six-port source/evidence hashes must remain unchanged.
-  Do not rewrite protected checkpoints to make a new gate pass.
-- Every leg, local bridge and insert has an interior current cut (175 total).
-  Fine driven cuts pass <0.5%, direct bath energy <1%, cold mean/max mesh change
-  <1% of lift and voltage change <1%. Raw terminal-gradient currents and corner
-  peaks remain separate and are not claimed resolved. Zero drive uses 1 microamp
-  absolute current tolerance. Ceramic sigma reduction is independently tested.
-- Stage heat budgets use P1 nodal control volumes through intermediate plates,
-  including relevant routing/ceramic portions. Their conservative transfers are
-  not raw sharp-face gradients or a textbook leg-only stage decomposition.
-- --reuse-mesh re-audits real mesh inputs. --resume reuses only actual completed
-  cases after BC/status/SIF/VTU checks and fresh field verification. Loaded-positive
-  explicitly aliases the identical final convergence execution, not another solve.
-  Warm starts use hashed actual solution.result initial states and still run PDEs.
-- The final nonlinear stopping tolerance is 1e-9, the declared convergence gate.
-  Stronger completed early solves retain their original SIFs/source snapshots.
-  A roundoff plateau and stopped duplicate are incomplete attempts, never successes.
-  Keep the .source archival suffixes to prevent pytest collecting old snapshots.
-- Archive only verified evidence using fem/archive_g2b_coupled.py; it checks source,
-  mesh and actual SIF/VTU hashes. Tracked data is fem/results/g2b_two_terminal_20261028;
-  raw runs remain outputs/fem-g2b-two-terminal and outputs/fem-g2b-connected.
-- All contacts ideal; room-temperature literature constants, inferred 28/12/4
-  stages and manufactured routing remain assumptions. G2c OEM calibration,
-  temperature-dependent grade-matched curves, contact/solder validation and G3
-  package/gas/radiation are later gates. No 113 K / 0.5 W fitted validation claim.
-- Continue in the existing sim session; do not touch LSDDTS or unrelated projects.
-
-
-## G2c source/material/contact qualification checkpoint
-
-- Read docs/PHASE1_G2C_RESULT.md, docs/G2C_MATERIAL_PROVENANCE.md and
-  docs/G2C_REPRODUCIBILITY.md. All earlier source/evidence must remain unchanged.
-  fem_g2c.intact_checkpoints checks G1/G2a, original six-port and connected G2b.
-- material_profiles.py and data/g2c are opt-in. N-HE-1 and P-HE from Zhang et al.
-  (2025), DOI 10.1088/0256-307X/42/5/056304, have six ingested original plot
-  markers/property at 200..300 K. Rho/S/k refer to the same specimen within each
-  polarity, not a matched module pair or the OEM grade. Preserve sample/process,
-  PDF hash, axes/marker coordinates and reading bounds. Reading bounds are not
-  experimental device confidence intervals. No silent extrapolation.
-- Sigma is reciprocal rho. Goldsmid Table 1 is a partial fixed-thermopower example,
-  not a complete specimen trajectory; Cai remains quarantined pending original
-  units/provenance verification. Never fill missing k/S from conductivity alone.
-- fem_g2c.py compiles real local-T Elmer Procedure functions that Fatal outside
-  coverage. The solver evaluates nodal coefficients then interpolates at Gauss
-  points. fem_g2c_post.py verifies that discretization with actual VTUs and
-  degree-four triangle cuts. Thomson is implicit in div(T*S(T)*J), not another
-  additive heat source. The synthetic rod has an independent continuum BVP.
-- fem_g2c_run.py uses a 295 K bath and actual source, constant/frozen/synthetic
-  checks; synthetic curves are function tests, never measurements. The rejected
-  initial 300 K iterate is a failure record, not a converged device prediction.
-- fem_g2c_contact.py/mesh.py add 16 explicit 20 micrometre transition domains.
-  They assume S equals the adjacent leg and add rho by r_e/t and inverse k by
-  r_th/t. This is a phenomenological transition law, not Sn-Sb solder chemistry.
-  Zero added values recover the original continuum, including thermopower.
-  Verify extra I²R in the actual domains, independent electrical/thermal cases,
-  driven currents, zero-current absolute cuts, graph/volume/face connectivity and
-  SICN. Do not lower a failed gate to publish a contact result. HXT and Netgen
-  produce the final contact mesh; failed meshes remain separately unaccepted.
-- If only the contact zero-current cut gate fails, fem_g2c_contact_refine.py
-  performs finer actual passive solves and re-verifies the completed driven
-  fields. It retains initial failures and distinguishes verification from new
-  execution; do not rerun an unchanged solve just to assign another label.
-- fem_g2c_stack.py reads protected tracked G2b mesh arrays, re-encodes the coarse
-  Gmsh file if needed, re-audits topology/quality and runs ElmerGrid again. The
-  actual Elmer node/tetrahedron/body mapping is checked. It genuinely solves
-  source-backed local-T full-stack physics at 295 K / +0.1 A / zero top load,
-  with ideal interfaces. Separate stage contact tests do not qualify stack solder.
-- New cases may warm-start from a hashed actual solved solution.result and still
-  execute the PDE. Runtime uses existing fem/run_g2b.sh with four CPU / 12 GiB
-  limits. Never modify original wrappers/image or open another tmux session.
-- g2c_qualification.py stores independent SI interface parameters and a full-family
-  reading-bound residual objective. Calibration-reserved .2/.6/1.0 A and withheld
-  .1/.4/.8 A were selected before comparison. Hot temperature/current/load and
-  vacuum/dry-N2 matching is strict. A non-vacuum prediction must explicitly
-  represent its environment. The 295 K source-backed result is not a 300 K
-  holdout. Only the genuine preserved 300 K no-load constant result is compared.
-- No fit, OEM grade match, unique parameter identification or full OEM-family
-  device validation is established. Dimensions/counts, profiles, contacts, routing
-  and environmental heat paths remain confounded. TO-66/package/gas/radiation are
-  separate gates. Do not reinterpret numerical implementation checks as accuracy.
-- Regress with ./fem/run.sh env TE_FEM_SMOKE=1 pytest -q, existing CLI quick and
-  geometry_demo. fem/report_g2c.py and fem/archive_g2c.py require passing full
-  numerical summaries and completed tests; archive validates execution source,
-  SIF/VTU hashes and preserves generated Fortran/compiler/library provenance.
-- Continue only in TE_Cooled_MCT and existing sim. Never touch LSDDTS or other repos.
-
-- Additive opt-in `zhang2025_he_40_300_v2.json` ingests 14 markers/property from
-  40..300 K; its v1 subset is bit-for-bit unchanged. The corrected default stage v1r1 remains
-  200..300 K; the stack and low-temperature check use corrected v2r1. `fem_g2c_low_temperature` genuinely exercises v2 at imposed
-  200/190 K faces; do not describe that 190 K input as attainable device output.
-  Both profiles reject out-of-interval T. Texture/tensor and OEM grade remain unknown.
-
-- Prepublication N-Seebeck negative-axis origin error was corrected before push.
-  Accepted profiles are v1r1/v2r1. Verify original axis endpoints and independent
-  power-factor anchors, not only sign/conservation. All affected source PDEs were
-  rerun; incorrect-input runs remain quarantined. Constant-profile contacts were
-  reverified from actual fields with audited used dependencies; never relabel
-  wrong-input PDE results as corrected without a genuine rerun.
-
-## G2d OEM residual and identifiability checkpoint, 2026-10-29
-
-- Read docs/PHASE1_G2D_RESULT.md and docs/G2D_REPRODUCIBILITY.md. Preserve all
-  earlier accepted G1/G2a/G2b/G2c source/tests/evidence. g2d_data.preserve checks
-  the earlier indices including all451 G2c artifact hashes. Do not rewrite them.
-- data/g2d retains original OEM .2/.6/1.0 A calibration versus .1/.4/.8 A holdouts.
-  Only nominal300 K vacuum compares with solid-only physics; literal27 C means
-  a preserved0.15 K rounding caveat. Source-backed295 K is not an OEM comparison.
-- g2d_network/g2d_analysis are independent screening, not FEM. Calibration-only
-  vertical-reading weights avoid held-out slope leakage. A frozen fit precedes
-  scoring; discarded preliminary slope-weight attempt remains unaccepted.
-  Exact aspect*c,rho/c,k*c degeneracy and rank8/9 preclude unique identification.
-  Three-scale network fit hits k bound; it does not qualify grade or 3D accuracy.
-- g2d_fem executes the real strict-source300 K probe (rejected at300.0177887 K),
-  then three real .2 A/300 K/zero-load constant-law 88-leg diagnostics: baseline,
-  S minus10%,k plus10%. All175 cuts/current/energy gates pass on re-audited fine
-  G2b mesh; no new direction-specific refinement or full-stack contact claim.
-- g2d_budget independently reconstructs actual control-volume heat budgets.
-  scripts/audit_g2d_sources.py checks all160 original vector readings and
-  independent HP A-axis table anchors. Above300 K candidate covers298.15..573.15 K,
-  differs from HE/OEM grade and cannot cover cold legs; no stitching/extrapolation.
-- Reproduce ./fem/run.sh python -m tecooledmct.g2d_analysis and
-  ./fem/run_g2b.sh python -m tecooledmct.g2d_fem, then g2d_budget, full
-  TE_FEM_SMOKE=1 pytest -q, CLI quick and geometry_demo. Reuse pinned image/wrappers.
-  fem/report_archive_g2d.py rejects changed source/fields or failed numerical gates.
-- Scoped D1/D2 and three actual PDE directions verified; OEM qualification remains
-  FAILED/BLOCKED. Full-stack transitions, matched-grade full-range curves,
-  alternate geometry/topology meshes, loaded/high-current FEM family, mounting
-  and package/environment validation remain pending. No LSDDTS or other repo work.
-
-## G3a coupled solid package checkpoint, 2026-10-29
-
-- Read docs/PHASE1_G3A_RESULT.md and docs/G3A_REPRODUCIBILITY.md. All accepted
-  G1/G2a/G2b/G2c/G2d source/data/evidence remain immutable. fem_g3a_data.preserve
-  extends the integrity audit through all83 G2d artifacts and execution sources.
-- New fem_g3a_geometry rebuilds protected G2b OCC solids and adds header/mount,
-  die attach,MCT,two glass annuli,two pins,two Au pads:199 conformal domains.
-  Unique181-vertex180-edge path through88 legs and two TEC terminals is retained.
-  Both real meshes audit volumes/contacts/manifoldness/body-face connectivity,
-  graph and actual ElmerGrid mapping. Initial chordal pin-volume failure is
-  unaccepted; curvature sizing fixes it without lowering the declared1% gate.
-- This is a genuine coupled3D-solid/1D-wire HYBRID, not all3D wires. Nonlocal
-  compiled callbacks use current global endpoint temperatures and equal/opposite
-  powers during the ThermoElectricSolver nonlinear solve. Independent1D Elmer
-  Neumann rod verifies k*A/L. Only two of nine illustrated feedthroughs are real
-  domains; four-wire sensitivity adds parallel1D bonds, not new3D pads/pins.
-- Bath300 K is on external header underside only. TEC ceramics/pin tops are
-  unknowns. Package S=0,tiny computational sigma models passive Fourier thermal
-  solids; it is not physical Au/Kovar electrical conductivity or detector current.
-  Bound package Joule and test100-fold lower sigma. The MCT source is one bias
-  representation (V*I) plus absorbed optical thermal power, in W/m3, not density-
-  multiplied Heat Source. No carrier transport or LSDDTS.
-- Source MCT x=.29 local k interpolates Table2 at90/148/298/400 K and fails outside
-  90..400 K. No alloy interpolation. Density/Cp registry is not a transient claim;
-  SIF capacity placeholders are steady-only. TEC remains the original constant
-  verification law, not a newly qualified300 K source-backed/OEM-grade profile.
-- Eleven actual integrated package solves plus independent1D check pass all
-  current/energy/interface/refinement/isolation gates;73 TE_FEM_SMOKE=1 tests,
-  CLI quick and geometry_demo pass. Fine .1 A/2mW die mean263.389718 K,
-  cold ceramic262.965994 K,die-cold .423724 K. Manufacturer accuracy unqualified.
-- Run ./fem/run_g2b.sh python -m tecooledmct.fem_g3a_geometry, then
-  fem_g3a_run with explicit immutable case labels; --resume re-verifies completed
-  genuine fields. fem_g3a_post and fem_g3a_interfaces independently reconstruct
-  heat/current and interior mount/pin cuts. Original G2b bath/top-load placements
-  differ; do not call a cross-phase temperature comparison validation.
-- fem/report_archive_g3a.py rejects failed/changed evidence and preserves prior
-  archives. --out outputs/g3a-reproduced supports non-destructive reproduction.
-  G3a scope excludes seven pins,cap/window/gas/radiation,real carriers,thermistor,
-  TEC supply-lead heat and measured interfaces/grades; no transient accuracy.
-
-## G3b scoped checkpoint, 2026-10-29 — full qualification NOT complete
-
-- Read docs/PHASE1_G3B_RESULT.md and docs/G3B_REPRODUCIBILITY.md. Preserve all
-  previous source/data/evidence and the new fem/results/g3b_checkpoint_20261029
-  ledger, including source_sha256, document_sha256 and artifact_sha256. Future
-  changes must use new versioned modules/evidence; do not rewrite failed records.
-- Ten selected coarse integrated coupled3D Elmer executions pass all per-case
-  checks; two independent genuine1D conducting-plate exchange references and84
-  TE_FEM_SMOKE=1 tests pass, plus CLI quick and geometry_demo. These are scoped
-  numerical checks, not completed G3b gate D or OEM/device accuracy.
-- Actual215-domain enclosure has nine insulated glass/pin instances, attached
-  cap/window and the preserved181/180 two-terminal path through all88 legs.
-  Exact pinout and manufactured geometry are unknown. Bath remains external
-  header underside300 K only; internal cap/window/pins are solved unknowns.
-- fem_g3b_rays uses deterministic cosine first-hit rays with occlusion and audited
-  closed skin; symmetric area balancing preserves visibility zeros. Retain raw
-  reciprocity/closure errors, scale corrections and hit-mapping distances.
-  Balanced closure proves conservation, not exact view factors. Radiosity,
-  gas films and Au/Cu endpoints update from current global temperature iterates.
-- Gray window epsilon .1/.8 hypotheses are opaque internally (tau0); exterior
-  cap/window are adiabatic. Spectral LWIR transmission/external radiance remain
-  absent. Gas k(T) is NIST200..400 K, fail-closed; Eucken viscosity and alpha=.8
-  are explicit closures. Mean-free-path/jump correction makes p0 exactly zero.
-  At100 Pa Ra<1; atmospheric Kr flags further convection assessment. No CFD.
-- Two hybrid Cu leads include axial conduction and I²R split equally between
-  endpoints. Do not double-count this internal conduction as external power.
-  No distributed wire/lead gas/radiation exchange or spatial lead-current PDE.
-  Package sigma is a computational passive potential extension, not real metal
-  conductivity. Keep package Joule bounds and100-fold sigma sensitivity.
-- **Unaccepted fine points:** nitrogen_fine_verified (204855 nodes/821874 tets,
-  bath error1.65587%), nitrogen_bath (239394/967731,1.51412%),
-  nitrogen_feedthrough (275377/1194385,1.58383%). All converge genuinely and pass
-  other checks, but independent raw bath-gradient error exceeds unchanged1%.
-  Temperature/voltage insensitivity and weak reaction balances cannot waive it.
-  Full G3b qualification remains incomplete; resolve the independent flux defect.
-- Local complete-edge-star bisections preserve volumes, face conformity, the TEC
-  mesh and exact cavity operator. Converged but bath-unaccepted fields may be
-  used ONLY as hashed exact P1-prolongated initial guesses, never accepted final
-  fields. Subsequent cases must independently execute and pass all physical gates.
-- Generic cross-mesh T/phi interpolation produced artificial81.44 W initial
-  Joule and is rejected by fem_g3b_run before execution. Same-bulk patch transfer
-  remains valid. fem_g3b_refine transfers only T and initializes phi0; a900s
-  timeout remains rejected and a separate bounded1800s run converges. Do not
-  confuse solver convergence with numerical acceptance.
-- Two early accepted coarse cases retain exact pre-startup-fix sources/Fortran;
-  verifier permits only the exact three known startup edits byte for byte.
-  All physical sources and unmixed residuals match. Failed zero-initial-flux
-  plate test is retained; corrected startup has two genuine Elmer regressions.
-- Publish only explicit scoped evidence with fem/report_archive_g3b.py
-  --coarse-checkpoint. It rejects changed source/SIF/VTU/mesh, regenerates actual
-  payloads byte-for-byte and validates expected rejected fine statuses separately.
-  --out outputs/g3b-reproduced avoids overwriting immutable published evidence.
-- Continue in TE_Cooled_MCT and existing sim; unchanged pinned Docker/wrappers,
-  four CPU/12GiB, network-none. No LSDDTS, host packages or unrelated repositories.
-
-## Scoped bath-flux / presolder continuation, 2026-10-30
-
-- Read docs/PHASE1_FLUX_AND_PRESOLDER_RESULT.md,
-  docs/PHASE1_BATH_FLUX_QUALIFICATION.md and docs/REPRO_FLUX_PRESOLDER.md.
-  New code is flux_presolder_common/diagnosis/coupon; do not modify G1-G3b modules.
-- Independent archived-field bath reconstruction reproduces coarse0.42015% and
-  rejected fine1.65587/1.51412/1.58383%. All bath faces are Kovar; glass/pin bath
-  area is zero. Nodal reaction allocation is descriptive, not local true flux.
-  Exact discrete residual identity attributes fine discrepancy mainly to weighted
-  internal P1 gradient jumps, with smaller other-exterior raw flux. No correction
-  or general equilibrated recovery is qualified; original raw1% gate remains.
-- Six actual3D analytic junction benchmarks verify signs and axial raw convergence
-  4.167→0.521%; benchmark-only quadratic temperature recovery is not device flux.
-  Eight actual3D full-wetted presolder coupons verify series resistance, separate
-  contact films, continuum/zero-contact and thin-layer refinement. Full99 opt-in
-  tests, CLI quick and geometry-demo pass. Coupons are HeatSolver only.
-- Physical presolder presence is confirmed; actual alloy/wetting/k(T)/contacts are
-  unknown. New vendor examples and hypothetical ranges are not measured package
-  inputs or assembly recommendations. Full-stack metallic presolder is NOT solved;
-  the original50um/k2 mount and coupled88-leg fields remain unchanged.
-- New scoped archive is fem/results/flux_presolder_checkpoint_20261030. Preserve
-  its sources/snapshots/fields and development failures. Do not reinterpret its
-  benchmark PASS as full G3b, device accuracy or local sharp-junction convergence.
-- Keep the15-page Revision2 PDF and all reports/ files unchanged until genuinely
-  qualified device physics exists. No LSDDTS/other repository or session work.
-
-## User-priority source geometry rebaseline, 2026-10-30
-
-- Read GEOMETRY_SOURCE_OF_TRUTH_SPEC.md and
-  docs/GEOMETRY_SOURCE_REBASELINE_20261030.md before any more package physics.
-  All previous package studies and the unchanged15-page report are assumed-
-  geometry studies, not OEM device predictions. Preserve every accepted/failed
-  source/field, including the original fine raw bath1% failures.
-- New independent data/geometry_rebaseline/reference_v1.json is the canonical
-  dimension/source/datum/uncertainty registry. VIGO ZTM-TO66-Z030 Rev9 housing
-  plus independent TEC Microsystems3MC04-044-05 is a hypothetical reference
-  article, NOT a verified commercial assembly. Do not splice the separate
-  historical12.44mm/14.7mm illustrative envelope into the selected reference.
-- geometry_registry/source_trace/rebaseline/rebaseline_views construct separate
-  mm CAD arcs and SI Gmsh primitive CSG, compare a source numerical silhouette,
-  and audit actual22-domain header/pins/glass/joint/external-ceramic mesh.
-  Two-ear31.5x17.5mm flange,1.5mm header,9x0.76mm pins; contour radii remain
-  inferred. First actual299576nodes/1479540tets, source discrepancy0.033910mm,
-  worst CAD/mesh volume difference0.311012%. This is partial geometry only.
-- Pinout is BOTTOM view; chosen top mirror x=-x_bottom,y=y_bottom. TEC1/9,
-  detector7/8, thermistor5/6, unused2/3/4. New Cu routes are unconnected previews
-  to hot ceramic coordinates. Old stage2 return must be physically rerouted
-  with its electrical/thermal shunt; moving a thermal endpoint alone is invalid.
-- Revised88-leg circuitry,175 cuts, internal cap/window/carriers, new cavity
-  rays/operators, matched lead-off/on and three-level physics are NOT complete.
-  Do not reuse old radiation/gas operators after geometry changes. Do not claim
-  actual spectral transmission from an opaque window plus imposed heat source.
-- fem/archive_geometry_rebaseline.py publishes verified source geometry only;
-  --verify checks its immutable ledger and protected earlier evidence/report.
-  Continue existing sim/pinned Docker, no other repositories or LSDDTS.
-
-## Completed old-geometry presolder / independent-flux evidence, 2026-10-30
-
-- Source-geometry checkpoint5fe8a663b06d0b8fcf41044114e5f4b4b443c746 was
-  committed/pushed FIRST per urgent user priority; CI40993826234 passed.
-  The following preserves earlier completed runs, not new geometry physics.
-- Read docs/PHASE1_FULL_PACKAGE_PRESOLDER_QUALIFICATION.md,
-  docs/GEOMETRY_PINOUT_LEAD_DISCREPANCY_AUDIT_20261030.md and
-  docs/REPRO_FULL_PACKAGE_PRESOLDER.md. New full_presolder_* modules are versioned
-  additions; no old physical source was changed. All package points are assumed-
-  geometry sandbox studies; never call them a verified commercial assembly.
-- Three real coupled88-leg old-geometry cases: identicalk2 control, explicit
-  50um/k35 zero-contact joint,46um/k35 bulk plus2um/k1 and2um/k(2/3) films.
-  Original per-case gates/175 cuts pass, but EXTRA raw zero-contact interface
-  diagnostic FAILS5.73220% against5%. Contact interfaces pass5%; metallurgy,
-  wetting, measuredk(T), wider sensitivities and two-resolution physics unqualified.
-  Refined455544-tet joint mesh is AUDITED ONLY, no coupled solve.
-- Matched old821874-tet lead-off solve lowers die2.720565K, rawbath−0.360846%.
-  Original lead-on fine+1.655873% remains FAILED. Independent raw907patch endpoint
-  audit gives17.714395mW net assumed Cu conduction; return endpoint is mid-stack.
-  Finite attachment bounds do NOT prove8mmwire physically impossible despite
-  8.111498mm centroid spacing. Corrected full88-leg hot-side return still pending.
-- Six true3D oblique/curved Elmer benchmarks plus independent P2/RT0 recovery
-  fail full qualification: oblique recovered bath1.08018% >1%; curved reference
-  Cauchy7.24799% >1%. Constraint-enforced conservation is NOT independent accuracy.
-  No weak-reaction relabel, full-device recovery or raw1% gate waiver is allowed.
-- fem/archive_full_presolder_checkpoint.py --verify checks scoped evidence,
-  genuine source/SIF/field/mesh execution provenance, old failures and previous
-  guards. Full106 tests passed, then110 with geometry; CLI/geometry_demo pass.
-  High-pressure fixed-field1D gas screens are model-form unqualified, no new Tc.
-- Next priority is full source-geometry return routing/electrical isolation,
-  actual88-leg CAD/mesh proof and new cavity operator, then bounded matched
-  physics. Do not launch further old-geometry parameter campaigns by default.
-
-## Completed source88-leg geometry/topology checkpoint, 2026-10-30
-
-- Read NEXT_GEOMETRY_COMPLETION_WORK_ORDER.md and
-  docs/GEOMETRY_COMPLETE_TEC_CHECKPOINT.md. New geometry_complete modules and
-  data/geometry_complete/reference_v2.json are additive; previous source/data/
-  archives and historical15-page report remain byte-identical.
-- Actual216-domain source-header assembly now includes four ceramics,88 P/N
-  legs,85 local bridges, two original buried links, two NEW Cu hot-pad routes,
-  their alumina insulation, nine0.76mm pin/glass instances, explicit presolder,
-  die/attach/Au pads. Two-ear header is rebuilt from the source registry, not
-  old G3b ellipse/pins. Actual106767nodes/366156tets,320 material contacts,
-  minimumSICN0.053429, no elements below0.01. Every body/thermal/module assembly
-  is face-connected; no hidden exterior facets, overlaps or conductor shorts.
-- Resolved return body191 connects original stage2 pad183 down to module-hot
-  pad; new input190 connects first pad116. Module183/182 simple path traverses
-  every leg once. Both external pad faces z1.835mm, area0.16mm2 each.
-- Cu pin1/9 supply and Au pin7/8 detector wires are EXPLICIT1D axial hybrid
-  routes with actual endpoint faces, G/R and conservative clearance audits,
-  NOT fictitious meshed3D arcs. Hybrid TEC graph187/186. Signal-pin TEC current
-  is structural zero with ideal ceramic/glass; signal/pin potential PDE absent.
-- Genuine Elmer StatCurrentSolver on the new183-body conductive subset passes
-  all175 original cuts +2 new route cuts (<0.5%; max0.401282%), terminal/current
-  and I*V/Joule balance. Vmodule0.361453728V at0.1A, constant verification sigma,
-  no Seebeck/thermal solve, no OEM resistance/voltage validation claim.
-- Full114 opt-in tests, CLI and geometry_demo pass. Independent actual-mesh
-  source silhouette error0.031101mm, hole/pin/ceramic/endpoint measurements pass.
-  fem/archive_geometry_complete.py publishes/--verify checks the scoped ledger,
-  genuine fields and prior guards. Retain rejected HXT, coarse-curvature,
-  endpoint-capsule and two DC runner-development attempts separately.
-- Milestone B is NOT RUN: corrected-geometry coupled Peltier/Joule thermal
-  lead-off/on tests, independent bath1%, convergence and newly generated cavity
-  exchange remain next. Cap/window/carriers and thermistor internals absent;
-  no old gas/radiation operator reuse. Original raw bath failures remain FAILED.
-- VIGO housing + independent TEC candidate is a synthetic reference, not an
-  identified commercial assembly. Existing sim/pinned4CPU/12GiB runtime only;
-  no other repository/session, report, LSDDTS or unrelated project work.
-
-## Corrected solid-only coupled thermal checkpoint, 2026-10-30
-
-- Read CORRECTED_GEOMETRY_COUPLED_THERMAL_WORK_ORDER.md,
-  docs/GEOMETRY_CORRECTED_COUPLED_THERMAL_RESULT.md and
-  docs/CORRECTED_COUPLED_THERMAL_REPRODUCIBILITY.md. New corrected_thermal*
-  modules/data are additive; freeze them after publication like earlier sources.
-- Four genuine ThermoElectricSolver executions on EXACT corrected106767node/
-  366156tet/216-domain mesh: zero drive/load;0.1A/2mW Cu OFF; matched Cu ON;
-  Cu ON with passive sigma100x lower. Actual T/phi/J/Fourier/Peltier/Joule,
-  sources/stage budgets, logs/snapshots/UTC/CPU/RSS and fields are archived.
-- Bath is ONLY Kovar underside101,300K. All exposed pin ends adiabatic; pin
-  temperatures solved through3D pin/glass/header. No cap/window/gas/radiation
-  or previous enclosure/operator import; no internal temperature constraints.
-  Detector303 receives1.5mW bias+0.5mW parametric absorbed volumetric heat.
-- Cu1/9 links use actual distinct pin/hot-pad face weights and3.403752mm
-  routes, G=.003691917W/K each; I2R/2 deposited per endpoint. Au7/8 OFF in both
-  comparisons. Pins retain passive computational sigma; physical pin current/
-  shaft Joule not solved. Signal pin cut currents are bounded, not physical
-  detector current predictions. Non-TEC potential colours are numerical only.
-- All primary per-case checks PASS:177 cut areas/current<0.5%, global/stage/
-  free residuals, material bounds and RAW bath1%. OFF/ON rawbath−0.976691%/
-  −0.993773% pass NARROWLY. Original historical fine raw failures remain FAILED.
-- Additional true one-sided die interface5% diagnostics FAIL41.35%/47.83%.
-  Presolder faces pass5%; through-layer averages give57.194mW presolder and
-  2.000mW attach. Do NOT relabel layer averages/reactions as recovered raw flux.
-  metrics.passed refers ONLY to its explicit primary checks; full thermal/device
-  qualification is FALSE, spatial convergence NOT RUN, results EXPLORATORY.
-- OFF die265.592523602K,V.551939871; ON die265.592493295K,V.551939812.
-  Delta−30.307uK is not a resolved cooling benefit. Cu conduction removes
-  .0936554mW from HOT pads; wire Joule adds.0372706mW. Do not compare these
-  solid-only temperatures to enclosed old G3b as if physics/geometry matched.
-- Passive exact300K test passes within4nK. Sigma100x lower changes die.574uK;
-  nominal passive Joule3.43e−15W, max pin-current2.37e−19A. Full117 opt-in tests,
-  CLI/geometry-demo, actual mesh re-encoding/mapping and publication audit pass.
-- fem/archive_corrected_thermal.py --verify protects new and ALL prior ledgers.
-  Archive fem/results/corrected_coupled_thermal_20261030 includes failures and
-  explicit pending gates. Old15-page PDF/reports and all historical sources/
-  archives remain byte-identical. No unrelated repo/session or LSDDTS work.
-- NEXT: new VERSIONED local MCT/attach/cold-ceramic and bath mesh refinement,
-  at least second mesh QoI/flux check (prefer3levels), preserve1%/0.5% gates.
-  Current runner enforces exact original mesh; add a separately audited runner
-  for a new mesh rather than editing this frozen source. Separate Au ON and
-  source-traced enclosure/carriers/new cavity operators remain pending. No OEM
-  accuracy claim or historical scientific PDF update is justified yet.
-
-## Cold-interface discretization investigation, 2026-10-30
-
-- Read COLD_INTERFACE_MESH_CONVERGENCE_WORK_ORDER.md and
-  docs/CORRECTED_THERMAL_INTERFACE_MESH_CONVERGENCE_RESULT.md, with
-  docs/COLD_INTERFACE_CONVERGENCE_REPRODUCIBILITY.md. All earlier source and
-  archive guards remain mandatory; new cold_* modules are additive.
-- Independent true-face/difference-gradient extraction reproduces original
-  +41.348101%/-47.827846% cold jumps. Original adjacent normal heights are
-  median220um alumina/15um attach/103um MCT. Arithmetic triangle-density
-  averaging does not explain the error; coarse corner centroids undersample
-  the inner100um bin. Raw MCT whole-body outward0.567mW vs2mW source FAIL.
-- Six actual independent3D HeatSolver runs use three220/30/200um layers,
-  30/1/1.1W/mK,2mW flux/source and an analytic transverse harmonic field.
-  Source-layer raw flux errors12.5/6.25/3.125%, mean errors
-  -1.855/-0.464/-0.116mK; finest preregistered gates PASS. Coarser source
-  failures remain FAILED. Benchmark-only p1 flux/p2 mean-T/GCI is analytic
-  verification, not package/OEM convergence or a reaction-based reference.
-- Same corrected source registry; three actual conformal216-domain meshes:
-  original366156, cold30um458061, cold20um647657tets. Fixed cold-ROI actual
-  h76.724/25.484/17.608um; attach finalr1.278<1.3, bath essentially fixed.
-  Original200um MCT retained;120um work-order prose was older geometry.
-- Actual completed coupled mesh levels2/3. Cold30 die265.613621647K,
-  jumps+8.694593%/-6.975844%, bath-1.306057% FAIL;177cut worst0.415013%
-  PASS. Cold20 geometry PASS, actual32bit factorization FAILED and64bit
-  bounded attempts FAILED; no final fine field/QoI or three-level GCI.
-- Same-mesh actual projected-restart check:2 iterations, die0.340uK and
-  V4.77nV difference from genuine middle field. Projected nearest-node values
-  are INITIAL GUESSES only; final fine evidence requires its own actual PDE,
-  nonlinear1e-9 and unchanged independent residual/current/flux checks.
-- Full121 opt-in tests and CLI/demo pass. Retain raw bath1%,177cut0.5%,
-  interface5%, all failed solver attempts and previous bath failures. No
-  recovered-flux waiver, standard full-device GCI, qualified Tc or30uK Cu
-  benefit. No report, enclosure/gas/radiation, other repo/session or LSDDTS.
-- Publication/--verify: fem/archive_cold_convergence.py; immutable evidence
-  fem/results/cold_interface_convergence_20261030. Geometry/material/OEM
-  uncertainty remains separate from derivative/spatial error. Next: targeted
-  completion of Cold20 using a better verified projection/solver plan, then
-  cold normal refinement and independent bath mesh study before matched
-  refined Cu ON, Au ON or enclosure physics.
-
-## Completed Cold20 solver and independent bath milestone, 2026-10-30
-
-- Read COLD20_SOLVER_COMPLETION_WORK_ORDER.md,
-  docs/COLD20_SOLVER_COMPLETION_AND_BATH_DIAGNOSIS.md and
-  docs/COLD20_REPRODUCIBILITY.md. New cold20_* sources are additive and become
-  immutable with this archive; never edit earlier code/evidence to change a gate.
-- Genuine exact647657-tet/159991-node/216-domain Cold20 ThermoElectricSolver
-  completed from body-aware P1 initialization:1292.425s,4 nonlinear steps,
-  last7.6574e-10. I0.1A/MCT2mW/300K Kovar underside,Cu/Au OFF. All177cuts,
-  free-current/thermal, global/stage energy and work checks PASS. Native die
-  265.616092860K,V.551926637045; rawbath-1.496257% FAIL1%, coldinterfaces
-  +6.476539% FAIL5%/-4.608512% PASS5%. This is NOT full thermal/OEM qualification.
-- P1 transfer uses same incident body, convex actual-tetrahedron weights,
-  all159991 nodes covered, coordinate error1.205pm,gauge104 zero. Exact-node
-  replay and actual zero-drive Cold30/Cold20 pass. Retain rejected original
-  passive-source absolute1pV test: source/transfer both27.8pV; bound unchanged.
-- CPU evidence: fine symbolic~1.8s vs numeric256..343s. Fine L/U~93.6M entries
-  each. Numeric LU dominates. Warm coarse GMRES agrees, but cold starts and
-  fine Newton corrections fail bounds. Completed Picard1e-13 inner solve fails
-  free-current10.28uA/globalenergy1.641uW; EXCLUDED from mesh convergence.
-  Tighter GMRES, compaction and other failed trials remain explicit failures.
-- Pinned UMFPACK ordinary wrapper disables iterative refinement. Local C
-  interceptor calls native solr using SAME current LU/matrix; one refinement
-  step~1.2s, no stale LU, no physical equation/BC change. Same-mesh Cold20
-  agreement0.225uK/3.70nV/cut1.51nA PASS predeclared2uK/20nV/2uA. Refined
-  parent die265.616093085K; primary registry records actual accepted fields.
-- Three actual Cold ROI levels now exist. ROI h ratios3.01/1.447 permit only
-  conditional temperature fit; voltage NONMONOTONE, no voltage GCI. Bath near1
-  and attach final1.278 ratios remain invalid standard GCI. No qualified
-  device GCI, resolved30uK Cu effect, Au ON, enclosure or new standalone report.
-- Independent bath mesh is exact conformal edge-star subdivision,675496tets/
-  166516nodes. All cold points/cells BYTE-IDENTICAL; only Kovar/glass changed.
-  Kovar h266.306->210.395um,r1.266: one sensitivity level, NOT bath GCI.
-- Actual675496-tet bath coupled solve completed1190.373s/4 steps,
-  last1.1293e-10; nonraw balances/currents PASS. Rawbath improves
-  -1.496257% -> -1.291382%, still FAIL1%. Coldjumps unchanged
-  +6.476541%/-4.608512%; ceramic/attach FAIL5% remains. Die shift
-  +0.420831mK, voltage+2.945643uV with exact cold mesh. No bath GCI.
-- Full125 opt-in tests, CLI/demo and prior archive guards pass. New immutable
-  archive fem/results/cold20_completion_20261030; verify with
-  fem/archive_cold20.py --verify. All source/raw-field/initial-state hashes,
-  failed trials, actual figures and independent bath diagnostics retained.
-  Old PDF and all accepted/failed baselines unchanged; no other repo/session
-  or LSDDTS work. Next: cold-interface normal refinement before qualification.
-
-## Revision 3 review policy authorized now, 2026-10-30
-
-- Read COLD_BATH_GATES_AND_REPORT_REV3_WORK_ORDER.md and
-  docs/REPORT_REVISION3_REVIEW_CRITERIA.md. This USER authorization supersedes
-  earlier "no new standalone report until qualified" notes for a clearly marked
-  REVIEW DRAFT. Create the corrected standalone Rev3 now, using actual corrected
-  geometry/solved fields and prominent failed qualification. Preserve Rev2 bytes.
-- Report current copy: reports/generated/
-  HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf. Retain immutable editions
-  and external machine provenance. No usernames/paths/hashes/repo links/internal
-  milestone jargon in reader pages. No old elliptical/cap/gas/rad figures.
-- Release later requires same-mesh rawcold<5% AND rawbath<1%, plus systematically
-  refined comparator passing both,177cuts<0.5%, heat/free residuals<1uW,
-  current residual<1uA, homogeneous/reproducibility and quantified QoI sensitivity.
-  Targets4.5%/.9% are margins only. No OEM certification or unjustified GCI.
-- Independent cold-normal and bath-volume studies retain unchanged physics,
-  source geometry and gates; combine only verified candidates. Do not defer the
-  human review PDF indefinitely if a refinement fails or times out.
-
-- Initial Rev3 edition20261030_a is now a13-page standalone REVIEW DRAFT using
-  archived corrected mesh/fields only. Every page rendered/inspected; source
-  and reader/metadata gates pass. Old15-page PDF remains byte-identical.
-  Read docs/REPORT_REVISION3_REPRODUCIBILITY.md; current.json and sealed edition
-  checksums protect the current public PDF and all scientific figures.
-  Source scripts have archival .source snapshots; later editions never rewrite
-  this edition. Initial data freeze explicitly marks new normal-volume solves
-  pending. Original6.48% cold and1.29% bath failures remain prominent.
-
-## Independent cold/bath volume studies and Rev3 review checkpoint, 2026-10-30
-
-- Read docs/COLD_BATH_VOLUME_REFINEMENT_RESULT.md and
-  docs/COLD_BATH_VOLUME_REFINEMENT_REPRODUCIBILITY.md. The new
-  fem/results/cold_bath_rev3_20261030 archive seals three ACTUAL completed
-  coupled216-domain/88-leg Elmer runs and independent owner-gradient audits.
-  Run fem/archive_gate_refinement.py --verify; its ledger preserves all prior
-  sources/archives and the historical15-page PDF. New physics sources/tests/
-  plans named in that ledger are now immutable; add versions for future work.
-- Cold normal1:821078tets,191452nodes; only4/302/303 change. Tc265.616118028K,
-  V0.551926633930, ceramic/attach+4.795425% PASS5%, attach/MCT-2.305670% PASS.
-  Bath-1.496257% FAIL remains on this mesh. Actual1269.532s/2NL/last4.2283e-11.
-- Bath normal1:744713tets,180970nodes; only Kovar changes, cold/TEC cells exact.
-  Tc265.616580391K,V0.551930113440, rawbath-1.068632% FAIL1%;1221.444s/4NL.
-- Bath normal2:821458tets,195424nodes; cold fixed exactly. Tc265.616592661K,
-  V0.551930209849, rawbath-1.092875% FAIL1%;903.693s/3NL/last2.68175e-10.
-  Median owner heights295.961->147.981->73.990um. The last raw error WORSENS;
-  no bath convergence/GCI or qualified production mesh is demonstrated.
-- All three pass177cuts, stage/global/free heat and current checks. Raw bath
-  cannot be replaced with reactions/recovered flux. Combined case NOT RUN: the
-  registered independent bath1% condition remains unmet. Conditional combined
-  resource plan is retained as a plan only, never actual field evidence.
-- Next numerical work: investigate transverse/volume bath resolution and signed
-  cancellation with cold mesh fixed, preserving gates. Only then a combined
-  production mesh AND systematically refined comparator passing5%/1%, plus
-  unchanged current/heat/nonlinear/homogeneous/reproducibility checks.
-- Rev3 current copy now has15 REVIEW DRAFT pages, corrected actual geometry and
-  archived fields only, source assumptions, prominent failed qualification,
-  initial verification matrix and new cold/bath spatial maps/tables. Edition
-  20261030_b and initial13-page20261030_a are independently sealed, with exact
-  generator/figure/PDF provenance and visual review; never rewrite either.
-  Published-edition generators refuse writes; validation is read-only.
-  The historical Rev2 PDF remains unchanged and is not current geometry.
-- Source code and reference geometry remain a synthetic unverified assembly.
-  Cu/Au links OFF,0.1A,2mW,300K Kovar underside, no cap/window/gas/radiation/
-  carrier PDE. No OEM claim, other repository/session or LSDDTS work.
-
-- Final checkpoint verification:139 opt-in tests passed;17 focused tests passed
-  including3 newly added immutability guards; CLI/demo and full prior-archive
-  guards pass. Both Rev3 editions reproduce byte-identical standalone PDFs.
-  Final logs and reference hashes are retained separately at
-  fem/verification/cold_bath_rev3_20261030 so the numerical archive and sealed
-  report editions remain unchanged. Numerical release still incomplete.
-
-## Spatial bath diagnosis checkpoint, 2026-10-30
-
-- Read BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION_WORK_ORDER.md,
-  docs/BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION.md and static
-  docs/BATH_SPATIAL_DIAGNOSIS_CHECKPOINT.md. PhaseA immutable evidence is
-  fem/results/bath_spatial_diagnosis_20261030; verify with
-  fem/archive_bath_spatial_diagnosis.py --verify. Its named sources/tests/
-  resource plans are frozen. Later work must add versions/files.
-- Cross-product actual-field audit reproduces four raw failures, signed powers
-  and true Kovar-only333.919817mm2 underside. Full bath-node signed identity
-  attributes latest625.048uW deficit to617.301uW internal gradient jumps plus
-  7.747uW other weighted exterior flux. This is diagnostic, not flux recovery.
-  Physical patch continuum error is unknown. Broad opposing jump terms and
-  unchanged414um tangential face scale prevent a single-source attribution.
-- Normal depth halves296->148->74um while apex offset/height medians grow
-  .602->1.203->2.940. Original failures remain FAILED. Actual boundary audit
-  finds only tag101 at300K; glass7.812665mm2 underside remains adiabatic TEST BC.
-- Five genuine independent3D manufactured HeatSolver cases pass operator
-  verification: affine relative3.8e-12; full errors1.427%FAIL,.441%PASS,.376%PASS;
-  normal-only.326%PASS. No universal transverse claim or device GCI. Preserve
-  failed body-index setup and323352-tet original300k preflight rejection;
-  explicit350k scalar resource amendment precedes the actual fine solve.
-- Registered full owner-star transverse/volume pair has784696/1099293tets,
-  minSICN.04231/.01835, every cold/TEC/pin cell byte-identical, material volumes
-  and physical areas exact. Geometry+Elmer maps verified and archived here.
-  Full144 opt-in tests,20 focused, CLI/demo and original guards pass.
-- PhaseB actual coupled runs are outputs/bath-spatial/transverse1_case and
-  transverse2_case, from separate genuine675496-tet bath P1 guesses, each
-  3000s/4CPU/12GiB. Never overwrite cases or use unconverged fields as final.
-  Workspace draft bath_spatial_device.py is not yet part of the phaseA
-  checkpoint; verify it on a completed field before committing that addition.
-  After BOTH bath raw1% checks/trend are independently verified, conditionally
-  combine exact previously verified cold-normal1 with each bath mesh using
-  bath_spatial_mesh --combined; caps1.2M independent/1.4M combined,12GiB fixed.
-  Original5%/1%,177cuts and all residual/nonlinear gates stay unchanged.
-- Approved15-page Rev3 public copy and sealedB remain byte-identical; oldRev2
-  and all accepted/failed baselines preserved. No cap/window/gas/radiation,
-  Cu/Au ON, carriers, OEM validation, unrelated repository/session or LSDDTS.
-
-## Completed bounded spatial coupled pair, 2026-10-30 — raw bath remains FAILED
-
-- PhaseA checkpoint07c4332582662aea85a0e80f7133ec656972dbf4 was pushed;
-  CI41104674484 passed. Its sources, diagnostic/benchmark evidence and both
-  geometry candidates stay immutable. Read the now-updated
-  docs/BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION.md and
-  docs/BATH_SPATIAL_DEVICE_REPRODUCIBILITY.md for the completed result.
-- Actual transverse1 (784696tets):911.084s/3NL/last8.73155e-10, RSS5734800KiB,
-  die265.616562905K,V.551929952831, independent rawbath-1.288505% FAIL1%.
-- Actual transverse2 (1099293tets):999.154s/3NL/last8.06024e-10,6680832KiB,
-  die265.616573870K,V.551930033606, rawbath-1.290712% FAIL1%. Both pass all
-  177cuts and all unchanged nonraw current/global/stage/free heat checks.
-  Cold baseline unchanged, so its+6.476541% raw5% failure persists; the earlier
-  independent cold-normal+4.795425% PASS remains preserved on its separate mesh.
-- Pair deltaTc+10.965microK and deltaV+.080775microV do not qualify flux.
-  Raw error plateaus/slightly worsens. Combined and qualified comparator
-  NOT RUN because independent bath prerequisite is unmet. No GCI/OEM release,
-  recovered/reaction substitution, altered gates or further large campaign.
-- Geometry-only exact-polynomial nodal INTERPOLANT trace errors improve
-  .679239->.334147->.215901%; these are not solved-device fields/error estimates.
-  All11582parent Kovar tets with centroids above1.0mm and every hot
-  Kovar/presolder contact triangle remain unchanged in both meshes. This is
-  a concrete unrefined region, not proof of a uniquely localized cause.
-- Next bounded experiment: full1.5mm-thickness Kovar volume refinement under/
-  around the hot footprint; include conformal presolder mesh if splitting its
-  shared edges, while preserving50um physical joint/law and cold/electrical
-  TEC mesh. Qualify independent raw1% before any combined/comparator physics.
-- New immutable actual-field archive fem/results/bath_spatial_device_20261030
-  has source/SIF/native/derived fields, real LU/timed solver provenance, initial
-  guesses and independent signed audits. Its verifier chains every prior
-  ledger and approved report. Named source/docs/tests are now frozen.
-  Derived gzip is losslessly split when necessary; restore exact bytes with
-  fem/restore_bath_spatial.py into a NEW outputs file; this is not a PDE run.
-- Approved15-page Rev3 public copy, sealedA/B and historical15-page Rev2 remain
-  byte-identical. No report regeneration/redesign, cap/window/gas/radiation,
-  Cu/Au ON, carriers, other session/repository, host install or LSDDTS work.
-
-- Final verification149 opt-in tests and24 focused checks passed, including
-  real native/derived exact-byte restoration, split gzip corruption detection,
-  original current/heat checks and all immutable ledgers. CLI/demo and last
-  full source/report guard pass. Logs/reference hashes are separately stored
-  in fem/verification/bath_spatial_device_20261030; frozen archives and approved
-  Rev3 remain unchanged. No full numerical release or new combined field.
-
-## Current reduced-model continuation — 2026-10-30
-
-This section supersedes historical next-step priorities above; it does not
-amend any archived numerical results, source snapshots or acceptance gates.
-
-### Objective, ownership and documentation
-
-- Build a **plausible synthetic reference device**, not a proprietary OEM
-  reconstruction. Read the controlling policy and current guides listed first.
-  Missing OEM grade/drawing data must not block defensible scenario modeling.
-- **All code edits, simulation/test execution, commits and pushes belong to the
-  existing sim:0.0 interactive Codex session.** Inspect status before interacting;
-  do not launch another agent/tmux or use an external implementation workaround.
-  Work only here; never touch LSDDTS or another repository.
-- **Current documentation is a continuing first-class deliverable.** Each future
-  milestone must revise README, current technical guides and this continuation
-  in place: keep source/assumption matrices, equations/units, coverage maps,
-  exact runnable commands, output meanings, results and next priorities coherent.
-  Remove obsolete priority language from mutable new documents; do not append
-  giant redundant checkpoint logs or rewrite frozen historical evidence/reports.
-- Use the existing pinned Docker image/wrappers, <=4CPU/12GiB. Prefer bounded
-  reduced operators and sensitivity over new million-tet campaigns.
-
-### Current implementation and evidence
-
-- `integrated_reference` remains a five-temperature conservative package model.
-  Constant `g1_constant` and affine `zhang2025_analog` paths retain their old
-  snapshots (63/63 and49/63 accepted in their original scenarios). New opt-in
-  **`zhang2025_nonlinear`** solves direct nonlinear1D P/N profiles using an
-  analytic tridiagonal Newton solve and exact per-package stage cache. No
-  interpolated surrogate, rounded keys, clipped result or affine fallback.
-- Source Zhang2025 curves are unchanged40–300K laboratory P/N specimens;
-  selected active domain180–390K. Above300K is the explicit quarter-tangent
-  engineering continuation. Sigma=1/rho; Thomson=T*dS/dT. Exactly300K uses
-  measured left derivative, interior source knots right derivatives,390K
-  continuation left limit. Nonlinear interior Joule overshoot is domain-checked.
-- New transport comparisons use the unmodified independent bounded-leg solver
-  at10 points /16,32,64 intervals. Eight are strictly measured-domain; two only
-  check the assumed continuation across implementations. At0.7A nonlinear32
-  vsBVP64 voltage error .00570% (old affine about6.48%); at0.9A .00823%.
-  Nominal package0.9A32→64: .000350K and .1643mV change. These are numerical
-  checks, not material/device validation. Exact timing/cache counts are in JSON.
-- New `exchange_geometry` audits actual corrected mesh/fixture hashes, native
-  exterior ownership, cap positive tets and physical interfaces/top faces.
-  `corrected_exchange` uses the current cap/window with a **filled stepped-core
-  proxy** (14 surfaces/8 effective nodes). Its native-area audit does not turn
-  the proxy into actual88-leg/pin/wire visibility. Gas is a conservative
-  chord network; radiation is opaque diffuse-gray. No new3D field, optical
-  transmission, native full-cavity view factors or validated rarefied-gas law.
-- Raw ray matrices, reciprocal closure corrections and 4096/16384/65536 ray
-  levels are saved. Maximum last-level F correction .04043 absolute; die gas/
-  radiation changes .88%/.14% at fixed test temperatures. Exact conservation
-  does not hide this unfinished spatial/model-form qualification.
-- New versioned evidence `data/nonlinear_exchange_20261030` includes independent
-  transport comparisons, final50/63 old-reservoir nonlinear cases,52/63 proxy
-  cases, full rejection diagnostics, geometry/ray/pressure audits and plots.
-  Initial development failures are separately UNACCEPTED. Old snapshot data,
-  all archived failed gates and approved Rev2/Rev3 remain unchanged.
-- Follow README/current guides for reproduction; choose new outputs paths.
-  Scenario CLI may overwrite its selected output; never target sealed archives
-  or previous versioned results. Operator/study builders refuse existing dirs.
-
-### Verification and next bounded work
-
-- Actual current milestone:131 focused tests PASS; full pinned opt-in286PASS
-  in340.38s, including genuine Elmer smoke (14 third-party warnings). Full
-  archive verifier, legacy CLI/geometry demo, current-document links and plot
-  inspection PASS. Historical Rev2/original sealed Rev3 exact hashes unchanged;
-  the canonical master follows the controlling report direction above. Accepted new proxy
-  package grid maximum global energy residual1.41e-11W. CI must pass on the
-  pushed commit before reporting completion.
-- Run focused nonlinear/exchange/graded/enclosure/integrated tests, full opt-in
-  `./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs`, full
-  `fem/archive_bath_spatial_device.py --verify`, legacy CLI/geometry_demo and CI.
-  Reject nonconverged/domain-invalid states with diagnostics, not patched gates.
-- No numerical-release claim while original raw bath1%/cold5% requirements are
-  unresolved. Preserve frozen files and sealed historical reports exactly;
-  update the single current master through its verified workflow.
-- Next: actual native-surface exchange without the filled-core shortcut,
-  mechanism pairs and contact/bypass/grade/reservoir sensitivity. Do not force
-  full-package remeshing or OEM fitting before practical scenario studies.
+# CURRENT PROJECT CONTRACT
+
+This is the authoritative continuation contract, updated 2026-10-30. Historical
+work orders and milestone instructions describe their own checkpoints; their
+"current", "next" and report-freeze language does not override this contract.
+Their numerical evidence, original errors and acceptance criteria remain intact.
+
+## Objective and execution ownership
+
+Develop an **engineering-plausible synthetic** three-stage TEC-cooled HgCdTe
+reference device in a nine-pin, two-ear TO-66 package. Fill unknown construction
+and material details with labeled assumptions, rationale and scenario ranges.
+OEM reverse engineering, proprietary curve fitting and OEM calibration are
+**not release gates**. Numerical verification is distinct from physical accuracy.
+
+All edits, simulations, tests, commits and pushes belong to the **existing VPS
+sim:0.0 Codex session**, working ONLY in `/home/User/TE_Cooled_MCT`. Do not spawn
+competing agents, another Codex/tmux session or external implementation work.
+Do not touch, invoke or integrate LSDDTS or another repository. Use the existing
+pinned environment within **4 CPUs / 12 GiB**; prioritize bounded reduced studies.
+No new million-tet campaign merely to advance an exploratory scenario.
+
+## ONE continuously maintained professional report
+
+The already established standalone master is
+`reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf`.
+Continuously improve **that Revision 3 in place**. Its legacy filename is stable;
+the public content is the Revision 3 engineering assessment, not a project diary.
+Never create a competing Rev4, alternative report or new public report edition.
+
+Keep it deep and self-contained: architecture, geometry/mesh, source versus
+assumption and modeled versus omitted physics, material domains, equations/units,
+boundary conditions, actual fields, heat budgets, methods in scientific
+principles, numerical failures, sensitivity, limitations and engineering conclusions.
+No usernames, repository references, hashes, paths/filenames, agents, commands,
+CI or administrative material in public pages or personal metadata. Public
+technical citations/DOIs are expected. Do not imply OEM validation or certification.
+
+Preserve prior exact PDF bytes as historical evidence. The original 15-page
+snapshot is identified by `reports/historical/rev3_original.json`; its original
+hash and sealed manifest must still verify. Rev2 and all numerical/source/field
+archives remain immutable. The live Rev3 is expressly authorized to evolve.
+Use `reports/master` and its build guide: derive figures from actual evidence,
+validate provenance/text/typesetting, reproduce PDF/figures, render and visually
+inspect every page of a rebuilt master before publication.
+
+## Present implementation and verification
+
+| Component | Actual present scope | Limits that must remain explicit |
+| --- | --- | --- |
+| Corrected 88-leg Elmer | Genuine coupled 3D Peltier/Joule/Fourier solid fields; header, explicit joints/attach and MCT; principal mesh 216 domains / 647,657 tets | Constant verification P/N properties; principal 0.1 A / 2 mW / 300 K underside case has external Cu/Au paths OFF; no enclosed-package gas/radiation field |
+| `integrated_reference.py` | **Five-node** conservative package; three TEC stages, die attach, hot-side Cu leads, Au bonds, sink and reservoir loads | Reduced spatial description; preserve `g1_constant` and affine `zhang2025_analog` compatibility |
+| `nonlinear_tec.py`, `graded_tec.py` | Opt-in `zhang2025_nonlinear`: conservative bounded nonlinear 1D P/N profiles, analytic banded Newton and exact-key cache; independent bounded BVP comparisons | Research specimens measured 40–300 K; active 180–390 K; **assumed quarter-tangent** continuation above 300 K; not an identified commercial grade |
+| Corrected enclosure / exchange | Source-aligned candidate STEP/mesh and native-face audit; **preliminary filled stepped-core** diffuse-gray radiation and gas chord network (14 surfaces / 8 effective nodes) | Full native-surface visibility, interleg/pin/wire exchange, gas diffusion, optical transmission and coupled 3D cavity fields are **not implemented** |
+| `model.py`, `cli.py`, `experiments.py` | Original **four-node legacy demonstrations**, retained for compatibility | Not the current corrected package; older OEM-anchored assumptions are historical |
+
+- Archived 177-cut/current, weak heat and global/stage balance checks pass, but
+  numerical release remains **incomplete**: original cold-interface mismatch
+  6.48% fails 5%; best independent bath-normal error 1.069% fails 1%; later
+  transverse cases remain about 1.29%. Independent cold-normal 4.795% passes
+  only on its separate mesh. No combined qualified mesh/comparator is demonstrated.
+- Preserve the raw **bath <1% / cold-interface <5%** requirements and other
+  archived current/residual/convergence gates. Never substitute conservative
+  reactions/recovered flux, stable temperatures or reduced budgets for raw checks.
+  Never rewrite failed results, alter old gates or claim unearned qualification.
+- Current reduced evidence: `data/nonlinear_exchange_20261030`; 52/63 proxy
+  cases accepted, 11 rejected with diagnostics. At nominal 0.15 A Kr, die
+  232.209 K and terminal 1.15193 V are conditional reduced predictions.
+  Maximum last-level view-factor correction is 0.04043 absolute, not an accuracy bound.
+- Use the corrected source geometry: two-ear VIGO profile, nine 0.76 mm C pins,
+  pins 1/9 to TEC **hot pads**, pins 7/8 to detector. Housing plus independent
+  cooler reference and inferred 28/12/4 stages remain a hypothetical assembly.
+  Do not reuse old elliptical/pin geometry or G3b enclosure geometry.
+- Conserve `Qh-Qc=I*V`; use SI internally. Keep sigma identically `1/rho` and
+  Thomson identically `T*dS/dT` of the active piecewise law: source interior
+  knots use right derivatives, exactly 300 K the measured left derivative,
+  above 300 K the quarter tangent, exactly 390 K its left limit. Domain-check
+  interior Joule overshoot. Never clamp accepted results, bridge rejected plot
+  intervals, erase failure diagnostics or turn chosen ranges into confidence intervals.
+- Latest recorded report checkpoint: **28 pages**, all rendered/inspected;
+  PDF and 40 figure files reproduce exactly; 32 focused and **300 full opt-in
+  tests pass**, including actual Elmer smoke. Archive verifier and legacy demos
+  pass. Records: `reports/master/verification/summary.json`. Check CI for each
+  newly pushed commit; historical test counts are not new executions.
+
+## Read-first order
+
+1. This contract, then `README.md` and the ONE canonical Rev3 master PDF.
+2. `docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md`: assumptions and objective.
+3. `docs/INTEGRATED_REFERENCE_THERMAL_20261030.md`: five-node balances and scenarios.
+4. `docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md`: transport/exchange methods.
+5. `docs/MASTER_REPORT_REPRODUCIBILITY.md`: live report and sealed-PDF integrity.
+6. For geometry work, `GEOMETRY_SOURCE_OF_TRUTH_SPEC.md`, current manifests and
+   native-face audits; before editing any historical implementation, inspect its
+   archive ledger. Add new versions when sources are sealed; do not modify archives.
+
+## Ordered next science milestones
+
+1. **Native-surface exchange:** replace the filled-core shortcut with a bounded
+   actual-surface visibility fixture/operator from corrected cap/window and
+   package surfaces, exposing interleg voids, pins and wires. Audit face ownership,
+   normals, areas, first-hit visibility, blocked pairs, reciprocity, closure,
+   refinement and heat conservation. Retain the present proxy as a comparator;
+   do not imply a new 3D thermal field or force an expensive conformal cap merge.
+2. **Integrated mechanism and uncertainty comparisons:** paired gas/radiation/
+   lead controls plus contact, bypass, material-grade and cap/window/sink-reservoir
+   hypotheses in the bounded five-node/nonlinear model. Report accepted-domain
+   coverage, rejected candidates, heat budgets and power at matched detector
+   targets. Use labeled scenario spans; no OEM fit or invented observations.
+3. **Conditional later 3D qualification:** pursue a justified, resource-bounded
+   experiment only when required by the engineering question. A numerical release
+   still requires both original raw limits on the same mesh and a systematically
+   refined comparator, plus all current/heat/nonlinear/reproducibility gates.
+   This is not authorization for another large refinement campaign.
+
+At **every milestone**, improve the existing Rev3 substantively in place and
+keep README, these newer technical guides and this contract coherent. They are
+**internal methods/reproduction documents**, not competing scientific reports.
+Revise stale mutable guidance rather than adding another checkpoint near the end.
+
+## Verification and handoff
+
+Use focused checks appropriate to changed code, then the established gates for
+code/physics/report changes; inspect actual results and exact-commit CI before
+declaring completion. For documentation-only corrections, check contract content,
+links, master integrity and the full archive guard; do not launch solver jobs or
+rebuild an unchanged PDF just to edit prose. Standard reproduction gates:
+
+```bash
+python3 -B -m reports.master.validate --current
+./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs
+./fem/run.sh python fem/archive_bath_spatial_device.py --verify
+./fem/run.sh python -m tecooledmct.cli --quick --out outputs/new-check/legacy-cli
+./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/new-check/legacy-geometry
+```
+
+Choose new output paths, never sealed evidence. Commit/push scoped verified work;
+leave honest partial changes uncommitted if blocked by usage or execution limits.
+
+The former instruction document is retained verbatim as
+[historical context only](docs/history/AGENTS_BEFORE_CURRENT_CONTRACT_20261030.md),
+with its identity in `docs/history/agents_pre_contract.json`. It has **no current
+instruction authority** and is not part of the routine read-first sequence.

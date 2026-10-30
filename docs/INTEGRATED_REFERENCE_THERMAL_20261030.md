@@ -2,9 +2,9 @@
 
 Internal implementation/source notes. The single current scientific document is the
 [Revision 3 master](../reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf).
-The public master is continuously updated; earlier frozen-Rev3 statements refer
-only to its sealed original historical bytes. Numerical archives and gates remain immutable.
-
+The authoritative [current project contract](../AGENTS.md) defines read-first order,
+execution ownership and next milestones. The live master is continuously updated;
+sealed historical PDF bytes, numerical archives and original gates remain immutable.
 
 This is the current operating guide for the corrected-geometry **five-node
 reduced model**. It complements archived genuine Elmer fields; it does not
@@ -157,7 +157,7 @@ exceed the demonstrated discretization changes.
    not experimentally validated. Low/nominal/high runs are not confidence bounds.
 4. Existing bath <1% and cold-interface <5% criteria remain unmet in preserved
    historical production evidence. Reduced-model conservation does not replace
-   them or alter the approved Rev3 REVIEW DRAFT.
+   them. Update the live Rev3 master in place while preserving its sealed original bytes.
 5. Next bounded work should improve native-surface exchange and contact/bypass/
    reservoir sensitivity, with paired mechanism tests. Do not force a large
    conformal gas/TEC remesh or a proprietary OEM fit to complete useful studies.

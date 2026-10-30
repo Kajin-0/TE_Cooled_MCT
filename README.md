@@ -7,6 +7,8 @@ facing scientific assessment. It distinguishes genuine corrected-geometry 3D
 solid fields from the nonlinear reduced package and preliminary cavity proxy.
 The legacy download filename is retained for compatibility; the document itself
 is the Revision 3 engineering master. Historical PDF bytes remain sealed evidence.
+The current master has 28 pages; all pages were visually reviewed and the PDF
+and source-derived figures reproduce exactly. Original numerical failures remain explicit.
 
 A reproducible engineering model of a **plausible synthetic** three-stage
 TEC-cooled HgCdTe detector in a nine-pin, two-ear TO-66 package. The objective
@@ -14,6 +16,11 @@ is useful thermal budgets and sensitivity, not reconstruction of a proprietary
 assembly. [Modeling policy](docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md).
 
 ## Internal implementation and reproduction notes
+
+Development starts with the authoritative [CURRENT PROJECT CONTRACT](AGENTS.md).
+The guides below support implementation and reproduction; they are internal
+methods documents, not alternative standalone scientific reports. Earlier
+milestone instructions have been relocated to historical context.
 
 | Question | Read / run |
 | --- | --- |
@@ -23,7 +30,7 @@ assembly. [Modeling policy](docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md).
 | What is documented, inferred or assumed? | Source matrices in those guides; [materials](docs/materials_and_provenance.md) |
 | What is the corrected physical construction? | [Geometry specification](GEOMETRY_SOURCE_OF_TRUTH_SPEC.md), protected geometry manifest and wire routes |
 | What is actually solved in 3D? | [Corrected solid-only thermal work](CORRECTED_GEOMETRY_COUPLED_THERMAL_WORK_ORDER.md), archived Elmer evidence |
-| What must future development preserve? | [AGENTS.md](AGENTS.md), sealed archive verifiers and approved reports |
+| What must future development preserve? | [Current contract](AGENTS.md), sealed numerical evidence and original historical PDFs; continuously improve the live Rev3 |
 
 ## Current capabilities and their scope
 
@@ -118,8 +125,11 @@ still requirements for a future numerical-release claim. Neither conservative
 reduced budgets nor stable temperatures replace those criteria. See
 [the preserved spatial-bath result](docs/BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION.md).
 
-Next bounded work: expose actual interleg/pin surfaces in the exchange model,
-quantify contact/bypass/grade and cap-reservoir assumptions, and test mechanism
-pairs before considering another expensive 3D refinement. Keep current docs
-coherent as code evolves. All development stays in this repository and the
-existing sim Codex session; LSDDTS is outside scope.
+The [contract's ordered science milestones](AGENTS.md#ordered-next-science-milestones)
+govern continuation: first native-surface visibility/exchange with actual
+interleg/pin/wire geometry, then paired mechanisms and contact/bypass/grade/
+reservoir scenarios in the bounded nonlinear package. A later 3D qualification
+experiment needs an engineering justification and all original gates; no OEM
+calibration or large remesh is the next required milestone. Update this README,
+the existing technical guides and the same Rev3 master with each increment.
+All development stays in the existing VPS sim:0.0 Codex session; LSDDTS is outside scope.
