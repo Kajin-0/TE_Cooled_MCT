@@ -1,4 +1,6 @@
-# OEM-first physical-validation track (prospective, 2026-10-30)
+# OEM-first physical-validation track (historical plan, 2026-10-30)
+
+**Priority superseded by user clarification:** The active project objective is now the [plausible reference-device policy](PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md). This document remains useful for independent material screening, OEM sanity checks and known limitations, but manufacturer calibration is not a prerequisite for further integrated model development. Its recorded numerical results and provenance are unchanged.
 
 ## Decision and scope
 
