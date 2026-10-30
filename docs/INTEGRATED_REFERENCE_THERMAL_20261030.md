@@ -1,5 +1,11 @@
 # Integrated synthetic-reference thermal model
 
+Internal implementation/source notes. The single current scientific document is the
+[Revision 3 master](../reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf).
+The public master is continuously updated; earlier frozen-Rev3 statements refer
+only to its sealed original historical bytes. Numerical archives and gates remain immutable.
+
+
 This is the current operating guide for the corrected-geometry **five-node
 reduced model**. It complements archived genuine Elmer fields; it does not
 produce a new enclosed-package 3D field or identify an OEM assembly.

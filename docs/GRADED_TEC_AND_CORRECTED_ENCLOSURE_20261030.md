@@ -1,5 +1,11 @@
 # P/N transport and corrected-source enclosure exchange
 
+Internal implementation/source notes. The single current scientific document is the
+[Revision 3 master](../reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf).
+The public master is continuously updated; earlier frozen-Rev3 statements refer
+only to its sealed original historical bytes. Numerical archives and gates remain immutable.
+
+
 This guide covers the current opt-in implementations and their limits. The
 [package guide](INTEGRATED_REFERENCE_THERMAL_20261030.md) defines the five-node
 balances, scenarios, sources/assumptions and CLI. The objective is a plausible

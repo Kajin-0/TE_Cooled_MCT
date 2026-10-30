@@ -1,14 +1,23 @@
 # TE_Cooled_MCT
 
+**[Master Engineering Report — Revision 3](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf)**
+
+This single, continuously maintained standalone report is the current externally
+facing scientific assessment. It distinguishes genuine corrected-geometry 3D
+solid fields from the nonlinear reduced package and preliminary cavity proxy.
+The legacy download filename is retained for compatibility; the document itself
+is the Revision 3 engineering master. Historical PDF bytes remain sealed evidence.
+
 A reproducible engineering model of a **plausible synthetic** three-stage
 TEC-cooled HgCdTe detector in a nine-pin, two-ear TO-66 package. The objective
 is useful thermal budgets and sensitivity, not reconstruction of a proprietary
 assembly. [Modeling policy](docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md).
 
-## Start here
+## Internal implementation and reproduction notes
 
 | Question | Read / run |
 | --- | --- |
+| How is the single master built and its historical evidence preserved? | [Internal report build/integrity guide](docs/MASTER_REPORT_REPRODUCIBILITY.md) |
 | What does the current package model solve? | [Integrated model guide](docs/INTEGRATED_REFERENCE_THERMAL_20261030.md) |
 | Which P/N laws and transport approximations are available? | [Transport and enclosure guide](docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md) |
 | What is documented, inferred or assumed? | Source matrices in those guides; [materials](docs/materials_and_provenance.md) |
@@ -102,8 +111,9 @@ See [original physics](docs/physics_and_sources.md), [geometry study](docs/geome
 [G3b](docs/PHASE1_G3B_RESULT.md) for their original scope. Older G3b enclosure
 geometry is not a source for the corrected operator.
 
-The approved [15-page Rev3 REVIEW DRAFT](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf)
-and historical Rev2 remain unchanged. Raw bath <1% and cold interface <5% are
+The single master linked first is updated in place. Its original 15-page bytes
+and Rev2 remain immutable historical evidence; they are not parallel current
+scientific reports. See the internal [master build/integrity guide](docs/MASTER_REPORT_REPRODUCIBILITY.md). Raw bath <1% and cold interface <5% are
 still requirements for a future numerical-release claim. Neither conservative
 reduced budgets nor stable temperatures replace those criteria. See
 [the preserved spatial-bath result](docs/BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION.md).

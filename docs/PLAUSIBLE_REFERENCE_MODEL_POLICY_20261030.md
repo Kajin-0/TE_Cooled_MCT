@@ -1,5 +1,11 @@
 # Plausible reference-device modeling policy (2026-10-30)
 
+Internal implementation/source notes. The single current scientific document is the
+[Revision 3 master](../reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf).
+The public master is continuously updated; earlier frozen-Rev3 statements refer
+only to its sealed original historical bytes. Numerical archives and gates remain immutable.
+
+
 ## Authorized objective and priority
 
 **The project goal is a physically plausible, useful multiphysics digital model of a

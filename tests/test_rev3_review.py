@@ -36,7 +36,12 @@ def test_published_review_edition_has_verified_immutable_inputs_and_pdf():
     for edition in (ROOT/'reports/rev3_review/editions').iterdir():
         if (edition/'edition_checksums.json').exists():assert verify_edition(edition)
     assert sha(PUBLIC)==sha(out/'report.pdf')==current['pdf_sha256']
-    assert current['review_draft'] and not current['full_qualification']
+    assert not current['full_qualification']
+    if current.get('mode')=='continuous_rev3_master':
+        from reports.master.validate import verify_current
+        assert not current['review_draft'] and verify_current()
+    else:
+        assert current['review_draft']
 
 @pytest.mark.parametrize('operation',['figures','supplement'])
 def test_generators_refuse_to_overwrite_a_published_edition(tmp_path,operation):

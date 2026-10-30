@@ -1,0 +1,45 @@
+{
+  "canonical_pdf": "reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf",
+  "pdf_sha256": "1bc0d793ac59cfa8b003454846bba2f7c9fe6bf431d57980ae7d95f8bee7ebff",
+  "pages": 28,
+  "figure_files_exactly_reproduced": 40,
+  "all_pages_visually_inspected": true,
+  "original_historical_sha256": "d173a8ba952462e1b6bf857739406f58eeb8d5c82b900f9fc65b84d40573acc1",
+  "historical_record": "reports/historical/rev3_original.json",
+  "focused_report_tests": {
+    "passed": 32,
+    "seconds": 2.88,
+    "command": "./fem/run.sh python -m pytest -q tests/test_rev3_master.py tests/test_rev3_review.py tests/test_engineering_report.py"
+  },
+  "full_opt_in": {
+    "passed": 300,
+    "skipped": 0,
+    "warnings": 14,
+    "seconds": 338.73,
+    "command": "./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs",
+    "actual_Elmer_smoke": true
+  },
+  "archive_verifier": {
+    "passed": true,
+    "command": "./fem/run.sh python fem/archive_bath_spatial_device.py --verify",
+    "original_Rev3_hash_still_verified": true,
+    "historical_sources_and_fields_unchanged": true,
+    "legacy_approved_report_message_refers_to_sealed_original": true
+  },
+  "legacy_cli_and_geometry_demo": {
+    "passed": true,
+    "outputs": "outputs/master-check",
+    "JSON_stdout_parsed": true
+  },
+  "reader_metadata_and_filename_search": "PASS; no administrative or internal identifiers",
+  "production_refinement_run": false,
+  "numerical_release_complete": false,
+  "OEM_validation": false,
+  "log_sha256": {
+    "archive_verifier.log": "3314847f48aacde2dbc35a0f1f0614d16ad0a28b96e2255eb9e3f2746f8cfae9",
+    "focused.log": "f08019729f3882643d53249adeba8a8c3a090b7435cb0ed2abd1738327f96ad1",
+    "full_opt_in.log": "de7f13f99f128a81b723620530d4eb233752be8a43e9bfc79ac061d2ea4b197d",
+    "legacy_cli.log": "f37c6e58d7200cfc1c8238bb19d82e1310706ac418d9f610a526179522380442",
+    "legacy_geometry.log": "206f5017522ce2973ea0cc21edb731c0f29bb55872d1341ec7c5e0257fd3e204"
+  }
+}

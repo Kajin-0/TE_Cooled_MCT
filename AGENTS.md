@@ -3,8 +3,39 @@
 ## Mission
 Build a truthful, testable multiphysics model of a three-stage TEC-cooled HgCdTe detector in a nine-pin TO-66 package. Physics verification, reproducibility, parameter provenance and quantified limits outrank visual fidelity.
 
+## Single master engineering report — controlling user direction
+
+- Maintain ONE current standalone Revision 3 engineering master, continuously
+  improved in place at `reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf`.
+  The legacy filename is stable; public title/content say Revision 3, not DRAFT.
+  Do not propose Revision 4, new report editions or competing public PDFs.
+- The user's current authorization expressly supersedes earlier instructions
+  below to freeze the public Rev3. Those historical freeze statements now
+  protect ONLY the original sealed snapshot and all numerical/source archives.
+- Original 15-page Rev3 bytes remain at the existing sealed historical artifact
+  identified by `reports/historical/rev3_original.json`; its original digest
+  and every old numerical/archive gate MUST still pass. Rev2 is unchanged.
+- Public PDF: standalone scientific/engineering prose; sources/assumptions,
+  equations/units, model coverage, real geometry/fields, budgets, sensitivity,
+  failed gates and conclusions. NO usernames, paths, filenames, hashes,
+  repository links, agent/Codex chatter, development diary, TODOs or CI.
+  Public scientific citations/DOIs are expected. No OEM or release certification.
+- Explicitly separate actual 88-leg 3D solid-only fields from five-node
+  nonlinear transport and filled-core gas/radiation proxy; candidate enclosure
+  solids are not a joined solved cavity. Preserve numerical vs physical limits.
+- Use `reports/master` workflow; see `docs/MASTER_REPORT_REPRODUCIBILITY.md`.
+  Rebuild source-derived figures, validate text/provenance/typesetting,
+  check reproducibility, render and inspect EVERY page before publication.
+  README points first to this ONE master; other mutable notes are internal.
+- Continue all editing/building/testing/commits/pushes through this existing
+  sim:0.0 Codex session, with no extra agents/sessions or unrelated repo work.
+- Current master: 28 pages, every page rendered/inspected; PDF and all 40
+  figure files reproduce exactly. Report-focused checks: 32 PASS; full pinned
+  opt-in: 300 PASS including real Elmer smoke. Archive guard and legacy demos
+  PASS. Machine records: `reports/master/verification/summary.json`.
+
 ## Read first
-README.md; docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md; docs/INTEGRATED_REFERENCE_THERMAL_20261030.md; docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md. Historical source/roadmap/CAD documents below describe their original checkpoints, not the current priority ordering.
+README.md; the canonical master PDF; docs/MASTER_REPORT_REPRODUCIBILITY.md; docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md; docs/INTEGRATED_REFERENCE_THERMAL_20261030.md; docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md. Historical source/roadmap/CAD documents below describe their original checkpoints, not the current priority ordering.
 
 ## Current baseline
 - tecooledmct/model.py: four-node steady-state thermal/electrical solver.
@@ -867,7 +898,8 @@ amend any archived numerical results, source snapshots or acceptance gates.
 - Actual current milestone:131 focused tests PASS; full pinned opt-in286PASS
   in340.38s, including genuine Elmer smoke (14 third-party warnings). Full
   archive verifier, legacy CLI/geometry demo, current-document links and plot
-  inspection PASS. Public Rev2/Rev3 exact hashes unchanged. Accepted new proxy
+  inspection PASS. Historical Rev2/original sealed Rev3 exact hashes unchanged;
+  the canonical master follows the controlling report direction above. Accepted new proxy
   package grid maximum global energy residual1.41e-11W. CI must pass on the
   pushed commit before reporting completion.
 - Run focused nonlinear/exchange/graded/enclosure/integrated tests, full opt-in
@@ -875,7 +907,8 @@ amend any archived numerical results, source snapshots or acceptance gates.
   `fem/archive_bath_spatial_device.py --verify`, legacy CLI/geometry_demo and CI.
   Reject nonconverged/domain-invalid states with diagnostics, not patched gates.
 - No numerical-release claim while original raw bath1%/cold5% requirements are
-  unresolved. Preserve frozen files and every approved report exactly.
+  unresolved. Preserve frozen files and sealed historical reports exactly;
+  update the single current master through its verified workflow.
 - Next: actual native-surface exchange without the filled-core shortcut,
   mechanism pairs and contact/bypass/grade/reservoir sensitivity. Do not force
   full-package remeshing or OEM fitting before practical scenario studies.

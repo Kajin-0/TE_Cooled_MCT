@@ -1,0 +1,2324 @@
+Thermoelectrically Cooled HgCdTe Reference Device
+
+Engineering Assessment
+
+Revision 3
+
+30 October 2026
+
+Hypothetical reference article. Numerical release incomplete.
+
+Abstract. A source-referenced nine-pin, two-ear housing and an independently selected three-
+stage cooler envelope define a synthetic HgCdTe detector article. This assessment combines two
+distinct numerical descriptions. A genuine coupled three-dimensional solid calculation resolves
+88 thermoelectric legs, internal conductors, a header, explicit joint and attach layers, and the
+detector. At 0.1 A, 300 K underside bath and 2 mW imposed die heat, its principal fine mesh gives
+approximately 265.6 K die temperature and 0.552 V. Current and conservative heat checks pass, while
+original raw boundary-gradient requirements remain unmet: the principal ceramic/attach mismatch
+is 6.48% against 5%, and the best independent normal-refinement bath error is 1.069% against 1%.
+Later transverse cases remain near 1.29%. No passing combined mesh and systematically refined
+comparator have established numerical release.
+
+A separate five-temperature model uses bounded nonlinear one-dimensional P/N transport, corrected
+wire routes, a configurable sink, imposed detector heating and preliminary gas/radiation exchange.
+Its enclosure is an explicitly filled stepped-core proxy inside candidate cap/window solids, not a
+fully resolved native cavity. At nominal 300 K, 0.15 A, 30 kPa krypton and 2 mW die heat, this
+model predicts approximately 232.2 K and 1.152 V. Of 63 prescribed scenario/current points, 52
+are accepted numerically and 11 remain rejected with diagnostics. Material laws above 300 K
+are assumed; no optical transmission, detector carrier transport or measured device-performance
+uncertainty is established.
+
+Engineering interpretation. Source geometry, physical hypotheses, numerical verification and
+empirical accuracy are treated separately. Numerical digits identify conditional calculations, not
+manufacturing tolerances. Neither the VIGO housing plus candidate cooler reference nor the reduced
+enclosure model is a verified commercial assembly.
+The report supports bounded engineering
+exploration; it does not certify a device or a numerical release.
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+Contents
+
+1
+Reference article, model hierarchy and interpretation
+3
+
+2
+Geometry and source interpretation
+4
+
+3
+Actual solid topology and discretization
+5
+
+4
+Material laws, interfaces and uncertainties
+7
+
+5
+Coupled field equations and solution verification
+9
+
+6
+Electrical and heat-flow fields
+10
+
+7
+Independent raw-gradient diagnostics
+11
+
+8
+Cold-interface and bath evidence
+12
+
+9
+Mesh sensitivity and independent analytical benchmark
+13
+
+10 Verification matrix and numerical release gates
+15
+
+11 Independent normal and transverse refinement evidence
+16
+
+12 Conservative nonlinear transport and five-temperature package
+18
+
+13 Candidate enclosure and preliminary exchange geometry
+20
+
+14 Operating scenarios, electrical demand and rejected states
+23
+
+15 Heat budgets and dominant paths
+25
+
+16 Sensitivity, model-form uncertainty and physical interpretation
+26
+
+17 Overall verification and engineering conclusions
+27
+
+References
+28
+
+2
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+1
+Reference article, model hierarchy and interpretation
+
+The reference article is a three-stage thermoelectric cooler supporting a small HgCdTe die inside
+a nine-pin TO-66-style package. The intended questions concern detector temperature, electrical
+demand, heat rejection, parasitic paths and sensitivity to uncertain inputs. A proprietary assembly
+is not reconstructed, and agreement with a manufacturer’s limiting numbers is not an acceptance
+requirement for this synthetic article.
+
+Description
+Modeled physics and boundaries
+Important exclusions
+
+Three-
+dimensional
+solids
+
+Coupled temperature and potential; 88
+legs; 216 solid domains; 0.1 A; 300 K
+Kovar underside; 2 mW die source
+
+External Cu/Au links OFF; no cap,
+gas, radiation, optics or detector carri-
+ers
+Reduced nonlin-
+ear package
+Five unknown temperatures; nonlinear
+P/N profiles; Cu/Au conduction; Cu
+Joule heat; effective sink; detector heat
+
+Ideal stage contacts and simplified by-
+pass; no spatial spreading or die gradi-
+ents
+Candidate enclo-
+sure solids
+Native cap/roof/window BREP and
+standalone 8,143-tetrahedron fixture
+Geometry only; no conformal connec-
+tion to the 88-leg mesh and no new
+thermal field
+Preliminary
+exchange proxy
+Closed cylinder and filled stepped core;
+gray radiosity; pressure-dependent gas
+chord network
+
+Actual interleg voids, pin/wire occlu-
+sion, full native-surface view factors,
+gas diffusion/convection and spectral
+transmission absent
+
+1.1
+Input evidence and physical hypotheses
+
+Input family
+Evidence
+cate-
+gory
+Interpretation
+
+Housing
+enve-
+lope/pin functions
+Published draw-
+ing
+Source-backed external dimensions; some contour details
+and seals inferred [1]
+Cooler envelope
+Independent
+datasheet
+Candidate dimensions, not proof of assembly compatibility
+[2]
+Stage
+split
+and
+routing
+Inferred construc-
+tion
+28/12/4 couples and internal paths are explicit hypotheses
+
+P/N transport
+Research analog
+Measured specimen tables to 300 K; assumed extension to
+390 K [4]
+Joints,
+contacts,
+cap/window
+Engineering
+assumptions
+Explicit
+dimensions;
+unknown
+grades
+and
+contact
+impedances
+Gas,
+pressure,
+emissivity,
+loads,
+sink
+
+Operating scenar-
+ios
+Selectable conditions, not observations or statistical priors
+
+1.2
+Meaning of verification
+
+A converged algebraic solve, current conservation, an accurate controlled benchmark and empirical
+device validation answer different questions. The first three can support a numerical implementation
+without identifying real materials or package construction. Raw-gradient qualification is stricter than
+a conservative reaction balance. Chosen low/nominal/high scenarios are engineering alternatives,
+not confidence intervals. The sections below keep these distinctions visible for every result.
+
+3
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+2
+Geometry and source interpretation
+
+The governing package reference is the VIGO family drawing ZTM-TO66-Z030, Revision 9, dated
+1 March 2024 [1]. Its two mounting ears and nine C pins of nominal diameter 0.76 mm govern
+the corrected header mesh. Overall flange dimensions are 31.5 by 17.5 mm, mounting-hole pitch
+24.4 mm and nominal hole diameter 3.7 mm. The source does not uniquely establish every fillet,
+seal or internal dimension. Inferred contour radii and idealized glass seals remain explicit modeling
+assumptions.
+
+The TEC Microsystems 3MC04-044-05 datasheet [2] independently provides a candidate three-stage
+cooler envelope: hot side 6.4 mm, cold side 2.4 mm and height 3.8 mm. The VIGO housing plus
+this cooler reference is not an identified OEM assembly. Internal artwork, stage populations
+and material grades are unverified.
+
+−15
+−10
+−5
+0
+5
+10
+15
+x (mm)
+
+−7.5
+
+−5.0
+
+−2.5
+
+0.0
+
+2.5
+
+5.0
+
+7.5
+
+y (mm)
+
+1
+
+2
+3
+
+4
+
+5
+
+6
+
+7
+8
+
+9
+
+Actual mesh section through the two-ear header
+
+Figure 1: Actual corrected tetrahedral mesh cut at header mid-height. Labels denote pin numbers
+in the modeled top-view coordinate system; the source bottom view is mirrored consistently. White
+mounting holes and the two-ear outline are mesh geometry, not an ellipse or an artist’s reconstruction.
+
+Element
+Provenance and interpretation
+
+Header and C pins
+Drawing envelope; Kovar and glass thermal properties are proxies.
+Pin functions
+1/9 TEC supply/return; 7/8 detector; 5/6 thermistor positions.
+Internal TEC
+28/12/4 couples, totaling 44 pairs and 88 legs; assumed routing.
+Detector and attach
+1 mm2 by 200 µm die; 30 µm attach; hypotheses.
+Hot joint
+Explicit 50 µm metallic layer; unidentified alloy.
+
+4
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+3
+Actual solid topology and discretization
+
+The corrected mesh contains 216 solid domains. All 88 legs form one electrical series route through
+the copper pads and interstage conductors. There are two module terminals on the hot-side copper
+pads. The external pin-to-pad copper and detector gold links are disabled in the present calculation:
+the terminal drive acts directly on the resolved module pad faces. The nine pins remain passive
+thermal solids with exposed ends adiabatic.
+
+−15
+
+0
+
+15
+
+x (mm)
+
+−8
+
+0
+
+8
+
+y (mm)
+
+−12
+
+−6
+
+0
+
+6
+
+z (mm)
+
+Figure 2: Actual mesh exterior: two-ear header, nine feedthrough pins and the cooler/detector stack.
+No cap or window is modeled. Pin geometry is retained even though the physical external electrical
+links are OFF.
+
+The feedthrough seals and pin centers follow a separately audited coordinate registry. The header
+underside is the thermal bath; the extended pin shafts are not extra fixed-temperature boundaries.
+The view shows the solid domain used in the calculation, rather than a complete hermetic package.
+
+5
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+3.1
+Mesh and conductor connectivity
+
+The solid meshes use Gmsh 4.13.1 geometry/meshing and Elmer 26.2.1 thermoelectric solution
+procedures. The principal field uses 159,991 nodes and 647,657 tetrahedra. Mesh checks identify
+material-pair contacts, exterior faces and terminal regions from actual tetrahedron adjacency, rather
+than inferring connectivity from a CAD rendering. No undeclared internal boundary is permitted.
+Every intended leg and interstage conductor belongs to the same two-terminal series component.
+
+−3
+−2
+−1
+0
+1
+2
+3
+x (mm)
+
+1.5
+
+2.0
+
+2.5
+
+3.0
+
+3.5
+
+4.0
+
+4.5
+
+5.0
+
+5.5
+
+z (mm)
+
+Figure 3: Exact y = 0.15 mm tetrahedron/plane intersection of the resolved stack. Void space
+remains white. Lines are actual cut-element edges; no scattered triangulation bridges gaps. The two
+hot-side module pad faces belong to the resolved copper routing. P legs are red, N legs blue, copper
+ochre, ceramics ivory, attach gray and die purple.
+
+Resolved feature
+Dimensions and interpretation
+
+Ceramic plates
+Widths 6.4, 4.55, 3.25 and 2.4 mm; thickness 220 µm each.
+Leg sections
+0.4 by 0.4 mm; stage heights 1.07, 0.82 and 0.64 mm.
+Stage allocation
+56, 24 and 8 legs from hot to cold; assumed internal design.
+Current checks
+177 interior cuts across semiconductor and copper route.
+Interfaces
+Shared conformal nodes; finite bulk attach and joint layers.
+
+6
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+4
+Material laws, interfaces and uncertainties
+
+Solid
+k
+σ
+S
+Qualification
+W m−1K−1
+S m−1
+µV K−1
+
+P leg
+1.5
+140000
++160
+Constant verification proxy
+N leg
+1.5
+165500
+−170
+Constant verification proxy
+Copper
+400
+5.814 × 107
+0
+Constant proxy
+Alumina
+30
+—
+0
+Unidentified grade
+Kovar/pins
+17.3
+—
+0
+Assumed alloy response
+Glass
+1
+—
+0
+Seal proxy
+Hot metallic joint
+35
+—
+0
+Unidentified alloy
+Die attach
+1
+—
+0
+Unidentified material
+HgCdTe
+k(T)
+—
+0
+Literature thermal model
+
+For Hg0.71Cd0.29Te, the literature model [3] is represented by piecewise linear nodal conductivity:
+(T, k) = (90, 2.41), (148, 1.61), (298, 0.973) and (400, 0.790) in kelvin and W m−1K−1. The calculation
+stays within this range. Electrical conductivity of passive domains is a computational extension of
+10−12 S m−1, not a physical detector or pin current prediction. Density and heat capacity do not
+affect this steady calculation.
+
+Interfaces have conformal shared nodes and ideal temperature/potential continuity. The explicit
+joint and attach have finite bulk thermal resistance; no additional calibrated contact impedance is
+added. Temperature-dependent, traceable P/N transport curves and measured contact resistances
+have not been qualified for this hypothetical cooler. Earlier material studies cannot identify the
+actual grade of an unspecified assembly.
+
+4.1
+Imposed conditions and exclusions
+
+The electrical drive is 0.1 A with one hot-pad reference potential. Only the external Kovar underside
+is held at 300 K. The die receives uniform volumetric heating totaling 2 mW: 1.5 mW imposed
+bias dissipation plus 0.5 mW optical-like imposed heat. This does not simulate detector current,
+absorption, responsivity or transmission through a window.
+
+All other exposed solid surfaces are adiabatic; no arbitrary 300 K condition is imposed on the cold
+assembly or pins. Copper supply and gold detector hybrid links are OFF. The source drawing’s
+cap and window, any carrier, thermistor internals, gas, radiation and carrier-transport PDEs are
+excluded. These exclusions apply to this solid-only field. The separate reduced package model later
+includes specified wire and enclosure exchanges without creating a three-dimensional cavity field.
+
+7
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+4.2
+Temperature-dependent research analog for reduced transport
+
+The reduced model uses source-traced P/N research-specimen curves from Zhang et al. [4]. Complete
+measured-table coverage is 40–300 K. The P and N samples are different laboratory specimens;
+they are not an identified commercial matched pair. The selected operating model restricts all
+leg temperatures to 180–390 K. Between 180 and 300 K, properties are interpolated on the source
+knots. Between 300 and 390 K, the slope of each property is assumed to be one quarter of its final
+measured-interval tangent. No measured validity above 300 K is implied.
+
+200
+300
+T (K)
+
+−200
+
+−100
+
+0
+
+100
+
+200
+
+S (μV K−1)
+
+P
+N
+
+200
+300
+T (K)
+
+4
+
+6
+
+8
+
+10
+
+12
+
+14
+
+ρ (μΩ m)
+
+200
+300
+T (K)
+
+1.2
+
+1.4
+
+1.6
+
+1.8
+
+k (W m−1 K−1)
+
+Figure 4: P/N active material laws used only by the reduced analog models. Solid lines lie within
+the measured-table domain; dashed lines and the shaded region denote the assumed 300–390 K
+continuation. The three-dimensional field shown elsewhere retains the constant verification properties.
+
+Resistivity ρ is in Ωm, conductivity is identically σ = 1/ρ, thermopower S is in V K−1, and k is in
+W m−1K−1. The Thomson coefficient is τ = T dS/dT. At an interior source knot the right derivative
+is used; exactly 300 K uses the measured left derivative, strictly above 300 K the quarter tangent,
+and exactly 390 K its left limit. A two-sided derivative is not asserted at the slope discontinuity.
+
+All evaluated states must be finite, with positive ρ and k and the correct P/N sign of S. No solution
+is accepted by clipping it to a temperature limit. Interior Joule heating can activate the assumed
+continuation even when both boundary temperatures are below 300 K. Continuation tests establish
+internal consistency only, not experimental validation. The research-specimen choice, digitization
+and assumed extension are consequential physical uncertainties.
+
+8
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+5
+Coupled field equations and solution verification
+
+With electric potential ϕ, E = −∇ϕ, conductivity σ, thermal conductivity k and Seebeck coefficient
+S, the steady constitutive equations are
+
+J = σ(−∇ϕ −S∇T),
+∇· J = 0,
+(1)
+
+q = −k∇T + STJ,
+∇· q = J · E + qv.
+(2)
+
+The coupled upstream Elmer thermoelectric solver includes Seebeck, Peltier, Joule and Fourier terms.
+It uses conformal linear tetrahedra and a nonlinear stopping threshold below 10−9. The reduced
+models introduced later are separate calculations; they do not replace or relabel this three-dimensional
+field.
+
+−3
+−2
+−1
+0
+1
+2
+3
+x (mm)
+
+1.5
+
+2.0
+
+2.5
+
+3.0
+
+3.5
+
+4.0
+
+4.5
+
+5.0
+
+5.5
+
+z (mm)
+
+270
+
+275
+
+280
+
+285
+
+290
+
+295
+
+300
+
+T (K)
+
+Figure 5: Actual solved temperature on the exact stack section. Colors represent source-cell means
+of the P1 field. The colder upper stage and warmer hot-side solids arise from the coupled solution.
+The field is conditional on the assumed materials and failed spatial qualification.
+
+Principal archived calculation
+Numerical value
+
+Nodes / tetrahedra
+159,991 / 647,657
+Die volume mean
+265.616093 K
+Cold ceramic volume mean
+265.424850 K
+Terminal voltage
+0.551926633 V
+Known input, I∆ϕ + Qdie
+57.192663 mW
+Bath weak reaction / raw gradient
+57.192663 / 56.336914 mW
+Extra digits identify reproducible numerical outputs; they do not express physical accuracy or
+manufacturing tolerance.
+
+9
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+6
+Electrical and heat-flow fields
+
+−3
+−2
+−1
+0
+1
+2
+3
+x (mm)
+
+1.5
+
+2.0
+
+2.5
+
+3.0
+
+3.5
+
+4.0
+
+4.5
+
+5.0
+
+5.5
+
+z (mm)
+
+0
+
+100
+
+200
+
+300
+
+400
+
+500
+
+ϕ (mV)
+
+Figure 6: Actual electrical potential on the conductor section. Only P, N and copper are colored.
+The module terminals are on the hot side; external pin links are OFF.
+
+−3
+−2
+−1
+0
+1
+2
+3
+x (mm)
+
+1.5
+
+2.0
+
+2.5
+
+3.0
+
+3.5
+
+4.0
+
+4.5
+
+5.0
+
+5.5
+
+z (mm)
+
+104
+
+105
+
+106
+
+|J| (A m−2)
+
+Figure 7: Magnitude of the actual element-mean current density on the same section. Continuity is
+tested separately at every one of 177 interior cuts; plotting a smooth field alone is not a continuity
+test.
+
+10
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+−3
+−2
+−1
+0
+1
+2
+3
+x (mm)
+
+1.5
+
+2.0
+
+2.5
+
+3.0
+
+3.5
+
+4.0
+
+4.5
+
+5.0
+
+5.5
+
+z (mm)
+
+100
+
+101
+
+102
+
+103
+
+104
+
+105
+
+|q| (W m−2)
+
+Figure 8: Actual element-mean total solid heat flux, including Fourier and Peltier terms. The
+logarithmic scale reveals both the stack and passive conductive paths; it is not a recovered conservative
+boundary flux.
+
+−0.6
+−0.4
+−0.2
+0.0
+0.2
+0.4
+0.6
+x (mm)
+
+5.2
+
+5.3
+
+5.4
+
+5.5
+
+5.6
+
+z (mm)
+
+265.4
+
+265.5
+
+265.6
+
+265.7
+
+265.8
+
+T (K)
+
+Figure 9: Actual resolved cold ceramic, 30 µm attach and 200 µm die section.
+The small die-
+temperature mesh sensitivity does not certify the normal heat-flux gradients. The maximum plotted
+range is a visualization choice, not an uncertainty band.
+
+7
+Independent raw-gradient diagnostics
+
+The heat-flux audit fits each tetrahedron’s actual affine temperature gradient, uses its owner material
+conductivity and the oriented area of each physical triangle, and sums powers with area weights. At
+an internal interface, each solid supplies an independent outward trace. Define
+
+eΓ =
+Q−
+out + Q+
+out
+(|Q−
+out| + |Q+
+out|)/2,
+eb = Qb,raw −(I∆ϕ + Qdie)
+
+I∆ϕ + Qdie
+.
+(3)
+
+The unchanged limits are |eΓ| < 5% and |eb| < 1%. Reactions and recovered fluxes are useful checks
+but cannot replace these raw criteria.
+
+11
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+8
+Cold-interface and bath evidence
+
+−0.4 −0.2
+0.0
+0.2
+0.4
+x (mm)
+
+−0.4
+
+−0.2
+
+0.0
+
+0.2
+
+0.4
+
+y (mm)
+
+Ceramic / attach
+Lower-solid trace
+
+−0.4 −0.2
+0.0
+0.2
+0.4
+x (mm)
+
+−0.4
+
+−0.2
+
+0.0
+
+0.2
+
+0.4
+
+y (mm)
+
+Ceramic / attach
+Upper-solid trace
+
+−0.4 −0.2
+0.0
+0.2
+0.4
+x (mm)
+
+−0.4
+
+−0.2
+
+0.0
+
+0.2
+
+0.4
+
+y (mm)
+
+Attach / MCT
+Lower-solid trace
+
+−0.4 −0.2
+0.0
+0.2
+0.4
+x (mm)
+
+−0.4
+
+−0.2
+
+0.0
+
+0.2
+
+0.4
+
+y (mm)
+
+Attach / MCT
+Upper-solid trace
+
+1700
+
+1800
+
+1900
+
+2000
+
+2100
+
+2200
+
+Downward raw Fourier flux (W m−2)
+
+Figure 10: Actual independent raw Fourier flux on both sides of each cold contact, positive downward.
+The ceramic/attach mismatch is +6.4765% (FAIL); attach/MCT is −4.6085% (PASS). Different
+traces are numerical evidence, not an imposed contact jump.
+
+−10
+0
+10
+x (mm)
+
+−5
+
+0
+
+5
+
+y (mm)
+
+Initial bath volume
+
+−10
+0
+10
+x (mm)
+
+−5
+
+0
+
+5
+
+y (mm)
+
+First bath volume refinement
+
+−104
+
+−102
+
+0
+
+102
+
+104
+
+qout (W m−2)
+
+Figure 11: Actual raw outward flux on the Kovar underside before and after a separate bath-volume
+refinement. The cold mesh is exactly fixed. Absolute integral errors improve from 1.4963% to
+1.2914%, both FAIL. The reference is known external input, not the bath reaction.
+
+12
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+9
+Mesh sensitivity and independent analytical benchmark
+
+Mesh
+Tetrahedra
+Die mean (K)
+Voltage (V)
+ecer/att (%)
+eatt/die (%)
+
+A
+366,156
+265.592524
+0.551939871
++41.348
+-47.828
+B
+458,061
+265.613622
+0.551945058
++8.695
+-6.976
+C
+647,657
+265.616093
+0.551926633
++6.477
+-4.609
+
+400
+500
+600
+Tetrahedra (103)
+
+−20
+
+−15
+
+−10
+
+−5
+
+0
+
+Tdie −Tfinest (mK)
+
+400
+500
+600
+Tetrahedra (103)
+
+10
+
+20
+
+30
+
+40
+
+Absolute raw mismatch (%)
+
+Ceramic / attach
+Attach / MCT
+5% gate
+
+Figure 12: Three actually completed coupled meshes. Successive die-temperature changes are 21.10
+and 2.47 mK; voltage is nonmonotone. Raw ceramic/attach error remains above 5%. These are
+sensitivity data, not a rigorous whole-device grid-convergence index.
+
+The cold-region effective mesh sizes are 76.724, 25.484 and 17.608 µm. Refinement is local and
+anisotropic; the bath and most TEC regions stay nearly fixed. A conditional temperature-only fit
+yields order 1.324 and a 3.91 mK fine-to-limit difference, but this does not qualify a device GCI.
+Nonmonotone voltage admits no such extrapolation. The separate 675,496-tetrahedron bath case
+shifts the die mean by +0.421 mK and voltage by +2.946 µV.
+
+13
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+9.1
+Independent analytical reference
+
+The benchmark uses 220/30/200 µm layers and conductivities 30/1/1.1 W m−1K−1. Constant-flux
+and distributed-source cases separate normal-gradient truncation from integration errors. Coarser
+benchmark failures remain failures. Near-exact nodal values with finite mean and face-flux errors
+illustrate why an algebraically converged solution may still fail raw-gradient gates.
+
+2 × 101
+3 × 101 4 × 101
+
+Effective mesh size (μm)
+
+101
+
+3 × 100
+
+4 × 100
+
+6 × 100
+
+Source-face flux error (%)
+
+2 × 101
+3 × 101 4 × 101
+
+Effective mesh size (μm)
+
+100
+
+Die mean error (mK)
+
+Figure 13: Independent three-dimensional, three-layer HeatSolver benchmark with an analytical
+temperature field, harmonic transverse variation and a distributed 2 mW source. Source-face errors
+are 12.5, 6.25 and 3.125%; mean-temperature errors are 1.855, 0.464 and 0.116 mK. The finest
+benchmark passes its benchmark-specific preregistered checks; these do not replace the production
+bath criterion or qualify the coupled device.
+
+For a uniformly heated slab with constant conductivity, the axial solution includes a quadratic
+term, T(z) = a + bz −qvz2/(2k). Its exact gradient varies linearly. A linear tetrahedron represents
+temperature by an affine field and therefore has a constant gradient. Even when nodal temperatures
+nearly match the analytical solution, the boundary trace samples a finite owner volume rather than
+the exact boundary derivative. Normal refinement addresses that truncation directly.
+
+The analytical mean temperature is 300.1958788 K. The finest distributed-source calculation gives
+300.1957629 K. Source-face flux error halves at each level, while mean-temperature error decreases
+by approximately four, consistent with first-order boundary gradients and second-order temperature
+integration in this controlled benchmark. The actual coupled device has material jumps, geometric
+edges and local refinement, so these rates are evidence for the mechanism, not transferable error
+estimates.
+
+14
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+10
+Verification matrix and numerical release gates
+
+This matrix concerns the illustrated three-dimensional solid field. Independent refinement sequences
+are evaluated separately below; a reduced-model balance cannot certify a spatial flux gate.
+
+Test
+Hard limit
+Baseline evidence
+Status
+
+Source
+geome-
+try/topology
+216 domains; 88 legs;
+two terminals
+Corrected actual mesh audit
+PASS
+
+All 177 current cuts
+Each < 0.5%
+Worst 0.406120%
+PASS
+Global heat residual
+< 1 µW
+0.000144 µW
+PASS
+Free thermal residual
+< 1 µW
+0.001838 µW
+PASS
+Free current residual
+< 1 µA
+0.042206 µA
+PASS
+Nonlinear change
+< 10−9
+4.34 10−10
+PASS
+Homogeneous solid test
+Passive 300 K
+Error below 4 nK
+PASS
+Same-mesh replay
+Agreement with native
+LU
+0.225 µK; 3.70 nV
+PASS
+
+Ceramic/attach raw flux
+< 5% absolute
+6.48%
+FAIL
+Attach/MCT raw flux
+< 5% absolute
+4.61%
+PASS
+Independent raw bath
+< 1% absolute
+Best normal case 1.069%
+FAIL
+Same production mesh
+and refined comparator
+Both raw gates, all
+conservation checks
+Not demonstrated
+OPEN
+
+Qualified
+whole-device
+GCI
+Systematic asymptotic
+evidence
+Local conditional fit only
+OPEN
+
+Empirical device accu-
+racy
+Independent measure-
+ments
+No measured reference article
+OPEN
+
+Numerical release requires both original raw limits on one production mesh and at
+least one systematically refined comparator, together with all 177 current cuts, global/stage
+heat checks, free thermal/electrical residuals, homogeneous baseline and reproducibility checks.
+Temperature and voltage sensitivity must be reported. Preferred 4.5% cold and 0.9% bath margins
+are targets, not relaxed or replacement gates. Passing two different meshes separately is insufficient.
+
+15
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+11
+Independent normal and transverse refinement evidence
+
+The cold and bath refinement tracks retain the same 0.1 A, 2 mW, 300 K underside boundary and
+disabled external links. Their equations and raw acceptance criteria are unchanged. Free owner-
+volume nodes are refined with region locks; changes to a temperature output do not substitute for
+flux checks.
+
+Study
+Tetrahedra
+Die mean (K)
+Voltage (V)
+Cold raw (%)
+Bath raw (%)
+
+Cold normal
+821,078
+265.616118
+0.551926634
++4.795
+-1.496
+Bath normal 1
+744,713
+265.616580
+0.551930113
++6.477
+-1.069
+Bath normal 2
+821,458
+265.616593
+0.551930210
++6.477
+-1.093
+
+The cold-only track brings the ceramic/attach raw mismatch to 4.795%, passing the original 5%
+gate on that mesh; its bath still fails. The contact above it improves to 2.306%. Die mean changes
+only 24.94 µK while a boundary gradient changes materially. The bath-only normal-height sequence
+is approximately 296, 148 and 74 µm; its 1.069% then 1.093% errors are nonmonotone, both FAIL.
+Separate tracks do not establish a same-mesh release.
+
+−0.50 −0.25 0.00
+0.25
+0.50
+x (mm)
+
+−0.4
+
+−0.2
+
+0.0
+
+0.2
+
+0.4
+
+y (mm)
+
+Cold normal:
+Ceramic trace
+
+−10
+0
+10
+x (mm)
+
+−5
+
+0
+
+5
+
+y (mm)
+
+Bath normal 2:
+Signed outward flux
+
+1700
+
+1800
+
+1900
+
+2000
+
+2100
+
+2200
+
+q (W m−2)
+
+−104
+
+−102
+
+0
+
+102
+
+104
+
+q (W m−2)
+
+Figure 14: Actual cold-normal ceramic trace and second bath-normal signed outward trace, from
+separate genuine solved fields. The bath map belongs to the 821,458-tetrahedron normal case. It is
+not the later transverse field and does not depict a combined passing mesh.
+
+16
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+11.1
+Stage conservation and later bath-volume behavior
+
+The second bath-normal field provides the following independent weak control-volume decomposition.
+The coldest band includes the 2 mW die source, so its electrical-work difference alone is not the
+whole band balance.
+
+Stage band
+Hot out (mW)
+Cold out (mW)
+Electrical work (mW)
+Residual (µW)
+
+1
+57.193021
+18.014934
+39.178087
+0.000008
+2
+18.014934
+5.754100
+12.260833
+-0.000018
+3
+5.754100
+0
+3.754100
+-0.000006
+
+All three normal cases pass all 177 interior current cuts, global/stage heat and free-residual checks.
+The worst current-cut error is 0.406120%. Maximum global heat error is 0.000093 µW; maximum
+free thermal and current residuals are 0.002472 µW and 0.042254 µA. Those numerical checks remain
+separate from raw-gradient qualification.
+
+Two additional transverse/volume bath refinements also solve the genuine coupled solid equations.
+Their cold/electrical regions remain fixed. Each passes the unchanged nonraw checks, but neither
+passes the original bath criterion:
+
+Study
+Tetrahedra
+Die mean (K)
+Voltage (V)
+Bath raw (%)
+
+Transverse volume 1
+784,696
+265.616563
+0.551929953
+-1.2885
+Transverse volume 2
+1,099,293
+265.616574
+0.551930034
+-1.2907
+
+The die-temperature difference between these two fields is approximately 11 µK while bath errors
+plateau near 1.29%. Signed local flux regions of opposite sign and internal gradient jumps mat-
+ter; global cancellation can coexist with unresolved local traces. No recovered or reaction-based
+flux replaces the raw bath criterion. A combined cold-plus-bath passing production mesh and a
+systematically refined passing comparator are absent.
+
+11.2
+Computational method and practical cost
+
+The fixed fine solid problem was solved with a native direct factorization and checked with a same-
+mesh numeric-refinement replay. The principal native calculation takes approximately 1,292 s and
+5.7 GiB peak resident memory; a warm replay completes in approximately 558 s and 5.8 GiB. This is
+a warm-start comparison, not a general cold-start speed guarantee. The later coupled transverse
+fields complete in approximately 911 and 999 s with three nonlinear iterations. These numerical
+costs motivate bounded transport/exchange reductions for engineering scenarios, without implying
+that the reduced model reproduces the full spatial boundary-value problem.
+
+17
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+12
+Conservative nonlinear transport and five-temperature package
+
+The reduced package has unknown temperatures Th, T1, T2, Tc, Td: hot ceramic, two intermediate
+ceramics, cold ceramic and die. Each stage has a representative P leg and N leg, scaled by its
+assumed number of identical couples. No current-spreading field or per-leg manufacturing variability
+is solved.
+
+Let z run from hot to cold, L be leg length and A its area. Current densities are jN = I/A and
+jP = −I/A. The steady one-dimensional laws are
+
+q = STj −k dT/dz,
+dq/dz = j(ρj + S dT/dz),
+(4)
+
+vs = jρ(Tm)∆z + S(Tm)∆T,
+ws = jvs,
+(5)
+
+ri = qi+1/2 −qi−1/2 −1
+
+2(wi+1/2 + wi−1/2) = 0.
+(6)
+
+Here q is W m−2, vs is V, ws and ri are W m−2, Tm is segment-midpoint temperature and ∆z = L/n.
+Endpoint heat fluxes include the half-segment work.
+Both endpoint heats are independently
+computed:
+Qc = −NA(qc,P + qc,N) −Kb(Th −Tc),
+
+Qh = −NA(qh,P + qh,N) −Kb(Th −Tc),
+V = N(vN −vP ).
+(7)
+
+Kb is an explicit W K−1 bypass hypothesis, zero in these scenarios. The identity Qh −Qc = IV
+is audited rather than imposed by overwriting a flux. Variable thermopower already contributes
+through flux and electrical work; an extra Thomson heat source would double-count it.
+
+An analytic tridiagonal Jacobian and banded Newton solve use a residual-decreasing bounded line
+search. Nominal legs have 32 intervals. Material domains are enforced at all evaluations. Previously
+evaluated stage problems are reused only for identical dimensions, boundary temperatures, current
+and material multipliers; inputs are not rounded. A constant-property package solution supplies an
+initial iterate only. Failed nonlinear/residual/domain checks remain rejected states with recorded
+candidate diagnostics.
+
+12.1
+Package, wire and load balances
+
+At each intermediate node, preceding-stage Qc balances the next Qh plus net parasitic heat. The
+cold ceramic balances stage cooling against die-attach and local exchange; the die balances imposed
+heating, bond conduction and enclosure exchange against attach heat:
+
+Qc,0 = Qh,1 + E1,
+Qc,1 = Qh,2 + E2,
+(8)
+
+Qc,2 = Ec + Ga(Td −Tc),
+Ga(Td −Tc) = Ed + Qbias + Qabs.
+(9)
+
+E is heat into the corresponding node in W; Ga = kaAa/ta, nominally 1/30 W K−1. The effective
+hot-side condition is
+
+Th −Tamb = Rha{Qh,0 + QCu,cond + 1
+
+2I2RCu + Eh}.
+(10)
+
+Rha = 2 K W−1 nominally represents the full hot-side path, not a resolved joint/header/spreader
+resistance. Corrected Cu routes join pins 1/9 to hot pads; Au routes join pins 7/8 to the detector.
+Conductances are kA/L and electrical resistances ρL/A. Cu Joule heat is split between its warm
+pin and hot pad; terminal voltage includes that series loss. Bias and absorbed heat are prescribed,
+not inferred from an optical or carrier calculation.
+
+18
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+12.2
+Independent transport accuracy and refinement
+
+Eight representative boundary-value cases keep all reference temperatures strictly inside the measured
+40–300 K interval. Two additional cases test the assumed high-temperature law across implemen-
+tations only. The independent bounded nonlinear reference uses the same material tables and
+conservative midpoint equations but a different bounded least-squares algorithm. Same-discretization
+agreement checks implementation; 16/32/64 interval comparisons probe discretization, not physical
+material accuracy.
+
+1; 295/250
+
+0.10 A
+
+1; 295/285
+
+0.15 A
+
+2; 280/250
+
+0.15 A
+
+3; 250/230
+
+0.15 A
+
+3; 230/190
+
+0.50 A
+
+1; 260/240
+
+0.70 A
+
+1; 230/210
+
+0.90 A
+
+2; 260/235
+
+0.70 A
+Stage; boundary temperatures (K); current (A)
+
+10−5
+
+10−4
+
+10−3
+
+10−2
+
+10−1
+
+100
+
+101
+
+Absolute relative voltage error (%)
+
+Affine temperature
+Nonlinear, 32 intervals
+
+Figure 15: Absolute relative stage-voltage error against the independent 64-interval nonlinear
+reference. Stage numbering is hot to cold. The affine-temperature assumption omits Joule/Thomson-
+driven profile curvature; the direct nonlinear calculation substantially reduces that approximation
+error. These are numerical comparisons using research-specimen laws, not measurements of a device.
+
+At Th/Tc = 260/240 K and 0.7 A, nonlinear32 differs from the refined reference by 6.762 µW in Qc
+(0.000823%) and 0.1294 mV (0.00570%). The earlier affine voltage difference was about 147 mV
+(6.48%) against the 32-interval nonlinear reference. At 230/210 K and 0.9 A, nonlinear32 voltage
+error is 0.00823%. The profiles stay bounded; interior temperature curvature, not a tuned coefficient,
+produces the improvement.
+
+For the nominal package at 0.9 A with the older effective-reservoir closure, nonlinear32-to64 changes
+die temperature by 0.000350 K and terminal voltage by 0.1643 mV. Knot crossings can cause small
+nonmonotone changes, so no whole-device asymptotic order or grid-convergence index is inferred.
+Median inner transport compute time over accepted scenario points is about 0.5 s in the bounded
+four-CPU environment, excluding some initialization and outer-iteration overhead. Reusing identical
+stage evaluations reduces cost without introducing a surrogate interpolation error.
+
+19
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+13
+Candidate enclosure and preliminary exchange geometry
+
+The candidate cap/roof/window are native solids using the documented cap outside diameter and
+explicit engineering hypotheses for wall, height and window dimensions. Cap height above the
+header is 8.60 mm, wall 0.50 mm, roof/window thickness 0.45 mm and window diameter 5.90 mm.
+The inner roof is at z = 9.65 mm, approximately 4.07 mm above the die top. Steel-like cap and
+ZnSe-like window descriptions are candidate material concepts, not identified manufactured grades;
+no resolved window thermal/optical law is used.
+
+−7.5
+−5.0
+−2.5
+0.0
+2.5
+5.0
+7.5
+x (mm)
+
+2
+
+4
+
+6
+
+8
+
+10
+
+z (mm)
+
+Native candidate-solid section
+
+−7.5
+−5.0
+−2.5
+0.0
+2.5
+5.0
+7.5
+x (mm)
+
+2
+
+4
+
+6
+
+8
+
+10
+
+z (mm)
+
+Filled-core exchange proxy
+
+Figure 16: Left: central y = 0.15 mm sections of native candidate cap/window tetrahedra and the
+corrected solid stack, with geometric voids retained; the flange extends outside this view. The native
+enclosure is a separately meshed fixture, not a conformal addition to the coupled solid field. Right:
+the explicitly filled stepped-core geometry used only by the preliminary exchange operator. The
+native surfaces and proxy surfaces are different models. Neither panel is a newly solved enclosure
+temperature field.
+
+The native fixture has 8,143 tetrahedra and distinct shell, roof and window volumes. Positive
+tetrahedron volumes, unique exterior ownership, all nine physical face groups and shell/roof and
+roof/window interface incidence are audited. The package exterior is independently checked against
+the corrected solid mesh. Native exposed ceramic-top areas are 29.964, 16.1295, 8.9375 and 4.760 mm2;
+the die exposes approximately 0.955 mm2. These are not silently substituted for the different proxy
+areas.
+
+The closed exchange geometry is an inner cylinder of radius 7.1 mm with header floor and a filled
+stepped core based on the corrected widths and heights. Fourteen surface groups map to five
+unknown temperatures plus prescribed header, cap and window reservoirs. Vertical core groups use
+means of adjacent node temperatures. Actual interleg voids, exposed metallization, pin and wire
+occlusion are omitted. Thus the operator supplies a bounded, auditable preliminary load budget;
+full native-surface view factors remain unimplemented.
+
+20
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+13.1
+Gray radiation and pressure-dependent gas network
+
+For gray opaque surface i, area Ai, emissivity ϵi, radiosity Ji and view factor Fij,
+
+AiFij = AjFji,
+�
+
+j
+Fij = 1,
+(11)
+
+Ji = ϵiσSBT 4
+i + (1 −ϵi)
+�
+
+j
+FijJj,
+Qrad,i = Ai
+
+
+
+�
+
+j
+FijJj −Ji
+
+
+
+.
+(12)
+
+σSB = 5.670374419 10−8 W m−2K−4. Heat is positive into a surface. Deterministic scrambled
+low-discrepancy area/cosine-direction rays terminate on the first opaque proxy surface. Parallel
+upward faces, coplanar roof/window faces and convex self-views remain blocked. The concave wall
+can view itself. Raw exchange areas are symmetrized and symmetrically balanced for reciprocity
+and closure, retaining pairs unseen in both directions as zero. Both raw and corrected matrices are
+retained; conservation does not conceal the correction.
+
+The gas path is a passive chord network, not a solved diffusion or rarefied-gas field:
+
+Gij = kg(Tij)AiFij
+
+ℓij + 2δij
+,
+Qg,i =
+�
+
+j
+Gij(Tj −Ti),
+(13)
+
+δij = 2 −a
+
+a
+2γ
+γ + 1
+λ
+Pr,
+λ = µ
+
+p
+
+�
+
+πRgTij
+
+2
+,
+(14)
+
+µ =
+kg
+cp + 1.25Rg
+,
+Pr = µcp
+
+kg
+.
+(15)
+
+Tij = (Ti + Tj)/2 is the pair mean, γ = cp/cv is the heat-capacity ratio, and Pr is the dimensionless
+Prandtl number. ℓij is a symmetric area-weighted ray chord in m, G is W K−1, a is accommodation
+(assumed 0.8), p is Pa, Rg and cp are J kg−1K−1, and µ is Pa s. The viscosity relation is an Eucken
+engineering closure, not independent measured viscosity. At p = 0, gas exchange is exactly zero;
+at small pressure it scales approximately with p. At large pressure it tends to the stated Fourier
+network limit. Neither limiting check validates the network’s physical geometry approximation.
+
+The NIST gas conductivity tabulation [5] supplies N2/Ar/Kr values at 200, 300 and 400 K. At 300 K,
+kg is 0.0259, 0.0177 and 0.0095 W m−1K−1 respectively. Interpolation is bounded; 180–200 K uses an
+explicitly flagged T 0.75 engineering continuation. No accurate accommodation, mixture/Xe transport,
+natural convection or production backfill optimum is established. The window is internally opaque
+gray; imposed absorbed heat is not a prediction of transmission.
+
+21
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+13.2
+Ray refinement and conservative coupling
+
+104
+
+Rays per surface
+
+0.040
+
+0.045
+
+0.050
+
+0.055
+
+0.060
+
+0.065
+
+0.070
+
+Maximum absolute F correction
+
+104
+
+Rays per surface
+
+0.14
+
+0.16
+
+0.18
+
+0.20
+
+0.22
+
+0.24
+
+0.26
+
+0.28
+
+0.30
+
+Heat into die (mW)
+
+Gas chord network
+Gray radiation
+
+Figure 17: Bounded proxy-ray refinement at fixed package temperatures 300/270/240/220/221 K
+and 300 K reservoirs. Left: maximum absolute correction applied to a view factor during reciprocal
+closure. Right: resulting die gas and radiation heat input. These are deterministic refinement
+diagnostics, not statistical uncertainty bands or native-cavity error estimates.
+
+From 4,096 to 16,384 to 65,536 rays per surface, the largest absolute view-factor corrections are
+0.07335, 0.05292 and 0.04043. The last value is still a 4.04-percentage-point correction. Die gas inputs
+are 0.136161, 0.139590 and 0.140812 mW, and radiation inputs 0.289628, 0.293933 and 0.293511 mW.
+Last-level changes are approximately 0.88% gas and 0.14% radiation. This does not qualify spatial
+view-factor accuracy; the filled-core model-form error is not estimated by ray refinement.
+
+Every surface and effective-node exchange conserves heat to below 10−10 W. Mapping surface heat
+back to package/reservoir nodes uses the same nonnegative temperature weights and preserves total
+power. Heat exchanged with the hot ceramic is included in the sink equation, not misapplied to the
+detector. Warm reservoirs are held at ambient; cap temperature gradients and their external cooling
+are not solved.
+
+Independent two-plate gray-radiation, equal-temperature, zero-emissivity, vacuum, low-pressure
+scaling, high-pressure network, geometry-ownership and blocked-ray controls check implementation.
+Rejected material-domain and temperature-bound cases remain explicit. Exact reciprocal closure is
+a necessary consistency property, not proof of a physically accurate cavity operator.
+
+22
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+14
+Operating scenarios, electrical demand and rejected states
+
+All reduced scenario families use 300 K ambient and 2 mW die heat. The low-parasitic family has
+vacuum, cap/window emissivities 0.08/0.05, 0.5 K W−1 sink and 0.75 times nominal Au conductance.
+The nominal family has 30 kPa Kr, emissivities 0.2/0.1 and a 2 K W−1 sink. The high-parasitic family
+uses 101.325 kPa N2, emissivities 0.65/0.6, a 5 K W−1 sink, 1.25 times Au conductance and 1.5 times
+gas-network conductance. Several hypotheses change together; these families are not probability
+bounds.
+
+At 0.15 A
+Die (K)
+Terminal (V)
+Input (mW)
+Sink (mW)
+
+Low-parasitic vacuum
+230.975
+1.15443
+173.164
+179.253
+Nominal Kr
+232.209
+1.15193
+172.790
+182.196
+High-parasitic nitrogen
+235.031
+1.14554
+171.830
+187.787
+
+These values use nonlinear 32-interval legs and the 65,536-ray filled-core exchange proxy. They are
+conditional engineering predictions. At the nominal point the hot ceramic is 300.364 K, intermediate
+temperatures are 268.059 and 246.537 K, and the cold ceramic is 232.104 K. The die is warmer by
+approximately 0.105 K because its attach carries both imposed and parasitic heat.
+
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Series current (A)
+
+180
+
+200
+
+220
+
+240
+
+260
+
+280
+
+300
+
+Die temperature (K)
+
+Low parasitic, vacuum
+Nominal Kr
+High parasitic, N2
+
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Series current (A)
+
+0
+
+1
+
+2
+
+3
+
+4
+
+5
+
+Terminal electrical power (W)
+
+Figure 18: Reduced nonlinear/proxy scenario sweeps from 0 to 1 A in 0.05 A increments. Missing
+intervals are numerical rejections, not interpolated operating data. Curves do not represent three-
+dimensional cavity solutions, measured performance or qualified continuous optima.
+
+Of 63 attempted points, 52 pass the reduced-model numerical gates and 11 remain rejected. Ten
+are lower-bound residual failures; the high-parasitic 1 A attempt rejects a leg profile at its active
+temperature domain. A failed candidate does not prove that no physical operating state exists. The
+imposed 180 K model floor also prevents interpreting accepted grid minima as unrestricted cooling
+optima. No source curve is silently extended below that floor.
+
+23
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+14.1
+Material and closure comparisons at matched current
+
+At nominal 0.15 A, the constant P/N proxy with the older effective-reservoir model gives die 243.280 K
+and 0.84437 V. The source analog with affine temperature gives 231.202 K and 1.15539 V. Direct
+nonlinear transport with the same older reservoir closure gives 231.192 K and 1.15642 V. Adding the
+current filled-core closure gives 232.209 K and 1.15193 V. These alternatives change grade assumptions
+and/or package reduction; none establishes which hypothesis matches an unknown manufactured
+unit.
+
+The approximately 12 K constant-to-analog difference is far larger than the 0.010 K affine-to-nonlinear
+change at this low-current point. At higher current the affine approximation can become materially
+inaccurate. The enclosure change at 0.15 A raises the nominal die by approximately 1.018 K; that
+shift includes changed surfaces, chords, reservoir paths and visibility assumptions, rather than a
+single independently measured physical mechanism.
+
+The constant solid-only reduced case at 0.1 A and 2 mW gives 257.756 K and 0.58561 V when the hot
+ceramic is held at 300 K. The genuine three-dimensional case holds only the Kovar underside at 300 K
+and gives 265.593 K and 0.55194 V on its original mesh. Their difference is not a matched-boundary
+error estimate: spatial spreading, bypass and joint/header paths differ. It is retained as a warning
+about reduced-model structural omissions, not fitted away.
+
+14.2
+Meaning of apparent numerical precision
+
+Several tables retain extra digits to distinguish solved states and audit balances. Without identified
+material grades, contact impedances, die loading, accommodation and reservoir conditions, such
+digits do not provide a physical accuracy interval. A microkelvin-scale change in an output can
+coexist with a failed raw spatial flux criterion, as the solid refinements demonstrate. A small
+reduced-model residual similarly cannot certify a real detector temperature.
+
+24
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+15
+Heat budgets and dominant paths
+
+At nominal 0.15 A, total die heat is 3.507 mW: the 2 mW imposed source plus approximately 1.507 mW
+gas/radiation/Au input. The cold ceramic also absorbs approximately 2.614 mW, so the coldest
+stage removes approximately 6.121 mW. Interstage loads accumulate toward the hot stage.
+
+Intermediate 1
+Intermediate 2
+Cold ceramic
+Die
+0.0
+
+0.5
+
+1.0
+
+1.5
+
+2.0
+
+2.5
+
+3.0
+
+3.5
+
+Heat input (mW)
+
+Gas
+Radiation
+
+Au conduction
+Imposed die heat
+
+Figure 19: Net positive heat loads at the four cold/intermediate reduced nodes for nominal 0.15 A
+Kr. Attach transfer and interstage thermoelectric flows are internal and are not stacked again as
+external loads. Vertical proxy surfaces distribute heat using their stated node weights.
+
+Stage
+Qc (mW)
+Qh (mW)
+V (V)
+Joule heat (mW)
+
+1
+56.508
+185.594
+0.86057
+76.029
+2
+17.432
+53.053
+0.23748
+21.241
+3
+6.121
+14.119
+0.05332
+4.921
+
+Whole reduced device, signed inputs
+Power (mW)
+
+Terminal electrical input
++172.789624
+Imposed die heat
++2.000000
+Net header/cap/window heat into device
++9.021852
+Au warm-end conduction into die
++1.117526
+Cu pin-end thermal input (signed)
+-2.732546
+Heat rejected at effective sink
++182.196456
+
+The first five signed entries sum to sink rejection. Warm-reservoir power is explicitly accounted for;
+it is not part of terminal electrical input. The hot-side Cu connection carries heat outward because
+the pad is warmer than its ambient pin. The nominal global discrepancy is below 10−11 W; the
+maximum over accepted proxy grid points is approximately 1.41 10−11 W. Those figures establish
+bookkeeping consistency, not a physical heat-leak uncertainty.
+
+25
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+16
+Sensitivity, model-form uncertainty and physical interpretation
+
+0.0
+2.5
+5.0
+7.5
+10.0
+12.5
+15.0
+17.5
+Absolute endpoint temperature difference (K)
+
+Attach conductivity, 0.5–3 W/(m K)
+
+Au conductance, 0.75–1.25 ×
+
+Cap emissivity, 0.08–0.65
+
+Sink resistance, 0.5–5 K/W
+
+Gas-network scale, 0.5–1.5 ×
+
+Kr pressure, vacuum–101 kPa
+
+Bias heat, 0.5–5 mW
+
+P/N resistivity, 0.8–1.2 ×
+
+Seebeck coefficient, 0.9–1.1 ×
+
+P/N thermal conductivity, 0.8–1.2 ×
+
+Figure 20: One-factor engineering endpoint spans about nominal 0.15 A, with nonlinear transport
+and the filled-core closure. Trial intervals are shown explicitly. They are chosen hypothesis ranges,
+not probability distributions or confidence intervals. Different trial widths would change the ranking.
+
+P/N thermal conductivity scaled from 0.8 to 1.2 times the selected law changes the die by 18.900 K;
+Seebeck scaled from 0.9 to 1.1 changes it by 11.142 K. Resistivity scaled 0.8–1.2 gives 2.371 K, and
+bias heat from 0.5 to 5 mW gives 2.226 K. In this particular closure, vacuum to 101.325 kPa Kr spans
+0.721 K, sink resistance 0.5–5 K W−1 spans 0.446 K, and cap emissivity 0.08–0.65 spans 0.413 K.
+
+These results support prioritizing grade/contact and loading hypotheses when interpreting absolute
+cooling. They do not prove that real gas or radiation is negligible: the proxy omits interleg spaces,
+pin/wire occlusion, nonisothermal cap behavior and physical gas diffusion. Its geometry/model-form
+error is distinct from the reported ray-refinement changes. Ideal contacts and zero additional stage
+bypass also leave unresolved paths that can change both cooling and voltage.
+
+Unknown construction and operating inputs should therefore be treated as alternative engineering
+hypotheses. Independent thermal/electrical measurements would constrain them, but absent pro-
+prietary data need not prevent bounded synthetic studies. Empirical comparison, when available,
+requires matched boundary temperature, current, imposed load and ambient conditions. No inferred
+confidence interval or commercial performance claim follows from the present sensitivity spans.
+
+26
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+17
+Overall verification and engineering conclusions
+
+Assessment
+Result
+Interpretation
+
+Three-dimensional ge-
+ometry/current
+PASS
+numerical
+checks
+Corrected mesh and 177 interior current cuts
+
+Three-dimensional
+weak heat/free residu-
+als
+
+PASS
+numerical
+checks
+Algebraic and control-volume consistency
+
+Original cold/bath raw
+criteria
+
+FAIL overall
+Initial 6.48% cold; best normal bath 1.069%; later transverse
+about 1.29%
+Same-mesh
+re-
+lease/comparator
+Not demonstrated
+Both raw limits and all other checks are still required
+
+Bounded nonlinear leg
+transport
+PASS tested com-
+parisons
+Same-grid/analytical/refined numerical checks; not grade
+validation
+Reduced package con-
+servation
+PASS
+numerical
+checks
+Accepted states meet unchanged energy/domain gates; re-
+jected candidates retained
+Proxy
+visibil-
+ity/reciprocity/closure
+PASS
+consistency
+checks
+Closed filled-core rays and balanced exchange; 0.04043 max-
+imum last-level correction
+Native full-cavity ex-
+change
+Not implemented
+No actual all-surface view factors, gas diffusion or new cou-
+pled cavity field
+Material and device ac-
+curacy
+Not established
+Research analogs, assumed extensions and construction re-
+main uncertain
+
+17.1
+Engineering conclusions
+
+The source-referenced solid model demonstrates a two-terminal 88-leg coupled calculation with
+meaningful electrical/heat verification, while exposing unresolved raw boundary gradients. Stable
+temperature and voltage do not remove the original release failures. The direct nonlinear transport
+option markedly improves high-current consistency with a refined one-dimensional reference at
+practical scenario cost. Its physical grade and high-temperature continuation remain assumptions.
+
+The preliminary enclosure operator makes reservoir heat exchange explicit and conservative, and
+records its geometric corrections. Its filled-core closure is useful for bounded comparisons, but it
+should not be interpreted as an accurate hermetic-cavity field. Native interleg/pin surfaces, contact
+and bypass paths, and cap reservoir behavior are the important unresolved physical descriptions. A
+large geometry refinement alone cannot establish their correctness.
+
+For the specified nominal reduced scenario, approximately 232.2 K die temperature, 0.173 W electrical
+input and 0.182 W sink rejection describe one conditional synthetic operating point. Material-law
+and imposed-load sensitivity dominate the chosen scenario spans. Neither an optimum current nor a
+defensible device-performance confidence interval is established. The assessment supports transparent
+engineering exploration while maintaining a clear boundary between computation, hypothesis and
+measurement.
+
+17.2
+Reproducible scientific method
+
+The three-dimensional figures use exact intersections of stored tetrahedra and solved fields, with
+independent node/cell correspondence; voids are retained. The reduced figures are calculated from
+completed scenario data and independent boundary-value comparisons, with failures visible. Native
+candidate geometry is audited separately from the proxy. Sources, numerical inputs, archived field
+identities and deterministic figure/build records are retained outside the reader-facing pages. No
+field is invented to draw a figure and no additional production solve is implied by a figure rebuild.
+
+27
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+References
+
+[1] VIGO Photonics, 3TE-TO66(9p)-wW PVI/PCI Detector Technical Drawing, ZTM-TO66-Z030,
+Revision 9, 1 March 2024. Public family drawing; no identified composite assembly.
+
+[2] TEC Microsystems, 3MC04-044-05 Thermoelectric Cooler Datasheet, 2019. Independent candi-
+date cooler envelope.
+
+[3] E. M. Heckman, L. P. Gonzalez and S. Guha, Measurement of optical and thermal properties
+of Hg1−xCdxTe, Applied Optics 47, 578–582 (2008), doi:10.1364/AO.47.000578. Composition-
+dependent thermal model.
+
+[4] J. Zhang et al., Accurate Measurements and Error Analysis of Bi2Te3-Based Low-Temperature
+Thermoelectrics, Chinese Physics Letters 42, 056304 (2025), doi:10.1088/0256-307X/42/5/056304.
+Digitized P/N specimen transport, 40–300 K; no commercial grade identification.
+
+[5] M. L. Huber, Thermal Conductivity of Gases, NIST/CRC (2019), NIST thermophysical-property
+tabulation. Dilute-gas conductivity data; package transport is separately approximated.
+
+28
+
+
