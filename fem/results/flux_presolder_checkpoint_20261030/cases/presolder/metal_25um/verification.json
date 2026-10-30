@@ -1,0 +1,85 @@
+{
+  "nodes": 396,
+  "tetrahedra": 1500,
+  "temperature_min_k": 300.0,
+  "temperature_max_k": 310.00000000000006,
+  "bottom_raw_out_w": 0.1396035152572422,
+  "top_raw_out_w": -0.139603515257252,
+  "bottom_reaction_out_w": 0.13960351525724132,
+  "top_reaction_out_w": -0.1396035152572938,
+  "volume_source_w": 0.0,
+  "free_residual_l1_w": 1.2208859140674932e-12,
+  "solver_status": {
+    "command": [
+      "ElmerSolver",
+      "case.sif"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 0.12155257095582783
+  },
+  "solver_executed": true,
+  "source_sha256": {
+    "tecooledmct/flux_presolder_common.py": "75de9ae493dbb4af505582d613c4e724d02fb667d1ebae77ed94ae8ba4fd07df",
+    "tecooledmct/flux_presolder_coupon.py": "4ec7c7d983e0ee5bf42b853188627e39de7d9987bdea54360649dc124712e4f9"
+  },
+  "sif_sha256": "3482f96251e4ccad542741785ed17fc6f8e3ac5e7454cb50ec5e1482f84c8c89",
+  "vtu_sha256": "29c9e44e6e22c87d1986e66d43da6bdb1b0d9500ef363e0599c20178c59f1aaf",
+  "field_source": "elmer/fields_t0001.vtu",
+  "mesh_sha256": "0da715eb649615dcaf30e5551465625747b9776cafb2bc52962eb15df6ca2ae2",
+  "node_mapping_max_m": 2.655742100606481e-19,
+  "metadata": {
+    "type": "isolated full-wetted 3D Kovar/presolder/alumina thermal coupon",
+    "layers": [
+      {
+        "name": "Kovar",
+        "thickness_m": 0.0011,
+        "k_w_mk": 17.3,
+        "cells_through_thickness": 4
+      },
+      {
+        "name": "unidentified_metallic_presolder",
+        "thickness_m": 2.5e-05,
+        "k_w_mk": 35.0,
+        "cells_through_thickness": 2
+      },
+      {
+        "name": "Alumina",
+        "thickness_m": 0.00022,
+        "k_w_mk": 30.0,
+        "cells_through_thickness": 4
+      }
+    ],
+    "electrical": "HeatSolve only, no electrical PDE or TEC conductor; alumina separates metal regions in prospective stack; no shorting claim for unrun full device",
+    "contact_representation": "finite 2um resistance films k=film_t/Rdoubleprime; continuous T, not zero-thickness jump condition",
+    "material_law": "frozen sourced/proxy reference values over assumed numerical300..310K interval, not measured k(T)",
+    "contact_Rdoubleprime_m2K_W": [
+      0.0,
+      0.0
+    ]
+  },
+  "reaction_energy_error_w": -5.2485793489154275e-14,
+  "analytic_R_K_W": 71.63143407652079,
+  "expected_out_w": 0.13960351525724626,
+  "raw_relative_error": -2.902730660051543e-14,
+  "interface_planes": [
+    {
+      "layer": "Kovar",
+      "analytic_drop_k": 8.87652409150121,
+      "actual_top_plane_mean_k": 308.87652409150064,
+      "analytic_top_plane_k": 308.8765240915012
+    },
+    {
+      "layer": "unidentified_metallic_presolder",
+      "analytic_drop_k": 0.09971679661231292,
+      "actual_top_plane_mean_k": 308.97624088811307,
+      "analytic_top_plane_k": 308.9762408881135
+    },
+    {
+      "layer": "Alumina",
+      "analytic_drop_k": 1.023759111886477,
+      "actual_top_plane_mean_k": 310.0,
+      "analytic_top_plane_k": 310.0
+    }
+  ],
+  "passed": true
+}

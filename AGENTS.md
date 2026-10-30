@@ -388,3 +388,29 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   --out outputs/g3b-reproduced avoids overwriting immutable published evidence.
 - Continue in TE_Cooled_MCT and existing sim; unchanged pinned Docker/wrappers,
   four CPU/12GiB, network-none. No LSDDTS, host packages or unrelated repositories.
+
+## Scoped bath-flux / presolder continuation, 2026-10-30
+
+- Read docs/PHASE1_FLUX_AND_PRESOLDER_RESULT.md,
+  docs/PHASE1_BATH_FLUX_QUALIFICATION.md and docs/REPRO_FLUX_PRESOLDER.md.
+  New code is flux_presolder_common/diagnosis/coupon; do not modify G1-G3b modules.
+- Independent archived-field bath reconstruction reproduces coarse0.42015% and
+  rejected fine1.65587/1.51412/1.58383%. All bath faces are Kovar; glass/pin bath
+  area is zero. Nodal reaction allocation is descriptive, not local true flux.
+  Exact discrete residual identity attributes fine discrepancy mainly to weighted
+  internal P1 gradient jumps, with smaller other-exterior raw flux. No correction
+  or general equilibrated recovery is qualified; original raw1% gate remains.
+- Six actual3D analytic junction benchmarks verify signs and axial raw convergence
+  4.167→0.521%; benchmark-only quadratic temperature recovery is not device flux.
+  Eight actual3D full-wetted presolder coupons verify series resistance, separate
+  contact films, continuum/zero-contact and thin-layer refinement. Full99 opt-in
+  tests, CLI quick and geometry-demo pass. Coupons are HeatSolver only.
+- Physical presolder presence is confirmed; actual alloy/wetting/k(T)/contacts are
+  unknown. New vendor examples and hypothetical ranges are not measured package
+  inputs or assembly recommendations. Full-stack metallic presolder is NOT solved;
+  the original50um/k2 mount and coupled88-leg fields remain unchanged.
+- New scoped archive is fem/results/flux_presolder_checkpoint_20261030. Preserve
+  its sources/snapshots/fields and development failures. Do not reinterpret its
+  benchmark PASS as full G3b, device accuracy or local sharp-junction convergence.
+- Keep the15-page Revision2 PDF and all reports/ files unchanged until genuinely
+  qualified device physics exists. No LSDDTS/other repository or session work.

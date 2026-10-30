@@ -1,0 +1,73 @@
+{
+  "nodes": 468,
+  "tetrahedra": 1800,
+  "temperature_min_k": 299.99999999999994,
+  "temperature_max_k": 310.0000000000001,
+  "bottom_raw_out_w": 0.12928963654419254,
+  "top_raw_out_w": -0.12928963654394524,
+  "bottom_reaction_out_w": 0.12928963654419356,
+  "top_reaction_out_w": -0.12928963654397604,
+  "volume_source_w": 0.0,
+  "free_residual_l1_w": 1.3192496140651544e-12,
+  "solver_status": {
+    "command": [
+      "ElmerSolver",
+      "case.sif"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 0.13321375893428922
+  },
+  "solver_executed": true,
+  "source_sha256": {
+    "tecooledmct/flux_presolder_common.py": "75de9ae493dbb4af505582d613c4e724d02fb667d1ebae77ed94ae8ba4fd07df",
+    "tecooledmct/flux_presolder_coupon.py": "4ec7c7d983e0ee5bf42b853188627e39de7d9987bdea54360649dc124712e4f9"
+  },
+  "sif_sha256": "fd6fbde794c582fe6811563dd9bb9a019d41cdca967c11a04cd2c7a07d4a0a28",
+  "vtu_sha256": "7cc2c07bf8c6b35786a88fc1ed4a3b2acac9475350c9cd60d981c0359bb07ce5",
+  "field_source": "elmer/fields_t0001.vtu",
+  "mesh_sha256": "acf2c3ccaffe926952ec923a7ddd02b9cb26fecf3a4ec2b2001832fe95483a72",
+  "node_mapping_max_m": 2.655742100606481e-19,
+  "metadata": {
+    "type": "isolated full-wetted 3D Kovar/presolder/alumina thermal coupon",
+    "layers": [
+      {
+        "name": "Kovar",
+        "thickness_m": 0.0011,
+        "k_w_mk": 17.3,
+        "cells_through_thickness": 4
+      },
+      {
+        "name": "contact_film_1",
+        "thickness_m": 2e-06,
+        "k_w_mk": 1.0,
+        "cells_through_thickness": 1
+      },
+      {
+        "name": "unidentified_metallic_presolder",
+        "thickness_m": 5e-05,
+        "k_w_mk": 35.0,
+        "cells_through_thickness": 2
+      },
+      {
+        "name": "contact_film_2",
+        "thickness_m": 2e-06,
+        "k_w_mk": 0.6666666666666666,
+        "cells_through_thickness": 1
+      },
+      {
+        "name": "Alumina",
+        "thickness_m": 0.00022,
+        "k_w_mk": 30.0,
+        "cells_through_thickness": 4
+      }
+    ],
+    "electrical": "HeatSolve only, no electrical PDE or TEC conductor; alumina separates metal regions in prospective stack; no shorting claim for unrun full device",
+    "contact_representation": "finite 2um resistance films k=film_t/Rdoubleprime; continuous T, not zero-thickness jump condition",
+    "material_law": "frozen sourced/proxy reference values over assumed numerical300..310K interval, not measured k(T)",
+    "contact_Rdoubleprime_m2K_W": [
+      2e-06,
+      3e-06
+    ]
+  },
+  "reaction_energy_error_w": 2.175204460996838e-13
+}

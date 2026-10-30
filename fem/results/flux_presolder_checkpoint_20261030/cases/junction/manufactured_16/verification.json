@@ -1,0 +1,47 @@
+{
+  "nodes": 3281,
+  "tetrahedra": 15360,
+  "temperature_min_k": 299.9999999999999,
+  "temperature_max_k": 310.00000000000006,
+  "bottom_raw_out_w": 1.0509869961431753,
+  "top_raw_out_w": -0.38014423264793373,
+  "bottom_reaction_out_w": 1.073348421592947,
+  "top_reaction_out_w": -0.3577828071979715,
+  "volume_source_w": 0.7155656143953978,
+  "free_residual_l1_w": 5.67191827766057e-12,
+  "solver_status": {
+    "command": [
+      "ElmerSolver",
+      "case.sif"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 0.24929160601459444
+  },
+  "solver_executed": true,
+  "source_sha256": {
+    "tecooledmct/flux_presolder_common.py": "75de9ae493dbb4af505582d613c4e724d02fb667d1ebae77ed94ae8ba4fd07df",
+    "tecooledmct/flux_presolder_coupon.py": "4ec7c7d983e0ee5bf42b853188627e39de7d9987bdea54360649dc124712e4f9"
+  },
+  "sif_sha256": "a511064140f73cf02d81558e05b5aeb8e04df2883e61ed6e8fd62fe416a635c5",
+  "vtu_sha256": "87260ac4c78227902b2697cebda1b2306e880baaa477c34b2d775e78274c1cb3",
+  "field_source": "elmer/fields_t0001.vtu",
+  "mesh_sha256": "ccf8ce312e6f78b1e841a6a4b000fdaaacd56d9eb2517ab013fb4016311c2e86",
+  "node_mapping_max_m": 4.688620191797035e-15,
+  "metadata": {
+    "type": "3D coaxial Kovar/glass/pin junction benchmark",
+    "axial_layers": 16,
+    "quadratic_amplitude_k": 5.0,
+    "manufactured_solution": "300 + delta*z/L + amplitude*z/L*(1-z/L)",
+    "lateral_interfaces": "vertical, continuous T and zero normal interface flux; NOT the full-device protruding pin corner"
+  },
+  "reaction_energy_error_w": -4.2232883856740955e-13,
+  "expected_bottom_out_w": 1.0733484215930964,
+  "raw_relative_error": -0.020833333333393864,
+  "max_temperature_error_k": 3.183231456205249e-12,
+  "expected_raw_relative_error_uniform_axial": -0.020833333333333332,
+  "conductance_on_actual_polygon_w_k": 0.07155656143953976,
+  "recovered_bottom_out_w": 1.0733484215929456,
+  "recovered_relative_error": -1.4046537332241227e-13,
+  "recovery_scope": "temperature-only one-sided quadratic axial derivative on aligned extrusion; independent of weak reactions, not general conservative RT0 recovery",
+  "passed": true
+}

@@ -1,0 +1,38 @@
+{
+  "nodes": 1737,
+  "tetrahedra": 7680,
+  "temperature_min_k": 299.99999999999994,
+  "temperature_max_k": 310.0000000000001,
+  "bottom_raw_out_w": 1.0286255706935234,
+  "top_raw_out_w": -0.4025056580973548,
+  "bottom_reaction_out_w": 1.0733484215931663,
+  "top_reaction_out_w": -0.35778280719758504,
+  "volume_source_w": 0.7155656143953968,
+  "free_residual_l1_w": 3.2635243799703667e-12,
+  "solver_status": {
+    "command": [
+      "ElmerSolver",
+      "case.sif"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 0.18870740197598934
+  },
+  "solver_executed": true,
+  "source_sha256": {
+    "tecooledmct/flux_presolder_common.py": "75de9ae493dbb4af505582d613c4e724d02fb667d1ebae77ed94ae8ba4fd07df",
+    "tecooledmct/flux_presolder_coupon.py": "4ec7c7d983e0ee5bf42b853188627e39de7d9987bdea54360649dc124712e4f9"
+  },
+  "sif_sha256": "7f763155cd46c50bebd72c61fd1b51c84e995eea36c2fafbd91213b15ea22dcb",
+  "vtu_sha256": "3b40e326e3d8e0dca19dd0a5f0eac264796ac1548a2a37eeff7eb585ed9969af",
+  "field_source": "elmer/fields_t0001.vtu",
+  "mesh_sha256": "5fc9b0bd70fe7f6529c4512bb2ec6a5f6f2d33b659d19ebfa532d3c9e069008b",
+  "node_mapping_max_m": 4.688620191797035e-15,
+  "metadata": {
+    "type": "3D coaxial Kovar/glass/pin junction benchmark",
+    "axial_layers": 8,
+    "quadratic_amplitude_k": 5.0,
+    "manufactured_solution": "300 + delta*z/L + amplitude*z/L*(1-z/L)",
+    "lateral_interfaces": "vertical, continuous T and zero normal interface flux; NOT the full-device protruding pin corner"
+  },
+  "reaction_energy_error_w": 1.8451906669270102e-13
+}

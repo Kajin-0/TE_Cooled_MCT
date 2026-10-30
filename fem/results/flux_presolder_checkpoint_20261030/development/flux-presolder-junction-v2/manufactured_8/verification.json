@@ -1,0 +1,47 @@
+{
+  "nodes": 16263,
+  "tetrahedra": 85152,
+  "temperature_min_k": 299.9999999999999,
+  "temperature_max_k": 310.0000000000001,
+  "bottom_raw_out_w": 1.0286255706929093,
+  "top_raw_out_w": -0.4025056580978088,
+  "bottom_reaction_out_w": 1.0733484215926217,
+  "top_reaction_out_w": -0.3577828071980932,
+  "volume_source_w": 0.7155656143953968,
+  "free_residual_l1_w": 1.179581218104661e-11,
+  "solver_status": {
+    "command": [
+      "ElmerSolver",
+      "case.sif"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 2.152078836923465
+  },
+  "solver_executed": true,
+  "source_sha256": {
+    "tecooledmct/flux_presolder_common.py": "53ad54b8e21d2ee429cca108df93da2feffcabbf150eb82639d7da67e021de36",
+    "tecooledmct/flux_presolder_coupon.py": "0a891d0db461f21d7c6aed71296c747331b097b0b007220b5da191620e94139f"
+  },
+  "sif_sha256": "7ed1b2b6799aded81791f9fbfceaa002035ff1a36e80342227b7d3cf12159481",
+  "vtu_sha256": "4e5df9e2966404d01f87ec10af2a178ff8e66d0ff42fc8886fd1ed057f3abc6a",
+  "field_source": "elmer/fields_t0001.vtu",
+  "mesh_sha256": "e64952beebd0ebfbe79758a1ace1099f7be619c1e45a73e235763b3fe2cbe0f5",
+  "node_mapping_max_m": 4.914239220417229e-15,
+  "metadata": {
+    "type": "3D coaxial Kovar/glass/pin junction benchmark",
+    "axial_layers": 8,
+    "quadratic_amplitude_k": 5.0,
+    "manufactured_solution": "300 + delta*z/L + amplitude*z/L*(1-z/L)",
+    "lateral_interfaces": "vertical, continuous T and zero normal interface flux; NOT the full-device protruding pin corner"
+  },
+  "reaction_energy_error_w": -8.683054275593349e-13,
+  "expected_bottom_out_w": 1.0733484215930962,
+  "raw_relative_error": -0.041666666667108804,
+  "max_temperature_error_k": 3.200284481863491e-11,
+  "expected_raw_relative_error_uniform_axial": -0.041666666666666664,
+  "conductance_on_actual_polygon_w_k": 0.07155656143953974,
+  "recovered_bottom_out_w": 1.0733484215925202,
+  "recovered_relative_error": -5.366232377000553e-13,
+  "recovery_scope": "temperature-only one-sided quadratic axial derivative on aligned extrusion; independent of weak reactions, not general conservative RT0 recovery",
+  "passed": true
+}

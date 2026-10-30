@@ -1,0 +1,18 @@
+/work/tecooledmct/flux_presolder_coupon.py:128: DeprecationWarning: Arrays of 2-dimensional vectors are deprecated. Use arrays of 3-dimensional vectors instead. (deprecated in NumPy 2.0)
+  out.mkdir(parents=True,exist_ok=False);p2,tri,body=circle_mesh();L=.0011;k={1:17.3,2:1.,3:17.3};areas=np.abs(np.cross(p2[tri[:,1]]-p2[tri[:,0]],p2[tri[:,2]]-p2[tri[:,0]]))/2
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/flux_presolder_coupon.py", line 192, in <module>
+    parser=argparse.ArgumentParser();parser.add_argument('kind',choices=['junction','presolder']);parser.add_argument('--out',type=Path,required=True);args=parser.parse_args();main(args.out.resolve(),args.kind)
+                                                                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/flux_presolder_coupon.py", line 188, in main
+    if kind=='junction':junction(out)
+                        ^^^^^^^^^^^^^
+  File "/work/tecooledmct/flux_presolder_coupon.py", line 133, in junction
+    result,t,_,_,_=solve(out/label,p,c,b,k,source,top=300+delta,metadata={'type':'3D coaxial Kovar/glass/pin junction benchmark','axial_layers':n,'quadratic_amplitude_k':amplitude,'manufactured_solution':'300 + delta*z/L + amplitude*z/L*(1-z/L)','lateral_interfaces':'vertical, continuous T and zero normal interface flux; NOT the full-device protruding pin corner'})
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/flux_presolder_coupon.py", line 99, in solve
+    field_path=sorted(out.glob('fields*.vtu'))[-1];field=meshio.read(field_path);ix,distance=node_map(p,field.points)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^
+IndexError: list index out of range

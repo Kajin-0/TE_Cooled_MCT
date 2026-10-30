@@ -1,0 +1,61 @@
+{
+  "nodes": 396,
+  "tetrahedra": 1500,
+  "temperature_min_k": 299.99999999999994,
+  "temperature_max_k": 310.0000000000001,
+  "bottom_raw_out_w": 0.13822517806053888,
+  "top_raw_out_w": -0.13822517806027385,
+  "bottom_reaction_out_w": 0.13822517806053752,
+  "top_reaction_out_w": -0.13822517806027668,
+  "volume_source_w": 0.0,
+  "free_residual_l1_w": 1.0752332184338353e-12,
+  "solver_status": {
+    "command": [
+      "ElmerSolver",
+      "case.sif"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 0.11713898298330605
+  },
+  "solver_executed": true,
+  "source_sha256": {
+    "tecooledmct/flux_presolder_common.py": "75de9ae493dbb4af505582d613c4e724d02fb667d1ebae77ed94ae8ba4fd07df",
+    "tecooledmct/flux_presolder_coupon.py": "4ec7c7d983e0ee5bf42b853188627e39de7d9987bdea54360649dc124712e4f9"
+  },
+  "sif_sha256": "0068a5ad379536fd4af4a34fb56e8866baee14510eca5b37a94af98de439f507",
+  "vtu_sha256": "87ef5fbadb39821cc031c7bd4da35bd33b3dbd6df41214dc1aab0d02edc7cf9e",
+  "field_source": "elmer/fields_t0001.vtu",
+  "mesh_sha256": "73e6757a553aface606b8a0cc07823e71b2f59e2a4534e926c00b5280c7e60c3",
+  "node_mapping_max_m": 2.655742100606481e-19,
+  "metadata": {
+    "type": "isolated full-wetted 3D Kovar/presolder/alumina thermal coupon",
+    "layers": [
+      {
+        "name": "Kovar",
+        "thickness_m": 0.0011,
+        "k_w_mk": 17.3,
+        "cells_through_thickness": 4
+      },
+      {
+        "name": "unidentified_metallic_presolder",
+        "thickness_m": 5e-05,
+        "k_w_mk": 35.0,
+        "cells_through_thickness": 2
+      },
+      {
+        "name": "Alumina",
+        "thickness_m": 0.00022,
+        "k_w_mk": 30.0,
+        "cells_through_thickness": 4
+      }
+    ],
+    "electrical": "HeatSolve only, no electrical PDE or TEC conductor; alumina separates metal regions in prospective stack; no shorting claim for unrun full device",
+    "contact_representation": "finite 2um resistance films k=film_t/Rdoubleprime; continuous T, not zero-thickness jump condition",
+    "material_law": "frozen sourced/proxy reference values over assumed numerical300..310K interval, not measured k(T)",
+    "contact_Rdoubleprime_m2K_W": [
+      0.0,
+      0.0
+    ]
+  },
+  "reaction_energy_error_w": 2.6084689963568053e-13
+}

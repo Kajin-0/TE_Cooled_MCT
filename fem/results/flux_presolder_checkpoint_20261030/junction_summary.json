@@ -1,0 +1,296 @@
+{
+  "passed": true,
+  "genuine_solver_executions": 6,
+  "raw_gate_unchanged": 0.01,
+  "recovered_flux_implemented": "aligned-benchmark quadratic axial derivative only; full device recovery NOT qualified",
+  "full_device_qualified": false,
+  "cases": [
+    {
+      "nodes": 1737,
+      "tetrahedra": 7680,
+      "temperature_min_k": 299.99999999999994,
+      "temperature_max_k": 310.00000000000006,
+      "bottom_raw_out_w": 0.7155656143955321,
+      "top_raw_out_w": -0.7155656143953321,
+      "bottom_reaction_out_w": 0.715565614395428,
+      "top_reaction_out_w": -0.71556561439528,
+      "volume_source_w": 0.0,
+      "free_residual_l1_w": 3.462947327642087e-12,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 0.1951508680358529
+      },
+      "solver_executed": true,
+      "source_sha256": {
+        "tecooledmct/flux_presolder_common.py": "75de9ae493dbb4af505582d613c4e724d02fb667d1ebae77ed94ae8ba4fd07df",
+        "tecooledmct/flux_presolder_coupon.py": "4ec7c7d983e0ee5bf42b853188627e39de7d9987bdea54360649dc124712e4f9"
+      },
+      "sif_sha256": "ed61723f709a8ca94ddcc9ddc913b4723384e01e15983c6a344c7bb45f0a5303",
+      "vtu_sha256": "1479fbe0bf79dc5f173b20402c7ef5a3228651f648eca9f898e7cd761c41eea3",
+      "field_source": "elmer/fields_t0001.vtu",
+      "mesh_sha256": "5fc9b0bd70fe7f6529c4512bb2ec6a5f6f2d33b659d19ebfa532d3c9e069008b",
+      "node_mapping_max_m": 4.688620191797035e-15,
+      "metadata": {
+        "type": "3D coaxial Kovar/glass/pin junction benchmark",
+        "axial_layers": 8,
+        "quadratic_amplitude_k": 0.0,
+        "manufactured_solution": "300 + delta*z/L + amplitude*z/L*(1-z/L)",
+        "lateral_interfaces": "vertical, continuous T and zero normal interface flux; NOT the full-device protruding pin corner"
+      },
+      "reaction_energy_error_w": 1.4799272918253337e-13,
+      "expected_bottom_out_w": 0.7155656143953976,
+      "raw_relative_error": 1.880456912372206e-13,
+      "max_temperature_error_k": 1.057287590811029e-11,
+      "expected_raw_relative_error_uniform_axial": -0.0,
+      "conductance_on_actual_polygon_w_k": 0.07155656143953976,
+      "recovered_bottom_out_w": 0.7155656143953892,
+      "recovered_relative_error": -1.1636490794382462e-14,
+      "recovery_scope": "temperature-only one-sided quadratic axial derivative on aligned extrusion; independent of weak reactions, not general conservative RT0 recovery",
+      "passed": true
+    },
+    {
+      "nodes": 1737,
+      "tetrahedra": 7680,
+      "temperature_min_k": 289.9999999999999,
+      "temperature_max_k": 300.0000000000001,
+      "bottom_raw_out_w": -0.7155656143952315,
+      "top_raw_out_w": 0.7155656143953938,
+      "bottom_reaction_out_w": -0.7155656143953172,
+      "top_reaction_out_w": 0.715565614395485,
+      "volume_source_w": 0.0,
+      "free_residual_l1_w": 3.3518235862078742e-12,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 0.18600255995988846
+      },
+      "solver_executed": true,
+      "source_sha256": {
+        "tecooledmct/flux_presolder_common.py": "75de9ae493dbb4af505582d613c4e724d02fb667d1ebae77ed94ae8ba4fd07df",
+        "tecooledmct/flux_presolder_coupon.py": "4ec7c7d983e0ee5bf42b853188627e39de7d9987bdea54360649dc124712e4f9"
+      },
+      "sif_sha256": "5e576944ac03275655481017d1783ed2a24104d320039afae6077a323c00c863",
+      "vtu_sha256": "f273c2823b97a0460cde89cf90013651eadc53fae8e48e1952cca86efd683aea",
+      "field_source": "elmer/fields_t0001.vtu",
+      "mesh_sha256": "5fc9b0bd70fe7f6529c4512bb2ec6a5f6f2d33b659d19ebfa532d3c9e069008b",
+      "node_mapping_max_m": 4.688620191797035e-15,
+      "metadata": {
+        "type": "3D coaxial Kovar/glass/pin junction benchmark",
+        "axial_layers": 8,
+        "quadratic_amplitude_k": 0.0,
+        "manufactured_solution": "300 + delta*z/L + amplitude*z/L*(1-z/L)",
+        "lateral_interfaces": "vertical, continuous T and zero normal interface flux; NOT the full-device protruding pin corner"
+      },
+      "reaction_energy_error_w": 1.6786572132332367e-13,
+      "expected_bottom_out_w": -0.7155656143953976,
+      "raw_relative_error": 2.321092030452822e-13,
+      "max_temperature_error_k": 1.028865881380625e-11,
+      "expected_raw_relative_error_uniform_axial": -0.0,
+      "conductance_on_actual_polygon_w_k": 0.07155656143953976,
+      "recovered_bottom_out_w": -0.7155656143953145,
+      "recovered_relative_error": 1.160546015226411e-13,
+      "recovery_scope": "temperature-only one-sided quadratic axial derivative on aligned extrusion; independent of weak reactions, not general conservative RT0 recovery",
+      "passed": true
+    },
+    {
+      "nodes": 1737,
+      "tetrahedra": 7680,
+      "temperature_min_k": 299.99999999999994,
+      "temperature_max_k": 310.0000000000001,
+      "bottom_raw_out_w": 1.0286255706935234,
+      "top_raw_out_w": -0.4025056580973548,
+      "bottom_reaction_out_w": 1.0733484215931663,
+      "top_reaction_out_w": -0.35778280719758504,
+      "volume_source_w": 0.7155656143953968,
+      "free_residual_l1_w": 3.2635243799703667e-12,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 0.18870740197598934
+      },
+      "solver_executed": true,
+      "source_sha256": {
+        "tecooledmct/flux_presolder_common.py": "75de9ae493dbb4af505582d613c4e724d02fb667d1ebae77ed94ae8ba4fd07df",
+        "tecooledmct/flux_presolder_coupon.py": "4ec7c7d983e0ee5bf42b853188627e39de7d9987bdea54360649dc124712e4f9"
+      },
+      "sif_sha256": "7f763155cd46c50bebd72c61fd1b51c84e995eea36c2fafbd91213b15ea22dcb",
+      "vtu_sha256": "3b40e326e3d8e0dca19dd0a5f0eac264796ac1548a2a37eeff7eb585ed9969af",
+      "field_source": "elmer/fields_t0001.vtu",
+      "mesh_sha256": "5fc9b0bd70fe7f6529c4512bb2ec6a5f6f2d33b659d19ebfa532d3c9e069008b",
+      "node_mapping_max_m": 4.688620191797035e-15,
+      "metadata": {
+        "type": "3D coaxial Kovar/glass/pin junction benchmark",
+        "axial_layers": 8,
+        "quadratic_amplitude_k": 5.0,
+        "manufactured_solution": "300 + delta*z/L + amplitude*z/L*(1-z/L)",
+        "lateral_interfaces": "vertical, continuous T and zero normal interface flux; NOT the full-device protruding pin corner"
+      },
+      "reaction_energy_error_w": 1.8451906669270102e-13,
+      "expected_bottom_out_w": 1.0733484215930964,
+      "raw_relative_error": -0.041666666666536796,
+      "max_temperature_error_k": 1.1027623258996755e-11,
+      "expected_raw_relative_error_uniform_axial": -0.041666666666666664,
+      "conductance_on_actual_polygon_w_k": 0.07155656143953976,
+      "recovered_bottom_out_w": 1.073348421593159,
+      "recovered_relative_error": 5.833760718250407e-14,
+      "recovery_scope": "temperature-only one-sided quadratic axial derivative on aligned extrusion; independent of weak reactions, not general conservative RT0 recovery",
+      "passed": true
+    },
+    {
+      "nodes": 3281,
+      "tetrahedra": 15360,
+      "temperature_min_k": 299.9999999999999,
+      "temperature_max_k": 310.00000000000006,
+      "bottom_raw_out_w": 1.0509869961431753,
+      "top_raw_out_w": -0.38014423264793373,
+      "bottom_reaction_out_w": 1.073348421592947,
+      "top_reaction_out_w": -0.3577828071979715,
+      "volume_source_w": 0.7155656143953978,
+      "free_residual_l1_w": 5.67191827766057e-12,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 0.24929160601459444
+      },
+      "solver_executed": true,
+      "source_sha256": {
+        "tecooledmct/flux_presolder_common.py": "75de9ae493dbb4af505582d613c4e724d02fb667d1ebae77ed94ae8ba4fd07df",
+        "tecooledmct/flux_presolder_coupon.py": "4ec7c7d983e0ee5bf42b853188627e39de7d9987bdea54360649dc124712e4f9"
+      },
+      "sif_sha256": "a511064140f73cf02d81558e05b5aeb8e04df2883e61ed6e8fd62fe416a635c5",
+      "vtu_sha256": "87260ac4c78227902b2697cebda1b2306e880baaa477c34b2d775e78274c1cb3",
+      "field_source": "elmer/fields_t0001.vtu",
+      "mesh_sha256": "ccf8ce312e6f78b1e841a6a4b000fdaaacd56d9eb2517ab013fb4016311c2e86",
+      "node_mapping_max_m": 4.688620191797035e-15,
+      "metadata": {
+        "type": "3D coaxial Kovar/glass/pin junction benchmark",
+        "axial_layers": 16,
+        "quadratic_amplitude_k": 5.0,
+        "manufactured_solution": "300 + delta*z/L + amplitude*z/L*(1-z/L)",
+        "lateral_interfaces": "vertical, continuous T and zero normal interface flux; NOT the full-device protruding pin corner"
+      },
+      "reaction_energy_error_w": -4.2232883856740955e-13,
+      "expected_bottom_out_w": 1.0733484215930964,
+      "raw_relative_error": -0.020833333333393864,
+      "max_temperature_error_k": 3.183231456205249e-12,
+      "expected_raw_relative_error_uniform_axial": -0.020833333333333332,
+      "conductance_on_actual_polygon_w_k": 0.07155656143953976,
+      "recovered_bottom_out_w": 1.0733484215929456,
+      "recovered_relative_error": -1.4046537332241227e-13,
+      "recovery_scope": "temperature-only one-sided quadratic axial derivative on aligned extrusion; independent of weak reactions, not general conservative RT0 recovery",
+      "passed": true
+    },
+    {
+      "nodes": 6369,
+      "tetrahedra": 30720,
+      "temperature_min_k": 299.99999999999994,
+      "temperature_max_k": 310.0000000000001,
+      "bottom_raw_out_w": 1.0621677088685209,
+      "top_raw_out_w": -0.36896351992257653,
+      "bottom_reaction_out_w": 1.0733484215935456,
+      "top_reaction_out_w": -0.35778280719752154,
+      "volume_source_w": 0.7155656143953962,
+      "free_residual_l1_w": 1.5981342586130506e-11,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 0.43105859006755054
+      },
+      "solver_executed": true,
+      "source_sha256": {
+        "tecooledmct/flux_presolder_common.py": "75de9ae493dbb4af505582d613c4e724d02fb667d1ebae77ed94ae8ba4fd07df",
+        "tecooledmct/flux_presolder_coupon.py": "4ec7c7d983e0ee5bf42b853188627e39de7d9987bdea54360649dc124712e4f9"
+      },
+      "sif_sha256": "912d70cdad8c8b819c71e6d066ae42fd30354ccd92b9df0fc231ed972b994b14",
+      "vtu_sha256": "3c0d6a759938109cd8e022d57ceb3c61d44f84fc8082bd3973fa9c391d76a22a",
+      "field_source": "elmer/fields_t0001.vtu",
+      "mesh_sha256": "fb4f289914bc65c135f6697404b239c2dbb22a6015b2b6942bff33701c386fba",
+      "node_mapping_max_m": 4.6886201955577176e-15,
+      "metadata": {
+        "type": "3D coaxial Kovar/glass/pin junction benchmark",
+        "axial_layers": 32,
+        "quadratic_amplitude_k": 5.0,
+        "manufactured_solution": "300 + delta*z/L + amplitude*z/L*(1-z/L)",
+        "lateral_interfaces": "vertical, continuous T and zero normal interface flux; NOT the full-device protruding pin corner"
+      },
+      "reaction_energy_error_w": 6.27831120425526e-13,
+      "expected_bottom_out_w": 1.0733484215930964,
+      "raw_relative_error": -0.010416666666338219,
+      "max_temperature_error_k": 2.3248958314070478e-11,
+      "expected_raw_relative_error_uniform_axial": -0.010416666666666666,
+      "conductance_on_actual_polygon_w_k": 0.07155656143953976,
+      "recovered_bottom_out_w": 1.0733484215935596,
+      "recovered_relative_error": 4.3153279639256557e-13,
+      "recovery_scope": "temperature-only one-sided quadratic axial derivative on aligned extrusion; independent of weak reactions, not general conservative RT0 recovery",
+      "passed": true
+    },
+    {
+      "nodes": 12545,
+      "tetrahedra": 61440,
+      "temperature_min_k": 299.99999999999994,
+      "temperature_max_k": 310.0000000000001,
+      "bottom_raw_out_w": 1.0677580652260488,
+      "top_raw_out_w": -0.36337316356204735,
+      "bottom_reaction_out_w": 1.0733484215903981,
+      "top_reaction_out_w": -0.357782807200861,
+      "volume_source_w": 0.7155656143954057,
+      "free_residual_l1_w": 5.454211047751709e-11,
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 0.7464943840168417
+      },
+      "solver_executed": true,
+      "source_sha256": {
+        "tecooledmct/flux_presolder_common.py": "75de9ae493dbb4af505582d613c4e724d02fb667d1ebae77ed94ae8ba4fd07df",
+        "tecooledmct/flux_presolder_coupon.py": "4ec7c7d983e0ee5bf42b853188627e39de7d9987bdea54360649dc124712e4f9"
+      },
+      "sif_sha256": "dd1bebc35bc48034e9ba1facb799fac6160104f50f2ff2966dcf167de64cf572",
+      "vtu_sha256": "acced7ba0b05d653980fa2785b7e0139686b7c65837dc3f672d141a8efcaf95b",
+      "field_source": "elmer/fields_t0001.vtu",
+      "mesh_sha256": "7f3240a44cb3a6fc2e5bc93fdef1bb482d20b3d463fc266df87b2d5aa3437e6d",
+      "node_mapping_max_m": 4.6886201955577176e-15,
+      "metadata": {
+        "type": "3D coaxial Kovar/glass/pin junction benchmark",
+        "axial_layers": 64,
+        "quadratic_amplitude_k": 5.0,
+        "manufactured_solution": "300 + delta*z/L + amplitude*z/L*(1-z/L)",
+        "lateral_interfaces": "vertical, continuous T and zero normal interface flux; NOT the full-device protruding pin corner"
+      },
+      "reaction_energy_error_w": -5.868527885866115e-12,
+      "expected_bottom_out_w": 1.0733484215930964,
+      "raw_relative_error": -0.005208333337603698,
+      "max_temperature_error_k": 7.253220246639103e-11,
+      "expected_raw_relative_error_uniform_axial": -0.005208333333333333,
+      "conductance_on_actual_polygon_w_k": 0.07155656143953976,
+      "recovered_bottom_out_w": 1.0733484215904536,
+      "recovered_relative_error": -2.462178016617601e-12,
+      "recovery_scope": "temperature-only one-sided quadratic axial derivative on aligned extrusion; independent of weak reactions, not general conservative RT0 recovery",
+      "passed": true
+    }
+  ],
+  "geometry_error_separate": {
+    "actual_area_m2": 5.300766949022637e-06,
+    "analytic_area_m2": 5.30929158456675e-06,
+    "relative": -0.0016056069643815007
+  }
+}

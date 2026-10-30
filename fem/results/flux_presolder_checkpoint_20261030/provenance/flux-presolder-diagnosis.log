@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/flux_presolder_diagnosis.py", line 109, in <module>
+    parser=argparse.ArgumentParser();parser.add_argument('--out',type=Path,default=ROOT/'outputs/flux-presolder-diagnosis');args=parser.parse_args();main(args.out.resolve())
+                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/flux_presolder_diagnosis.py", line 105, in main
+    results=[diagnose(label,op,out) for label,op in CASES]
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/flux_presolder_diagnosis.py", line 48, in diagnose
+    with gzip.open(source,'rb') as stream,raw.open('wb') as target:
+         ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/gzip.py", line 61, in open
+    binary_file = GzipFile(filename, gz_mode, compresslevel)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/gzip.py", line 192, in __init__
+    fileobj = self.myfileobj = builtins.open(filename, mode or 'rb')
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/work/fem/results/g3b_checkpoint_20261029/cases/nitrogen_patch1/fields_t0001.vtu.gz'

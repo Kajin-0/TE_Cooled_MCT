@@ -1,0 +1,224 @@
+{
+  "scoped_verified": true,
+  "full_G3b_qualified": false,
+  "full_stack_presolder_solved": false,
+  "OEM_validated": false,
+  "original_raw_gate": 0.01,
+  "qualified_coupon_executions": 14,
+  "unaccepted_development_executions": 5,
+  "development": [
+    {
+      "case": "outputs/flux-presolder-junction/linear",
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 2.4857707750052214
+      },
+      "accepted": false,
+      "reason": "earlier driver postprocessing path failure or campaign stopped at declared mesh cap; no promotion"
+    },
+    {
+      "case": "outputs/flux-presolder-junction-v2/reverse",
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 2.147004457190633
+      },
+      "accepted": false,
+      "reason": "earlier driver postprocessing path failure or campaign stopped at declared mesh cap; no promotion"
+    },
+    {
+      "case": "outputs/flux-presolder-junction-v2/manufactured_8",
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 2.152078836923465
+      },
+      "accepted": false,
+      "reason": "earlier driver postprocessing path failure or campaign stopped at declared mesh cap; no promotion"
+    },
+    {
+      "case": "outputs/flux-presolder-junction-v2/manufactured_16",
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 18.551752489991486
+      },
+      "accepted": false,
+      "reason": "earlier driver postprocessing path failure or campaign stopped at declared mesh cap; no promotion"
+    },
+    {
+      "case": "outputs/flux-presolder-junction-v2/linear",
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 2.236107485834509
+      },
+      "accepted": false,
+      "reason": "earlier driver postprocessing path failure or campaign stopped at declared mesh cap; no promotion"
+    }
+  ],
+  "tests_passed": 99,
+  "opt_in_solver_tests_executed": true,
+  "baseline_integrity": {
+    "passed": true,
+    "g1_through_g3a": {
+      "passed": true,
+      "checked": {
+        "g1_20261028": {
+          "source_files": 8,
+          "artifacts": 128
+        },
+        "g2a_20261028": {
+          "source_files": 4,
+          "artifacts": 106
+        },
+        "g2b_geometry_20261028": {
+          "source_files": 3,
+          "artifacts": 11
+        }
+      },
+      "connected_g2b_unchanged": true,
+      "g2c_unchanged": true,
+      "g2c_artifacts": 451,
+      "g2d_unchanged": true,
+      "g2d_artifacts": 83,
+      "g3a_unchanged": true,
+      "g3a_artifacts": 192
+    },
+    "g3b_entries_checked": 573,
+    "g3b_ledger_sha256": "ccd6437634472a9968169e3e8b693c1b9942c4edc230a92f25395f3cd760a5a1",
+    "baseline_commit": "52b30c0f4f92580394fb7b51bcd95a56ebd5d2e4",
+    "revision2_pdf_sha256": "751284cabaffa34f7f338f85ffa05cd88c59e157831f3dc9f1837d7758f3ac1c"
+  },
+  "coupon_audits": {
+    "junction/reverse": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": -0.7155656143952314,
+      "raw_1pct_gate_passed": true,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "9f043e5b3975fe98932bfd24a61b136f74103261a9a42d271fc196ba9dc7cd8c"
+    },
+    "junction/manufactured_64": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 1.0677580652260488,
+      "raw_1pct_gate_passed": true,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "ba19ea38bbdb30c7650aa302908b5c5f2cac4bc610d658db23e05fc09b0b78a8"
+    },
+    "junction/manufactured_8": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 1.0286255706935234,
+      "raw_1pct_gate_passed": false,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "bdaa59c8e5f50b25cd05ac3b54889aece1e0d183b63c1047dfe63b3c67e226d2"
+    },
+    "junction/manufactured_32": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 1.0621677088685206,
+      "raw_1pct_gate_passed": false,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "8a71d8c4e28aabb84909314c9c1d6b1e57fd3b4e3ae6a44fb3f827745dc255f9"
+    },
+    "junction/manufactured_16": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 1.0509869961431753,
+      "raw_1pct_gate_passed": false,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "0705fcd7c682b18919dfed3498c6f700e941a72622479aadaaab74948ecb7e28"
+    },
+    "junction/linear": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 0.7155656143955321,
+      "raw_1pct_gate_passed": true,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "a5ed47423bae6a1c5383808ead373d9abf468a8fa4326d090f8cf60d0946afac"
+    },
+    "presolder/metal_50um": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 0.1382251780605389,
+      "raw_1pct_gate_passed": true,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "b782eb4d5f0eba7a912fb8b28593ac603bdf3dd8515dc434b5022ee0d428e994"
+    },
+    "presolder/contact_50um": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 0.12928963654419254,
+      "raw_1pct_gate_passed": true,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "5018c9b41325dcae098a2bbae2737c69b7841a6b81430823f801cc962d1377d0"
+    },
+    "presolder/metal_25um": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 0.13960351525724218,
+      "raw_1pct_gate_passed": true,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "7aeca921ccd8f785f520121efffa9f1028df2eb50c2a3fa958dcd46b74cbb24b"
+    },
+    "presolder/equal_material": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 0.12627737226277347,
+      "raw_1pct_gate_passed": true,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "9926016ad96aea2c97705ea589d6497355a479b3f9e367778e54a69bf3f43e87"
+    },
+    "presolder/metal_50um_refined": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 0.13822517806048187,
+      "raw_1pct_gate_passed": true,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "3137e4de5be3ef4979642108f7ee024f1d2ec9609a4da6e39ff22c5cc849d45e"
+    },
+    "presolder/AuSn_proxy_50um": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 0.13928674339372404,
+      "raw_1pct_gate_passed": true,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "4b10fd0d8ad2b1cb6fe388264a5e88215b96951ce69fa9c7fde3b94ab40480ac"
+    },
+    "presolder/metal_100um": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 0.1355485743707664,
+      "raw_1pct_gate_passed": true,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "4f57b7b57e387d7f0317b5689ebd64a7a9c3cb6a763558e8a75264aca38761a6"
+    },
+    "presolder/legacy_mount_control": {
+      "passed": true,
+      "cell_and_material_mapping_verified": true,
+      "raw_flux_recomputed_w": 0.10425664410116305,
+      "raw_1pct_gate_passed": true,
+      "scope": "coupon only; no device acceptance",
+      "verification_sha256": "24a5d525dd623866d1e5a4fdde101f305e9d1a1262b4c316fac87ea40f5f653b"
+    }
+  },
+  "interpretation": "Independent localization and limited analytic coupons only. No full-device correction, 3D equilibrated flux recovery, measured presolder alloy or new coupled88-leg solution."
+}

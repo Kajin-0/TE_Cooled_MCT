@@ -1,0 +1,1333 @@
+{
+  "diagnostics_verified": true,
+  "full_package_qualified": false,
+  "diagnostic_source_sha256": {
+    "tecooledmct/flux_presolder_diagnosis.py": "1c869d80c9a566d328302d0a58d396e8a9739294aa648eaa9a9fd78fb6cb7ab1",
+    "tecooledmct/flux_presolder_common.py": "75de9ae493dbb4af505582d613c4e724d02fb667d1ebae77ed94ae8ba4fd07df"
+  },
+  "baseline_integrity": {
+    "passed": true,
+    "g1_through_g3a": {
+      "passed": true,
+      "checked": {
+        "g1_20261028": {
+          "source_files": 8,
+          "artifacts": 128
+        },
+        "g2a_20261028": {
+          "source_files": 4,
+          "artifacts": 106
+        },
+        "g2b_geometry_20261028": {
+          "source_files": 3,
+          "artifacts": 11
+        }
+      },
+      "connected_g2b_unchanged": true,
+      "g2c_unchanged": true,
+      "g2c_artifacts": 451,
+      "g2d_unchanged": true,
+      "g2d_artifacts": 83,
+      "g3a_unchanged": true,
+      "g3a_artifacts": 192
+    },
+    "g3b_entries_checked": 573,
+    "g3b_ledger_sha256": "ccd6437634472a9968169e3e8b693c1b9942c4edc230a92f25395f3cd760a5a1",
+    "baseline_commit": "52b30c0f4f92580394fb7b51bcd95a56ebd5d2e4",
+    "revision2_pdf_sha256": "751284cabaffa34f7f338f85ffa05cd88c59e157831f3dc9f1837d7758f3ac1c"
+  },
+  "cases": [
+    {
+      "case": "nitrogen_patch1",
+      "solver_executed": false,
+      "source_accepted": true,
+      "mesh_sha256": "5a553ae83b46f513d6a84a1ecaa88591702e7325b61303602f522feaf693a314",
+      "compressed_vtu_sha256": "4c82aa05ad70b1f6d028739c48332da3a7bd3258d2d8e3eebe1d76ab8eaaed1c",
+      "vtu_sha256": "d0f6627208228940d3ff5445ecf90cc867fc1bfb2c1754ccd5de303ba734c819",
+      "node_mapping_max_m": 5.005694677633392e-14,
+      "bath_materials": [
+        "Kovar"
+      ],
+      "bath_area_m2": 0.0004025547108698161,
+      "direct_out_w": 0.05611891955453622,
+      "reaction_out_w": 0.055884122784258666,
+      "external_input_w": 0.055884122455028634,
+      "direct_error_w": 0.0002347970995075846,
+      "direct_relative_error": 0.00420149926656774,
+      "reaction_error_w": 3.2923003212559365e-10,
+      "gate": 0.01,
+      "original_raw_gate_passed": true,
+      "regions": [
+        {
+          "region": "distant_Kovar_bulk",
+          "faces": 1134,
+          "area_m2": 0.0002457192490593956,
+          "direct_out_w": -0.006418353981560861,
+          "allocated_reaction_out_w": -0.005959190051209939,
+          "direct_minus_reaction_w": -0.0004591639303509232,
+          "signed_error_over_external_input": -0.00821635753018085
+        },
+        {
+          "region": "mount_footprint",
+          "faces": 781,
+          "area_m2": 4.090249541260996e-05,
+          "direct_out_w": 0.07089481572519037,
+          "allocated_reaction_out_w": 0.07078405112171894,
+          "direct_minus_reaction_w": 0.00011076460347142376,
+          "signed_error_over_external_input": 0.0019820406692537553
+        },
+        {
+          "region": "outer_flange_edge",
+          "faces": 206,
+          "area_m2": 7.649002050127317e-05,
+          "direct_out_w": -0.000800758313585622,
+          "allocated_reaction_out_w": -0.0008262820579014369,
+          "direct_minus_reaction_w": 2.552374431581494e-05,
+          "signed_error_over_external_input": 0.0004567262255277345
+        },
+        {
+          "region": "mount_hole_edge_0",
+          "faces": 64,
+          "area_m2": 7.058804784351017e-06,
+          "direct_out_w": -5.761506226376317e-06,
+          "allocated_reaction_out_w": -5.763746109181227e-06,
+          "direct_minus_reaction_w": 2.2398828049104762e-09,
+          "signed_error_over_external_input": 4.0080844191710565e-08
+        },
+        {
+          "region": "mount_hole_edge_1",
+          "faces": 63,
+          "area_m2": 6.9197081950280726e-06,
+          "direct_out_w": -5.505125968107348e-06,
+          "allocated_reaction_out_w": -5.545541623994073e-06,
+          "direct_minus_reaction_w": 4.041565588672277e-08,
+          "signed_error_over_external_input": 7.232046261305484e-07
+        },
+        {
+          "region": "seal_adjacent_Kovar_0",
+          "faces": 128,
+          "area_m2": 3.24440968629695e-06,
+          "direct_out_w": -0.00017326808515032299,
+          "allocated_reaction_out_w": -0.00017907823127263792,
+          "direct_minus_reaction_w": 5.810146122314959e-06,
+          "signed_error_over_external_input": 0.00010396774373598744
+        },
+        {
+          "region": "glass_annulus_0",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_0",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_1",
+          "faces": 123,
+          "area_m2": 2.5305331398988343e-06,
+          "direct_out_w": -0.00023479878332497854,
+          "allocated_reaction_out_w": -0.0002471787906976395,
+          "direct_minus_reaction_w": 1.2380007372661003e-05,
+          "signed_error_over_external_input": 0.0002215299592943149
+        },
+        {
+          "region": "glass_annulus_1",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_1",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_2",
+          "faces": 139,
+          "area_m2": 2.694389674346953e-06,
+          "direct_out_w": -0.00031034847877408326,
+          "allocated_reaction_out_w": -0.00032165455376890106,
+          "direct_minus_reaction_w": 1.130607499481774e-05,
+          "signed_error_over_external_input": 0.00020231283051668254
+        },
+        {
+          "region": "glass_annulus_2",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_2",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_3",
+          "faces": 118,
+          "area_m2": 2.656768878106164e-06,
+          "direct_out_w": -0.007400916894272964,
+          "allocated_reaction_out_w": -0.007990042092997402,
+          "direct_minus_reaction_w": 0.0005891251987244385,
+          "signed_error_over_external_input": 0.010541906588915706
+        },
+        {
+          "region": "glass_annulus_3",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_3",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_4",
+          "faces": 139,
+          "area_m2": 3.0432252644175873e-06,
+          "direct_out_w": -6.469441184650924e-05,
+          "allocated_reaction_out_w": -4.7549379463514716e-05,
+          "direct_minus_reaction_w": -1.714503238299452e-05,
+          "signed_error_over_external_input": -0.0003067961279483553
+        },
+        {
+          "region": "glass_annulus_4",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_4",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_5",
+          "faces": 144,
+          "area_m2": 2.9107207272877132e-06,
+          "direct_out_w": 0.00018711090794391568,
+          "allocated_reaction_out_w": 0.00020108033347984914,
+          "direct_minus_reaction_w": -1.396942553593348e-05,
+          "signed_error_over_external_input": -0.00024997127846420117
+        },
+        {
+          "region": "glass_annulus_5",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_5",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_6",
+          "faces": 142,
+          "area_m2": 3.120235080501932e-06,
+          "direct_out_w": 0.00021896870152019555,
+          "allocated_reaction_out_w": 0.00023594172530491398,
+          "direct_minus_reaction_w": -1.697302378471845e-05,
+          "signed_error_over_external_input": -0.00030371817681090134
+        },
+        {
+          "region": "glass_annulus_6",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_6",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_7",
+          "faces": 125,
+          "area_m2": 2.630659154101576e-06,
+          "direct_out_w": 0.00012833606715007727,
+          "allocated_reaction_out_w": 0.0001342692687533549,
+          "direct_minus_reaction_w": -5.93320160327762e-06,
+          "signed_error_over_external_input": -0.00010616971945926534
+        },
+        {
+          "region": "glass_annulus_7",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_7",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_8",
+          "faces": 122,
+          "area_m2": 2.6334913122005627e-06,
+          "direct_out_w": 0.00010409373344149624,
+          "allocated_reaction_out_w": 0.00011106478004625421,
+          "direct_minus_reaction_w": -6.971046604757969e-06,
+          "signed_error_over_external_input": -0.00012474109458134099
+        },
+        {
+          "region": "glass_annulus_8",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_8",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        }
+      ],
+      "reaction_partition": "P1 boundary nodal reactions distributed to incident bath triangles by area/3; descriptive allocation, not exact local continuum flux",
+      "normal_check": "all outward -z, actual one-sided tetrahedral owners, only Kovar underside",
+      "source_check": "bath nodal support Kovar/glass/pin only, S=0, no detector or nonlocal source support; tiny sigma electrical work retained",
+      "discrete_residual_identity": {
+        "raw_bath_out_w": 0.056118919554536226,
+        "other_exterior_weighted_raw_out_w": -8.527654998009065e-05,
+        "internal_face_weighted_jump_w": -0.00014952022029747546,
+        "weighted_electrical_volume_work_w": 1.5664107718465997e-17,
+        "identity": "reaction_out = raw_bath_out + other_exterior_weighted_raw_out + internal_face_weighted_jump + weighted_electrical_volume_work; sources at bath nodes are zero",
+        "scope": "Exact discrete P1 integration-by-parts check, not a recovered flux or an independent physical reference",
+        "closure_error_w": -6.938893903907228e-18
+      }
+    },
+    {
+      "case": "nitrogen_fine_verified",
+      "solver_executed": false,
+      "source_accepted": false,
+      "mesh_sha256": "a1ee33df11b92e58868ef61f164b55508bec5eabaa454164f4e36ca770d23755",
+      "compressed_vtu_sha256": "2fba2ef6da81be94d49cea4b073049a9d820a856a0fc3c604791ed3b74303229",
+      "vtu_sha256": "bfe36f7bbd277fc1f719bbd5fb71c79b620ebebc811e7fae2c87018d3234c8d2",
+      "node_mapping_max_m": 4.9947080232454577e-14,
+      "bath_materials": [
+        "Kovar"
+      ],
+      "bath_area_m2": 0.00040256390374479015,
+      "direct_out_w": 0.0568376604124757,
+      "reaction_out_w": 0.05591183319007039,
+      "external_input_w": 0.055911831751693286,
+      "direct_error_w": 0.0009258286607824115,
+      "direct_relative_error": 0.01655872526040739,
+      "reaction_error_w": 1.4383771049231164e-09,
+      "gate": 0.01,
+      "original_raw_gate_passed": false,
+      "regions": [
+        {
+          "region": "distant_Kovar_bulk",
+          "faces": 1497,
+          "area_m2": 0.00024642807557713736,
+          "direct_out_w": -0.005588904234159243,
+          "allocated_reaction_out_w": -0.006050397913313094,
+          "direct_minus_reaction_w": 0.00046149367915385186,
+          "signed_error_over_external_input": 0.00825395385369172
+        },
+        {
+          "region": "mount_footprint",
+          "faces": 1514,
+          "area_m2": 4.097195306010551e-05,
+          "direct_out_w": 0.07114572585819401,
+          "allocated_reaction_out_w": 0.07103335562186402,
+          "direct_minus_reaction_w": 0.00011237023633000688,
+          "signed_error_over_external_input": 0.0020097756201057347
+        },
+        {
+          "region": "outer_flange_edge",
+          "faces": 213,
+          "area_m2": 7.480493884052535e-05,
+          "direct_out_w": -0.0007887775798454626,
+          "allocated_reaction_out_w": -0.0008022003765969597,
+          "direct_minus_reaction_w": 1.3422796751497176e-05,
+          "signed_error_over_external_input": 0.00024007077448487757
+        },
+        {
+          "region": "mount_hole_edge_0",
+          "faces": 90,
+          "area_m2": 7.731784489519316e-06,
+          "direct_out_w": -6.858345628767456e-06,
+          "allocated_reaction_out_w": -7.834342097154391e-06,
+          "direct_minus_reaction_w": 9.759964683869343e-07,
+          "signed_error_over_external_input": 1.745599165345493e-05
+        },
+        {
+          "region": "mount_hole_edge_1",
+          "faces": 90,
+          "area_m2": 7.692319893068368e-06,
+          "direct_out_w": -7.90747112431561e-06,
+          "allocated_reaction_out_w": -8.263094297856233e-06,
+          "direct_minus_reaction_w": 3.5562317354062553e-07,
+          "signed_error_over_external_input": 6.36042788080996e-06
+        },
+        {
+          "region": "seal_adjacent_Kovar_0",
+          "faces": 179,
+          "area_m2": 2.4952588611725662e-06,
+          "direct_out_w": -0.0001318428945274072,
+          "allocated_reaction_out_w": -0.00013989735305851964,
+          "direct_minus_reaction_w": 8.05445853111241e-06,
+          "signed_error_over_external_input": 0.00014405642381531313
+        },
+        {
+          "region": "glass_annulus_0",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_0",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_1",
+          "faces": 190,
+          "area_m2": 3.055185228281005e-06,
+          "direct_out_w": -0.0002748693809580046,
+          "allocated_reaction_out_w": -0.00028196493705247375,
+          "direct_minus_reaction_w": 7.095556094469181e-06,
+          "signed_error_over_external_input": 0.0001269061640831378
+        },
+        {
+          "region": "glass_annulus_1",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_1",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_2",
+          "faces": 202,
+          "area_m2": 2.810839983630075e-06,
+          "direct_out_w": -0.0003093490140171227,
+          "allocated_reaction_out_w": -0.00031079959633137073,
+          "direct_minus_reaction_w": 1.4505823142479788e-06,
+          "signed_error_over_external_input": 2.5944102863416706e-05
+        },
+        {
+          "region": "glass_annulus_2",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_2",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_3",
+          "faces": 196,
+          "area_m2": 2.7943457920494563e-06,
+          "direct_out_w": -0.007849545212853136,
+          "allocated_reaction_out_w": -0.00819297920535499,
+          "direct_minus_reaction_w": 0.00034343399250185433,
+          "signed_error_over_external_input": 0.006142420695981821
+        },
+        {
+          "region": "glass_annulus_3",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_3",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_4",
+          "faces": 200,
+          "area_m2": 2.6319808224204833e-06,
+          "direct_out_w": -4.657844582395058e-05,
+          "allocated_reaction_out_w": -4.5142822782338534e-05,
+          "direct_minus_reaction_w": -1.4356230416120333e-06,
+          "signed_error_over_external_input": -2.5676551753619762e-05
+        },
+        {
+          "region": "glass_annulus_4",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_4",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_5",
+          "faces": 207,
+          "area_m2": 2.797478437854895e-06,
+          "direct_out_w": 0.00021061216581081283,
+          "allocated_reaction_out_w": 0.00021373418071045537,
+          "direct_minus_reaction_w": -3.1220148996425307e-06,
+          "signed_error_over_external_input": -5.5838179537875374e-05
+        },
+        {
+          "region": "glass_annulus_5",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_5",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_6",
+          "faces": 229,
+          "area_m2": 2.9268227620883496e-06,
+          "direct_out_w": 0.00024021738657267836,
+          "allocated_reaction_out_w": 0.0002442000962777937,
+          "direct_minus_reaction_w": -3.982709705115402e-06,
+          "signed_error_over_external_input": -7.12319661212814e-05
+        },
+        {
+          "region": "glass_annulus_6",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_6",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_7",
+          "faces": 185,
+          "area_m2": 2.6452635485579645e-06,
+          "direct_out_w": 0.00013246237492172647,
+          "allocated_reaction_out_w": 0.000138936220576406,
+          "direct_minus_reaction_w": -6.473845654679521e-06,
+          "signed_error_over_external_input": -0.00011578668506927357
+        },
+        {
+          "region": "glass_annulus_7",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_7",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_8",
+          "faces": 196,
+          "area_m2": 2.7776564483795424e-06,
+          "direct_out_w": 0.00011327520591386911,
+          "allocated_reaction_out_w": 0.00012108671152648197,
+          "direct_minus_reaction_w": -7.811505612612832e-06,
+          "signed_error_over_external_input": -0.00013971113747988164
+        },
+        {
+          "region": "glass_annulus_8",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_8",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        }
+      ],
+      "reaction_partition": "P1 boundary nodal reactions distributed to incident bath triangles by area/3; descriptive allocation, not exact local continuum flux",
+      "normal_check": "all outward -z, actual one-sided tetrahedral owners, only Kovar underside",
+      "source_check": "bath nodal support Kovar/glass/pin only, S=0, no detector or nonlocal source support; tiny sigma electrical work retained",
+      "discrete_residual_identity": {
+        "raw_bath_out_w": 0.05683766041247569,
+        "other_exterior_weighted_raw_out_w": -6.965719208445624e-05,
+        "internal_face_weighted_jump_w": -0.000856170030320852,
+        "weighted_electrical_volume_work_w": 1.125871421367782e-17,
+        "identity": "reaction_out = raw_bath_out + other_exterior_weighted_raw_out + internal_face_weighted_jump + weighted_electrical_volume_work; sources at bath nodes are zero",
+        "scope": "Exact discrete P1 integration-by-parts check, not a recovered flux or an independent physical reference",
+        "closure_error_w": 0.0
+      }
+    },
+    {
+      "case": "nitrogen_bath",
+      "solver_executed": false,
+      "source_accepted": false,
+      "mesh_sha256": "65a4f450986d6760dad1782c7976f03aadbf110be98b3766b6ef46964ca0d5dc",
+      "compressed_vtu_sha256": "48c0b70472bcad98617a693981dfb344c0a548a023cfb844d08e75fbcd7d391a",
+      "vtu_sha256": "b39a3726e973c09376bfb91c79e5651e8613230ee14af9808c19dd93a8860f04",
+      "node_mapping_max_m": 4.9947080232454577e-14,
+      "bath_materials": [
+        "Kovar"
+      ],
+      "bath_area_m2": 0.00040256390374479025,
+      "direct_out_w": 0.05675845755384213,
+      "reaction_out_w": 0.05591188511605966,
+      "external_input_w": 0.0559118836491592,
+      "direct_error_w": 0.000846573904682929,
+      "direct_relative_error": 0.015141215953214621,
+      "reaction_error_w": 1.4669004622103188e-09,
+      "gate": 0.01,
+      "original_raw_gate_passed": false,
+      "regions": [
+        {
+          "region": "distant_Kovar_bulk",
+          "faces": 4347,
+          "area_m2": 0.0002462239301887696,
+          "direct_out_w": -0.0053962821475389815,
+          "allocated_reaction_out_w": -0.005542308770888566,
+          "direct_minus_reaction_w": 0.00014602662334958414,
+          "signed_error_over_external_input": 0.002611727844225117
+        },
+        {
+          "region": "mount_footprint",
+          "faces": 1632,
+          "area_m2": 4.092584681621206e-05,
+          "direct_out_w": 0.07116352734652337,
+          "allocated_reaction_out_w": 0.07105085408304494,
+          "direct_minus_reaction_w": 0.00011267326347843621,
+          "signed_error_over_external_input": 0.0020151934816835773
+        },
+        {
+          "region": "outer_flange_edge",
+          "faces": 213,
+          "area_m2": 7.480493884052535e-05,
+          "direct_out_w": -0.0007880919258996706,
+          "allocated_reaction_out_w": -0.0008016438375263845,
+          "direct_minus_reaction_w": 1.3551911626713906e-05,
+          "signed_error_over_external_input": 0.00024237980805208838
+        },
+        {
+          "region": "mount_hole_edge_0",
+          "faces": 90,
+          "area_m2": 7.731784489519316e-06,
+          "direct_out_w": -6.861294897841258e-06,
+          "allocated_reaction_out_w": -7.83779526157297e-06,
+          "direct_minus_reaction_w": 9.765003637317124e-07,
+          "signed_error_over_external_input": 1.746498776287243e-05
+        },
+        {
+          "region": "mount_hole_edge_1",
+          "faces": 90,
+          "area_m2": 7.692319893068368e-06,
+          "direct_out_w": -7.906594952231524e-06,
+          "allocated_reaction_out_w": -8.262152424437489e-06,
+          "direct_minus_reaction_w": 3.555574722059642e-07,
+          "signed_error_over_external_input": 6.359246889928579e-06
+        },
+        {
+          "region": "seal_adjacent_Kovar_0",
+          "faces": 2883,
+          "area_m2": 2.760419257929469e-06,
+          "direct_out_w": -0.00015865856612004293,
+          "allocated_reaction_out_w": -0.00018470751627988174,
+          "direct_minus_reaction_w": 2.604895015983882e-05,
+          "signed_error_over_external_input": 0.00046589290969506703
+        },
+        {
+          "region": "glass_annulus_0",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_0",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_1",
+          "faces": 3011,
+          "area_m2": 2.8440549743553917e-06,
+          "direct_out_w": -0.00027102581174849984,
+          "allocated_reaction_out_w": -0.0002929307253496987,
+          "direct_minus_reaction_w": 2.1904913601198876e-05,
+          "signed_error_over_external_input": 0.00039177563286276943
+        },
+        {
+          "region": "glass_annulus_1",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_1",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_2",
+          "faces": 3198,
+          "area_m2": 2.7302217535203698e-06,
+          "direct_out_w": -0.00029151170515073863,
+          "allocated_reaction_out_w": -0.0002923695782552193,
+          "direct_minus_reaction_w": 8.578731044807305e-07,
+          "signed_error_over_external_input": 1.5343305367134257e-05
+        },
+        {
+          "region": "glass_annulus_2",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_2",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_3",
+          "faces": 3131,
+          "area_m2": 2.816805584419791e-06,
+          "direct_out_w": -0.008113141090390201,
+          "allocated_reaction_out_w": -0.00865440298954971,
+          "direct_minus_reaction_w": 0.0005412618991595091,
+          "signed_error_over_external_input": 0.009680623578269458
+        },
+        {
+          "region": "glass_annulus_3",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_3",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_4",
+          "faces": 3225,
+          "area_m2": 2.8354078856211323e-06,
+          "direct_out_w": -5.7739016578802734e-05,
+          "allocated_reaction_out_w": -5.857831979324234e-05,
+          "direct_minus_reaction_w": 8.393032144396204e-07,
+          "signed_error_over_external_input": 1.5011177582679096e-05
+        },
+        {
+          "region": "glass_annulus_4",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_4",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_5",
+          "faces": 3301,
+          "area_m2": 2.810624258334941e-06,
+          "direct_out_w": 0.0002187313673512828,
+          "allocated_reaction_out_w": 0.000225354041242192,
+          "direct_minus_reaction_w": -6.622673890909172e-06,
+          "signed_error_over_external_input": -0.00011844841308630753
+        },
+        {
+          "region": "glass_annulus_5",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_5",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_6",
+          "faces": 3618,
+          "area_m2": 2.8139168305339367e-06,
+          "direct_out_w": 0.00022691222160465754,
+          "allocated_reaction_out_w": 0.00023206744536028568,
+          "direct_minus_reaction_w": -5.155223755628151e-06,
+          "signed_error_over_external_input": -9.220264850986961e-05
+        },
+        {
+          "region": "glass_annulus_6",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_6",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_7",
+          "faces": 2972,
+          "area_m2": 2.816963906953786e-06,
+          "direct_out_w": 0.00012251553448222,
+          "allocated_reaction_out_w": 0.00012497383354168775,
+          "direct_minus_reaction_w": -2.4582990594677544e-06,
+          "signed_error_over_external_input": -4.396738043907276e-05
+        },
+        {
+          "region": "glass_annulus_7",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_7",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_8",
+          "faces": 3129,
+          "area_m2": 2.7566690650266795e-06,
+          "direct_out_w": 0.00011798923715761268,
+          "allocated_reaction_out_w": 0.00012167739819928205,
+          "direct_minus_reaction_w": -3.6881610416693586e-06,
+          "signed_error_over_external_input": -6.59638130743753e-05
+        },
+        {
+          "region": "glass_annulus_8",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_8",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        }
+      ],
+      "reaction_partition": "P1 boundary nodal reactions distributed to incident bath triangles by area/3; descriptive allocation, not exact local continuum flux",
+      "normal_check": "all outward -z, actual one-sided tetrahedral owners, only Kovar underside",
+      "source_check": "bath nodal support Kovar/glass/pin only, S=0, no detector or nonlocal source support; tiny sigma electrical work retained",
+      "discrete_residual_identity": {
+        "raw_bath_out_w": 0.05675845755384214,
+        "other_exterior_weighted_raw_out_w": -7.074610414728203e-05,
+        "internal_face_weighted_jump_w": -0.000775826333635186,
+        "weighted_electrical_volume_work_w": 1.07192984455748e-17,
+        "identity": "reaction_out = raw_bath_out + other_exterior_weighted_raw_out + internal_face_weighted_jump + weighted_electrical_volume_work; sources at bath nodes are zero",
+        "scope": "Exact discrete P1 integration-by-parts check, not a recovered flux or an independent physical reference",
+        "closure_error_w": -1.3877787807814457e-17
+      }
+    },
+    {
+      "case": "nitrogen_feedthrough",
+      "solver_executed": false,
+      "source_accepted": false,
+      "mesh_sha256": "bfb58e07bce1bd5e3ec03a6e48e83e0fbac9ca5075cdb019e49dc56bcec49fd1",
+      "compressed_vtu_sha256": "30b6b2e9e8aac05dadbf864f398ac93e80ec01cca63c31702326199eded7759a",
+      "vtu_sha256": "f64a0b30515f7a5c1f656131622fcf2c3ff1ec2d4c06c503b78d421fa2968572",
+      "node_mapping_max_m": 4.9947080232454577e-14,
+      "bath_materials": [
+        "Kovar"
+      ],
+      "bath_area_m2": 0.0004025639037447902,
+      "direct_out_w": 0.05679747997810291,
+      "reaction_out_w": 0.05591192886951956,
+      "external_input_w": 0.055911927573591085,
+      "direct_error_w": 0.0008855524045118246,
+      "direct_relative_error": 0.015838345107066172,
+      "reaction_error_w": 1.295928475641972e-09,
+      "gate": 0.01,
+      "original_raw_gate_passed": false,
+      "regions": [
+        {
+          "region": "distant_Kovar_bulk",
+          "faces": 1497,
+          "area_m2": 0.00024642807557713736,
+          "direct_out_w": -0.005588587057791555,
+          "allocated_reaction_out_w": -0.006047550734192213,
+          "direct_minus_reaction_w": 0.00045896367640065587,
+          "signed_error_over_external_input": 0.008208689922138161
+        },
+        {
+          "region": "mount_footprint",
+          "faces": 1514,
+          "area_m2": 4.097195306010551e-05,
+          "direct_out_w": 0.07114495963747494,
+          "allocated_reaction_out_w": 0.07103259745610765,
+          "direct_minus_reaction_w": 0.00011236218136728608,
+          "signed_error_over_external_input": 0.0020096281105564705
+        },
+        {
+          "region": "outer_flange_edge",
+          "faces": 213,
+          "area_m2": 7.480493884052535e-05,
+          "direct_out_w": -0.0007888443029870635,
+          "allocated_reaction_out_w": -0.0008022696388954586,
+          "direct_minus_reaction_w": 1.3425335908395125e-05,
+          "signed_error_over_external_input": 0.00024011577656171386
+        },
+        {
+          "region": "mount_hole_edge_0",
+          "faces": 90,
+          "area_m2": 7.731784489519316e-06,
+          "direct_out_w": -6.858675634265351e-06,
+          "allocated_reaction_out_w": -7.834721968181007e-06,
+          "direct_minus_reaction_w": 9.760463339156552e-07,
+          "signed_error_over_external_input": 1.745685359588053e-05
+        },
+        {
+          "region": "mount_hole_edge_1",
+          "faces": 90,
+          "area_m2": 7.692319893068368e-06,
+          "direct_out_w": -7.907686991098856e-06,
+          "allocated_reaction_out_w": -8.263319296177872e-06,
+          "direct_minus_reaction_w": 3.556323050790171e-07,
+          "signed_error_over_external_input": 6.360580300347097e-06
+        },
+        {
+          "region": "seal_adjacent_Kovar_0",
+          "faces": 617,
+          "area_m2": 2.4952588611725662e-06,
+          "direct_out_w": -0.00013300732499246744,
+          "allocated_reaction_out_w": -0.00013979152072481372,
+          "direct_minus_reaction_w": 6.784195732346275e-06,
+          "signed_error_over_external_input": 0.00012133718200677199
+        },
+        {
+          "region": "glass_annulus_0",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_0",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_1",
+          "faces": 640,
+          "area_m2": 3.055185228281005e-06,
+          "direct_out_w": -0.0002754329468646435,
+          "allocated_reaction_out_w": -0.0002820494974324354,
+          "direct_minus_reaction_w": 6.616550567791923e-06,
+          "signed_error_over_external_input": 0.00011833880273727358
+        },
+        {
+          "region": "glass_annulus_1",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_1",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_2",
+          "faces": 632,
+          "area_m2": 2.810839983630075e-06,
+          "direct_out_w": -0.00030929840920368456,
+          "allocated_reaction_out_w": -0.00031083230082142564,
+          "direct_minus_reaction_w": 1.5338916177409821e-06,
+          "signed_error_over_external_input": 2.743406790477898e-05
+        },
+        {
+          "region": "glass_annulus_2",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_2",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_3",
+          "faces": 666,
+          "area_m2": 2.7943457920494563e-06,
+          "direct_out_w": -0.007887490617854605,
+          "allocated_reaction_out_w": -0.008194916098734855,
+          "direct_minus_reaction_w": 0.00030742548088025077,
+          "signed_error_over_external_input": 0.0054983881654879175
+        },
+        {
+          "region": "glass_annulus_3",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_3",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_4",
+          "faces": 676,
+          "area_m2": 2.631980822420483e-06,
+          "direct_out_w": -4.696202963167602e-05,
+          "allocated_reaction_out_w": -4.509341815813976e-05,
+          "direct_minus_reaction_w": -1.8686114735362508e-06,
+          "signed_error_over_external_input": -3.342062337372989e-05
+        },
+        {
+          "region": "glass_annulus_4",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_4",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_5",
+          "faces": 661,
+          "area_m2": 2.797478437854894e-06,
+          "direct_out_w": 0.00021021347143866922,
+          "allocated_reaction_out_w": 0.00021378769227826445,
+          "direct_minus_reaction_w": -3.57422083959521e-06,
+          "signed_error_over_external_input": -6.39259098139808e-05
+        },
+        {
+          "region": "glass_annulus_5",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_5",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_6",
+          "faces": 719,
+          "area_m2": 2.9268227620883496e-06,
+          "direct_out_w": 0.00024038658246647136,
+          "allocated_reaction_out_w": 0.00024415347841200526,
+          "direct_minus_reaction_w": -3.7668959455339013e-06,
+          "signed_error_over_external_input": -6.737195637864436e-05
+        },
+        {
+          "region": "glass_annulus_6",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_6",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_7",
+          "faces": 617,
+          "area_m2": 2.645263548557964e-06,
+          "direct_out_w": 0.00013288308252952334,
+          "allocated_reaction_out_w": 0.000138915990230406,
+          "direct_minus_reaction_w": -6.032907700882648e-06,
+          "signed_error_over_external_input": -0.00010790019165306287
+        },
+        {
+          "region": "glass_annulus_7",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_7",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "seal_adjacent_Kovar_8",
+          "faces": 662,
+          "area_m2": 2.777656448379542e-06,
+          "direct_out_w": 0.00011342625614437013,
+          "allocated_reaction_out_w": 0.0001210755027149272,
+          "direct_minus_reaction_w": -7.649246570557067e-06,
+          "signed_error_over_external_input": -0.00013680885103610772
+        },
+        {
+          "region": "glass_annulus_8",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        },
+        {
+          "region": "pin_root_8",
+          "faces": 0,
+          "area_m2": 0.0,
+          "direct_out_w": 0.0,
+          "allocated_reaction_out_w": 0.0,
+          "direct_minus_reaction_w": 0.0,
+          "signed_error_over_external_input": 0.0
+        }
+      ],
+      "reaction_partition": "P1 boundary nodal reactions distributed to incident bath triangles by area/3; descriptive allocation, not exact local continuum flux",
+      "normal_check": "all outward -z, actual one-sided tetrahedral owners, only Kovar underside",
+      "source_check": "bath nodal support Kovar/glass/pin only, S=0, no detector or nonlocal source support; tiny sigma electrical work retained",
+      "discrete_residual_identity": {
+        "raw_bath_out_w": 0.056797479978102916,
+        "other_exterior_weighted_raw_out_w": -5.96601488863554e-05,
+        "internal_face_weighted_jump_w": -0.0008258909596970026,
+        "weighted_electrical_volume_work_w": 1.122585076498587e-17,
+        "identity": "reaction_out = raw_bath_out + other_exterior_weighted_raw_out + internal_face_weighted_jump + weighted_electrical_volume_work; sources at bath nodes are zero",
+        "scope": "Exact discrete P1 integration-by-parts check, not a recovered flux or an independent physical reference",
+        "closure_error_w": -6.938893903907228e-18
+      }
+    }
+  ]
+}

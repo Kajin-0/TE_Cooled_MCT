@@ -1,0 +1,59 @@
+{
+  "status": "User-confirmed metallic presolder presence; actual alloy, wetting, thickness, contacts and k(T) unidentified. Coupon proxies only; original full-stack k2 mount unchanged.",
+  "coupon_temperature_interval_k": [
+    300,
+    310
+  ],
+  "temperature_law": "Frozen reference k and rho are numerical hypotheses, not qualified temperature-dependent transport; reject coupon results outside declared interval.",
+  "bounds": {
+    "thickness_m": [
+      2e-05,
+      0.0001
+    ],
+    "k_w_mk": [
+      10,
+      80
+    ],
+    "each_contact_Rdoubleprime_m2K_W": [
+      0,
+      1e-05
+    ],
+    "wetted_fraction_screen": [
+      0.5,
+      1
+    ]
+  },
+  "bounds_provenance": "Unmeasured sensitivity hypotheses, not manufacturing specifications or uncertainty confidence limits.",
+  "Sn95Sb5_example": {
+    "k_w_mk": 35,
+    "sigma_s_m": 9500000,
+    "rho_ohm_m": 1.0526315789473685e-07,
+    "reference_temperature": "Source does not specify transport temperature",
+    "source_url": "https://arraysolders.com/wp-content/uploads/2023/06/TDS-for-95sn5sb.pdf",
+    "status": "Vendor reference alloy, not identified package presolder; frozen coupon value only",
+    "melting_c": [
+      240,
+      250
+    ],
+    "prior_input_warning": "Different from inherited Indalloy133 k64.7 reference and other vendor tables; do not modify or reinterpret accepted old evidence or infer actual chemistry from either value.",
+    "download_label": "95sn5sb.pdf",
+    "source_record": "sources/retrieval.json; original downloaded bytes retained locally in ignored outputs/flux-presolder-source-downloads"
+  },
+  "Au80Sn20_example": {
+    "k_w_mk": 57,
+    "rho_ohm_m": 1.6e-07,
+    "reference_temperature": "Vendor table does not specify transport temperature",
+    "source_url": "https://www.knowlescapacitors.com/Products/Thin-Film-and-Substrates/Build-To-Print/Pre-deposited-Solders",
+    "status": "Vendor eutectic reference; not identified package presolder. Electrical resistivity retained but NOT solved in thermal coupon.",
+    "melting_c": 284,
+    "wetting": "Vendor describes Au metallization and pad pullback, not direct wetting of bare alumina.",
+    "download_label": "ausn.html",
+    "source_record": "sources/retrieval.json; original downloaded bytes retained locally in ignored outputs/flux-presolder-source-downloads"
+  },
+  "process_limits": "Both example reflow temperatures can exceed the inherited TEC internal Sn-Sb melting reference near230C. They are NOT assembly recommendations. Metallization, surface preparation, solder hierarchy, stress and manufacturer process approval are unresolved.",
+  "electrical_policy": "HeatSolver thermal coupons only. Separate explicit alumina volume and no TEC conductors. No fictitious physical metal conductivity in full stack, no assertion of full-device electrical isolation until integrated two-terminal topology/current re-verification.",
+  "interface_model": "Each nonzero Rdoubleprime is represented by a separate2um film with k=film_thickness/Rdoubleprime. Finite-volume regularization conserves heat and reproduces resistance; no zero-thickness jump or measured intermetallic identification.",
+  "void_policy": "FEM coupon full-wetted, no voids. Wetted-fraction series-resistance screen is analytical only and omits lateral spreading, pore topology and contact perimeter effects.",
+  "full_stack_presolder_solved": false,
+  "OEM_validated": false
+}
