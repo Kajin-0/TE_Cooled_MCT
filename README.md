@@ -1,5 +1,7 @@
 # TE_Cooled_MCT
 
+**Current continuation (2026-10-30):** [OEM-first physical-validation track](docs/OEM_FIRST_VALIDATION_TRACK_20261030.md). The prospective bounded 1D source-material screen is implemented in `tecooledmct/oem_phase_a.py` with independent tests. The archived 88-leg FEM results remain numerical evidence, not a manufacturer-validated detector prediction. The original bath/temperature-interface release criteria and approved Rev3 REVIEW DRAFT are unchanged. The current scientific priority is matched-grade, multi-current/load physical validation, not more million-element bath refinement by default.
+
 Open, reproducible **proof-of-concept multiphysics model** of a three-stage thermoelectrically cooled HgCdTe (MCT) detector in a nine-pin TO-66-style hermetic package.
 
 **Phase 0: research prototype, NOT a validated digital twin.** The initial solver is a 4-node steady-state thermoelectric/thermal network and includes exploratory material, gas, radiation, detector loading, electrical, sensitivity and cooldown calculations.
