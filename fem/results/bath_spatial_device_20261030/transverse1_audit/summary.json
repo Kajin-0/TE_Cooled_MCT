@@ -1,0 +1,549 @@
+{
+  "gates": {
+    "genuine_completed_coupled": true,
+    "all_nonraw_gates_passed": true,
+    "mesh_sha256": "09c9602e6aa638cac167c103e029c6e7cd2162b7678b2c4f4752462affed9c61",
+    "field_sha256": "1f43626cc001d6af4afacbca26f7c718a334fcfb304378a040c3041595191f57",
+    "source_sha256": "d37874bb8edb81585f42ffc6fdd62b8e234ad801b5a4d0237299dc4bdad0c5a5",
+    "tetrahedra": 784696,
+    "nodes": 192714,
+    "die_mean_K": 265.6165629052645,
+    "voltage_V": 0.5519299528312893,
+    "cold_mismatches": [
+      0.06476540899971836,
+      -0.04608512392573539
+    ],
+    "cold_owner_height_um_quantiles": [
+      [
+        [
+          12.871462772424731,
+          16.1223842276526,
+          17.64939758799184,
+          19.748384669309196,
+          32.52848707956546
+        ],
+        [
+          5.989609993446851,
+          29.999999999999584,
+          29.999999999999645,
+          29.999999999999705,
+          29.99999999999982
+        ]
+      ],
+      [
+        [
+          6.678315007854446,
+          29.999999999999588,
+          29.999999999999645,
+          29.999999999999705,
+          29.99999999999982
+        ],
+        [
+          6.22899378365657,
+          15.891809011547451,
+          17.662850665725692,
+          19.79026961215588,
+          32.74709808262435
+        ]
+      ]
+    ],
+    "bath_relative_error": -0.012885049898845166,
+    "bath_owner_height_um_quantiles": [
+      10.174865598014831,
+      57.445748431794485,
+      147.98070477204286,
+      187.3203502990286,
+      375.0000000000014
+    ],
+    "same_case_raw_gates_passed": false,
+    "nonlinear": {
+      "command": [
+        "ElmerSolver",
+        "case.sif"
+      ],
+      "exit_code": 0,
+      "elapsed_s": 911.0841956578661,
+      "cpu_s": 910.701589,
+      "peak_rss_kib": 5734800,
+      "timed_out": false,
+      "nonlinear_iterations": 3,
+      "nonlinear_last_relative_change": 8.73154982480593e-10
+    },
+    "worst_cut_relative": 0.004061200540852045,
+    "global_heat_error_W": 1.7634703419755482e-10,
+    "free_heat_L1_W": 3.4230384619822506e-09,
+    "free_current_L1_A": 4.21755049337463e-08,
+    "stage_control_volumes": [
+      {
+        "band": 0,
+        "hot_out_w": 0.05719299545947597,
+        "cold_out_downward_w": 0.018014928034444513,
+        "electrical_work_w": 0.039178067318116724,
+        "sources_w": {
+          "wire_conduction": 0.0,
+          "wire_joule": 0.0,
+          "detector": 0.0
+        },
+        "energy_error_w": 1.0691472707158312e-10
+      },
+      {
+        "band": 1,
+        "hot_out_w": 0.018014928034444513,
+        "cold_out_downward_w": 0.005754100253965608,
+        "electrical_work_w": 0.012260827744802222,
+        "sources_w": {
+          "wire_conduction": 0.0,
+          "wire_joule": 0.0,
+          "detector": 0.0
+        },
+        "energy_error_w": 3.567668382942202e-11
+      },
+      {
+        "band": 2,
+        "hot_out_w": 0.005754100253965608,
+        "cold_out_downward_w": 0.0,
+        "electrical_work_w": 0.0037541002439315935,
+        "sources_w": {
+          "wire_conduction": 0.0,
+          "wire_joule": 0.0,
+          "detector": 0.002
+        },
+        "energy_error_w": 1.0034014417958925e-11
+      }
+    ],
+    "full_numerical_release": false,
+    "scope": "actual raw owner gradients, unchanged5%/1%; same production mesh plus systematically refined comparator still required"
+  },
+  "identity": {
+    "raw_bath_W": 0.056456060685041394,
+    "other_exterior_weighted_W": 8.447912536224386e-06,
+    "internal_weighted_jumps_W": 0.0007284868618734946,
+    "passive_work_W": 1.3997208639366633e-17,
+    "independent_reaction_W": 0.05719299545945113,
+    "support_tets": 124787,
+    "support_materials": [
+      "Glass",
+      "Kovar"
+    ],
+    "material_volume_terms_W": {
+      "Glass": 2.7731019665183862e-05,
+      "Kovar": 0.05716526443978593
+    },
+    "closure_error_W": 6.938893903907228e-18
+  },
+  "signed_bath_powers": {
+    "net_W": 0.0564560606850414,
+    "positive_W": 0.05932652141433945,
+    "negative_W": -0.0028704607292980525,
+    "absolute_W": 0.0621969821436375,
+    "cancellation_fraction": 0.09230225102140865
+  },
+  "physical_partitions": [
+    {
+      "family": "physical",
+      "region": "ear_lobes",
+      "triangles": 2792,
+      "area_m2": 4.1130212649134135e-05,
+      "net_W": 2.6939717191686883e-06,
+      "positive_W": 4.700381780268913e-06,
+      "negative_W": -2.0064100611002247e-06,
+      "absolute_W": 6.706791841369138e-06,
+      "cancellation_fraction": 0.5983218529980893
+    },
+    {
+      "family": "physical",
+      "region": "glass_annulus_1",
+      "triangles": 1041,
+      "area_m2": 2.8103860082074632e-06,
+      "net_W": 0.0003126719379506107,
+      "positive_W": 0.0003126719379506107,
+      "negative_W": 0.0,
+      "absolute_W": 0.0003126719379506107,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "physical",
+      "region": "glass_annulus_2",
+      "triangles": 993,
+      "area_m2": 2.8599535786107113e-06,
+      "net_W": 0.0003741801049961316,
+      "positive_W": 0.0003741801049961316,
+      "negative_W": 0.0,
+      "absolute_W": 0.0003741801049961316,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "physical",
+      "region": "glass_annulus_3",
+      "triangles": 961,
+      "area_m2": 2.8078358654030433e-06,
+      "net_W": 0.0003879443554460914,
+      "positive_W": 0.0003879443554460914,
+      "negative_W": 0.0,
+      "absolute_W": 0.0003879443554460914,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "physical",
+      "region": "glass_annulus_4",
+      "triangles": 962,
+      "area_m2": 2.8272568407505806e-06,
+      "net_W": 0.00045776729617293284,
+      "positive_W": 0.00045776729617293284,
+      "negative_W": 0.0,
+      "absolute_W": 0.00045776729617293284,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "physical",
+      "region": "glass_annulus_5",
+      "triangles": 899,
+      "area_m2": 2.82396266754622e-06,
+      "net_W": 0.00020558603461895072,
+      "positive_W": 0.00020558603461895072,
+      "negative_W": 0.0,
+      "absolute_W": 0.00020558603461895072,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "physical",
+      "region": "glass_annulus_6",
+      "triangles": 995,
+      "area_m2": 2.8615055537460643e-06,
+      "net_W": -0.00019199340270838793,
+      "positive_W": 0.0,
+      "negative_W": -0.00019199340270838793,
+      "absolute_W": 0.00019199340270838793,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "physical",
+      "region": "glass_annulus_7",
+      "triangles": 998,
+      "area_m2": 2.881675149356524e-06,
+      "net_W": 6.78263715295134e-05,
+      "positive_W": 7.380626850217846e-05,
+      "negative_W": -5.97989697266506e-06,
+      "absolute_W": 7.978616547484353e-05,
+      "cancellation_fraction": 0.14989809165726908
+    },
+    {
+      "family": "physical",
+      "region": "glass_annulus_8",
+      "triangles": 983,
+      "area_m2": 2.837808858106662e-06,
+      "net_W": 0.0002470955610468326,
+      "positive_W": 0.0002470955610468326,
+      "negative_W": 0.0,
+      "absolute_W": 0.0002470955610468326,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "physical",
+      "region": "glass_annulus_9",
+      "triangles": 958,
+      "area_m2": 2.747597195933698e-06,
+      "net_W": 9.266310505147703e-05,
+      "positive_W": 9.766227441412371e-05,
+      "negative_W": -4.99916936264668e-06,
+      "absolute_W": 0.00010266144377677039,
+      "cancellation_fraction": 0.09739137067888892
+    },
+    {
+      "family": "physical",
+      "region": "hot_footprint",
+      "triangles": 2487,
+      "area_m2": 4.007602058698645e-05,
+      "net_W": 0.04795477593555573,
+      "positive_W": 0.04894847353692673,
+      "negative_W": -0.0009936976013710016,
+      "absolute_W": 0.049942171138297735,
+      "cancellation_fraction": 0.03979392880695143
+    },
+    {
+      "family": "physical",
+      "region": "mount_hole_1",
+      "triangles": 1251,
+      "area_m2": 8.144497702825058e-06,
+      "net_W": -3.0617644575039705e-07,
+      "positive_W": 1.636505471774472e-09,
+      "negative_W": -3.078129512221715e-07,
+      "absolute_W": 3.09449456693946e-07,
+      "cancellation_fraction": 0.010576883793937397
+    },
+    {
+      "family": "physical",
+      "region": "mount_hole_2",
+      "triangles": 1148,
+      "area_m2": 8.300352512797866e-06,
+      "net_W": 5.892451758025369e-07,
+      "positive_W": 5.892451758025369e-07,
+      "negative_W": 0.0,
+      "absolute_W": 5.892451758025369e-07,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "physical",
+      "region": "outer_rim",
+      "triangles": 3765,
+      "area_m2": 5.4747874962245034e-05,
+      "net_W": 6.493756363431735e-05,
+      "positive_W": 6.876970223144359e-05,
+      "negative_W": -3.832138597126241e-06,
+      "absolute_W": 7.260184082856982e-05,
+      "cancellation_fraction": 0.10556587969097986
+    },
+    {
+      "family": "physical",
+      "region": "projected_hot_routes",
+      "triangles": 56,
+      "area_m2": 8.354243955618969e-07,
+      "net_W": 0.00036472266543465534,
+      "positive_W": 0.00040910790113579595,
+      "negative_W": -4.438523570114058e-05,
+      "absolute_W": 0.00045349313683693655,
+      "cancellation_fraction": 0.1957482135704307
+    },
+    {
+      "family": "physical",
+      "region": "remaining_Kovar",
+      "triangles": 9823,
+      "area_m2": 0.0001552274525012085,
+      "net_W": 0.0061149061158633205,
+      "positive_W": 0.007738165177436082,
+      "negative_W": -0.0016232590615727622,
+      "absolute_W": 0.009361424239008844,
+      "cancellation_fraction": 0.3467974573374589
+    },
+    {
+      "family": "radial",
+      "region": "0",
+      "triangles": 1988,
+      "area_m2": 3.212983271917679e-05,
+      "net_W": 0.04493069529438616,
+      "positive_W": 0.045483401580744404,
+      "negative_W": -0.0005527062863582403,
+      "absolute_W": 0.046036107867102646,
+      "cancellation_fraction": 0.02401185990587207
+    },
+    {
+      "family": "radial",
+      "region": "1",
+      "triangles": 6808,
+      "area_m2": 5.3729327290462405e-05,
+      "net_W": 0.010080446151715973,
+      "positive_W": 0.012140745003379451,
+      "negative_W": -0.002060298851663479,
+      "absolute_W": 0.014201043855042929,
+      "cancellation_fraction": 0.2901616068077765
+    },
+    {
+      "family": "radial",
+      "region": "2",
+      "triangles": 12843,
+      "area_m2": 0.0001428155343122232,
+      "net_W": 0.001426285205451478,
+      "positive_W": 0.0016783406217815496,
+      "negative_W": -0.0002520554163300716,
+      "absolute_W": 0.001930396038111621,
+      "cancellation_fraction": 0.2611437356415637
+    },
+    {
+      "family": "radial",
+      "region": "3",
+      "triangles": 8473,
+      "area_m2": 0.0001052451227065575,
+      "net_W": 1.86340334877897e-05,
+      "positive_W": 2.4034208434051432e-05,
+      "negative_W": -5.400174946261731e-06,
+      "absolute_W": 2.9434383380313163e-05,
+      "cancellation_fraction": 0.36692971457819457
+    },
+    {
+      "family": "quadrant",
+      "region": "0",
+      "triangles": 7464,
+      "area_m2": 8.382251371979266e-05,
+      "net_W": 0.01640663749206379,
+      "positive_W": 0.016924967208332004,
+      "negative_W": -0.0005183297162682137,
+      "absolute_W": 0.017443296924600216,
+      "cancellation_fraction": 0.05943024630134164
+    },
+    {
+      "family": "quadrant",
+      "region": "1",
+      "triangles": 7508,
+      "area_m2": 8.310315776830025e-05,
+      "net_W": 0.020532424199318007,
+      "positive_W": 0.020532424199318007,
+      "negative_W": 0.0,
+      "absolute_W": 0.020532424199318007,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "quadrant",
+      "region": "2",
+      "triangles": 7423,
+      "area_m2": 8.380747290828131e-05,
+      "net_W": 0.011331201389852778,
+      "positive_W": 0.012530841979865839,
+      "negative_W": -0.0011996405900130606,
+      "absolute_W": 0.0137304825698789,
+      "cancellation_fraction": 0.17474121305026236
+    },
+    {
+      "family": "quadrant",
+      "region": "3",
+      "triangles": 7717,
+      "area_m2": 8.318667263204571e-05,
+      "net_W": 0.008185797603806829,
+      "positive_W": 0.009338288026823608,
+      "negative_W": -0.0011524904230167782,
+      "absolute_W": 0.010490778449840386,
+      "cancellation_fraction": 0.21971494842393002
+    },
+    {
+      "family": "angular",
+      "region": "0",
+      "triangles": 3625,
+      "area_m2": 4.2370734878151945e-05,
+      "net_W": 0.00329550943729792,
+      "positive_W": 0.0035096282162515283,
+      "negative_W": -0.00021411877895360817,
+      "absolute_W": 0.0037237469952051366,
+      "cancellation_fraction": 0.11500178676441619
+    },
+    {
+      "family": "angular",
+      "region": "1",
+      "triangles": 2110,
+      "area_m2": 2.2126174323013467e-05,
+      "net_W": 0.0014221292940313883,
+      "positive_W": 0.0023343000588391186,
+      "negative_W": -0.0009121707648077303,
+      "absolute_W": 0.003246470823646849,
+      "cancellation_fraction": 0.5619460727406533
+    },
+    {
+      "family": "angular",
+      "region": "10",
+      "triangles": 1952,
+      "area_m2": 2.2047926023079717e-05,
+      "net_W": 0.007328641479383625,
+      "positive_W": 0.007328641479383625,
+      "negative_W": 0.0,
+      "absolute_W": 0.007328641479383625,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "angular",
+      "region": "11",
+      "triangles": 3534,
+      "area_m2": 4.2396886324792265e-05,
+      "net_W": 0.006366423860972121,
+      "positive_W": 0.006366423860972121,
+      "negative_W": 0.0,
+      "absolute_W": 0.006366423860972121,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "angular",
+      "region": "2",
+      "triangles": 1982,
+      "area_m2": 1.8689763430880298e-05,
+      "net_W": 0.003468158872477521,
+      "positive_W": 0.003494359751732961,
+      "negative_W": -2.6200879255439835e-05,
+      "absolute_W": 0.0035205606309884007,
+      "cancellation_fraction": 0.014884492557700302
+    },
+    {
+      "family": "angular",
+      "region": "3",
+      "triangles": 2054,
+      "area_m2": 1.869108040666625e-05,
+      "net_W": 0.0051056909839738,
+      "positive_W": 0.0051056909839738,
+      "negative_W": 0.0,
+      "absolute_W": 0.0051056909839738,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "angular",
+      "region": "4",
+      "triangles": 2007,
+      "area_m2": 2.2121403215476382e-05,
+      "net_W": 0.004825084598136709,
+      "positive_W": 0.004825161634651638,
+      "negative_W": -7.703651492911433e-08,
+      "absolute_W": 0.0048252386711665676,
+      "cancellation_fraction": 3.193065470097345e-05
+    },
+    {
+      "family": "angular",
+      "region": "5",
+      "triangles": 3362,
+      "area_m2": 4.299498928613868e-05,
+      "net_W": 0.0014004258077422694,
+      "positive_W": 0.002599989361240401,
+      "negative_W": -0.0011995635534981315,
+      "absolute_W": 0.0037995529147385326,
+      "cancellation_fraction": 0.6314235281972274
+    },
+    {
+      "family": "angular",
+      "region": "6",
+      "triangles": 3385,
+      "area_m2": 4.292444990983621e-05,
+      "net_W": 0.0032369025707306627,
+      "positive_W": 0.0037552322869988763,
+      "negative_W": -0.0005183297162682137,
+      "absolute_W": 0.00427356200326709,
+      "cancellation_fraction": 0.24257503032456595
+    },
+    {
+      "family": "angular",
+      "region": "7",
+      "triangles": 2097,
+      "area_m2": 2.2156094032004906e-05,
+      "net_W": 0.006560716036254571,
+      "positive_W": 0.006560716036254571,
+      "negative_W": 0.0,
+      "absolute_W": 0.006560716036254571,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "angular",
+      "region": "8",
+      "triangles": 1982,
+      "area_m2": 1.8741969777951535e-05,
+      "net_W": 0.006609018885078555,
+      "positive_W": 0.006609018885078555,
+      "negative_W": 0.0,
+      "absolute_W": 0.006609018885078555,
+      "cancellation_fraction": 0.0
+    },
+    {
+      "family": "angular",
+      "region": "9",
+      "triangles": 2022,
+      "area_m2": 1.865834542042827e-05,
+      "net_W": 0.006837358858962257,
+      "positive_W": 0.006837358858962257,
+      "negative_W": 0.0,
+      "absolute_W": 0.006837358858962257,
+      "cancellation_fraction": 0.0
+    }
+  ],
+  "bath_maxabs300_error_K": 5.684341886080802e-14,
+  "mesh_sha256": "09c9602e6aa638cac167c103e029c6e7cd2162b7678b2c4f4752462affed9c61",
+  "field_sha256": "1f43626cc001d6af4afacbca26f7c718a334fcfb304378a040c3041595191f57",
+  "node_map_max_m": 5.030902116501331e-14,
+  "source_sha256": {
+    "tecooledmct/bath_spatial_device.py": "54d1a02c54d96fde54e47874a59afab5d32768eba7511a8c97feb049686c54af",
+    "tecooledmct/bath_spatial_audit.py": "029dbf7a04761605529b69a975dc8d46ceaeedf64cfbf9eb49bd02e82799d41a",
+    "data/bath_spatial/diagnostic_plan.json": "96ea235ec0debaa7b0e940d50f0dd9aa7df3ad1bf841b263607f6a702e56334d"
+  },
+  "scope": "actual new coupled Elmer solution; original raw limits unchanged; signed P1 identity is diagnostic only, no recovery or local physical reference"
+}

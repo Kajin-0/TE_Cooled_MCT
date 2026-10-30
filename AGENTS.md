@@ -755,3 +755,47 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
 - Approved15-page Rev3 public copy and sealedB remain byte-identical; oldRev2
   and all accepted/failed baselines preserved. No cap/window/gas/radiation,
   Cu/Au ON, carriers, OEM validation, unrelated repository/session or LSDDTS.
+
+## Completed bounded spatial coupled pair, 2026-10-30 — raw bath remains FAILED
+
+- PhaseA checkpoint07c4332582662aea85a0e80f7133ec656972dbf4 was pushed;
+  CI41104674484 passed. Its sources, diagnostic/benchmark evidence and both
+  geometry candidates stay immutable. Read the now-updated
+  docs/BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION.md and
+  docs/BATH_SPATIAL_DEVICE_REPRODUCIBILITY.md for the completed result.
+- Actual transverse1 (784696tets):911.084s/3NL/last8.73155e-10, RSS5734800KiB,
+  die265.616562905K,V.551929952831, independent rawbath-1.288505% FAIL1%.
+- Actual transverse2 (1099293tets):999.154s/3NL/last8.06024e-10,6680832KiB,
+  die265.616573870K,V.551930033606, rawbath-1.290712% FAIL1%. Both pass all
+  177cuts and all unchanged nonraw current/global/stage/free heat checks.
+  Cold baseline unchanged, so its+6.476541% raw5% failure persists; the earlier
+  independent cold-normal+4.795425% PASS remains preserved on its separate mesh.
+- Pair deltaTc+10.965microK and deltaV+.080775microV do not qualify flux.
+  Raw error plateaus/slightly worsens. Combined and qualified comparator
+  NOT RUN because independent bath prerequisite is unmet. No GCI/OEM release,
+  recovered/reaction substitution, altered gates or further large campaign.
+- Geometry-only exact-polynomial nodal INTERPOLANT trace errors improve
+  .679239->.334147->.215901%; these are not solved-device fields/error estimates.
+  All11582parent Kovar tets with centroids above1.0mm and every hot
+  Kovar/presolder contact triangle remain unchanged in both meshes. This is
+  a concrete unrefined region, not proof of a uniquely localized cause.
+- Next bounded experiment: full1.5mm-thickness Kovar volume refinement under/
+  around the hot footprint; include conformal presolder mesh if splitting its
+  shared edges, while preserving50um physical joint/law and cold/electrical
+  TEC mesh. Qualify independent raw1% before any combined/comparator physics.
+- New immutable actual-field archive fem/results/bath_spatial_device_20261030
+  has source/SIF/native/derived fields, real LU/timed solver provenance, initial
+  guesses and independent signed audits. Its verifier chains every prior
+  ledger and approved report. Named source/docs/tests are now frozen.
+  Derived gzip is losslessly split when necessary; restore exact bytes with
+  fem/restore_bath_spatial.py into a NEW outputs file; this is not a PDE run.
+- Approved15-page Rev3 public copy, sealedA/B and historical15-page Rev2 remain
+  byte-identical. No report regeneration/redesign, cap/window/gas/radiation,
+  Cu/Au ON, carriers, other session/repository, host install or LSDDTS work.
+
+- Final verification149 opt-in tests and24 focused checks passed, including
+  real native/derived exact-byte restoration, split gzip corruption detection,
+  original current/heat checks and all immutable ledgers. CLI/demo and last
+  full source/report guard pass. Logs/reference hashes are separately stored
+  in fem/verification/bath_spatial_device_20261030; frozen archives and approved
+  Rev3 remain unchanged. No full numerical release or new combined field.

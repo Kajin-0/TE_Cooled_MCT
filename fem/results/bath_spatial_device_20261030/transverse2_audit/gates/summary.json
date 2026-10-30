@@ -1,0 +1,115 @@
+{
+  "genuine_completed_coupled": true,
+  "all_nonraw_gates_passed": true,
+  "mesh_sha256": "eab5661e2fb63c5573e63b13adf3be568309caad92ac15812e3de67187a8f8a1",
+  "field_sha256": "f5286ac2860e064c0f6509044edc2793704c7b3c51633c003456b66cfa33d2d9",
+  "source_sha256": "d37874bb8edb81585f42ffc6fdd62b8e234ad801b5a4d0237299dc4bdad0c5a5",
+  "tetrahedra": 1099293,
+  "nodes": 268650,
+  "die_mean_K": 265.616573870352,
+  "voltage_V": 0.5519300336061569,
+  "cold_mismatches": [
+    0.06476540936205435,
+    -0.04608512490561384
+  ],
+  "cold_owner_height_um_quantiles": [
+    [
+      [
+        12.871462772424731,
+        16.1223842276526,
+        17.64939758799184,
+        19.748384669309196,
+        32.52848707956546
+      ],
+      [
+        5.989609993446851,
+        29.999999999999584,
+        29.999999999999645,
+        29.999999999999705,
+        29.99999999999982
+      ]
+    ],
+    [
+      [
+        6.678315007854446,
+        29.999999999999588,
+        29.999999999999645,
+        29.999999999999705,
+        29.99999999999982
+      ],
+      [
+        6.22899378365657,
+        15.891809011547451,
+        17.662850665725692,
+        19.79026961215588,
+        32.74709808262435
+      ]
+    ]
+  ],
+  "bath_relative_error": -0.012907120818211505,
+  "bath_owner_height_um_quantiles": [
+    5.087432799007403,
+    24.487051884763478,
+    79.83340136242562,
+    94.07713235409962,
+    375.0000000000014
+  ],
+  "same_case_raw_gates_passed": false,
+  "nonlinear": {
+    "command": [
+      "ElmerSolver",
+      "case.sif"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 999.1535227098502,
+    "cpu_s": 998.900077,
+    "peak_rss_kib": 6680832,
+    "timed_out": false,
+    "nonlinear_iterations": 3,
+    "nonlinear_last_relative_change": 8.060239762498222e-10
+  },
+  "worst_cut_relative": 0.004061200261812198,
+  "global_heat_error_W": 1.1344850753269853e-10,
+  "free_heat_L1_W": 2.2520444346174373e-09,
+  "free_current_L1_A": 4.223485554941815e-08,
+  "stage_control_volumes": [
+    {
+      "band": 0,
+      "hot_out_w": 0.057193003474064204,
+      "cold_out_downward_w": 0.01801492966012912,
+      "electrical_work_w": 0.03917807372682299,
+      "sources_w": {
+        "wire_conduction": 0.0,
+        "wire_joule": 0.0,
+        "detector": 0.0
+      },
+      "energy_error_w": 8.711208837608453e-11
+    },
+    {
+      "band": 1,
+      "hot_out_w": 0.01801492966012912,
+      "cold_out_downward_w": 0.0057541003053923866,
+      "electrical_work_w": 0.012260829343820612,
+      "sources_w": {
+        "wire_conduction": 0.0,
+        "wire_joule": 0.0,
+        "detector": 0.0
+      },
+      "energy_error_w": 1.091612217285487e-11
+    },
+    {
+      "band": 2,
+      "hot_out_w": 0.0057541003053923866,
+      "cold_out_downward_w": 0.0,
+      "electrical_work_w": 0.0037541003023725747,
+      "sources_w": {
+        "wire_conduction": 0.0,
+        "wire_joule": 0.0,
+        "detector": 0.002
+      },
+      "energy_error_w": 3.0198118311508537e-12
+    }
+  ],
+  "full_numerical_release": false,
+  "scope": "actual raw owner gradients, unchanged5%/1%; same production mesh plus systematically refined comparator still required"
+}
