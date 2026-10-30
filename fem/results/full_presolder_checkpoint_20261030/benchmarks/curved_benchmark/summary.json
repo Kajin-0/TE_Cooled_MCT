@@ -1,0 +1,67 @@
+{
+  "benchmark_qualified": false,
+  "source_sha256": {
+    "tecooledmct/full_presolder_benchmark.py": "648068d42ff9e8362e1611c4298bf0f88842b107fea4e5ec7011f9375c18dfe2",
+    "tecooledmct/full_presolder_flux.py": "b91ea549b4239c816ce77fcd24260a1b603ba2279e13fb1dd917e4d8c7a47932"
+  },
+  "full_device_raw_qualification": false,
+  "scope": "fixed32-sided chordal curved-interface geometry; true-circle geometry error separate",
+  "predeclared_criteria": {
+    "boundary_L2": 0.05,
+    "integrated_bottom": 0.01,
+    "reference_Cauchy": 0.01,
+    "local_balance_w": 1e-09
+  },
+  "cases": [
+    {
+      "kind": "curved",
+      "level": 0,
+      "nodes": 291,
+      "tetrahedra": 960,
+      "original_raw_gate": 0.01,
+      "reaction_used": false,
+      "volume_balance_max_w": 5.637851296924623e-18,
+      "reference_type": "independent conforming quadratic FEM on identical physical geometry",
+      "boundary_raw_face_mean_L2_relative": 0.19894373199727444,
+      "boundary_recovered_face_mean_L2_relative": 0.13798961308753865,
+      "raw_bottom_relative_error": -0.0014962060330635891,
+      "recovered_bottom_relative_error": -0.00018906946174123516,
+      "P2_free_residual_l1_w": 1.9029851479335225e-12,
+      "global_recovered_balance_enforced_not_independent": true
+    },
+    {
+      "kind": "curved",
+      "level": 1,
+      "nodes": 1412,
+      "tetrahedra": 5760,
+      "original_raw_gate": 0.01,
+      "reaction_used": false,
+      "volume_balance_max_w": 9.974659986866641e-18,
+      "reference_type": "independent conforming quadratic FEM on identical physical geometry",
+      "boundary_raw_face_mean_L2_relative": 0.1465929312851265,
+      "boundary_recovered_face_mean_L2_relative": 0.07052859201718574,
+      "raw_bottom_relative_error": -9.101303358514814e-05,
+      "recovered_bottom_relative_error": 2.2206628525845323e-05,
+      "P2_free_residual_l1_w": 1.2141136566164862e-11,
+      "global_recovered_balance_enforced_not_independent": true,
+      "P2_bottom_Cauchy_L2_relative": 0.10892078032374763
+    },
+    {
+      "kind": "curved",
+      "level": 2,
+      "nodes": 6725,
+      "tetrahedra": 30720,
+      "original_raw_gate": 0.01,
+      "reaction_used": false,
+      "volume_balance_max_w": 5.339695699491109e-18,
+      "reference_type": "independent conforming quadratic FEM on identical physical geometry",
+      "boundary_raw_face_mean_L2_relative": 0.1533879022646463,
+      "boundary_recovered_face_mean_L2_relative": 0.04371141238938988,
+      "raw_bottom_relative_error": -2.9503813047543518e-05,
+      "recovered_bottom_relative_error": 6.2439982793457615e-06,
+      "P2_free_residual_l1_w": 6.922665967817924e-11,
+      "global_recovered_balance_enforced_not_independent": true,
+      "P2_bottom_Cauchy_L2_relative": 0.07247993148205475
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "current_a": 0.1,
+  "pbias_w": 0.0015,
+  "poptical_thermal_w": 0.0005,
+  "deposited_power_w": 0.002,
+  "wire_scale": 1.0,
+  "package_sigma_s_m": 1e-12,
+  "attach_k_scale": 1.0,
+  "mount_k_scale": 1.0,
+  "initial_actual_state": {
+    "accepted_source_vtu_sha256": "d0f6627208228940d3ff5445ecf90cc867fc1bfb2c1754ccd5de303ba734c819",
+    "method": "exact identical old nodes plus P1 edge interpolation only inside passive joint; all conductor values unchanged; both fields subsequently solved",
+    "initial_field_sha256": "827e0286b8fc8568800222ce402964382a569f86045351606946357e602348b6",
+    "new_passive_nodes": 0
+  },
+  "thermal_bath": "header underside300 K only",
+  "wire_model": "conservative hybrid1D flux callbacks in the coupled global nonlinear solve",
+  "TEC_profile": "original mixed constant verification law, no OEM-grade accuracy",
+  "transient": false,
+  "presolder": {
+    "k_w_mk": 35.0,
+    "lower_k_w_mk": 1.0,
+    "upper_k_w_mk": 0.6666666666666666,
+    "thickness_m": 5e-05,
+    "contacts_Rdoubleprime": [
+      0.0,
+      0.0
+    ],
+    "wetted_fraction": 1.0,
+    "legacy_control": false,
+    "transport_policy": "constant proxy over assumed numerical290..320K interval, not measured k(T)",
+    "electrical_policy": "S0/tiny computational sigma preserved; no package carrier-transport claim; alumina separates joint from all P/N/Cu",
+    "thermal_geometry": "new physical joint role uses exact prior50um joint volume; protected old mount data remain unchanged"
+  },
+  "gas": "N2",
+  "pressure_pa": 100.0,
+  "radiation_on": true,
+  "window_emissivity": 0.1,
+  "accommodation": 0.8,
+  "gold_scale": 1.0,
+  "lead_scale": 1.0,
+  "operator_path": "/work/outputs/full-presolder/zero_operator",
+  "exchange_input_sha256": {
+    "ExchangeMatrices.bin": "8437bb8ecd574486c735166984cc2cf0780f5cb80b49804d5c0d7398c9bb7c1c",
+    "ExchangeWeights.dat": "8145904e62acc6ce0d8ccc66ae87a7664c819eedc6cc9ce07d01074c127c6290"
+  },
+  "enclosure_model": "3D solids + nonlocal gray radiosity, rarefied gas films, gold/TEC supply leads; no gas CFD",
+  "nonlocal_iteration": "depth4 regularized Anderson on boundary powers; same physical fixed point, independently checked by final unaccelerated field residuals",
+  "lead_electrical_model": "imposed module series I; lumped Cu lead resistance/Joule, not spatial detector/lead current transport"
+}

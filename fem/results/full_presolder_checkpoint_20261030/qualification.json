@@ -1,0 +1,89 @@
+{
+  "status": "TESTED SCOPED EVIDENCE; assumed geometry only; full qualification incomplete",
+  "general_recovery_qualified": false,
+  "historical_raw_fine_gate_passed": false,
+  "corrected_device_physics_qualified": false,
+  "presolder_two_resolution_physics_qualified": false,
+  "zero_contact_extra_interface_gate_passed": false,
+  "contact_extra_interface_gate_passed": true,
+  "old_1percent_gate_unchanged": true,
+  "actual_coupled_cases": [
+    {
+      "nodes": 109771,
+      "tetrahedra": 429100,
+      "die_mean_k": 268.8068876871817,
+      "cold_ceramic_k": 268.39596872510936,
+      "voltage_v": 0.537982491614992,
+      "direct_bath_relative_error": 0.0042014971215472855,
+      "worst_cut_relative_error": 0.0024892502095247293,
+      "passed": true,
+      "case": "legacy_control",
+      "operator": "legacy_operator",
+      "assumed_geometry_sandbox": true
+    },
+    {
+      "nodes": 109771,
+      "tetrahedra": 429100,
+      "die_mean_k": 268.76281081771,
+      "cold_ceramic_k": 268.3516319663519,
+      "voltage_v": 0.5377572178853767,
+      "direct_bath_relative_error": 0.004256059178351413,
+      "worst_cut_relative_error": 0.002489274611481712,
+      "passed": true,
+      "case": "zero_contact",
+      "operator": "zero_operator",
+      "assumed_geometry_sandbox": true
+    },
+    {
+      "nodes": 119613,
+      "tetrahedra": 483866,
+      "die_mean_k": 268.7715206831994,
+      "cold_ceramic_k": 268.3603931160675,
+      "voltage_v": 0.5378089974304229,
+      "direct_bath_relative_error": 0.004219636133507964,
+      "worst_cut_relative_error": 0.002489276055028661,
+      "passed": true,
+      "case": "contact_hypothesis",
+      "operator": "contact_operator",
+      "assumed_geometry_sandbox": true
+    },
+    {
+      "nodes": 204855,
+      "tetrahedra": 821874,
+      "die_mean_k": 266.07813624703357,
+      "cold_ceramic_k": 265.635983841629,
+      "voltage_v": 0.5548444260261441,
+      "direct_bath_relative_error": -0.0036084598927017173,
+      "worst_cut_relative_error": 0.0004214414432696101,
+      "passed": true,
+      "case": "fine_lead_off",
+      "operator": "protected G3b operator_h1",
+      "assumed_geometry_sandbox": true
+    }
+  ],
+  "historical_failed_cases": [
+    {
+      "case": "nitrogen_fine_verified",
+      "raw_bath_relative_error": 0.016558725260543042,
+      "gate_passed": false,
+      "protected_metrics_sha256": "6dd7a74355423ece4d3be7302f1b3bd0cfb4f9fa1197d6a13fd72d60d7442ebd"
+    },
+    {
+      "case": "nitrogen_bath",
+      "raw_bath_relative_error": 0.015141215953160148,
+      "gate_passed": false,
+      "protected_metrics_sha256": "8c1896e43128d38d09d8d1a557cd7a6642fbc245e9ba6d45f32e152c3659f25d"
+    },
+    {
+      "case": "nitrogen_feedthrough",
+      "raw_bath_relative_error": 0.01583834510699718,
+      "gate_passed": false,
+      "protected_metrics_sha256": "9725fe8eab99d9acf5b58ee0c9040a7d2673a840fbebbb9ecdc55de6e850eed5"
+    }
+  ],
+  "source_geometry_checkpoint": "5fe8a663b06d0b8fcf41044114e5f4b4b443c746",
+  "recovery_scope": "RT0 constrained balance is not independent accuracy; oblique bath1.08018%, curved P2 Cauchy7.24799% fail",
+  "environment_scope": "fixed-field algebraic screen only; high-pressure1D gap results are model-form unqualified",
+  "derived_3D_fields": "raw3D T/phi+mesh archived; reproduce q/J/Joule using frozen postprocessor; complete derived.vtu retained in ignored raw outputs",
+  "publication_order": "independent source geometry committed/pushed first; this archive preserves earlier completed sandbox runs"
+}

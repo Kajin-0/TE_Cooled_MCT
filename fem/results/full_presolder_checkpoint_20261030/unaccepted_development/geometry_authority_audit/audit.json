@@ -1,0 +1,421 @@
+{
+  "status": "ASSUMED-GEOMETRY SANDBOX ONLY; no single manufactured package identified",
+  "geometry_authority_selected": false,
+  "baseline_integrity": {
+    "passed": true,
+    "g1_through_g3a": {
+      "passed": true,
+      "checked": {
+        "g1_20261028": {
+          "source_files": 8,
+          "artifacts": 128
+        },
+        "g2a_20261028": {
+          "source_files": 4,
+          "artifacts": 106
+        },
+        "g2b_geometry_20261028": {
+          "source_files": 3,
+          "artifacts": 11
+        }
+      },
+      "connected_g2b_unchanged": true,
+      "g2c_unchanged": true,
+      "g2c_artifacts": 451,
+      "g2d_unchanged": true,
+      "g2d_artifacts": 83,
+      "g3a_unchanged": true,
+      "g3a_artifacts": 192
+    },
+    "g3b_entries_checked": 573,
+    "g3b_ledger_sha256": "ccd6437634472a9968169e3e8b693c1b9942c4edc230a92f25395f3cd760a5a1",
+    "baseline_commit": "52b30c0f4f92580394fb7b51bcd95a56ebd5d2e4",
+    "revision2_pdf_sha256": "751284cabaffa34f7f338f85ffa05cd88c59e157831f3dc9f1837d7758f3ac1c",
+    "flux_presolder_sources": 14,
+    "flux_presolder_artifacts": 260,
+    "previous_checkpoint_sha256": "accf0e1ab2c4dd1a4330b06efc6a7fc3a942ed87984fbfc27befeecb2689e36c"
+  },
+  "authority_matrix": [
+    {
+      "parameter": "header envelope / profile",
+      "baseline": "31.5x17.5mm mathematical ellipse;1.1mm thick",
+      "VIGO_family": "31.5x17.5mm, two-ear contour;1.5mm drawing header dimension",
+      "generic_user_reference": "31.5x14.7mm; contour/manufacturer not identified",
+      "classification": "drawing family and user reference differ; ellipse is a modeling approximation",
+      "source": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf"
+    },
+    {
+      "parameter": "cap OD",
+      "baseline": "15.2mm",
+      "VIGO_family": "15.2mm dimension",
+      "generic_user_reference": "12.44mm",
+      "classification": "different envelope hypotheses, not interchangeable product data",
+      "source": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf"
+    },
+    {
+      "parameter": "height/window",
+      "baseline": "8.6mm above header, clear diameter5.9mm",
+      "VIGO_family": "8.25+/-0.35mm drawing datum, diameter6 aperture; verify datum before new CAD",
+      "generic_user_reference": "not identified",
+      "classification": "old height/window are hypotheses, not exact drawing match",
+      "source": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf"
+    },
+    {
+      "parameter": "pins / views",
+      "baseline": "nine generic0.44mm pins; no OEM identities; source view unspecified",
+      "VIGO_family": "nine0.76mm pins,10.8mm PCD,C arrangement; numbering is bottom view",
+      "generic_user_reference": "not identified",
+      "classification": "both pin geometry and endpoint functions require correction",
+      "source": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf"
+    },
+    {
+      "parameter": "TEC hot/cold widths / height",
+      "baseline": "6.4/2.4mm;3.8mm",
+      "VIGO_family": "drawing does not identify the chosen TEC part",
+      "generic_user_reference": "6.05mm bottom in user render, not tied to this TEC",
+      "classification": "6.4/2.4 are sourced for selected3MC04-044-05, not geometry errors; package compatibility unverified",
+      "source": "https://www.tec-microsystems.com/Download/Datasheets/Thermoelectric%20Coolers/MC04%20Series/3MC04-044-05_Datasheet_2019.pdf"
+    },
+    {
+      "parameter": "TEC stages and inner construction",
+      "baseline": "28/12/4 couples;4.55/3.25mm intermediate plates",
+      "VIGO_family": "unknown internal artwork and exact cooler",
+      "generic_user_reference": "unknown",
+      "classification": "inferred geometry, never OEM-verified",
+      "source": "https://www.tec-microsystems.com/Download/Datasheets/Thermoelectric%20Coolers/MC04%20Series/3MC04-044-05_Datasheet_2019.pdf"
+    },
+    {
+      "parameter": "leads",
+      "baseline": "Cu0.202mm diameter x8mm; pins2/3 to module ports103/104",
+      "VIGO_family": "TEC pins1/9; detector7/8; thermistor5/6",
+      "generic_user_reference": "0.28mm illustrative in Revision6",
+      "classification": "model instances are not OEM pin numbers; return module port is mid-stack",
+      "source": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf"
+    },
+    {
+      "parameter": "enclosure physics",
+      "baseline": "pureN2 100Pa;gray eps;opaque window;passive package potential",
+      "VIGO_family": "no matched gas/pressure/coating/thermal contact qualification supplied",
+      "generic_user_reference": "unknown",
+      "classification": "unvalidated hypotheses; no manufactured-device accuracy",
+      "source": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf"
+    }
+  ],
+  "pinout_bottom_view": [
+    {
+      "pin": 1,
+      "x_mm": 4.368691769624717,
+      "y_mm": -3.174040362379355,
+      "function": "TEC+"
+    },
+    {
+      "pin": 2,
+      "x_mm": 1.6686917696247163,
+      "y_mm": -5.135705187993829,
+      "function": "unused"
+    },
+    {
+      "pin": 3,
+      "x_mm": -1.6686917696247157,
+      "y_mm": -5.13570518799383,
+      "function": "unused"
+    },
+    {
+      "pin": 4,
+      "x_mm": -4.368691769624716,
+      "y_mm": -3.1740403623793556,
+      "function": "unused"
+    },
+    {
+      "pin": 5,
+      "x_mm": -5.4,
+      "y_mm": -6.613092715395707e-16,
+      "function": "thermistor"
+    },
+    {
+      "pin": 6,
+      "x_mm": -4.368691769624717,
+      "y_mm": 3.1740403623793547,
+      "function": "thermistor"
+    },
+    {
+      "pin": 7,
+      "x_mm": -1.668691769624717,
+      "y_mm": 5.135705187993829,
+      "function": "detector cathode / active"
+    },
+    {
+      "pin": 8,
+      "x_mm": 1.6686917696247152,
+      "y_mm": 5.13570518799383,
+      "function": "detector anode / active"
+    },
+    {
+      "pin": 9,
+      "x_mm": 4.368691769624716,
+      "y_mm": 3.1740403623793565,
+      "function": "TEC-"
+    }
+  ],
+  "pinout_top_view": [
+    {
+      "pin": 1,
+      "x_mm": -4.368691769624717,
+      "y_mm": -3.174040362379355,
+      "function": "TEC+"
+    },
+    {
+      "pin": 2,
+      "x_mm": -1.6686917696247163,
+      "y_mm": -5.135705187993829,
+      "function": "unused"
+    },
+    {
+      "pin": 3,
+      "x_mm": 1.6686917696247157,
+      "y_mm": -5.13570518799383,
+      "function": "unused"
+    },
+    {
+      "pin": 4,
+      "x_mm": 4.368691769624716,
+      "y_mm": -3.1740403623793556,
+      "function": "unused"
+    },
+    {
+      "pin": 5,
+      "x_mm": 5.4,
+      "y_mm": -6.613092715395707e-16,
+      "function": "thermistor"
+    },
+    {
+      "pin": 6,
+      "x_mm": 4.368691769624717,
+      "y_mm": 3.1740403623793547,
+      "function": "thermistor"
+    },
+    {
+      "pin": 7,
+      "x_mm": 1.668691769624717,
+      "y_mm": 5.135705187993829,
+      "function": "detector cathode / active"
+    },
+    {
+      "pin": 8,
+      "x_mm": -1.6686917696247152,
+      "y_mm": 5.13570518799383,
+      "function": "detector anode / active"
+    },
+    {
+      "pin": 9,
+      "x_mm": -4.368691769624716,
+      "y_mm": 3.1740403623793565,
+      "function": "TEC-"
+    }
+  ],
+  "view_transform": "with page-up fixed: x_top=-x_bottom,y_top=y_bottom; always retain the viewing normal and datum; not a pin-number rotation",
+  "current_construction_pin_centres_m": [
+    [
+      -0.0054,
+      0.0
+    ],
+    [
+      0.0054,
+      0.0
+    ],
+    [
+      0.0043686917696247165,
+      0.003174040362379355
+    ],
+    [
+      0.0016686917696247163,
+      0.00513570518799383
+    ],
+    [
+      -0.0016686917696247157,
+      0.00513570518799383
+    ],
+    [
+      -0.004368691769624716,
+      0.0031740403623793556
+    ],
+    [
+      -0.004368691769624717,
+      -0.0031740403623793543
+    ],
+    [
+      -0.001668691769624717,
+      -0.00513570518799383
+    ],
+    [
+      0.0016686917696247152,
+      -0.00513570518799383
+    ]
+  ],
+  "current_terminal_planes": {
+    "103": {
+      "body": 116,
+      "axis": 0,
+      "coordinate_m": -0.002125,
+      "area_m2": 2.5999999999999998e-08
+    },
+    "104": {
+      "body": 183,
+      "axis": 0,
+      "coordinate_m": -0.001025,
+      "area_m2": 2.5999999999999998e-08
+    }
+  },
+  "full_package_geometry_corrected": false,
+  "historical_15page_report_status": "unchanged historical hypothetical assembly, not an OEM-validated external-facing device study",
+  "lead_audits": [
+    {
+      "case": "nitrogen_patch1",
+      "actual_field_sha256": "d0f6627208228940d3ff5445ecf90cc867fc1bfb2c1754ccd5de303ba734c819",
+      "leads": [
+        {
+          "lead": 0,
+          "warm_endpoint": {
+            "tag": 204,
+            "centroid_m": [
+              0.004368691769624717,
+              0.0031740403623793556,
+              0.0006300000000000001
+            ],
+            "temperature_k": 300.1182016572398,
+            "area_m2": 1.5128229238342968e-07
+          },
+          "TEC_endpoint": {
+            "tag": 103,
+            "centroid_m": [
+              -0.002125000000000001,
+              -0.0016500000000000006,
+              3.2500000000000004e-05
+            ],
+            "temperature_k": 300.2421967745698,
+            "area_m2": 2.5999999999999988e-08
+          },
+          "terminal_stage": 0,
+          "terminal_is_module_hot_side": true,
+          "assumed_length_m": 0.008,
+          "straight_line_lower_bound_m": 0.008111498287416263,
+          "length_geometrically_possible": false,
+          "G_W_K": 0.001602369332963474,
+          "conduction_into_TEC_W": -0.00019868597344674965,
+          "joule_W": 4.293641833044761e-05,
+          "basis": "actual area-averaged raw VTU temperatures/mesh face coordinates; no PDE executed"
+        },
+        {
+          "lead": 1,
+          "warm_endpoint": {
+            "tag": 206,
+            "centroid_m": [
+              0.0016686917696247167,
+              0.005135705187993831,
+              0.00063
+            ],
+            "temperature_k": 289.4865091434335,
+            "area_m2": 1.5128229238342968e-07
+          },
+          "TEC_endpoint": {
+            "tag": 104,
+            "centroid_m": [
+              -0.0010250000000000003,
+              0.00027499999999999996,
+              0.0026225000000000003
+            ],
+            "temperature_k": 278.307388000227,
+            "area_m2": 2.599999999999998e-08
+          },
+          "terminal_stage": 2,
+          "terminal_is_module_hot_side": false,
+          "assumed_length_m": 0.008,
+          "straight_line_lower_bound_m": 0.005903599454937139,
+          "length_geometrically_possible": true,
+          "G_W_K": 0.001602369332963474,
+          "conduction_into_TEC_W": 0.017913080889357738,
+          "joule_W": 4.293641833044761e-05,
+          "basis": "actual area-averaged raw VTU temperatures/mesh face coordinates; no PDE executed"
+        }
+      ],
+      "net_conduction_into_TEC_W": 0.017714394915910987,
+      "total_lead_Joule_W": 8.587283666089522e-05
+    },
+    {
+      "case": "nitrogen_0",
+      "actual_field_sha256": "e1f8f9aef0d2d42989e29cc20ea304902269bd4fb437be65130f002b6d9932ff",
+      "leads": [
+        {
+          "lead": 0,
+          "warm_endpoint": {
+            "tag": 204,
+            "centroid_m": [
+              0.004368691769624717,
+              0.0031740403623793556,
+              0.0006300000000000001
+            ],
+            "temperature_k": 300.1184050529972,
+            "area_m2": 1.5128229238342968e-07
+          },
+          "TEC_endpoint": {
+            "tag": 103,
+            "centroid_m": [
+              -0.002125000000000001,
+              -0.0016500000000000006,
+              3.2500000000000004e-05
+            ],
+            "temperature_k": 300.24227966907057,
+            "area_m2": 2.5999999999999988e-08
+          },
+          "terminal_stage": 0,
+          "terminal_is_module_hot_side": true,
+          "assumed_length_m": 0.008,
+          "straight_line_lower_bound_m": 0.008111498287416263,
+          "length_geometrically_possible": false,
+          "G_W_K": 0.001602369332963474,
+          "conduction_into_TEC_W": -0.0001984928859285623,
+          "joule_W": 4.293641833044761e-05,
+          "basis": "actual area-averaged raw VTU temperatures/mesh face coordinates; no PDE executed"
+        },
+        {
+          "lead": 1,
+          "warm_endpoint": {
+            "tag": 206,
+            "centroid_m": [
+              0.0016686917696247167,
+              0.005135705187993831,
+              0.00063
+            ],
+            "temperature_k": 289.5177276126989,
+            "area_m2": 1.5128229238342968e-07
+          },
+          "TEC_endpoint": {
+            "tag": 104,
+            "centroid_m": [
+              -0.0010250000000000003,
+              0.00027499999999999996,
+              0.0026225000000000003
+            ],
+            "temperature_k": 278.3648860609795,
+            "area_m2": 2.599999999999998e-08
+          },
+          "terminal_stage": 2,
+          "terminal_is_module_hot_side": false,
+          "assumed_length_m": 0.008,
+          "straight_line_lower_bound_m": 0.005903599454937139,
+          "length_geometrically_possible": true,
+          "G_W_K": 0.001602369332963474,
+          "conduction_into_TEC_W": 0.01787097127787594,
+          "joule_W": 4.293641833044761e-05,
+          "basis": "actual area-averaged raw VTU temperatures/mesh face coordinates; no PDE executed"
+        }
+      ],
+      "net_conduction_into_TEC_W": 0.01767247839194738,
+      "total_lead_Joule_W": 8.587283666089522e-05
+    }
+  ],
+  "same_coarse_mesh_lead_only_control": {
+    "die_shift_k": 3.064820157952738,
+    "scope": "gas/radiation off, Au retained, Cu leads added; NOT the N2/radiation operating point or a new fine-mesh test"
+  }
+}

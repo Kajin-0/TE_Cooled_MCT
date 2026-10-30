@@ -444,3 +444,36 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
 - fem/archive_geometry_rebaseline.py publishes verified source geometry only;
   --verify checks its immutable ledger and protected earlier evidence/report.
   Continue existing sim/pinned Docker, no other repositories or LSDDTS.
+
+## Completed old-geometry presolder / independent-flux evidence, 2026-10-30
+
+- Source-geometry checkpoint5fe8a663b06d0b8fcf41044114e5f4b4b443c746 was
+  committed/pushed FIRST per urgent user priority; CI40993826234 passed.
+  The following preserves earlier completed runs, not new geometry physics.
+- Read docs/PHASE1_FULL_PACKAGE_PRESOLDER_QUALIFICATION.md,
+  docs/GEOMETRY_PINOUT_LEAD_DISCREPANCY_AUDIT_20261030.md and
+  docs/REPRO_FULL_PACKAGE_PRESOLDER.md. New full_presolder_* modules are versioned
+  additions; no old physical source was changed. All package points are assumed-
+  geometry sandbox studies; never call them a verified commercial assembly.
+- Three real coupled88-leg old-geometry cases: identicalk2 control, explicit
+  50um/k35 zero-contact joint,46um/k35 bulk plus2um/k1 and2um/k(2/3) films.
+  Original per-case gates/175 cuts pass, but EXTRA raw zero-contact interface
+  diagnostic FAILS5.73220% against5%. Contact interfaces pass5%; metallurgy,
+  wetting, measuredk(T), wider sensitivities and two-resolution physics unqualified.
+  Refined455544-tet joint mesh is AUDITED ONLY, no coupled solve.
+- Matched old821874-tet lead-off solve lowers die2.720565K, rawbath−0.360846%.
+  Original lead-on fine+1.655873% remains FAILED. Independent raw907patch endpoint
+  audit gives17.714395mW net assumed Cu conduction; return endpoint is mid-stack.
+  Finite attachment bounds do NOT prove8mmwire physically impossible despite
+  8.111498mm centroid spacing. Corrected full88-leg hot-side return still pending.
+- Six true3D oblique/curved Elmer benchmarks plus independent P2/RT0 recovery
+  fail full qualification: oblique recovered bath1.08018% >1%; curved reference
+  Cauchy7.24799% >1%. Constraint-enforced conservation is NOT independent accuracy.
+  No weak-reaction relabel, full-device recovery or raw1% gate waiver is allowed.
+- fem/archive_full_presolder_checkpoint.py --verify checks scoped evidence,
+  genuine source/SIF/field/mesh execution provenance, old failures and previous
+  guards. Full106 tests passed, then110 with geometry; CLI/geometry_demo pass.
+  High-pressure fixed-field1D gas screens are model-form unqualified, no new Tc.
+- Next priority is full source-geometry return routing/electrical isolation,
+  actual88-leg CAD/mesh proof and new cavity operator, then bounded matched
+  physics. Do not launch further old-geometry parameter campaigns by default.

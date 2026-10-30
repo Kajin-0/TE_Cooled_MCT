@@ -1,0 +1,196 @@
+{
+  "geometry_authority_selected": false,
+  "authority_matrix": [
+    {
+      "parameter": "header envelope / profile",
+      "baseline": "31.5x17.5mm mathematical ellipse;1.1mm thick",
+      "VIGO_family": "31.5x17.5mm, two-ear contour;1.5mm drawing header dimension",
+      "generic_user_reference": "31.5x14.7mm; contour/manufacturer not identified",
+      "classification": "drawing family and user reference differ; ellipse is a modeling approximation",
+      "source": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf"
+    },
+    {
+      "parameter": "cap OD",
+      "baseline": "15.2mm",
+      "VIGO_family": "15.2mm dimension",
+      "generic_user_reference": "12.44mm",
+      "classification": "different envelope hypotheses, not interchangeable product data",
+      "source": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf"
+    },
+    {
+      "parameter": "height/window",
+      "baseline": "8.6mm above header, clear diameter5.9mm",
+      "VIGO_family": "8.25+/-0.35mm drawing datum, diameter6 aperture; verify datum before new CAD",
+      "generic_user_reference": "not identified",
+      "classification": "old height/window are hypotheses, not exact drawing match",
+      "source": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf"
+    },
+    {
+      "parameter": "pins / views",
+      "baseline": "nine generic0.44mm pins; no OEM identities; source view unspecified",
+      "VIGO_family": "nine0.76mm pins,10.8mm PCD,C arrangement; numbering is bottom view",
+      "generic_user_reference": "not identified",
+      "classification": "both pin geometry and endpoint functions require correction",
+      "source": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf"
+    },
+    {
+      "parameter": "TEC hot/cold widths / height",
+      "baseline": "6.4/2.4mm;3.8mm",
+      "VIGO_family": "drawing does not identify the chosen TEC part",
+      "generic_user_reference": "6.05mm bottom in user render, not tied to this TEC",
+      "classification": "6.4/2.4 are sourced for selected3MC04-044-05, not geometry errors; package compatibility unverified",
+      "source": "https://www.tec-microsystems.com/Download/Datasheets/Thermoelectric%20Coolers/MC04%20Series/3MC04-044-05_Datasheet_2019.pdf"
+    },
+    {
+      "parameter": "TEC stages and inner construction",
+      "baseline": "28/12/4 couples;4.55/3.25mm intermediate plates",
+      "VIGO_family": "unknown internal artwork and exact cooler",
+      "generic_user_reference": "unknown",
+      "classification": "inferred geometry, never OEM-verified",
+      "source": "https://www.tec-microsystems.com/Download/Datasheets/Thermoelectric%20Coolers/MC04%20Series/3MC04-044-05_Datasheet_2019.pdf"
+    },
+    {
+      "parameter": "leads",
+      "baseline": "Cu0.202mm diameter x8mm; pins2/3 to module ports103/104",
+      "VIGO_family": "TEC pins1/9; detector7/8; thermistor5/6",
+      "generic_user_reference": "0.28mm illustrative in Revision6",
+      "classification": "model instances are not OEM pin numbers; return module port is mid-stack",
+      "source": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf"
+    },
+    {
+      "parameter": "enclosure physics",
+      "baseline": "pureN2 100Pa;gray eps;opaque window;passive package potential",
+      "VIGO_family": "no matched gas/pressure/coating/thermal contact qualification supplied",
+      "generic_user_reference": "unknown",
+      "classification": "unvalidated hypotheses; no manufactured-device accuracy",
+      "source": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf"
+    }
+  ],
+  "pinout_bottom_view": [
+    {
+      "pin": 1,
+      "x_mm": 4.368691769624717,
+      "y_mm": -3.174040362379355,
+      "function": "TEC+"
+    },
+    {
+      "pin": 2,
+      "x_mm": 1.6686917696247163,
+      "y_mm": -5.135705187993829,
+      "function": "unused"
+    },
+    {
+      "pin": 3,
+      "x_mm": -1.6686917696247157,
+      "y_mm": -5.13570518799383,
+      "function": "unused"
+    },
+    {
+      "pin": 4,
+      "x_mm": -4.368691769624716,
+      "y_mm": -3.1740403623793556,
+      "function": "unused"
+    },
+    {
+      "pin": 5,
+      "x_mm": -5.4,
+      "y_mm": -6.613092715395707e-16,
+      "function": "thermistor"
+    },
+    {
+      "pin": 6,
+      "x_mm": -4.368691769624717,
+      "y_mm": 3.1740403623793547,
+      "function": "thermistor"
+    },
+    {
+      "pin": 7,
+      "x_mm": -1.668691769624717,
+      "y_mm": 5.135705187993829,
+      "function": "detector cathode / active"
+    },
+    {
+      "pin": 8,
+      "x_mm": 1.6686917696247152,
+      "y_mm": 5.13570518799383,
+      "function": "detector anode / active"
+    },
+    {
+      "pin": 9,
+      "x_mm": 4.368691769624716,
+      "y_mm": 3.1740403623793565,
+      "function": "TEC-"
+    }
+  ],
+  "pinout_top_view": [
+    {
+      "pin": 1,
+      "x_mm": -4.368691769624717,
+      "y_mm": -3.174040362379355,
+      "function": "TEC+"
+    },
+    {
+      "pin": 2,
+      "x_mm": -1.6686917696247163,
+      "y_mm": -5.135705187993829,
+      "function": "unused"
+    },
+    {
+      "pin": 3,
+      "x_mm": 1.6686917696247157,
+      "y_mm": -5.13570518799383,
+      "function": "unused"
+    },
+    {
+      "pin": 4,
+      "x_mm": 4.368691769624716,
+      "y_mm": -3.1740403623793556,
+      "function": "unused"
+    },
+    {
+      "pin": 5,
+      "x_mm": 5.4,
+      "y_mm": -6.613092715395707e-16,
+      "function": "thermistor"
+    },
+    {
+      "pin": 6,
+      "x_mm": 4.368691769624717,
+      "y_mm": 3.1740403623793547,
+      "function": "thermistor"
+    },
+    {
+      "pin": 7,
+      "x_mm": 1.668691769624717,
+      "y_mm": 5.135705187993829,
+      "function": "detector cathode / active"
+    },
+    {
+      "pin": 8,
+      "x_mm": -1.6686917696247152,
+      "y_mm": 5.13570518799383,
+      "function": "detector anode / active"
+    },
+    {
+      "pin": 9,
+      "x_mm": -4.368691769624716,
+      "y_mm": 3.1740403623793565,
+      "function": "TEC-"
+    }
+  ],
+  "view_transform": "with page-up fixed: x_top=-x_bottom,y_top=y_bottom; always retain the viewing normal and datum; not a pin-number rotation",
+  "manufacturer_part_number": null,
+  "source_retrieval": [
+    {
+      "name": "vigo.pdf",
+      "url": "https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf",
+      "sha256": "1f17637e02eb9ca0c340be6d936a485ae632ef7b12d9d7ea26e7664b42d6fc01"
+    },
+    {
+      "name": "tec.pdf",
+      "url": "https://www.tec-microsystems.com/Download/Datasheets/Thermoelectric%20Coolers/MC04%20Series/3MC04-044-05_Datasheet_2019.pdf",
+      "sha256": "1cc1075ed76a959b6a21cd24bde1704f72ab22529e77695a00e9b1af86a55492"
+    }
+  ],
+  "original_user_render_status": "Generic12.44mm/14.7mm envelope supplied in corrective note, no independently identified manufacturer/part/CAD authority; do not merge with VIGO or selected TEC."
+}
