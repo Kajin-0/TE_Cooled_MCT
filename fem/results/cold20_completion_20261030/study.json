@@ -1,0 +1,1618 @@
+{
+  "actual_completed_coupled_meshes": 3,
+  "failed_coupled_levels": [],
+  "matched_inputs": {
+    "current_a": 0.1,
+    "deposited_power_w": 0.002,
+    "pbias_w": 0.0015,
+    "parametric_absorption_w": 0.0005,
+    "cu_leads_on": false,
+    "au_bonds_on": false,
+    "package_sigma_s_m": 1e-12,
+    "material_status": "unchanged constant G1 P/N/Cu verification proxies; passive thermal laws and unidentified k35 joint; no OEM grade",
+    "boundary_scope": "300K Kovar external underside tag101 only; all other exposed solids including pin ends adiabatic except hybrid endpoint fluxes"
+  },
+  "cases": [
+    {
+      "level": "original",
+      "nodes": 106767,
+      "tetrahedra": 366156,
+      "die_mean_k": 265.59252360203584,
+      "cold_ceramic_k": 265.4240463938243,
+      "hot_ceramic_k": 300.1148977882757,
+      "voltage_v": 0.5519398709188974,
+      "hot_out_reaction_w": 0.05719398787366897,
+      "hot_out_raw_gradient_w": 0.056635378582946705,
+      "direct_bath_relative_error": -0.009766909728562265,
+      "worst_raw_cut_relative_error": 0.004018238994744211,
+      "global_energy_error_w": 7.817792246900268e-10,
+      "free_thermal_residual_L1_w": 7.981081077116432e-08,
+      "free_current_residual_L1_a": 5.061703323110335e-08,
+      "die_min_k": 265.47883533933265,
+      "die_max_k": 265.696032004651,
+      "regions": {
+        "fixed_cold_ROI": {
+          "volume_m3": 1.4976499999999972e-09,
+          "tetrahedra": 3316,
+          "h_eff_m": 7.672412360371422e-05
+        },
+        "cold_ceramic": {
+          "volume_m3": 1.2671999999999979e-09,
+          "tetrahedra": 2484,
+          "h_eff_m": 7.990326471822475e-05
+        },
+        "attach": {
+          "volume_m3": 2.9999999999999664e-11,
+          "tetrahedra": 340,
+          "h_eff_m": 4.451920967008079e-05
+        },
+        "MCT": {
+          "volume_m3": 1.9999999999999965e-10,
+          "tetrahedra": 436,
+          "h_eff_m": 7.712251236004671e-05
+        },
+        "bath_Kovar": {
+          "volume_m3": 5.009377688591979e-07,
+          "tetrahedra": 26397,
+          "h_eff_m": 0.00026673278625346565
+        },
+        "TEC_all": {
+          "volume_m3": 1.5807999999999992e-08,
+          "tetrahedra": 129406,
+          "h_eff_m": 4.9618180886992734e-05
+        }
+      },
+      "axial_ray_segments": [
+        {
+          "body": 302,
+          "xy_m": [
+            -0.000375,
+            -0.000275
+          ],
+          "tetra_segments": 4,
+          "total_z_span_m": 2.9999999999999645e-05,
+          "segment_length_um_quantiles": [
+            4.723883399998866,
+            8.411322991456766,
+            8.453470617087246
+          ]
+        },
+        {
+          "body": 302,
+          "xy_m": [
+            0.000125,
+            0.000185
+          ],
+          "tetra_segments": 3,
+          "total_z_span_m": 2.9999999999998778e-05,
+          "segment_length_um_quantiles": [
+            1.0022340387570716,
+            1.7803097268724588,
+            27.217456234369248
+          ]
+        },
+        {
+          "body": 302,
+          "xy_m": [
+            0.000385,
+            0.000345
+          ],
+          "tetra_segments": 5,
+          "total_z_span_m": 2.9999999999998778e-05,
+          "segment_length_um_quantiles": [
+            0.6293699755339708,
+            7.943720831541865,
+            12.85360998703501
+          ]
+        },
+        {
+          "body": 303,
+          "xy_m": [
+            -0.000375,
+            -0.000275
+          ],
+          "tetra_segments": 6,
+          "total_z_span_m": 0.0001999999999999988,
+          "segment_length_um_quantiles": [
+            3.5923874032875793,
+            31.07061190777121,
+            56.77143121740093
+          ]
+        },
+        {
+          "body": 303,
+          "xy_m": [
+            0.000125,
+            0.000185
+          ],
+          "tetra_segments": 3,
+          "total_z_span_m": 0.0001999999999999988,
+          "segment_length_um_quantiles": [
+            46.6884294574553,
+            54.22041718050434,
+            99.09115336203915
+          ]
+        },
+        {
+          "body": 303,
+          "xy_m": [
+            0.000385,
+            0.000345
+          ],
+          "tetra_segments": 5,
+          "total_z_span_m": 0.00020000000000000226,
+          "segment_length_um_quantiles": [
+            3.8430517716693187,
+            16.18066764787901,
+            118.08182658237277
+          ]
+        }
+      ],
+      "interfaces": [
+        {
+          "bodies": [
+            4,
+            302
+          ],
+          "triangles": 68,
+          "area_m2": 9.999999999999997e-07,
+          "raw_outward_w": [
+            -0.0013048938205579865,
+            0.001985060680708902
+          ],
+          "mismatch": 0.41348101311978525,
+          "five_percent_passed": false,
+          "corner_partitions": [
+            {
+              "group": "corner_0_100um",
+              "triangles": 0,
+              "area_m2": 0.0,
+              "side_powers_w": [
+                0.0,
+                0.0
+              ],
+              "sum_outward_w": 0.0,
+              "absolute_jump_w": 0.0
+            },
+            {
+              "group": "corner_100_250um",
+              "triangles": 16,
+              "area_m2": 2.1695045515927978e-07,
+              "side_powers_w": [
+                -0.00021303010244361117,
+                0.0004384691159265931
+              ],
+              "sum_outward_w": 0.00022543901348298192,
+              "absolute_jump_w": 0.00022543901348298192
+            },
+            {
+              "group": "beyond_250um",
+              "triangles": 52,
+              "area_m2": 7.830495448407203e-07,
+              "side_powers_w": [
+                -0.0010918637181143755,
+                0.0015465915647823083
+              ],
+              "sum_outward_w": 0.0004547278466679333,
+              "absolute_jump_w": 0.0004547278466679333
+            }
+          ],
+          "arithmetic_mean_density_times_area_w": [
+            -0.0013270912403626576,
+            0.0019852606748225216
+          ],
+          "area_weighting_scope": "actual integral is area weighted; arithmetic density average is a diagnostic only",
+          "owner_height_um_quantiles": [
+            [
+              129.35970520794638,
+              219.99999999999915,
+              219.99999999999955,
+              219.9999999999999,
+              220.00000000000043
+            ],
+            [
+              14.997987365335408,
+              15.000060939590881,
+              15.0006912269635,
+              29.99999999999967,
+              29.99999999999976
+            ]
+          ],
+          "owner_edge_um_quantiles": [
+            [
+              178.8786678081833,
+              263.94198426648586,
+              294.707285406043
+            ],
+            [
+              176.50756195586558,
+              202.90277706982368,
+              225.06418813609892
+            ]
+          ],
+          "owner_edge_over_height_quantiles": [
+            [
+              1.1188860101476041,
+              1.2369935288067377,
+              1.8712369566027485
+            ],
+            [
+              5.883585398528901,
+              12.517301729911551,
+              15.003792583608181
+            ]
+          ],
+          "owner_SICN_quantiles": [
+            [
+              0.6857605844327197,
+              0.8942934873177428,
+              0.9722983248832296
+            ],
+            [
+              0.16907956153513573,
+              0.2239625438127545,
+              0.3395771328537165
+            ]
+          ]
+        },
+        {
+          "bodies": [
+            302,
+            303
+          ],
+          "triangles": 68,
+          "area_m2": 9.999999999999997e-07,
+          "raw_outward_w": [
+            -0.002014099300025862,
+            0.0012367045655086299
+          ],
+          "mismatch": -0.47827846075814484,
+          "five_percent_passed": false,
+          "corner_partitions": [
+            {
+              "group": "corner_0_100um",
+              "triangles": 0,
+              "area_m2": 0.0,
+              "side_powers_w": [
+                0.0,
+                0.0
+              ],
+              "sum_outward_w": 0.0,
+              "absolute_jump_w": 0.0
+            },
+            {
+              "group": "corner_100_250um",
+              "triangles": 16,
+              "area_m2": 2.1695045515927976e-07,
+              "side_powers_w": [
+                -0.0004373268839437956,
+                0.0003018293409564846
+              ],
+              "sum_outward_w": -0.0001354975429873109,
+              "absolute_jump_w": 0.0001354975429873109
+            },
+            {
+              "group": "beyond_250um",
+              "triangles": 52,
+              "area_m2": 7.830495448407203e-07,
+              "side_powers_w": [
+                -0.001576772416082066,
+                0.0009348752245521447
+              ],
+              "sum_outward_w": -0.0006418971915299214,
+              "absolute_jump_w": 0.0006418971915299214
+            }
+          ],
+          "arithmetic_mean_density_times_area_w": [
+            -0.002013523598418751,
+            0.0012307477343302539
+          ],
+          "area_weighting_scope": "actual integral is area weighted; arithmetic density average is a diagnostic only",
+          "owner_height_um_quantiles": [
+            [
+              14.99927796293552,
+              14.999899344615658,
+              15.001561875574438,
+              29.999999999999662,
+              29.99999999999976
+            ],
+            [
+              48.31434835929524,
+              98.16681663563992,
+              103.08700928230178,
+              199.99999999999955,
+              200.00000000000014
+            ]
+          ],
+          "owner_edge_um_quantiles": [
+            [
+              173.9394130943408,
+              201.7563710680614,
+              225.06418813609892
+            ],
+            [
+              178.8786678081833,
+              223.0910027122306,
+              305.97964738898014
+            ]
+          ],
+          "owner_edge_over_height_quantiles": [
+            [
+              5.797980436478074,
+              12.515432132932489,
+              15.004765866105677
+            ],
+            [
+              1.1862007790061229,
+              1.9452892194012907,
+              4.139557021708683
+            ]
+          ],
+          "owner_SICN_quantiles": [
+            [
+              0.16908466053978086,
+              0.2239873697439554,
+              0.34993505974102723
+            ],
+            [
+              0.57159397294064,
+              0.8505577880778128,
+              0.9893005853503894
+            ]
+          ]
+        }
+      ],
+      "hot_interfaces": [
+        {
+          "bodies": [
+            300,
+            301
+          ],
+          "tag": 10299,
+          "area_m2": 4.096000000000001e-05,
+          "temperature_area_mean_k": 300.1077883438252,
+          "raw_one_sided_outward_w": [
+            -0.05603376308417282,
+            0.05726653061456842
+          ],
+          "raw_sum_outward_w": 0.0012327675303955982,
+          "raw_relative_mismatch": 0.02176106504495838,
+          "extra_5percent_diagnostic_passed": true
+        },
+        {
+          "bodies": [
+            1,
+            301
+          ],
+          "tag": 10034,
+          "area_m2": 4.096e-05,
+          "temperature_area_mean_k": 300.1097831118174,
+          "raw_one_sided_outward_w": [
+            0.056087691704370266,
+            -0.057018231903677344
+          ],
+          "raw_sum_outward_w": -0.0009305401993070783,
+          "raw_relative_mismatch": -0.01645431414417749,
+          "extra_5percent_diagnostic_passed": true
+        }
+      ],
+      "whole_body_raw_balance": [
+        {
+          "body": 302,
+          "raw_outward_w": {
+            "bottom": 0.001985060680708902,
+            "top": -0.0020140993000258615,
+            "sides": 4.741631086993135e-06
+          },
+          "raw_total_outward_w": -2.4296988229966452e-05,
+          "known_volume_source_w": 0.0,
+          "physical_exterior_BC": "adiabatic; Au hybrid OFF in these comparisons. Raw nonzero exterior estimates are discretization defects, not prescribed losses"
+        },
+        {
+          "body": 303,
+          "raw_outward_w": {
+            "bottom": 0.0012367045655086297,
+            "top": -0.0007491779841222791,
+            "sides": 7.956031706269888e-05
+          },
+          "raw_total_outward_w": 0.0005670868984490495,
+          "known_volume_source_w": 0.002,
+          "physical_exterior_BC": "adiabatic; Au hybrid OFF in these comparisons. Raw nonzero exterior estimates are discretization defects, not prescribed losses"
+        }
+      ],
+      "primary_checks": {
+        "all177_cut_areas": true,
+        "all177_current_half_percent_or_1uA_at_zero": true,
+        "return_current_1uA": true,
+        "free_thermal_1uW": true,
+        "free_current_1uA": true,
+        "global_energy_1uW": true,
+        "work_1percent": true,
+        "raw_bath_1percent": true,
+        "stage_energy_1uW": true,
+        "passive_Joule_1nW": true,
+        "passive_pin_currents_1pA": true,
+        "wire_conduction_conservative": true,
+        "wire_Joule_source_balance": true,
+        "uniform_passive_1uK": true,
+        "positive_drive_cools_cold_plate": true
+      },
+      "primary_checks_passed": true,
+      "cold_interfaces_passed": false,
+      "stage_heat_budgets": [
+        {
+          "band": 0,
+          "hot_out_w": 0.05719398787366897,
+          "cold_out_downward_w": 0.018014098781181657,
+          "electrical_work_w": 0.03917988892364539,
+          "sources_w": {
+            "wire_conduction": 0.0,
+            "wire_joule": 0.0,
+            "detector": 0.0
+          },
+          "energy_error_w": 1.6884192655108876e-10
+        },
+        {
+          "band": 1,
+          "hot_out_w": 0.018014098781181657,
+          "cold_out_downward_w": 0.005753931739970578,
+          "electrical_work_w": 0.012260166993194328,
+          "sources_w": {
+            "wire_conduction": 0.0,
+            "wire_joule": 0.0,
+            "detector": 0.0
+          },
+          "energy_error_w": 4.80167502980855e-11
+        },
+        {
+          "band": 2,
+          "hot_out_w": 0.005753931739970578,
+          "cold_out_downward_w": 0.0,
+          "electrical_work_w": 0.0037539317246583492,
+          "sources_w": {
+            "wire_conduction": 0.0,
+            "wire_joule": 0.0,
+            "detector": 0.002
+          },
+          "energy_error_w": 1.5312228915376203e-11
+        }
+      ],
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 100.50812604394741,
+        "cpu_s": 100.327974,
+        "peak_rss_kib": 1445896,
+        "timed_out": false,
+        "nonlinear_iterations": 5,
+        "nonlinear_last_relative_change": 6.818203436753304e-10
+      }
+    },
+    {
+      "level": "cold30um",
+      "nodes": 124782,
+      "tetrahedra": 458061,
+      "die_mean_k": 265.61362164657913,
+      "cold_ceramic_k": 265.4229406665901,
+      "hot_ceramic_k": 300.1148861285991,
+      "voltage_v": 0.55194505826856,
+      "hot_out_reaction_w": 0.05719450605980015,
+      "hot_out_raw_gradient_w": 0.05644751315676055,
+      "direct_bath_relative_error": -0.013060566907542114,
+      "worst_raw_cut_relative_error": 0.004150128570289263,
+      "global_energy_error_w": 2.3294414314145584e-10,
+      "free_thermal_residual_L1_w": 2.7692166144558446e-09,
+      "free_current_residual_L1_a": 5.025449362968963e-08,
+      "die_min_k": 265.4830777320073,
+      "die_max_k": 265.67923260114384,
+      "regions": {
+        "fixed_cold_ROI": {
+          "volume_m3": 1.4976499999999974e-09,
+          "tetrahedra": 90493,
+          "h_eff_m": 2.548385438899801e-05
+        },
+        "cold_ceramic": {
+          "volume_m3": 1.267199999999998e-09,
+          "tetrahedra": 46781,
+          "h_eff_m": 3.003252779627162e-05
+        },
+        "attach": {
+          "volume_m3": 2.999999999999966e-11,
+          "tetrahedra": 9438,
+          "h_eff_m": 1.4703264183689234e-05
+        },
+        "MCT": {
+          "volume_m3": 1.9999999999999965e-10,
+          "tetrahedra": 33606,
+          "h_eff_m": 1.8121927594749656e-05
+        },
+        "bath_Kovar": {
+          "volume_m3": 5.009377688591979e-07,
+          "tetrahedra": 26460,
+          "h_eff_m": 0.0002665209253333045
+        },
+        "TEC_all": {
+          "volume_m3": 1.5807999999999995e-08,
+          "tetrahedra": 133883,
+          "h_eff_m": 4.905882745155771e-05
+        }
+      },
+      "axial_ray_segments": [
+        {
+          "body": 302,
+          "xy_m": [
+            -0.000375,
+            -0.000275
+          ],
+          "tetra_segments": 3,
+          "total_z_span_m": 2.9999999999999645e-05,
+          "segment_length_um_quantiles": [
+            3.6520107345120594,
+            7.030091075325984,
+            19.317898190161603
+          ]
+        },
+        {
+          "body": 302,
+          "xy_m": [
+            0.000125,
+            0.000185
+          ],
+          "tetra_segments": 3,
+          "total_z_span_m": 2.9999999999999645e-05,
+          "segment_length_um_quantiles": [
+            6.888179735068875,
+            7.735499735418879,
+            15.376320529511892
+          ]
+        },
+        {
+          "body": 302,
+          "xy_m": [
+            0.000385,
+            0.000345
+          ],
+          "tetra_segments": 3,
+          "total_z_span_m": 2.9999999999999645e-05,
+          "segment_length_um_quantiles": [
+            0.5585701391939979,
+            13.309685158726174,
+            16.131744702079473
+          ]
+        },
+        {
+          "body": 303,
+          "xy_m": [
+            -0.000375,
+            -0.000275
+          ],
+          "tetra_segments": 20,
+          "total_z_span_m": 0.00019999999999999445,
+          "segment_length_um_quantiles": [
+            0.766945835573192,
+            7.729061254647778,
+            29.211896323971114
+          ]
+        },
+        {
+          "body": 303,
+          "xy_m": [
+            0.000125,
+            0.000185
+          ],
+          "tetra_segments": 20,
+          "total_z_span_m": 0.00019999999999999792,
+          "segment_length_um_quantiles": [
+            0.2012346168381307,
+            8.600663001386966,
+            23.86165013274974
+          ]
+        },
+        {
+          "body": 303,
+          "xy_m": [
+            0.000385,
+            0.000345
+          ],
+          "tetra_segments": 17,
+          "total_z_span_m": 0.00020000000000000833,
+          "segment_length_um_quantiles": [
+            0.8172170725094519,
+            11.370159570449866,
+            25.426515282762907
+          ]
+        }
+      ],
+      "interfaces": [
+        {
+          "bodies": [
+            4,
+            302
+          ],
+          "triangles": 2638,
+          "area_m2": 1.0000000000000002e-06,
+          "raw_outward_w": [
+            -0.0018338399908982561,
+            0.0020005314854289287
+          ],
+          "mismatch": 0.08694592871859182,
+          "five_percent_passed": false,
+          "corner_partitions": [
+            {
+              "group": "corner_0_100um",
+              "triangles": 94,
+              "area_m2": 3.1548597542799995e-08,
+              "side_powers_w": [
+                -4.525834088508151e-05,
+                6.448439434870815e-05
+              ],
+              "sum_outward_w": 1.9226053463626662e-05,
+              "absolute_jump_w": 1.9226053463626662e-05
+            },
+            {
+              "group": "corner_100_250um",
+              "triangles": 446,
+              "area_m2": 1.6488408784093355e-07,
+              "side_powers_w": [
+                -0.0002846263882868115,
+                0.0003323431392009287
+              ],
+              "sum_outward_w": 4.7716750914116954e-05,
+              "absolute_jump_w": 4.7716750914116954e-05
+            },
+            {
+              "group": "beyond_250um",
+              "triangles": 2098,
+              "area_m2": 8.035673146162665e-07,
+              "side_powers_w": [
+                -0.0015039552617263634,
+                0.001603703951879292
+              ],
+              "sum_outward_w": 9.974869015292874e-05,
+              "absolute_jump_w": 0.00010005657148350199
+            }
+          ],
+          "arithmetic_mean_density_times_area_w": [
+            -0.0018270145213025613,
+            0.00200130398393832
+          ],
+          "area_weighting_scope": "actual integral is area weighted; arithmetic density average is a diagnostic only",
+          "owner_height_um_quantiles": [
+            [
+              18.846198848047685,
+              23.799618738606558,
+              26.384603000492277,
+              29.872110326428817,
+              44.82284311532228
+            ],
+            [
+              7.521563241000625,
+              29.999999999999606,
+              29.99999999999965,
+              29.999999999999684,
+              29.999999999999762
+            ]
+          ],
+          "owner_edge_um_quantiles": [
+            [
+              28.34269020432487,
+              40.79052210669241,
+              54.596513573515196
+            ],
+            [
+              25.939252539423567,
+              42.426406871192725,
+              51.06984465663726
+            ]
+          ],
+          "owner_edge_over_height_quantiles": [
+            [
+              1.082563873833093,
+              1.5062033030331674,
+              2.294414313627167
+            ],
+            [
+              1.25092062693246,
+              1.4142135623731211,
+              4.048267421038931
+            ]
+          ],
+          "owner_SICN_quantiles": [
+            [
+              0.6651233272214938,
+              0.8782727013109353,
+              0.9995286747975832
+            ],
+            [
+              0.6019967189786756,
+              0.8660254037844339,
+              0.9603266059788494
+            ]
+          ]
+        },
+        {
+          "bodies": [
+            302,
+            303
+          ],
+          "triangles": 2638,
+          "area_m2": 1.0000000000000002e-06,
+          "raw_outward_w": [
+            -0.0019990988892172558,
+            0.001864344981424943
+          ],
+          "mismatch": -0.06975843951883962,
+          "five_percent_passed": false,
+          "corner_partitions": [
+            {
+              "group": "corner_0_100um",
+              "triangles": 94,
+              "area_m2": 3.15485975428e-08,
+              "side_powers_w": [
+                -6.428571118514201e-05,
+                6.056773930569505e-05
+              ],
+              "sum_outward_w": -3.7179718794469572e-06,
+              "absolute_jump_w": 3.7179718794469572e-06
+            },
+            {
+              "group": "corner_100_250um",
+              "triangles": 446,
+              "area_m2": 1.6488408784093355e-07,
+              "side_powers_w": [
+                -0.00033176193963608413,
+                0.0003101543424343945
+              ],
+              "sum_outward_w": -2.1607597201689666e-05,
+              "absolute_jump_w": 2.1607597201689666e-05
+            },
+            {
+              "group": "beyond_250um",
+              "triangles": 2098,
+              "area_m2": 8.035673146162665e-07,
+              "side_powers_w": [
+                -0.001603051238396029,
+                0.001493622899684852
+              ],
+              "sum_outward_w": -0.00010942833871117647,
+              "absolute_jump_w": 0.00010942833871117647
+            }
+          ],
+          "arithmetic_mean_density_times_area_w": [
+            -0.0019997581664756457,
+            0.0018652533320648596
+          ],
+          "area_weighting_scope": "actual integral is area weighted; arithmetic density average is a diagnostic only",
+          "owner_height_um_quantiles": [
+            [
+              7.39886686072606,
+              29.999999999999606,
+              29.99999999999965,
+              29.999999999999684,
+              29.999999999999762
+            ],
+            [
+              11.559969843512285,
+              23.983091168795625,
+              26.78349415655927,
+              30.114106131721393,
+              46.81353338981213
+            ]
+          ],
+          "owner_edge_um_quantiles": [
+            [
+              25.939252539423567,
+              42.426406871192725,
+              51.06984465663726
+            ],
+            [
+              26.179969959256958,
+              40.781138092448955,
+              55.665890290423306
+            ]
+          ],
+          "owner_edge_over_height_quantiles": [
+            [
+              1.2629017246075396,
+              1.4142135623731205,
+              4.021855117100356
+            ],
+            [
+              1.084691033949238,
+              1.5175054109401205,
+              3.156223772396516
+            ]
+          ],
+          "owner_SICN_quantiles": [
+            [
+              0.5499494820519736,
+              0.8660254037844378,
+              0.9565357825824802
+            ],
+            [
+              0.581737365791879,
+              0.8732297666791141,
+              0.9996126062625514
+            ]
+          ]
+        }
+      ],
+      "hot_interfaces": [
+        {
+          "bodies": [
+            300,
+            301
+          ],
+          "tag": 10299,
+          "area_m2": 4.096000000000001e-05,
+          "temperature_area_mean_k": 300.1077806407923,
+          "raw_one_sided_outward_w": [
+            -0.05590340687598465,
+            0.057296852683789645
+          ],
+          "raw_sum_outward_w": 0.0013934458078049966,
+          "raw_relative_mismatch": 0.024619127433523263,
+          "extra_5percent_diagnostic_passed": true
+        },
+        {
+          "bodies": [
+            1,
+            301
+          ],
+          "tag": 10034,
+          "area_m2": 4.096e-05,
+          "temperature_area_mean_k": 300.1097754268574,
+          "raw_one_sided_outward_w": [
+            0.056246142129263495,
+            -0.0570433063534262
+          ],
+          "raw_sum_outward_w": -0.0007971642241627053,
+          "raw_relative_mismatch": -0.014073053313248492,
+          "extra_5percent_diagnostic_passed": true
+        }
+      ],
+      "whole_body_raw_balance": [
+        {
+          "body": 302,
+          "raw_outward_w": {
+            "bottom": 0.002000531485428926,
+            "top": -0.0019990988892172553,
+            "sides": 2.4202375740387614e-06
+          },
+          "raw_total_outward_w": 3.8528337857095026e-06,
+          "known_volume_source_w": 0.0,
+          "physical_exterior_BC": "adiabatic; Au hybrid OFF in these comparisons. Raw nonzero exterior estimates are discretization defects, not prescribed losses"
+        },
+        {
+          "body": 303,
+          "raw_outward_w": {
+            "bottom": 0.0018643449814249417,
+            "top": -0.00013004641869000127,
+            "sides": 2.5366145117793217e-05
+          },
+          "raw_total_outward_w": 0.0017596647078527337,
+          "known_volume_source_w": 0.002,
+          "physical_exterior_BC": "adiabatic; Au hybrid OFF in these comparisons. Raw nonzero exterior estimates are discretization defects, not prescribed losses"
+        }
+      ],
+      "primary_checks": {
+        "all177_cut_areas": true,
+        "all177_current_half_percent_or_1uA_at_zero": true,
+        "return_current_1uA": true,
+        "free_thermal_1uW": true,
+        "free_current_1uA": true,
+        "global_energy_1uW": true,
+        "work_1percent": true,
+        "raw_bath_1percent": false,
+        "stage_energy_1uW": true,
+        "passive_Joule_1nW": true,
+        "passive_pin_currents_1pA": true,
+        "wire_conduction_conservative": true,
+        "wire_Joule_source_balance": true,
+        "uniform_passive_1uK": true,
+        "positive_drive_cools_cold_plate": true
+      },
+      "primary_checks_passed": false,
+      "cold_interfaces_passed": false,
+      "stage_heat_budgets": [
+        {
+          "band": 0,
+          "hot_out_w": 0.05719450605980015,
+          "cold_out_downward_w": 0.01801495238649884,
+          "electrical_work_w": 0.039179553721485405,
+          "sources_w": {
+            "wire_conduction": 0.0,
+            "wire_joule": 0.0,
+            "detector": 0.0
+          },
+          "energy_error_w": -4.818409560236603e-11
+        },
+        {
+          "band": 1,
+          "hot_out_w": 0.01801495238649884,
+          "cold_out_downward_w": 0.005753709626948436,
+          "electrical_work_w": 0.01226124277217315,
+          "sources_w": {
+            "wire_conduction": 0.0,
+            "wire_joule": 0.0,
+            "detector": 0.0
+          },
+          "energy_error_w": -1.2622746597967804e-11
+        },
+        {
+          "band": 2,
+          "hot_out_w": 0.005753709626948436,
+          "cold_out_downward_w": 0.0,
+          "electrical_work_w": 0.003753709638851993,
+          "sources_w": {
+            "wire_conduction": 0.0,
+            "wire_joule": 0.0,
+            "detector": 0.002
+          },
+          "energy_error_w": -1.1903557133041698e-11
+        }
+      ],
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 400.7792098331265,
+        "cpu_s": 400.686408,
+        "peak_rss_kib": 2120172,
+        "timed_out": false,
+        "nonlinear_iterations": 6,
+        "nonlinear_last_relative_change": 4.257266265582695e-11
+      }
+    },
+    {
+      "level": "cold20um",
+      "nodes": 159991,
+      "tetrahedra": 647657,
+      "die_mean_k": 265.61609308488255,
+      "cold_ceramic_k": 265.42484980062216,
+      "hot_ceramic_k": 300.11481575509384,
+      "voltage_v": 0.5519266333464335,
+      "hot_out_reaction_w": 0.05719266347873485,
+      "hot_out_raw_gradient_w": 0.056336914196946114,
+      "direct_bath_relative_error": -0.014962568410044506,
+      "worst_raw_cut_relative_error": 0.004061200792048192,
+      "global_energy_error_w": 1.4409148874072741e-10,
+      "free_thermal_residual_L1_w": 1.8381313130765146e-09,
+      "free_current_residual_L1_a": 4.220622663045414e-08,
+      "die_min_k": 265.48502924230365,
+      "die_max_k": 265.6809038944494,
+      "regions": {
+        "fixed_cold_ROI": {
+          "volume_m3": 1.4976499999999974e-09,
+          "tetrahedra": 274317,
+          "h_eff_m": 1.76083719216646e-05
+        },
+        "cold_ceramic": {
+          "volume_m3": 1.2671999999999979e-09,
+          "tetrahedra": 147247,
+          "h_eff_m": 2.0492718277691776e-05
+        },
+        "attach": {
+          "volume_m3": 2.999999999999966e-11,
+          "tetrahedra": 19717,
+          "h_eff_m": 1.1501649780878211e-05
+        },
+        "MCT": {
+          "volume_m3": 1.9999999999999967e-10,
+          "tetrahedra": 105887,
+          "h_eff_m": 1.2361251726331683e-05
+        },
+        "bath_Kovar": {
+          "volume_m3": 5.009377688591979e-07,
+          "tetrahedra": 26524,
+          "h_eff_m": 0.00026630638910308304
+        },
+        "TEC_all": {
+          "volume_m3": 1.5808e-08,
+          "tetrahedra": 139948,
+          "h_eff_m": 4.833963983776793e-05
+        }
+      },
+      "axial_ray_segments": [
+        {
+          "body": 302,
+          "xy_m": [
+            -0.000375,
+            -0.000275
+          ],
+          "tetra_segments": 3,
+          "total_z_span_m": 2.9999999999999645e-05,
+          "segment_length_um_quantiles": [
+            0.2722283113229182,
+            14.45554337711416,
+            15.272228311562566
+          ]
+        },
+        {
+          "body": 302,
+          "xy_m": [
+            0.000125,
+            0.000185
+          ],
+          "tetra_segments": 3,
+          "total_z_span_m": 2.9999999999999645e-05,
+          "segment_length_um_quantiles": [
+            2.2595264192381768,
+            10.480947161618445,
+            17.25952641914302
+          ]
+        },
+        {
+          "body": 302,
+          "xy_m": [
+            0.000385,
+            0.000345
+          ],
+          "tetra_segments": 3,
+          "total_z_span_m": 2.9999999999999645e-05,
+          "segment_length_um_quantiles": [
+            2.093020484312917,
+            10.814256178660365,
+            17.092723337026364
+          ]
+        },
+        {
+          "body": 303,
+          "xy_m": [
+            -0.000375,
+            -0.000275
+          ],
+          "tetra_segments": 31,
+          "total_z_span_m": 0.00020000000000000052,
+          "segment_length_um_quantiles": [
+            0.2522762145955315,
+            6.2569467727249455,
+            16.804184712223417
+          ]
+        },
+        {
+          "body": 303,
+          "xy_m": [
+            0.000125,
+            0.000185
+          ],
+          "tetra_segments": 27,
+          "total_z_span_m": 0.0001999999999999988,
+          "segment_length_um_quantiles": [
+            2.3743978481904557,
+            6.570284320281742,
+            21.915993287395867
+          ]
+        },
+        {
+          "body": 303,
+          "xy_m": [
+            0.000385,
+            0.000345
+          ],
+          "tetra_segments": 29,
+          "total_z_span_m": 0.0001999999999999988,
+          "segment_length_um_quantiles": [
+            1.125636774255978,
+            4.676363668408221,
+            16.10174537789149
+          ]
+        }
+      ],
+      "interfaces": [
+        {
+          "bodies": [
+            4,
+            302
+          ],
+          "triangles": 5828,
+          "area_m2": 1e-06,
+          "raw_outward_w": [
+            -0.0018751376118658891,
+            0.0020006459376126747
+          ],
+          "mismatch": 0.06476539473607655,
+          "five_percent_passed": false,
+          "corner_partitions": [
+            {
+              "group": "corner_0_100um",
+              "triangles": 193,
+              "area_m2": 3.143749610669242e-08,
+              "side_powers_w": [
+                -4.9482342729732966e-05,
+                6.430592579400689e-05
+              ],
+              "sum_outward_w": 1.4823583064273866e-05,
+              "absolute_jump_w": 1.4823583064273866e-05
+            },
+            {
+              "group": "corner_100_250um",
+              "triangles": 957,
+              "area_m2": 1.6315032856806728e-07,
+              "side_powers_w": [
+                -0.0002931976933987392,
+                0.00032881313271887014
+              ],
+              "sum_outward_w": 3.5615439320130896e-05,
+              "absolute_jump_w": 3.5615439320130896e-05
+            },
+            {
+              "group": "beyond_250um",
+              "triangles": 4678,
+              "area_m2": 8.054121753252403e-07,
+              "side_powers_w": [
+                -0.0015324575757374116,
+                0.0016075268790997947
+              ],
+              "sum_outward_w": 7.5069303362381e-05,
+              "absolute_jump_w": 7.531742410267951e-05
+            }
+          ],
+          "arithmetic_mean_density_times_area_w": [
+            -0.001873307301706398,
+            0.0020009093082881185
+          ],
+          "area_weighting_scope": "actual integral is area weighted; arithmetic density average is a diagnostic only",
+          "owner_height_um_quantiles": [
+            [
+              12.871462772424731,
+              16.1223842276526,
+              17.64939758799184,
+              19.748384669309196,
+              32.52848707956546
+            ],
+            [
+              5.989609993446851,
+              29.999999999999584,
+              29.999999999999645,
+              29.999999999999705,
+              29.99999999999982
+            ]
+          ],
+          "owner_edge_um_quantiles": [
+            [
+              19.869272721944824,
+              27.442118518068117,
+              37.57755349508493
+            ],
+            [
+              18.68610420053018,
+              36.0555127546397,
+              39.680046033505384
+            ]
+          ],
+          "owner_edge_over_height_quantiles": [
+            [
+              1.084492451181137,
+              1.513008950077643,
+              2.3574832481095456
+            ],
+            [
+              1.1434404131214198,
+              1.2018504251546753,
+              3.512880410182543
+            ]
+          ],
+          "owner_SICN_quantiles": [
+            [
+              0.6530374849073408,
+              0.8814578429890613,
+              0.9997733782954149
+            ],
+            [
+              0.5423525412574324,
+              0.7916390948403773,
+              0.9997772531663079
+            ]
+          ]
+        },
+        {
+          "bodies": [
+            302,
+            303
+          ],
+          "triangles": 5828,
+          "area_m2": 1.0000000000000002e-06,
+          "raw_outward_w": [
+            -0.0019992406357652844,
+            0.001909180603006059
+          ],
+          "mismatch": -0.04608512095156699,
+          "five_percent_passed": true,
+          "corner_partitions": [
+            {
+              "group": "corner_0_100um",
+              "triangles": 193,
+              "area_m2": 3.12921020851193e-08,
+              "side_powers_w": [
+                -6.386376585336102e-05,
+                6.107392108193783e-05
+              ],
+              "sum_outward_w": -2.789844771423231e-06,
+              "absolute_jump_w": 2.789844771423231e-06
+            },
+            {
+              "group": "corner_100_250um",
+              "triangles": 957,
+              "area_m2": 1.6329572258594868e-07,
+              "side_powers_w": [
+                -0.00032866891403997186,
+                0.0003141460893620071
+              ],
+              "sum_outward_w": -1.4522824677964893e-05,
+              "absolute_jump_w": 1.4522824677964893e-05
+            },
+            {
+              "group": "beyond_250um",
+              "triangles": 4678,
+              "area_m2": 8.054121753289321e-07,
+              "side_powers_w": [
+                -0.0016067079558719475,
+                0.0015339605925621174
+              ],
+              "sum_outward_w": -7.27473633098371e-05,
+              "absolute_jump_w": 7.27473633098371e-05
+            }
+          ],
+          "arithmetic_mean_density_times_area_w": [
+            -0.001999481329940375,
+            0.001909446953589386
+          ],
+          "area_weighting_scope": "actual integral is area weighted; arithmetic density average is a diagnostic only",
+          "owner_height_um_quantiles": [
+            [
+              6.678315007854446,
+              29.999999999999588,
+              29.999999999999645,
+              29.999999999999705,
+              29.99999999999982
+            ],
+            [
+              6.22899378365657,
+              15.891809011547451,
+              17.662850665725692,
+              19.79026961215588,
+              32.74709808262435
+            ]
+          ],
+          "owner_edge_um_quantiles": [
+            [
+              18.68610420053018,
+              36.0555127546397,
+              39.680046033505384
+            ],
+            [
+              19.041645635156875,
+              27.222475565300286,
+              40.358948214979854
+            ]
+          ],
+          "owner_edge_over_height_quantiles": [
+            [
+              1.1057625886792721,
+              1.201850425154675,
+              3.2579083420122563
+            ],
+            [
+              1.0708248786341779,
+              1.5213313875682721,
+              3.5852943541578384
+            ]
+          ],
+          "owner_SICN_quantiles": [
+            [
+              0.584111935241711,
+              0.7916390948403791,
+              0.9997773036067846
+            ],
+            [
+              0.6395905328581611,
+              0.8795787051472255,
+              0.9998408044274371
+            ]
+          ]
+        }
+      ],
+      "hot_interfaces": [
+        {
+          "bodies": [
+            300,
+            301
+          ],
+          "tag": 10299,
+          "area_m2": 4.096000000000001e-05,
+          "temperature_area_mean_k": 300.1077171495494,
+          "raw_one_sided_outward_w": [
+            -0.05580941639523397,
+            0.05722104992704739
+          ],
+          "raw_sum_outward_w": 0.001411633531813422,
+          "raw_relative_mismatch": 0.024977929893493695,
+          "extra_5percent_diagnostic_passed": true
+        },
+        {
+          "bodies": [
+            1,
+            301
+          ],
+          "tag": 10034,
+          "area_m2": 4.096e-05,
+          "temperature_area_mean_k": 300.1097118713503,
+          "raw_one_sided_outward_w": [
+            0.055807178274246916,
+            -0.0571036702694484
+          ],
+          "raw_sum_outward_w": -0.0012964919952014875,
+          "raw_relative_mismatch": -0.02296487914001919,
+          "extra_5percent_diagnostic_passed": true
+        }
+      ],
+      "whole_body_raw_balance": [
+        {
+          "body": 302,
+          "raw_outward_w": {
+            "bottom": 0.0020006459376126725,
+            "top": -0.0019992406357652783,
+            "sides": 1.972205783901123e-06
+          },
+          "raw_total_outward_w": 3.3775076312953207e-06,
+          "known_volume_source_w": 0.0,
+          "physical_exterior_BC": "adiabatic; Au hybrid OFF in these comparisons. Raw nonzero exterior estimates are discretization defects, not prescribed losses"
+        },
+        {
+          "body": 303,
+          "raw_outward_w": {
+            "bottom": 0.0019091806030060593,
+            "top": -8.70566146683127e-05,
+            "sides": 1.646203238447098e-05
+          },
+          "raw_total_outward_w": 0.0018385860207222175,
+          "known_volume_source_w": 0.002,
+          "physical_exterior_BC": "adiabatic; Au hybrid OFF in these comparisons. Raw nonzero exterior estimates are discretization defects, not prescribed losses"
+        }
+      ],
+      "primary_checks": {
+        "all177_cut_areas": true,
+        "all177_current_half_percent_or_1uA_at_zero": true,
+        "return_current_1uA": true,
+        "free_thermal_1uW": true,
+        "free_current_1uA": true,
+        "global_energy_1uW": true,
+        "work_1percent": true,
+        "raw_bath_1percent": false,
+        "stage_energy_1uW": true,
+        "passive_Joule_1nW": true,
+        "passive_pin_currents_1pA": true,
+        "wire_conduction_conservative": true,
+        "wire_Joule_source_balance": true,
+        "uniform_passive_1uK": true,
+        "positive_drive_cools_cold_plate": true
+      },
+      "primary_checks_passed": false,
+      "cold_interfaces_passed": false,
+      "stage_heat_budgets": [
+        {
+          "band": 0,
+          "hot_out_w": 0.05719266347873485,
+          "cold_out_downward_w": 0.018014860634442166,
+          "electrical_work_w": 0.03917780278166034,
+          "sources_w": {
+            "wire_conduction": 0.0,
+            "wire_joule": 0.0,
+            "detector": 0.0
+          },
+          "energy_error_w": 6.26323437558085e-11
+        },
+        {
+          "band": 1,
+          "hot_out_w": 0.018014860634442166,
+          "cold_out_downward_w": 0.005754097518492327,
+          "electrical_work_w": 0.01226076308578674,
+          "sources_w": {
+            "wire_conduction": 0.0,
+            "wire_joule": 0.0,
+            "detector": 0.0
+          },
+          "energy_error_w": 3.0163099448698993e-11
+        },
+        {
+          "band": 2,
+          "hot_out_w": 0.005754097518492327,
+          "cold_out_downward_w": 0.0,
+          "electrical_work_w": 0.003754097500524585,
+          "sources_w": {
+            "wire_conduction": 0.0,
+            "wire_joule": 0.0,
+            "detector": 0.002
+          },
+          "energy_error_w": 1.7967741877678023e-11
+        }
+      ],
+      "solver_status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 558.0211355150677,
+        "cpu_s": 557.869683,
+        "peak_rss_kib": 6109208,
+        "timed_out": false,
+        "nonlinear_iterations": 2,
+        "nonlinear_last_relative_change": 4.3426791127715263e-10
+      }
+    }
+  ],
+  "device_power_fits": {
+    "die_mean_k": {
+      "refinement_ratios": [
+        3.0106954165001767,
+        1.4472578443009685
+      ],
+      "adjacent_changes": [
+        0.02109804454329378,
+        0.002471438303416562
+      ],
+      "qualified_GCI": false,
+      "observed_order": 1.3244146106692287,
+      "three_point_limit": 265.6200057007471,
+      "fit_fine_error": -0.00391261586452174,
+      "status": "CONDITIONAL POWER FIT ONLY: mixed local refinement; independent asymptotic evidence absent"
+    },
+    "voltage_v": {
+      "refinement_ratios": [
+        3.0106954165001767,
+        1.4472578443009685
+      ],
+      "adjacent_changes": [
+        5.187349662594265e-06,
+        -1.842492212644764e-05
+      ],
+      "qualified_GCI": false,
+      "status": "NO GCI: nonmonotone or zero differences"
+    },
+    "cold_ceramic_k": {
+      "refinement_ratios": [
+        3.0106954165001767,
+        1.4472578443009685
+      ],
+      "adjacent_changes": [
+        -0.001105727234232745,
+        0.001909134032075599
+      ],
+      "qualified_GCI": false,
+      "status": "NO GCI: nonmonotone or zero differences"
+    },
+    "hot_ceramic_k": {
+      "refinement_ratios": [
+        3.0106954165001767,
+        1.4472578443009685
+      ],
+      "adjacent_changes": [
+        -1.1659676601993851e-05,
+        -7.037350525251895e-05
+      ],
+      "qualified_GCI": false,
+      "status": "NO GCI: no positive observed order in0.01..6"
+    },
+    "hot_out_reaction_w": {
+      "refinement_ratios": [
+        3.0106954165001767,
+        1.4472578443009685
+      ],
+      "adjacent_changes": [
+        5.181861311778779e-07,
+        -1.8425810653019403e-06
+      ],
+      "qualified_GCI": false,
+      "status": "NO GCI: nonmonotone or zero differences"
+    },
+    "hot_out_raw_gradient_w": {
+      "refinement_ratios": [
+        3.0106954165001767,
+        1.4472578443009685
+      ],
+      "adjacent_changes": [
+        -0.00018786542618615815,
+        -0.00011059895981443274
+      ],
+      "qualified_GCI": false,
+      "status": "NO GCI: no positive observed order in0.01..6"
+    },
+    "bath_region": {
+      "qualified_GCI": false,
+      "refinement_ratios": [
+        1.0007949128943485,
+        1.0008055992608516
+      ],
+      "status": "NO bath GCI: bath sizing fixed, not a bath-refinement sequence"
+    },
+    "attach_region": {
+      "qualified_GCI": false,
+      "refinement_ratios": [
+        3.027845321548889,
+        1.2783613189243328
+      ],
+      "status": "NO attach GCI: fewer than three solved levels or final attach-specific effective ratio below1.3"
+    }
+  },
+  "benchmark_power_fits": {
+    "MCT_bottom_raw_W": {
+      "refinement_ratios": [
+        2.0000000000000004,
+        1.999999999999998
+      ],
+      "adjacent_changes": [
+        0.0001250000007273777,
+        6.250000290446427e-05
+      ],
+      "qualified_GCI": true,
+      "observed_order": 0.9999999413509737,
+      "three_point_limit": 0.0020000000082413686,
+      "fit_fine_error": -6.250000798601598e-05,
+      "status": "manufactured benchmark only; uniform r2 and analytic asymptotic error confirmed",
+      "analytic_limit": 0.002,
+      "actual_fine_error": 6.249999974464746e-05,
+      "fine_GCI_absolute": 7.812500998251998e-05,
+      "fine_GCI_relative": 0.040322585792115354,
+      "safety_factor": 1.25
+    },
+    "MCT_mean_K": {
+      "refinement_ratios": [
+        2.0000000000000004,
+        1.999999999999998
+      ],
+      "adjacent_changes": [
+        0.0013911576947975846,
+        0.0003477894437082796
+      ],
+      "qualified_GCI": true,
+      "observed_order": 1.9999999169993685,
+      "three_point_limit": 300.1958787878899,
+      "fit_fine_error": -0.00011592982343699987,
+      "status": "manufactured benchmark only; uniform r2 and analytic asymptotic error confirmed",
+      "analytic_limit": 300.19587878787877,
+      "actual_fine_error": 0.00011592981229568977,
+      "fine_GCI_absolute": 0.00014491227929624984,
+      "fine_GCI_relative": 4.827259316273722e-07,
+      "safety_factor": 1.25
+    }
+  },
+  "benchmark_finest_preregistered_gates_passed": true,
+  "device_spatial_qualification_passed": false,
+  "Cu_ON_refined": "NOT RUN: OFF bath1% and/or cold5% gates fail; do not infer physical30uK benefit",
+  "original_failed_bath_criteria": "UNCHANGED FAILED; historic1.65587/1.51412/1.58383% not replaced by recovered flux",
+  "full_device_qualification": false,
+  "OEM_validated": false,
+  "enclosure_gas_radiation": "NOT RUN; none imported",
+  "reference_sha256": {
+    "original": {
+      "outputs/geometry-complete-v4/mesh.npz": "a2bc5e347ae026e78a52f13498c41c2ed5032150f9ddb53b2620a86612cf4614",
+      "outputs/corrected-thermal/cu_off/metrics.json": "455f722e9696b1ae160fea3641cd2b2340f3a10a830c979907830ecf6ecb9ff1",
+      "outputs/corrected-thermal/cu_off/execution.json": "0978a4cbf2362158de97ff5ba28055ebf2caa39b81b0a081b7b2a7916b889cdb",
+      "outputs/cold-convergence/coarse_diagnosis/diagnosis.json": "54116b3d44d365034c66e715c2cac3700be56a0b65d38598d56903fb8794e9f8",
+      "outputs/cold-convergence/coarse_mesh/cold_mesh_metrics.json": "cab5f400b0bfb789940e57a7c64724971c35d65d2a050f65500dcd638ad6786d"
+    },
+    "cold30um": {
+      "outputs/cold-convergence/mesh30/mesh.npz": "10a147f5dcca91d0e78f46c886edf912ae56ed849cbdce1d37c40cf14785a3df",
+      "outputs/cold-convergence/cu_off30/metrics.json": "7ec072b36d6e97dc00c2b35254ad4c0582728439ca84c3f61dc57853682acfd4",
+      "outputs/cold-convergence/cu_off30/execution.json": "19300844c68ec7d445eafdc7aae6810da0dcbae8e824524a31801db0b44d19b9",
+      "outputs/cold-convergence/diagnosis30/diagnosis.json": "18859a69129a66527c2d9fd8c4d43b71f87ceb2f5972572a8db8be1abb8f5f7a",
+      "outputs/cold-convergence/mesh30/cold_mesh_metrics.json": "2b17dab310bb15f091933da02215d9dd8030eb54f404031e8daab834fb7905b4"
+    },
+    "cold20um": {
+      "outputs/cold-convergence/mesh20/mesh.npz": "92db30994fc878a87088b592e888983485b2087965f07ca2b97ac61727b4319c",
+      "outputs/cold20/loaded20_refined_replay/metrics.json": "c777be223af7ba8b58fb0b4f2c50e1d1f468f5ffe5d64a3b3aef14d185a1f04d",
+      "outputs/cold20/loaded20_refined_replay/execution.json": "0de5fb1e5d01c5ca3a54209092b5cb2dabb9d952f0a4442c24b4112687d0928a",
+      "outputs/cold20/diagnosis20_refined/diagnosis.json": "590a48b6ab0664fba8fb1d6221866d12466eb8eb0f77719db958f0508e7d0ee8",
+      "outputs/cold-convergence/mesh20/cold_mesh_metrics.json": "bb2ca55fbdafcadc3339b7c392eea19e047ff2d45528ff044d490ba787c84c3c"
+    }
+  },
+  "source_sha256": "fef76d903f70e0827fa4334d7c8ad191a13c6ab7adee5e89f4f25d106baf2256",
+  "plan_sha256": "c70eab11e9724827fe1267a683f683d5aca5e6ba625a21391839abf21dba6425"
+}

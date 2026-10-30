@@ -1,0 +1,1662 @@
+Check Keywords Warn
+Header
+ Mesh DB "/work/outputs/cold20/bench_direct" "."
+End
+Simulation
+ Coordinate System = Cartesian 3D
+ Simulation Type = Steady State
+ Steady State Max Iterations = 1
+ Restart File = "initial.result"
+ Restart Position = 0
+ Output File = "solution.result"
+ Post File = "fields.vtu"
+End
+Initial Condition 1
+ Temperature = Real 300
+ Potential = Real 0
+End
+Equation 1
+ Active Solvers(1) = 1
+End
+Solver 1
+ Equation = "ThermoElectric"
+ Variable = POT[Temperature:1 Potential:1]
+ Procedure = "/work/outputs/cold20/bench_direct/timed/Cold20Timed" "ThermoElectricSolver"
+ Element = "p:1"
+ Nonlinear System Convergence Tolerance = 1e-9
+ Nonlinear System Max Iterations = 60
+ Nonlinear System Newton After Iterations = 2
+ Nonlinear System Newton After Tolerance = 1e-7
+ Linear System Solver = Direct
+ Linear System Direct Method = "big umfpack"
+ Linear System Row Equilibration = Logical True
+End
+Body Force 1
+ Volumetric Heat Source = Real 0
+ Current Source = Real 0
+End
+Body Force 2
+ Volumetric Heat Source = Real 10000000.000000019
+ Current Source = Real 0
+End
+Body 1
+ Target Bodies(1) = 1
+ Equation = 1
+ Material = 1
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 2
+ Target Bodies(1) = 2
+ Equation = 1
+ Material = 1
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 3
+ Target Bodies(1) = 3
+ Equation = 1
+ Material = 1
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 4
+ Target Bodies(1) = 4
+ Equation = 1
+ Material = 1
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 5
+ Target Bodies(1) = 5
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 6
+ Target Bodies(1) = 6
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 7
+ Target Bodies(1) = 7
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 8
+ Target Bodies(1) = 8
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 9
+ Target Bodies(1) = 9
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 10
+ Target Bodies(1) = 10
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 11
+ Target Bodies(1) = 11
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 12
+ Target Bodies(1) = 12
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 13
+ Target Bodies(1) = 13
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 14
+ Target Bodies(1) = 14
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 15
+ Target Bodies(1) = 15
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 16
+ Target Bodies(1) = 16
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 17
+ Target Bodies(1) = 17
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 18
+ Target Bodies(1) = 18
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 19
+ Target Bodies(1) = 19
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 20
+ Target Bodies(1) = 20
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 21
+ Target Bodies(1) = 21
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 22
+ Target Bodies(1) = 22
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 23
+ Target Bodies(1) = 23
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 24
+ Target Bodies(1) = 24
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 25
+ Target Bodies(1) = 25
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 26
+ Target Bodies(1) = 26
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 27
+ Target Bodies(1) = 27
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 28
+ Target Bodies(1) = 28
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 29
+ Target Bodies(1) = 29
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 30
+ Target Bodies(1) = 30
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 31
+ Target Bodies(1) = 31
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 32
+ Target Bodies(1) = 32
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 33
+ Target Bodies(1) = 33
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 34
+ Target Bodies(1) = 34
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 35
+ Target Bodies(1) = 35
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 36
+ Target Bodies(1) = 36
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 37
+ Target Bodies(1) = 37
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 38
+ Target Bodies(1) = 38
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 39
+ Target Bodies(1) = 39
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 40
+ Target Bodies(1) = 40
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 41
+ Target Bodies(1) = 41
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 42
+ Target Bodies(1) = 42
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 43
+ Target Bodies(1) = 43
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 44
+ Target Bodies(1) = 44
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 45
+ Target Bodies(1) = 45
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 46
+ Target Bodies(1) = 46
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 47
+ Target Bodies(1) = 47
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 48
+ Target Bodies(1) = 48
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 49
+ Target Bodies(1) = 49
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 50
+ Target Bodies(1) = 50
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 51
+ Target Bodies(1) = 51
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 52
+ Target Bodies(1) = 52
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 53
+ Target Bodies(1) = 53
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 54
+ Target Bodies(1) = 54
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 55
+ Target Bodies(1) = 55
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 56
+ Target Bodies(1) = 56
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 57
+ Target Bodies(1) = 57
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 58
+ Target Bodies(1) = 58
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 59
+ Target Bodies(1) = 59
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 60
+ Target Bodies(1) = 60
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 61
+ Target Bodies(1) = 61
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 62
+ Target Bodies(1) = 62
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 63
+ Target Bodies(1) = 63
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 64
+ Target Bodies(1) = 64
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 65
+ Target Bodies(1) = 65
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 66
+ Target Bodies(1) = 66
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 67
+ Target Bodies(1) = 67
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 68
+ Target Bodies(1) = 68
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 69
+ Target Bodies(1) = 69
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 70
+ Target Bodies(1) = 70
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 71
+ Target Bodies(1) = 71
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 72
+ Target Bodies(1) = 72
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 73
+ Target Bodies(1) = 73
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 74
+ Target Bodies(1) = 74
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 75
+ Target Bodies(1) = 75
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 76
+ Target Bodies(1) = 76
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 77
+ Target Bodies(1) = 77
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 78
+ Target Bodies(1) = 78
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 79
+ Target Bodies(1) = 79
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 80
+ Target Bodies(1) = 80
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 81
+ Target Bodies(1) = 81
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 82
+ Target Bodies(1) = 82
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 83
+ Target Bodies(1) = 83
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 84
+ Target Bodies(1) = 84
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 85
+ Target Bodies(1) = 85
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 86
+ Target Bodies(1) = 86
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 87
+ Target Bodies(1) = 87
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 88
+ Target Bodies(1) = 88
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 89
+ Target Bodies(1) = 89
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 90
+ Target Bodies(1) = 90
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 91
+ Target Bodies(1) = 91
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 92
+ Target Bodies(1) = 92
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 93
+ Target Bodies(1) = 93
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 94
+ Target Bodies(1) = 94
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 95
+ Target Bodies(1) = 95
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 96
+ Target Bodies(1) = 96
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 97
+ Target Bodies(1) = 97
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 98
+ Target Bodies(1) = 98
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 99
+ Target Bodies(1) = 99
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 100
+ Target Bodies(1) = 100
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 101
+ Target Bodies(1) = 101
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 102
+ Target Bodies(1) = 102
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 103
+ Target Bodies(1) = 103
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 104
+ Target Bodies(1) = 104
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 105
+ Target Bodies(1) = 105
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 106
+ Target Bodies(1) = 106
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 107
+ Target Bodies(1) = 107
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 108
+ Target Bodies(1) = 108
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 109
+ Target Bodies(1) = 109
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 110
+ Target Bodies(1) = 110
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 111
+ Target Bodies(1) = 111
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 112
+ Target Bodies(1) = 112
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 113
+ Target Bodies(1) = 113
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 114
+ Target Bodies(1) = 114
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 115
+ Target Bodies(1) = 115
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 116
+ Target Bodies(1) = 116
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 117
+ Target Bodies(1) = 117
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 118
+ Target Bodies(1) = 118
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 119
+ Target Bodies(1) = 119
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 120
+ Target Bodies(1) = 120
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 121
+ Target Bodies(1) = 121
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 122
+ Target Bodies(1) = 122
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 123
+ Target Bodies(1) = 123
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 124
+ Target Bodies(1) = 124
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 125
+ Target Bodies(1) = 125
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 126
+ Target Bodies(1) = 126
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 127
+ Target Bodies(1) = 127
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 128
+ Target Bodies(1) = 128
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 129
+ Target Bodies(1) = 129
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 130
+ Target Bodies(1) = 130
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 131
+ Target Bodies(1) = 131
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 132
+ Target Bodies(1) = 132
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 133
+ Target Bodies(1) = 133
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 134
+ Target Bodies(1) = 134
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 135
+ Target Bodies(1) = 135
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 136
+ Target Bodies(1) = 136
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 137
+ Target Bodies(1) = 137
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 138
+ Target Bodies(1) = 138
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 139
+ Target Bodies(1) = 139
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 140
+ Target Bodies(1) = 140
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 141
+ Target Bodies(1) = 141
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 142
+ Target Bodies(1) = 142
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 143
+ Target Bodies(1) = 143
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 144
+ Target Bodies(1) = 144
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 145
+ Target Bodies(1) = 145
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 146
+ Target Bodies(1) = 146
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 147
+ Target Bodies(1) = 147
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 148
+ Target Bodies(1) = 148
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 149
+ Target Bodies(1) = 149
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 150
+ Target Bodies(1) = 150
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 151
+ Target Bodies(1) = 151
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 152
+ Target Bodies(1) = 152
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 153
+ Target Bodies(1) = 153
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 154
+ Target Bodies(1) = 154
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 155
+ Target Bodies(1) = 155
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 156
+ Target Bodies(1) = 156
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 157
+ Target Bodies(1) = 157
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 158
+ Target Bodies(1) = 158
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 159
+ Target Bodies(1) = 159
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 160
+ Target Bodies(1) = 160
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 161
+ Target Bodies(1) = 161
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 162
+ Target Bodies(1) = 162
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 163
+ Target Bodies(1) = 163
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 164
+ Target Bodies(1) = 164
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 165
+ Target Bodies(1) = 165
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 166
+ Target Bodies(1) = 166
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 167
+ Target Bodies(1) = 167
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 168
+ Target Bodies(1) = 168
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 169
+ Target Bodies(1) = 169
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 170
+ Target Bodies(1) = 170
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 171
+ Target Bodies(1) = 171
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 172
+ Target Bodies(1) = 172
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 173
+ Target Bodies(1) = 173
+ Equation = 1
+ Material = 8
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 174
+ Target Bodies(1) = 174
+ Equation = 1
+ Material = 9
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 175
+ Target Bodies(1) = 175
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 176
+ Target Bodies(1) = 176
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 177
+ Target Bodies(1) = 177
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 178
+ Target Bodies(1) = 178
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 179
+ Target Bodies(1) = 179
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 180
+ Target Bodies(1) = 180
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 181
+ Target Bodies(1) = 181
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 182
+ Target Bodies(1) = 182
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 183
+ Target Bodies(1) = 183
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 184
+ Target Bodies(1) = 184
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 185
+ Target Bodies(1) = 185
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 186
+ Target Bodies(1) = 186
+ Equation = 1
+ Material = 1
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 187
+ Target Bodies(1) = 187
+ Equation = 1
+ Material = 1
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 188
+ Target Bodies(1) = 188
+ Equation = 1
+ Material = 1
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 189
+ Target Bodies(1) = 189
+ Equation = 1
+ Material = 1
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 190
+ Target Bodies(1) = 190
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 191
+ Target Bodies(1) = 191
+ Equation = 1
+ Material = 4
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 192
+ Target Bodies(1) = 192
+ Equation = 1
+ Material = 1
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 193
+ Target Bodies(1) = 301
+ Equation = 1
+ Material = 11
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 194
+ Target Bodies(1) = 302
+ Equation = 1
+ Material = 2
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 195
+ Target Bodies(1) = 303
+ Equation = 1
+ Material = 7
+ Body Force = 2
+ Initial Condition = 1
+End
+Body 196
+ Target Bodies(1) = 304
+ Equation = 1
+ Material = 3
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 197
+ Target Bodies(1) = 305
+ Equation = 1
+ Material = 3
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 198
+ Target Bodies(1) = 300
+ Equation = 1
+ Material = 6
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 199
+ Target Bodies(1) = 401
+ Equation = 1
+ Material = 5
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 200
+ Target Bodies(1) = 501
+ Equation = 1
+ Material = 10
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 201
+ Target Bodies(1) = 402
+ Equation = 1
+ Material = 5
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 202
+ Target Bodies(1) = 502
+ Equation = 1
+ Material = 10
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 203
+ Target Bodies(1) = 403
+ Equation = 1
+ Material = 5
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 204
+ Target Bodies(1) = 503
+ Equation = 1
+ Material = 10
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 205
+ Target Bodies(1) = 404
+ Equation = 1
+ Material = 5
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 206
+ Target Bodies(1) = 504
+ Equation = 1
+ Material = 10
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 207
+ Target Bodies(1) = 405
+ Equation = 1
+ Material = 5
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 208
+ Target Bodies(1) = 505
+ Equation = 1
+ Material = 10
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 209
+ Target Bodies(1) = 406
+ Equation = 1
+ Material = 5
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 210
+ Target Bodies(1) = 506
+ Equation = 1
+ Material = 10
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 211
+ Target Bodies(1) = 407
+ Equation = 1
+ Material = 5
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 212
+ Target Bodies(1) = 507
+ Equation = 1
+ Material = 10
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 213
+ Target Bodies(1) = 408
+ Equation = 1
+ Material = 5
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 214
+ Target Bodies(1) = 508
+ Equation = 1
+ Material = 10
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 215
+ Target Bodies(1) = 409
+ Equation = 1
+ Material = 5
+ Body Force = 1
+ Initial Condition = 1
+End
+Body 216
+ Target Bodies(1) = 509
+ Equation = 1
+ Material = 10
+ Body Force = 1
+ Initial Condition = 1
+End
+Material 1
+ Heat Conductivity = Real 30
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 2
+ Heat Conductivity = Real 1
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 3
+ Heat Conductivity = Real 315
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 4
+ Heat Conductivity = Real 400
+ Electric Conductivity = Real 58139534.883720934
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 5
+ Heat Conductivity = Real 1
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 6
+ Heat Conductivity = Real 17.300000000000001
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 7
+ Heat Conductivity = Variable Temperature
+  Real Procedure "/work/outputs/cold20/bench_direct/library/CorrectedSolid" "MCTHeat"
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 8
+ Heat Conductivity = Real 1.5
+ Electric Conductivity = Real 165500
+ Seebeck Coefficient = Real -0.00017000000000000001
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 9
+ Heat Conductivity = Real 1.5
+ Electric Conductivity = Real 140000
+ Seebeck Coefficient = Real 0.00016000000000000001
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 10
+ Heat Conductivity = Real 17.300000000000001
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Material 11
+ Heat Conductivity = Variable Temperature
+  Real Procedure "/work/outputs/cold20/bench_direct/library/CorrectedSolid" "JointHeat"
+ Electric Conductivity = Real 9.9999999999999998e-13
+ Seebeck Coefficient = Real 0
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Boundary Condition 1
+ Target Boundaries(1) = 101
+ Temperature = Real 300
+End
+Boundary Condition 2
+ Target Boundaries(1) = 103
+ Electric Flux = Real 625000.00000000081
+End
+Boundary Condition 3
+ Target Boundaries(1) = 104
+ Potential = Real 0
+End
+Boundary Condition 4
+ Target Boundaries(1) = 6001
+End
+Boundary Condition 5
+ Target Boundaries(1) = 6009
+End
+Boundary Condition 6
+ Target Boundaries(1) = 6007
+End
+Boundary Condition 7
+ Target Boundaries(1) = 6008
+End
+Boundary Condition 8
+ Target Boundaries(1) = 6107
+End
+Boundary Condition 9
+ Target Boundaries(1) = 6108
+End

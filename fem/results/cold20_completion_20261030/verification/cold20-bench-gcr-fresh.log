@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/cold20_krylov.py", line 51, in <module>
+    run(a.mesh.resolve(),a.case.resolve(),a.backend,a.restart.resolve() if a.restart else None,a.projection.resolve() if a.projection else None,a.reference.resolve() if a.reference else None,a.timeout)
+  File "/work/tecooledmct/cold20_krylov.py", line 40, in run
+    try:result=runner.run(mesh,case,backend,restart,projection,reference,timeout=timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/cold20_solver.py", line 88, in run
+    status=execute_solver(case,timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/fem_g2b_physics.py", line 174, in execute_solver
+    raise RuntimeError(f"Actual coupled solve FAILED: {case}; see solver.log/status")
+RuntimeError: Actual coupled solve FAILED: /work/outputs/cold20/bench_gcr_ilu2_fresh; see solver.log/status

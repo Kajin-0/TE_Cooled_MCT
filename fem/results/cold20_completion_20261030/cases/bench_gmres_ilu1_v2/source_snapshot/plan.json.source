@@ -1,0 +1,14 @@
+{
+  "registered_before_new_runs": true,
+  "physics": "exact existing216-domain Cold30/Cold20 mesh,0.1A,2mW MCT,Cu/Au OFF,300K Kovar underside; frozen write_case and postprocess",
+  "same_mesh_agreement": {"die_mean_K":2e-6,"voltage_V":2e-8,"each177_cut_A":2e-6,"raw_bath_W":2e-7,"same_primary_gate_booleans":true},
+  "linear_candidates": ["big_umfpack","gmres_ilu1","gmres_ilu2","gmres_ilut"],
+  "iterative": {"method":"GMRES","restart":100,"maximum_iterations":5000,"relative_tolerance":1e-13,"abort_not_converged":true,"ILUT_tolerance":1e-5},
+  "nonlinear_tolerance":1e-9,
+  "bounds_seconds": {"same_mesh":400,"Cold20":1800,"passive_Cold20":400},
+  "unchanged_gates": {"raw_bath":0.01,"each177_cut":0.005,"raw_interfaces":0.05,"global_and_stage_energy_W":1e-6},
+  "profiling": "add CPU timers around existing assembly and DefaultSolve ONLY; verify inverse text transformation equals pinned upstream source",
+  "initialization": "optional body-ID-respecting tetrahedral P1 map, nonnegative barycentric weights; exact-node fast path; same-body curved-boundary projection only with recorded geometric displacement; no nearest-node across bodies",
+  "projection_tests": "constant300K/phi0 and affine-field reproduction; real zero-current transfer from protected passive field; same-mesh replay before loaded fine solve",
+  "interpretation": "Retain every failed trial; no final interpolated field, no reused stale LU, no physical/gate changes. Iterative backend accepted only with independent same-mesh agreement."
+}

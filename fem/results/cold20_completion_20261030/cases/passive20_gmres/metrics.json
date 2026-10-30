@@ -1,0 +1,3801 @@
+{
+  "current_a": 0,
+  "deposited_power_w": 0,
+  "pbias_w": 0.0,
+  "parametric_absorption_w": 0.0,
+  "cu_leads_on": false,
+  "au_bonds_on": false,
+  "package_sigma_s_m": 1e-12,
+  "mct_volume_m3": 1.9999999999999967e-10,
+  "material_status": "unchanged constant G1 P/N/Cu verification proxies; passive thermal laws and unidentified k35 joint; no OEM grade",
+  "MCT_k_source": "Heckman/Gonzalez/Guha2008, DOI10.1364/AO.47.000578, Table2 x0.29, local90..400K; no carrier transport",
+  "boundary_scope": "300K Kovar external underside tag101 only; all other exposed solids including pin ends adiabatic except hybrid endpoint fluxes",
+  "enclosure": "absent; no radiation/gas imported or executed",
+  "transient": false,
+  "mesh_path": "/work/outputs/cold-convergence/mesh20",
+  "initial_state": "uniform300K, phi0",
+  "electrical_pins": "passive computational potential; module current prescribed103/104; physical wire I*R/I2R lumped, no pin-current/shaft-Joule PDE",
+  "nodes": 159991,
+  "tetrahedra": 647657,
+  "die_mean_k": 299.99999999999983,
+  "cold_ceramic_k": 299.99999999999994,
+  "hot_ceramic_k": 300.0,
+  "temperature_min_k": 299.99999999999693,
+  "temperature_max_k": 300.00000000000244,
+  "voltage_v": -3.245814790372171e-25,
+  "external_source_voltage_v": -3.245814790372171e-25,
+  "TEC_input_w": -0.0,
+  "wire_Joule_w": 0.0,
+  "external_total_power_w": 0.0,
+  "hot_out_reaction_w": 6.019378983276994e-13,
+  "hot_out_raw_gradient_w": 5.967810737064212e-13,
+  "bath_area_m2": 0.00033391981702842,
+  "bath_owner_body": 300,
+  "direct_bath_relative_error": 5.967810737064212e-09,
+  "global_energy_error_w": 6.019378983276994e-13,
+  "work_w": 1.8699256626877168e-28,
+  "Joule_w": 2.603914247151616e-28,
+  "free_thermal_residual_L1_w": 1.48123969348272e-10,
+  "free_current_residual_L1_a": 9.61344056562709e-12,
+  "return_current_a": -8.670396177826049e-35,
+  "current_error_a": 8.670396177826049e-35,
+  "worst_raw_cut_relative_error": 0.0,
+  "worst_raw_cut_absolute_a": 1.2014935688215504e-14,
+  "cuts": {
+    "stage_0_leg_00_N": {
+      "body": 5,
+      "current_a": 3.7441182355751215e-15,
+      "error_a": 3.7441182355751215e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -7.865123283675754e-16,
+      "fourier_positive_axis_w": -5.955622983532441e-16,
+      "peltier_positive_axis_w": -1.9095003001433113e-16
+    },
+    "stage_0_leg_01_P": {
+      "body": 6,
+      "current_a": 3.201265630667175e-15,
+      "error_a": 3.201265630667175e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -3.8385149628543094e-16,
+      "fourier_positive_axis_w": -2.30190746013407e-16,
+      "peltier_positive_axis_w": -1.536607502720241e-16
+    },
+    "stage_0_leg_02_N": {
+      "body": 7,
+      "current_a": 2.198142772849579e-16,
+      "error_a": 2.198142772849579e-16,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.9411693117125102e-16,
+      "fourier_positive_axis_w": -1.8290640302971783e-16,
+      "peltier_positive_axis_w": -1.1210528141533038e-17
+    },
+    "stage_0_leg_03_P": {
+      "body": 8,
+      "current_a": -2.7544233886041584e-15,
+      "error_a": 2.7544233886041584e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 3.989359941481848e-16,
+      "fourier_positive_axis_w": 2.667236714951853e-16,
+      "peltier_positive_axis_w": 1.3221232265299946e-16
+    },
+    "stage_0_leg_04_N": {
+      "body": 9,
+      "current_a": 1.1638463364981633e-15,
+      "error_a": 1.1638463364981633e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 3.826531515429789e-16,
+      "fourier_positive_axis_w": 4.4200931470438535e-16,
+      "peltier_positive_axis_w": -5.935616316140638e-17
+    },
+    "stage_0_leg_05_P": {
+      "body": 10,
+      "current_a": 5.635680526924419e-15,
+      "error_a": 5.635680526924419e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -4.880865573713311e-16,
+      "fourier_positive_axis_w": -2.1757389207895946e-16,
+      "peltier_positive_axis_w": -2.705126652923718e-16
+    },
+    "stage_0_leg_06_N": {
+      "body": 11,
+      "current_a": -2.352627767368429e-15,
+      "error_a": 2.352627767368429e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -6.921465444078226e-17,
+      "fourier_positive_axis_w": -1.8919867057657295e-16,
+      "peltier_positive_axis_w": 1.1998401613579066e-16
+    },
+    "stage_0_leg_07_P": {
+      "body": 12,
+      "current_a": -6.288367373238635e-15,
+      "error_a": 6.288367373238635e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000008e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 2.7793087114678524e-16,
+      "fourier_positive_axis_w": -2.391076276866973e-17,
+      "peltier_positive_axis_w": 3.0184163391545523e-16
+    },
+    "stage_0_leg_08_N": {
+      "body": 13,
+      "current_a": -1.1777639419930043e-15,
+      "error_a": 1.1777639419930043e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000014e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 2.5068323208035684e-16,
+      "fourier_positive_axis_w": 1.9061727103871335e-16,
+      "peltier_positive_axis_w": 6.00659610416434e-17
+    },
+    "stage_0_leg_09_P": {
+      "body": 14,
+      "current_a": -1.191592561639746e-15,
+      "error_a": 1.191592561639746e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -6.926620228547882e-17,
+      "fourier_positive_axis_w": -1.2646264524418643e-16,
+      "peltier_positive_axis_w": 5.719644295870761e-17
+    },
+    "stage_0_leg_10_N": {
+      "body": 15,
+      "current_a": -2.400645748525594e-15,
+      "error_a": 2.400645748525594e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000008e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 1.2010498281631445e-16,
+      "fourier_positive_axis_w": -2.3279503584904883e-18,
+      "peltier_positive_axis_w": 1.2243293317480492e-16
+    },
+    "stage_0_leg_11_P": {
+      "body": 16,
+      "current_a": -2.6861337292321167e-15,
+      "error_a": 2.6861337292321167e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.1297645780798235e-16,
+      "fourier_positive_axis_w": -2.419108768111238e-16,
+      "peltier_positive_axis_w": 1.2893441900314142e-16
+    },
+    "stage_0_leg_12_N": {
+      "body": 17,
+      "current_a": -3.5474211899554902e-15,
+      "error_a": 3.5474211899554902e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 6.064286350113966e-16,
+      "fourier_positive_axis_w": 4.2551015432366666e-16,
+      "peltier_positive_axis_w": 1.8091848068773006e-16
+    },
+    "stage_0_leg_13_P": {
+      "body": 18,
+      "current_a": 2.996340677728146e-15,
+      "error_a": 2.996340677728146e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -3.743213180535092e-16,
+      "fourier_positive_axis_w": -2.30496965522558e-16,
+      "peltier_positive_axis_w": -1.4382435253095144e-16
+    },
+    "stage_0_leg_14_N": {
+      "body": 19,
+      "current_a": -1.7364709569458741e-15,
+      "error_a": 1.7364709569458741e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999992e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -2.566662751574915e-16,
+      "fourier_positive_axis_w": -3.45226293961731e-16,
+      "peltier_positive_axis_w": 8.85600188042395e-17
+    },
+    "stage_0_leg_15_P": {
+      "body": 20,
+      "current_a": -3.4716923454901507e-17,
+      "error_a": 3.4716923454901507e-17,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 3.856883834275853e-17,
+      "fourier_positive_axis_w": 3.690242601692331e-17,
+      "peltier_positive_axis_w": 1.6664123258352063e-18
+    },
+    "stage_0_leg_16_N": {
+      "body": 21,
+      "current_a": 5.251127781925615e-15,
+      "error_a": 5.251127781925615e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -4.0551947864770636e-16,
+      "fourier_positive_axis_w": -1.3771196176950047e-16,
+      "peltier_positive_axis_w": -2.6780751687820614e-16
+    },
+    "stage_0_leg_17_P": {
+      "body": 22,
+      "current_a": 1.438679461038766e-15,
+      "error_a": 1.438679461038766e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -3.5234546653909837e-16,
+      "fourier_positive_axis_w": -2.8328885240923753e-16,
+      "peltier_positive_axis_w": -6.905661412986087e-17
+    },
+    "stage_0_leg_18_N": {
+      "body": 23,
+      "current_a": 3.9748193874011035e-15,
+      "error_a": 3.9748193874011035e-15,
+      "relative_error": null,
+      "area_m2": 1.599999999999999e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.563145706773058e-16,
+      "fourier_positive_axis_w": 4.640121808015037e-17,
+      "peltier_positive_axis_w": -2.0271578875745615e-16
+    },
+    "stage_0_leg_19_P": {
+      "body": 24,
+      "current_a": 1.8543561580218897e-16,
+      "error_a": 1.8543561580218897e-16,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.0265517863596273e-16,
+      "fourier_positive_axis_w": -9.375426907745769e-17,
+      "peltier_positive_axis_w": -8.90090955850501e-18
+    },
+    "stage_0_leg_20_N": {
+      "body": 25,
+      "current_a": 8.927136073592065e-16,
+      "error_a": 8.927136073592065e-16,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 2.5885189795324177e-17,
+      "fourier_positive_axis_w": 7.141358377064351e-17,
+      "peltier_positive_axis_w": -4.5528393975319305e-17
+    },
+    "stage_0_leg_21_P": {
+      "body": 26,
+      "current_a": 4.2680475350148496e-15,
+      "error_a": 4.2680475350148496e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999992e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -7.788134767739561e-17,
+      "fourier_positive_axis_w": 1.2698493400331733e-16,
+      "peltier_positive_axis_w": -2.048662816807129e-16
+    },
+    "stage_0_leg_22_N": {
+      "body": 27,
+      "current_a": 3.1923525794435508e-15,
+      "error_a": 3.1923525794435508e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -3.659359649099106e-16,
+      "fourier_positive_axis_w": -2.0312598335828929e-16,
+      "peltier_positive_axis_w": -1.628099815516214e-16
+    },
+    "stage_0_leg_23_P": {
+      "body": 28,
+      "current_a": -3.866583974555749e-15,
+      "error_a": 3.866583974555749e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000022e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 9.517556952002613e-17,
+      "fourier_positive_axis_w": -9.042046125864991e-17,
+      "peltier_positive_axis_w": 1.8559603077867604e-16
+    },
+    "stage_0_leg_24_N": {
+      "body": 29,
+      "current_a": 1.2054038162854014e-15,
+      "error_a": 1.2054038162854014e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -5.064473176473318e-16,
+      "fourier_positive_axis_w": -4.449717230167762e-16,
+      "peltier_positive_axis_w": -6.147559463055547e-17
+    },
+    "stage_0_leg_25_P": {
+      "body": 30,
+      "current_a": 3.542817495303379e-15,
+      "error_a": 3.542817495303379e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.1693717672060513e-16,
+      "fourier_positive_axis_w": 5.3118063053957176e-17,
+      "peltier_positive_axis_w": -1.7005523977456228e-16
+    },
+    "stage_0_leg_26_N": {
+      "body": 31,
+      "current_a": 1.4185925095063062e-15,
+      "error_a": 1.4185925095063062e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 6.772909105982655e-17,
+      "fourier_positive_axis_w": 1.4007730904464812e-16,
+      "peltier_positive_axis_w": -7.234821798482154e-17
+    },
+    "stage_0_leg_27_P": {
+      "body": 32,
+      "current_a": -3.602518359506093e-16,
+      "error_a": 3.602518359506093e-16,
+      "relative_error": null,
+      "area_m2": 1.6000000000000008e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -8.527724420509664e-18,
+      "fourier_positive_axis_w": -2.581981254613893e-17,
+      "peltier_positive_axis_w": 1.7292088125629258e-17
+    },
+    "stage_0_leg_28_N": {
+      "body": 33,
+      "current_a": -4.732626860740353e-15,
+      "error_a": 4.732626860740353e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 3.5445765469285e-16,
+      "fourier_positive_axis_w": 1.130936847950918e-16,
+      "peltier_positive_axis_w": 2.4136396989775807e-16
+    },
+    "stage_0_leg_29_P": {
+      "body": 34,
+      "current_a": -2.231261426448698e-15,
+      "error_a": 2.231261426448698e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000006e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 6.517115836736288e-16,
+      "fourier_positive_axis_w": 5.446110352040913e-16,
+      "peltier_positive_axis_w": 1.0710054846953751e-16
+    },
+    "stage_0_leg_30_N": {
+      "body": 35,
+      "current_a": -2.325908816826742e-15,
+      "error_a": 2.325908816826742e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999992e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 5.800002419619707e-17,
+      "fourier_positive_axis_w": -6.062132546196667e-17,
+      "peltier_positive_axis_w": 1.1862134965816376e-16
+    },
+    "stage_0_leg_31_P": {
+      "body": 36,
+      "current_a": -3.7598449539735533e-16,
+      "error_a": 3.7598449539735533e-16,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -2.9442139492649745e-16,
+      "fourier_positive_axis_w": -3.124686507055706e-16,
+      "peltier_positive_axis_w": 1.8047255779073018e-17
+    },
+    "stage_0_leg_32_N": {
+      "body": 37,
+      "current_a": -5.216817856638921e-15,
+      "error_a": 5.216817856638921e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000006e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 2.7747861956612037e-16,
+      "fourier_positive_axis_w": 1.1420908877534729e-17,
+      "peltier_positive_axis_w": 2.660577106885854e-16
+    },
+    "stage_0_leg_33_P": {
+      "body": 38,
+      "current_a": 2.9061257206119282e-15,
+      "error_a": 2.9061257206119282e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 2.4371264800711035e-16,
+      "fourier_positive_axis_w": 3.8320668259648294e-16,
+      "peltier_positive_axis_w": -1.3949403458937267e-16
+    },
+    "stage_0_leg_34_N": {
+      "body": 39,
+      "current_a": 6.530464371357892e-15,
+      "error_a": 6.530464371357892e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999992e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -2.5393475407163116e-16,
+      "fourier_positive_axis_w": 7.911892886762198e-17,
+      "peltier_positive_axis_w": -3.33053682939253e-16
+    },
+    "stage_0_leg_35_P": {
+      "body": 40,
+      "current_a": 1.8209275356895264e-16,
+      "error_a": 1.8209275356895264e-16,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 3.720086555784613e-16,
+      "fourier_positive_axis_w": 3.8074910774977095e-16,
+      "peltier_positive_axis_w": -8.740452171309745e-18
+    },
+    "stage_0_leg_36_N": {
+      "body": 41,
+      "current_a": 2.216085173767456e-15,
+      "error_a": 2.216085173767456e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -5.64331287389904e-16,
+      "fourier_positive_axis_w": -4.513109435277633e-16,
+      "peltier_positive_axis_w": -1.1302034386214074e-16
+    },
+    "stage_0_leg_37_P": {
+      "body": 42,
+      "current_a": 5.002142994773155e-15,
+      "error_a": 5.002142994773155e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -3.2706818580548604e-16,
+      "fourier_positive_axis_w": -8.696532205637506e-17,
+      "peltier_positive_axis_w": -2.401028637491111e-16
+    },
+    "stage_0_leg_38_N": {
+      "body": 43,
+      "current_a": 7.128335148812174e-16,
+      "error_a": 7.128335148812174e-16,
+      "relative_error": null,
+      "area_m2": 1.6000000000000006e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 5.3913619357336824e-17,
+      "fourier_positive_axis_w": 9.026812861627904e-17,
+      "peltier_positive_axis_w": -3.6354509258942195e-17
+    },
+    "stage_0_leg_39_P": {
+      "body": 44,
+      "current_a": -2.5035085666830653e-15,
+      "error_a": 2.5035085666830653e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000006e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.2654559559622367e-18,
+      "fourier_positive_axis_w": -1.2143386715674951e-16,
+      "peltier_positive_axis_w": 1.2016841120078724e-16
+    },
+    "stage_0_leg_40_N": {
+      "body": 45,
+      "current_a": -1.8765507216860702e-15,
+      "error_a": 1.8765507216860702e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 4.618577226538389e-16,
+      "fourier_positive_axis_w": 3.661536358478487e-16,
+      "peltier_positive_axis_w": 9.570408680599001e-17
+    },
+    "stage_0_leg_41_P": {
+      "body": 46,
+      "current_a": -1.8440934793303428e-15,
+      "error_a": 1.8440934793303428e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.6289318273731131e-16,
+      "fourier_positive_axis_w": -2.5140966974516794e-16,
+      "peltier_positive_axis_w": 8.851648700785654e-17
+    },
+    "stage_0_leg_42_N": {
+      "body": 47,
+      "current_a": -1.0026916378937187e-15,
+      "error_a": 1.0026916378937187e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 1.1625372422403454e-16,
+      "fourier_positive_axis_w": 6.511645069145496e-17,
+      "peltier_positive_axis_w": 5.1137273532579607e-17
+    },
+    "stage_0_leg_43_P": {
+      "body": 48,
+      "current_a": 4.185421460686916e-15,
+      "error_a": 4.185421460686916e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -2.0596584367218842e-16,
+      "fourier_positive_axis_w": -5.065613559215865e-18,
+      "peltier_positive_axis_w": -2.0090023011297255e-16
+    },
+    "stage_0_leg_44_N": {
+      "body": 49,
+      "current_a": 5.817355529339911e-16,
+      "error_a": 5.817355529339911e-16,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 8.854014835240262e-17,
+      "fourier_positive_axis_w": 1.1820866155203613e-16,
+      "peltier_positive_axis_w": -2.966851319963348e-17
+    },
+    "stage_0_leg_45_P": {
+      "body": 50,
+      "current_a": 7.062018968788633e-16,
+      "error_a": 7.062018968788633e-16,
+      "relative_error": null,
+      "area_m2": 1.5999999999999992e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -3.6132440172254835e-17,
+      "fourier_positive_axis_w": -2.2347491220693122e-18,
+      "peltier_positive_axis_w": -3.3897691050185517e-17
+    },
+    "stage_0_leg_46_N": {
+      "body": 51,
+      "current_a": -6.705113837913809e-15,
+      "error_a": 6.705113837913809e-15,
+      "relative_error": null,
+      "area_m2": 1.599999999999999e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 1.9592949979594119e-16,
+      "fourier_positive_axis_w": -1.460313059376631e-16,
+      "peltier_positive_axis_w": 3.419608057336044e-16
+    },
+    "stage_0_leg_47_P": {
+      "body": 52,
+      "current_a": -5.250128717845149e-15,
+      "error_a": 5.250128717845149e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000008e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 2.748901761929144e-16,
+      "fourier_positive_axis_w": 2.2883997736346952e-17,
+      "peltier_positive_axis_w": 2.5200617845656753e-16
+    },
+    "stage_0_leg_48_N": {
+      "body": 53,
+      "current_a": -5.0722140810243245e-15,
+      "error_a": 5.0722140810243245e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 3.154362881352219e-16,
+      "fourier_positive_axis_w": 5.675337000298109e-17,
+      "peltier_positive_axis_w": 2.586829181322408e-16
+    },
+    "stage_0_leg_49_P": {
+      "body": 54,
+      "current_a": 4.819250177414755e-16,
+      "error_a": 4.819250177414755e-16,
+      "relative_error": null,
+      "area_m2": 1.5999999999999992e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 3.034422260827667e-16,
+      "fourier_positive_axis_w": 3.265746269343578e-16,
+      "peltier_positive_axis_w": -2.3132400851590923e-17
+    },
+    "stage_0_leg_50_N": {
+      "body": 55,
+      "current_a": 1.606329523062791e-15,
+      "error_a": 1.606329523062791e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -2.0572129775861183e-16,
+      "fourier_positive_axis_w": -1.2379849208240924e-16,
+      "peltier_positive_axis_w": -8.192280567620244e-17
+    },
+    "stage_0_leg_51_P": {
+      "body": 56,
+      "current_a": -2.5920549570332615e-16,
+      "error_a": 2.5920549570332615e-16,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -2.893321118545176e-16,
+      "fourier_positive_axis_w": -3.0177397564827716e-16,
+      "peltier_positive_axis_w": 1.2441863793759546e-17
+    },
+    "stage_0_leg_52_N": {
+      "body": 57,
+      "current_a": 8.542621141266839e-15,
+      "error_a": 8.542621141266839e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.0577601801625192e-15,
+      "fourier_positive_axis_w": -6.220865019579094e-16,
+      "peltier_positive_axis_w": -4.3567367820460954e-16
+    },
+    "stage_0_leg_53_P": {
+      "body": 58,
+      "current_a": 5.79211072627739e-16,
+      "error_a": 5.79211072627739e-16,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 2.074683783273325e-16,
+      "fourier_positive_axis_w": 2.3527050981346406e-16,
+      "peltier_positive_axis_w": -2.7802131486131456e-17
+    },
+    "stage_0_leg_54_N": {
+      "body": 59,
+      "current_a": -1.5765860036934213e-15,
+      "error_a": 1.5765860036934213e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -3.01470614040033e-18,
+      "fourier_positive_axis_w": -8.342059232876497e-17,
+      "peltier_positive_axis_w": 8.040588618836464e-17
+    },
+    "stage_0_leg_55_P": {
+      "body": 60,
+      "current_a": -3.4450616416222555e-15,
+      "error_a": 3.4450616416222555e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000006e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 2.572260510340545e-16,
+      "fourier_positive_axis_w": 9.18630922361861e-17,
+      "peltier_positive_axis_w": 1.6536295879786845e-16
+    },
+    "stage_0_bridge_00_cold": {
+      "body": 61,
+      "current_a": 1.2014935688215504e-14,
+      "error_a": 1.2014935688215504e-14,
+      "relative_error": null,
+      "area_m2": 2.5999999999999988e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.658746761255435e-14,
+      "fourier_positive_axis_w": -1.658746761255435e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_01_hot": {
+      "body": 62,
+      "current_a": 2.9729635919078588e-15,
+      "error_a": 2.9729635919078588e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999985e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -2.6979131520089962e-14,
+      "fourier_positive_axis_w": -2.6979131520089962e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_02_cold": {
+      "body": 63,
+      "current_a": -5.92016174113899e-15,
+      "error_a": 5.92016174113899e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999985e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -2.0299387506533746e-14,
+      "fourier_positive_axis_w": -2.0299387506533746e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_03_hot": {
+      "body": 64,
+      "current_a": -7.353945920573124e-15,
+      "error_a": 7.353945920573124e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999997e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.016541216903789e-14,
+      "fourier_positive_axis_w": 1.016541216903789e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_04_cold": {
+      "body": 65,
+      "current_a": 7.02295117882535e-16,
+      "error_a": 7.02295117882535e-16,
+      "relative_error": null,
+      "area_m2": 2.5999999999999968e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -4.3560265672770964e-15,
+      "fourier_positive_axis_w": -4.3560265672770964e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_05_hot": {
+      "body": 66,
+      "current_a": -4.131074438538493e-15,
+      "error_a": 4.131074438538493e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.5195665404770585e-14,
+      "fourier_positive_axis_w": -1.5195665404770585e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_06_cold": {
+      "body": 67,
+      "current_a": 5.1207652193171224e-15,
+      "error_a": 5.1207652193171224e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 6.716264632391721e-14,
+      "fourier_positive_axis_w": 6.716264632391721e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_07_hot": {
+      "body": 68,
+      "current_a": -2.3036626356374568e-15,
+      "error_a": 2.3036626356374568e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999995e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.602200185145741e-14,
+      "fourier_positive_axis_w": -1.602200185145741e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_08_cold": {
+      "body": 69,
+      "current_a": -4.898986097862202e-15,
+      "error_a": 4.898986097862202e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999975e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -2.5218675790530603e-14,
+      "fourier_positive_axis_w": -2.5218675790530603e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_09_hot": {
+      "body": 70,
+      "current_a": -2.013042565190258e-16,
+      "error_a": 2.013042565190258e-16,
+      "relative_error": null,
+      "area_m2": 2.5999999999999985e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.2300565895755078e-15,
+      "fourier_positive_axis_w": -1.2300565895755078e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_10_cold": {
+      "body": 71,
+      "current_a": -5.998934774438357e-16,
+      "error_a": 5.998934774438357e-16,
+      "relative_error": null,
+      "area_m2": 2.599999999999999e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 4.000429421042311e-14,
+      "fourier_positive_axis_w": 4.000429421042311e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_11_hot": {
+      "body": 72,
+      "current_a": -2.911527886517073e-15,
+      "error_a": 2.911527886517073e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999968e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 2.6757081937805054e-14,
+      "fourier_positive_axis_w": 2.6757081937805054e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_12_cold": {
+      "body": 73,
+      "current_a": 3.676089757185198e-15,
+      "error_a": 3.676089757185198e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999998e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 4.0288769839368664e-14,
+      "fourier_positive_axis_w": 4.0288769839368664e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_13_hot": {
+      "body": 74,
+      "current_a": 4.3550245702323955e-15,
+      "error_a": 4.3550245702323955e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999965e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 9.84839012891734e-16,
+      "fourier_positive_axis_w": 9.84839012891734e-16,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_14_cold": {
+      "body": 75,
+      "current_a": 3.17224372928343e-15,
+      "error_a": 3.17224372928343e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.2275869945766838e-14,
+      "fourier_positive_axis_w": -1.2275869945766838e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_15_hot": {
+      "body": 76,
+      "current_a": 3.109218416070775e-15,
+      "error_a": 3.109218416070775e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999975e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.4347481856652982e-14,
+      "fourier_positive_axis_w": 1.4347481856652982e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_16_cold": {
+      "body": 77,
+      "current_a": 5.254115079922313e-15,
+      "error_a": 5.254115079922313e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999965e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.3131046054475663e-14,
+      "fourier_positive_axis_w": 1.3131046054475663e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_17_hot": {
+      "body": 78,
+      "current_a": 4.3451058020496445e-15,
+      "error_a": 4.3451058020496445e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999985e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 2.6357180658183954e-14,
+      "fourier_positive_axis_w": 2.6357180658183954e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_18_cold": {
+      "body": 79,
+      "current_a": -1.2757999243289558e-15,
+      "error_a": 1.2757999243289558e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 3.313296449542941e-14,
+      "fourier_positive_axis_w": 3.313296449542941e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_19_hot": {
+      "body": 80,
+      "current_a": 1.6615820880553994e-15,
+      "error_a": 1.6615820880553994e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999998e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -6.637112378205753e-15,
+      "fourier_positive_axis_w": -6.637112378205753e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_20_cold": {
+      "body": 81,
+      "current_a": -2.1895773603750746e-15,
+      "error_a": 2.1895773603750746e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999975e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 4.289701878266868e-15,
+      "fourier_positive_axis_w": 4.289701878266868e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_21_hot": {
+      "body": 82,
+      "current_a": 7.882338056543693e-17,
+      "error_a": 7.882338056543693e-17,
+      "relative_error": null,
+      "area_m2": 2.5999999999999975e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 7.743886513620148e-15,
+      "fourier_positive_axis_w": 7.743886513620148e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_22_cold": {
+      "body": 83,
+      "current_a": 4.054747393965303e-15,
+      "error_a": 4.054747393965303e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999988e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 2.375935231023823e-14,
+      "fourier_positive_axis_w": 2.375935231023823e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_23_hot": {
+      "body": 84,
+      "current_a": 5.175900707566416e-15,
+      "error_a": 5.175900707566416e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.7952952678595094e-15,
+      "fourier_positive_axis_w": 1.7952952678595094e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_24_cold": {
+      "body": 85,
+      "current_a": -3.931629224488653e-15,
+      "error_a": 3.931629224488653e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999998e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -3.908052008771336e-15,
+      "fourier_positive_axis_w": -3.908052008771336e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_25_hot": {
+      "body": 86,
+      "current_a": -1.5623642590157379e-15,
+      "error_a": 1.5623642590157379e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999975e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 3.671147978007048e-14,
+      "fourier_positive_axis_w": 3.671147978007048e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_26_cold": {
+      "body": 87,
+      "current_a": -5.575486740818305e-15,
+      "error_a": 5.575486740818305e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999988e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.0130585055128475e-14,
+      "fourier_positive_axis_w": -1.0130585055128475e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_27_hot": {
+      "body": 88,
+      "current_a": -9.492391187929464e-16,
+      "error_a": 9.492391187929464e-16,
+      "relative_error": null,
+      "area_m2": 2.5999999999999985e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 2.4607733383786627e-14,
+      "fourier_positive_axis_w": 2.4607733383786627e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_28_cold": {
+      "body": 89,
+      "current_a": -2.254136219110281e-15,
+      "error_a": 2.254136219110281e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999968e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -2.4299625489855387e-14,
+      "fourier_positive_axis_w": -2.4299625489855387e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_29_hot": {
+      "body": 90,
+      "current_a": -2.832078026727826e-15,
+      "error_a": 2.832078026727826e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999988e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.9755532748521713e-14,
+      "fourier_positive_axis_w": -1.9755532748521713e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_30_cold": {
+      "body": 91,
+      "current_a": 3.0731763880877967e-15,
+      "error_a": 3.0731763880877967e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999996e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -8.683967188183062e-15,
+      "fourier_positive_axis_w": -8.683967188183062e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_31_hot": {
+      "body": 92,
+      "current_a": -3.731378377505194e-15,
+      "error_a": 3.731378377505194e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 2.849208652069745e-14,
+      "fourier_positive_axis_w": 2.849208652069745e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_32_cold": {
+      "body": 93,
+      "current_a": -3.624579428366939e-15,
+      "error_a": 3.624579428366939e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999985e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.0419249304967679e-14,
+      "fourier_positive_axis_w": 1.0419249304967679e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_33_hot": {
+      "body": 94,
+      "current_a": 9.752307652751515e-16,
+      "error_a": 9.752307652751515e-16,
+      "relative_error": null,
+      "area_m2": 2.5999999999999985e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.6135132351028427e-14,
+      "fourier_positive_axis_w": 1.6135132351028427e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_34_cold": {
+      "body": 95,
+      "current_a": 3.0915560603082368e-15,
+      "error_a": 3.0915560603082368e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999985e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.3244781640416338e-14,
+      "fourier_positive_axis_w": 1.3244781640416338e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_35_hot": {
+      "body": 96,
+      "current_a": -1.515720140260149e-15,
+      "error_a": 1.515720140260149e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.7537275728411853e-14,
+      "fourier_positive_axis_w": 1.7537275728411853e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_36_cold": {
+      "body": 97,
+      "current_a": -8.77783361272344e-16,
+      "error_a": 8.77783361272344e-16,
+      "relative_error": null,
+      "area_m2": 2.599999999999997e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.6124918530967186e-14,
+      "fourier_positive_axis_w": -1.6124918530967186e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_37_hot": {
+      "body": 98,
+      "current_a": 1.6422633579018067e-15,
+      "error_a": 1.6422633579018067e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999998e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.5035834834919032e-14,
+      "fourier_positive_axis_w": -1.5035834834919032e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_38_cold": {
+      "body": 99,
+      "current_a": -2.520972209174884e-16,
+      "error_a": 2.520972209174884e-16,
+      "relative_error": null,
+      "area_m2": 2.5999999999999995e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.047038594639224e-14,
+      "fourier_positive_axis_w": -1.047038594639224e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_39_hot": {
+      "body": 100,
+      "current_a": -3.968417219119986e-15,
+      "error_a": 3.968417219119986e-15,
+      "relative_error": null,
+      "area_m2": 2.6e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -3.550083238562087e-14,
+      "fourier_positive_axis_w": -3.550083238562087e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_40_cold": {
+      "body": 101,
+      "current_a": 1.7655012940373516e-15,
+      "error_a": 1.7655012940373516e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999968e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 4.243411675254293e-14,
+      "fourier_positive_axis_w": 4.243411675254293e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_41_hot": {
+      "body": 102,
+      "current_a": -1.3782663490298189e-15,
+      "error_a": 1.3782663490298189e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -6.322484008909833e-16,
+      "fourier_positive_axis_w": -6.322484008909833e-16,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_42_cold": {
+      "body": 103,
+      "current_a": 1.3596035299432389e-15,
+      "error_a": 1.3596035299432389e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 2.4594588062838082e-14,
+      "fourier_positive_axis_w": 2.4594588062838082e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_43_hot": {
+      "body": 104,
+      "current_a": 1.8135203670617486e-15,
+      "error_a": 1.8135203670617486e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.1846124921476975e-14,
+      "fourier_positive_axis_w": 1.1846124921476975e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_44_cold": {
+      "body": 105,
+      "current_a": -6.081649453742569e-15,
+      "error_a": 6.081649453742569e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 6.736629311916976e-15,
+      "fourier_positive_axis_w": 6.736629311916976e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_45_hot": {
+      "body": 106,
+      "current_a": 4.87501388423028e-16,
+      "error_a": 4.87501388423028e-16,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 9.260857078018553e-15,
+      "fourier_positive_axis_w": 9.260857078018553e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_46_cold": {
+      "body": 107,
+      "current_a": 1.5935193778538828e-15,
+      "error_a": 1.5935193778538828e-15,
+      "relative_error": null,
+      "area_m2": 2.6e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 5.8205886664628696e-15,
+      "fourier_positive_axis_w": 5.8205886664628696e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_47_hot": {
+      "body": 108,
+      "current_a": -1.6018396967367383e-15,
+      "error_a": 1.6018396967367383e-15,
+      "relative_error": null,
+      "area_m2": 2.6e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -2.6514491025928048e-14,
+      "fourier_positive_axis_w": -2.6514491025928048e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_48_cold": {
+      "body": 109,
+      "current_a": 8.790697402861438e-16,
+      "error_a": 8.790697402861438e-16,
+      "relative_error": null,
+      "area_m2": 2.5999999999999955e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -3.3146040585161182e-15,
+      "fourier_positive_axis_w": -3.3146040585161182e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_49_hot": {
+      "body": 110,
+      "current_a": 2.0811218520501982e-16,
+      "error_a": 2.0811218520501982e-16,
+      "relative_error": null,
+      "area_m2": 2.5999999999999965e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.234396998290122e-15,
+      "fourier_positive_axis_w": -1.234396998290122e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_50_cold": {
+      "body": 111,
+      "current_a": 4.514247705981715e-15,
+      "error_a": 4.514247705981715e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999985e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.711584904957996e-14,
+      "fourier_positive_axis_w": 1.711584904957996e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_51_hot": {
+      "body": 112,
+      "current_a": 8.17603057473857e-15,
+      "error_a": 8.17603057473857e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999975e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.8191172821846833e-14,
+      "fourier_positive_axis_w": 1.8191172821846833e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_52_cold": {
+      "body": 113,
+      "current_a": 1.125905989507772e-14,
+      "error_a": 1.125905989507772e-14,
+      "relative_error": null,
+      "area_m2": 2.5999999999999965e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 4.023386304492814e-14,
+      "fourier_positive_axis_w": 4.023386304492814e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_53_hot": {
+      "body": 114,
+      "current_a": -2.026242574478126e-15,
+      "error_a": 2.026242574478126e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999997e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 2.498775470370265e-14,
+      "fourier_positive_axis_w": 2.498775470370265e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_0_bridge_54_cold": {
+      "body": 115,
+      "current_a": -1.807239682973149e-15,
+      "error_a": 1.807239682973149e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999975e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -2.313524139711413e-14,
+      "fourier_positive_axis_w": -2.313524139711413e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_leg_00_N": {
+      "body": 118,
+      "current_a": -8.047087994581133e-15,
+      "error_a": 8.047087994581133e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 7.027002890861883e-16,
+      "fourier_positive_axis_w": 2.922988013625512e-16,
+      "peltier_positive_axis_w": 4.1040148772363724e-16
+    },
+    "stage_1_leg_01_P": {
+      "body": 119,
+      "current_a": -1.9390147688720278e-15,
+      "error_a": 1.9390147688720278e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 1.0568966594593079e-16,
+      "fourier_positive_axis_w": 1.2616957040073207e-17,
+      "peltier_positive_axis_w": 9.307270890585749e-17
+    },
+    "stage_1_leg_02_N": {
+      "body": 120,
+      "current_a": 1.6551391941780853e-15,
+      "error_a": 1.6551391941780853e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -4.450912605640378e-16,
+      "fourier_positive_axis_w": -3.606791616609552e-16,
+      "peltier_positive_axis_w": -8.441209890308227e-17
+    },
+    "stage_1_leg_03_P": {
+      "body": 121,
+      "current_a": -1.6268255525724905e-15,
+      "error_a": 1.6268255525724905e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 4.0359214553561296e-16,
+      "fourier_positive_axis_w": 3.2550451901213324e-16,
+      "peltier_positive_axis_w": 7.808762652347978e-17
+    },
+    "stage_1_leg_04_N": {
+      "body": 122,
+      "current_a": 1.9990711718369894e-15,
+      "error_a": 1.9990711718369894e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -3.19613302993916e-16,
+      "fourier_positive_axis_w": -2.1766067323022993e-16,
+      "peltier_positive_axis_w": -1.0195262976368611e-16
+    },
+    "stage_1_leg_05_P": {
+      "body": 123,
+      "current_a": -3.529351159231815e-15,
+      "error_a": 3.529351159231815e-15,
+      "relative_error": null,
+      "area_m2": 1.599999999999999e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 4.506821538311404e-16,
+      "fourier_positive_axis_w": 2.812732981880134e-16,
+      "peltier_positive_axis_w": 1.6940885564312715e-16
+    },
+    "stage_1_leg_06_N": {
+      "body": 124,
+      "current_a": -5.858818133950152e-16,
+      "error_a": 5.858818133950152e-16,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -8.399717352670921e-17,
+      "fourier_positive_axis_w": -1.1387714600985502e-16,
+      "peltier_positive_axis_w": 2.987997248314578e-17
+    },
+    "stage_1_leg_07_P": {
+      "body": 125,
+      "current_a": -1.5756619861932458e-16,
+      "error_a": 1.5756619861932458e-16,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 2.161743552020455e-16,
+      "fourier_positive_axis_w": 2.0861117766831803e-16,
+      "peltier_positive_axis_w": 7.56317753372761e-18
+    },
+    "stage_1_leg_08_N": {
+      "body": 126,
+      "current_a": -1.1582995608746318e-16,
+      "error_a": 1.1582995608746318e-16,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -4.0015489073700973e-16,
+      "fourier_positive_axis_w": -4.0606221849747067e-16,
+      "peltier_positive_axis_w": 5.9073277604606154e-18
+    },
+    "stage_1_leg_09_P": {
+      "body": 127,
+      "current_a": 1.4683163023705594e-15,
+      "error_a": 1.4683163023705594e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.0004775706018366e-16,
+      "fourier_positive_axis_w": -2.956857454639633e-17,
+      "peltier_positive_axis_w": -7.047918251378733e-17
+    },
+    "stage_1_leg_10_N": {
+      "body": 128,
+      "current_a": 2.8801941367470528e-15,
+      "error_a": 2.8801941367470528e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999992e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -3.1876997016923483e-16,
+      "fourier_positive_axis_w": -1.7188006919513526e-16,
+      "peltier_positive_axis_w": -1.4688990097409965e-16
+    },
+    "stage_1_leg_11_P": {
+      "body": 129,
+      "current_a": 3.596325192713389e-16,
+      "error_a": 3.596325192713389e-16,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.1457707226464696e-16,
+      "fourier_positive_axis_w": -9.731471133962283e-17,
+      "peltier_positive_axis_w": -1.726236092502412e-17
+    },
+    "stage_1_leg_12_N": {
+      "body": 130,
+      "current_a": 1.7527254917525218e-15,
+      "error_a": 1.7527254917525218e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -4.796595034796668e-16,
+      "fourier_positive_axis_w": -3.9027050340028804e-16,
+      "peltier_positive_axis_w": -8.93890000793788e-17
+    },
+    "stage_1_leg_13_P": {
+      "body": 131,
+      "current_a": -1.3865942340483696e-15,
+      "error_a": 1.3865942340483696e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 1.5962099738246213e-16,
+      "fourier_positive_axis_w": 9.306447414814043e-17,
+      "peltier_positive_axis_w": 6.655652323432174e-17
+    },
+    "stage_1_leg_14_N": {
+      "body": 132,
+      "current_a": -2.884212823446389e-17,
+      "error_a": 2.884212823446389e-17,
+      "relative_error": null,
+      "area_m2": 1.6000000000000006e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.1995488542904189e-16,
+      "fourier_positive_axis_w": -1.2142583396899974e-16,
+      "peltier_positive_axis_w": 1.470948539957788e-18
+    },
+    "stage_1_leg_15_P": {
+      "body": 133,
+      "current_a": 8.932637862228343e-16,
+      "error_a": 8.932637862228343e-16,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -3.0779682046059155e-16,
+      "fourier_positive_axis_w": -2.6492015872189554e-16,
+      "peltier_positive_axis_w": -4.2876661738695913e-17
+    },
+    "stage_1_leg_16_N": {
+      "body": 134,
+      "current_a": 2.9722854299850173e-16,
+      "error_a": 2.9722854299850173e-16,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.3056737286049866e-16,
+      "fourier_positive_axis_w": -1.1540871716757534e-16,
+      "peltier_positive_axis_w": -1.5158655692923313e-17
+    },
+    "stage_1_leg_17_P": {
+      "body": 135,
+      "current_a": -7.790911633205967e-16,
+      "error_a": 7.790911633205967e-16,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -5.100805112973191e-17,
+      "fourier_positive_axis_w": -8.840442696912058e-17,
+      "peltier_positive_axis_w": 3.739637583938867e-17
+    },
+    "stage_1_leg_18_N": {
+      "body": 136,
+      "current_a": -3.871686635004678e-15,
+      "error_a": 3.871686635004678e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 2.33939814339833e-16,
+      "fourier_positive_axis_w": 3.6483795954594546e-17,
+      "peltier_positive_axis_w": 1.9745601838523844e-16
+    },
+    "stage_1_leg_19_P": {
+      "body": 137,
+      "current_a": -1.060651885129498e-16,
+      "error_a": 1.060651885129498e-16,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 2.69022280352525e-16,
+      "fourier_positive_axis_w": 2.6393115130390343e-16,
+      "peltier_positive_axis_w": 5.091129048621518e-18
+    },
+    "stage_1_leg_20_N": {
+      "body": 138,
+      "current_a": -1.3603499112820886e-15,
+      "error_a": 1.3603499112820886e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 2.812992626603193e-16,
+      "fourier_positive_axis_w": 2.1192141718493267e-16,
+      "peltier_positive_axis_w": 6.937784547538661e-17
+    },
+    "stage_1_leg_21_P": {
+      "body": 139,
+      "current_a": -4.451379022384401e-16,
+      "error_a": 4.451379022384401e-16,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 1.3602985436142287e-17,
+      "fourier_positive_axis_w": -7.763633871302695e-18,
+      "peltier_positive_axis_w": 2.136661930744499e-17
+    },
+    "stage_1_leg_22_N": {
+      "body": 140,
+      "current_a": -3.204133958612955e-16,
+      "error_a": 3.204133958612955e-16,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -3.6125363099766794e-16,
+      "fourier_positive_axis_w": -3.7759471418659386e-16,
+      "peltier_positive_axis_w": 1.6341083188925997e-17
+    },
+    "stage_1_leg_23_P": {
+      "body": 141,
+      "current_a": 2.0437632627767534e-15,
+      "error_a": 2.0437632627767534e-15,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.6767057115253428e-16,
+      "fourier_positive_axis_w": -6.956993453925025e-17,
+      "peltier_positive_axis_w": -9.810063661328403e-17
+    },
+    "stage_1_bridge_00_cold": {
+      "body": 142,
+      "current_a": -4.732919474640973e-15,
+      "error_a": 4.732919474640973e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999988e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -2.6816528166959072e-14,
+      "fourier_positive_axis_w": -2.6816528166959072e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_01_hot": {
+      "body": 143,
+      "current_a": 5.977393261933454e-16,
+      "error_a": 5.977393261933454e-16,
+      "relative_error": null,
+      "area_m2": 2.5999999999999975e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.2820375239630218e-14,
+      "fourier_positive_axis_w": 1.2820375239630218e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_02_cold": {
+      "body": 144,
+      "current_a": 4.176461573169693e-15,
+      "error_a": 4.176461573169693e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999968e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 2.2164688990272504e-14,
+      "fourier_positive_axis_w": 2.2164688990272504e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_03_hot": {
+      "body": 145,
+      "current_a": 5.5263386220084225e-15,
+      "error_a": 5.5263386220084225e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999968e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 4.038109984079165e-14,
+      "fourier_positive_axis_w": 4.038109984079165e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_04_cold": {
+      "body": 146,
+      "current_a": -4.264577697093241e-15,
+      "error_a": 4.264577697093241e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999988e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.922832147450215e-14,
+      "fourier_positive_axis_w": 1.922832147450215e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_05_hot": {
+      "body": 147,
+      "current_a": -3.634176786396195e-15,
+      "error_a": 3.634176786396195e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999955e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 2.119440654092225e-14,
+      "fourier_positive_axis_w": 2.119440654092225e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_06_cold": {
+      "body": 148,
+      "current_a": -1.1722773639362495e-15,
+      "error_a": 1.1722773639362495e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999995e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -9.216461898560096e-16,
+      "fourier_positive_axis_w": -9.216461898560096e-16,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_07_hot": {
+      "body": 149,
+      "current_a": -2.124598260165952e-15,
+      "error_a": 2.124598260165952e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999988e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.0779846637875834e-14,
+      "fourier_positive_axis_w": 1.0779846637875834e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_08_cold": {
+      "body": 150,
+      "current_a": 4.425929892990872e-15,
+      "error_a": 4.425929892990872e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999985e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.7890772999335615e-14,
+      "fourier_positive_axis_w": 1.7890772999335615e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_09_hot": {
+      "body": 151,
+      "current_a": -1.836638205070968e-15,
+      "error_a": 1.836638205070968e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999975e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.152980524661334e-14,
+      "fourier_positive_axis_w": 1.152980524661334e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_10_cold": {
+      "body": 152,
+      "current_a": 3.210569381351902e-15,
+      "error_a": 3.210569381351902e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999998e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -2.0097042419851543e-14,
+      "fourier_positive_axis_w": -2.0097042419851543e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_11_hot": {
+      "body": 153,
+      "current_a": 3.5330360283815913e-15,
+      "error_a": 3.5330360283815913e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999985e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -3.591357618578679e-14,
+      "fourier_positive_axis_w": -3.591357618578679e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_12_cold": {
+      "body": 154,
+      "current_a": 4.515975341746139e-15,
+      "error_a": 4.515975341746139e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999998e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 3.096156865967505e-14,
+      "fourier_positive_axis_w": 3.096156865967505e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_13_hot": {
+      "body": 155,
+      "current_a": -4.333454673582779e-15,
+      "error_a": 4.333454673582779e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999985e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.7980081625478056e-14,
+      "fourier_positive_axis_w": 1.7980081625478056e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_14_cold": {
+      "body": 156,
+      "current_a": 8.481503220419615e-16,
+      "error_a": 8.481503220419615e-16,
+      "relative_error": null,
+      "area_m2": 2.6000000000000005e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.1827858954922155e-14,
+      "fourier_positive_axis_w": -1.1827858954922155e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_15_hot": {
+      "body": 157,
+      "current_a": 5.357043637580093e-15,
+      "error_a": 5.357043637580093e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999998e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.0845337529137215e-16,
+      "fourier_positive_axis_w": -1.0845337529137215e-16,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_16_cold": {
+      "body": 158,
+      "current_a": 4.739289911451116e-15,
+      "error_a": 4.739289911451116e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.9120552168627813e-14,
+      "fourier_positive_axis_w": -1.9120552168627813e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_17_hot": {
+      "body": 159,
+      "current_a": -6.426100501686939e-15,
+      "error_a": 6.426100501686939e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999997e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.5953791762082454e-15,
+      "fourier_positive_axis_w": -1.5953791762082454e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_18_cold": {
+      "body": 160,
+      "current_a": -3.4587096240499316e-15,
+      "error_a": 3.4587096240499316e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999998e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -4.4112050972963664e-15,
+      "fourier_positive_axis_w": -4.4112050972963664e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_19_hot": {
+      "body": 161,
+      "current_a": 2.256633406444738e-15,
+      "error_a": 2.256633406444738e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999998e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 1.7465089869972733e-14,
+      "fourier_positive_axis_w": 1.7465089869972733e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_20_cold": {
+      "body": 162,
+      "current_a": -3.540807519383513e-15,
+      "error_a": 3.540807519383513e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.535873126354268e-14,
+      "fourier_positive_axis_w": -1.535873126354268e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_21_hot": {
+      "body": 163,
+      "current_a": 2.6520568783204715e-15,
+      "error_a": 2.6520568783204715e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999978e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -3.4967929929462724e-15,
+      "fourier_positive_axis_w": -3.4967929929462724e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_1_bridge_22_cold": {
+      "body": 164,
+      "current_a": 4.765114776963132e-15,
+      "error_a": 4.765114776963132e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999968e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.473583971850593e-14,
+      "fourier_positive_axis_w": -1.473583971850593e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_2_leg_00_N": {
+      "body": 167,
+      "current_a": -7.196384298693832e-15,
+      "error_a": 7.196384298693832e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999995e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 1.035003124748572e-15,
+      "fourier_positive_axis_w": 6.679875255151845e-16,
+      "peltier_positive_axis_w": 3.6701559923338645e-16
+    },
+    "stage_2_leg_01_P": {
+      "body": 168,
+      "current_a": -2.584556417327545e-15,
+      "error_a": 2.584556417327545e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999998e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 5.255582747538605e-16,
+      "fourier_positive_axis_w": 4.0149956672213867e-16,
+      "peltier_positive_axis_w": 1.240587080317217e-16
+    },
+    "stage_2_leg_02_N": {
+      "body": 169,
+      "current_a": -9.304148626146286e-15,
+      "error_a": 9.304148626146286e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 7.883113195455309e-16,
+      "fourier_positive_axis_w": 3.1379973961207005e-16,
+      "peltier_positive_axis_w": 4.745115799334603e-16
+    },
+    "stage_2_leg_03_P": {
+      "body": 170,
+      "current_a": 1.4352407340587188e-15,
+      "error_a": 1.4352407340587188e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999984e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 5.3817754748460646e-17,
+      "fourier_positive_axis_w": 1.2270930998327992e-16,
+      "peltier_positive_axis_w": -6.889155523481923e-17
+    },
+    "stage_2_leg_04_N": {
+      "body": 171,
+      "current_a": 4.619709699158501e-15,
+      "error_a": 4.619709699158501e-15,
+      "relative_error": null,
+      "area_m2": 1.5999999999999987e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -3.3004053496421795e-16,
+      "fourier_positive_axis_w": -9.44353403071346e-17,
+      "peltier_positive_axis_w": -2.3560519465708337e-16
+    },
+    "stage_2_leg_05_P": {
+      "body": 172,
+      "current_a": -6.513594049287848e-16,
+      "error_a": 6.513594049287848e-16,
+      "relative_error": null,
+      "area_m2": 1.6000000000000003e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -5.783791822079753e-16,
+      "fourier_positive_axis_w": -6.096444336445571e-16,
+      "peltier_positive_axis_w": 3.1265251436582e-17
+    },
+    "stage_2_leg_06_N": {
+      "body": 173,
+      "current_a": -6.1869476742049e-16,
+      "error_a": 6.1869476742049e-16,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": -1.341261624450101e-16,
+      "fourier_positive_axis_w": -1.6567959558345482e-16,
+      "peltier_positive_axis_w": 3.155343313844471e-17
+    },
+    "stage_2_leg_07_P": {
+      "body": 174,
+      "current_a": -3.872622857949426e-15,
+      "error_a": 3.872622857949426e-15,
+      "relative_error": null,
+      "area_m2": 1.6e-07,
+      "expected_area_m2": 1.6e-07,
+      "heat_positive_axis_w": 5.149954526222713e-16,
+      "fourier_positive_axis_w": 3.2910955544069953e-16,
+      "peltier_positive_axis_w": 1.85885897181572e-16
+    },
+    "stage_2_bridge_00_cold": {
+      "body": 175,
+      "current_a": 1.6230086100647272e-15,
+      "error_a": 1.6230086100647272e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999997e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.9420281537250253e-16,
+      "fourier_positive_axis_w": -1.9420281537250253e-16,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_2_bridge_01_hot": {
+      "body": 176,
+      "current_a": -4.909126039058536e-15,
+      "error_a": 4.909126039058536e-15,
+      "relative_error": null,
+      "area_m2": 2.599999999999999e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 2.202905050307707e-14,
+      "fourier_positive_axis_w": 2.202905050307707e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_2_bridge_02_cold": {
+      "body": 177,
+      "current_a": -1.443710463700586e-15,
+      "error_a": 1.443710463700586e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999968e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -2.1123833413610375e-14,
+      "fourier_positive_axis_w": -2.1123833413610375e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_2_bridge_03_hot": {
+      "body": 178,
+      "current_a": 7.291431553480446e-16,
+      "error_a": 7.291431553480446e-16,
+      "relative_error": null,
+      "area_m2": 2.599999999999998e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -7.401159749715743e-15,
+      "fourier_positive_axis_w": -7.401159749715743e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_2_bridge_04_cold": {
+      "body": 179,
+      "current_a": 9.694637489961957e-16,
+      "error_a": 9.694637489961957e-16,
+      "relative_error": null,
+      "area_m2": 2.5999999999999998e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 2.5240871122002125e-14,
+      "fourier_positive_axis_w": 2.5240871122002125e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_2_bridge_05_hot": {
+      "body": 180,
+      "current_a": 5.867435800221368e-16,
+      "error_a": 5.867435800221368e-16,
+      "relative_error": null,
+      "area_m2": 2.5999999999999975e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": 3.185420494517905e-14,
+      "fourier_positive_axis_w": 3.185420494517905e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "stage_2_bridge_06_cold": {
+      "body": 181,
+      "current_a": 1.2740372120137442e-15,
+      "error_a": 1.2740372120137442e-15,
+      "relative_error": null,
+      "area_m2": 2.5999999999999975e-08,
+      "expected_area_m2": 2.5999999999999998e-08,
+      "heat_positive_axis_w": -1.878831463151631e-14,
+      "fourier_positive_axis_w": -1.878831463151631e-14,
+      "peltier_positive_axis_w": 0.0
+    },
+    "buried_interstage_link_0": {
+      "body": 184,
+      "current_a": -2.751909240726222e-16,
+      "error_a": 2.751909240726222e-16,
+      "relative_error": null,
+      "area_m2": 3.600000000000006e-09,
+      "expected_area_m2": 3.6000000000000004e-09,
+      "heat_positive_axis_w": 6.61073426526228e-15,
+      "fourier_positive_axis_w": 6.61073426526228e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "buried_interstage_link_1": {
+      "body": 185,
+      "current_a": -1.8501201793082022e-16,
+      "error_a": 1.8501201793082022e-16,
+      "relative_error": null,
+      "area_m2": 3.600000000000006e-09,
+      "expected_area_m2": 3.6000000000000004e-09,
+      "heat_positive_axis_w": -7.865765922989137e-15,
+      "fourier_positive_axis_w": -7.865765922989137e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "hot_input_pad_and_trace": {
+      "body": 190,
+      "current_a": 8.150046659385615e-16,
+      "error_a": 8.150046659385615e-16,
+      "relative_error": null,
+      "area_m2": 3.1999999999999852e-09,
+      "expected_area_m2": 3.2000000000000005e-09,
+      "heat_positive_axis_w": 7.63618233496174e-15,
+      "fourier_positive_axis_w": 7.63618233496174e-15,
+      "peltier_positive_axis_w": 0.0
+    },
+    "insulated_return_to_module_hot_pad": {
+      "body": 191,
+      "current_a": 5.681531631398797e-34,
+      "error_a": 5.681531631398797e-34,
+      "relative_error": null,
+      "area_m2": 8.00000000000002e-09,
+      "expected_area_m2": 8e-09,
+      "heat_positive_axis_w": -1.3133674770966168e-14,
+      "fourier_positive_axis_w": -1.3133674770966168e-14,
+      "peltier_positive_axis_w": 0.0
+    }
+  },
+  "domain_temperatures": {
+    "1": {
+      "name": "ceramic_0",
+      "volume_mean_k": 300.0,
+      "min_k": 299.9999999999985,
+      "max_k": 300.00000000000153,
+      "mean_potential_v": -6.806422848571452e-20
+    },
+    "2": {
+      "name": "ceramic_1",
+      "volume_mean_k": 300.00000000000006,
+      "min_k": 299.9999999999987,
+      "max_k": 300.00000000000176,
+      "mean_potential_v": 7.703755307580562e-20
+    },
+    "3": {
+      "name": "ceramic_2",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.99999999999903,
+      "max_k": 300.00000000000216,
+      "mean_potential_v": -1.449350548403967e-19
+    },
+    "4": {
+      "name": "ceramic_3",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.99999999999926,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": 2.1159824218822573e-20
+    },
+    "5": {
+      "name": "stage_0_leg_00_N",
+      "volume_mean_k": 299.99999999999955,
+      "min_k": 299.99999999999847,
+      "max_k": 300.00000000000085,
+      "mean_potential_v": 2.6652190916450858e-17
+    },
+    "6": {
+      "name": "stage_0_leg_01_P",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.99999999999903,
+      "max_k": 300.0000000000009,
+      "mean_potential_v": 3.919900878675068e-17
+    },
+    "7": {
+      "name": "stage_0_leg_02_N",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999992,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": 8.84266940233515e-17
+    },
+    "8": {
+      "name": "stage_0_leg_03_P",
+      "volume_mean_k": 300.00000000000006,
+      "min_k": 299.9999999999989,
+      "max_k": 300.0000000000011,
+      "mean_potential_v": -4.355385012364168e-17
+    },
+    "9": {
+      "name": "stage_0_leg_04_N",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999989,
+      "max_k": 300.00000000000097,
+      "mean_potential_v": -1.0046755194007806e-17
+    },
+    "10": {
+      "name": "stage_0_leg_05_P",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.99999999999926,
+      "max_k": 300.0000000000013,
+      "mean_potential_v": 6.320343380183973e-17
+    },
+    "11": {
+      "name": "stage_0_leg_06_N",
+      "volume_mean_k": 300.0000000000011,
+      "min_k": 299.99999999999994,
+      "max_k": 300.00000000000153,
+      "mean_potential_v": 1.2792551614734995e-16
+    },
+    "12": {
+      "name": "stage_0_leg_07_P",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.99999999999886,
+      "max_k": 300.000000000001,
+      "mean_potential_v": -7.257785131408822e-17
+    },
+    "13": {
+      "name": "stage_0_leg_08_N",
+      "volume_mean_k": 299.99999999999955,
+      "min_k": 299.99999999999886,
+      "max_k": 300.00000000000034,
+      "mean_potential_v": 1.963679407528995e-17
+    },
+    "14": {
+      "name": "stage_0_leg_09_P",
+      "volume_mean_k": 299.99999999999903,
+      "min_k": 299.99999999999864,
+      "max_k": 299.99999999999994,
+      "mean_potential_v": 8.311370758601832e-17
+    },
+    "15": {
+      "name": "stage_0_leg_10_N",
+      "volume_mean_k": 299.9999999999996,
+      "min_k": 299.99999999999875,
+      "max_k": 300.0000000000004,
+      "mean_potential_v": 3.023406951929183e-18
+    },
+    "16": {
+      "name": "stage_0_leg_11_P",
+      "volume_mean_k": 299.99999999999983,
+      "min_k": 299.99999999999943,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": 6.437370920119222e-17
+    },
+    "17": {
+      "name": "stage_0_leg_12_N",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.999999999999,
+      "max_k": 300.00000000000097,
+      "mean_potential_v": -9.354503536982018e-18
+    },
+    "18": {
+      "name": "stage_0_leg_13_P",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.9999999999993,
+      "max_k": 300.0000000000016,
+      "mean_potential_v": -7.07110593597015e-17
+    },
+    "19": {
+      "name": "stage_0_leg_14_N",
+      "volume_mean_k": 299.9999999999996,
+      "min_k": 299.9999999999991,
+      "max_k": 300.0000000000005,
+      "mean_potential_v": -7.820082046320118e-17
+    },
+    "20": {
+      "name": "stage_0_leg_15_P",
+      "volume_mean_k": 299.9999999999998,
+      "min_k": 299.9999999999991,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": 8.408676839783289e-17
+    },
+    "21": {
+      "name": "stage_0_leg_16_N",
+      "volume_mean_k": 300.0000000000003,
+      "min_k": 299.9999999999989,
+      "max_k": 300.00000000000125,
+      "mean_potential_v": -1.8604277103987508e-17
+    },
+    "22": {
+      "name": "stage_0_leg_17_P",
+      "volume_mean_k": 300.0000000000002,
+      "min_k": 299.99999999999955,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": -7.187016897785282e-18
+    },
+    "23": {
+      "name": "stage_0_leg_18_N",
+      "volume_mean_k": 299.9999999999996,
+      "min_k": 299.9999999999992,
+      "max_k": 300.00000000000034,
+      "mean_potential_v": -7.723126972899198e-17
+    },
+    "24": {
+      "name": "stage_0_leg_19_P",
+      "volume_mean_k": 300.00000000000006,
+      "min_k": 299.99999999999966,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": 5.0444989315235005e-17
+    },
+    "25": {
+      "name": "stage_0_leg_20_N",
+      "volume_mean_k": 299.9999999999997,
+      "min_k": 299.99999999999886,
+      "max_k": 300.00000000000034,
+      "mean_potential_v": 2.6293207263039388e-17
+    },
+    "26": {
+      "name": "stage_0_leg_21_P",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.99999999999943,
+      "max_k": 300.0000000000006,
+      "mean_potential_v": -6.327463416309861e-17
+    },
+    "27": {
+      "name": "stage_0_leg_22_N",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999993,
+      "max_k": 300.0000000000011,
+      "mean_potential_v": 8.723413415345547e-17
+    },
+    "28": {
+      "name": "stage_0_leg_23_P",
+      "volume_mean_k": 300.0,
+      "min_k": 299.9999999999993,
+      "max_k": 300.00000000000034,
+      "mean_potential_v": -8.60632350061644e-18
+    },
+    "29": {
+      "name": "stage_0_leg_24_N",
+      "volume_mean_k": 299.9999999999999,
+      "min_k": 299.9999999999991,
+      "max_k": 300.00000000000085,
+      "mean_potential_v": -8.729253783782246e-17
+    },
+    "30": {
+      "name": "stage_0_leg_25_P",
+      "volume_mean_k": 300.00000000000006,
+      "min_k": 299.9999999999995,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": 3.4757467423953707e-17
+    },
+    "31": {
+      "name": "stage_0_leg_26_N",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999996,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": 2.6993493136983665e-17
+    },
+    "32": {
+      "name": "stage_0_leg_27_P",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.9999999999995,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": 2.1958734765352812e-17
+    },
+    "33": {
+      "name": "stage_0_leg_28_N",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.9999999999994,
+      "max_k": 300.00000000000114,
+      "mean_potential_v": 2.235257760226068e-17
+    },
+    "34": {
+      "name": "stage_0_leg_29_P",
+      "volume_mean_k": 300.0000000000002,
+      "min_k": 299.99999999999903,
+      "max_k": 300.00000000000097,
+      "mean_potential_v": -1.3482206324997491e-17
+    },
+    "35": {
+      "name": "stage_0_leg_30_N",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.99999999999955,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": -3.273381140497301e-17
+    },
+    "36": {
+      "name": "stage_0_leg_31_P",
+      "volume_mean_k": 300.00000000000045,
+      "min_k": 299.99999999999994,
+      "max_k": 300.00000000000125,
+      "mean_potential_v": -5.2776246709802514e-17
+    },
+    "37": {
+      "name": "stage_0_leg_32_N",
+      "volume_mean_k": 300.0,
+      "min_k": 299.99999999999943,
+      "max_k": 300.0000000000005,
+      "mean_potential_v": -1.65443311936694e-17
+    },
+    "38": {
+      "name": "stage_0_leg_33_P",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.9999999999994,
+      "max_k": 300.00000000000057,
+      "mean_potential_v": 1.1827462010166976e-17
+    },
+    "39": {
+      "name": "stage_0_leg_34_N",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.9999999999996,
+      "max_k": 300.00000000000097,
+      "mean_potential_v": 1.7678613867539848e-17
+    },
+    "40": {
+      "name": "stage_0_leg_35_P",
+      "volume_mean_k": 300.00000000000057,
+      "min_k": 300.0,
+      "max_k": 300.00000000000097,
+      "mean_potential_v": -4.604809840896222e-17
+    },
+    "41": {
+      "name": "stage_0_leg_36_N",
+      "volume_mean_k": 300.0000000000007,
+      "min_k": 299.99999999999915,
+      "max_k": 300.0000000000014,
+      "mean_potential_v": 4.9662700913916556e-17
+    },
+    "42": {
+      "name": "stage_0_leg_37_P",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.999999999999,
+      "max_k": 300.00000000000114,
+      "mean_potential_v": 7.205221641587264e-17
+    },
+    "43": {
+      "name": "stage_0_leg_38_N",
+      "volume_mean_k": 300.0000000000002,
+      "min_k": 299.9999999999993,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": 7.26713786745884e-17
+    },
+    "44": {
+      "name": "stage_0_leg_39_P",
+      "volume_mean_k": 300.0000000000002,
+      "min_k": 299.99999999999943,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": 1.2337011847115444e-18
+    },
+    "45": {
+      "name": "stage_0_leg_40_N",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.99999999999903,
+      "max_k": 300.0000000000012,
+      "mean_potential_v": 1.1745374484920394e-16
+    },
+    "46": {
+      "name": "stage_0_leg_41_P",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999997,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": -1.7936368623068634e-17
+    },
+    "47": {
+      "name": "stage_0_leg_42_N",
+      "volume_mean_k": 299.9999999999998,
+      "min_k": 299.9999999999992,
+      "max_k": 300.00000000000057,
+      "mean_potential_v": -3.4316923675247234e-17
+    },
+    "48": {
+      "name": "stage_0_leg_43_P",
+      "volume_mean_k": 300.00000000000045,
+      "min_k": 299.9999999999993,
+      "max_k": 300.00000000000136,
+      "mean_potential_v": -1.0174932736008169e-16
+    },
+    "49": {
+      "name": "stage_0_leg_44_N",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.99999999999926,
+      "max_k": 300.00000000000085,
+      "mean_potential_v": -7.067874656865176e-17
+    },
+    "50": {
+      "name": "stage_0_leg_45_P",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.99999999999966,
+      "max_k": 300.000000000001,
+      "mean_potential_v": 2.296309136820951e-17
+    },
+    "51": {
+      "name": "stage_0_leg_46_N",
+      "volume_mean_k": 299.9999999999999,
+      "min_k": 299.9999999999989,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": 3.867301030561981e-17
+    },
+    "52": {
+      "name": "stage_0_leg_47_P",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999989,
+      "max_k": 300.00000000000057,
+      "mean_potential_v": -6.849687713363262e-17
+    },
+    "53": {
+      "name": "stage_0_leg_48_N",
+      "volume_mean_k": 300.00000000000006,
+      "min_k": 299.9999999999989,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": 3.4323269507432914e-17
+    },
+    "54": {
+      "name": "stage_0_leg_49_P",
+      "volume_mean_k": 299.99999999999983,
+      "min_k": 299.9999999999993,
+      "max_k": 300.00000000000045,
+      "mean_potential_v": 1.9860400491095634e-17
+    },
+    "55": {
+      "name": "stage_0_leg_50_N",
+      "volume_mean_k": 299.9999999999999,
+      "min_k": 299.99999999999864,
+      "max_k": 300.0000000000006,
+      "mean_potential_v": -1.7856203549699075e-17
+    },
+    "56": {
+      "name": "stage_0_leg_51_P",
+      "volume_mean_k": 299.9999999999996,
+      "min_k": 299.9999999999988,
+      "max_k": 300.0000000000005,
+      "mean_potential_v": -1.7167404041491016e-17
+    },
+    "57": {
+      "name": "stage_0_leg_52_N",
+      "volume_mean_k": 300.0000000000009,
+      "min_k": 299.99999999999864,
+      "max_k": 300.0000000000021,
+      "mean_potential_v": 7.676653228405529e-17
+    },
+    "58": {
+      "name": "stage_0_leg_53_P",
+      "volume_mean_k": 300.00000000000045,
+      "min_k": 299.9999999999997,
+      "max_k": 300.0000000000009,
+      "mean_potential_v": -2.2795568423897353e-17
+    },
+    "59": {
+      "name": "stage_0_leg_54_N",
+      "volume_mean_k": 299.99999999999983,
+      "min_k": 299.9999999999993,
+      "max_k": 300.00000000000034,
+      "mean_potential_v": 1.9281173518742206e-17
+    },
+    "60": {
+      "name": "stage_0_leg_55_P",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.99999999999943,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": 9.651654053999879e-18
+    },
+    "61": {
+      "name": "stage_0_bridge_00_cold",
+      "volume_mean_k": 300.00000000000045,
+      "min_k": 299.9999999999996,
+      "max_k": 300.00000000000097,
+      "mean_potential_v": 7.3539979525145765e-19
+    },
+    "62": {
+      "name": "stage_0_bridge_01_hot",
+      "volume_mean_k": 299.9999999999996,
+      "min_k": 299.9999999999988,
+      "max_k": 300.00000000000034,
+      "mean_potential_v": 5.908160237066902e-19
+    },
+    "63": {
+      "name": "stage_0_bridge_02_cold",
+      "volume_mean_k": 299.99999999999955,
+      "min_k": 299.99999999999886,
+      "max_k": 300.00000000000017,
+      "mean_potential_v": 4.935664028179846e-19
+    },
+    "64": {
+      "name": "stage_0_bridge_03_hot",
+      "volume_mean_k": 300.0000000000005,
+      "min_k": 300.00000000000006,
+      "max_k": 300.0000000000011,
+      "mean_potential_v": 3.0368656166646523e-20
+    },
+    "65": {
+      "name": "stage_0_bridge_04_cold",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999989,
+      "max_k": 300.0000000000013,
+      "mean_potential_v": -1.2447105422641123e-18
+    },
+    "66": {
+      "name": "stage_0_bridge_05_hot",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.99999999999926,
+      "max_k": 300.0000000000016,
+      "mean_potential_v": 1.7947843616828997e-18
+    },
+    "67": {
+      "name": "stage_0_bridge_06_cold",
+      "volume_mean_k": 300.0,
+      "min_k": 299.99999999999886,
+      "max_k": 300.00000000000097,
+      "mean_potential_v": 9.338987313861946e-19
+    },
+    "68": {
+      "name": "stage_0_bridge_07_hot",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.99999999999966,
+      "max_k": 300.0000000000006,
+      "mean_potential_v": -4.750200159611133e-19
+    },
+    "69": {
+      "name": "stage_0_bridge_08_cold",
+      "volume_mean_k": 299.99999999999915,
+      "min_k": 299.99999999999864,
+      "max_k": 299.9999999999997,
+      "mean_potential_v": 5.063304272181339e-19
+    },
+    "70": {
+      "name": "stage_0_bridge_09_hot",
+      "volume_mean_k": 299.99999999999966,
+      "min_k": 299.99999999999903,
+      "max_k": 300.0000000000004,
+      "mean_potential_v": 6.873366075750597e-21
+    },
+    "71": {
+      "name": "stage_0_bridge_10_cold",
+      "volume_mean_k": 299.99999999999983,
+      "min_k": 299.99999999999875,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": -3.3232837827459847e-19
+    },
+    "72": {
+      "name": "stage_0_bridge_11_hot",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.9999999999995,
+      "max_k": 300.000000000001,
+      "mean_potential_v": 1.1095110584909914e-18
+    },
+    "73": {
+      "name": "stage_0_bridge_12_cold",
+      "volume_mean_k": 300.0000000000002,
+      "min_k": 299.999999999999,
+      "max_k": 300.0000000000017,
+      "mean_potential_v": -1.229057425850419e-18
+    },
+    "74": {
+      "name": "stage_0_bridge_13_hot",
+      "volume_mean_k": 299.9999999999996,
+      "min_k": 299.9999999999991,
+      "max_k": 300.00000000000006,
+      "mean_potential_v": -2.800905335603818e-19
+    },
+    "75": {
+      "name": "stage_0_bridge_14_cold",
+      "volume_mean_k": 300.0000000000003,
+      "min_k": 299.9999999999999,
+      "max_k": 300.0000000000006,
+      "mean_potential_v": 4.1275131660500876e-19
+    },
+    "76": {
+      "name": "stage_0_bridge_15_hot",
+      "volume_mean_k": 299.99999999999983,
+      "min_k": 299.9999999999991,
+      "max_k": 300.0000000000005,
+      "mean_potential_v": 6.96979616361838e-20
+    },
+    "77": {
+      "name": "stage_0_bridge_16_cold",
+      "volume_mean_k": 300.00000000000057,
+      "min_k": 300.00000000000006,
+      "max_k": 300.0000000000013,
+      "mean_potential_v": -1.359818075318438e-19
+    },
+    "78": {
+      "name": "stage_0_bridge_17_hot",
+      "volume_mean_k": 299.9999999999997,
+      "min_k": 299.99999999999926,
+      "max_k": 300.0000000000003,
+      "mean_potential_v": -3.8482028630499775e-19
+    },
+    "79": {
+      "name": "stage_0_bridge_18_cold",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.99999999999943,
+      "max_k": 300.00000000000045,
+      "mean_potential_v": -6.342517559843667e-19
+    },
+    "80": {
+      "name": "stage_0_bridge_19_hot",
+      "volume_mean_k": 299.9999999999999,
+      "min_k": 299.99999999999915,
+      "max_k": 300.00000000000085,
+      "mean_potential_v": -1.7485779640878118e-19
+    },
+    "81": {
+      "name": "stage_0_bridge_20_cold",
+      "volume_mean_k": 299.99999999999983,
+      "min_k": 299.99999999999886,
+      "max_k": 300.0000000000004,
+      "mean_potential_v": -6.088996579624149e-19
+    },
+    "82": {
+      "name": "stage_0_bridge_21_hot",
+      "volume_mean_k": 299.9999999999998,
+      "min_k": 299.99999999999926,
+      "max_k": 300.0000000000001,
+      "mean_potential_v": 2.4600778277780485e-20
+    },
+    "83": {
+      "name": "stage_0_bridge_22_cold",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.9999999999995,
+      "max_k": 300.00000000000057,
+      "mean_potential_v": 3.646690330698649e-19
+    },
+    "84": {
+      "name": "stage_0_bridge_23_hot",
+      "volume_mean_k": 299.9999999999998,
+      "min_k": 299.9999999999991,
+      "max_k": 300.0000000000002,
+      "mean_potential_v": 1.2543664126228957e-19
+    },
+    "85": {
+      "name": "stage_0_bridge_24_cold",
+      "volume_mean_k": 300.0000000000005,
+      "min_k": 300.0,
+      "max_k": 300.0000000000009,
+      "mean_potential_v": 7.574327804971594e-19
+    },
+    "86": {
+      "name": "stage_0_bridge_25_hot",
+      "volume_mean_k": 300.0,
+      "min_k": 299.9999999999995,
+      "max_k": 300.0000000000006,
+      "mean_potential_v": 8.749520515972553e-20
+    },
+    "87": {
+      "name": "stage_0_bridge_26_cold",
+      "volume_mean_k": 299.9999999999999,
+      "min_k": 299.9999999999995,
+      "max_k": 300.0000000000004,
+      "mean_potential_v": 6.338396959762642e-19
+    },
+    "88": {
+      "name": "stage_0_bridge_27_hot",
+      "volume_mean_k": 300.00000000000045,
+      "min_k": 299.99999999999943,
+      "max_k": 300.00000000000114,
+      "mean_potential_v": 6.036460511890088e-19
+    },
+    "89": {
+      "name": "stage_0_bridge_28_cold",
+      "volume_mean_k": 299.9999999999998,
+      "min_k": 299.99999999999903,
+      "max_k": 300.00000000000034,
+      "mean_potential_v": -2.389174116956257e-19
+    },
+    "90": {
+      "name": "stage_0_bridge_29_hot",
+      "volume_mean_k": 300.0000000000005,
+      "min_k": 299.9999999999999,
+      "max_k": 300.000000000001,
+      "mean_potential_v": -2.616029329927483e-19
+    },
+    "91": {
+      "name": "stage_0_bridge_30_cold",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.99999999999994,
+      "max_k": 300.00000000000125,
+      "mean_potential_v": 1.003354134127122e-19
+    },
+    "92": {
+      "name": "stage_0_bridge_31_hot",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999997,
+      "max_k": 300.000000000001,
+      "mean_potential_v": 1.8399454892300028e-20
+    },
+    "93": {
+      "name": "stage_0_bridge_32_cold",
+      "volume_mean_k": 299.9999999999999,
+      "min_k": 299.9999999999994,
+      "max_k": 300.0000000000002,
+      "mean_potential_v": 9.231223138988654e-20
+    },
+    "94": {
+      "name": "stage_0_bridge_33_hot",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.9999999999996,
+      "max_k": 300.0000000000004,
+      "mean_potential_v": -4.2659914889154547e-19
+    },
+    "95": {
+      "name": "stage_0_bridge_34_cold",
+      "volume_mean_k": 300.0000000000006,
+      "min_k": 300.00000000000017,
+      "max_k": 300.00000000000097,
+      "mean_potential_v": 6.146488074312323e-20
+    },
+    "96": {
+      "name": "stage_0_bridge_35_hot",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.99999999999915,
+      "max_k": 300.0000000000009,
+      "mean_potential_v": -7.359922885401069e-19
+    },
+    "97": {
+      "name": "stage_0_bridge_36_cold",
+      "volume_mean_k": 300.0000000000006,
+      "min_k": 299.99999999999994,
+      "max_k": 300.0000000000013,
+      "mean_potential_v": 2.891921041857808e-19
+    },
+    "98": {
+      "name": "stage_0_bridge_37_hot",
+      "volume_mean_k": 299.99999999999983,
+      "min_k": 299.999999999999,
+      "max_k": 300.00000000000045,
+      "mean_potential_v": 1.146198011846622e-18
+    },
+    "99": {
+      "name": "stage_0_bridge_38_cold",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.9999999999993,
+      "max_k": 300.00000000000057,
+      "mean_potential_v": 6.990831188557814e-19
+    },
+    "100": {
+      "name": "stage_0_bridge_39_hot",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999995,
+      "max_k": 300.0000000000012,
+      "mean_potential_v": 8.833957831922717e-19
+    },
+    "101": {
+      "name": "stage_0_bridge_40_cold",
+      "volume_mean_k": 299.99999999999983,
+      "min_k": 299.99999999999903,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": -8.526202555111347e-19
+    },
+    "102": {
+      "name": "stage_0_bridge_41_hot",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.99999999999966,
+      "max_k": 300.00000000000057,
+      "mean_potential_v": -5.557689373404218e-19
+    },
+    "103": {
+      "name": "stage_0_bridge_42_cold",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999997,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": 1.5868405271312663e-19
+    },
+    "104": {
+      "name": "stage_0_bridge_43_hot",
+      "volume_mean_k": 299.9999999999999,
+      "min_k": 299.9999999999993,
+      "max_k": 300.00000000000085,
+      "mean_potential_v": 1.7722070672172115e-19
+    },
+    "105": {
+      "name": "stage_0_bridge_44_cold",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999996,
+      "max_k": 300.00000000000097,
+      "mean_potential_v": -7.752136733126481e-19
+    },
+    "106": {
+      "name": "stage_0_bridge_45_hot",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999995,
+      "max_k": 300.000000000001,
+      "mean_potential_v": 3.7217656874076145e-19
+    },
+    "107": {
+      "name": "stage_0_bridge_46_cold",
+      "volume_mean_k": 299.99999999999955,
+      "min_k": 299.9999999999989,
+      "max_k": 300.0,
+      "mean_potential_v": 3.484207015274328e-21
+    },
+    "108": {
+      "name": "stage_0_bridge_47_hot",
+      "volume_mean_k": 300.0000000000002,
+      "min_k": 299.99999999999955,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": -3.098758661033926e-19
+    },
+    "109": {
+      "name": "stage_0_bridge_48_cold",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.9999999999989,
+      "max_k": 300.0000000000005,
+      "mean_potential_v": -4.162746364852774e-19
+    },
+    "110": {
+      "name": "stage_0_bridge_49_hot",
+      "volume_mean_k": 299.9999999999997,
+      "min_k": 299.99999999999864,
+      "max_k": 300.00000000000034,
+      "mean_potential_v": -6.647785321473648e-19
+    },
+    "111": {
+      "name": "stage_0_bridge_50_cold",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999997,
+      "max_k": 300.0000000000006,
+      "mean_potential_v": -1.4093674570968586e-19
+    },
+    "112": {
+      "name": "stage_0_bridge_51_hot",
+      "volume_mean_k": 299.9999999999992,
+      "min_k": 299.99999999999864,
+      "max_k": 300.00000000000006,
+      "mean_potential_v": -7.592005638357102e-19
+    },
+    "113": {
+      "name": "stage_0_bridge_52_cold",
+      "volume_mean_k": 300.00000000000097,
+      "min_k": 299.9999999999997,
+      "max_k": 300.0000000000018,
+      "mean_potential_v": 1.790337387344829e-18
+    },
+    "114": {
+      "name": "stage_0_bridge_53_hot",
+      "volume_mean_k": 300.0000000000003,
+      "min_k": 299.9999999999998,
+      "max_k": 300.0000000000009,
+      "mean_potential_v": 1.3585666476910248e-19
+    },
+    "115": {
+      "name": "stage_0_bridge_54_cold",
+      "volume_mean_k": 299.9999999999997,
+      "min_k": 299.9999999999992,
+      "max_k": 300.0000000000002,
+      "mean_potential_v": -1.9305244774297792e-19
+    },
+    "116": {
+      "name": "stage_0_terminal_in",
+      "volume_mean_k": 299.9999999999987,
+      "min_k": 299.99999999999847,
+      "max_k": 299.9999999999991,
+      "mean_potential_v": -4.7462062476851176e-18
+    },
+    "117": {
+      "name": "stage_0_terminal_out",
+      "volume_mean_k": 300.0000000000003,
+      "min_k": 299.9999999999999,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": -1.2770488207828465e-18
+    },
+    "118": {
+      "name": "stage_1_leg_00_N",
+      "volume_mean_k": 300.0,
+      "min_k": 299.9999999999991,
+      "max_k": 300.0000000000015,
+      "mean_potential_v": -5.132065346886708e-17
+    },
+    "119": {
+      "name": "stage_1_leg_01_P",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.9999999999998,
+      "max_k": 300.0000000000011,
+      "mean_potential_v": -1.8328876017713094e-18
+    },
+    "120": {
+      "name": "stage_1_leg_02_N",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.99999999999955,
+      "max_k": 300.0000000000009,
+      "mean_potential_v": 2.8830566117312814e-17
+    },
+    "121": {
+      "name": "stage_1_leg_03_P",
+      "volume_mean_k": 300.0000000000005,
+      "min_k": 299.9999999999999,
+      "max_k": 300.0000000000011,
+      "mean_potential_v": 1.1490866799241234e-17
+    },
+    "122": {
+      "name": "stage_1_leg_04_N",
+      "volume_mean_k": 299.9999999999998,
+      "min_k": 299.99999999999915,
+      "max_k": 300.0000000000005,
+      "mean_potential_v": -2.3591410667758307e-17
+    },
+    "123": {
+      "name": "stage_1_leg_05_P",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.999999999999,
+      "max_k": 300.00000000000085,
+      "mean_potential_v": 1.959898185811529e-17
+    },
+    "124": {
+      "name": "stage_1_leg_06_N",
+      "volume_mean_k": 299.9999999999999,
+      "min_k": 299.999999999999,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": 2.4249956028839577e-17
+    },
+    "125": {
+      "name": "stage_1_leg_07_P",
+      "volume_mean_k": 299.9999999999995,
+      "min_k": 299.999999999999,
+      "max_k": 300.00000000000017,
+      "mean_potential_v": 6.097252838405171e-17
+    },
+    "126": {
+      "name": "stage_1_leg_08_N",
+      "volume_mean_k": 300.0000000000005,
+      "min_k": 299.9999999999997,
+      "max_k": 300.0000000000013,
+      "mean_potential_v": 4.918978479924371e-17
+    },
+    "127": {
+      "name": "stage_1_leg_09_P",
+      "volume_mean_k": 300.00000000000074,
+      "min_k": 299.9999999999998,
+      "max_k": 300.00000000000114,
+      "mean_potential_v": -7.021680084678618e-17
+    },
+    "128": {
+      "name": "stage_1_leg_10_N",
+      "volume_mean_k": 300.0000000000007,
+      "min_k": 299.99999999999983,
+      "max_k": 300.00000000000114,
+      "mean_potential_v": 7.022122276968758e-17
+    },
+    "129": {
+      "name": "stage_1_leg_11_P",
+      "volume_mean_k": 299.99999999999983,
+      "min_k": 299.9999999999991,
+      "max_k": 300.0000000000003,
+      "mean_potential_v": 2.9357379601205995e-17
+    },
+    "130": {
+      "name": "stage_1_leg_12_N",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.9999999999997,
+      "max_k": 300.00000000000125,
+      "mean_potential_v": 6.691059724023058e-18
+    },
+    "131": {
+      "name": "stage_1_leg_13_P",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.9999999999997,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": -4.9437997478188266e-17
+    },
+    "132": {
+      "name": "stage_1_leg_14_N",
+      "volume_mean_k": 300.0000000000009,
+      "min_k": 299.9999999999998,
+      "max_k": 300.0000000000013,
+      "mean_potential_v": 5.577643495472041e-17
+    },
+    "133": {
+      "name": "stage_1_leg_15_P",
+      "volume_mean_k": 299.99999999999955,
+      "min_k": 299.99999999999886,
+      "max_k": 300.00000000000057,
+      "mean_potential_v": 4.6370181556285323e-17
+    },
+    "134": {
+      "name": "stage_1_leg_16_N",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.9999999999994,
+      "max_k": 300.00000000000034,
+      "mean_potential_v": 1.4623925872886258e-17
+    },
+    "135": {
+      "name": "stage_1_leg_17_P",
+      "volume_mean_k": 300.000000000001,
+      "min_k": 300.0000000000003,
+      "max_k": 300.0000000000015,
+      "mean_potential_v": -7.130458349949777e-17
+    },
+    "136": {
+      "name": "stage_1_leg_18_N",
+      "volume_mean_k": 299.9999999999999,
+      "min_k": 299.9999999999995,
+      "max_k": 300.0000000000006,
+      "mean_potential_v": -2.924932328470794e-17
+    },
+    "137": {
+      "name": "stage_1_leg_19_P",
+      "volume_mean_k": 299.9999999999999,
+      "min_k": 299.99999999999943,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": 3.7394207880093457e-17
+    },
+    "138": {
+      "name": "stage_1_leg_20_N",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.99999999999966,
+      "max_k": 300.000000000001,
+      "mean_potential_v": -3.1667472635039944e-17
+    },
+    "139": {
+      "name": "stage_1_leg_21_P",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.9999999999994,
+      "max_k": 300.00000000000097,
+      "mean_potential_v": 1.2285495020245336e-17
+    },
+    "140": {
+      "name": "stage_1_leg_22_N",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.99999999999943,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": 1.2004401539986642e-17
+    },
+    "141": {
+      "name": "stage_1_leg_23_P",
+      "volume_mean_k": 300.0000000000002,
+      "min_k": 299.99999999999926,
+      "max_k": 300.0000000000006,
+      "mean_potential_v": -2.569287832834071e-17
+    },
+    "142": {
+      "name": "stage_1_bridge_00_cold",
+      "volume_mean_k": 299.9999999999999,
+      "min_k": 299.99999999999926,
+      "max_k": 300.00000000000045,
+      "mean_potential_v": -1.1133940041081644e-18
+    },
+    "143": {
+      "name": "stage_1_bridge_01_hot",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.9999999999995,
+      "max_k": 300.00000000000114,
+      "mean_potential_v": -4.629111614538788e-19
+    },
+    "144": {
+      "name": "stage_1_bridge_02_cold",
+      "volume_mean_k": 300.0000000000002,
+      "min_k": 299.99999999999983,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": 5.8557539218803225e-19
+    },
+    "145": {
+      "name": "stage_1_bridge_03_hot",
+      "volume_mean_k": 300.00000000000006,
+      "min_k": 299.99999999999915,
+      "max_k": 300.000000000001,
+      "mean_potential_v": -4.376258828792077e-19
+    },
+    "146": {
+      "name": "stage_1_bridge_04_cold",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.999999999999,
+      "max_k": 300.0000000000005,
+      "mean_potential_v": 5.830170704955752e-19
+    },
+    "147": {
+      "name": "stage_1_bridge_05_hot",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.999999999999,
+      "max_k": 300.0000000000009,
+      "mean_potential_v": -8.260157615162717e-19
+    },
+    "148": {
+      "name": "stage_1_bridge_06_cold",
+      "volume_mean_k": 299.9999999999997,
+      "min_k": 299.99999999999903,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": 9.44093861408026e-19
+    },
+    "149": {
+      "name": "stage_1_bridge_07_hot",
+      "volume_mean_k": 300.0,
+      "min_k": 299.9999999999995,
+      "max_k": 300.0000000000005,
+      "mean_potential_v": 6.175452317003581e-19
+    },
+    "150": {
+      "name": "stage_1_bridge_08_cold",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.99999999999966,
+      "max_k": 300.000000000001,
+      "mean_potential_v": 3.653635754512186e-19
+    },
+    "151": {
+      "name": "stage_1_bridge_09_hot",
+      "volume_mean_k": 300.0000000000003,
+      "min_k": 299.9999999999998,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": -1.3212890253246845e-19
+    },
+    "152": {
+      "name": "stage_1_bridge_10_cold",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999998,
+      "max_k": 300.00000000000125,
+      "mean_potential_v": 7.449240842148799e-19
+    },
+    "153": {
+      "name": "stage_1_bridge_11_hot",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.9999999999989,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": 5.188844841298077e-19
+    },
+    "154": {
+      "name": "stage_1_bridge_12_cold",
+      "volume_mean_k": 300.00000000000045,
+      "min_k": 299.9999999999997,
+      "max_k": 300.00000000000125,
+      "mean_potential_v": -3.088962671184934e-19
+    },
+    "155": {
+      "name": "stage_1_bridge_13_hot",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999999,
+      "max_k": 300.00000000000114,
+      "mean_potential_v": 3.611399388265015e-19
+    },
+    "156": {
+      "name": "stage_1_bridge_14_cold",
+      "volume_mean_k": 300.0000000000002,
+      "min_k": 299.99999999999966,
+      "max_k": 300.0000000000009,
+      "mean_potential_v": 1.669017212318634e-19
+    },
+    "157": {
+      "name": "stage_1_bridge_15_hot",
+      "volume_mean_k": 299.9999999999997,
+      "min_k": 299.99999999999886,
+      "max_k": 300.00000000000017,
+      "mean_potential_v": 6.13993937526291e-19
+    },
+    "158": {
+      "name": "stage_1_bridge_16_cold",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999996,
+      "max_k": 300.0000000000011,
+      "mean_potential_v": -1.6524253543188516e-19
+    },
+    "159": {
+      "name": "stage_1_bridge_17_hot",
+      "volume_mean_k": 300.00000000000045,
+      "min_k": 300.0,
+      "max_k": 300.0000000000009,
+      "mean_potential_v": -1.524169317190241e-19
+    },
+    "160": {
+      "name": "stage_1_bridge_18_cold",
+      "volume_mean_k": 299.9999999999999,
+      "min_k": 299.99999999999943,
+      "max_k": 300.0000000000004,
+      "mean_potential_v": -1.4739323768110285e-20
+    },
+    "161": {
+      "name": "stage_1_bridge_19_hot",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999996,
+      "max_k": 300.000000000001,
+      "mean_potential_v": 1.3230519521578075e-19
+    },
+    "162": {
+      "name": "stage_1_bridge_20_cold",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.99999999999966,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": -4.0250648509837843e-19
+    },
+    "163": {
+      "name": "stage_1_bridge_21_hot",
+      "volume_mean_k": 300.00000000000006,
+      "min_k": 299.9999999999994,
+      "max_k": 300.00000000000097,
+      "mean_potential_v": -1.1463036909020243e-19
+    },
+    "164": {
+      "name": "stage_1_bridge_22_cold",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999994,
+      "max_k": 300.00000000000085,
+      "mean_potential_v": 5.457066607056033e-19
+    },
+    "165": {
+      "name": "stage_1_terminal_in",
+      "volume_mean_k": 300.00000000000085,
+      "min_k": 300.0000000000003,
+      "max_k": 300.00000000000153,
+      "mean_potential_v": 1.7184592118622343e-18
+    },
+    "166": {
+      "name": "stage_1_terminal_out",
+      "volume_mean_k": 299.9999999999997,
+      "min_k": 299.99999999999926,
+      "max_k": 300.0000000000004,
+      "mean_potential_v": -1.067085142354848e-18
+    },
+    "167": {
+      "name": "stage_2_leg_00_N",
+      "volume_mean_k": 300.00000000000074,
+      "min_k": 299.99999999999966,
+      "max_k": 300.00000000000244,
+      "mean_potential_v": 3.838296988771447e-18
+    },
+    "168": {
+      "name": "stage_2_leg_01_P",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.9999999999993,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": -1.8966651167700933e-17
+    },
+    "169": {
+      "name": "stage_2_leg_02_N",
+      "volume_mean_k": 300.0000000000002,
+      "min_k": 299.99999999999955,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": 1.939594031562741e-17
+    },
+    "170": {
+      "name": "stage_2_leg_03_P",
+      "volume_mean_k": 300.0000000000002,
+      "min_k": 299.9999999999996,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": 2.9793584885215914e-17
+    },
+    "171": {
+      "name": "stage_2_leg_04_N",
+      "volume_mean_k": 300.0,
+      "min_k": 299.9999999999995,
+      "max_k": 300.00000000000057,
+      "mean_potential_v": 3.495351724303672e-17
+    },
+    "172": {
+      "name": "stage_2_leg_05_P",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.99999999999903,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": -3.521084515426805e-17
+    },
+    "173": {
+      "name": "stage_2_leg_06_N",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.99999999999943,
+      "max_k": 300.00000000000097,
+      "mean_potential_v": 3.246076834962239e-17
+    },
+    "174": {
+      "name": "stage_2_leg_07_P",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.9999999999995,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": -1.34201174764953e-17
+    },
+    "175": {
+      "name": "stage_2_bridge_00_cold",
+      "volume_mean_k": 300.00000000000006,
+      "min_k": 299.9999999999993,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": 6.026894762897579e-20
+    },
+    "176": {
+      "name": "stage_2_bridge_01_hot",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999997,
+      "max_k": 300.00000000000085,
+      "mean_potential_v": -1.408587218524172e-19
+    },
+    "177": {
+      "name": "stage_2_bridge_02_cold",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.9999999999995,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": 3.716613541134308e-19
+    },
+    "178": {
+      "name": "stage_2_bridge_03_hot",
+      "volume_mean_k": 300.0,
+      "min_k": 299.99999999999943,
+      "max_k": 300.0000000000005,
+      "mean_potential_v": 1.2899512883174162e-19
+    },
+    "179": {
+      "name": "stage_2_bridge_04_cold",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 300.0,
+      "max_k": 300.00000000000085,
+      "mean_potential_v": -4.670567480505209e-19
+    },
+    "180": {
+      "name": "stage_2_bridge_05_hot",
+      "volume_mean_k": 299.9999999999998,
+      "min_k": 299.99999999999903,
+      "max_k": 300.00000000000057,
+      "mean_potential_v": 6.712363870476122e-19
+    },
+    "181": {
+      "name": "stage_2_bridge_06_cold",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.99999999999943,
+      "max_k": 300.00000000000057,
+      "mean_potential_v": 2.700725401617212e-19
+    },
+    "182": {
+      "name": "stage_2_terminal_in",
+      "volume_mean_k": 300.0000000000016,
+      "min_k": 300.0000000000008,
+      "max_k": 300.00000000000244,
+      "mean_potential_v": 4.749825964958504e-18
+    },
+    "183": {
+      "name": "stage_2_terminal_out",
+      "volume_mean_k": 300.0000000000005,
+      "min_k": 300.00000000000006,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": -1.488496474189343e-18
+    },
+    "184": {
+      "name": "buried_interstage_link_0",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.9999999999977,
+      "max_k": 300.00000000000165,
+      "mean_potential_v": 5.609885000338073e-20
+    },
+    "185": {
+      "name": "buried_interstage_link_1",
+      "volume_mean_k": 300.0000000000002,
+      "min_k": 299.99999999999835,
+      "max_k": 300.00000000000216,
+      "mean_potential_v": -4.132203222059389e-18
+    },
+    "186": {
+      "name": "routing_rib_0",
+      "volume_mean_k": 299.99999999999943,
+      "min_k": 299.9999999999973,
+      "max_k": 300.00000000000085,
+      "mean_potential_v": -4.998439903161268e-19
+    },
+    "187": {
+      "name": "exit_collar_0",
+      "volume_mean_k": 300.00000000000114,
+      "min_k": 300.0000000000008,
+      "max_k": 300.0000000000015,
+      "mean_potential_v": 1.2562816329629641e-18
+    },
+    "188": {
+      "name": "routing_rib_1",
+      "volume_mean_k": 299.99999999999926,
+      "min_k": 299.99999999999835,
+      "max_k": 300.00000000000034,
+      "mean_potential_v": -5.530007565222283e-19
+    },
+    "189": {
+      "name": "exit_collar_1",
+      "volume_mean_k": 300.00000000000125,
+      "min_k": 300.00000000000057,
+      "max_k": 300.00000000000244,
+      "mean_potential_v": 8.89980205097312e-19
+    },
+    "190": {
+      "name": "hot_input_pad_and_trace",
+      "volume_mean_k": 299.9999999999998,
+      "min_k": 299.99999999999847,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": -1.3389481513911155e-19
+    },
+    "191": {
+      "name": "insulated_return_to_module_hot_pad",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.99999999999875,
+      "max_k": 300.0000000000015,
+      "mean_potential_v": -3.506350570273648e-22
+    },
+    "192": {
+      "name": "return_route_alumina_support",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.99999999999926,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": -3.231142394329559e-20
+    },
+    "301": {
+      "name": "presolder_unknown_alloy",
+      "volume_mean_k": 300.0,
+      "min_k": 299.99999999999903,
+      "max_k": 300.0000000000009,
+      "mean_potential_v": -6.088336540813555e-20
+    },
+    "302": {
+      "name": "die_attach_hypothesis",
+      "volume_mean_k": 300.00000000000006,
+      "min_k": 299.99999999999926,
+      "max_k": 300.0000000000004,
+      "mean_potential_v": -3.0436905996130836e-21
+    },
+    "303": {
+      "name": "MCT_thermal_domain_hypothesis",
+      "volume_mean_k": 299.99999999999983,
+      "min_k": 299.999999999997,
+      "max_k": 300.0000000000008,
+      "mean_potential_v": -9.625104549056866e-22
+    },
+    "304": {
+      "name": "detector_Au_pad_304",
+      "volume_mean_k": 299.9999999999991,
+      "min_k": 299.99999999999795,
+      "max_k": 299.9999999999999,
+      "mean_potential_v": 2.040129645354355e-21
+    },
+    "305": {
+      "name": "detector_Au_pad_305",
+      "volume_mean_k": 299.9999999999978,
+      "min_k": 299.99999999999693,
+      "max_k": 299.99999999999864,
+      "mean_potential_v": -4.283081429027964e-22
+    },
+    "300": {
+      "name": "VIGO_reference_two_ear_Kovar_header",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999991,
+      "max_k": 300.00000000000085,
+      "mean_potential_v": -1.1956302367820355e-20
+    },
+    "401": {
+      "name": "glass_pin1",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999997,
+      "max_k": 300.0000000000009,
+      "mean_potential_v": -1.387599765791516e-20
+    },
+    "501": {
+      "name": "metal_pin1_TEC+",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999994,
+      "max_k": 300.00000000000114,
+      "mean_potential_v": -1.155213126095027e-21
+    },
+    "402": {
+      "name": "glass_pin2",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.9999999999996,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": -6.269962168239997e-21
+    },
+    "502": {
+      "name": "metal_pin2_unused",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.99999999999955,
+      "max_k": 300.00000000000114,
+      "mean_potential_v": -5.453704024925274e-22
+    },
+    "403": {
+      "name": "glass_pin3",
+      "volume_mean_k": 299.99999999999994,
+      "min_k": 299.9999999999995,
+      "max_k": 300.00000000000034,
+      "mean_potential_v": 2.4720316979472095e-22
+    },
+    "503": {
+      "name": "metal_pin3_unused",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999995,
+      "max_k": 300.00000000000114,
+      "mean_potential_v": -2.178024261623737e-23
+    },
+    "404": {
+      "name": "glass_pin4",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.9999999999997,
+      "max_k": 300.00000000000085,
+      "mean_potential_v": -2.136436361896023e-21
+    },
+    "504": {
+      "name": "metal_pin4_unused",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.99999999999955,
+      "max_k": 300.00000000000125,
+      "mean_potential_v": -2.4604295156109565e-22
+    },
+    "405": {
+      "name": "glass_pin5",
+      "volume_mean_k": 300.0000000000003,
+      "min_k": 299.9999999999998,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": -3.3757443366555955e-21
+    },
+    "505": {
+      "name": "metal_pin5_thermistor",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999995,
+      "max_k": 300.00000000000125,
+      "mean_potential_v": -3.368384667388423e-22
+    },
+    "406": {
+      "name": "glass_pin6",
+      "volume_mean_k": 300.00000000000017,
+      "min_k": 299.9999999999996,
+      "max_k": 300.0000000000007,
+      "mean_potential_v": -8.136327411222853e-21
+    },
+    "506": {
+      "name": "metal_pin6_thermistor",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999995,
+      "max_k": 300.0000000000011,
+      "mean_potential_v": -7.751699314009152e-22
+    },
+    "407": {
+      "name": "glass_pin7",
+      "volume_mean_k": 300.0000000000001,
+      "min_k": 299.9999999999992,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": -4.365750386793399e-21
+    },
+    "507": {
+      "name": "metal_pin7_detector",
+      "volume_mean_k": 300.0000000000004,
+      "min_k": 299.99999999999943,
+      "max_k": 300.0000000000012,
+      "mean_potential_v": -3.6219196971316245e-22
+    },
+    "408": {
+      "name": "glass_pin8",
+      "volume_mean_k": 300.00000000000006,
+      "min_k": 299.9999999999997,
+      "max_k": 300.00000000000057,
+      "mean_potential_v": -2.723050383772743e-21
+    },
+    "508": {
+      "name": "metal_pin8_detector",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999994,
+      "max_k": 300.00000000000074,
+      "mean_potential_v": -2.228236950343521e-22
+    },
+    "409": {
+      "name": "glass_pin9",
+      "volume_mean_k": 300.00000000000006,
+      "min_k": 299.9999999999995,
+      "max_k": 300.0000000000005,
+      "mean_potential_v": -6.585408851260599e-21
+    },
+    "509": {
+      "name": "metal_pin9_TEC-",
+      "volume_mean_k": 300.00000000000034,
+      "min_k": 299.9999999999994,
+      "max_k": 300.00000000000125,
+      "mean_potential_v": -5.737393270813666e-22
+    }
+  },
+  "interfaces": [
+    {
+      "bodies": [
+        300,
+        301
+      ],
+      "tag": 10299,
+      "area_m2": 4.096000000000001e-05,
+      "temperature_area_mean_k": 300.00000000000006,
+      "raw_one_sided_outward_w": [
+        1.5805179528152422e-13,
+        -6.037615595148386e-13
+      ],
+      "raw_sum_outward_w": -4.4570976423331435e-13,
+      "raw_relative_mismatch": -4.457097642333144e-09,
+      "extra_5percent_diagnostic_passed": true
+    },
+    {
+      "bodies": [
+        1,
+        301
+      ],
+      "tag": 10034,
+      "area_m2": 4.096e-05,
+      "temperature_area_mean_k": 300.0,
+      "raw_one_sided_outward_w": [
+        2.656233400053266e-13,
+        1.5679614697421922e-12
+      ],
+      "raw_sum_outward_w": 1.833584809747519e-12,
+      "raw_relative_mismatch": 1.833584809747519e-08,
+      "extra_5percent_diagnostic_passed": true
+    },
+    {
+      "bodies": [
+        4,
+        302
+      ],
+      "tag": 10105,
+      "area_m2": 1e-06,
+      "temperature_area_mean_k": 299.99999999999983,
+      "raw_one_sided_outward_w": [
+        1.5572661420938224e-13,
+        3.7879825441919335e-15
+      ],
+      "raw_sum_outward_w": 1.5951459675357416e-13,
+      "raw_relative_mismatch": 1.5951459675357415e-09,
+      "extra_5percent_diagnostic_passed": true
+    },
+    {
+      "bodies": [
+        302,
+        303
+      ],
+      "tag": 10309,
+      "area_m2": 1.0000000000000002e-06,
+      "temperature_area_mean_k": 299.9999999999999,
+      "raw_one_sided_outward_w": [
+        -3.0643425224342902e-15,
+        3.623513335020511e-15
+      ],
+      "raw_sum_outward_w": 5.591708125862207e-16,
+      "raw_relative_mismatch": 5.591708125862207e-12,
+      "extra_5percent_diagnostic_passed": true
+    }
+  ],
+  "wire_links": [
+    {
+      "pin": 1,
+      "material": "Cu",
+      "pin_body": 501,
+      "target_body": 190,
+      "pin_face_tag": 6001,
+      "target_face_tag": 103,
+      "length_m": 0.0034037520048052043,
+      "G_W_K": 0.0036919172127166597,
+      "R_ohm": 0.0018635304107855175,
+      "on": false,
+      "pin_k": 300.00000000000017,
+      "pad_k": 299.9999999999996,
+      "conduction_into_pad_w": 0.0,
+      "joule_w": 0.0,
+      "pin_source_w": 0.0,
+      "pad_source_w": 0.0
+    },
+    {
+      "pin": 9,
+      "material": "Cu",
+      "pin_body": 509,
+      "target_body": 191,
+      "pin_face_tag": 6009,
+      "target_face_tag": 104,
+      "length_m": 0.0034037520048052035,
+      "G_W_K": 0.0036919172127166605,
+      "R_ohm": 0.0018635304107855169,
+      "on": false,
+      "pin_k": 300.0000000000001,
+      "pad_k": 299.99999999999994,
+      "conduction_into_pad_w": 0.0,
+      "joule_w": 0.0,
+      "pin_source_w": 0.0,
+      "pad_source_w": 0.0
+    },
+    {
+      "pin": 7,
+      "material": "Au",
+      "pin_body": 507,
+      "target_body": 304,
+      "pin_face_tag": 6007,
+      "target_face_tag": 6107,
+      "length_m": 0.009724958601741426,
+      "G_W_K": 8.24247586431781e-06,
+      "R_ohm": 0.9324868069402753,
+      "on": false,
+      "pin_k": 300.0000000000004,
+      "pad_k": 299.999999999999,
+      "conduction_into_pad_w": 0.0,
+      "joule_w": 0.0,
+      "pin_source_w": 0.0,
+      "pad_source_w": 0.0
+    },
+    {
+      "pin": 8,
+      "material": "Au",
+      "pin_body": 508,
+      "target_body": 305,
+      "pin_face_tag": 6008,
+      "target_face_tag": 6108,
+      "length_m": 0.009724958601741426,
+      "G_W_K": 8.24247586431781e-06,
+      "R_ohm": 0.9324868069402753,
+      "on": false,
+      "pin_k": 299.99999999999983,
+      "pad_k": 299.9999999999979,
+      "conduction_into_pad_w": 0.0,
+      "joule_w": 0.0,
+      "pin_source_w": 0.0,
+      "pad_source_w": 0.0
+    }
+  ],
+  "passive_Joule_w": 1.7076444487055628e-48,
+  "max_passive_J_A_m2": 4.515738294754231e-25,
+  "pin_cuts": [
+    {
+      "pin": 1,
+      "computational_cut_current_a": -3.3903457330820035e-36,
+      "area_m2": 4.507045840071723e-07,
+      "scope": "tiny-sigma passive extension; not physical TEC/detector electrical transport"
+    },
+    {
+      "pin": 2,
+      "computational_cut_current_a": -1.233109430246909e-36,
+      "area_m2": 4.5070629947475107e-07,
+      "scope": "tiny-sigma passive extension; not physical TEC/detector electrical transport"
+    },
+    {
+      "pin": 3,
+      "computational_cut_current_a": -2.5650296695913943e-38,
+      "area_m2": 4.507025147094177e-07,
+      "scope": "tiny-sigma passive extension; not physical TEC/detector electrical transport"
+    },
+    {
+      "pin": 4,
+      "computational_cut_current_a": -6.6254048691963915e-37,
+      "area_m2": 4.507024966881643e-07,
+      "scope": "tiny-sigma passive extension; not physical TEC/detector electrical transport"
+    },
+    {
+      "pin": 5,
+      "computational_cut_current_a": -8.640316859323105e-37,
+      "area_m2": 4.5070246015489767e-07,
+      "scope": "tiny-sigma passive extension; not physical TEC/detector electrical transport"
+    },
+    {
+      "pin": 6,
+      "computational_cut_current_a": -2.146765602708706e-36,
+      "area_m2": 4.50704561435789e-07,
+      "scope": "tiny-sigma passive extension; not physical TEC/detector electrical transport"
+    },
+    {
+      "pin": 7,
+      "computational_cut_current_a": -8.973352729182272e-37,
+      "area_m2": 4.5070240809903613e-07,
+      "scope": "tiny-sigma passive extension; not physical TEC/detector electrical transport"
+    },
+    {
+      "pin": 8,
+      "computational_cut_current_a": -5.790500472808723e-37,
+      "area_m2": 4.507046173545733e-07,
+      "scope": "tiny-sigma passive extension; not physical TEC/detector electrical transport"
+    },
+    {
+      "pin": 9,
+      "computational_cut_current_a": -1.5080418497736295e-36,
+      "area_m2": 4.507024971839802e-07,
+      "scope": "tiny-sigma passive extension; not physical TEC/detector electrical transport"
+    }
+  ],
+  "stage_control_volumes": [
+    {
+      "band": 0,
+      "hot_out_w": 6.019378983276994e-13,
+      "cold_out_downward_w": 1.4444802159295123e-13,
+      "electrical_work_w": 1.2338825295302589e-28,
+      "sources_w": {
+        "wire_conduction": 0.0,
+        "wire_joule": 0.0,
+        "detector": 0.0
+      },
+      "energy_error_w": 4.57489876734748e-13
+    },
+    {
+      "band": 1,
+      "hot_out_w": 1.4444802159295123e-13,
+      "cold_out_downward_w": 2.1795533381540913e-13,
+      "electrical_work_w": 4.3050536918360646e-29,
+      "sources_w": {
+        "wire_conduction": 0.0,
+        "wire_joule": 0.0,
+        "detector": 0.0
+      },
+      "energy_error_w": -7.350731222245794e-14
+    },
+    {
+      "band": 2,
+      "hot_out_w": 2.1795533381540913e-13,
+      "cold_out_downward_w": 0.0,
+      "electrical_work_w": 2.0553776397385153e-29,
+      "sources_w": {
+        "wire_conduction": 0.0,
+        "wire_joule": 0.0,
+        "detector": 0.0
+      },
+      "energy_error_w": 2.179553338154091e-13
+    }
+  ],
+  "stage_thermoelectric_decomposition": [
+    {
+      "stage": 0,
+      "fourier_down_w": 1.5484308103914735e-15,
+      "peltier_down_w": 1.845639017383049e-16,
+      "total_down_w": 1.7329947121297782e-15,
+      "group_Joule_w": 1.7153074070405438e-28,
+      "group_electrical_work_w": 1.2337572710984705e-28,
+      "group_Seebeck_reversible_work_w": -4.815501359420735e-29,
+      "scope": "stage-local P/N+original Cu; separate routes/supports remain in global/control-volume budgets"
+    },
+    {
+      "stage": 1,
+      "fourier_down_w": 1.1066948854420315e-15,
+      "peltier_down_w": -5.4285657238876e-16,
+      "total_down_w": 5.638383130532715e-16,
+      "group_Joule_w": 6.029147477228796e-29,
+      "group_electrical_work_w": 4.2996250486052135e-29,
+      "group_Seebeck_reversible_work_w": -1.7295224286235826e-29,
+      "scope": "stage-local P/N+original Cu; separate routes/supports remain in global/control-volume budgets"
+    },
+    {
+      "stage": 2,
+      "fourier_down_w": -9.653463277382264e-16,
+      "peltier_down_w": -9.097937190632646e-16,
+      "total_down_w": -1.875140046801492e-15,
+      "group_Joule_w": 2.8332794104488694e-29,
+      "group_electrical_work_w": 2.038417353854186e-29,
+      "group_Seebeck_reversible_work_w": -7.94862056594683e-30,
+      "scope": "stage-local P/N+original Cu; separate routes/supports remain in global/control-volume budgets"
+    }
+  ],
+  "field_source": "fields_t0001.vtu",
+  "mesh_sha256": "92db30994fc878a87088b592e888983485b2087965f07ca2b97ac61727b4319c",
+  "sif_sha256": "9c7f97bed912b72d1d7f1e9827353bc1910c115a6e79a478a643eb684cdee005",
+  "vtu_sha256": "83fff51a5a2bb45381d754f32ac0e174fbce397cce559dac4aa42637dc757675",
+  "postprocessor_sha256": "b980b2cb6e0a50f1ff48cefe9de7e7bce397eb3ddf7c542031bafb99a7ee4b8b",
+  "spatial_convergence": "NOT RUN; one exact corrected source mesh",
+  "full_device_qualification": false,
+  "scope": "solid-only synthetic composite reference; no enclosure, radiation/gas, optical transmission or OEM validation",
+  "checks": {
+    "all177_cut_areas": true,
+    "all177_current_half_percent_or_1uA_at_zero": true,
+    "return_current_1uA": true,
+    "free_thermal_1uW": true,
+    "free_current_1uA": true,
+    "global_energy_1uW": true,
+    "work_1percent": true,
+    "raw_bath_1percent": true,
+    "stage_energy_1uW": true,
+    "passive_Joule_1nW": true,
+    "passive_pin_currents_1pA": true,
+    "wire_conduction_conservative": true,
+    "wire_Joule_source_balance": true,
+    "uniform_passive_1uK": true,
+    "positive_drive_cools_cold_plate": true
+  },
+  "passed": true
+}

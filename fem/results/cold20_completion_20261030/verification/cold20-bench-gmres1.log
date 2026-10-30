@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/cold20_solver.py", line 111, in <module>
+    a=p.parse_args();run(a.mesh.resolve(),a.case.resolve(),a.backend,a.restart.resolve() if a.restart else None,a.projection.resolve() if a.projection else None,a.reference.resolve() if a.reference else None,a.current,a.load,a.timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/cold20_solver.py", line 70, in run
+    execute(['elmerf90','-O2','-fPIC','-shared','-o','Cold20Timed.so',source.name],lib,'compile',timeout=120)
+  File "/work/tecooledmct/fem_g1_run.py", line 32, in execute
+    raise RuntimeError(f"{name} failed: see {directory}/{name}.log (exit {code})")
+RuntimeError: compile failed: see /work/outputs/cold20/bench_gmres_ilu1/timed/compile.log (exit 1)

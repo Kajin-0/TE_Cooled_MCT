@@ -599,3 +599,48 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   completion of Cold20 using a better verified projection/solver plan, then
   cold normal refinement and independent bath mesh study before matched
   refined Cu ON, Au ON or enclosure physics.
+
+## Completed Cold20 solver and independent bath milestone, 2026-10-30
+
+- Read COLD20_SOLVER_COMPLETION_WORK_ORDER.md,
+  docs/COLD20_SOLVER_COMPLETION_AND_BATH_DIAGNOSIS.md and
+  docs/COLD20_REPRODUCIBILITY.md. New cold20_* sources are additive and become
+  immutable with this archive; never edit earlier code/evidence to change a gate.
+- Genuine exact647657-tet/159991-node/216-domain Cold20 ThermoElectricSolver
+  completed from body-aware P1 initialization:1292.425s,4 nonlinear steps,
+  last7.6574e-10. I0.1A/MCT2mW/300K Kovar underside,Cu/Au OFF. All177cuts,
+  free-current/thermal, global/stage energy and work checks PASS. Native die
+  265.616092860K,V.551926637045; rawbath-1.496257% FAIL1%, coldinterfaces
+  +6.476539% FAIL5%/-4.608512% PASS5%. This is NOT full thermal/OEM qualification.
+- P1 transfer uses same incident body, convex actual-tetrahedron weights,
+  all159991 nodes covered, coordinate error1.205pm,gauge104 zero. Exact-node
+  replay and actual zero-drive Cold30/Cold20 pass. Retain rejected original
+  passive-source absolute1pV test: source/transfer both27.8pV; bound unchanged.
+- CPU evidence: fine symbolic~1.8s vs numeric256..343s. Fine L/U~93.6M entries
+  each. Numeric LU dominates. Warm coarse GMRES agrees, but cold starts and
+  fine Newton corrections fail bounds. Completed Picard1e-13 inner solve fails
+  free-current10.28uA/globalenergy1.641uW; EXCLUDED from mesh convergence.
+  Tighter GMRES, compaction and other failed trials remain explicit failures.
+- Pinned UMFPACK ordinary wrapper disables iterative refinement. Local C
+  interceptor calls native solr using SAME current LU/matrix; one refinement
+  step~1.2s, no stale LU, no physical equation/BC change. Same-mesh Cold20
+  agreement0.225uK/3.70nV/cut1.51nA PASS predeclared2uK/20nV/2uA. Refined
+  parent die265.616093085K; primary registry records actual accepted fields.
+- Three actual Cold ROI levels now exist. ROI h ratios3.01/1.447 permit only
+  conditional temperature fit; voltage NONMONOTONE, no voltage GCI. Bath near1
+  and attach final1.278 ratios remain invalid standard GCI. No qualified
+  device GCI, resolved30uK Cu effect, Au ON, enclosure or new standalone report.
+- Independent bath mesh is exact conformal edge-star subdivision,675496tets/
+  166516nodes. All cold points/cells BYTE-IDENTICAL; only Kovar/glass changed.
+  Kovar h266.306->210.395um,r1.266: one sensitivity level, NOT bath GCI.
+- Actual675496-tet bath coupled solve completed1190.373s/4 steps,
+  last1.1293e-10; nonraw balances/currents PASS. Rawbath improves
+  -1.496257% -> -1.291382%, still FAIL1%. Coldjumps unchanged
+  +6.476541%/-4.608512%; ceramic/attach FAIL5% remains. Die shift
+  +0.420831mK, voltage+2.945643uV with exact cold mesh. No bath GCI.
+- Full125 opt-in tests, CLI/demo and prior archive guards pass. New immutable
+  archive fem/results/cold20_completion_20261030; verify with
+  fem/archive_cold20.py --verify. All source/raw-field/initial-state hashes,
+  failed trials, actual figures and independent bath diagnostics retained.
+  Old PDF and all accepted/failed baselines unchanged; no other repo/session
+  or LSDDTS work. Next: cold-interface normal refinement before qualification.

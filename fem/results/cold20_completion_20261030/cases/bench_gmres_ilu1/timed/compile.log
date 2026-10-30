@@ -1,0 +1,22 @@
+no elmerice
+/usr/bin/f95 -O2 -fPIC -shared -o Cold20Timed.so TimedThermoElectricSolver.F90 -fallow-argument-mismatch -DCONTIG= -DHAVE_EXECUTECOMMANDLINE -DUSE_ISO_C_BINDINGS -DUSE_ARPACK -O3 -DNDEBUG -O3 -fPIC -shared -I/opt/elmer/share/elmersolver/include -L/opt/elmer/lib/elmersolver -shared -lelmersolver 
+TimedThermoElectricSolver.F90:73:42:
+
+   73 |   REAL(KIND=dp) :: cold_t0,cold_t1,cold_t2
+      |                                          1
+Error: Unexpected data declaration statement at (1)
+TimedThermoElectricSolver.F90:76:25:
+
+   76 |     CALL CPU_TIME(cold_t0)
+      |                         1
+Error: Symbol ‘cold_t0’ at (1) has no IMPLICIT type
+TimedThermoElectricSolver.F90:84:25:
+
+   84 |     CALL CPU_TIME(cold_t1)
+      |                         1
+Error: Symbol ‘cold_t1’ at (1) has no IMPLICIT type
+TimedThermoElectricSolver.F90:86:25:
+
+   86 |     CALL CPU_TIME(cold_t2)
+      |                         1
+Error: Symbol ‘cold_t2’ at (1) has no IMPLICIT type

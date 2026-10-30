@@ -1,0 +1,677 @@
+ELMER SOLVER (v 26.2) STARTED AT: 2026/10/30 11:23:38
+ParCommInit: Initialize #PEs: 1
+MAIN: 
+MAIN: =============================================================
+MAIN: ElmerSolver finite element software, Welcome!
+MAIN: This program is free software licensed under (L)GPL
+MAIN: Copyright 1st April 1995 - , CSC - IT Center for Science Ltd.
+MAIN: Webpage http://www.csc.fi/elmer, Email elmeradm@csc.fi
+MAIN: Version: 26.2-unknown (Rev: unknown, Compiled: 2026-10-28)
+MAIN:  Running one task without MPI parallelization.
+MAIN:  Running with just one thread per task.
+MAIN: =============================================================
+MAIN: 
+MAIN: 
+MAIN: -------------------------------------
+MAIN: Reading Model: case.sif
+LoadInputFile: Scanning input file: case.sif
+LoadInputFile: Scanning only size info
+LoadInputFile: First time visiting
+LoadInputFile: Reading base load of sif file
+LoadInputFile: Loading input file: case.sif
+LoadInputFile: Reading base load of sif file
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 1]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 2]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 3]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 4]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 5]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 6]
+Loading user function library: [/work/outputs/cold20/loaded20_picard_P1/library/CorrectedSolid]...[MCTHeat]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 7]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 8]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 9]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 10]
+Loading user function library: [/work/outputs/cold20/loaded20_picard_P1/library/CorrectedSolid]...[JointHeat]
+CheckKeyword:  Unlisted keyword: [seebeck coefficient] in section: [material 11]
+LoadInputFile: Number of BCs: 9
+LoadInputFile: Number of Body Forces: 2
+LoadInputFile: Number of Initial Conditions: 1
+LoadInputFile: Number of Materials: 11
+LoadInputFile: Number of Equations: 1
+LoadInputFile: Number of Solvers: 1
+LoadInputFile: Number of Bodies: 216
+Loading user function library: [/work/outputs/cold20/loaded20_picard_P1/timed/Cold20Timed]...[ThermoElectricSolver_Init0]
+Loading user function library: [/work/outputs/cold20/loaded20_picard_P1/timed/Cold20Timed]...[ThermoElectricSolver_Init0]
+LoadMesh: Loading serial mesh!
+ElmerMeshReader: Performing step: 1
+ElmerMeshReader: Base mesh name: /work/outputs/cold20/loaded20_picard_P1/.
+ReadHeaderFile: Reading header info from file: /work/outputs/cold20/loaded20_picard_P1/./mesh.header
+InitializeMesh: Number of nodes in mesh: 159991
+InitializeMesh: Number of bulk elements in mesh: 647657
+InitializeMesh: Number of boundary elements in mesh: 228560
+InitializeMesh: Initial number of max element nodes: 4
+ElmerMeshReader: Performing step: 2
+ReadNodesFile: Reading nodes from file: /work/outputs/cold20/loaded20_picard_P1/./mesh.nodes
+SetMeshDimension: Dimension of mesh is: 3
+SetMeshDimension: Max dimension of mesh is: 3
+ElmerMeshReader: Performing step: 3
+ReadElementsFile: Reading bulk elements from file: /work/outputs/cold20/loaded20_picard_P1/./mesh.elements
+ElmerMeshReader: Performing step: 4
+ReadBoundaryFile: Reading boundary elements from file: /work/outputs/cold20/loaded20_picard_P1/./mesh.boundary
+PermuteNodeNumbering: Performing node mapping
+MapBodiesAndBCs: Remapping bodies
+MapBodiesAndBCs: Minimum initial body index: 1
+MapBodiesAndBCs: Maximum initial body index: 509
+MapBodiesAndBCs: Remapping boundaries
+MapBodiesAndBCs: Minimum initial boundary index: 101
+MapBodiesAndBCs: Maximum initial boundary index: 10320
+ElmerMeshReader: Performing step: 5
+ElmerMeshReader: Performing step: 6
+LoadMesh: Loading mesh done
+PElementMaps::InitializeMappings: Initializing mappings for elements
+NonNodalElements: Requested elements require creation of edges
+FindMeshEdges: Determining faces in 3D mesh
+FindMeshFaces3D: Number of faces found: 1382152
+FindMeshEdges: Determining edges in 3D mesh
+FindMeshEdges3D: Number of edges found: 894577
+NonNodalElements: Why the heck did we allocate the edges and faces?!
+ReleaseMeshFaceTables: Releasing number of faces: 1382152
+LoadMesh: Preparing mesh done
+LoadMesh: Elapsed REAL time:     9.8490 (s)
+MeshStabParams: Computing stabilization parameters
+MeshStabParams: Elapsed REAL time:     0.0904 (s)
+MAIN: -------------------------------------
+AddVtuOutputSolverHack: Adding ResultOutputSolver to write VTU output in file: fields
+AppendNewSolver: Increasing number of solvers to: 2
+AddMeshCoordinates: Setting mesh coordinates and time
+AddSolvers: Setting up 2 solvers
+AddSolvers: Setting up solver 1: thermoelectric
+AddEquationBasics: Using procedure: /work/outputs/cold20/loaded20_picard_P1/timed/Cold20Timed ThermoElectricSolver
+AddEquationBasics: Setting up solver: thermoelectric
+Loading user function library: [/work/outputs/cold20/loaded20_picard_P1/timed/Cold20Timed]...[ThermoElectricSolver_Init]
+Loading user function library: [/work/outputs/cold20/loaded20_picard_P1/timed/Cold20Timed]...[ThermoElectricSolver_Init]
+Loading user function library: [/work/outputs/cold20/loaded20_picard_P1/timed/Cold20Timed]...[ThermoElectricSolver_bulk]
+Loading user function library: [/work/outputs/cold20/loaded20_picard_P1/timed/Cold20Timed]...[ThermoElectricSolver_bulk]
+Loading user function library: [/work/outputs/cold20/loaded20_picard_P1/timed/Cold20Timed]...[ThermoElectricSolver]
+AddEquationBasics: Creating standard variable: pot[temperature:1 potential:1]
+SetGlobalBubblesFlag: Setting global bubbles to true because of element type chosen!
+OptimizeBandwidth: ---------------------------------------------------------
+OptimizeBandwidth: Computing matrix structure for: thermoelectric
+OptimizeBandwidth: Initial bandwidth for thermoelectric: 158583
+OptimizeBandwidth: Optimized bandwidth for thermoelectric: 6237
+OptimizeBandwidth: ---------------------------------------------------------
+AddSolvers: Setting up solver 2: internalvtuoutputsolver
+AddEquationBasics: Using procedure: ResultOutputSolve ResultOutputSolver
+AddEquationBasics: Setting up solver: internalvtuoutputsolver
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Init]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Init]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_bulk]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_bulk]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver]
+AddEquationBasics: Creating global variable: vtu_internal_dummy
+AddTimeEtc: Setting time and other global variables
+MAIN: Random seed initialized to: 314159265
+SetInitialConditions: Setting up initial conditions (if any)
+Restart: Perfoming global Restart for: .
+LoadRestartFile: 
+LoadRestartFile: --------------------------------------------
+LoadRestartFile: Restart for mesh name: .
+LoadRestartFile: Restart for number of nodes: 159991
+LoadRestartFile: Reading data from file: ./initial_guess.result
+LoadRestartFile: Reading all variables (if not wanted use "Restart Variable i" )
+LoadRestartFile: ASCII 3
+LoadRestartFile: Reading ascii restart file version 3
+LoadRestartFile: Total number of dofs in restart file: 2
+LoadRestartFile: Reading time sequence:    1.000E+00
+LoadRestartFile: Reading variables on timestep: 1
+LoadRestartFile: Time spent for restart (s):      1.9637E-01
+LoadRestartFile: All done
+LoadRestartFile: --------------------------------------------
+MAIN: Number of timesteps to be saved: 1
+MAIN: 
+MAIN: -------------------------------------
+MAIN:  Steady state iteration:            1
+MAIN: -------------------------------------
+MAIN: 
+SingleSolver: Attempting to call solver: 1
+SingleSolver: Solver Equation string is: thermoelectric
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: Allocated LU matrix of size: 14986692
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     6.13
+Prec-ilu1: Elapsed REAL time:     6.2820 (s)
+   gmres:      11 0.9992E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=1) (NRM,RELC): (  202.00810      2.0000000     ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING           1   9.5196710000000007        62.099790999999996
+ThermoElectricSolver:  Result Norm   :    202.00809773962655
+ThermoElectricSolver:  Relative Change :    2.0000000000000000
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.34
+Prec-ilu1: Elapsed REAL time:     0.3356 (s)
+   gmres:       6 0.9906E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=2) (NRM,RELC): (  202.00774     0.17575248E-05 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING           2   7.9289720000000017        36.533619000000016
+ThermoElectricSolver:  Result Norm   :    202.00774270568965
+ThermoElectricSolver:  Relative Change :    1.7575248361904854E-006
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.34
+Prec-ilu1: Elapsed REAL time:     0.3408 (s)
+   gmres:       5 0.9890E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=3) (NRM,RELC): (  202.00798     0.11805856E-05 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING           3   8.0676510000000121        29.148235000000000
+ThermoElectricSolver:  Result Norm   :    202.00798119326535
+ThermoElectricSolver:  Relative Change :    1.1805856138404420E-006
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.35
+Prec-ilu1: Elapsed REAL time:     0.3503 (s)
+   gmres:       6 0.9991E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=4) (NRM,RELC): (  202.00782     0.80241841E-06 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING           4   8.4506159999999966        34.192629000000011
+ThermoElectricSolver:  Result Norm   :    202.00781909840694
+ThermoElectricSolver:  Relative Change :    8.0241841182168487E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.34
+Prec-ilu1: Elapsed REAL time:     0.3450 (s)
+   gmres:       6 0.9972E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=5) (NRM,RELC): (  202.00792     0.51624456E-06 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING           5   7.9101900000000001        33.014163999999994
+ThermoElectricSolver:  Result Norm   :    202.00792338387097
+ThermoElectricSolver:  Relative Change :    5.1624455716725924E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.36
+Prec-ilu1: Elapsed REAL time:     0.3600 (s)
+   gmres:       5 0.9892E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=6) (NRM,RELC): (  202.00785     0.34594456E-06 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING           6   8.0994280000000174        28.223175999999967
+ThermoElectricSolver:  Result Norm   :    202.00785350034113
+ThermoElectricSolver:  Relative Change :    3.4594455882608228E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.37
+Prec-ilu1: Elapsed REAL time:     0.3660 (s)
+   gmres:       5 0.9791E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=7) (NRM,RELC): (  202.00790     0.21532752E-06 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING           7   8.4382339999999658        29.717230000000029
+ThermoElectricSolver:  Result Norm   :    202.00789699819597
+ThermoElectricSolver:  Relative Change :    2.1532752024268631E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.34
+Prec-ilu1: Elapsed REAL time:     0.3406 (s)
+   gmres:       5 0.9866E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=8) (NRM,RELC): (  202.00787     0.14469908E-06 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING           8   8.0954839999999990        27.570384999999987
+ThermoElectricSolver:  Result Norm   :    202.00786776784082
+ThermoElectricSolver:  Relative Change :    1.4469908207744560E-007
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.35
+Prec-ilu1: Elapsed REAL time:     0.3501 (s)
+   gmres:       5 0.9702E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=9) (NRM,RELC): (  202.00789     0.86288846E-07 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING           9   7.6927600000000211        29.638478999999961
+ThermoElectricSolver:  Result Norm   :    202.00788519886734
+ThermoElectricSolver:  Relative Change :    8.6288845882153613E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.34
+Prec-ilu1: Elapsed REAL time:     0.3368 (s)
+   gmres:       5 0.9867E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=10) (NRM,RELC): (  202.00787     0.59622136E-07 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING          10   8.3239270000000261        30.504501000000005
+ThermoElectricSolver:  Result Norm   :    202.00787315472618
+ThermoElectricSolver:  Relative Change :    5.9622135568504654E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.35
+Prec-ilu1: Elapsed REAL time:     0.3542 (s)
+   gmres:       5 0.9950E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=11) (NRM,RELC): (  202.00788     0.32250399E-07 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING          11   9.0223349999999982        25.202307000000019
+ThermoElectricSolver:  Result Norm   :    202.00787966956085
+ThermoElectricSolver:  Relative Change :    3.2250399252318137E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.36
+Prec-ilu1: Elapsed REAL time:     0.3566 (s)
+   gmres:       3 0.9438E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=12) (NRM,RELC): (  202.00787     0.24284248E-07 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING          12   8.4771240000000034        16.151384000000007
+ThermoElectricSolver:  Result Norm   :    202.00787476395152
+ThermoElectricSolver:  Relative Change :    2.4284247712994699E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.39
+Prec-ilu1: Elapsed REAL time:     0.3902 (s)
+   gmres:       4 0.9979E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=13) (NRM,RELC): (  202.00788     0.12713750E-07 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING          13   8.2479650000000220        23.556181999999978
+ThermoElectricSolver:  Result Norm   :    202.00787733222910
+ThermoElectricSolver:  Relative Change :    1.2713749731857960E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.35
+Prec-ilu1: Elapsed REAL time:     0.3482 (s)
+   gmres:       5 0.9796E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=14) (NRM,RELC): (  202.00788     0.10325194E-07 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING          14   7.8395359999999528        25.861239999999952
+ThermoElectricSolver:  Result Norm   :    202.00787524645850
+ThermoElectricSolver:  Relative Change :    1.0325194451113312E-008
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.33
+Prec-ilu1: Elapsed REAL time:     0.3356 (s)
+   gmres:       3 0.9831E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=15) (NRM,RELC): (  202.00788     0.35360963E-08 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING          15   8.5134300000000849        18.269574999999918
+ThermoElectricSolver:  Result Norm   :    202.00787596077780
+ThermoElectricSolver:  Relative Change :    3.5360962867805163E-009
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.37
+Prec-ilu1: Elapsed REAL time:     0.3725 (s)
+   gmres:       4 0.9966E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=16) (NRM,RELC): (  202.00788     0.40069643E-08 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING          16   9.0451209999999946        22.425261999999975
+ThermoElectricSolver:  Result Norm   :    202.00787515133945
+ThermoElectricSolver:  Relative Change :    4.0069643088510204E-009
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.34
+Prec-ilu1: Elapsed REAL time:     0.3395 (s)
+   gmres:       3 0.9960E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=17) (NRM,RELC): (  202.00788     0.10506626E-08 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING          17   8.9194559999999683        16.041669999999954
+ThermoElectricSolver:  Result Norm   :    202.00787536358158
+ThermoElectricSolver:  Relative Change :    1.0506626417521465E-009
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.35
+Prec-ilu1: Elapsed REAL time:     0.3474 (s)
+   gmres:       3 0.9981E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=18) (NRM,RELC): (  202.00787     0.21710858E-08 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING          18   7.9596589999999878        16.114696999999978
+ThermoElectricSolver:  Result Norm   :    202.00787492500515
+ThermoElectricSolver:  Relative Change :    2.1710857613290099E-009
+DefUtils::DefaultDirichletBCs: Setting Dirichlet boundary conditions
+EnforceDirichletConditions: Enforcing total of 1247 Dirichlet conditions.
+EnforceDirichletConditions: Applying Dirichlet conditions using scaled diagonal
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+EnforceDirichletConditions: Dirichlet conditions enforced for dofs: 1247
+DefaultSolve: Solving linear system with default routines
+SolveSystem: Solving linear system
+SolveLinearSystem: Assuming real valued linear system
+SolveLinearSystem: Assuming serial linear system
+RowEquilibration:  Unscaled matrix norm:    110747.85110467550
+SolveLinearSystem: Linear System Preconditioning: ilu1
+Prec0-ilu1: Elapsed REAL time:     0.0000 (s)
+SolveLinearSystem: Serial linear System Solver: iterative
+IterSolver: Using iterative method: gmres
+CRS_IncompleteLU: ILU(1) (Real), Performing Factorization:
+CRS_IncompleteLU: ILU(1) (Real), NOF nonzeros:  14986693
+CRS_IncompleteLU: ILU(1) (Real), filling (%) :       192
+CRS_IncompleteLU: ILU(1) (Real), Factorization time (s):     0.34
+Prec-ilu1: Elapsed REAL time:     0.3389 (s)
+   gmres:       3 0.9920E-13
+ComputeNorm: Computing norm of solution
+ComputeChange: NS (ITER=19) (NRM,RELC): (  202.00788     0.37846322E-09 ) :: thermoelectric
+Cold20Profile:  COLD20_TIMING          19   7.8809660000000576        15.732726999999954
+ThermoElectricSolver:  Result Norm   :    202.00787500145771
+ThermoElectricSolver:  Relative Change :    3.7846322065706278E-010
+ComputeNorm: Computing norm of solution
+ComputeChange: SS (ITER=1) (NRM,RELC): (  202.00788      2.0000000     ) :: thermoelectric
+SaveResult: -----------------------------------------
+SaveResult: Saving results to file: ./solution.result
+SaveResult: Done writing results file
+SaveResult: -----------------------------------------
+SingleSolver: Attempting to call solver: 0
+SingleSolver: Solver Equation string is: internalvtuoutputsolver
+ResultOutputSolver: -------------------------------------
+ResultOutputSolver: Saving with prefix: fields
+ResultOutputSolver: Dimension of mesh is: 3
+ResultOutputSolver: Working on mesh 1: . with 159991 nodes
+ResultOutputSolver: Creating list for saving - if not present
+CreateListForSaving: Field Variables for Saving
+CreateListForSaving: Scalar Field 1: temperature
+CreateListForSaving: Scalar Field 2: potential
+ResultOutputSolver: Saving in unstructured VTK XML (.vtu) format
+VtuOutputSolver: Saving results in VTK XML format with prefix: fields
+VtuOutputSolver: Saving number of partitions: 1
+SolverOutputDirectory: Creating directory: /work/outputs/cold20/loaded20_picard_P1
+VtuOutputSolver: Full filename base is: /work/outputs/cold20/loaded20_picard_P1/fields
+GenerateSaveMask: Number of active elements 876217 out of 876217
+GenerateSaveMask: Number of geometry nodes 159991 out of 159991
+VtuOutputSolver: Total number of elements to save: 876217
+VtuOutputSolver: Total number of geometry nodes to save: 159991
+VtuOutputSolver: Total number of dof nodes to save: 159991
+VtuOutputSolver: Setting offset for boundary entities: 1000
+VtuOutputSolver: Writing the vtu file: /work/outputs/cold20/loaded20_picard_P1/fields_t0001.vtu
+AscBinWriteInit: Initializing buffered ascii/binary writing
+AscBinWriteInit: Writing in binary
+AscBinWriteInit: Writing in double precision
+AscBinWriteInit: Writing to unit number: 58
+AscBinWriteInit: Size of buffer is: 159991
+WriteVtuFile: Writing nodal fields
+WriteVtuFile: Saving 1-component variable: temperature
+WriteVtuFile: Saving 1-component variable: potential
+WriteVtuFile: Number of nodal fields written: 2
+WriteVtuFile: Writing elemental fields
+WriteVtuFile: Number of elemental fields written: 0
+WriteVtuFile: Writing entity IDs for bodies and boundaries
+WriteVtuFile: Writing coordinates for each used node
+WriteVtuFile: Writing the elemental connectivity data
+WriteVtuFile: Writing nodal fields
+WriteVtuFile: Saving 1-component variable: temperature
+WriteVtuFile: Saving 1-component variable: potential
+WriteVtuFile: Writing elemental fields
+AscBinWriteFree: Terminating buffered ascii/binary writing
+VtuOutputSolver: All done for now
+ResultOutputSolver: -------------------------------------
+ReloadInputFile: Reloading input file
+LoadInputFile: Loading input file:
+MAIN: Reporting unused list entries for sif improvement!
+MAIN: If you do not want these lines undefine > DEVEL_LISTUSAGE < !
+   Unused keywords:
+       Solver 1              linear system abort not converged
+       Solver 1              linear system ilut tolerance
+MAIN: *** Elmer Solver: ALL DONE ***
+Loading user function library: [/work/outputs/cold20/loaded20_picard_P1/timed/Cold20Timed]...[ThermoElectricSolver_Finalize]
+Loading user function library: [/work/outputs/cold20/loaded20_picard_P1/timed/Cold20Timed]...[ThermoElectricSolver_Finalize]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Finalize]
+Loading user function library: [ResultOutputSolve]...[ResultOutputSolver_Finalize]
+MAIN: The end
+SOLVER TOTAL TIME(CPU,REAL):       686.66      691.98
+ELMER SOLVER FINISHED AT: 2026/10/30 11:35:10

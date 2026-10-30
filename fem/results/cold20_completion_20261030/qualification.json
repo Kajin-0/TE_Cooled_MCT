@@ -1,0 +1,52 @@
+{
+  "Cold20_actual_completed_and_nonraw_verified": true,
+  "three_actual_mesh_levels": true,
+  "full_device_qualification": false,
+  "OEM_validated": false,
+  "device_GCI_qualified": false,
+  "primary_case": "loaded20_refined_replay",
+  "native_Cold20": {
+    "command": [
+      "ElmerSolver",
+      "case.sif"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 1292.4254538889509,
+    "cpu_s": 1292.061304,
+    "peak_rss_kib": 5985040,
+    "timed_out": false,
+    "nonlinear_iterations": 4,
+    "nonlinear_last_relative_change": 7.657400147991586e-10
+  },
+  "same_mesh_refined_parent_passed": true,
+  "independent_bath_comparison": {
+    "parent_case": "/work/outputs/cold20/loaded20_refined_replay",
+    "parent_uses_same_LU_refinement": true,
+    "cold_cells_byte_identical": {
+      "4": true,
+      "302": true,
+      "303": true,
+      "304": true,
+      "305": true
+    },
+    "die_delta_K": 0.0004208308915849557,
+    "voltage_delta_V": 2.945643251206498e-06,
+    "parent_bath_relative_error": -0.014962568410044506,
+    "refined_bath_relative_error": -0.012913819578347072,
+    "parent_cold_jumps": [
+      0.06476539473607655,
+      -0.04608512095156699
+    ],
+    "refined_cold_jumps": [
+      0.0647654072488692,
+      -0.0460851211332053
+    ],
+    "qualified_GCI": false,
+    "scope": "one independent conformal bath-volume refinement with exact original cold cells; all raw gates unchanged"
+  },
+  "historical_failed_raw_bath_criteria": "UNCHANGED FAILED; no reaction/recovered substitution",
+  "old_report": "UNCHANGED15 pages",
+  "scope": "solid-only source-traced synthetic reference; no enclosure/gas/radiation/OEM claim",
+  "failed_Picard_physical_verification_retained": true,
+  "all_failed_trials_retained": true
+}
