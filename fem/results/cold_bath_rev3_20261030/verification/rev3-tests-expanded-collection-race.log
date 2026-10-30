@@ -1,0 +1,44 @@
+
+==================================== ERRORS ====================================
+________________ ERROR collecting outputs/rev3-replay-pxhhpwnm _________________
+/opt/venv/lib/python3.12/site-packages/_pytest/runner.py:341: in from_call
+    result: TResult | None = func()
+/opt/venv/lib/python3.12/site-packages/_pytest/runner.py:389: in collect
+    return list(collector.collect())
+/opt/venv/lib/python3.12/site-packages/_pytest/main.py:523: in collect
+    for direntry in scandir(self.path):
+/opt/venv/lib/python3.12/site-packages/_pytest/pathlib.py:950: in scandir
+    with os.scandir(path) as s:
+E   FileNotFoundError: [Errno 2] No such file or directory: '/work/outputs/rev3-replay-pxhhpwnm'
+=============================== warnings summary ===============================
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:64
+  /opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+  /opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+../opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+  /opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+../opt/venv/lib/python3.12/site-packages/matplotlib/_mathtext.py:45
+  /opt/venv/lib/python3.12/site-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR outputs/rev3-replay-pxhhpwnm - FileNotFoundError: [Errno 2] No such fil...
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+14 warnings, 1 error in 4.48s

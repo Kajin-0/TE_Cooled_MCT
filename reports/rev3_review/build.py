@@ -12,6 +12,7 @@ def read(p):return json.loads(p.read_text())
 def write(p,x):p.write_text(json.dumps(x,indent=2,allow_nan=False)+'\n')
 
 def figures(out):
+    if (out/'edition_checksums.json').exists():raise ValueError('Published edition is immutable; use a new output directory')
     import numpy as np,meshio,matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -97,6 +98,7 @@ def figures(out):
 def build(out):
     if out.exists():raise ValueError('An edition is immutable: use a new edition directory')
     subprocess.run([str(ROOT/'fem/run.sh'),'python','reports/rev3_review/build.py','--figures-only','--out',str(out.relative_to(ROOT))],cwd=ROOT,check=True)
+    subprocess.run([str(ROOT/'fem/run.sh'),'python','-c',"from pathlib import Path; from reports.rev3_review.latest_study import supplement; supplement(Path("+repr(str(out.relative_to(ROOT)))+"))"],cwd=ROOT,check=True)
     shutil.copy2(Path(__file__).with_name('report.tex'),out/'report.tex')
     env=os.environ.copy();env['SOURCE_DATE_EPOCH']='1793318400';env['TZ']='UTC'
     for i in range(3):
@@ -113,7 +115,7 @@ def publish(out):
     for n,h in d['generator'].items():
         if sha(ROOT/n)!=h:raise ValueError('Changed report generator after build')
         dest=out/'source_snapshot'/(n+'.source');dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/n,dest)
-    d['derived']={n:sha(out/n) for n in ['report.tex','numerics.tex','section.npz']};write(out/'report_inputs.json',d)
+    d['derived']={n:sha(out/n) for n in ['report.tex','numerics.tex','section.npz','latest_cover.tex','latest_study.tex'] if (out/n).exists()};write(out/'report_inputs.json',d)
     write(out/'edition_checksums.json',{str(p.relative_to(out)):sha(p) for p in sorted(out.rglob('*')) if p.is_file()})
     verify_edition(out)
     shutil.copy2(out/'report.pdf',PUBLIC)

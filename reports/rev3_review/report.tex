@@ -24,14 +24,16 @@
 
 \textbf{Abstract.} A steady, coupled thermoelectric finite-element calculation resolves 88 semiconductor legs, interstage copper routing and a source-referenced two-ear, nine-pin header. The package drawing and independently selected cooler datasheet define a \emph{synthetic composite}; no evidence identifies this as a manufactured assembly. At 0.1\,A and 2\,mW imposed die heating, the principal archived mesh predicts a die mean of approximately 265.616\,K and a terminal voltage of 0.551927\,V. These are conditional numerical outputs, not validated device performance.
 
-Current and weak energy checks pass, but independently integrated raw heat flux does not meet all required limits. Neither a small algebraic residual nor a stable die temperature resolves this qualification failure. The review draft is issued now to expose the corrected geometry, calculations and limitations for technical review.
+On the initial fine mesh, current and weak energy checks pass, but independently integrated raw heat flux does not meet all required limits. Neither a small algebraic residual nor a stable die temperature resolves this qualification failure. The review draft is issued now to expose the corrected geometry, calculations and limitations for technical review.
 
+\IfFileExists{latest_cover.tex}{\input{latest_cover.tex}}{}
+\textbf{Retained initial qualification evidence.}
 \begin{center}\begin{tabularx}{\linewidth}{Xrrl}\toprule
 Qualification test & Observed & Required & Status\\\midrule
 Ceramic/attach raw mismatch & 6.48\% & $<5$\% & \fail\\
 Attach/MCT raw mismatch & 4.61\% & $<5$\% & PASS\\
 Initial independent bath error & 1.50\% & $<1$\% & \fail\\
-Separate bath refinement error & 1.29\% & $<1$\% & \fail\\
+Earlier bath refinement error & 1.29\% & $<1$\% & \fail\\
 Combined mesh and comparator & Incomplete & Both gates & OPEN\\\bottomrule
 \end{tabularx}\end{center}
 
@@ -68,7 +70,7 @@ The feedthrough seals and pin centers follow a separately audited coordinate reg
 \subsection{Mesh and conductor connectivity}
 The principal field uses 159,991 nodes and 647,657 tetrahedra. Mesh checks identify material-pair contacts, exterior faces and terminal regions from actual tetrahedron adjacency, rather than inferring connectivity from a CAD rendering. No undeclared internal boundary is permitted. Every intended leg and interstage conductor belongs to the same two-terminal series component.
 
-\fig{stack_mesh}{.96}{Exact $y=0.15$\,mm tetrahedron/plane intersection of the resolved stack. Void space remains white. Lines are actual cut-element edges; no scattered triangulation bridges gaps. The two hot-side module pad faces belong to the resolved copper routing.}
+\fig{stack_mesh}{.96}{Exact $y=0.15$\,mm tetrahedron/plane intersection of the resolved stack. Void space remains white. Lines are actual cut-element edges; no scattered triangulation bridges gaps. The two hot-side module pad faces belong to the resolved copper routing. P legs are red, N legs blue, copper ochre, ceramics ivory, attach gray and die purple.}
 
 \begin{tabularx}{\linewidth}{lX}\toprule
 Resolved feature & Dimensions and interpretation\\\midrule
@@ -171,9 +173,10 @@ The analytical mean temperature is 300.1958788\,K. The finest distributed-source
 
 \clearpage
 \section{Verification matrix and numerical release gates}
+The matrix records the principal archived initial-mesh field illustrated above. Subsequent normal-volume studies, when included, are reported in their own section with a separate current-status statement.\par
 \small
 \begin{tabularx}{\linewidth}{p{37mm}p{34mm}Xl}\toprule
-Test & Hard limit & Current evidence & Status\\\midrule
+Test & Hard limit & Baseline evidence & Status\\\midrule
 Source geometry/topology & 216 domains; 88 legs; two terminals & Corrected actual mesh audit & PASS\\
 All 177 current cuts & Each $<0.5\%$ & Worst \WorstCut\% & PASS\\
 Global heat residual & $<1\,\mu$W & \GlobalResidual\,$\mu$W & PASS\\
@@ -196,12 +199,13 @@ Empirical/OEM assembly validation & Identified assembly and measurements & No id
 \subsection{Solver performance and current refinement studies}
 On the fixed fine mesh, the native direct-LU run completes in 1292.4\,s with four nonlinear iterations and about 5.71\,GiB peak resident memory. Assembly costs 9.2--9.8\,s per iteration; the linear solve costs 257--343\,s and dominates. A same-mesh replay using refinement with the \emph{current} matrix and numeric LU completes in 558.0\,s, two iterations and 5.83\,GiB. This warm replay is not a claim of general cold-start speedup.
 
-Two additional bounded coupled studies refine cold-contact owner volumes and Kovar bath-owner volumes independently. Geometry gates pass at 821,078 and 744,713 tetrahedra. They retain all physical equations, source terms and acceptance limits. At this edition's data freeze these new solves are pending; no field or passing gate is inferred from their meshes or initial guesses. Later verified results require a new review edition.
+\IfFileExists{latest_study.tex}{Subsequently completed normal-volume studies retain all physical equations, source terms and acceptance limits. Their actual solved fields and current release status are documented in the following section.}{Two additional bounded coupled studies refine cold-contact owner volumes and Kovar bath-owner volumes independently. Geometry gates pass at 821,078 and 744,713 tetrahedra. They retain all physical equations, source terms and acceptance limits. At this edition's data freeze these new solves are pending; no field or passing gate is inferred from their meshes or initial guesses. Later verified results require a new review edition.}
 
+\IfFileExists{latest_study.tex}{\input{latest_study.tex}}{}
 \clearpage
 \section{Ranked work needed before physical prediction}
 \begin{enumerate}
-\item Complete independent normal-volume refinements and evaluate both owner-side contact powers and the raw external bath integral. If both tracks pass, solve their combined mesh and a systematic comparator. Keep failed attempts and original limits visible.
+\item Establish both original raw limits on a production mesh and a systematically refined comparator. Evaluate both owner-side contact powers and the raw external bath integral; continue normal or transverse refinement as indicated by the actual residuals. Keep failed attempts and original limits visible.
 \item Quantify die temperature, terminal voltage and stage heat sensitivity. Establish asymptotic behavior before claiming any whole-device GCI; a small change in one output is insufficient.
 \item Identify the actual assembly, P/N grades, temperature-dependent transport data, solder/attach thicknesses and contact impedances. Use independent calibration and holdout measurements. Geometry agreement alone does not establish OEM validation.
 \item Add and separately verify physical supply/detector links, cap/window, carrier and enclosure heat transfer as needed. Pressure-dependent gas and surface radiation require new coupled conservation and sensitivity checks; none is inherited from older assumed-geometry studies.

@@ -1,0 +1,26 @@
+\clearpage\section{Subsequent independent normal-volume studies}
+These additional actual Elmer runs retain the same 0.1\,A, 2\,mW, 300\,K bath, material laws and disabled external links. They supplement the initial fields shown earlier; no historical failed gate is relabeled. Normal-edge bisection adds free owner-volume nodes while keeping target surface triangles unchanged. Region locks and material connectivity are audited on the actual tetrahedra.\par
+\begin{center}\footnotesize\begin{tabular}{lrrrrr}\toprule Study & Tetrahedra & Die mean (K) & Voltage (V) & Cold raw (\%) & Bath raw (\%)\\\midrule
+Cold normal refinement & 821,078 & 265.616118 & 0.551926634 & +4.795 & -1.496 \\
+Bath normal refinement 1 & 744,713 & 265.616580 & 0.551930113 & +6.477 & -1.069 \\
+Bath normal refinement 2 & 821,458 & 265.616593 & 0.551930210 & +6.477 & -1.093 \\
+\bottomrule\end{tabular}\end{center}
+The cold track changes only the cold ceramic, attach and die; every bath and TEC-conductor cell is fixed. Ceramic/attach mismatch falls from 6.477\% to 4.795\%, passing 5\% but not the preferred 4.5\% margin. Attach/die mismatch falls to 2.306\%. The die mean changes by only 24.94\,$\mu$K and voltage by 0.58\,nV, despite the larger change in the raw boundary gradient.\par
+The bath tracks change only Kovar owner volumes; every cold, glass, pin and TEC cell is fixed. Median owner normal heights successively halve from 295.961 to 147.981 and 73.990\,$\mu$m. The first new bath level gives a raw error of 1.069\% and remains FAILED. The table reports the next actual level without changing the 1\% criterion. This is local anisotropic boundary refinement, not a qualified whole-device GCI.\par
+The second bath-normal level gives 1.093\% raw error, slightly worse than 1.069\% at the preceding level. The response is nonmonotone despite exact normal-height halving. Die mean changes by +12.270\,$\mu$K and voltage by +0.096409\,$\mu$V. Normal refinement alone has not established raw bath convergence; transverse resolution and signed local cancellation need further controlled investigation.\par
+\textbf{Release status: incomplete.} Separate passing tracks, or a single combined passing mesh, are insufficient. Both original raw thresholds must also pass on a systematically refined comparator, with all conservation checks and quantified output sensitivity. The earlier 5\%/1\% failures remain archived. No OEM assembly validation or device GCI is claimed.
+\clearpage\subsection{Actual refined-field evidence and stage conservation}
+All three new cases pass all 177 current cuts and the global, stage and free-residual checks. Their worst cut error is 0.406120\%. Maximum global heat error is 0.000093\,$\mu$W; maximum free thermal and current residuals are 0.002472\,$\mu$W and 0.042254\,$\mu$A. These checks remain distinct from the failed raw bath criterion.\par
+\fig{latest_raw_flux}{.98}{Actual independent owner-gradient flux from the refined solved fields. The ceramic trace uses the cold-normal mesh; the signed bath map uses the latest completed bath or combined case, as identified in the table. These are separate field integrals; visual similarity does not establish a passing combined mesh.}
+\begin{center}\small\begin{tabular}{lrrrr}\toprule Study & Solve (s) & Iterations & Last relative change & Peak RSS (GiB)\\\midrule
+Cold normal refinement & 1269.5 & 2 & 4.23e-11 & 8.23 \\
+Bath normal refinement 1 & 1221.4 & 4 & 2.17e-11 & 5.30 \\
+Bath normal refinement 2 & 903.7 & 3 & 2.68e-10 & 5.44 \\
+\bottomrule\end{tabular}\end{center}
+The stage balances below refer to the latest completed second bath-normal case.\par
+\begin{center}\small\begin{tabular}{lrrrr}\toprule Stage band & Hot out (mW) & Cold out (mW) & Electrical work (mW) & Residual ($\mu$W)\\\midrule
+1 & 57.193021 & 18.014934 & 39.178087 & 0.000008 \\
+2 & 18.014934 & 5.754100 & 12.260833 & -0.000018 \\
+3 & 5.754100 & 0.000000 & 3.754100 & -0.000006 \\
+\bottomrule\end{tabular}\end{center}
+The coldest band includes the 2\,mW die source. The stage table uses independent weak control-volume checks; those checks do not replace the raw boundary-flux limits.\par

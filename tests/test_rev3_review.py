@@ -20,6 +20,8 @@ def test_review_requires_corrected_mesh_and_honest_failed_scope():
         with pytest.raises(ValueError):provenance(bad)
     bad=copy.deepcopy(d);bad['inputs']['fem/results/g3b_20261029/old.png']='old'
     with pytest.raises(ValueError):provenance(bad)
+    bad=copy.deepcopy(d);bad['normal_volume_study']={'full_numerical_release':True,'actual_completed_cases':['cold1','bath2','bath3']}
+    with pytest.raises(ValueError):provenance(bad)
 
 def test_review_preserves_historical_pdf():
     from reports.rev3_review.build import ROOT,sha
@@ -31,5 +33,23 @@ def test_published_review_edition_has_verified_immutable_inputs_and_pdf():
     current=json.loads((ROOT/'reports/rev3_review/current.json').read_text())
     out=ROOT/current['edition']
     assert verify_edition(out)
+    for edition in (ROOT/'reports/rev3_review/editions').iterdir():
+        if (edition/'edition_checksums.json').exists():assert verify_edition(edition)
     assert sha(PUBLIC)==sha(out/'report.pdf')==current['pdf_sha256']
     assert current['review_draft'] and not current['full_qualification']
+
+@pytest.mark.parametrize('operation',['figures','supplement'])
+def test_generators_refuse_to_overwrite_a_published_edition(tmp_path,operation):
+    from reports.rev3_review.build import figures
+    from reports.rev3_review.latest_study import supplement
+    (tmp_path/'edition_checksums.json').write_text('{}')
+    with pytest.raises(ValueError,match='immutable'):
+        {'figures':figures,'supplement':supplement}[operation](tmp_path)
+
+def test_validating_a_published_edition_is_read_only():
+    from reports.rev3_review.build import ROOT,sha
+    from reports.rev3_review.validate import validate
+    current=json.loads((ROOT/'reports/rev3_review/current.json').read_text());out=ROOT/current['edition']
+    before={p:sha(p) for p in out.rglob('*') if p.is_file()}
+    assert validate(out)['passed']
+    assert before=={p:sha(p) for p in out.rglob('*') if p.is_file()}

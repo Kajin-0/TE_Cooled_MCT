@@ -1,0 +1,11 @@
+{
+  "registered_before_runs":true,
+  "physics":"same source216 domains/88 legs,0.1A,2mW MCT,300K bath,Cu/Au OFF; frozen material laws",
+  "method":"exact conformal edge-star bisection of normal edges from interface/bath triangles to adjacent tetrahedral apex; interface triangles unchanged, free normal-direction nodes added",
+  "cold_track":{"parent":"647657-tet fine source mesh","pairs":[[4,302],[302,303]],"normal_halvings":1,"fixed_other_regions":"all bath/header/glass/pin and TEC conductor cells byte-identical"},
+  "bath_track":{"parent":"675496-tet prior bath refinement","normal_halvings":1,"fixed_region":"all non-Kovar/glass bodies including every cold/TEC cell byte-identical"},
+  "followups":"second normal level if bounded/necessary; combined mesh only if independent fields pass both requested thresholds individually",
+  "tetrahedron_cap":1000000,"minimum_SICN":0.01,"solver_timeout_seconds":2400,
+  "unchanged_gates":{"raw_cold_interface":0.05,"raw_bath":0.01,"177cuts":0.005,"heat_W":1e-6,"free_current_A":1e-6,"nonlinear_relative":1e-9},
+  "review_draft":"mandatory now from latest verified archived source geometry/fields even if these trials fail; no old PDF overwrite"
+}

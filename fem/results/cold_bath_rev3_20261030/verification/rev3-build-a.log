@@ -1,0 +1,17 @@
+Actual corrected-field figures verified /work/reports/rev3_review/editions/20261030_a
+Traceback (most recent call last):
+  File "/home/User/TE_Cooled_MCT/reports/rev3_review/build.py", line 111, in <module>
+    a=argparse.ArgumentParser();a.add_argument('--out',type=Path,required=True);a.add_argument('--figures-only',action='store_true');n=a.parse_args();out=n.out.resolve();figures(out) if n.figures_only else build(out)
+                                                                                                                                                                                                              ~~~~~^^^^^
+  File "/home/User/TE_Cooled_MCT/reports/rev3_review/build.py", line 105, in build
+    validate(out)
+    ~~~~~~~~^^^^^
+  File "/home/User/TE_Cooled_MCT/reports/rev3_review/validate.py", line 30, in validate
+    metadata=subprocess.check_output(['mutool','show',str(out/'report.pdf'),'trailer/Info']).decode();reader(metadata)
+                                                                                                      ~~~~~~^^^^^^^^^^
+  File "/home/User/TE_Cooled_MCT/reports/rev3_review/validate.py", line 8, in reader
+    validate_reader_text(text)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/User/TE_Cooled_MCT/reports/validate_report.py", line 30, in validate_reader_text
+    raise ValueError('Forbidden reader-facing identifiers: ' + ', '.join(found))
+ValueError: Forbidden reader-facing identifiers: visible source hash

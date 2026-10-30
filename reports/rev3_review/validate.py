@@ -16,6 +16,9 @@ def provenance(d):
     expected='fem/results/cold_interface_convergence_20261030/device/cold20um_FAILED/mesh/mesh.npz'
     if expected not in d['inputs'] or d['mesh_sha256']!=d['inputs'][expected]:raise ValueError('Corrected geometry provenance missing')
     if any('/g3b' in x or 'revision6/' in x for x in d['inputs']):raise ValueError('Obsolete figure input')
+    if 'normal_volume_study' in d:
+        study=d['normal_volume_study'];key='fem/results/cold_bath_rev3_20261030/checksums.json'
+        if study['full_numerical_release'] or key not in d['inputs'] or not {'cold1','bath2','bath3'}<=set(study['actual_completed_cases']):raise ValueError('Unqualified or untraced new field supplement')
     return True
 def verify_edition(out):
     d=json.loads((out/'report_inputs.json').read_text());provenance(d)
@@ -29,6 +32,9 @@ def verify_edition(out):
     if not v['passed'] or not visual['all_pages_inspected'] or visual['pdf_sha256']!=sha(out/'report.pdf'):raise ValueError('Unreviewed PDF')
     return True
 def validate(out):
+    if (out/'edition_checksums.json').exists():
+        verify_edition(out)
+        return json.loads((out/'validation.json').read_text())
     d=json.loads((out/'report_inputs.json').read_text());provenance(d)
     for name,digest in d['inputs'].items():
         if sha(ROOT/name)!=digest:raise ValueError('Archived figure input changed: '+name)
@@ -37,6 +43,9 @@ def validate(out):
     text=subprocess.check_output(['mutool','draw','-q','-F','txt',str(out/'report.pdf')],stderr=subprocess.DEVNULL).decode();s=reader(text)
     for required in ['revision 3 review draft','full thermal verification incomplete','not a commercially verified assembly','6.48%','1.29%','fail','177','0.76','0.1','300','same production mesh']:
         if required not in s:raise ValueError('Missing honest review content: '+required)
+    if 'normal_volume_study' in d:
+        for required in ['4.795','1.069','1.093','nonmonotone']:
+            if required not in s:raise ValueError('Missing actual new failed-gate evidence: '+required)
     (out/'reader.txt').write_text(text)
     from reports.validate_report import decode_pdf_metadata
     metadata=decode_pdf_metadata(subprocess.check_output(['mutool','show',str(out/'report.pdf'),'trailer/Info']).decode());reader(metadata)

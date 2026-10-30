@@ -53,3 +53,17 @@ demo, and `./fem/run.sh python fem/archive_cold20.py --verify` to check regressi
 and preservation. The report validation and reproduction do not qualify the
 failed raw 5% cold-interface or 1% bath criteria. See
 `docs/REPORT_REVISION3_REVIEW_CRITERIA.md` for unchanged release gates.
+
+## Published editions at this checkpoint
+
+Edition20261030_a retains the initial13-page draft; edition20261030_b adds the
+three actual normal-volume studies in a15-page draft. Both have immutable
+source/figure/PDF ledgers. The public alias points to b. Cold4.795% passes only
+on its own mesh; both new bath levels fail1%, with nonmonotone final error.
+The supplement never implies a combined solve or numerical release.
+
+Current generators reject writing into any sealed edition. Calling the current
+validator on a sealed edition verifies its ledger without rewriting validation
+or render artifacts. The exact generator snapshots remain with each edition;
+protective guards added later do not replace those original snapshots.
+A standalone three-pass PDF replay of edition a reproduced the identical bytes.

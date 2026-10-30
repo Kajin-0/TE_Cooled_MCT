@@ -23,3 +23,15 @@ def test_normal_edge_star_halves_owner_height_and_keeps_far_domain_exact():
             a=next(i for i in old if b[i]==bid);z=next(i for i in new if bb[i]==bid)
             assert vv[z]==pytest.approx(v[a]/2,rel=1e-11)
     for bid in (1,2,3):assert vv[bb==bid].sum()==pytest.approx(v[b==bid].sum(),rel=1e-12)
+
+
+def test_region_comparison_allows_node_renumbering_but_rejects_changed_tetrahedra():
+    from tecooledmct.gate_refinement_study import same_region
+    p,c,b=geometry(2,[1,1,1]);a={'points':p,'cells':c,'bodies':b}
+    permutation=np.arange(len(p))[::-1];inverse=np.argsort(permutation)
+    z={'points':p[permutation],'cells':inverse[c[:,::-1]],'bodies':b.copy()}
+    assert same_region(a,z,[1,2,3])
+    bad={k:v.copy() for k,v in z.items()};bad['cells'][0]=bad['cells'][1]
+    assert not same_region(a,bad,[1])
+    bad={k:v.copy() for k,v in z.items()};bad['bodies'][bad['bodies']==2]=3
+    assert not same_region(a,bad,[2])

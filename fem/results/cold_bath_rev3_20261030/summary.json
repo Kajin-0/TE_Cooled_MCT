@@ -1,0 +1,103 @@
+{
+  "trials": {
+    "cold1": {
+      "completed": true,
+      "mesh_sha256": "cb8a652ed00f1c2fa7e94679c8cc6cdf824120647d4a2e001443b96d7799286b",
+      "geometry_passed": true,
+      "status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 1269.531579679111,
+        "cpu_s": 1269.2319229999998,
+        "peak_rss_kib": 8626872,
+        "timed_out": false,
+        "nonlinear_iterations": 2,
+        "nonlinear_last_relative_change": 4.2282982721761236e-11
+      },
+      "all_nonraw_gates_passed": true,
+      "cold_mismatches": [
+        0.04795425179717446,
+        -0.023056701402391997
+      ],
+      "bath_relative_error": -0.014962569303888465,
+      "die_delta_from_initial_K": 2.4943025437096367e-05,
+      "voltage_delta_from_initial_V": 5.831465310635053e-10,
+      "same_case_raw_gates_passed": false
+    },
+    "bath2": {
+      "completed": true,
+      "mesh_sha256": "457cb270f20c1a2f47dadc9aa2d7fca89257c2421c31e608e7e39d126410bc51",
+      "geometry_passed": true,
+      "status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 1221.443694558926,
+        "cpu_s": 1221.257914,
+        "peak_rss_kib": 5553288,
+        "timed_out": false,
+        "nonlinear_iterations": 4,
+        "nonlinear_last_relative_change": 2.1717710336607654e-11
+      },
+      "all_nonraw_gates_passed": true,
+      "cold_mismatches": [
+        0.06476540982427839,
+        -0.046085121030539376
+      ],
+      "bath_relative_error": -0.01068632430272475,
+      "die_delta_from_initial_K": 0.000487306597051429,
+      "voltage_delta_from_initial_V": 3.480093883401203e-06,
+      "same_case_raw_gates_passed": false
+    },
+    "bath3": {
+      "completed": true,
+      "mesh_sha256": "9f7105b9d61f174996769239d47b9c565fdbe57c176cd1569f34ec03ea3f055b",
+      "geometry_passed": true,
+      "status": {
+        "command": [
+          "ElmerSolver",
+          "case.sif"
+        ],
+        "exit_code": 0,
+        "elapsed_s": 903.6928802728653,
+        "cpu_s": 903.324612,
+        "peak_rss_kib": 5707624,
+        "timed_out": false,
+        "nonlinear_iterations": 3,
+        "nonlinear_last_relative_change": 2.6817522152303287e-10
+      },
+      "all_nonraw_gates_passed": true,
+      "cold_mismatches": [
+        0.06476541029661481,
+        -0.0460851219485237
+      ],
+      "bath_relative_error": -0.01092874519701789,
+      "die_delta_from_initial_K": 0.0004995761660211429,
+      "voltage_delta_from_initial_V": 3.576502615842969e-06,
+      "same_case_raw_gates_passed": false
+    }
+  },
+  "combined_region_proof": null,
+  "full_numerical_release": false,
+  "passing_refined_combined_comparator": false,
+  "combined_decision": "not run: both independent bath levels fail the unchanged1% gate",
+  "OEM_validated": false,
+  "whole_device_GCI_qualified": false,
+  "original_failed_bath_criteria": "UNCHANGED FAILED; no retroactive relabeling",
+  "old15_page_report": "UNCHANGED",
+  "source_sha256": "eabdd35d17a2c0deefb846833a5e26af8a8f11ea47eab4d5b466149075c5b772",
+  "scope": "actual independent cold-normal and bath-normal volume studies; same-case raw pass alone is not release",
+  "gates": {
+    "cold": 0.05,
+    "bath": 0.01,
+    "current_cuts": 0.005,
+    "heat_W": 1e-06,
+    "current_A": 1e-06,
+    "nonlinear": 1e-09
+  }
+}

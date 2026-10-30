@@ -672,3 +672,47 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   Source scripts have archival .source snapshots; later editions never rewrite
   this edition. Initial data freeze explicitly marks new normal-volume solves
   pending. Original6.48% cold and1.29% bath failures remain prominent.
+
+## Independent cold/bath volume studies and Rev3 review checkpoint, 2026-10-30
+
+- Read docs/COLD_BATH_VOLUME_REFINEMENT_RESULT.md and
+  docs/COLD_BATH_VOLUME_REFINEMENT_REPRODUCIBILITY.md. The new
+  fem/results/cold_bath_rev3_20261030 archive seals three ACTUAL completed
+  coupled216-domain/88-leg Elmer runs and independent owner-gradient audits.
+  Run fem/archive_gate_refinement.py --verify; its ledger preserves all prior
+  sources/archives and the historical15-page PDF. New physics sources/tests/
+  plans named in that ledger are now immutable; add versions for future work.
+- Cold normal1:821078tets,191452nodes; only4/302/303 change. Tc265.616118028K,
+  V0.551926633930, ceramic/attach+4.795425% PASS5%, attach/MCT-2.305670% PASS.
+  Bath-1.496257% FAIL remains on this mesh. Actual1269.532s/2NL/last4.2283e-11.
+- Bath normal1:744713tets,180970nodes; only Kovar changes, cold/TEC cells exact.
+  Tc265.616580391K,V0.551930113440, rawbath-1.068632% FAIL1%;1221.444s/4NL.
+- Bath normal2:821458tets,195424nodes; cold fixed exactly. Tc265.616592661K,
+  V0.551930209849, rawbath-1.092875% FAIL1%;903.693s/3NL/last2.68175e-10.
+  Median owner heights295.961->147.981->73.990um. The last raw error WORSENS;
+  no bath convergence/GCI or qualified production mesh is demonstrated.
+- All three pass177cuts, stage/global/free heat and current checks. Raw bath
+  cannot be replaced with reactions/recovered flux. Combined case NOT RUN: the
+  registered independent bath1% condition remains unmet. Conditional combined
+  resource plan is retained as a plan only, never actual field evidence.
+- Next numerical work: investigate transverse/volume bath resolution and signed
+  cancellation with cold mesh fixed, preserving gates. Only then a combined
+  production mesh AND systematically refined comparator passing5%/1%, plus
+  unchanged current/heat/nonlinear/homogeneous/reproducibility checks.
+- Rev3 current copy now has15 REVIEW DRAFT pages, corrected actual geometry and
+  archived fields only, source assumptions, prominent failed qualification,
+  initial verification matrix and new cold/bath spatial maps/tables. Edition
+  20261030_b and initial13-page20261030_a are independently sealed, with exact
+  generator/figure/PDF provenance and visual review; never rewrite either.
+  Published-edition generators refuse writes; validation is read-only.
+  The historical Rev2 PDF remains unchanged and is not current geometry.
+- Source code and reference geometry remain a synthetic unverified assembly.
+  Cu/Au links OFF,0.1A,2mW,300K Kovar underside, no cap/window/gas/radiation/
+  carrier PDE. No OEM claim, other repository/session or LSDDTS work.
+
+- Final checkpoint verification:139 opt-in tests passed;17 focused tests passed
+  including3 newly added immutability guards; CLI/demo and full prior-archive
+  guards pass. Both Rev3 editions reproduce byte-identical standalone PDFs.
+  Final logs and reference hashes are retained separately at
+  fem/verification/cold_bath_rev3_20261030 so the numerical archive and sealed
+  report editions remain unchanged. Numerical release still incomplete.

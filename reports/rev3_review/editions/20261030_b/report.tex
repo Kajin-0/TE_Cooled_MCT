@@ -1,0 +1,225 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,graphicx,booktabs,tabularx,array,xcolor,fancyhdr}
+\usepackage[margin=22mm,headheight=14pt]{geometry}
+\usepackage[hidelinks,pdfauthor={},pdftitle={Source-Referenced Thermoelectric Cooler and HgCdTe Detector: Revision 3 REVIEW DRAFT}]{hyperref}
+\pdfinfoomitdate=1\pdftrailerid{}\pdfsuppressptexinfo=15
+\definecolor{failure}{rgb}{.55,.12,.12}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Solid-only numerical assessment}\fancyhead[R]{\small Revision 3 REVIEW DRAFT}\fancyfoot[C]{\thepage}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}\setlength{\tabcolsep}{5pt}
+\newcommand{\fig}[3]{\begin{figure}[!ht]\centering\includegraphics[width=#2\linewidth]{figures/#1.pdf}\caption{#3}\end{figure}}
+\newcommand{\fail}{\textcolor{failure}{\textbf{FAIL}}}
+\input{numerics.tex}
+\begin{document}
+\thispagestyle{empty}
+{\Large\bfseries Source-Referenced Three-Stage Thermoelectric Cooler and HgCdTe Detector\par}
+\vspace{5mm}
+{\large Solid-Only Three-Dimensional Numerical Assessment\par}
+\vspace{4mm}
+{\large\bfseries Revision 3 REVIEW DRAFT\par}
+30 October 2026
+
+\vspace{4mm}
+\textcolor{failure}{\textbf{Full thermal verification incomplete; not a commercially verified assembly.}}
+
+\textbf{Abstract.} A steady, coupled thermoelectric finite-element calculation resolves 88 semiconductor legs, interstage copper routing and a source-referenced two-ear, nine-pin header. The package drawing and independently selected cooler datasheet define a \emph{synthetic composite}; no evidence identifies this as a manufactured assembly. At 0.1\,A and 2\,mW imposed die heating, the principal archived mesh predicts a die mean of approximately 265.616\,K and a terminal voltage of 0.551927\,V. These are conditional numerical outputs, not validated device performance.
+
+On the initial fine mesh, current and weak energy checks pass, but independently integrated raw heat flux does not meet all required limits. Neither a small algebraic residual nor a stable die temperature resolves this qualification failure. The review draft is issued now to expose the corrected geometry, calculations and limitations for technical review.
+
+\IfFileExists{latest_cover.tex}{\input{latest_cover.tex}}{}
+\textbf{Retained initial qualification evidence.}
+\begin{center}\begin{tabularx}{\linewidth}{Xrrl}\toprule
+Qualification test & Observed & Required & Status\\\midrule
+Ceramic/attach raw mismatch & 6.48\% & $<5$\% & \fail\\
+Attach/MCT raw mismatch & 4.61\% & $<5$\% & PASS\\
+Initial independent bath error & 1.50\% & $<1$\% & \fail\\
+Earlier bath refinement error & 1.29\% & $<1$\% & \fail\\
+Combined mesh and comparator & Incomplete & Both gates & OPEN\\\bottomrule
+\end{tabularx}\end{center}
+
+\textbf{Scope.} Solids only; copper supply links and gold detector links are OFF. No enclosure, window, carrier transport, radiation or gas heat transfer is included. The 0.5\,mW optical-like component is imposed heat, not a prediction of optical transmission.
+
+\textbf{Review purpose.} Assess the source interpretation, physical assumptions and numerical evidence. Numerical release requires additional raw-flux convergence and a same-mesh gate demonstration. No OEM calibration or empirical assembly validation is claimed.
+
+\clearpage
+\section{Geometry and source interpretation}
+The governing package reference is the VIGO family drawing ZTM-TO66-Z030, Revision 9, dated 1 March 2024 [1]. Its two mounting ears and nine C pins of nominal diameter 0.76\,mm govern the corrected header mesh. Overall flange dimensions are 31.5 by 17.5\,mm, mounting-hole pitch 24.4\,mm and nominal hole diameter 3.7\,mm. The source does not uniquely establish every fillet, seal or internal dimension. Inferred contour radii and idealized glass seals remain explicit modeling assumptions.
+
+The TEC Microsystems 3MC04-044-05 datasheet [2] independently provides a candidate three-stage cooler envelope: hot side 6.4\,mm, cold side 2.4\,mm and height 3.8\,mm. \textbf{The VIGO housing plus this cooler reference is not an identified OEM assembly.} Internal artwork, stage populations and material grades are unverified.
+
+\fig{header_geometry}{.93}{Actual corrected tetrahedral mesh cut at header mid-height. Labels denote pin numbers in the modeled top-view coordinate system; the source bottom view is mirrored consistently. White mounting holes and the two-ear outline are mesh geometry, not an ellipse or an artist's reconstruction.}
+
+\begin{tabularx}{\linewidth}{lX}\toprule
+Element & Provenance and interpretation\\\midrule
+Header and C pins & Drawing envelope; Kovar and glass thermal properties are proxies.\\
+Pin functions & 1/9 TEC supply/return; 7/8 detector; 5/6 thermistor positions.\\
+Internal TEC & 28/12/4 couples, totaling 44 pairs and 88 legs; assumed routing.\\
+Detector and attach & 1\,mm$^2$ by 200\,$\mu$m die; 30\,$\mu$m attach; hypotheses.\\
+Hot joint & Explicit 50\,$\mu$m metallic layer; unidentified alloy.\\\bottomrule
+\end{tabularx}
+
+\clearpage
+\section{Actual solid topology and discretization}
+The corrected mesh contains 216 solid domains. All 88 legs form one electrical series route through the copper pads and interstage conductors. There are two module terminals on the \emph{hot-side} copper pads. The external pin-to-pad copper and detector gold links are disabled in the present calculation: the terminal drive acts directly on the resolved module pad faces. The nine pins remain passive thermal solids with exposed ends adiabatic.
+
+\fig{package_geometry}{.98}{Actual mesh exterior: two-ear header, nine feedthrough pins and the cooler/detector stack. No cap or window is modeled. Pin geometry is retained even though the physical external electrical links are OFF.}
+
+The feedthrough seals and pin centers follow a separately audited coordinate registry. The header underside is the thermal bath; the extended pin shafts are not extra fixed-temperature boundaries. The view shows the solid domain used in the calculation, rather than a complete hermetic package.
+
+\clearpage
+\subsection{Mesh and conductor connectivity}
+The principal field uses 159,991 nodes and 647,657 tetrahedra. Mesh checks identify material-pair contacts, exterior faces and terminal regions from actual tetrahedron adjacency, rather than inferring connectivity from a CAD rendering. No undeclared internal boundary is permitted. Every intended leg and interstage conductor belongs to the same two-terminal series component.
+
+\fig{stack_mesh}{.96}{Exact $y=0.15$\,mm tetrahedron/plane intersection of the resolved stack. Void space remains white. Lines are actual cut-element edges; no scattered triangulation bridges gaps. The two hot-side module pad faces belong to the resolved copper routing. P legs are red, N legs blue, copper ochre, ceramics ivory, attach gray and die purple.}
+
+\begin{tabularx}{\linewidth}{lX}\toprule
+Resolved feature & Dimensions and interpretation\\\midrule
+Ceramic plates & Widths 6.4, 4.55, 3.25 and 2.4\,mm; thickness 220\,$\mu$m each.\\
+Leg sections & 0.4 by 0.4\,mm; stage heights 1.07, 0.82 and 0.64\,mm.\\
+Stage allocation & 56, 24 and 8 legs from hot to cold; assumed internal design.\\
+Current checks & 177 interior cuts across semiconductor and copper route.\\
+Interfaces & Shared conformal nodes; finite bulk attach and joint layers.\\\bottomrule
+\end{tabularx}
+
+\clearpage
+\section{Material laws, interfaces and uncertainties}
+\begin{tabularx}{\linewidth}{lrrrX}\toprule
+Solid & $k$ & $\sigma$ & $S$ & Qualification\\
+ & W\,m$^{-1}$K$^{-1}$ & S\,m$^{-1}$ & $\mu$V\,K$^{-1}$ & \\\midrule
+P leg & 1.5 & 140000 & $+160$ & Constant verification proxy\\
+N leg & 1.5 & 165500 & $-170$ & Constant verification proxy\\
+Copper & 400 & $5.814\,10^7$ & 0 & Constant proxy\\
+Alumina & 30 & --- & 0 & Unidentified grade\\
+Kovar/pins & 17.3 & --- & 0 & Assumed alloy response\\
+Glass & 1 & --- & 0 & Seal proxy\\
+Hot metallic joint & 35 & --- & 0 & Unidentified alloy\\
+Die attach & 1 & --- & 0 & Unidentified material\\
+HgCdTe & $k(T)$ & --- & 0 & Literature thermal model\\\bottomrule
+\end{tabularx}
+
+For Hg$_{0.71}$Cd$_{0.29}$Te, the literature model [3] is represented by piecewise linear nodal conductivity: $(T,k)=(90,2.41)$, $(148,1.61)$, $(298,0.973)$ and $(400,0.790)$ in kelvin and W\,m$^{-1}$K$^{-1}$. The calculation stays within this range. Electrical conductivity of passive domains is a computational extension of $10^{-12}$\,S\,m$^{-1}$, not a physical detector or pin current prediction. Density and heat capacity do not affect this steady calculation.
+
+Interfaces have conformal shared nodes and ideal temperature/potential continuity. The explicit joint and attach have finite bulk thermal resistance; no additional calibrated contact impedance is added. Temperature-dependent, traceable P/N transport curves and measured contact resistances have \emph{not} been qualified for this hypothetical cooler. Earlier material studies cannot identify the actual grade of an unspecified assembly.
+
+\subsection{Imposed conditions and exclusions}
+The electrical drive is 0.1\,A with one hot-pad reference potential. Only the external Kovar underside is held at 300\,K. The die receives uniform volumetric heating totaling 2\,mW: 1.5\,mW imposed bias dissipation plus 0.5\,mW optical-like imposed heat. This does not simulate detector current, absorption, responsivity or transmission through a window.
+
+All other exposed solid surfaces are adiabatic; no arbitrary 300\,K condition is imposed on the cold assembly or pins. Copper supply and gold detector hybrid links are OFF. The source drawing's cap and window, any carrier, thermistor internals, gas, radiation and carrier-transport PDEs are excluded. Their omission bounds the physical scope, even if numerical release is later achieved.
+
+\clearpage
+\section{Coupled field equations and solution verification}
+With electric potential $\phi$, $\mathbf E=-\nabla\phi$, conductivity $\sigma$, thermal conductivity $k$ and Seebeck coefficient $S$, the steady constitutive equations are
+\begin{align}
+\mathbf J&=\sigma(-\nabla\phi-S\nabla T), & \nabla\cdot\mathbf J&=0,\\
+\mathbf q&=-k\nabla T+ST\mathbf J, & \nabla\cdot\mathbf q&=\mathbf J\cdot\mathbf E+q_v.
+\end{align}
+The coupled upstream Elmer thermoelectric solver includes Seebeck, Peltier, Joule and Fourier terms. It uses conformal linear tetrahedra and a nonlinear stopping threshold below $10^{-9}$. No reduced thermal network replaces the three-dimensional solve.
+
+\fig{temperature}{.88}{Actual solved temperature on the exact stack section. Colors represent source-cell means of the P1 field. The colder upper stage and warmer hot-side solids arise from the coupled solution. The field is conditional on the assumed materials and failed spatial qualification.}
+
+\begin{tabularx}{\linewidth}{Xr}\toprule
+Principal archived calculation & Numerical value\\\midrule
+Nodes / tetrahedra & 159,991 / 647,657\\
+Die volume mean & \Die\ K\\
+Cold ceramic volume mean & \Cold\ K\\
+Terminal voltage & \Voltage\ V\\
+Known input, $I\Delta\phi+Q_{die}$ & 57.192663\,mW\\
+Bath weak reaction / raw gradient & \BathWeak\ / \BathRaw\ mW\\\bottomrule
+\end{tabularx}
+Extra digits identify reproducible numerical outputs; they do not express physical accuracy or manufacturing tolerance.
+
+\clearpage
+\section{Electrical and heat-flow fields}
+\fig{potential}{.81}{Actual electrical potential on the conductor section. Only P, N and copper are colored. The module terminals are on the hot side; external pin links are OFF.}
+\fig{current}{.81}{Magnitude of the actual element-mean current density on the same section. Continuity is tested separately at every one of 177 interior cuts; plotting a smooth field alone is not a continuity test.}
+
+\clearpage
+\fig{heat}{.85}{Actual element-mean total solid heat flux, including Fourier and Peltier terms. The logarithmic scale reveals both the stack and passive conductive paths; it is not a recovered conservative boundary flux.}
+\fig{cold_detail}{.98}{Actual resolved cold ceramic, 30\,$\mu$m attach and 200\,$\mu$m die section. The small die-temperature mesh sensitivity does not certify the normal heat-flux gradients. The maximum plotted range is a visualization choice, not an uncertainty band.}
+
+\section{Independent raw-gradient diagnostics}
+The heat-flux audit fits each tetrahedron's actual affine temperature gradient, uses its owner material conductivity and the oriented area of each physical triangle, and sums powers with area weights. At an internal interface, each solid supplies an independent outward trace. Define
+\begin{equation}
+e_\Gamma=\frac{Q^-_{out}+Q^+_{out}}{(|Q^-_{out}|+|Q^+_{out}|)/2},\qquad
+e_b=\frac{Q_{b,raw}-(I\Delta\phi+Q_{die})}{I\Delta\phi+Q_{die}}.
+\end{equation}
+The unchanged limits are $|e_\Gamma|<5\%$ and $|e_b|<1\%$. Reactions and recovered fluxes are useful checks but cannot replace these raw criteria.
+
+\clearpage
+\section{Cold-interface and bath evidence}
+\fig{cold_flux}{.93}{Actual independent raw Fourier flux on both sides of each cold contact, positive downward. The ceramic/attach mismatch is $+6.4765\%$ (FAIL); attach/MCT is $-4.6085\%$ (PASS). Different traces are numerical evidence, not an imposed contact jump.}
+
+\fig{bath_flux}{.98}{Actual raw outward flux on the Kovar underside before and after a separate bath-volume refinement. The cold mesh is exactly fixed. Absolute integral errors improve from 1.4963\% to 1.2914\%, both FAIL. The reference is known external input, not the bath reaction.}
+
+\clearpage
+\section{Mesh sensitivity and independent analytical benchmark}
+\begin{center}\small\begin{tabular}{lrrrrr}\toprule
+Mesh & Tetrahedra & Die mean (K) & Voltage (V) & $e_{cer/att}$ (\%) & $e_{att/die}$ (\%)\\\midrule
+\ConvergenceRows
+\bottomrule\end{tabular}\end{center}
+\fig{convergence}{.98}{Three actually completed coupled meshes. Successive die-temperature changes are 21.10 and 2.47\,mK; voltage is nonmonotone. Raw ceramic/attach error remains above 5\%. These are sensitivity data, not a rigorous whole-device grid-convergence index.}
+
+The cold-region effective mesh sizes are 76.724, 25.484 and 17.608\,$\mu$m. Refinement is local and anisotropic; the bath and most TEC regions stay nearly fixed. A conditional temperature-only fit yields order 1.324 and a 3.91\,mK fine-to-limit difference, but this does \emph{not} qualify a device GCI. Nonmonotone voltage admits no such extrapolation. The separate 675,496-tetrahedron bath case shifts the die mean by $+0.421$\,mK and voltage by $+2.946\,\mu$V.
+
+\clearpage
+\subsection{Independent analytical reference}
+The benchmark uses 220/30/200\,$\mu$m layers and conductivities 30/1/1.1\,W\,m$^{-1}$K$^{-1}$. Constant-flux and distributed-source cases separate normal-gradient truncation from integration errors. Coarser benchmark failures remain failures. Near-exact nodal values with finite mean and face-flux errors illustrate why an algebraically converged solution may still fail raw-gradient gates.
+
+\fig{benchmark}{.98}{Independent three-dimensional, three-layer HeatSolver benchmark with an analytical temperature field, harmonic transverse variation and a distributed 2\,mW source. Source-face errors are 12.5, 6.25 and 3.125\%; mean-temperature errors are 1.855, 0.464 and 0.116\,mK. The finest benchmark passes its preregistered checks; this does not qualify the coupled device.}
+
+For a uniformly heated slab with constant conductivity, the axial solution includes a quadratic term, $T(z)=a+bz-q_vz^2/(2k)$. Its exact gradient varies linearly. A linear tetrahedron represents temperature by an affine field and therefore has a constant gradient. Even when nodal temperatures nearly match the analytical solution, the boundary trace samples a finite owner volume rather than the exact boundary derivative. Normal refinement addresses that truncation directly.
+
+The analytical mean temperature is 300.1958788\,K. The finest distributed-source calculation gives 300.1957629\,K. Source-face flux error halves at each level, while mean-temperature error decreases by approximately four, consistent with first-order boundary gradients and second-order temperature integration in this controlled benchmark. The actual coupled device has material jumps, geometric edges and local refinement, so these rates are evidence for the mechanism, not transferable error estimates.
+
+\clearpage
+\section{Verification matrix and numerical release gates}
+The matrix records the principal archived initial-mesh field illustrated above. Subsequent normal-volume studies, when included, are reported in their own section with a separate current-status statement.\par
+\small
+\begin{tabularx}{\linewidth}{p{37mm}p{34mm}Xl}\toprule
+Test & Hard limit & Baseline evidence & Status\\\midrule
+Source geometry/topology & 216 domains; 88 legs; two terminals & Corrected actual mesh audit & PASS\\
+All 177 current cuts & Each $<0.5\%$ & Worst \WorstCut\% & PASS\\
+Global heat residual & $<1\,\mu$W & \GlobalResidual\,$\mu$W & PASS\\
+Free thermal residual & $<1\,\mu$W & \ThermalResidual\,$\mu$W & PASS\\
+Free current residual & $<1\,\mu$A & \CurrentResidual\,$\mu$A & PASS\\
+Nonlinear change & $<10^{-9}$ & $4.34\,10^{-10}$ & PASS\\
+Homogeneous solid test & Passive 300\,K & Error below 4\,nK & PASS\\
+Same-mesh replay & Agreement with native LU & 0.225\,$\mu$K; 3.70\,nV & PASS\\
+Ceramic/attach raw flux & $<5\%$ absolute & 6.48\% & \fail\\
+Attach/MCT raw flux & $<5\%$ absolute & 4.61\% & PASS\\
+Independent raw bath & $<1\%$ absolute & Best separate case 1.29\% & \fail\\
+Same production mesh and refined comparator & Both raw gates, all conservation checks & Not demonstrated & OPEN\\
+Qualified whole-device GCI & Systematic asymptotic evidence & Local conditional fit only & OPEN\\
+Empirical/OEM assembly validation & Identified assembly and measurements & No identified composite assembly & OPEN\\\bottomrule
+\end{tabularx}
+\normalsize
+
+\textbf{Numerical release requires both original raw limits on one production mesh and at least one systematically refined comparator}, together with all 177 current cuts, global/stage heat checks, free thermal/electrical residuals, homogeneous baseline and reproducibility checks. Temperature and voltage sensitivity must be reported. Preferred 4.5\% cold and 0.9\% bath margins are targets, not relaxed or replacement gates. Passing two different meshes separately is insufficient.
+
+\subsection{Solver performance and current refinement studies}
+On the fixed fine mesh, the native direct-LU run completes in 1292.4\,s with four nonlinear iterations and about 5.71\,GiB peak resident memory. Assembly costs 9.2--9.8\,s per iteration; the linear solve costs 257--343\,s and dominates. A same-mesh replay using refinement with the \emph{current} matrix and numeric LU completes in 558.0\,s, two iterations and 5.83\,GiB. This warm replay is not a claim of general cold-start speedup.
+
+\IfFileExists{latest_study.tex}{Subsequently completed normal-volume studies retain all physical equations, source terms and acceptance limits. Their actual solved fields and current release status are documented in the following section.}{Two additional bounded coupled studies refine cold-contact owner volumes and Kovar bath-owner volumes independently. Geometry gates pass at 821,078 and 744,713 tetrahedra. They retain all physical equations, source terms and acceptance limits. At this edition's data freeze these new solves are pending; no field or passing gate is inferred from their meshes or initial guesses. Later verified results require a new review edition.}
+
+\IfFileExists{latest_study.tex}{\input{latest_study.tex}}{}
+\clearpage
+\section{Ranked work needed before physical prediction}
+\begin{enumerate}
+\item Establish both original raw limits on a production mesh and a systematically refined comparator. Evaluate both owner-side contact powers and the raw external bath integral; continue normal or transverse refinement as indicated by the actual residuals. Keep failed attempts and original limits visible.
+\item Quantify die temperature, terminal voltage and stage heat sensitivity. Establish asymptotic behavior before claiming any whole-device GCI; a small change in one output is insufficient.
+\item Identify the actual assembly, P/N grades, temperature-dependent transport data, solder/attach thicknesses and contact impedances. Use independent calibration and holdout measurements. Geometry agreement alone does not establish OEM validation.
+\item Add and separately verify physical supply/detector links, cap/window, carrier and enclosure heat transfer as needed. Pressure-dependent gas and surface radiation require new coupled conservation and sensitivity checks; none is inherited from older assumed-geometry studies.
+\item Compare identified device temperatures, electrical input and heat-rejection curves against independent measurements with uncertainty. Resolve geometry/material uncertainty before interpreting microkelvin-scale link effects or optical performance.
+\end{enumerate}
+
+\subsection{Reproducibility and review status}
+All figures in this edition are rebuilt from immutable corrected mesh and solved-field archives, with audited node and tetrahedron correspondence. Exact plane intersections preserve geometric voids. Machine-readable source inventory, checksums, execution records, figure inputs and build validation accompany this edition separately from reader-facing pages. No solver is rerun merely to draw these figures. The historical report is preserved as earlier assumed-geometry evidence; its figures are not used here.
+
+This document is available for technical review now. Full numerical qualification and physical assembly validation remain incomplete. Numerical precision in tables is for reproducibility; unknown materials, contacts and omitted paths prevent a defensible device-performance uncertainty interval.
+
+\begin{thebibliography}{9}
+\bibitem{vigo} VIGO Photonics, \emph{3TE-TO66(9p)-wW PVI/PCI Detector Technical Drawing}, ZTM-TO66-Z030, Revision 9, 1 March 2024. Public family drawing; it does not identify this composite assembly.
+\bibitem{tec} TEC Microsystems, \emph{3MC04-044-05 Thermoelectric Cooler Datasheet}, 2019. Independent candidate cooler reference.
+\bibitem{mct} Thermal conductivity of HgCdTe, \emph{Applied Optics} \textbf{47}, 578 (2008), \href{https://doi.org/10.1364/AO.47.000578}{doi:10.1364/AO.47.000578}. Composition-dependent thermal model; no detector carrier transport is solved.
+\end{thebibliography}
+\end{document}
