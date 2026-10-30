@@ -1,0 +1,144 @@
+{
+  "config": {
+    "schema": "corrected-enclosure-cad-hypothesis-v1",
+    "source_geometry": "fem/results/geometry_complete_checkpoint_20261030/manifest.json",
+    "cap_outer_diameter_origin": "Corrected VIGO TO66 source cap_od 15.2mm; verify by archive ledger",
+    "cap_height_above_header_m": 0.0086,
+    "cap_wall_thickness_m": 0.0005,
+    "cap_roof_thickness_m": 0.00045,
+    "window_diameter_m": 0.0059,
+    "window_thickness_m": 0.00045,
+    "cap_material": "Steel-like thermal analogue; hypothetical",
+    "window_material": "ZnSe candidate; hypothetical",
+    "status": "ONLY outer cap diameter is source; height, wall, roof and window are engineering geometry assumptions, NOT OEM construction",
+    "boundaries": "Shell foot mates to header top; closed volume is gas but NOT meshed; no optical throughput; no joined composite Elmer mesh",
+    "expected_temperature_model": "none in this CAD-only stage",
+    "assumed_parameter_ranges": {
+      "cap_height_above_header_m": [
+        0.0075,
+        0.01
+      ],
+      "cap_wall_thickness_m": [
+        0.0003,
+        0.00075
+      ],
+      "cap_roof_thickness_m": [
+        0.0003,
+        0.0007
+      ],
+      "window_diameter_m": [
+        0.004,
+        0.0065
+      ],
+      "window_thickness_m": [
+        0.0003,
+        0.0007
+      ]
+    }
+  },
+  "outer_radius_m": 0.0076,
+  "inner_radius_m": 0.0071,
+  "window_radius_m": 0.00295,
+  "header_top_z_m": 0.0015,
+  "cavity_roof_z_m": 0.009649999999999999,
+  "roof_top_z_m": 0.0101,
+  "cavity_height_m": 0.00815,
+  "window_to_die_top_min_m": 0.00407,
+  "roof_to_highest_resolved_solid_clearance_m": 0.00406,
+  "expected_solid_volumes_m3": {
+    "shell": 1.8818925393166245e-07,
+    "roof": 6.935340672156657e-08,
+    "window": 1.2302869530539327e-08
+  },
+  "parent_source_sha256": {
+    "manifest.json": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+    "wire_routes.json": "e751350be5e48af2104eaf2e85c864fecf8ce08e2c03fe2e3349ebdbe96b757f"
+  },
+  "assumptions_sha256": "aab9370215c061cc3e39a345bd1651bae9086a42827219fb756eec8eba646647",
+  "safety": "geometry fixture only: no cavity gas volume, optical window law, or new full-assembly FEM",
+  "actual_volumes_m3": {
+    "shell": 1.8818925393166237e-07,
+    "roof": 6.935340672156668e-08,
+    "window": 1.230286953053935e-08
+  },
+  "face_groups": {
+    "roof_cavity_underside": {
+      "physical_group_id": 7401,
+      "area_m2": 0.00013102797559959634,
+      "surface_entity_tags": [
+        7
+      ]
+    },
+    "roof_outside_top": {
+      "physical_group_id": 7402,
+      "area_m2": 0.0001756071753540356,
+      "surface_entity_tags": [
+        5,
+        6
+      ]
+    },
+    "roof_shell_interface": {
+      "physical_group_id": 7403,
+      "area_m2": 2.309070600388499e-05,
+      "surface_entity_tags": [
+        2
+      ]
+    },
+    "roof_window_interface": {
+      "physical_group_id": 7404,
+      "area_m2": 8.340928495280913e-06,
+      "surface_entity_tags": [
+        8
+      ]
+    },
+    "shell_cavity_side": {
+      "physical_group_id": 7405,
+      "area_m2": 0.0003635765177999468,
+      "surface_entity_tags": [
+        4
+      ]
+    },
+    "shell_header_mating_foot": {
+      "physical_group_id": 7406,
+      "area_m2": 2.309070600388499e-05,
+      "surface_entity_tags": [
+        3
+      ]
+    },
+    "shell_outside": {
+      "physical_group_id": 7407,
+      "area_m2": 0.0003891804979267035,
+      "surface_entity_tags": [
+        1
+      ]
+    },
+    "window_cavity_underside": {
+      "physical_group_id": 7408,
+      "area_m2": 2.733971006786517e-05,
+      "surface_entity_tags": [
+        10
+      ]
+    },
+    "window_outside_top": {
+      "physical_group_id": 7409,
+      "area_m2": 2.733971006786517e-05,
+      "surface_entity_tags": [
+        9
+      ]
+    }
+  },
+  "volume_physical_groups": {
+    "shell": 7301,
+    "roof": 7302,
+    "window": 7303
+  },
+  "groups_3d": {
+    "1": "shell",
+    "2": "roof",
+    "3": "window"
+  },
+  "meshed_tetrahedra": 8143,
+  "cap_window_only_mesh": true,
+  "no_conformal_interface_to_corrected_88leg_mesh": true,
+  "conservative_thermal_3d_solution": false
+}

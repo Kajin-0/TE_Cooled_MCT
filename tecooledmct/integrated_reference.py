@@ -28,6 +28,7 @@ STAGE_MATERIAL_STATUS='constant first-principles G1 verification proxy (NOT OEM 
 class Scenario:
     ambient_k: float=300.
     current_a: float=.15
+    material_model: str='g1_constant'  # opt-in: zhang2025_analog; prior results untouched
     heat_sink_k_w: float=2.
     detector_bias_w: float=.0015
     detector_absorbed_w: float=.0005
@@ -57,6 +58,8 @@ class Scenario:
             raise ValueError('Nonfinite scenario input')
         if self.gas not in GASES:
             raise ValueError('Unsupported gas species')
+        if self.material_model not in ('g1_constant','zhang2025_analog'):
+            raise ValueError('Unsupported TEC material model')
         if not (180.<=self.ambient_k<=380.) or not (0.<=self.current_a<=1.):
             raise ValueError('Scenario beyond declared thermal/current screening interval')
         for n in ('heat_sink_k_w','detector_bias_w','detector_absorbed_w','cavity_pressure_pa',
@@ -204,7 +207,15 @@ def solve(s:Scenario,g=None):
     def evaluate(x):
         hot,t1,t2,t3,die=x
         th=(hot,t1,t2);tc=(t1,t2,t3)
-        stages=[stage_thermoelectric(c,a,b,s.current_a) for c,a,b in zip(coeff,th,tc)]
+        if s.material_model=='zhang2025_analog':
+            from .graded_tec import stage as graded_stage
+            stages=[graded_stage(g['stages'][i],a,b,s.current_a,
+                       alpha_scale=s.pn_seebeck_scale,rho_scale=s.pn_resistivity_scale,
+                       k_scale=s.pn_thermal_conductivity_scale,
+                       bypass_w_k=s.stage_bypass_w_k[i])
+                    for i,(a,b) in enumerate(zip(th,tc))]
+        else:
+            stages=[stage_thermoelectric(c,a,b,s.current_a) for c,a,b in zip(coeff,th,tc)]
         paths=heat_paths(s,g,x)
         e=paths['external_into_nodes_w']
         # Stage 0/1/2 and die conservation, hot-side bath balance.
@@ -238,7 +249,11 @@ def solve(s:Scenario,g=None):
     global_error=(vtec+vwire)*s.current_a+paths['die_internal_heating_w']+extcold+pin_in-q_bath
     if abs(global_error)>1e-8 or any(abs(st['energy_residual_w'])>1e-9 for st in stages):
         raise ValueError('Power bookkeeping failed')
+    from .graded_tec import source_evidence
     out={'method':'corrected-geometry, 5-node conservative screening; NOT 3D FEM or OEM-validated',
+         'transport_source':source_evidence() if s.material_model=='zhang2025_analog' else
+              {'id':'G1 constant verification properties','grade_matched':False},
+         'material_model':s.material_model,
          'scenario':asdict(s),'geometry_provenance':g['source_sha256'],
          'temperatures_k':{'hot_ceramic':float(fit.x[0]),'stage1':float(fit.x[1]),
              'stage2':float(fit.x[2]),'cold_ceramic':float(fit.x[3]),'MCT_die':float(fit.x[4])},
@@ -274,10 +289,10 @@ def scenarios():
     }
 
 
-def sensitivity(g=None, current=.15):
+def sensitivity(g=None, current=.15, material_model='g1_constant'):
     """One-factor engineering envelope, not uncertainty quantiles or calibration."""
     if g is None:g=geometry()
-    base=replace(Scenario(),current_a=current)
+    base=replace(Scenario(),current_a=current,material_model=material_model)
     reference=solve(base,g)
     trials={
         'Seebeck surrogate scale':('pn_seebeck_scale',.90,1.10),
@@ -305,11 +320,14 @@ def sensitivity(g=None, current=.15):
     return sorted(results,key=lambda r:r['endpoint_span_abs_k'],reverse=True)
 
 
-def run(out):
+def run(out, material_model='g1_constant'):
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
+    if material_model not in ('g1_constant','zhang2025_analog'):
+        raise ValueError('Unsupported material model')
     g=geometry()
     cases={};rows=[]
     for name,s in scenarios().items():
+        s=replace(s,material_model=material_model)
         for i in (step/20 for step in range(21)): # bounded 0..1 A, 0.05 A grid
             label=f'{name}_I{i:.2f}'
             try:
@@ -322,17 +340,22 @@ def run(out):
                              'bath_w':result['bath_rejected_power_w']})
             except ValueError as error:
                 cases[label]={'status':'FAILED CLOSED','reason':str(error)}
-    oat=sensitivity(g)
+    oat=sensitivity(g,material_model=material_model)
     grid_best={}
     for name in scenarios():
         subset=[r for r in rows if r['scenario']==name]
         minimum=min(subset,key=lambda r:r['detector_k'])
+        rejected=[k for k,v in cases.items() if k.startswith(name+'_') and 'status' in v]
         grid_best[name]={'current_a':minimum['current_a'],'detector_k':minimum['detector_k'],
-                         'meaning':'minimum within enumerated 0..1A grid; NOT a continuous physical optimum'}
+                         'meaning':'minimum among accepted discretely sampled cases ONLY; not a continuous physical optimum; any rejected current intervals invalidate an unrestricted optimum claim',
+                         'failed_case_labels':rejected,
+                         'unqualified_optimum_if_failures':bool(rejected)}
     report={'label':'plausible reference-only; not Elmer or product qualification',
             'corrected_geometry':g['source_archive'],'geometry_sha256':g['source_sha256'],
-            'temperature_dependent_tec':False,'source_transport_status':STAGE_MATERIAL_STATUS,
-            'hypotheses':{n:asdict(s) for n,s in scenarios().items()},
+            'temperature_dependent_tec':material_model!='g1_constant',
+            'material_model':material_model,
+            'source_transport_status':STAGE_MATERIAL_STATUS if material_model=='g1_constant' else 'Zhang2025 P/N research analog with explicit 300..390K engineering extension',
+            'hypotheses':{n:asdict(replace(s,material_model=material_model)) for n,s in scenarios().items()},
             'cases':cases,'summary_rows':rows,'grid_best':grid_best,
             'one_factor_sensitivity':oat,
             'sensitivity_warning':'endpoint span across user-defined engineering hypotheses, NOT a statistical uncertainty interval'}
@@ -352,4 +375,5 @@ def run(out):
 
 if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('--out',default=str(ROOT/'outputs/integrated-reference-20261030'))
-    args=ap.parse_args();run(args.out)
+    ap.add_argument('--material',choices=('g1_constant','zhang2025_analog'),default='g1_constant')
+    args=ap.parse_args();run(args.out,material_model=args.material)

@@ -1,0 +1,37 @@
+{
+  "schema": "corrected-enclosure-cad-hypothesis-v1",
+  "source_geometry": "fem/results/geometry_complete_checkpoint_20261030/manifest.json",
+  "cap_outer_diameter_origin": "Corrected VIGO TO66 source cap_od 15.2mm; verify by archive ledger",
+  "cap_height_above_header_m": 0.0086,
+  "cap_wall_thickness_m": 0.0005,
+  "cap_roof_thickness_m": 0.00045,
+  "window_diameter_m": 0.0059,
+  "window_thickness_m": 0.00045,
+  "cap_material": "Steel-like thermal analogue; hypothetical",
+  "window_material": "ZnSe candidate; hypothetical",
+  "status": "ONLY outer cap diameter is source; height, wall, roof and window are engineering geometry assumptions, NOT OEM construction",
+  "boundaries": "Shell foot mates to header top; closed volume is gas but NOT meshed; no optical throughput; no joined composite Elmer mesh",
+  "expected_temperature_model": "none in this CAD-only stage",
+  "assumed_parameter_ranges": {
+    "cap_height_above_header_m": [
+      0.0075,
+      0.01
+    ],
+    "cap_wall_thickness_m": [
+      0.0003,
+      0.00075
+    ],
+    "cap_roof_thickness_m": [
+      0.0003,
+      0.0007
+    ],
+    "window_diameter_m": [
+      0.004,
+      0.0065
+    ],
+    "window_thickness_m": [
+      0.0003,
+      0.0007
+    ]
+  }
+}

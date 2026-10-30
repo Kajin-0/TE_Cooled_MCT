@@ -23,9 +23,12 @@ def render(folder):
     ]
     fig,ax=plt.subplots(figsize=(8.4,5.5))
     for name,title in names:
-        rows=sorted((r for r in sweep if r['scenario']==name),key=lambda r:float(r['current_a']))
-        ax.plot([float(x['current_a']) for x in rows],
-                [float(x['detector_k']) for x in rows],marker='o',label=title)
+        valid={round(float(r['current_a']),2):float(r['detector_k'])
+               for r in sweep if r['scenario']==name}
+        currents=[i/20 for i in range(21)]
+        # Disconnected source-domain failures must NOT be bridged by a line.
+        ax.plot(currents,[valid.get(round(i,2),float('nan')) for i in currents],
+                marker='o',label=title)
     ax.axhline(300,linestyle=':',linewidth=1,label='Ambient: 300 K')
     ax.set(xlabel='TEC series current (A)',ylabel='HgCdTe die temperature (K)',
            title='Corrected-geometry thermal reference: scenario screening')

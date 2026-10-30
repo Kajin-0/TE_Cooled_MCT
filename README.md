@@ -6,6 +6,8 @@
 
 Reproduce: `./fem/run.sh python -m tecooledmct.integrated_reference --out data/integrated_reference_20261030`
 
+**Newest opt-in physics increment (2026-10-30):** [temperature-dependent P/N research analog and corrected source-aligned 3D cap/window CAD](docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md). The P/N analog is a conservative, piecewise source-knot-integrated reduced model, with an explicit **assumed** 300–390 K extension; 49 of 63 current-grid points are in-domain and 14 intentionally fail closed. The new standalone 8,143-tet cap/window fixture has analytical volumes and nine audited physical interfaces, but is **not** yet conformal with the 88-leg FEM or coupled to enclosure gas/radiation field operators. See [graded current plot](data/integrated_graded_20261030/die_temperature_vs_current.png), [material sensitivity plot](data/integrated_graded_20261030/sensitivity_spans.png), and [cap/window CAD audit](fem/results/corrected_enclosure_geometry_20261030/geometry_audit.json). Previous constant-property results, archived FEM failures, and Rev3 remain unchanged.
+
 Open, reproducible **proof-of-concept multiphysics model** of a three-stage thermoelectrically cooled HgCdTe (MCT) detector in a nine-pin TO-66-style hermetic package.
 
 **Phase 0: research prototype, NOT a validated digital twin.** The initial solver is a 4-node steady-state thermoelectric/thermal network and includes exploratory material, gas, radiation, detector loading, electrical, sensitivity and cooldown calculations.
