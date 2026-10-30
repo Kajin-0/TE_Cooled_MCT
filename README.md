@@ -1,216 +1,115 @@
 # TE_Cooled_MCT
 
-**Current objective (2026-10-30):** [Plausible reference-device modeling policy](docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md). Build a physically defensible integrated TEC-cooled HgCdTe/TO-66 model using documented inputs where available and clearly identified engineering assumptions/ranges where proprietary OEM details are unknown. Prioritize coupled heat budgets, practical operating scenarios and sensitivity; OEM comparison is a non-blocking plausibility check, not a requirement to reconstruct a particular commercial device. The [earlier OEM-first validation track](docs/OEM_FIRST_VALIDATION_TRACK_20261030.md) and opt-in bounded 1D material screen remain useful secondary research. Archived FEM raw-flux failures, numerical-release criteria and the approved Rev3 REVIEW DRAFT remain unchanged.
+A reproducible engineering model of a **plausible synthetic** three-stage
+TEC-cooled HgCdTe detector in a nine-pin, two-ear TO-66 package. The objective
+is useful thermal budgets and sensitivity, not reconstruction of a proprietary
+assembly. [Modeling policy](docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md).
 
-**Newest completed simulation capability (2026-10-30):** [integrated reference thermal-budget study](docs/INTEGRATED_REFERENCE_THERMAL_20261030.md) uses the protected corrected **synthetic** 88-leg geometry, assumed three-stage TEC P/N laws, archived inferred Cu/Au wire-route dimensions, effective cap/window radiation and gas conduction, die heating, and hot-side heat-sink resistance. Includes 63 operating points (0–1 A), individual heat-path and conservation budgets, one-at-a-time sensitivity, tests, [temperature plot](data/integrated_reference_20261030/die_temperature_vs_current.png) and [sensitivity plot](data/integrated_reference_20261030/sensitivity_spans.png). This is a **5-node, reduced-order screening model**, NOT a new enclosed-package Elmer solve and NOT an OEM-validated device.
+## Start here
 
-Reproduce: `./fem/run.sh python -m tecooledmct.integrated_reference --out data/integrated_reference_20261030`
+| Question | Read / run |
+| --- | --- |
+| What does the current package model solve? | [Integrated model guide](docs/INTEGRATED_REFERENCE_THERMAL_20261030.md) |
+| Which P/N laws and transport approximations are available? | [Transport and enclosure guide](docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md) |
+| What is documented, inferred or assumed? | Source matrices in those guides; [materials](docs/materials_and_provenance.md) |
+| What is the corrected physical construction? | [Geometry specification](GEOMETRY_SOURCE_OF_TRUTH_SPEC.md), protected geometry manifest and wire routes |
+| What is actually solved in 3D? | [Corrected solid-only thermal work](CORRECTED_GEOMETRY_COUPLED_THERMAL_WORK_ORDER.md), archived Elmer evidence |
+| What must future development preserve? | [AGENTS.md](AGENTS.md), sealed archive verifiers and approved reports |
 
-**Newest opt-in physics increment (2026-10-30):** [temperature-dependent P/N research analog and corrected source-aligned 3D cap/window CAD](docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md). The P/N analog is a conservative, piecewise source-knot-integrated reduced model, with an explicit **assumed** 300–390 K extension; 49 of 63 current-grid points are in-domain and 14 intentionally fail closed. The new standalone 8,143-tet cap/window fixture has analytical volumes and nine audited physical interfaces, but is **not** yet conformal with the 88-leg FEM or coupled to enclosure gas/radiation field operators. See [graded current plot](data/integrated_graded_20261030/die_temperature_vs_current.png), [material sensitivity plot](data/integrated_graded_20261030/sensitivity_spans.png), and [cap/window CAD audit](fem/results/corrected_enclosure_geometry_20261030/geometry_audit.json). Previous constant-property results, archived FEM failures, and Rev3 remain unchanged.
+## Current capabilities and their scope
 
-Open, reproducible **proof-of-concept multiphysics model** of a three-stage thermoelectrically cooled HgCdTe (MCT) detector in a nine-pin TO-66-style hermetic package.
+| Implementation | Space / physics | Qualification limits |
+| --- | --- | --- |
+| `integrated_reference` + `g1_constant` | Five temperatures; three conservative TEC stages, attach, Cu/Au wires, sink, die heating and reservoir exchange | Constant verification properties; 63-point historical baseline |
+| `zhang2025_analog` | Piecewise-integrated affine-temperature P/N legs | Opt-in research analog; high-current curvature omitted; historical 49 accepted / 14 rejected |
+| **`zhang2025_nonlinear`** | Direct bounded nonlinear 1D P/N profiles, analytic banded Newton solve and exact-key cache; same five-node package | New opt-in option; 50 accepted / 13 rejected in the old reservoir scenarios |
+| **`corrected_exchange`** | Gray radiosity and pressure-dependent gas chord network; corrected cap/window dimensions with an explicitly filled stepped core | Preliminary proxy visibility, not every native 88-leg/pin/wire surface; 52 accepted / 11 rejected when coupled to the nonlinear package |
+| Archived corrected Elmer | Genuine coupled 3D solid Peltier/Joule/Fourier fields, 88 legs, header, explicit joints and die | No current corrected enclosed-package 3D field; historical raw bath/interface failures remain unresolved |
 
-**Phase 0: research prototype, NOT a validated digital twin.** The initial solver is a 4-node steady-state thermoelectric/thermal network and includes exploratory material, gas, radiation, detector loading, electrical, sensitivity and cooldown calculations.
+A result that conserves heat is not automatically an accurate device prediction.
+The 300–390 K P/N continuation, contacts, emissivities, gas accommodation, core
+closure and thermal reservoir conditions are engineering assumptions. The VIGO
+housing drawing and TEC Microsystems reference do not identify a verified OEM
+assembly. No optical transmission or detector carrier/noise model is solved.
 
-**G1 update (2026-10-28):** a genuine, separately verified **coupled 3D P/N
-thermocouple FEM** now uses Gmsh and Elmer ThermoElectricSolver. It includes two
-Bi-Te legs, a continuous copper bridge, separate terminal pads and thermally
-conducting alumina supports. It is a single-couple numerical benchmark with
-illustrative material properties, not the full three-stage package.
-See [verified G1 results](docs/PHASE1_G1_RESULT.md) and
-[reproduction instructions](docs/FEM_G1_REPRODUCIBILITY.md).
+## Run the current model
 
-**G2a update:** a real four-couple (eight-leg) series stage now passes coupled
-3D Elmer verification, with explicit alternating hot/cold Cu routing, every-leg
-current/Joule checks and three mesh levels. See [G2a results](docs/PHASE1_G2A_RESULT.md)
-and [reproduction](docs/G2A_REPRODUCIBILITY.md). G1 is preserved; neither milestone
-is a calibrated 44-couple three-stage package simulation.
-
-An [88-leg G2b geometry/mesh proof](docs/PHASE1_G2B_FEASIBILITY.md) now passes
-contact and per-stage circuit audits. It has three isolated stage circuits and
-six ports and remains a separate geometry checkpoint.
-
-**G2b two-terminal update:** a separate inferred construction connects all 88
-legs through two insulated internal Cu routes and passes actual mesh topology
-and fully coupled 3D Elmer verification. Three meshes, both current signs,
-zero drive, cold loading and ceramic-leakage sensitivity are checked. See
-[verified results and limits](docs/PHASE1_G2B_TWO_TERMINAL_RESULT.md) and
-[reproduction](docs/G2B_COUPLED_REPRODUCIBILITY.md). G1/G2a are preserved.
-Routing fabrication, OEM calibration and the complete package remain unvalidated.
-
-
-**G2c material qualification:** opt-in temperature-dependent profiles now retain
-original source markers, SI units and strict intervals for identified published
-hot-extruded P/N samples: default v1 covers 200–300 K; additive v2 covers 40–300 K. Local-temperature Elmer, Thomson and explicit
-resistive-transition checks are separate from OEM device validation. The 2019
-OEM curves have a reserved calibration/holdout split; no fit or grade match is
-claimed. See [G2c status](docs/PHASE1_G2C_RESULT.md),
-[source provenance](docs/G2C_MATERIAL_PROVENANCE.md) and
-[reproduction](docs/G2C_REPRODUCIBILITY.md).
-
-## Run
+Use the existing pinned Docker environment; no installation or new session is
+needed. It stays within four CPUs and the 12 GiB maximum. Use **new output
+locations**, never sealed archives or previous versioned result folders.
 
 ```bash
-python -m pip install -e '.[dev]'
-pytest -q
-python -m tecooledmct.cli --scenario examples/base_argon.json --out outputs/demo
+# Existing baseline, or replace material with zhang2025_analog
+./fem/run.sh python -m tecooledmct.integrated_reference   --material g1_constant --out outputs/reference-replay/baseline
+
+# Direct nonlinear transport with the old effective reservoir exchange
+./fem/run.sh python -m tecooledmct.integrated_reference   --material zhang2025_nonlinear --out outputs/reference-replay/nonlinear
+
+# Build three bounded ray levels and independently audit native source faces
+./fem/run.sh python -m tecooledmct.corrected_exchange   --out outputs/reference-replay/exchange
+
+# Couple the preliminary closed proxy operator to the five-node package
+./fem/run.sh python -m tecooledmct.integrated_reference   --material zhang2025_nonlinear   --exchange outputs/reference-replay/exchange/operator_65536.json   --out outputs/reference-replay/enclosed
+./fem/run.sh python -m tecooledmct.integrated_reference_figures   --from-dir outputs/reference-replay/enclosed
 ```
 
-Produces JSON results and six diagnostic plots: detector temperature versus TEC current, gas pressure, added warm aperture area and detector bias; gas comparison; and illustrative cooldown.
+`summary.json` records temperatures, stage/path budgets, electrical power,
+provenance and full rejected-candidate diagnostics. `sweep.csv` contains accepted
+points only; plots preserve failed intervals as gaps. Discrete grid minima are
+not qualified continuous optima. The operator also records native face audits,
+raw view factors, reciprocal closure corrections and mean geometric chords.
 
-## Scope and epistemic status
+## Current evidence
 
-- **Datasheet anchored**: 2019 TEC Microsystems 3MC04-044-05, 6.4 × 6.4 mm hot side, 2.4 × 2.4 mm cold side, 3.8 ± 0.15 mm height, 44 couples, nominal AC resistance ~2.9 Ω. The manufacturer reports at 300 K, vacuum reference: ΔTmax ~113 K and Qmax ~0.5 W; they are different limit conditions, not a simultaneous operating point.
-- **Inferred**: individual stage allocation (28/12/4 couples), leg heights, effective Seebeck/thermal conductance and package thermal geometry.
-- **Not validated**: absolute cold-stage temperatures, gas mixtures, pressure effects, thermal contacts, current-dependent efficiency, and transient constants.
-- **CAD**: the earlier Revision 6 visual design has internal micron-scale contact gaps and is NOT FEM-ready. See `docs/rev6_cad_audit.md`.
+New versioned results: [nonlinear transport and exchange](data/nonlinear_exchange_20261030).
+At the measured-domain 0.7 A leg test, nonlinear32 vs independent BVP64 voltage
+error is 0.00570%, compared with about 6.48% for the affine approximation.
+At nominal 300 K, 0.15 A and 2 mW die heating, the coupled **proxy** predicts
+232.209 K die temperature and 1.15193 V terminal voltage. These are reduced
+synthetic-device predictions, not measured or 3D enclosed-package temperatures.
 
-### Initial calculations
+![Reduced nonlinear/proxy scenario sweep; failed intervals remain gaps](data/nonlinear_exchange_20261030/enclosed_scenarios/die_temperature_vs_current.png)
 
-The baseline example assumes 300 K ambient, 0.65 A TEC, 2 K/W hot-side sink, 1 atm argon, 0.5 V detector bias across a constant 100 Ω MCT element and 0.1 mW absorbed optical power. Under these *assumptions* the model estimates ~261.5 K, 225.5 K and 195.5 K at successive TEC stages. This is a **demonstration output, not a measured device specification**.
+At fixed test temperatures, increasing rays per surface from 16,384 to 65,536
+changes die gas heat by 0.88% and radiation by 0.14%. The largest view-factor
+balancing correction is still 0.0404 absolute at the last level. This is a
+preliminary operator, without a native-cavity accuracy or statistical error claim.
 
-The detector's electrical self-heating in that scenario is 2.5 mW (= V²/R); additional parasitic loads include gas conduction, radiation, bond wires and thermistor power. Krypton conducts less heat than argon or nitrogen under the present gas model, but production backfill decisions need a much broader reliability and process assessment.
-
-## Physics
-
-Each stage uses an effective-couple relation:
-
-```
-Qc = alpha*I*Tc - (I^2*R)/2 - K*(Th-Tc)
-Qh = alpha*I*Th + (I^2*R)/2 - K*(Th-Tc)
-V  = I*R + alpha*(Th-Tc)
-```
-
-The 4-node solver couples the TEC stages with detector heating, pressure-dependent gas conduction, cap radiation, wire heat leaks and hot-side thermal resistance. Stage balance and Qh-Qc=I*V are tested.
-
-**Calibration vs. validation:** the initial effective coefficients are adjusted to reproduce two manufacturer's limiting performance numbers. Two fitted anchors do not validate loaded or intermediate-stage behavior.
-
-## Repository layout
-
-- `tecooledmct/model.py`: steady-state TEC model and heat-flow breakdown
-- `tecooledmct/experiments.py`: gas/pressure/aperture/current sweeps, deterministic uncertainty, cooldown
-- `tecooledmct/cli.py`: runnable scenarios, charts and JSON reports
-- `tests/`: conservation, limits and solver tests
-- `docs/`: physics, source provenance, known CAD limitations, simulation roadmap
-- `geometry/revision6/`: legacy visual-CAD assumptions and reference; **not** validated solver geometry
-- `AGENTS.md`: continuation instructions for subsequent agents
-
-## Roadmap
-
-1. Digitize manufacturer performance curves and hold out independent verification points.
-2. Measure TEC current/voltage and hot/cold temperatures; instrument heatsink resistance and parasitic loads.
-3. Model actual aperture shields and cavity radiation factors; parameterize MCT R(T).
-4. Build contact-clean simulation geometry with proper coupled electrical/thermal connectivity.
-5. Compare against FEM and gas CFD when justified by sensitivity results.
-
-## Sources
-
-- [TEC Microsystems 3MC04-044-05 datasheet (2019)](https://www.tec-microsystems.com/Download/Datasheets/Thermoelectric%20Coolers/MC04%20Series/3MC04-044-05_Datasheet_2019.pdf)
-- [3MC04 product family](https://tec-microsystems.com/products/thermoelectric-coolers/3mc04-series-thermoelectric-coolers.html)
-- See `docs/physics_and_sources.md` for equations and assumptions.
-
-**Safety:** This repository is for operational modeling, not opening, heating or processing HgCdTe-containing hermetic packages.
-## Phase 1a: geometry sensitivity and a spatial pellet solver (added 2026-10-28)
-
-**The original Phase 0 network does not solve from CAD.** We now distinguish three workflows:
-
-1. `tecooledmct.geometry_sweep`: a **geometry-parameterized, four-node TEC network**. Each stage's length and cross-sectional area modify effective transport coefficients through R~L/A and K~A/L. This is *not FEM* and its effective material parameters still derive from the Phase 0 fitted model.
-2. `tecooledmct.pellet_fvm`: a **real 3D spatial finite-volume temperature-field solve** for *one representative thermoelectric leg*. It resolves Joule heating, spatial conduction, and gas-coupled sidewalls on a voxel mesh. Peltier terms are applied to the end-face heat budgets, not solved as an all-domain electrical PDE. Boundary temperatures come from the network, so the two solvers are **not fully coupled**.
-3. `geometry/reference_cad.py`: exports reference STEP assemblies with **the same leg height/width inputs**. These are visual geometry exports, not validated FEM meshes.
-
-Run:
+## Verify
 
 ```bash
-python -m tecooledmct.geometry_demo --out outputs/pellet-study
-# Optional CadQuery separately installed:
-python geometry/reference_cad.py --pellet-scale 0.70 --out outputs/CAD_70pct
-python geometry/reference_cad.py --pellet-scale 1.30 --out outputs/CAD_130pct
+./fem/run.sh python -m tecooledmct.nonlinear_tec_study   --out outputs/reference-replay/transport-checks
+./fem/run.sh python -m pytest -q tests/test_nonlinear_tec.py   tests/test_corrected_exchange.py tests/test_graded_tec.py   tests/test_corrected_enclosure.py tests/test_integrated_reference.py
+./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs
+./fem/run.sh python fem/archive_bath_spatial_device.py --verify
+./fem/run.sh python -m tecooledmct.cli --quick --out outputs/reference-replay/legacy-cli
+./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/reference-replay/legacy-geometry
 ```
 
-Results include temperature-versus-height, input power versus height, inferred electrical resistance, current reoptimization to a 200 K target, a 3D pellet temperature slice, mesh-resolved axial temperature profiles, CSV and JSON.
+Host-only development can use `python -m pip install -e '.[dev]'` and `pytest -q`;
+native Gmsh and actual Elmer smoke require the existing FEM image. No new large
+FEM production solve is needed for these reduced-model commands.
 
-**Illustrative nominal example (300 K ambient, 0.65 A, Ar, unverified geometry):**
-- 70% pellet height: 206.9 K and 1.22 W at fixed current; minimum ~1.69 W to hit 200 K.
-- 100% height: 195.5 K and 1.62 W at fixed current; minimum ~1.23 W to hit 200 K.
-- 130% height: 192.5 K and 1.98 W at fixed current; minimum ~1.00 W to hit 200 K.
+## Historical implementations and preserved reports
 
-**Interpretation:** This does not establish a physical optimum. Real electrical contact and thermal interface resistances, changing cap clearances/gas conduction, manufacturing feasibility, temperature-dependent material data, and measured performance could reverse the trend. See [geometry study notes](docs/geometry_sensitivity.md).
+The original four-node `model.py`/`cli.py`, geometry sensitivity and pellet-FVM
+work remain compatible demonstrations; they use different assumptions and some
+OEM-anchored effective coefficients. They are not the current corrected package.
+See [original physics](docs/physics_and_sources.md), [geometry study](docs/geometry_sensitivity.md),
+[G1](docs/PHASE1_G1_RESULT.md), [G2a](docs/PHASE1_G2A_RESULT.md),
+[G2b](docs/PHASE1_G2B_TWO_TERMINAL_RESULT.md), [G2c](docs/PHASE1_G2C_RESULT.md),
+[G2d](docs/PHASE1_G2D_RESULT.md), [G3a](docs/PHASE1_G3A_RESULT.md) and
+[G3b](docs/PHASE1_G3B_RESULT.md) for their original scope. Older G3b enclosure
+geometry is not a source for the corrected operator.
 
-## Phase 1b: sourced material-property profiles (2026-10-28)
+The approved [15-page Rev3 REVIEW DRAFT](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf)
+and historical Rev2 remain unchanged. Raw bath <1% and cold interface <5% are
+still requirements for a future numerical-release claim. Neither conservative
+reduced budgets nor stable temperatures replace those criteria. See
+[the preserved spatial-bath result](docs/BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION.md).
 
-The TEC's **default** electrical/thermal solver remains calibrated to two OEM performance endpoints—not an independently measured material-specific FEM model. For material investigation a **separate, explicit uncalibrated literature profile** has been added:
-
-```python
-from tecooledmct.geometry_sweep import TECGeometry, solve_geometry
-from tecooledmct.model import Scenario
-from tecooledmct.material_transport import literature_stage_coefficients, compare_coefficients
-g=TECGeometry()
-print(compare_coefficients(g))
-result=solve_geometry(Scenario(), g, coefficients=literature_stage_coefficients(g))
-print(result['stage_k'])
-```
-
-Sourced bulk materials and provenance: `tecooledmct/materials.py`. Includes p/n-type Bi-Te literature examples, 96% and 99.5% alumina ceramic proxies, Kovar header alloy, 4N gold bond wire, Sn95Sb5 *proxy* solder, and copper. The source-matched 3MC04-044-05 contains hot-extruded Bi-Te, Al2O3(100%), Sn-Sb internal solder, Au plated contacts and bare AWG32 terminal wires, but proprietary material-property curves are **not disclosed**.
-
-Read [materials and provenance](docs/materials_and_provenance.md). A 1-D material-layer resistance demonstration is supported; **these layers are not yet connected to 3D package transport or automatically to the four-node network**. The optional literature P/N solver still assumes temperature-independent values near room temperature, so its cold-stage numbers are only sensitivity examples, not production predictions. Do not compare results against the OEM profile as independent validation.
-
-## Active project focus: standalone TO-66 thermoelectric multiphysics
-
-Elmer FEM + Gmsh will solve the 3D cooler and solids. OpenFOAM is optional for sealed-cavity gas convection and conjugate heat transfer only if screening warrants it. The HgCdTe detector is modeled as a compact material-and-heat-load domain (k(T,x), density, heat capacity, die attach, electrical and optical heating). There is **no active LSDDTS integration**; do not change or connect that repository without a new explicit request. See docs/OPENFOAM_FEASIBILITY.md and docs/MCT_COMPACT_THERMAL_MODEL.md.
-
-### G2d: OEM discrepancy and identifiability
-
-[Result and limitations](docs/PHASE1_G2D_RESULT.md) ·
-[Reproduction](docs/G2D_REPRODUCIBILITY.md) ·
-[Traceable evidence](fem/results/g2d_20261029)
-
-The independent calibration/holdout network audit shows exact geometry/material
-nonidentifiability (normalized Jacobian rank8/9). Three genuine 88-leg Elmer
-constant-law sensitivity points at300 K/.2 A pass numerical checks. The strict
-40..300 K source-backed300 K probe rejects an out-of-range local iterate;
-independent above300 K material tables cannot cover the cold legs or identify the
-OEM grade. **OEM-family FEM qualification remains FAILED/BLOCKED.**
-All earlier checkpoints remain intact; full-stack contacts and production device
-accuracy are not established. Run the new opt-in analysis with
-`./fem/run.sh python -m tecooledmct.g2d_analysis`; actual PDE directions use
-`./fem/run_g2b.sh python -m tecooledmct.g2d_fem`.
-
-### G3a: coupled TO-66 solid package and hybrid bond wires
-
-[Result](docs/PHASE1_G3A_RESULT.md) · [Reproduction](docs/G3A_REPRODUCIBILITY.md) ·
-[Verified evidence](fem/results/g3a_20261029)
-
-A new199-domain conformal package retains the actual88-leg two-terminal TEC and
-adds Kovar header,mount,die attach,MCT,two glass feedthroughs/pins and Au pads.
-Conservative1D gold bonds couple solved3D endpoint temperatures. This is a
-**3D-solid/1D-wire hybrid**, with the bath on the header underside. Eleven real
-coupled package solves and an independent1D wire check pass numerical gates;
-73 tests pass. At .1 A/2mW,fine die mean is263.389718 K and cold ceramic262.965994 K.
-
-Source MCT x=.29 k(T) is bounded90..400 K. TEC/material/contact geometry remain
-verification proxies; seven pins,carriers,cap/window/gas/radiation and other
-omitted loads prevent manufacturer/device accuracy claims. Earlier evidence is
-unchanged. Run the opt-in commands in the reproduction guide; no LSDDTS coupling.
-
-### G3b: verified enclosure checkpoint; full flux qualification incomplete
-
-[Result](docs/PHASE1_G3B_RESULT.md) · [Reproduction](docs/G3B_REPRODUCIBILITY.md) ·
-[Scoped evidence](fem/results/g3b_checkpoint_20261029)
-
-The215-domain model adds an attached cap/window, all nine glass/pin feedthroughs,
-conservative nonlinear gray radiosity, pressure-dependent N2/Ar/Kr films and
-hybrid Cu TEC supply leads around the full88-leg coupled Elmer model. Ten selected
-coarse integrated executions, two independent Elmer plate references and84 full
-opt-in tests pass. Actual accepted fields, source/mesh/payload hashes and failed
-attempts are archived separately. G1–G3a remain byte-identical; no LSDDTS.
-
-**Full G3b gate D is NOT QUALIFIED.** Three genuinely converged fine executions
-fail the independent direct-bath1% gate:1.65587%,1.51412%,1.58383%. Temperature/
-voltage stability and conservative reaction balance do not override this failure.
-The published result is the narrower verified checkpoint permitted by the work
-order, with the unresolved flux/refinement gate recorded explicitly.
-
-The window is internally opaque gray and externally adiabatic; spectral LWIR
-transmission is absent. Gas films and axial Au/Cu leads are reduced operators,
-not CFD or resolved wire arcs. Constant verification BiTe, unmeasured contacts/
-geometry/emissivities and omitted thermistor/carriers prevent OEM/device accuracy.
+Next bounded work: expose actual interleg/pin surfaces in the exchange model,
+quantify contact/bypass/grade and cap-reservoir assumptions, and test mechanism
+pairs before considering another expensive 3D refinement. Keep current docs
+coherent as code evolves. All development stays in this repository and the
+existing sim Codex session; LSDDTS is outside scope.

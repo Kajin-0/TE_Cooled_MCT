@@ -4,7 +4,7 @@
 Build a truthful, testable multiphysics model of a three-stage TEC-cooled HgCdTe detector in a nine-pin TO-66 package. Physics verification, reproducibility, parameter provenance and quantified limits outrank visual fidelity.
 
 ## Read first
-README.md; docs/physics_and_sources.md; docs/simulation_roadmap.md; docs/rev6_cad_audit.md.
+README.md; docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md; docs/INTEGRATED_REFERENCE_THERMAL_20261030.md; docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md. Historical source/roadmap/CAD documents below describe their original checkpoints, not the current priority ordering.
 
 ## Current baseline
 - tecooledmct/model.py: four-node steady-state thermal/electrical solver.
@@ -800,62 +800,82 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   in fem/verification/bath_spatial_device_20261030; frozen archives and approved
   Rev3 remain unchanged. No full numerical release or new combined field.
 
-## Prospective OEM-first physical-validation checkpoint, 2026-10-30
+## Current reduced-model continuation — 2026-10-30
 
-- **Most recent priority**: read `docs/OEM_FIRST_VALIDATION_TRACK_20261030.md` before launching more full-device refinement. The user authorized proceeding with the validation-first pivot after review of the OEM mismatch and numerical-vs-physical accuracy distinction. This prioritization is prospective; it does not amend historical acceptance gates, immutable numerical evidence or the approved Rev3 review PDF.
-- New additive `tecooledmct/oem_phase_a.py` and `tests/test_oem_phase_a.py` implement and independently test a 1D conservative, bounded-temperature P/N-leg solver with a three-stage reduced cascade. It is **not Elmer**, not a substitute for 88-leg FEM and not manufacturer-identified physical transport. It never clamps or extrapolates the original Zhang2025 40–300 K material curves. All prior frozen G2d sources remain unchanged.
-- Reproduce: `./fem/run.sh python -m tecooledmct.oem_phase_a --out outputs/oem-phase-a`; `./fem/run.sh env TE_FEM_SMOKE=1 pytest -q tests/test_oem_phase_a.py`. Generated JSON is local exploratory screening, not a sealed numerical archive.
-- Actual bounded 300 K / 0.1 A / zero-load, 16/32 intervals: lift 50.822869294/50.823022408 K; V 0.817303125/0.817305044 V. At 300 K / 0.2 A: lift 79.878847906/79.879547791 K; V 1.431679300/1.431691354 V. The 295 K/0.1 A reference also completed; these are **unmatched-grade** screening outputs with no OEM qualification. The small 1D discretization differences do not constrain geometry/material error or establish device accuracy.
-- Priority next: independently matched OEM multi-current/load temperature/voltage/cooling validation, source-identifiable material grades and contacts, prospective withheld measurements, and quantified input uncertainty. The previous Kovar full-thickness mesh experiment remains a deferred numerical diagnostic, not a blocking requirement for physical-model screening.
-- All previously sealed FEM results/failed raw-bath or cold-face gates, protected source snapshots, Rev2 and approved Rev3 REVIEW DRAFT remain unchanged. The 1% bath/5% interface criteria still apply for a future *numerical release*; no change to report policy. Continue only in this repo/existing sim environment; no LSDDTS or other projects.
+This section supersedes historical next-step priorities above; it does not
+amend any archived numerical results, source snapshots or acceptance gates.
 
-## User clarification — plausible-reference model is the controlling goal, 2026-10-30
+### Objective, ownership and documentation
 
-- **READ FIRST: `docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md`. This is the newest user direction and explicitly supersedes the OEM-first *priority ordering* immediately above; keep the old OEM-first work as optional benchmarking/reference material.**
-- Target a physically plausible and useful three-stage TEC-cooled HgCdTe/TO-66 digital model, **not** reverse-engineering or calibrating one specific commercial unit. Incomplete OEM data are expected and **must not block reasonable engineering model completion**.
-- Fill unknown stage geometries, material grades, thermal/electrical contacts, hermetic cavity properties, lead paths and operational loads using physically defensible, sourced where possible engineering estimates. Always label documented, analogous/assumed, inferred and scenario inputs and provide plausible low/nominal/high ranges. Never pass estimates off as measurements.
-- Prioritize an integrated corrected-geometry electrothermal thermal-budget model with explicit cap/window/gas/radiation, heat sink, junctions, bond/supply wires and parametric MCT loads; then bounded sensitivity sweeps and matched-condition OEM sanity checks. Add detector spectral/electrical performance later if useful. OEM agreement is informative, **not a hard gating objective**.
-- Continue to enforce genuine current/energy conservation, source-domain clarity and numerical honesty. Previously failed raw1% bath/5% cold-face checks, archive integrity and approved Rev3 PDF remain unchanged. An exploratory/plausible result must not be advertised as a numerical-release or experimentally validated device.
-- No other repository, LSDDTS, new tmux session or historical evidence rewrite. Keep the existing pinned resource budget.
+- Build a **plausible synthetic reference device**, not a proprietary OEM
+  reconstruction. Read the controlling policy and current guides listed first.
+  Missing OEM grade/drawing data must not block defensible scenario modeling.
+- **All code edits, simulation/test execution, commits and pushes belong to the
+  existing sim:0.0 interactive Codex session.** Inspect status before interacting;
+  do not launch another agent/tmux or use an external implementation workaround.
+  Work only here; never touch LSDDTS or another repository.
+- **Current documentation is a continuing first-class deliverable.** Each future
+  milestone must revise README, current technical guides and this continuation
+  in place: keep source/assumption matrices, equations/units, coverage maps,
+  exact runnable commands, output meanings, results and next priorities coherent.
+  Remove obsolete priority language from mutable new documents; do not append
+  giant redundant checkpoint logs or rewrite frozen historical evidence/reports.
+- Use the existing pinned Docker image/wrappers, <=4CPU/12GiB. Prefer bounded
+  reduced operators and sensitivity over new million-tet campaigns.
 
-## Execution handoff for the next integrated-model milestone, 2026-10-30
+### Current implementation and evidence
 
-- The VPS **already has an interactive Codex agent with Full Access** in the existing `tmux` session named `sim`, pane `sim:0.0`. Inspect its status and current activity before interacting. **Reuse `sim`**; do not create a second tmux session or duplicate an active agent's edits. The Codex pane may be running in `~` even though this project's working directory is `/home/User/TE_Cooled_MCT`.
-- The user explicitly confirmed this shared execution path. Next scientific work is the integrated plausible-reference device, *not* OEM validation or old bath refinement by default. See `NEXT_INTEGRATED_MODEL_WORK_ORDER_20261030.md` and the primary `docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md`.
-- Coordinate ownership: don't run overlapping edits/solves in this repo while the existing sim Codex agent is implementing the next work order. Preserve prior source/evidence immutability and approved Rev3.
+- `integrated_reference` remains a five-temperature conservative package model.
+  Constant `g1_constant` and affine `zhang2025_analog` paths retain their old
+  snapshots (63/63 and49/63 accepted in their original scenarios). New opt-in
+  **`zhang2025_nonlinear`** solves direct nonlinear1D P/N profiles using an
+  analytic tridiagonal Newton solve and exact per-package stage cache. No
+  interpolated surrogate, rounded keys, clipped result or affine fallback.
+- Source Zhang2025 curves are unchanged40–300K laboratory P/N specimens;
+  selected active domain180–390K. Above300K is the explicit quarter-tangent
+  engineering continuation. Sigma=1/rho; Thomson=T*dS/dT. Exactly300K uses
+  measured left derivative, interior source knots right derivatives,390K
+  continuation left limit. Nonlinear interior Joule overshoot is domain-checked.
+- New transport comparisons use the unmodified independent bounded-leg solver
+  at10 points /16,32,64 intervals. Eight are strictly measured-domain; two only
+  check the assumed continuation across implementations. At0.7A nonlinear32
+  vsBVP64 voltage error .00570% (old affine about6.48%); at0.9A .00823%.
+  Nominal package0.9A32→64: .000350K and .1643mV change. These are numerical
+  checks, not material/device validation. Exact timing/cache counts are in JSON.
+- New `exchange_geometry` audits actual corrected mesh/fixture hashes, native
+  exterior ownership, cap positive tets and physical interfaces/top faces.
+  `corrected_exchange` uses the current cap/window with a **filled stepped-core
+  proxy** (14 surfaces/8 effective nodes). Its native-area audit does not turn
+  the proxy into actual88-leg/pin/wire visibility. Gas is a conservative
+  chord network; radiation is opaque diffuse-gray. No new3D field, optical
+  transmission, native full-cavity view factors or validated rarefied-gas law.
+- Raw ray matrices, reciprocal closure corrections and 4096/16384/65536 ray
+  levels are saved. Maximum last-level F correction .04043 absolute; die gas/
+  radiation changes .88%/.14% at fixed test temperatures. Exact conservation
+  does not hide this unfinished spatial/model-form qualification.
+- New versioned evidence `data/nonlinear_exchange_20261030` includes independent
+  transport comparisons, final50/63 old-reservoir nonlinear cases,52/63 proxy
+  cases, full rejection diagnostics, geometry/ray/pressure audits and plots.
+  Initial development failures are separately UNACCEPTED. Old snapshot data,
+  all archived failed gates and approved Rev2/Rev3 remain unchanged.
+- Follow README/current guides for reproduction; choose new outputs paths.
+  Scenario CLI may overwrite its selected output; never target sealed archives
+  or previous versioned results. Operator/study builders refuse existing dirs.
 
-## Integrated plausible-reference thermal checkpoint — completed 2026-10-30
+### Verification and next bounded work
 
-- Implemented `tecooledmct/integrated_reference.py` as an additive **five-node conservative reduced-order** TEC/package/die model. Reads `fem/results/geometry_complete_checkpoint_20261030/{manifest.json,wire_routes.json}` and verifies both against the exact sealed `checksums.json`; doesn't mesh a new 3D cap or reuse the old G3b geometry.
-- TEC uses G1 constant-property P/N *verification proxies* and actual inferred 28/12/4 stage geometry, not a commercial-grade T-dependent transport law. Gas (N2/Ar/Kr) uses existing G3b registered NIST tabulation and declared bounded 180–200K extension, gas-jump accommodation, gray cap/window radiation and separately imposed 2mW die bias/optical-like heating; Cu/Au hybrid routes from corrected archive. Hot TEC-to-ambient effective heat-sink resistance is configurable. Cap/window are assumed **isothermal reservoirs**, not 3D solved solids; no spectral window or carrier transport.
-- `tecooledmct/integrated_reference_figures.py`, `data/integrated_reference_20261030` (summary.json, sweep.csv, sensitivity.csv, 2 PNGs), `tests/test_integrated_reference.py` and `docs/INTEGRATED_REFERENCE_THERMAL_20261030.md` are the new model code/data/evidence. Rerun `./fem/run.sh python -m tecooledmct.integrated_reference --out data/integrated_reference_20261030`; `./fem/run.sh python -m tecooledmct.integrated_reference_figures --from-dir data/integrated_reference_20261030`.
-- 63 operating points across 3 scenario families × currents 0..1.0 A in 0.05A increments, all accepted. **Discrete** 0.65A minima: low-parasitic vacuum185.817K, nominal 30kPa Kr188.206K, high-parasitic N2 195.158K; this is NOT a continuous or empirically validated optimum. At 0.15A, die242.055/243.280/247.615K, nominal terminal .84437V/.12666W; numerical energy balances all under 1e-8W.
-- Nominal one-factor temperature spans at 0.15A: P/N k ±20% =>18.936K, Seebeck ±10% =>10.759K, detector electrical bias 0.5..5mW =>2.263K, Kr cavity vacuum..1atm =>.877K. These are chosen engineering **scenario spans**, not statistical confidence intervals.
-- Independent cross-model warning: reduced solid-only 0.1A yields MCT257.756K/V0.58561 vs earlier corrected 88-leg Elmer 265.593K/V0.55194, but boundary conditions differ (TEC hot ceramic prescribed vs actual Kovar underside), and no bypass/spreading FEM in reduction. Preserve the -7.84K/+33.7mV diagnostic; neither is OEM validation. Do not fit away.
-- Prior numerical release unresolved: original raw bath1% / cold interface5% failures, accepted/failed FEM evidence and approved Rev3 REPORT unchanged. No new corrected-enclosure 3D field has been solved. **Next**: source-traceable temperature-dependent P/N analog-grade variants; corrected-specific cap/window physical geometry and gas/radiation surface operators with visibility/reciprocity audits; paired genuine Elmer cases within the pinned budget. OEM matching remains non-blocking.
-- Continue using existing `sim` tmux/Codex when its availability permits, after inspecting status, not creating duplicate sessions. Existing sim Codex request was stopped due near quota and this bounded checkpoint was implemented via authorized VPS command tools, with no simultaneous agent edits.
-- **Final verification, same checkpoint:** 180 opt-in tests PASS (including real Elmer smoke), 25 focused integrated-reference tests PASS, legacy CLI/geometry demos PASS, complete `fem/archive_bath_spatial_device.py --verify` chain PASS, independent old raw1% bath failures and original cold5% failures still recorded, approved 15-page Rev3 unchanged. No new full-device FEM solve; reduced scenario results and plots are reproducible versioned artifacts.
-
-## 2026-10-30 next physics checkpoint: graded P/N and corrected cap/window CAD
-
-- The active goal is STILL a **physically plausible synthetic reference device**, not precise OEM reverse-engineering. New work follows `docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md`; it does **not** supersede preserved numerical evidence, approved Rev3 or the original 1% bath/5% interface acceptance gates.
-- `tecooledmct/graded_tec.py` implements an **optional** Zhang2025 40–300K *research specimen P/N analog* with piecewise source-knot integration and affine-leg axial temperature approximation. The 300–390K region is an **explicit 25%-terminal-slope engineering continuation**, not sourced measured data. Local stage Qc/Qh/V obey `Qh-Qc=I V`. The constant G1 proxy path remains default, with prior 63/63 case output unchanged. Select analog explicitly via `./fem/run.sh python -m tecooledmct.integrated_reference --out data/integrated_graded_20261030 --material zhang2025_analog`.
-- Source-analog numerical study: 49 accepted and **14 FAILED CLOSED** of 63 attempted 0–1A points, because 180K source/assumed-domain lower bound is reached or solutions are infeasible; never interpolate plots across failures, claim a physical optimum, or silently clamp. Nominal Kr at 0.15A: die **231.201740K**, terminal **1.15539066 V**, versus constant proxy die **243.280047K**, terminal **0.84436946 V**. Different grades are NOT known OEM matched and large model variation is not accuracy proof.
-- `tecooledmct/corrected_enclosure.py` plus `data/corrected_enclosure/geometry_hypothesis_v1.json` builds 3 separate **conformally contacting within fixture** cap shell/roof/candidate window solids from source 15.2mm VIGO outer cap OD and original corrected 1.5mm header datum. Cap height8.6mm, wall0.5mm, roof0.45mm, ZnSe-candidate window5.9mm OD all HYPOTHESES. It verifies original die/stack/pin/wire clearance and analytic volumes/interface areas. Standalone `fem/results/corrected_enclosure_geometry_20261030` has STEP, 8,143-tet Gmsh MSH, physical volumes IDs7301–7303 and surfaces IDs7401–7409, and `geometry_audit.json`. It has **NO gas volume, no full FEM merge, no radiative operator, no thermal field, and no OEM cap geometry beyond outer OD**.
-- `tests/test_graded_tec.py` verifies constant-law analytic recovery, conservation, source coverage/continuation, fail-closed states and source-knot quadrature invariance. `tests/test_corrected_enclosure.py` builds a fresh native Gmsh fixture and validates areas, tags, collisions and rejects nonphysical assumptions.
-- **Next real physics work**: merge new cap/window into the corrected complete assembly conformally without touching sealed archives, derive actual-view-factor/gas exchange on corrected geometry, add temperature-dependent P/N transport to *genuine* Elmer with robust bounded nonlinear solve, then paired physics-only runs. OEM matching is a plausibility comparison only.
-- VPS context: reuse existing tmux `sim` agent after checking status and remaining quota; do not launch conflicting agents, new sessions, or edit other repos. The current CAD-only and reduced analog increment was implemented using remote command execution while the `sim` Codex pane was idle.
-- Final independent verification for this increment: full opt-in pinned-Docker `TE_FEM_SMOKE=1 pytest -q` reported **201 PASS** (14 third-party matplotlib deprecation warnings, no failures); after the added independent nonlinear BVP assertion the dedicated focused suite reported **47 PASS**. Legacy CLI and geometry demo PASS. Full `fem/archive_bath_spatial_device.py --verify` PASS (all prior accepted and failed evidence and original Rev3 intact). No new 88-leg enclosed-package coupled PDE field has been solved; this release is opt-in reduced transport + standalone source-aligned CAD.
-
-## Small corrective checkpoint — 2026-10-30, existing sim:0.0 Codex
-
-- User-authorized work was executed entirely by this existing `sim:0.0` Codex session, with no separate agent/session or external editing workaround. Goal remains a plausible synthetic reference device; OEM reverse engineering is not a gate.
-- `graded_tec.props()` now recomputes sigma identically as 1/rho and Thomson as T*dS/dT of the active material law. Source interior knots use right derivatives; exactly300K uses the measured left derivative, strictly above300K uses the assumed quarter tangent, exactly390K uses its left derivative. Measured tables are unchanged, as are S/rho/k stage inputs; all49 previously accepted analog grid cases use portable snapshot tolerances1e-7K/1e-9V or W, with separate exact-array S/rho/k law checks. The300–390K extension remains engineering-assumed, not experimentally validated.
-- `corrected_enclosure.assumptions()` rejects missing/nonnumeric/nonfinite/nonpositive dimensions, impossible voids and collisions, and includes wire radius in roof clearance. Protected standalone geometry/mesh and corrected full-device archives remain unchanged. No new full-device production FEM run or enclosure coupling.
-- `integrated_reference.OperatingPointFailure` preserves rejected-candidate temperatures, four W residuals, separate sink K residual, optimizer scaling/status/success/message/evaluation count/active mask, physical domains and bound classifications. All14 original rejected cases remain FAILED CLOSED, now diagnosed as active lower-bound residual failures, even though optimizer termination reports success. This does not prove a physical solution outside the domain or physical infeasibility. Evaluation/optimizer errors are separately tested; unavailable diagnostics are null. Failed points remain absent from accepted curves and optimum warnings persist.
-- New `tecooledmct.graded_tec_checks` performs six independent nonlinear P/N BVP comparisons (16/32 intervals, all boundary/interior40<T<300K), across all three corrected stage geometries. New artifacts in `data/graded_corrective_20261030/{bvp_comparison.json,scenarios/}` retain previous scenario data. At0.7A, stage0 Th260/Tc240K: affine-vs-BVP32 |Qc error|7.986864mW(.972654%), |V error|147.220545mV(6.481337%); nonlinear interior reaches273.178856K. This exposes high-current affine-profile limitations; it is not OEM/device validation or a bound at other operating points.
-- Read updated `docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md` for full errors, one-sided semantics and reproduction. Run `./fem/run.sh python -m tecooledmct.graded_tec_checks --out outputs/graded-corrective/bvp_comparison.json`; scenario CLI with `--material zhang2025_analog` into a NEW outputs directory; focused graded/enclosure/integrated tests; `./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs`; full archive verifier; legacy CLI and geometry_demo.
-- Actual verification:98 focused tests PASS; full253 opt-in tests PASS in339.94s, including genuine Elmer smoke (14 third-party deprecation warnings); complete archive verifier and legacy CLI/demo PASS. Approved Rev2/Rev3 hashes unchanged, all archived source/fields and original raw1% bath/cold5% failures preserved. No new physics-release claim or LSDDTS/other-repo work.
-- Suggested next bounded development: use nonlinear leg transport for high-current quantitative budgets, and later corrected-geometry enclosure exchange operators; do not launch costly full-package refinement by default. Await user scope for subsequent development.
-- First hosted CI on aec5f34 used SciPy1.17.1 and found one newly added snapshot test too strict:2.894e-9K difference vs1e-9K tolerance (240passed/12skipped). Portability correction changes snapshot assertions only to the above tolerances and adds exact-law equality tests; no production equations, solver/conservation/raw-flux acceptance gates or archived fields change.
-- Final portability verification:100 focused PASS; standard full regression244PASS/11opt-in skips in31.63s, including two new exact-law equality assertions. Production code remains identical to the253PASS genuine-Elmer opt-in execution above; its smoke solves were not redundantly rerun for assertion-only edits.
+- Actual current milestone:131 focused tests PASS; full pinned opt-in286PASS
+  in340.38s, including genuine Elmer smoke (14 third-party warnings). Full
+  archive verifier, legacy CLI/geometry demo, current-document links and plot
+  inspection PASS. Public Rev2/Rev3 exact hashes unchanged. Accepted new proxy
+  package grid maximum global energy residual1.41e-11W. CI must pass on the
+  pushed commit before reporting completion.
+- Run focused nonlinear/exchange/graded/enclosure/integrated tests, full opt-in
+  `./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs`, full
+  `fem/archive_bath_spatial_device.py --verify`, legacy CLI/geometry_demo and CI.
+  Reject nonconverged/domain-invalid states with diagnostics, not patched gates.
+- No numerical-release claim while original raw bath1%/cold5% requirements are
+  unresolved. Preserve frozen files and every approved report exactly.
+- Next: actual native-surface exchange without the filled-core shortcut,
+  mechanism pairs and contact/bypass/grade/reservoir sensitivity. Do not force
+  full-package remeshing or OEM fitting before practical scenario studies.

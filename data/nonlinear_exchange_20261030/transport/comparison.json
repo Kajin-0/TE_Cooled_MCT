@@ -1,0 +1,1426 @@
+{
+  "scope": "Independent numerical comparison, no experimental/OEM validation",
+  "source": {
+    "source_id": "zhang2025_he_digitized_40_300_v2r1",
+    "source_doi": "10.1088/0256-307X/42/5/056304",
+    "file_sha256": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+    "measured_K": [
+      40.0,
+      300.0
+    ],
+    "analog_model_K": [
+      180.0,
+      390.0
+    ],
+    "commercial_grade_matched": false,
+    "high_T_extension": "ENGINEERING HYPOTHESIS: beyond 300K, use 0.25 x slope of final 280..300K measured segment, through 390K; P/N grades are not matched"
+  },
+  "rows": [
+    {
+      "stage_index": 0,
+      "hot_k": 295.0,
+      "cold_k": 250.0,
+      "current_a": 0.1,
+      "comparison_scope": "measured-domain numerical check",
+      "reference64": {
+        "qc_w": -0.24279367729900303,
+        "voltage_v": 0.796874187693388
+      },
+      "reference_seconds": 0.19967959797941148,
+      "newton_levels": [
+        {
+          "intervals": 16,
+          "result": {
+            "qc_w": -0.24279509861179766,
+            "qh_w": -0.16310742855791416,
+            "voltage_v": 0.796876700539454,
+            "energy_residual_w": -6.190881141066029e-14,
+            "joule_w": 0.031486425594991284,
+            "conduction_w": 0.49605445842310353,
+            "leg_temperature_extrema_k": [
+              250.0,
+              295.0
+            ],
+            "max_leg_balance_residual_w_m2": 1.9815206542261876e-07,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 16,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 1.4213127946249848e-06,
+              "relative_abs": 5.8539942655698686e-06
+            },
+            "voltage_v": {
+              "absolute": 2.5128460660051033e-06,
+              "relative_abs": 3.153378669823306e-06
+            }
+          },
+          "seconds": 0.008937997044995427
+        },
+        {
+          "intervals": 32,
+          "result": {
+            "qc_w": -0.24279308798521174,
+            "qh_w": -0.16310562557776562,
+            "voltage_v": 0.7968746240746531,
+            "energy_residual_w": -1.9206858326015208e-14,
+            "joule_w": 0.031486350175855035,
+            "conduction_w": 0.496055363533047,
+            "leg_temperature_extrema_k": [
+              250.0,
+              295.0
+            ],
+            "max_leg_balance_residual_w_m2": 3.033686255093926e-06,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 32,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 5.893137912937885e-07,
+              "relative_abs": 2.4272205019904297e-06
+            },
+            "voltage_v": {
+              "absolute": 4.3638126512313136e-07,
+              "relative_abs": 5.476162634734971e-07
+            }
+          },
+          "seconds": 0.008388384012505412
+        },
+        {
+          "intervals": 64,
+          "result": {
+            "qc_w": -0.24279367729908957,
+            "qh_w": -0.16310625852976088,
+            "voltage_v": 0.7968741876933624,
+            "energy_residual_w": -7.549516567451064e-15,
+            "joule_w": 0.031486347615963646,
+            "conduction_w": 0.49605664101144253,
+            "leg_temperature_extrema_k": [
+              250.0,
+              295.0
+            ],
+            "max_leg_balance_residual_w_m2": 1.2968174871730298e-06,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 64,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 8.654188476953095e-14,
+              "relative_abs": 3.564420858577536e-13
+            },
+            "voltage_v": {
+              "absolute": 2.5646151868841116e-14,
+              "relative_abs": 3.2183439073457536e-14
+            }
+          },
+          "seconds": 0.00824974407441914
+        }
+      ],
+      "affine_errors": {
+        "qc_w": 0.00014222966225557743,
+        "voltage_v": 0.0005318921347897687
+      }
+    },
+    {
+      "stage_index": 0,
+      "hot_k": 295.0,
+      "cold_k": 285.0,
+      "current_a": 0.15,
+      "comparison_scope": "measured-domain numerical check",
+      "reference64": {
+        "qc_w": 0.3280921615185978,
+        "voltage_v": 0.6349213486944785
+      },
+      "reference_seconds": 0.1716837640851736,
+      "newton_levels": [
+        {
+          "intervals": 16,
+          "result": {
+            "qc_w": 0.32808941888798626,
+            "qh_w": 0.4233266095962957,
+            "voltage_v": 0.6349146047260172,
+            "energy_residual_w": -5.931505286937977e-13,
+            "joule_w": 0.07864252103776492,
+            "conduction_w": 0.10641149833312503,
+            "leg_temperature_extrema_k": [
+              285.0,
+              295.0
+            ],
+            "max_leg_balance_residual_w_m2": 2.330925099158776e-06,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 16,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 2.7426306115629906e-06,
+              "relative_abs": 8.359329887274753e-06
+            },
+            "voltage_v": {
+              "absolute": 6.7439684612313755e-06,
+              "relative_abs": 1.062173838554694e-05
+            }
+          },
+          "seconds": 0.006138904951512814
+        },
+        {
+          "intervals": 32,
+          "result": {
+            "qc_w": 0.32809161297360645,
+            "qh_w": 0.42332961295399785,
+            "voltage_v": 0.6349199998699034,
+            "energy_residual_w": -9.411915691259765e-14,
+            "joule_w": 0.07864333030934788,
+            "conduction_w": 0.10641149833312503,
+            "leg_temperature_extrema_k": [
+              285.0,
+              295.0
+            ],
+            "max_leg_balance_residual_w_m2": 1.2087090794921096e-06,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 32,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 5.485449913744667e-07,
+              "relative_abs": 1.6719234889230125e-06
+            },
+            "voltage_v": {
+              "absolute": 1.3488245750314931e-06,
+              "relative_abs": 2.1243963174414253e-06
+            }
+          },
+          "seconds": 0.006265425123274326
+        },
+        {
+          "intervals": 64,
+          "result": {
+            "qc_w": 0.3280921615179754,
+            "qh_w": 0.42333036382198774,
+            "voltage_v": 0.6349213486935493,
+            "energy_residual_w": -2.002564780667626e-14,
+            "joule_w": 0.07864353263289477,
+            "conduction_w": 0.10641149833312505,
+            "leg_temperature_extrema_k": [
+              285.0,
+              295.0
+            ],
+            "max_leg_balance_residual_w_m2": 6.109105186169472e-07,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 64,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 6.22446538756094e-13,
+              "relative_abs": 1.8971697948376946e-12
+            },
+            "voltage_v": {
+              "absolute": 9.291456493087935e-13,
+              "relative_abs": 1.4634027525130433e-12
+            }
+          },
+          "seconds": 0.006242385832592845
+        }
+      ],
+      "affine_errors": {
+        "qc_w": 0.0003327758238396705,
+        "voltage_v": 0.0018272178180325227
+      }
+    },
+    {
+      "stage_index": 1,
+      "hot_k": 280.0,
+      "cold_k": 250.0,
+      "current_a": 0.15,
+      "comparison_scope": "measured-domain numerical check",
+      "reference64": {
+        "qc_w": -0.028653644762272636,
+        "voltage_v": 0.28423724640970277
+      },
+      "reference_seconds": 0.13678198400884867,
+      "newton_levels": [
+        {
+          "intervals": 16,
+          "result": {
+            "qc_w": -0.02865482299335413,
+            "qh_w": 0.01398077016045469,
+            "voltage_v": 0.28423728769205686,
+            "energy_residual_w": 2.914335439641036e-16,
+            "joule_w": 0.022270393860475964,
+            "conduction_w": 0.18776772963078525,
+            "leg_temperature_extrema_k": [
+              250.0,
+              280.0
+            ],
+            "max_leg_balance_residual_w_m2": 2.767478690657299e-09,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 16,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 1.1782310814952013e-06,
+              "relative_abs": 4.1119762992474225e-05
+            },
+            "voltage_v": {
+              "absolute": 4.1282354090732554e-08,
+              "relative_abs": 1.452390726837668e-07
+            }
+          },
+          "seconds": 0.006152504123747349
+        },
+        {
+          "intervals": 32,
+          "result": {
+            "qc_w": -0.028653855695758828,
+            "qh_w": 0.013981722753701065,
+            "voltage_v": 0.2842371896630567,
+            "energy_residual_w": 1.3877787807814457e-15,
+            "joule_w": 0.022270415150533743,
+            "conduction_w": 0.18776804042888307,
+            "leg_temperature_extrema_k": [
+              250.0,
+              280.0
+            ],
+            "max_leg_balance_residual_w_m2": 4.566004463413265e-09,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 32,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 2.1093348619161123e-07,
+              "relative_abs": 7.361488841703685e-06
+            },
+            "voltage_v": {
+              "absolute": 5.674664604882196e-08,
+              "relative_abs": 1.9964535529951871e-07
+            }
+          },
+          "seconds": 0.007041438948363066
+        },
+        {
+          "intervals": 64,
+          "result": {
+            "qc_w": -0.028653644762272636,
+            "qh_w": 0.013981942199180359,
+            "voltage_v": 0.28423724640970266,
+            "energy_residual_w": -2.400857290751901e-15,
+            "joule_w": 0.022270437587609493,
+            "conduction_w": 0.1877680988148137,
+            "leg_temperature_extrema_k": [
+              250.0,
+              280.0
+            ],
+            "max_leg_balance_residual_w_m2": 2.8452404876588844e-08,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 64,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 0.0,
+              "relative_abs": 0.0
+            },
+            "voltage_v": {
+              "absolute": 1.1102230246251565e-16,
+              "relative_abs": 3.905973051205501e-16
+            }
+          },
+          "seconds": 0.007516851183027029
+        }
+      ],
+      "affine_errors": {
+        "qc_w": 5.7742000609956046e-06,
+        "voltage_v": 1.6072052541671322e-05
+      }
+    },
+    {
+      "stage_index": 2,
+      "hot_k": 250.0,
+      "cold_k": 230.0,
+      "current_a": 0.15,
+      "comparison_scope": "measured-domain numerical check",
+      "reference64": {
+        "qc_w": -0.009963831654262977,
+        "voltage_v": 0.061424944344782836
+      },
+      "reference_seconds": 0.10058815591037273,
+      "newton_levels": [
+        {
+          "intervals": 16,
+          "result": {
+            "qc_w": -0.00996416078644748,
+            "qh_w": -0.0007504181266233407,
+            "voltage_v": 0.06142495106549366,
+            "energy_residual_w": 9.020562075079397e-17,
+            "joule_w": 0.004942735976541299,
+            "conduction_w": 0.05669876600519336,
+            "leg_temperature_extrema_k": [
+              230.0,
+              250.0
+            ],
+            "max_leg_balance_residual_w_m2": 1.6874537323019467e-09,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 16,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 3.29132184503228e-07,
+              "relative_abs": 3.3032692233655954e-05
+            },
+            "voltage_v": {
+              "absolute": 6.720710821195297e-09,
+              "relative_abs": 1.0941338071828672e-07
+            }
+          },
+          "seconds": 0.005494832992553711
+        },
+        {
+          "intervals": 32,
+          "result": {
+            "qc_w": -0.009963897480770409,
+            "qh_w": -0.0007501556274317222,
+            "voltage_v": 0.06142494568893095,
+            "energy_residual_w": -9.54097911787244e-16,
+            "joule_w": 0.004942735170057318,
+            "conduction_w": 0.05669876600517808,
+            "leg_temperature_extrema_k": [
+              230.0,
+              250.0
+            ],
+            "max_leg_balance_residual_w_m2": 2.919364305853378e-09,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 32,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 6.582650743242047e-08,
+              "relative_abs": 6.6065455255114555e-06
+            },
+            "voltage_v": {
+              "absolute": 1.3441481122589138e-09,
+              "relative_abs": 2.1882772977605146e-08
+            }
+          },
+          "seconds": 0.005968313897028565
+        },
+        {
+          "intervals": 64,
+          "result": {
+            "qc_w": -0.009963831654262977,
+            "qh_w": -0.0007500900025463681,
+            "voltage_v": 0.061424944344782836,
+            "energy_residual_w": -8.170547571850761e-16,
+            "joule_w": 0.004942734968435208,
+            "conduction_w": 0.05669876600517426,
+            "leg_temperature_extrema_k": [
+              230.0,
+              250.0
+            ],
+            "max_leg_balance_residual_w_m2": 7.284057801371091e-09,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 64,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 0.0,
+              "relative_abs": 0.0
+            },
+            "voltage_v": {
+              "absolute": 0.0,
+              "relative_abs": 0.0
+            }
+          },
+          "seconds": 0.006590716075152159
+        }
+      ],
+      "affine_errors": {
+        "qc_w": 2.0303564735556223e-06,
+        "voltage_v": 2.0529792413709336e-06
+      }
+    },
+    {
+      "stage_index": 2,
+      "hot_k": 230.0,
+      "cold_k": 190.0,
+      "current_a": 0.5,
+      "comparison_scope": "measured-domain numerical check",
+      "reference64": {
+        "qc_w": -0.020874286926819287,
+        "voltage_v": 0.14188734412942405
+      },
+      "reference_seconds": 0.13795371702872217,
+      "newton_levels": [
+        {
+          "intervals": 16,
+          "result": {
+            "qc_w": -0.020880331156409634,
+            "qh_w": 0.050062831635526356,
+            "voltage_v": 0.1418863255847277,
+            "energy_residual_w": -4.278521981149197e-13,
+            "joule_w": 0.04507511387548587,
+            "conduction_w": 0.1230606109991484,
+            "leg_temperature_extrema_k": [
+              190.0,
+              230.0
+            ],
+            "max_leg_balance_residual_w_m2": 6.34933030596585e-06,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 16,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 6.044229590346922e-06,
+              "relative_abs": 0.00028955382339701844
+            },
+            "voltage_v": {
+              "absolute": 1.0185446963628664e-06,
+              "relative_abs": 7.178545081750138e-06
+            }
+          },
+          "seconds": 0.006007085088640451
+        },
+        {
+          "intervals": 32,
+          "result": {
+            "qc_w": -0.020875157566816367,
+            "qh_w": 0.05006837587924293,
+            "voltage_v": 0.1418870668924429,
+            "energy_residual_w": -1.6216195053431193e-13,
+            "joule_w": 0.04507550070527158,
+            "conduction_w": 0.123060648231693,
+            "leg_temperature_extrema_k": [
+              190.0,
+              230.0
+            ],
+            "max_leg_balance_residual_w_m2": 1.4583687061531236e-05,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 32,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 8.706399970796752e-07,
+              "relative_abs": 4.170872998593676e-05
+            },
+            "voltage_v": {
+              "absolute": 2.772369811498976e-07,
+              "relative_abs": 1.9539232540501493e-06
+            }
+          },
+          "seconds": 0.005982273956760764
+        },
+        {
+          "intervals": 64,
+          "result": {
+            "qc_w": -0.020874286927428105,
+            "qh_w": 0.05006938513705161,
+            "voltage_v": 0.1418873441291802,
+            "energy_residual_w": -1.1038392422335619e-13,
+            "joule_w": 0.04507569233347394,
+            "conduction_w": 0.12306079589303733,
+            "leg_temperature_extrema_k": [
+              190.0,
+              230.0
+            ],
+            "max_leg_balance_residual_w_m2": 7.854400610085577e-05,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 64,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 6.088185511288202e-13,
+              "relative_abs": 2.916595681870263e-11
+            },
+            "voltage_v": {
+              "absolute": 2.4386048735891563e-13,
+              "relative_abs": 1.7186909012580833e-12
+            }
+          },
+          "seconds": 0.005830113077536225
+        }
+      ],
+      "affine_errors": {
+        "qc_w": 0.0001160205060525693,
+        "voltage_v": 0.00023626269147541956
+      }
+    },
+    {
+      "stage_index": 0,
+      "hot_k": 260.0,
+      "cold_k": 240.0,
+      "current_a": 0.7,
+      "comparison_scope": "measured-domain numerical check",
+      "reference64": {
+        "qc_w": 0.8211482068062553,
+        "voltage_v": 2.2715828026105016
+      },
+      "reference_seconds": 0.22338368301279843,
+      "newton_levels": [
+        {
+          "intervals": 16,
+          "result": {
+            "qc_w": 0.8211144797755575,
+            "qh_w": 2.410769750170509,
+            "voltage_v": 2.2709361005649047,
+            "energy_residual_w": -4.818367926873179e-13,
+            "joule_w": 1.446551550391182,
+            "conduction_w": 0.23165867508962185,
+            "leg_temperature_extrema_k": [
+              240.0,
+              273.1648094284802
+            ],
+            "max_leg_balance_residual_w_m2": 6.801743438700214e-06,
+            "max_leg_iterations": 4,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 16,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 3.3727030697816573e-05,
+              "relative_abs": 4.1073012664782266e-05
+            },
+            "voltage_v": {
+              "absolute": 0.0006467020455969141,
+              "relative_abs": 0.0002846922616484526
+            }
+          },
+          "seconds": 0.009963019983842969
+        },
+        {
+          "intervals": 32,
+          "result": {
+            "qc_w": 0.821141445079038,
+            "qh_w": 2.411158824017997,
+            "voltage_v": 2.2714533984846494,
+            "energy_residual_w": -2.9554136915521667e-13,
+            "joule_w": 1.4469136595217442,
+            "conduction_w": 0.23165867520481326,
+            "leg_temperature_extrema_k": [
+              240.0,
+              273.1788558187519
+            ],
+            "max_leg_balance_residual_w_m2": 3.7897334550507367e-06,
+            "max_leg_iterations": 4,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 32,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 6.761727217363678e-06,
+              "relative_abs": 8.234478455067813e-06
+            },
+            "voltage_v": {
+              "absolute": 0.00012940412585216166,
+              "relative_abs": 5.696650181690516e-05
+            }
+          },
+          "seconds": 0.009783359942957759
+        },
+        {
+          "intervals": 64,
+          "result": {
+            "qc_w": 0.8211482068060556,
+            "qh_w": 2.411256168630406,
+            "voltage_v": 2.2715828026071962,
+            "energy_residual_w": -6.870060076380469e-13,
+            "joule_w": 1.4470042425248102,
+            "conduction_w": 0.23165867521234482,
+            "leg_temperature_extrema_k": [
+              240.0,
+              273.18472439659547
+            ],
+            "max_leg_balance_residual_w_m2": 5.5782257732062135e-05,
+            "max_leg_iterations": 4,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 64,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 1.9972912213006566e-13,
+              "relative_abs": 2.432315146943875e-13
+            },
+            "voltage_v": {
+              "absolute": 3.305355988914016e-12,
+              "relative_abs": 1.4550893698946403e-12
+            }
+          },
+          "seconds": 0.008064551977440715
+        }
+      ],
+      "affine_errors": {
+        "qc_w": 0.00798010204812205,
+        "voltage_v": 0.14734994901672005
+      }
+    },
+    {
+      "stage_index": 0,
+      "hot_k": 230.0,
+      "cold_k": 210.0,
+      "current_a": 0.9,
+      "comparison_scope": "measured-domain numerical check",
+      "reference64": {
+        "qc_w": 0.6249996825233042,
+        "voltage_v": 2.4262284266320777
+      },
+      "reference_seconds": 0.2143744770437479,
+      "newton_levels": [
+        {
+          "intervals": 16,
+          "result": {
+            "qc_w": 0.6250035349738887,
+            "qh_w": 2.807698189533763,
+            "voltage_v": 2.4252162828443065,
+            "energy_residual_w": -1.3322676295501878e-15,
+            "joule_w": 2.013740763793201,
+            "conduction_w": 0.25024716058990354,
+            "leg_temperature_extrema_k": [
+              210.0,
+              249.1674363426533
+            ],
+            "max_leg_balance_residual_w_m2": 4.7435605665668845e-08,
+            "max_leg_iterations": 5,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 16,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 3.852450584540534e-06,
+              "relative_abs": 6.163924066308448e-06
+            },
+            "voltage_v": {
+              "absolute": 0.001012143787771258,
+              "relative_abs": 0.00041716755795176544
+            }
+          },
+          "seconds": 0.010027929907664657
+        },
+        {
+          "intervals": 32,
+          "result": {
+            "qc_w": 0.6249842841030058,
+            "qh_w": 2.808410184106505,
+            "voltage_v": 2.4260287777816747,
+            "energy_residual_w": -8.43769498715119e-15,
+            "joule_w": 2.014487176703712,
+            "conduction_w": 0.25025961478258396,
+            "leg_temperature_extrema_k": [
+              210.0,
+              249.18787864819433
+            ],
+            "max_leg_balance_residual_w_m2": 6.035952537786216e-08,
+            "max_leg_iterations": 5,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 32,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 1.539842029840699e-05,
+              "relative_abs": 2.463748499237491e-05
+            },
+            "voltage_v": {
+              "absolute": 0.0001996488504030225,
+              "relative_abs": 8.228773853752971e-05
+            }
+          },
+          "seconds": 0.008443244034424424
+        },
+        {
+          "intervals": 64,
+          "result": {
+            "qc_w": 0.6249996825232912,
+            "qh_w": 2.808605266492157,
+            "voltage_v": 2.4262284266320684,
+            "energy_residual_w": 3.9968028886505635e-15,
+            "joule_w": 2.014666862437037,
+            "conduction_w": 0.25025961639847044,
+            "leg_temperature_extrema_k": [
+              210.0,
+              249.1939849986784
+            ],
+            "max_leg_balance_residual_w_m2": 6.269692676141858e-08,
+            "max_leg_iterations": 5,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 64,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 1.2989609388114332e-14,
+              "relative_abs": 2.078338557816786e-14
+            },
+            "voltage_v": {
+              "absolute": 9.325873406851315e-15,
+              "relative_abs": 3.843773860896044e-15
+            }
+          },
+          "seconds": 0.009286117972806096
+        }
+      ],
+      "affine_errors": {
+        "qc_w": 0.009384607969379455,
+        "voltage_v": 0.21241374396057333
+      }
+    },
+    {
+      "stage_index": 1,
+      "hot_k": 260.0,
+      "cold_k": 235.0,
+      "current_a": 0.7,
+      "comparison_scope": "measured-domain numerical check",
+      "reference64": {
+        "qc_w": 0.34426190681804647,
+        "voltage_v": 0.7533092562725676
+      },
+      "reference_seconds": 0.19318190193735063,
+      "newton_levels": [
+        {
+          "intervals": 16,
+          "result": {
+            "qc_w": 0.3442352707927448,
+            "qh_w": 0.8714822299330798,
+            "voltage_v": 0.7532099416290494,
+            "energy_residual_w": 4.440892098500626e-16,
+            "joule_w": 0.45105909060881033,
+            "conduction_w": 0.16293194263241845,
+            "leg_temperature_extrema_k": [
+              235.0,
+              262.3623467742164
+            ],
+            "max_leg_balance_residual_w_m2": 1.9696017261594534e-08,
+            "max_leg_iterations": 4,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 16,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 2.663602530167397e-05,
+              "relative_abs": 7.737139885114263e-05
+            },
+            "voltage_v": {
+              "absolute": 9.931464351820019e-05,
+              "relative_abs": 0.0001318378112192816
+            }
+          },
+          "seconds": 0.008486653910949826
+        },
+        {
+          "intervals": 32,
+          "result": {
+            "qc_w": 0.3442566490236717,
+            "qh_w": 0.8715592387029989,
+            "voltage_v": 0.7532894138276106,
+            "energy_residual_w": -2.220446049250313e-16,
+            "joule_w": 0.45111531927506876,
+            "conduction_w": 0.1629326544990411,
+            "leg_temperature_extrema_k": [
+              235.0,
+              262.40145497757896
+            ],
+            "max_leg_balance_residual_w_m2": 1.3956196198705584e-08,
+            "max_leg_iterations": 4,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 32,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 5.25779437476892e-06,
+              "relative_abs": 1.5272658027621496e-05
+            },
+            "voltage_v": {
+              "absolute": 1.984244495700782e-05,
+              "relative_abs": 2.6340370560677526e-05
+            }
+          },
+          "seconds": 0.008237703004851937
+        },
+        {
+          "intervals": 64,
+          "result": {
+            "qc_w": 0.3442619068180411,
+            "qh_w": 0.8715783862088308,
+            "voltage_v": 0.7533092562725577,
+            "energy_residual_w": -7.771561172376096e-16,
+            "joule_w": 0.4511293760687126,
+            "conduction_w": 0.16293285335855057,
+            "leg_temperature_extrema_k": [
+              235.0,
+              262.4021104337853
+            ],
+            "max_leg_balance_residual_w_m2": 1.6600988601567224e-06,
+            "max_leg_iterations": 4,
+            "high_T_assumption_applied": false,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 64,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 5.384581669432009e-15,
+              "relative_abs": 1.564094534652634e-14
+            },
+            "voltage_v": {
+              "absolute": 9.880984919163893e-15,
+              "relative_abs": 1.3116770883787848e-14
+            }
+          },
+          "seconds": 0.00764445005916059
+        }
+      ],
+      "affine_errors": {
+        "qc_w": 0.001650702312344099,
+        "voltage_v": 0.02383900046743226
+      }
+    },
+    {
+      "stage_index": 0,
+      "hot_k": 330.0,
+      "cold_k": 260.0,
+      "current_a": 0.2,
+      "comparison_scope": "assumed continuation cross-implementation check ONLY",
+      "reference64": {
+        "qc_w": -0.23489612666507279,
+        "voltage_v": 1.4726264640699502
+      },
+      "reference_seconds": 0.18046919908374548,
+      "newton_levels": [
+        {
+          "intervals": 16,
+          "result": {
+            "qc_w": -0.23489914794684005,
+            "qh_w": 0.059626961232427285,
+            "voltage_v": 1.4726305458973152,
+            "energy_residual_w": -1.9567680809018384e-13,
+            "joule_w": 0.13962382449365615,
+            "conduction_w": 0.7458709499276079,
+            "leg_temperature_extrema_k": [
+              260.0,
+              330.0
+            ],
+            "max_leg_balance_residual_w_m2": 1.1087731763836928e-06,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": true,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 16,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 3.0212817672681247e-06,
+              "relative_abs": 1.286220343503589e-05
+            },
+            "voltage_v": {
+              "absolute": 4.081827364998958e-06,
+              "relative_abs": 2.7718009044315732e-06
+            }
+          },
+          "seconds": 0.006017033942043781
+        },
+        {
+          "intervals": 32,
+          "result": {
+            "qc_w": -0.2348958698820483,
+            "qh_w": 0.05963063266900373,
+            "voltage_v": 1.472632512756243,
+            "energy_residual_w": -1.9656498650988397e-13,
+            "joule_w": 0.13962425907557427,
+            "conduction_w": 0.7458821340471922,
+            "leg_temperature_extrema_k": [
+              260.0,
+              330.0
+            ],
+            "max_leg_balance_residual_w_m2": 1.4366280538524734e-06,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": true,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 32,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 2.567830244826208e-07,
+              "relative_abs": 1.0931769209151563e-06
+            },
+            "voltage_v": {
+              "absolute": 6.048686292725591e-06,
+              "relative_abs": 4.107413821702363e-06
+            }
+          },
+          "seconds": 0.005535702919587493
+        },
+        {
+          "intervals": 64,
+          "result": {
+            "qc_w": -0.23489612667093263,
+            "qh_w": 0.05962916614146848,
+            "voltage_v": 1.4726264640696598,
+            "energy_residual_w": -1.5308865286556284e-12,
+            "joule_w": 0.1396235249406473,
+            "conduction_w": 0.7458847545007766,
+            "leg_temperature_extrema_k": [
+              260.0,
+              330.0
+            ],
+            "max_leg_balance_residual_w_m2": 2.8169561346658156e-05,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": true,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 64,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 5.859840390698423e-12,
+              "relative_abs": 2.494651773910981e-11
+            },
+            "voltage_v": {
+              "absolute": 2.9043434324194095e-13,
+              "relative_abs": 1.9722200458034498e-13
+            }
+          },
+          "seconds": 0.00470502907410264
+        }
+      ],
+      "affine_errors": {
+        "qc_w": 1.2782556368079456e-05,
+        "voltage_v": 0.0005474928453146344
+      }
+    },
+    {
+      "stage_index": 2,
+      "hot_k": 380.0,
+      "cold_k": 350.0,
+      "current_a": 0.2,
+      "comparison_scope": "assumed continuation cross-implementation check ONLY",
+      "reference64": {
+        "qc_w": 0.036152257240438836,
+        "voltage_v": 0.11774708194010092
+      },
+      "reference_seconds": 0.16405107406899333,
+      "newton_levels": [
+        {
+          "intervals": 16,
+          "result": {
+            "qc_w": 0.03615197090791291,
+            "qh_w": 0.059701359579906445,
+            "voltage_v": 0.11774694335996569,
+            "energy_residual_w": 3.95516952522712e-16,
+            "joule_w": 0.013630343772635433,
+            "conduction_w": 0.07283654586337318,
+            "leg_temperature_extrema_k": [
+              350.0,
+              380.0
+            ],
+            "max_leg_balance_residual_w_m2": 2.0521383703453466e-08,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": true,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 16,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 2.863325259255811e-07,
+              "relative_abs": 7.920183905012108e-06
+            },
+            "voltage_v": {
+              "absolute": 1.3858013522827228e-07,
+              "relative_abs": 1.1769305272360749e-06
+            }
+          },
+          "seconds": 0.006346974056214094
+        },
+        {
+          "intervals": 32,
+          "result": {
+            "qc_w": 0.036152199973616995,
+            "qh_w": 0.059701610818401335,
+            "voltage_v": 0.11774705422393154,
+            "energy_residual_w": -1.970645868709653e-15,
+            "joule_w": 0.013630365945428604,
+            "conduction_w": 0.07283654586337318,
+            "leg_temperature_extrema_k": [
+              350.0,
+              380.0
+            ],
+            "max_leg_balance_residual_w_m2": 1.19382548291469e-08,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": true,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 32,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 5.726682184015175e-08,
+              "relative_abs": 1.5840455399309008e-06
+            },
+            "voltage_v": {
+              "absolute": 2.7716169373470656e-08,
+              "relative_abs": 2.353873142059702e-07
+            }
+          },
+          "seconds": 0.005995244020596147
+        },
+        {
+          "intervals": 64,
+          "result": {
+            "qc_w": 0.036152257240438836,
+            "qh_w": 0.05970167362845823,
+            "voltage_v": 0.11774708194010078,
+            "energy_residual_w": -7.667477763817487e-16,
+            "joule_w": 0.013630371488662448,
+            "conduction_w": 0.07283654586337318,
+            "leg_temperature_extrema_k": [
+              350.0,
+              380.0
+            ],
+            "max_leg_balance_residual_w_m2": 1.1769685670515173e-08,
+            "max_leg_iterations": 3,
+            "high_T_assumption_applied": true,
+            "transport_domain_K": [
+              180.0,
+              390.0
+            ],
+            "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+            "intervals": 64,
+            "affine_T_axial_approximation": false
+          },
+          "errors_against_reference64": {
+            "qc_w": {
+              "absolute": 0.0,
+              "relative_abs": 0.0
+            },
+            "voltage_v": {
+              "absolute": 1.3877787807814457e-16,
+              "relative_abs": 1.178609913651552e-15
+            }
+          },
+          "seconds": 0.006787467980757356
+        }
+      ],
+      "affine_errors": {
+        "qc_w": 1.6336894168335336e-05,
+        "voltage_v": 3.776643900929577e-05
+      }
+    }
+  ],
+  "package_convergence": [
+    {
+      "current_a": 0.15,
+      "intervals": 16,
+      "seconds": 0.35368812014348805,
+      "die_k": 231.19217817017673,
+      "terminal_voltage_v": 1.156411042659152,
+      "max_node_balance_residual_w": 1.8066962856333468e-12,
+      "transport_computation": {
+        "stage_solves": 54,
+        "exact_cache_hits": 57,
+        "stage_solve_seconds": 0.33471324504353106,
+        "intervals": 16,
+        "cache": "exact floating inputs, per solve, no rounding/interpolation",
+        "initialization": "g1_constant package solve used as initial iterate ONLY"
+      }
+    },
+    {
+      "current_a": 0.15,
+      "intervals": 32,
+      "seconds": 0.4405874121002853,
+      "die_k": 231.19177911427468,
+      "terminal_voltage_v": 1.156417080608915,
+      "max_node_balance_residual_w": 1.021405182655144e-14,
+      "transport_computation": {
+        "stage_solves": 63,
+        "exact_cache_hits": 66,
+        "stage_solve_seconds": 0.4194655322935432,
+        "intervals": 32,
+        "cache": "exact floating inputs, per solve, no rounding/interpolation",
+        "initialization": "g1_constant package solve used as initial iterate ONLY"
+      }
+    },
+    {
+      "current_a": 0.15,
+      "intervals": 64,
+      "seconds": 0.4073169259354472,
+      "die_k": 231.19180680039278,
+      "terminal_voltage_v": 1.1564130869959608,
+      "max_node_balance_residual_w": 1.1018963519404679e-14,
+      "transport_computation": {
+        "stage_solves": 63,
+        "exact_cache_hits": 66,
+        "stage_solve_seconds": 0.38841235009022057,
+        "intervals": 64,
+        "cache": "exact floating inputs, per solve, no rounding/interpolation",
+        "initialization": "g1_constant package solve used as initial iterate ONLY"
+      }
+    },
+    {
+      "current_a": 0.4,
+      "intervals": 16,
+      "seconds": 0.5434871369507164,
+      "die_k": 188.4678027822316,
+      "terminal_voltage_v": 2.450599628951033,
+      "max_node_balance_residual_w": 9.537683143268083e-14,
+      "transport_computation": {
+        "stage_solves": 72,
+        "exact_cache_hits": 75,
+        "stage_solve_seconds": 0.5217761578969657,
+        "intervals": 16,
+        "cache": "exact floating inputs, per solve, no rounding/interpolation",
+        "initialization": "g1_constant package solve used as initial iterate ONLY"
+      }
+    },
+    {
+      "current_a": 0.4,
+      "intervals": 32,
+      "seconds": 0.57179637090303,
+      "die_k": 188.4650560548419,
+      "terminal_voltage_v": 2.450679838015042,
+      "max_node_balance_residual_w": 5.5147726663040686e-14,
+      "transport_computation": {
+        "stage_solves": 72,
+        "exact_cache_hits": 75,
+        "stage_solve_seconds": 0.548976412974298,
+        "intervals": 32,
+        "cache": "exact floating inputs, per solve, no rounding/interpolation",
+        "initialization": "g1_constant package solve used as initial iterate ONLY"
+      }
+    },
+    {
+      "current_a": 0.4,
+      "intervals": 64,
+      "seconds": 0.7035928759723902,
+      "die_k": 188.46462315139948,
+      "terminal_voltage_v": 2.4506944531429085,
+      "max_node_balance_residual_w": 1.4654943925052066e-14,
+      "transport_computation": {
+        "stage_solves": 81,
+        "exact_cache_hits": 84,
+        "stage_solve_seconds": 0.6773177848663181,
+        "intervals": 64,
+        "cache": "exact floating inputs, per solve, no rounding/interpolation",
+        "initialization": "g1_constant package solve used as initial iterate ONLY"
+      }
+    },
+    {
+      "current_a": 0.9,
+      "intervals": 16,
+      "seconds": 0.4895199181046337,
+      "die_k": 187.79246169374733,
+      "terminal_voltage_v": 5.056381871792763,
+      "max_node_balance_residual_w": 3.953465159411973e-13,
+      "transport_computation": {
+        "stage_solves": 54,
+        "exact_cache_hits": 57,
+        "stage_solve_seconds": 0.46827002079226077,
+        "intervals": 16,
+        "cache": "exact floating inputs, per solve, no rounding/interpolation",
+        "initialization": "g1_constant package solve used as initial iterate ONLY"
+      }
+    },
+    {
+      "current_a": 0.9,
+      "intervals": 32,
+      "seconds": 0.4944169200025499,
+      "die_k": 187.7741771983374,
+      "terminal_voltage_v": 5.055944468257465,
+      "max_node_balance_residual_w": 5.275146638950012e-13,
+      "transport_computation": {
+        "stage_solves": 54,
+        "exact_cache_hits": 57,
+        "stage_solve_seconds": 0.4712784281000495,
+        "intervals": 32,
+        "cache": "exact floating inputs, per solve, no rounding/interpolation",
+        "initialization": "g1_constant package solve used as initial iterate ONLY"
+      }
+    },
+    {
+      "current_a": 0.9,
+      "intervals": 64,
+      "seconds": 0.5227814039681107,
+      "die_k": 187.77382711906807,
+      "terminal_voltage_v": 5.05610875554911,
+      "max_node_balance_residual_w": 6.63062486860877e-13,
+      "transport_computation": {
+        "stage_solves": 54,
+        "exact_cache_hits": 57,
+        "stage_solve_seconds": 0.5032254522666335,
+        "intervals": 64,
+        "cache": "exact floating inputs, per solve, no rounding/interpolation",
+        "initialization": "g1_constant package solve used as initial iterate ONLY"
+      }
+    }
+  ]
+}

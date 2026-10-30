@@ -67,11 +67,11 @@ def failure_diagnostics(s,x=None,residual=None,fit=None,*,error=None):
             'model_temperature_interval_k':[180.,390.],
             'optimizer_temperature_interval_k':[lower,upper],
             'candidate_within_model_domain':bool(min(x)>=180 and max(x)<=390) if finite else None,
-            'measured_PN_interval_k':[40.,300.] if s.material_model=='zhang2025_analog' else None,
+            'measured_PN_interval_k':[40.,300.] if s.material_model!='g1_constant' else None,
             'PN_candidate_within_measured_interval':bool(min(x[:4])>=40 and max(x[:4])<=300)
-                if finite and s.material_model=='zhang2025_analog' else None,
+                if finite and s.material_model!='g1_constant' else None,
             'assumed_high_T_continuation_used':bool(max(x[:4])>300)
-                if finite and s.material_model=='zhang2025_analog' else None,
+                if finite and s.material_model!='g1_constant' else None,
             'interpretation':'An active bound does not prove an out-of-domain physical solution or physical infeasibility.'},
         'optimizer':{'success':bool(fit.success) if fit is not None else None,
                      'status':int(fit.status) if fit is not None else None,
@@ -117,7 +117,7 @@ class Scenario:
             raise ValueError('Nonfinite scenario input')
         if self.gas not in GASES:
             raise ValueError('Unsupported gas species')
-        if self.material_model not in ('g1_constant','zhang2025_analog'):
+        if self.material_model not in ('g1_constant','zhang2025_analog','zhang2025_nonlinear'):
             raise ValueError('Unsupported TEC material model')
         if not (180.<=self.ambient_k<=380.) or not (0.<=self.current_a<=1.):
             raise ValueError('Scenario beyond declared thermal/current screening interval')
@@ -258,16 +258,23 @@ def stage_thermoelectric(coeff,th,tc,current):
             'energy_residual_w':qh-qc-current*voltage}
 
 
-def solve(s:Scenario,g=None):
+def solve(s:Scenario,g=None,*,transport_intervals=32,exchange=None):
     s.validate()
     if g is None:g=geometry()
     coeff=coefficients(s,g)
+    nonlinear=None
+    if s.material_model=='zhang2025_nonlinear':
+        from .nonlinear_tec import Transport
+        nonlinear=Transport(transport_intervals)
 
     def evaluate(x):
         hot,t1,t2,t3,die=x
         th=(hot,t1,t2);tc=(t1,t2,t3)
-        if s.material_model=='zhang2025_analog':
-            from .graded_tec import stage as graded_stage
+        if s.material_model in ('zhang2025_analog','zhang2025_nonlinear'):
+            if nonlinear is None:
+                from .graded_tec import stage as graded_stage
+            else:
+                graded_stage=nonlinear.stage
             stages=[graded_stage(g['stages'][i],a,b,s.current_a,
                        alpha_scale=s.pn_seebeck_scale,rho_scale=s.pn_resistivity_scale,
                        k_scale=s.pn_thermal_conductivity_scale,
@@ -276,6 +283,19 @@ def solve(s:Scenario,g=None):
         else:
             stages=[stage_thermoelectric(c,a,b,s.current_a) for c,a,b in zip(coeff,th,tc)]
         paths=heat_paths(s,g,x)
+        if exchange is not None:
+            from .corrected_exchange import evaluate as exchange_evaluate
+            transfer=exchange_evaluate(exchange,[*map(float,x),s.ambient_k,s.ambient_k,s.ambient_k],
+                pressure_pa=s.cavity_pressure_pa,gas=s.gas,accommodation=s.accommodation,
+                cap_emissivity=s.cap_emissivity,window_emissivity=s.window_thermal_emissivity,
+                body_emissivity=s.ceramic_emissivity,gas_scale=s.gas_area_factor)
+            gas=np.asarray(transfer['gas_nodes_w']);radiation=np.asarray(transfer['radiation_nodes_w'])
+            paths['gas_w']=gas[1:5];paths['radiation_w']=radiation[1:5]
+            paths['external_into_nodes_w']=gas[1:5]+radiation[1:5]
+            paths['external_into_nodes_w'][3]+=paths['Au_wires_into_die_w']
+            paths['enclosure_into_hot_w']=float(gas[0]+radiation[0])
+            paths['enclosure_reservoir_into_w']=(gas+radiation)[5:].tolist()
+            paths['enclosure_conservation_residual_w']=transfer['max_conservation_residual_w']
         e=paths['external_into_nodes_w']
         # Stage 0/1/2 and die conservation, hot-side bath balance.
         residual=np.array([
@@ -284,7 +304,8 @@ def solve(s:Scenario,g=None):
             stages[2]['qc_w']-e[2]-paths['die_attach_into_cold_w'],
             paths['die_attach_into_cold_w']-e[3]-paths['die_internal_heating_w'],
             hot-s.ambient_k-s.heat_sink_k_w*(stages[0]['qh_w']+
-                        paths['Cu_conduction_into_hot_w']+.5*paths['Cu_total_joule_w'])
+                        paths['Cu_conduction_into_hot_w']+.5*paths['Cu_total_joule_w']+
+                        paths.get('enclosure_into_hot_w',0.))
         ])
         # Last row in K, scale it to W using 1/(2 K/W) for optimization.
         residual[4]/=2.
@@ -292,6 +313,14 @@ def solve(s:Scenario,g=None):
 
     init=np.array([s.ambient_k+.2,s.ambient_k-12,s.ambient_k-22,s.ambient_k-30,s.ambient_k-29.9])
     if s.current_a<.02:init[:]=s.ambient_k
+    initialization='default temperature estimate'
+    if nonlinear is not None:
+        try:
+            guess=solve(replace(s,material_model='g1_constant'),g,exchange=exchange)
+            init=np.array([guess['temperatures_k'][name] for name in TEMPERATURE_NODES])
+            initialization='g1_constant package solve used as initial iterate ONLY'
+        except ValueError:
+            initialization='constant-law guess failed; default estimate used'
     lower=np.full(5,180.+1e-6);upper=np.full(5,390.-1e-6)
     x0=np.clip(init,lower+1e-4,upper-1e-4)
     last={'x':None,'residual':None}
@@ -309,8 +338,9 @@ def solve(s:Scenario,g=None):
         last['residual']=None
         stages,paths,residual=evaluate(fit.x)
     except (ValueError,RuntimeError,FloatingPointError) as error:
-        raise OperatingPointFailure(str(error),failure_diagnostics(
-            s,last['x'],last['residual'],fit,error=str(error))) from error
+        diagnostics=failure_diagnostics(s,last['x'],last['residual'],fit,error=str(error))
+        if hasattr(error,'diagnostics'):diagnostics['transport_failure']=error.diagnostics
+        raise OperatingPointFailure(str(error),diagnostics) from error
     maximum=float(np.max(np.abs(residual)))
     if not fit.success or maximum>1e-8 or any(t<180 or t>390 for t in fit.x):
         raise OperatingPointFailure(
@@ -320,8 +350,9 @@ def solve(s:Scenario,g=None):
     vwire=s.current_a*sum(w['R_ohm'] for w in g['wires'] if w['material']=='Cu')
     pin_in=paths['Cu_conduction_into_hot_w']-.5*paths['Cu_total_joule_w']
     extcold=float(paths['external_into_nodes_w'].sum())
-    q_bath=stages[0]['qh_w']+paths['Cu_conduction_into_hot_w']+.5*paths['Cu_total_joule_w']
-    global_error=(vtec+vwire)*s.current_a+paths['die_internal_heating_w']+extcold+pin_in-q_bath
+    hot_exchange=paths.get('enclosure_into_hot_w',0.)
+    q_bath=stages[0]['qh_w']+paths['Cu_conduction_into_hot_w']+.5*paths['Cu_total_joule_w']+hot_exchange
+    global_error=(vtec+vwire)*s.current_a+paths['die_internal_heating_w']+extcold+pin_in+hot_exchange-q_bath
     if abs(global_error)>1e-8 or any(abs(st['energy_residual_w'])>1e-9 for st in stages):
         diagnostics=failure_diagnostics(s,fit.x,residual,fit)
         diagnostics['global_energy_residual_w']=float(global_error)
@@ -329,7 +360,7 @@ def solve(s:Scenario,g=None):
         raise OperatingPointFailure('Power bookkeeping failed',diagnostics)
     from .graded_tec import source_evidence
     out={'method':'corrected-geometry, 5-node conservative screening; NOT 3D FEM or OEM-validated',
-         'transport_source':source_evidence() if s.material_model=='zhang2025_analog' else
+         'transport_source':source_evidence() if s.material_model!='g1_constant' else
               {'id':'G1 constant verification properties','grade_matched':False},
          'material_model':s.material_model,
          'scenario':asdict(s),'geometry_provenance':g['source_sha256'],
@@ -348,6 +379,12 @@ def solve(s:Scenario,g=None):
          'global_energy_residual_w':float(global_error),
          'numerical_evaluations':int(fit.nfev),
          'qualification':'exploratory plausible reference, no matched-grade identification or 3D cavity field'}
+    if nonlinear is not None:
+        out['transport_computation']={**nonlinear.statistics(),'initialization':initialization}
+    if exchange is not None:
+        out['enclosure_operator']={'payload_sha256':exchange['payload_sha256'],
+            'scope':exchange['scope'],'inactive_legacy_controls':['gas_gap_m','cold_surface_factor',
+                'cap_view_factor','window_die_view_factor']}
     return out
 
 
@@ -367,11 +404,11 @@ def scenarios():
     }
 
 
-def sensitivity(g=None, current=.15, material_model='g1_constant'):
+def sensitivity(g=None, current=.15, material_model='g1_constant',exchange=None):
     """One-factor engineering envelope, not uncertainty quantiles or calibration."""
     if g is None:g=geometry()
     base=replace(Scenario(),current_a=current,material_model=material_model)
-    reference=solve(base,g)
+    reference=solve(base,g,exchange=exchange)
     trials={
         'Seebeck surrogate scale':('pn_seebeck_scale',.90,1.10),
         'P/N electrical resistivity scale':('pn_resistivity_scale',.80,1.20),
@@ -388,7 +425,7 @@ def sensitivity(g=None, current=.15, material_model='g1_constant'):
     for description,(field,lower,upper) in trials.items():
         endpoints=[]
         for value in (lower,upper):
-            result=solve(replace(base,**{field:value}),g)
+            result=solve(replace(base,**{field:value}),g,exchange=exchange)
             endpoints.append(result['MCT_die_k'])
         results.append({'factor':description,'field':field,'low_input':lower,'high_input':upper,
                         'low_result_die_k':endpoints[0], 'high_result_die_k':endpoints[1],
@@ -398,9 +435,9 @@ def sensitivity(g=None, current=.15, material_model='g1_constant'):
     return sorted(results,key=lambda r:r['endpoint_span_abs_k'],reverse=True)
 
 
-def run(out, material_model='g1_constant'):
+def run(out, material_model='g1_constant',exchange=None):
     out=Path(out);out.mkdir(parents=True,exist_ok=True)
-    if material_model not in ('g1_constant','zhang2025_analog'):
+    if material_model not in ('g1_constant','zhang2025_analog','zhang2025_nonlinear'):
         raise ValueError('Unsupported material model')
     g=geometry()
     cases={};rows=[]
@@ -409,7 +446,7 @@ def run(out, material_model='g1_constant'):
         for i in (step/20 for step in range(21)): # bounded 0..1 A, 0.05 A grid
             label=f'{name}_I{i:.2f}'
             try:
-                result=solve(replace(s,current_a=i),g)
+                result=solve(replace(s,current_a=i),g,exchange=exchange)
                 cases[label]=result
                 rows.append({'scenario':name,'current_a':i,'detector_k':result['MCT_die_k'],
                              'hot_k':result['temperatures_k']['hot_ceramic'],
@@ -422,7 +459,7 @@ def run(out, material_model='g1_constant'):
                     diagnostics=failure_diagnostics(replace(s,current_a=i),error=str(error))
                 cases[label]={'status':'FAILED CLOSED','reason':str(error),
                               'diagnostics':diagnostics}
-    oat=sensitivity(g,material_model=material_model)
+    oat=sensitivity(g,material_model=material_model,exchange=exchange)
     grid_best={}
     for name in scenarios():
         subset=[r for r in rows if r['scenario']==name]
@@ -457,5 +494,11 @@ def run(out, material_model='g1_constant'):
 
 if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('--out',default=str(ROOT/'outputs/integrated-reference-20261030'))
-    ap.add_argument('--material',choices=('g1_constant','zhang2025_analog'),default='g1_constant')
-    args=ap.parse_args();run(args.out,material_model=args.material)
+    ap.add_argument('--material',choices=('g1_constant','zhang2025_analog','zhang2025_nonlinear'),default='g1_constant')
+    ap.add_argument('--exchange',type=Path,help='Optional corrected stepped-core operator JSON')
+    args=ap.parse_args()
+    if args.exchange:
+        from .corrected_exchange import load
+        operator=load(args.exchange)
+    else:operator=None
+    run(args.out,material_model=args.material,exchange=operator)

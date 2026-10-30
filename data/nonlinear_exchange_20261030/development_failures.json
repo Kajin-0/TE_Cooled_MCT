@@ -1,0 +1,406 @@
+{
+  "status": "UNACCEPTED DEVELOPMENT; not a physical infeasibility claim",
+  "implementation_sha256": "eb9983d9099314c2b1318c208ee87fdfae30839276d560efacc678007ac2d29d",
+  "failures": {
+    "vacuum_low_parasitic_I0.00": {
+      "status": "FAILED CLOSED",
+      "reason": "Nonlinear stage energy gate failed",
+      "diagnostics": {
+        "classification": "evaluation_or_input_error",
+        "scenario": {
+          "ambient_k": 300.0,
+          "current_a": 0.0,
+          "material_model": "zhang2025_nonlinear",
+          "heat_sink_k_w": 0.5,
+          "detector_bias_w": 0.0015,
+          "detector_absorbed_w": 0.0005,
+          "gas": "Kr",
+          "cavity_pressure_pa": 0.0,
+          "gas_gap_m": 0.003,
+          "gas_area_factor": 0.5,
+          "accommodation": 0.8,
+          "cap_emissivity": 0.08,
+          "ceramic_emissivity": 0.8,
+          "window_thermal_emissivity": 0.05,
+          "cap_view_factor": 0.5,
+          "window_die_view_factor": 0.7,
+          "cold_surface_factor": 1.5,
+          "pn_seebeck_scale": 1.0,
+          "pn_resistivity_scale": 1.0,
+          "pn_thermal_conductivity_scale": 1.0,
+          "die_attach_conductivity_w_mk": 1.0,
+          "au_wire_conductance_scale": 0.75,
+          "cu_wire_conductance_scale": 1.0,
+          "stage_bypass_w_k": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "last_candidate_temperatures_k": {
+          "hot_ceramic": 300.00033204279174,
+          "stage1": 300.0646403870366,
+          "stage2": 300.1922911802468,
+          "cold_ceramic": 300.57342516719734,
+          "MCT_die": 300.6174029786142
+        },
+        "node_balance_residuals_w": null,
+        "max_node_balance_residual_w": null,
+        "hot_sink_temperature_residual_k": null,
+        "optimizer_scaled_residuals": null,
+        "max_optimizer_scaled_residual": null,
+        "optimizer_residual_units": "first four W; last K divided by 2 (optimizer scaling only)",
+        "active_temperature_bounds": {
+          "hot_ceramic": null,
+          "stage1": null,
+          "stage2": null,
+          "cold_ceramic": null,
+          "MCT_die": null
+        },
+        "active_temperature_bound_tolerance_k": 0.0001,
+        "any_active_temperature_bound": false,
+        "physical_domain": {
+          "model_temperature_interval_k": [
+            180.0,
+            390.0
+          ],
+          "optimizer_temperature_interval_k": [
+            180.000001,
+            389.999999
+          ],
+          "candidate_within_model_domain": true,
+          "measured_PN_interval_k": [
+            40.0,
+            300.0
+          ],
+          "PN_candidate_within_measured_interval": false,
+          "assumed_high_T_continuation_used": true,
+          "interpretation": "An active bound does not prove an out-of-domain physical solution or physical infeasibility."
+        },
+        "optimizer": {
+          "success": null,
+          "status": null,
+          "message": "Nonlinear stage energy gate failed",
+          "nfev": null,
+          "active_mask": null
+        },
+        "evaluation_error": "Nonlinear stage energy gate failed",
+        "candidate_is_accepted": false,
+        "transport_failure": {
+          "energy_residual_w": 1.8154388659258683e-08
+        }
+      }
+    },
+    "nominal_krypton_I0.00": {
+      "status": "FAILED CLOSED",
+      "reason": "Nonlinear stage energy gate failed",
+      "diagnostics": {
+        "classification": "evaluation_or_input_error",
+        "scenario": {
+          "ambient_k": 300.0,
+          "current_a": 0.0,
+          "material_model": "zhang2025_nonlinear",
+          "heat_sink_k_w": 2.0,
+          "detector_bias_w": 0.0015,
+          "detector_absorbed_w": 0.0005,
+          "gas": "Kr",
+          "cavity_pressure_pa": 30000.0,
+          "gas_gap_m": 0.003,
+          "gas_area_factor": 1.0,
+          "accommodation": 0.8,
+          "cap_emissivity": 0.2,
+          "ceramic_emissivity": 0.8,
+          "window_thermal_emissivity": 0.1,
+          "cap_view_factor": 0.5,
+          "window_die_view_factor": 0.7,
+          "cold_surface_factor": 1.5,
+          "pn_seebeck_scale": 1.0,
+          "pn_resistivity_scale": 1.0,
+          "pn_thermal_conductivity_scale": 1.0,
+          "die_attach_conductivity_w_mk": 1.0,
+          "au_wire_conductance_scale": 1.0,
+          "cu_wire_conductance_scale": 1.0,
+          "stage_bypass_w_k": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "last_candidate_temperatures_k": {
+          "hot_ceramic": 300.00131967211485,
+          "stage1": 300.06547408222707,
+          "stage2": 300.19325476183405,
+          "cold_ceramic": 300.5748789046186,
+          "MCT_die": 300.6190223603001
+        },
+        "node_balance_residuals_w": null,
+        "max_node_balance_residual_w": null,
+        "hot_sink_temperature_residual_k": null,
+        "optimizer_scaled_residuals": null,
+        "max_optimizer_scaled_residual": null,
+        "optimizer_residual_units": "first four W; last K divided by 2 (optimizer scaling only)",
+        "active_temperature_bounds": {
+          "hot_ceramic": null,
+          "stage1": null,
+          "stage2": null,
+          "cold_ceramic": null,
+          "MCT_die": null
+        },
+        "active_temperature_bound_tolerance_k": 0.0001,
+        "any_active_temperature_bound": false,
+        "physical_domain": {
+          "model_temperature_interval_k": [
+            180.0,
+            390.0
+          ],
+          "optimizer_temperature_interval_k": [
+            180.000001,
+            389.999999
+          ],
+          "candidate_within_model_domain": true,
+          "measured_PN_interval_k": [
+            40.0,
+            300.0
+          ],
+          "PN_candidate_within_measured_interval": false,
+          "assumed_high_T_continuation_used": true,
+          "interpretation": "An active bound does not prove an out-of-domain physical solution or physical infeasibility."
+        },
+        "optimizer": {
+          "success": null,
+          "status": null,
+          "message": "Nonlinear stage energy gate failed",
+          "nfev": null,
+          "active_mask": null
+        },
+        "evaluation_error": "Nonlinear stage energy gate failed",
+        "candidate_is_accepted": false,
+        "transport_failure": {
+          "energy_residual_w": 1.806758078337547e-08
+        }
+      }
+    },
+    "nitrogen_high_parasitic_I0.00": {
+      "status": "FAILED CLOSED",
+      "reason": "Nonlinear stage energy gate failed",
+      "diagnostics": {
+        "classification": "evaluation_or_input_error",
+        "scenario": {
+          "ambient_k": 300.0,
+          "current_a": 0.0,
+          "material_model": "zhang2025_nonlinear",
+          "heat_sink_k_w": 5.0,
+          "detector_bias_w": 0.0015,
+          "detector_absorbed_w": 0.0005,
+          "gas": "N2",
+          "cavity_pressure_pa": 101325.0,
+          "gas_gap_m": 0.003,
+          "gas_area_factor": 1.5,
+          "accommodation": 0.8,
+          "cap_emissivity": 0.65,
+          "ceramic_emissivity": 0.8,
+          "window_thermal_emissivity": 0.6,
+          "cap_view_factor": 0.5,
+          "window_die_view_factor": 0.7,
+          "cold_surface_factor": 2.0,
+          "pn_seebeck_scale": 1.0,
+          "pn_resistivity_scale": 1.0,
+          "pn_thermal_conductivity_scale": 1.0,
+          "die_attach_conductivity_w_mk": 1.0,
+          "au_wire_conductance_scale": 1.25,
+          "cu_wire_conductance_scale": 1.0,
+          "stage_bypass_w_k": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "last_candidate_temperatures_k": {
+          "hot_ceramic": 300.00319738658294,
+          "stage1": 300.06663905522913,
+          "stage2": 300.1947466529592,
+          "cold_ceramic": 300.578375308594,
+          "MCT_die": 300.6234270069054
+        },
+        "node_balance_residuals_w": null,
+        "max_node_balance_residual_w": null,
+        "hot_sink_temperature_residual_k": null,
+        "optimizer_scaled_residuals": null,
+        "max_optimizer_scaled_residual": null,
+        "optimizer_residual_units": "first four W; last K divided by 2 (optimizer scaling only)",
+        "active_temperature_bounds": {
+          "hot_ceramic": null,
+          "stage1": null,
+          "stage2": null,
+          "cold_ceramic": null,
+          "MCT_die": null
+        },
+        "active_temperature_bound_tolerance_k": 0.0001,
+        "any_active_temperature_bound": false,
+        "physical_domain": {
+          "model_temperature_interval_k": [
+            180.0,
+            390.0
+          ],
+          "optimizer_temperature_interval_k": [
+            180.000001,
+            389.999999
+          ],
+          "candidate_within_model_domain": true,
+          "measured_PN_interval_k": [
+            40.0,
+            300.0
+          ],
+          "PN_candidate_within_measured_interval": false,
+          "assumed_high_T_continuation_used": true,
+          "interpretation": "An active bound does not prove an out-of-domain physical solution or physical infeasibility."
+        },
+        "optimizer": {
+          "success": null,
+          "status": null,
+          "message": "Nonlinear stage energy gate failed",
+          "nfev": null,
+          "active_mask": null
+        },
+        "evaluation_error": "Nonlinear stage energy gate failed",
+        "candidate_is_accepted": false,
+        "transport_failure": {
+          "energy_residual_w": 1.7668357072319826e-08
+        }
+      }
+    },
+    "nitrogen_high_parasitic_I1.00": {
+      "status": "FAILED CLOSED",
+      "reason": "Nonlinear leg failed residual/domain gate",
+      "diagnostics": {
+        "classification": "evaluation_or_input_error",
+        "scenario": {
+          "ambient_k": 300.0,
+          "current_a": 1.0,
+          "material_model": "zhang2025_nonlinear",
+          "heat_sink_k_w": 5.0,
+          "detector_bias_w": 0.0015,
+          "detector_absorbed_w": 0.0005,
+          "gas": "N2",
+          "cavity_pressure_pa": 101325.0,
+          "gas_gap_m": 0.003,
+          "gas_area_factor": 1.5,
+          "accommodation": 0.8,
+          "cap_emissivity": 0.65,
+          "ceramic_emissivity": 0.8,
+          "window_thermal_emissivity": 0.6,
+          "cap_view_factor": 0.5,
+          "window_die_view_factor": 0.7,
+          "cold_surface_factor": 2.0,
+          "pn_seebeck_scale": 1.0,
+          "pn_resistivity_scale": 1.0,
+          "pn_thermal_conductivity_scale": 1.0,
+          "die_attach_conductivity_w_mk": 1.0,
+          "au_wire_conductance_scale": 1.25,
+          "cu_wire_conductance_scale": 1.0,
+          "stage_bypass_w_k": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "last_candidate_temperatures_k": {
+          "hot_ceramic": 327.4776486885113,
+          "stage1": 320.32273635408256,
+          "stage2": 245.392965230493,
+          "cold_ceramic": 184.11194657983265,
+          "MCT_die": 183.62003159157322
+        },
+        "node_balance_residuals_w": null,
+        "max_node_balance_residual_w": null,
+        "hot_sink_temperature_residual_k": null,
+        "optimizer_scaled_residuals": null,
+        "max_optimizer_scaled_residual": null,
+        "optimizer_residual_units": "first four W; last K divided by 2 (optimizer scaling only)",
+        "active_temperature_bounds": {
+          "hot_ceramic": null,
+          "stage1": null,
+          "stage2": null,
+          "cold_ceramic": null,
+          "MCT_die": null
+        },
+        "active_temperature_bound_tolerance_k": 0.0001,
+        "any_active_temperature_bound": false,
+        "physical_domain": {
+          "model_temperature_interval_k": [
+            180.0,
+            390.0
+          ],
+          "optimizer_temperature_interval_k": [
+            180.000001,
+            389.999999
+          ],
+          "candidate_within_model_domain": true,
+          "measured_PN_interval_k": [
+            40.0,
+            300.0
+          ],
+          "PN_candidate_within_measured_interval": false,
+          "assumed_high_T_continuation_used": true,
+          "interpretation": "An active bound does not prove an out-of-domain physical solution or physical infeasibility."
+        },
+        "optimizer": {
+          "success": null,
+          "status": null,
+          "message": "Nonlinear leg failed residual/domain gate",
+          "nfev": null,
+          "active_mask": null
+        },
+        "evaluation_error": "Nonlinear leg failed residual/domain gate",
+        "candidate_is_accepted": false,
+        "transport_failure": {
+          "polarity": "P",
+          "intervals": 32,
+          "iterations": 8,
+          "temperatures_k": [
+            327.4776486885113,
+            335.371106303415,
+            342.739757650973,
+            349.5805676827351,
+            355.890943481195,
+            361.66873655086664,
+            366.9122442598167,
+            371.6202104177744,
+            375.7918249838707,
+            379.42672290407387,
+            382.52498208534473,
+            385.0871205203465,
+            387.1140925830861,
+            388.60728452205564,
+            389.56850918316917,
+            389.9999999999993,
+            389.9044042934234,
+            389.28477592673767,
+            388.14456736556815,
+            386.4876211944485,
+            384.3181611437579,
+            381.6407826818171,
+            378.4604432273313,
+            374.78245203710316,
+            370.6124598230225,
+            365.956448150865,
+            360.8207186714151,
+            355.2118822319668,
+            349.1368479134032,
+            342.6028120348813,
+            335.6172471647324,
+            328.18789117259394,
+            320.32273635408256
+          ],
+          "max_balance_residual_w_m2": 1209.7155116157046,
+          "energy_error_w_m2": -24709.107823867467,
+          "domain_k": [
+            180.0,
+            390.0
+          ],
+          "active_bound": true
+        }
+      }
+    }
+  }
+}

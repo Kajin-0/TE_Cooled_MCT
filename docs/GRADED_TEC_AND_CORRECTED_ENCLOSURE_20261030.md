@@ -1,344 +1,246 @@
-# Graded TEC analog and corrected-geometry enclosure CAD — 2026-10-30
+# P/N transport and corrected-source enclosure exchange
 
-**Status: new opt-in engineering variants and a geometry-only 3D fixture.**
-This is a development milestone for the **plausible synthetic** HgCdTe
-reference article. It is **not OEM validation**, not a newly solved
-88-leg enclosed-package Elmer field, and not numerical-release qualification.
+This guide covers the current opt-in implementations and their limits. The
+[package guide](INTEGRATED_REFERENCE_THERMAL_20261030.md) defines the five-node
+balances, scenarios, sources/assumptions and CLI. The objective is a plausible
+synthetic reference device; numerical checks do not establish device accuracy.
 
-## Audit of prior work
+## Coverage and implementation choices
 
-The source-based corrected TO-66/88-leg assembly has a 1.5 mm Kovar
-header, source 15.2 mm cap outside diameter, 28/12/4 inferred thermocouple
-allocation, inferred stage pellet geometry, 0.2 mm MCT die, 30 µm die
-attach, four audited Cu/Au lumped wire paths. Previous G3b gas/radiosity
-algorithms are reusable only after rebuilding their original obsolete
-package geometry and surfaces. Previous constant-property model results
-and all sealed Elmer runs are retained unchanged.
+| Capability | Module | Evidence / scope |
+| --- | --- | --- |
+| Original affine-T analog | `graded_tec.py` | Preserved model identifier and 49/63 accepted historical snapshot |
+| Nonlinear bounded legs | `nonlinear_tec.py` | Direct 32-interval banded Newton, independent old BVP comparisons, 16/32/64 checks |
+| Independent reference | Unmodified `oem_phase_a.bounded_leg` | Conservative midpoint equations solved by bounded least-squares; not an OEM fit |
+| Actual cap/window fixture | `corrected_enclosure.py` | Protected STEP + 8,143-tet standalone mesh, three domains and nine physical groups |
+| Native source-face audit | `exchange_geometry.py` | Exact package/fixture hashes, ownership, areas, interface incidence and positive cap tets |
+| Preliminary exchange | `corrected_exchange.py` | Closed analytic cylinder with a filled stepped-core proxy, 14 surfaces / 8 effective nodes |
+| Package coupling | `integrated_reference.py` | Opt-in nonlinear transport and exchange; no new enclosed-package 3D field |
 
-Two additions close important preparatory gaps without claiming more
-physical accuracy than the available input information supports.
+## Material provenance and active-law semantics
 
-## A. Source-backed, temperature-dependent P/N analog grade
+The unmodified `data/g2c/zhang2025_he_40_300_v2.json` contains source-traced
+S(T), rho(T), k(T) for different P/N research specimens from Zhang et al.
+(2025), DOI 10.1088/0256-307X/42/5/056304. Their complete source domain is
+40–300 K. These are analogs, not an identified commercial matched pair.
 
-New `tecooledmct/graded_tec.py` reads the unmodified and source-traced
-`data/g2c/zhang2025_he_40_300_v2.json`. Its source is Zhang et al.
-(2025), DOI 10.1088/0256-307X/42/5/056304. Both P and N specimens have
-measured/digitized `S(T),rho(T),k(T)` only over **40–300 K**. They are
-**different laboratory specimens, not identified P/N elements from the
-commercial three-stage TEC**.
+The selected synthetic model uses 180–390 K. Between 180 and 300 K it
+retains the measured-table interpolation. Above 300 K, each property uses
+**0.25 times the final measured-interval tangent**, through 390 K. This is a
+bounded engineering hypothesis, not measured transport. Every nonlinear
+interior node and property evaluation must respect the active domain;
+Joule overshoot may use the assumed law even with both endpoints below 300 K.
 
-For the synthetic reference, the reduced model uses 180–390 K nominal
-domain. For **300–390 K only**, each property is extended with a
-slope equal to **25% of its final measured-interval tangent**. This is
-an explicit, adjustable *engineering hypothesis*, not experimental
-measurements, and not evidence that real P/N pellets behave this way.
-The temperatures 180–300 K use the sourced table without alteration.
-Outside 180–390 K a physical-state or property evaluation fails closed.
+| Quantity | Units | Definition / one-sided rule |
+| --- | --- | --- |
+| S | V/K | Piecewise source interpolation / explicit continuation; P positive, N negative |
+| rho | ohm m | Positive active resistivity |
+| sigma | S/m | Identically 1/rho after continuation |
+| k | W/(m K) | Positive active conductivity |
+| Thomson coefficient | V/K | T*dS/dT of the active law |
+| Derivative at interior source knots | Property/K | Right derivative |
+| At exactly 300 K | Property/K | Final measured segment left derivative; no two-sided derivative asserted |
+| Strictly above 300 K / exactly 390 K | Property/K | Quarter tangent / its left limit at 390 K |
 
-The steady single-stage analog avoids fixed-grid quadrature across
-table breakpoints: temperatures along the leg are assumed affine with
-axial distance, and the 1D transport integrals are evaluated separately
-on every source-table temperature interval. Two-point Gauss integration
-on each interval resolves the resulting piecewise polynomial integrands
-to round-off. The volume-averaged voltage and cold-side heat flux are:
+Out-of-domain, nonfinite and nonpassive evaluations fail closed. Positive
+material scaling factors apply to the laws and their derivatives together.
+The recent consistency correction leaves all stage S/rho/k inputs exactly
+unchanged. Snapshot comparisons use 1e-7 K and 1e-9 V/W numerical tolerances
+across optimizer/BLAS versions; these are not physical acceptance gates.
+
+## Nonlinear leg equations and conservative discretization
+
+Use z from hot to cold, length L in m, current density j in A/m²:
 
 ```text
-s = 0 cold junction → 1 hot junction;  T(s) = Tc + s(Th−Tc)
-α(T) = N [S_P(T)−S_N(T)]
-R(T) = N L/A [ρ_P(T)+ρ_N(T)]
-K(T) = N A/L [k_P(T)+k_N(T)]
-
-V = ∫₀¹ [I R(T)+α(T) (Th−Tc)] ds
-Qavg = ∫₀¹ [I α(T)T−K(T)(Th−Tc)] ds
-Qc = Qavg − ∫₀¹ (1−s)[I² R(T)+I α(T)(Th−Tc)] ds − K_bypass (Th−Tc)
-Qh = Qc + I V
+q = S(T)*T*j - k(T)*dT/dz                         [W/m²]
+dq/dz = j*(rho(T)*j + S(T)*dT/dz)                 [W/m³]
 ```
 
-These equations reproduce the constant `S,rho,k` limit exactly and
-enforce the first law `Qh−Qc=I V`, including temperature-dependent
-thermopower work. **They are approximate** for a real leg because they
-assume an affine axial temperature field, rather than solving the
-Joule/Thomson-driven nonlinear profile. They do not include contact
-resistances, internal 3D current spreading, pellet grade distributions
-or thermo-mechanical effects.
+At each segment midpoint, dx=L/n and dT=T_right-T_left:
 
-**Independent axial BVP check:** The earlier bounded 1D leg solver was
-run at a fixed 295 K hot-side / 250 K cold-side temperature difference,
-0.1 A and the corrected source first-stage pellet geometry, using
-exactly the same Zhang source curves, with 32 intervals per leg.
-The graded affine-profile approximation yielded Qc=−0.24265145 W,
-V=0.79740608 V; the independent non-affine BVP yielded
-Qc=−0.24279309 W, V=0.79687462 V. Their differences are
-**0.14164 mW** (0.0583% of BVP |Qc|) and
-**0.53146 mV** (0.0667% of BVP V). Both satisfy energy conservation.
-This supports the reduced integration at that boundary-value point;
-it does **not** bound the error at arbitrary temperature, large
-load, high current or unknown pellet grades. The negative Qc
-indicates back-conduction exceeds cooling at that imposed 45 K
-stage temperature difference.
+```text
+v_s = j*rho(T_mid)*dx + S(T_mid)*dT               [V]
+w_s = j*v_s                                     [W/m²]
+r_i = q_(i+1/2)-q_(i-1/2) - (w_left+w_right)/2   [W/m²]
+q_hot = q_first-w_first/2; q_cold=q_last+w_last/2
+```
 
-The preexisting `g1_constant` path remains the default, so prior
-63-point results and user-facing CLI behavior remain backward compatible.
-The analog is enabled explicitly with
-`--material zhang2025_analog`; it is not applied to the protected 3D
-Elmer material-law files.
+The direct implementation computes an analytic tridiagonal Jacobian of these
+residuals, solves with a banded linear solve, then uses a bounded residual-
+decreasing line search. It never clips an accepted profile or substitutes an
+affine profile on failure. No separate Thomson source is added: variable
+thermopower work is already present in the conservative flux/work equations.
 
-### Source-transport comparison at 300 K ambient, 0.15 A and 2 mW MCT load
+For N pairs with leg area A, jN=I/A and jP=-I/A:
 
-| Scenario | G1 constant die K | Zhang-analog die K | Zhang-analog terminal V |
+```text
+Qc = -N*A*(q_cold_P+q_cold_N) - K_bypass*(Th-Tc)
+Qh = -N*A*(q_hot_P+q_hot_N)   - K_bypass*(Th-Tc)
+V  = N*(v_N-v_P)
+```
+
+Both endpoint heats are independently computed; `Qh-Qc=I*V` is audited to
+1e-9 W. Inner maximum control-volume residual is <=1e-4 W/m², and total
+endpoint/work mismatch <=1e-6 W/m². The extra integral check prevents small
+per-cell errors accumulating into a false zero-current stage-energy failure.
+The initial unaccepted development failures are retained separately in the
+new evidence folder, not reclassified as physical infeasibility.
+
+Each package solve owns an exact-key stage cache. Keys include boundary
+T, current, dimensions and all transport/bypass multipliers. No rounding,
+persistent stale lookup table or surrogate interpolation is used. Repeated
+stages under finite-difference package Jacobians can therefore reuse exact
+results. A constant-law package result is used only as an initial iterate;
+the accepted result still passes the full nonlinear equations and gates.
+
+## Transport accuracy, cost and unresolved states
+
+Versioned evidence: `data/nonlinear_exchange_20261030/transport/comparison.json`.
+Ten boundary-value points span all three stage geometries, 0.1–0.9 A and
+16/32/64 intervals. Eight cases have all reference temperatures strictly
+40<T<300 K; the other two are labeled **assumed-continuation consistency
+checks only**. They do not validate the extension experimentally.
+
+| Stage; Th/Tc K; I A | Nonlinear32 vs reference64 abs Qc | Relative Qc | Abs V | Relative V |
+| --- | ---: | ---: | ---: | ---: |
+| 0; 295/250; .1 | 0.589 µW | 0.000243% | 0.436 µV | 0.0000548% |
+| 0; 260/240; .7 | 6.762 µW | 0.000823% | 0.129404 mV | 0.00570% |
+| 0; 230/210; .9 | 15.398 µW | 0.00246% | 0.199649 mV | 0.00823% |
+| 2; 230/190; .5 | 0.871 µW | 0.00417% | 0.277 µV | 0.000195% |
+
+Relative errors divide by absolute BVP64 values; near zero cooling, absolute
+errors matter more. All points and signed reference results are in JSON.
+At the earlier 0.7 A test, affine-vs-BVP32 voltage error was 147.221 mV
+(6.48%); direct nonlinear32 reduces it to 0.129404 mV vsBVP64. Identical-grid
+new/old implementations agree within tested 2 nW / 20 nV bounds. This verifies
+implementation and discrete refinement, not material-grade/device accuracy.
+
+On this pinned execution the median independent-reference64/direct-Newton64
+wall-time ratio was about 24; this is a measured timing, not a portable speed
+guarantee. Across accepted old-reservoir package points, median inner-stage
+compute time was 0.52 s, with 64.5 stage solves and 66 exact cache hits. Timings
+exclude some outer/initial-guess overhead. At nominal 0.9 A, nonlinear32→64
+changes die T by 0.000350 K and terminal V by 0.1643 mV. Knot crossings can
+produce nonmonotonic small changes; no GCI or continuum error bound is claimed.
+
+The final old-reservoir nonlinear sweep accepts 50/63 cases and retains 13
+rejections; the proxy sweep accepts 52/63 and retains 11. Some are lower-bound
+residual failures; the high-parasitic 1 A case rejects a nonlinear leg profile.
+A failure at an optimizer candidate does not prove that no physical root exists.
+No rejected candidate is a measured or accepted operating point, and plots do
+not bridge failures. Previous affine data and all original FEM failures remain.
+
+## Corrected-source native geometry audit
+
+The immutable source package has 216 material bodies and 88 legs. The standalone
+cap/window BREP uses documented 15.2 mm cap OD and 1.5 mm header datum;
+height 8.6 mm, wall 0.5 mm, roof/window 0.45 mm and window OD 5.9 mm are assumed.
+The builder rejects nonfinite/nonpositive dimensions, impossible voids and
+collisions, including wire radius. Window thickness currently equals roof
+thickness; a different seat needs new geometry.
+
+`data/corrected_enclosure/exchange_sources_v1.json` pins the existing STEP,
+MSH and geometry-audit SHA-256 values. Package manifest/mesh/wires are checked
+against their protected archive ledger. The new audit independently verifies:
+
+- all 8,143 native cap tets have positive signed volumes;
+- physical volumes 7301–7303, all nine face groups 7401–7409, unique exterior
+  ownership, and 156/100 shared shell-roof/roof-window interface triangles;
+- facet areas against BREP areas, with tessellation errors reported;
+- unique ownership of every declared native package exterior triangle and
+  actual exposed top facets on ceramic bodies 1–4 and MCT body 303.
+
+Native exposed top areas are 29.964,16.1295,8.9375,4.760 and0.955 mm².
+They are recorded independently of the proxy areas below. This is not a
+conformal cap-to-package merge, and no gas volume is meshed.
+
+## Preliminary closed exchange proxy
+
+The cavity is an analytic inner cylinder, radius 7.1 mm, z=1.5..9.65 mm,
+with the current candidate window. A filled stepped opaque core uses corrected
+ceramic and die widths/top-plane heights. It **fills actual interleg voids**,
+omits pin/wire/metallization occlusion and replaces exposed native surfaces.
+Therefore its areas differ materially from the native areas above. It is a
+bounded engineering closure, not an actual-face 88-leg visibility solution.
+
+Fourteen surface groups comprise five upward top bands, five four-sided
+vertical groups, header floor, cap wall, cap roof and window. Their temperatures
+map conservatively to five package nodes and three prescribed reservoirs.
+Vertical core groups use the mean of neighboring node temperatures; this is
+another explicit reduction. All surfaces are gray and opaque, including the
+window. Optical transmission and optical absorbed loads remain separate.
+
+Deterministic scrambled Sobol area/cosine-hemisphere rays hit the **first**
+opaque proxy surface. Closed rays establish row closure; analytic blocked
+pairs (parallel upward tops, coplanar roof/window, convex self-view) remain zero.
+The concave cap wall can see itself. Raw exchange areas are symmetrized, then
+symmetrically balanced to satisfy reciprocity and closure while retaining pairs
+unseen in both directions as zero. Raw and corrected matrices are both saved.
+
+```text
+A_i F_ij = A_j F_ji                    [m²]     sum_j F_ij = 1
+J_i = epsilon_i*sigma*T_i^4 + (1-epsilon_i)*sum_j F_ij*J_j  [W/m²]
+Qrad_into_i = A_i*(sum_j F_ij*J_j-J_i) [W]
+Ggas_ij = k(T_mean)*W_ij/(mean_chord_ij+2*jump_ij) [W/K]
+Qgas_into_i = sum_j Ggas_ij*(T_j-T_i)  [W]
+```
+
+W=A_iF_ij. Mean chords are symmetric area-weighted ray lengths. Gas k is the
+registered N2/Ar/Kr table, 200–400 K; 180–200 K uses a flagged T^0.75 engineering
+extension. The Eucken/jump accommodation closure is inherited as an algorithm,
+**not old G3b geometry**. A chord graph is not an accurate solution of continuum
+diffusion or rarefied-gas transport; accommodation and model-form error remain
+unqualified. It is passive, reciprocal, exactly zero in vacuum and linear in
+pressure in the free-molecular limiting check. High-pressure conductances recover
+the stated Fourier-network limit. Convection, mixtures and Xe are absent.
+
+## Ray refinement and energy checks
+
+At fixed node temperatures 300/270/240/220/221 K and 300 K reservoirs:
+
+| Rays per surface | Largest absolute F correction | Gas into die mW | Radiation into die mW |
 | --- | ---: | ---: | ---: |
-| Vacuum low parasitic | 242.055 | 229.797 | 1.15825 |
-| Nominal Kr 30 kPa | 243.280 | 231.202 | 1.15539 |
-| High-parasitic N2 | 247.615 | 236.264 | 1.14090 |
+| 4,096 | .07335 | .136161 | .289628 |
+| 16,384 | .05292 | .139590 | .293933 |
+| 65,536 | .04043 | .140812 | .293511 |
 
-At the nominal Kr point, the analog predicts **12.078 K lower**
-die temperature than the original model, but its terminal voltage
-increases from **0.84437 V** to **1.15539 V** (about +36.8%).
-This large grade sensitivity **does not establish that either
-variant is more accurate** for an unknown OEM assembly.
+Last-level die changes are 0.88% gas and 0.14% radiation relative to the preceding
+level. The remaining 4.04-percentage-point maximum F correction is visible,
+not hidden by energy conservation. This is not a qualified spatial view-factor
+solution, statistical confidence interval or native-cavity accuracy estimate.
+Surface and node radiation/gas balances are audited below 1e-10 W. Independent
+two-plate gray radiation, equal-T, vacuum, zero-emissivity, low-pressure scaling,
+high-pressure Fourier-network, invalid-input, corrupted-payload/source-hash and
+blocked-ray tests accompany package hot/cold/reservoir conservation checks.
 
-The broad 0–1 A grid contains **49 accepted / 14
-failed-closed** analog cases. The corrective checkpoint below records that
-all 14 rejected candidates reach the lower temperature bound and retain
-unacceptable residuals. That does not prove an out-of-domain physical
-solution or physical infeasibility. Their temperatures must not be
-clamped, interpolated across, or treated as physically successful
-operating points. The summary JSON records every failure and warns
-when a grid minimum is not a qualified optimum. The plotted curves
-retain gaps instead of connecting across failures.
+## Reproduce, inspect and continue
 
-The default constant-property baseline continues to have 63/63
-accepted source-domain runs as previously reported.
+| Verification layer | Actual result | What it establishes |
+| --- | --- | --- |
+| Focused transport/exchange/compatibility suite | 131 passed | Analytic limits, independent BVP and ray/heat/domain/negative controls |
+| Full pinned opt-in regression | 286 passed in 340.38 s; 14 third-party deprecation warnings | Existing genuine Elmer smoke plus all current tests |
+| Full archive verifier | Passed | Historical source/field ledgers, original failures and approved Rev3 preserved |
+| Legacy CLI and geometry demo | Passed | Existing demonstration workflows remain runnable |
+| Documentation links and new figures | Checked | Current local links resolve; figures retain failed-interval gaps |
+| Current proxy/package global balance | Maximum 1.41e-11 W over accepted grid cases | Conservative reduced implementation, not device accuracy |
+| Actual native full-cavity visibility / gas diffusion | Not implemented | Filled-core chord model remains a preliminary proxy |
+| Experiment / OEM accuracy / numerical release | Not established | Original material/model uncertainty and raw-flux requirements remain |
 
-## B. Corrected-source-aligned 3D cap/window geometry fixture
-
-New `tecooledmct/corrected_enclosure.py` constructs an OCC/Gmsh
-cap shell, annular roof and candidate optical window. The **only
-manufacturer-documented cap input** is its 15.2 mm outside diameter.
-The original corrected VIGO 1.5 mm header datum and actual internal
-die/ceramic/pin/wire positions are imported from the protected source
-manifest, with SHA-256 ledger verification.
-
-Additional geometry inputs are explicit **engineering assumptions**
-in `data/corrected_enclosure/geometry_hypothesis_v1.json`:
-
-| Quantity | Used hypothesis |
-| --- | ---: |
-| Cap height above header | 8.60 mm |
-| Cap radial wall thickness | 0.50 mm |
-| Cap roof thickness | 0.45 mm |
-| Window diameter | 5.90 mm |
-| Window thickness | 0.45 mm |
-| Roof interior Z above original header underside | 9.65 mm |
-| Window underside to original MCT die top | 4.07 mm |
-| Roof underside clearance to highest resolved solid | 4.06 mm |
-
-The CAD model consists of **three distinct conformally contacting
-solids** (not a remesh of the actual existing package):
-
-| Body | Analytical and Gmsh volume |
-| --- | ---: |
-| Cap side shell | 188.189 mm³ |
-| Cap roof | 69.353 mm³ |
-| Candidate window | 12.303 mm³ |
-
-Nine explicit physical surface groups include cavity-facing cap wall,
-cavity roof, cavity window, cap-header foot, shell/roof interface and
-roof/window interface. Native 3D physical volume IDs **7301–7303**
-and surface IDs **7401–7409** are reserved to avoid collisions with
-existing corrected Elmer body and boundary tags. The standalone
-native mesh has **8,143 tetrahedra**.
-
-The independent audit verifies the analytic volume and interface-area
-identities, source cap outside diameter, header datum, cap clearance
-to original ceramic, die, pins and routed Cu/Au wires, 3D CAD
-incidence, and presence of all required boundary groups.
-
-**Crucial scope limit:** `corrected_cap_window.step` and
-`cap_window_only.msh` are a separately meshed geometry fixture.
-They do not yet comprise a single conformal complete package model.
-The gas interior is not meshed, no corrected optical through-window
-transmission is computed, and no new enclosed-package coupled
-thermal field has been solved. Neither thermal-contact conditions
-nor surface-to-surface view factors are yet assembled from this
-new geometry. The old G3b view-factor geometry is not silently reused.
-
-## Reproduce
+Use the exact commands in the [package guide](INTEGRATED_REFERENCE_THERMAL_20261030.md).
+New evidence is under `data/nonlinear_exchange_20261030`; old affine,
+constant, corrective-checkpoint and sealed FEM data are untouched. Full verification:
 
 ```bash
-# Recompute opt-in source analog without changing prior constant baseline
-./fem/run.sh python -m tecooledmct.integrated_reference \
-  --material zhang2025_analog --out data/integrated_graded_20261030
-./fem/run.sh python -m tecooledmct.integrated_reference_figures \
-  --from-dir data/integrated_graded_20261030
-
-# Choose a NEW output directory: builder refuses overwrites
-./fem/run.sh python -m tecooledmct.corrected_enclosure \
-  --out outputs/cap-window-reproduction --mesh
-
-./fem/run.sh python -m pytest -q tests/test_graded_tec.py \
-  tests/test_corrected_enclosure.py tests/test_integrated_reference.py
-./fem/run.sh env TE_FEM_SMOKE=1 pytest -q
-./fem/run.sh python fem/archive_bath_spatial_device.py --verify
-```
-
-Artifacts: `data/integrated_graded_20261030` includes source provenance,
-full scenario heat budgets, rejected-case reasons, sensitivity CSV, sweep CSV
-and PNG figures. The cap/window fixture is under
-`fem/results/corrected_enclosure_geometry_20261030` with native STEP,
-mesh and `geometry_audit.json`.
-
-## Next milestones and engineering gates
-
-1. Integrate the **new** cap/window BREP into a conformal full
-   package mesh without changing the protected earlier geometry
-   artifacts. Keep steel/window material domains and actual cavity
-   interface surfaces auditably distinct.
-2. Compute a new geometry-specific gas and diffuse-gray radiation
-   operator with closed-surface visibility, reciprocal/closed
-   view factors, gas accommodation and exact surface energy balance.
-   Avoid old G3b geometry and unphysical radiation across opaque solids.
-3. Implement a bounded analog P/N transport option in the *full
-   Elmer solve*, including coupled Seebeck/Joule/Peltier/Thomson
-   source semantics, and independently verify the 1D affine
-   approximation against bounded leg BVP results.
-4. Run paired physical-mechanism tests (solid baseline, gas only,
-   radiation only, Au/Cu parasitics, heat sink), with proper hot
-   spreading and mesh sensitivity, then produce updated engineering
-   heat budgets and temperature-field visualizations.
-5. OEM curves remain optional plausibility checks. No claim of
-   numerical release while original raw bath 1% and cold-face
-   5% criteria remain unresolved. Historical FEM sources/fields,
-   old failed gates and approved Rev3 are preserved.
-
-## Small corrective checkpoint — 2026-10-30
-
-This increment was executed through the existing `sim:0.0` Codex session.
-It preserves the original source tables, standalone CAD/mesh archive,
-previous scenario artifacts and approved Rev2/Rev3. It adds no full-device
-3D solve and makes no OEM identification or numerical-release claim.
-
-### Active-law consistency and geometry guards
-
-`graded_tec.props()` now derives `sigma = 1/rho` after the assumed
-continuation, and returns `thomson_v_k = T*dS/dT` for the actual active
-law. Interior measured-table knots use the source's **right derivative**.
-At exactly **300 K**, use the final measured segment's **left derivative**;
-at temperatures strictly above 300 K use 0.25 times that slope. At exactly
-**390 K**, use the continuation's **left derivative**. No two-sided
-derivative is asserted at 300 K. Evaluations outside 180–390 K fail closed.
-The measured 40–300 K table is unchanged; the selected analog domain remains
-180–390 K. Tests cover scalar/vector evaluation, reciprocal identity,
-one-sided finite differences and strict domain boundaries. `S/rho/k` used by
-the existing stage calculations are unchanged; all 49 prior accepted
-analog points retain temperature, voltage and stage heat results within
-1e-7 K / 1e-9 V or W snapshot regression tolerances. Constitutive S/rho/k
-inputs also have exact-array equality checks against the previous law.
-
-The enclosure builder rejects missing, nonnumeric, Boolean, nonfinite,
-zero or negative dimensions before constructing CAD. It checks
-`0 < window_radius < inner_cap_radius < outer_cap_radius`, a positive
-cavity and solid volumes, roof clearance to internals and pins, and wire
-clearance including wire radius. This fixture still requires equal window
-and roof thickness; unequal thickness needs a separately designed seat.
-No protected geometry archive was rebuilt.
-
-### Rejected-current diagnostics
-
-New scenario output is in
-`data/graded_corrective_20261030/scenarios/summary.json`; prior
-`data/integrated_graded_20261030` files are retained. Each rejected case
-records its scenario, last candidate temperatures, four physical node
-residuals in W, separate hot-sink residual in K, optimizer-scaled residuals,
-optimizer success/status/message/evaluation count/active mask, model and
-measured P/N domains, active bounds and an explicit failure classification.
-Unavailable values after an evaluation error are `null`, never invented.
-
-All 14 actual rejected grid cases classify as
-`active_bound_residual_failure`: optimizer termination reports success,
-but the cold ceramic is at 180.000001 K and physical residuals fail the
-unchanged acceptance gate. For example, nominal Kr at 0.65 A has a maximum
-node residual **4.582915 mW**, far above the 1e-8 W gate. Its stored
-temperatures are **rejected candidates**, not operating predictions.
-An active bound does not establish that a solution exists below the bound.
-Optimizer failure and material/evaluation failure are separately tested.
-Failed cases remain absent from accepted sweep CSV rows; existing plots
-retain gaps and the optimum warnings remain intact.
-
-The optimizer's last residual row remains the hot-sink temperature residual
-divided by 2, as before. Diagnostics label this scaling explicitly rather
-than interpreting that row as a physical W balance. Accepted calculations
-and their historical residual gate have not been changed.
-
-### Broader independent nonlinear leg comparison
-
-`tecooledmct.graded_tec_checks` compares the affine stage against the
-independent conservative `oem_phase_a.bounded_leg` solver, using both
-16 and 32 intervals per P/N leg and corrected stage dimensions. Stage
-indices 0/1/2 run from hot to cold. All boundary and solved interior
-temperatures in these six cases lie **strictly inside 40–300 K**.
-These are approximation checks using the same research-specimen transport,
-not measurements of the synthetic device.
-
-| Stage | Th / Tc (K) | I (A) | abs Qc error (mW) | relative Qc error (%) | abs V error (mV) | relative V error (%) |
-| --- | --- | ---: | ---: | ---: | ---: | ---: |
-| 0 | 295 / 250 | 0.10 | 0.141640 | 0.058338 | 0.531456 | 0.066693 |
-| 0 | 295 / 285 | 0.15 | 0.332227 | 0.101261 | 1.825869 | 0.287575 |
-| 1 | 280 / 250 | 0.15 | 0.005985 | 0.020888 | 0.016015 | 0.005634 |
-| 2 | 250 / 230 | 0.15 | 0.002096 | 0.021038 | 0.002052 | 0.003340 |
-| 2 | 230 / 190 | 0.50 | 0.115150 | 0.551612 | 0.235985 | 0.166319 |
-| 0 | 260 / 240 | 0.70 | 7.986864 | 0.972654 | 147.220545 | 6.481337 |
-
-Errors are `abs(affine - BVP32)`; relative errors divide by `abs(BVP32)`.
-Signed values, BVP results, source provenance, local conservation and
-16-to-32 changes are in
-`data/graded_corrective_20261030/bvp_comparison.json`.
-At 0.70 A, the nonlinear leg interior reaches **273.178856 K**, above both
-boundary temperatures; the affine profile cannot represent this Joule-driven
-curvature. The 16-to-32 changes there are 0.026965 mW and 0.517298 mV,
-considerably smaller than the affine discrepancies. This is evidence of a
-high-current approximation limitation, not a rigorous continuum error bound.
-Relative cooling errors also become unstable near zero cooling. No global
-error bound or extrapolation to untested operating points is established.
-
-The assumed **300–390 K** law is tested for internal consistency and guards
-only. This measured-domain BVP study does **not validate** that continuation.
-For high-current quantitative budgets, prefer the bounded nonlinear leg
-reduction in a future scoped checkpoint before spending resources on a
-new full-package FEM solve. The immediate scope remains a plausible
-synthetic reference, with OEM comparison optional.
-
-Reproduce into new/local output locations:
-
-```bash
-./fem/run.sh python -m tecooledmct.graded_tec_checks \
-  --out outputs/graded-corrective/bvp_comparison.json
-./fem/run.sh python -m tecooledmct.integrated_reference \
-  --material zhang2025_analog --out outputs/graded-corrective/scenarios
-./fem/run.sh python -m pytest -q tests/test_graded_tec.py \
-  tests/test_corrected_enclosure.py tests/test_integrated_reference.py
+./fem/run.sh python -m pytest -q tests/test_nonlinear_tec.py   tests/test_corrected_exchange.py tests/test_graded_tec.py   tests/test_corrected_enclosure.py tests/test_integrated_reference.py
 ./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs
 ./fem/run.sh python fem/archive_bath_spatial_device.py --verify
-./fem/run.sh python -m tecooledmct.cli --quick --out outputs/graded-corrective/cli
-./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/graded-corrective/geometry
+./fem/run.sh python -m tecooledmct.cli --quick --out outputs/current-model/legacy-cli
+./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/current-model/legacy-geometry
 ```
 
-Final focused verification: **100 tests passed**, including the native standalone
-Gmsh fixture, six nonlinear BVP comparisons and diagnostic failure branches.
-Full opt-in regression: **253 passed** in 339.94 s, including genuine Elmer
-smoke checks, before the two extra exact-law assertions below (14 third-party
-matplotlib/pyparsing deprecation warnings). Production solver/material code
-is unchanged after that run. Final standard regression, including those two
-assertions: **244 passed / 11 skipped** in 31.63 s; skipped tests are opt-in
-FEM cases. The native enclosure fixture is exercised locally.
-The complete archive verifier passed, preserving all historical failed gates
-and approved Rev3. Legacy CLI and geometry-demo commands also passed.
-
-CI portability correction: the first hosted run used SciPy 1.17.1 and
-reported 240 passes / 12 skips, with one newly added snapshot assertion
-failing on a **2.894e-9 K** optimizer-root difference. Its original 1e-9 K
-snapshot tolerance was unnecessarily sensitive to dependency/platform
-roundoff. The snapshot tolerances above are distinct from, and do not alter,
-the 1e-8 W solve gate, any conservation gate, or historical raw-flux criteria.
-The exact-law tests independently ensure that the stage's material inputs
-are unchanged. No archived results were updated to satisfy CI.
+Next priorities are native-surface exchange without filled interstage voids,
+paired mechanism tests and contact/bypass/reservoir sensitivity. Keep improving
+these current guides and README with each increment. Preserve all frozen source,
+actual fields, original raw 1% bath / 5% interface failures and approved Rev2/Rev3;
+no reduced-model milestone constitutes numerical-release or OEM validation.

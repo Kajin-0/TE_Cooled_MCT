@@ -1,206 +1,163 @@
-# Integrated plausible-reference thermal scenario model — 2026-10-30
+# Integrated synthetic-reference thermal model
 
-## Scope and independent code audit
+This is the current operating guide for the corrected-geometry **five-node
+reduced model**. It complements archived genuine Elmer fields; it does not
+produce a new enclosed-package 3D field or identify an OEM assembly.
+[Controlling policy](PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md).
 
-This phase responds to the user requirement for a **plausible, practical synthetic
-engineering model**. It does not attempt OEM identification. The review examined:
+## Model and implementation map
 
-- `tecooledmct/geometry_complete.py`, the protected
-  `fem/results/geometry_complete_checkpoint_20261030` geometry manifest and
-  `wire_routes.json`, the corrected 88-leg/216-material-body three-stage geometry;
-- `tecooledmct/corrected_thermal.py` and the actual solid-only Elmer results,
-  where 300 K Dirichlet Kovar underside, constant P/N verification properties,
-  2 mW volumetric detector heating and OFF/ON hybrid wire diagnostics are used;
-- `tecooledmct/fem_g3b_exchange.py`, historical gas/radiation operators that
-  **cannot be copied as mesh geometry** because their original G3b enclosure,
-  header thickness and pinout differ from the corrected package;
-- `tecooledmct/g2d_network.py`, `oem_phase_a.py`, `model.py` and the
-  source-backed material registries; the earlier four-node network is anchored
-  to two OEM limit values and the bounded transport screen uses a research grade
-  not identified to a commercial TEC.
+Unknown temperatures are `hot_ceramic`, `stage1`, `stage2`, `cold_ceramic`,
+`MCT_die`, all in K. Stage numbering runs hot to cold. A common prescribed
+current flows through 28/12/4 inferred series thermocouples, 88 legs total.
 
-**Key engineering finding:** The first missing capability is not another
-million-element thermal-gradient refinement, but an explicit and conserved
-package parasitic-load budget tied to the corrected geometry. However, the
-genuine coupled 3D FEM is still needed for spatial heat paths and field
-qualification.
+| Module / option | Implemented calculation | Domain / boundary |
+| --- | --- | --- |
+| `integrated_reference.geometry()` | Reads protected manifest/wire routes; checks SHA-256 | Corrected 216-body synthetic construction |
+| `g1_constant` (default) | Constant P/N TEC equations | Verification proxies, not measured commercial transport |
+| `zhang2025_analog` | Source-knot integration with affine axial T | 180–390 K; assumed continuation above 300 K |
+| `zhang2025_nonlinear` | Conservative nonlinear 1D profiles, banded Newton, exact per-solve cache | Every evaluated leg temperature 180–390 K; no rounded/interpolated surrogate |
+| Default reservoir exchange | Effective area/gap gas and gray reservoir radiation | Old reduced-budget compatibility; no spatial visibility |
+| Optional `--exchange` JSON | Corrected-source cap/window plus closed stepped-core proxy | Preliminary geometry-derived exchange, not native full-package visibility |
+| Cu/Au paths | Corrected 1D routes, conduction and Cu Joule | Cu reaches **hot** pads; Au reaches detector |
+| Die and sink | Attach conductance, prescribed bias/absorbed heat, effective hot-side sink R | Lumped die; ambient cap/window/pin/header reservoirs |
 
-## What was implemented
+The [transport/enclosure guide](GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md)
+derives the new operators and their verification. The original affine and
+constant identifiers retain their previous behavior when no operator is supplied.
 
-`tecooledmct/integrated_reference.py` is a **five-temperature-node** model,
-not a new 3D FEM result. It reads immutable corrected-source geometry directly
-from the sealed 2026-10-30 archive and records SHA256 provenance.
+## Sources, assumptions and scenario ranges
 
-Unknown temperatures: bottom/hot TEC ceramic; first, second, and top/cold
-TEC ceramic; effective HgCdTe die temperature. The corrected geometric inputs
-include 28/12/4 thermocouple counts, 88 physical 0.4mm square P/N legs,
-stage leg lengths 1.07/0.82/0.64 mm, four ceramic footprints, actual 30um-thick
-1×1 mm die attach, and four audited hybrid metal wire paths on pins 1/9/7/8.
+| Input | Category and nominal value | Alternatives / limit |
+| --- | --- | --- |
+| VIGO housing reference | Documented two-ear flange and nine-pin source profile; cap OD 15.2 mm, header 1.5 mm | Not proof of a manufactured housing-plus-TEC assembly |
+| TEC outer envelope | Independently selected TEC Microsystems reference, 6.4 / 2.4 mm hot/cold widths, 3.8 mm stack | Internals are inferred, not vendor artwork |
+| Stage construction | Inferred 28/12/4 couples; leg lengths 1.07/0.82/0.64 mm, area 0.16 mm² | Fixed geometry here; contact/spreading and buried-route losses remain simplified |
+| P/N properties | Zhang2025 dissimilar research specimens, sourced 40–300 K | Chosen active interval 180–390 K; explicit quarter-tangent continuation above 300 K |
+| Stage bypass | Assumed zero by default; nonnegative per-stage W/K input | Not a qualified model of actual ceramic/Cu shunts |
+| Cap/window | OD source; height 8.6 mm, wall 0.5 mm, roof/window 0.45 mm, window OD 5.9 mm assumed | Full declared geometric ranges in corrected-enclosure registry |
+| Gas | Registered N2/Ar/Kr k(T), 200–400 K; 180–200 K assumed T^0.75 extension | Vacuum–101325 Pa scenarios; accommodation 0.8 assumed; no Xe/mixture accuracy claim |
+| Emissivity | Nominal cap 0.2, effective ceramic/core 0.8, opaque gray window 0.1 | Low/high cap 0.08/0.65, window 0.05/0.6; not optical transmission |
+| Die attach | Assumed 30 µm, 1 mm², k=1 W/(m K), R=30 K/W | k sweep 0.5–3 W/(m K) |
+| Loads | Scenario bias 1.5 mW + absorbed 0.5 mW | Bias sweep 0.5–5 mW; no detector R(T,V) or optical transport calculation |
+| Hot sink | Effective hot-ceramic-to-ambient R=2 K/W | 0.5–5 K/W; not resolved Kovar/joint spreading |
+| Wires | Corrected archived endpoints, G=kA/L, R=rho L/A | Au conductance ×0.75–1.25; Cu Joule split equally at endpoints |
 
-- **TEC:** fundamental constant-P/N-law cascade equations
-  `Qc = alpha I Tc - 0.5 I²R - K(Th-Tc)`,
-  `Qh = alpha I Th + 0.5 I²R - K(Th-Tc)`,
-  `V = IR+alpha(Th-Tc)`. The baseline material constants are the verified G1
-  synthetic P/N properties, NOT commercial-grade transport. Independent
-  conductivity, resistivity, and thermopower multipliers permit engineering
-  analog ranges, but do not change protected G1 source data. Bulk Thomson
-  terms vanish for this constant Seebeck approximation.
-- **Die:** 30um die attach, nominal `k=1 W/(m K)`, producing
-  `R_attach=30 K/W`, die bias and hypothesized optical-like absorbed load
-  applied as independent power sources. The die is lumped/isothermal, with no
-  detector bias-current PDE, photo-carrier transport or spectral transmission.
-- **Package:** effective surface areas from exact 6.4/4.55/3.25/2.4mm
-  ceramic footprints. Gas conduction with kinetic temperature/pressure
-  jump correction and surface gray-body radiation connect an *assumed
-  isothermal cap/window reservoir* to stage/die nodes. They do not represent
-  actual cap/window 3D volume, a ray-traced corrected cavity, gas CFD or
-  spectral infrared throughput. The warm cap/window and pin reservoirs are
-  assumed at ambient temperature.
-- **Gas:** tabulated NIST values already registered for N2/Ar/Kr from
-  `fem_g3b_exchange.GASES` (200–400 K). For predicted gas mean
-  temperatures 180–200 K an **explicit flagged** `k(T)∝T^0.75` engineering
-  extension is used; outside the model's 180–400 K range it rejects the
-  point. The free-molecular transition uses the Eucken approximation and a
-  stated accommodation factor. No Xe is claimed without an independently
-  registered source.
-- **Wires:** two Cu supply wires to the hot ceramic and two Au detector
-  bonds to the die retain corrected archive values for `G=kA/L` and
-  `R=rhoL/A`, not old G3b routes. Cu `I²R` splits equally between the
-  warm pin and hot pad. The source terminal voltage includes Cu series
-  resistance; detector electrical power is externally imposed rather than
-  modeled through actual Au current/pad potentials.
-- **Heat sink:** a configurable effective `R_ha` between hot TEC ceramic
-  and the 300 K ambient isothermal sink. It is not an independently meshed
-  Kovar/presolder/spreader/thermal-grease resistance calculation.
+Material multipliers span Seebeck ×0.9–1.1 and resistivity/conductivity ×0.8–1.2.
+These engineering ranges are selectable hypotheses, not statistical confidence
+intervals. Unknown contacts remain ideal; neither transport refinement nor
+conservation makes the material grade or package assumptions experimentally valid.
 
-The optimizer enforces stage-cascade, die-attach and hot-side conservation,
-bounds physical temperatures, and verifies the exact identity
-`Qh-Qc = I V_TEC`. Whole-device energy accounting includes warm-reservoir
-gas/radiation/Au fluxes, the Cu wire's two half-Joule sources, and external
-electrical/bias heating. Invalid or nonconverged cases fail closed rather than
-silently returning a nearest bound.
+## Governing balances and units
 
-## Reproduce
+For constant stage properties, alpha has units V/K, R has ohm, K has W/K:
 
-From `/home/User/TE_Cooled_MCT`:
-
-```bash
-./fem/run.sh python -m tecooledmct.integrated_reference \
-  --out data/integrated_reference_20261030
-./fem/run.sh python -m pytest -q tests/test_integrated_reference.py
-./fem/run.sh env TE_FEM_SMOKE=1 pytest -q
-./fem/run.sh python fem/archive_bath_spatial_device.py --verify
+```text
+Qc = alpha*I*Tc - I²R/2 - K*(Th-Tc)             [W]
+Qh = alpha*I*Th + I²R/2 - K*(Th-Tc)             [W]
+V  = I*R + alpha*(Th-Tc)                       [V]
+Qh - Qc = I*V                                 [W]
 ```
 
-No new Elmer executions are required to calculate this reduced model.
-`data/integrated_reference_20261030/summary.json` contains all node
-temperatures, heat-flow path contributions, residuals, provenance hashes,
-raw scenario settings, and explicitly labeled failed cases.
-`sweep.csv` and `sensitivity.csv` are directly machine-readable.
-All archived FEM evidence remains immutable.
+For nonlinear transport the same energy identity is checked using independently
+computed endpoint fluxes; it is not imposed by overwriting an endpoint.
+Let E1/E2/E3/Ed be net external heat into intermediate/cold/die nodes, including
+Au heat at the die, and Qattach=Gattach*(Tdie-Tcold). The solved residuals are:
 
-### Reproducible engineering figures
-
-![Die temperature against drive current, three assumed package cases](../data/integrated_reference_20261030/die_temperature_vs_current.png)
-
-![One-at-a-time endpoint spans, not probability intervals](../data/integrated_reference_20261030/sensitivity_spans.png)
-
-Generate figures without any additional physics solve:
-
-```bash
-./fem/run.sh python -m tecooledmct.integrated_reference_figures --from-dir data/integrated_reference_20261030
+```text
+Qc0-Qh1-E1 = 0;  Qc1-Qh2-E2 = 0
+Qc2-E3-Qattach = 0;  Qattach-Ed-Qbias-Qabsorbed = 0    [W]
+Th-Tambient = R_sink*(Qh0+Qcu_cond+Qcu_Joule/2+Ehot)  [K]
 ```
 
-## Preliminary 0.15 A results (zero external optical measurement)
+`Ehot=0` for the old reservoir model; the new proxy also exchanges with the
+hot node. Its three warm reservoirs are header/cap/window at ambient. All
+surface powers, including warm-reservoir powers, are retained and sum to zero.
+The source terminal voltage includes Cu electrical resistance. The global balance
+includes terminal electrical power, imposed die heat, reservoir exchanges,
+Cu heat flow and bath rejection.
 
-| Scenario | MCT die K | Hot ceramic K | TEC terminal V | Terminal power W | Total bath rejected W |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Low-parasitic vacuum | 242.055 | 300.065 | 0.8484 | 0.1273 | 0.1297 |
-| Nominal 30 kPa Kr | 243.280 | 300.263 | 0.8444 | 0.1267 | 0.1315 |
-| High-parasitic N2 | 247.615 | 300.706 | 0.8283 | 0.1242 | 0.1413 |
+No accepted package result may exceed the unchanged 1e-8 residual gate or the
+1e-8 W global-energy gate. Stage energy must be below 1e-9 W. The optimizer's
+fifth row is a K residual divided by 2 for scaling; failure diagnostics keep
+that row separate from the four physical W node residuals. This historical
+optimizer scaling is not itself a physical W balance.
 
-The three rows vary **multiple input assumptions simultaneously** and are
-intended as bounding examples, not confidence intervals. In all scenarios the
-TEC has 0.15 A prescribed series current; the total die internal heating is
-2mW (1.5mW electrical + 0.5mW assumed absorbed load), without any optical
-transmission calculation. The table is a reduced-model prediction, **not
-a confirmed 3D temperature field or an OEM accuracy claim**.
+## Reproduce and interpret outputs
 
-The generated current sweep spans **0–1.0 A in 0.05 A increments (63
-operating points)**. All 63 converge within the stated reduced-model
-temperature domain. The lowest computed die temperature **on this discrete
-grid** occurs at 0.65 A for all three scenarios: vacuum **185.817 K**,
-nominal Kr **188.206 K**, high-parasitic N2 **195.158 K**. This is *not*
-a continuous optimum or an empirically validated current recommendation.
-The nominal Kr configuration at this grid point predicts **2.83869 V terminal,
-1.84515 W electrical input, 303.655 K hot ceramic, and 1.82745 W rejected
-at the modeled heat-sink boundary**. Temperature-dependent grade behavior,
-mounting resistance, and load physics can change both the optimum and the
-achievable temperature.
+Run from the repository with the existing pinned FEM image:
 
-## One-factor sensitivity around nominal 300 K, 0.15 A
+```bash
+./fem/run.sh python -m tecooledmct.nonlinear_tec_study   --out outputs/current-model/transport
+./fem/run.sh python -m tecooledmct.corrected_exchange   --out outputs/current-model/exchange
+./fem/run.sh python -m tecooledmct.integrated_reference   --material zhang2025_nonlinear   --exchange outputs/current-model/exchange/operator_65536.json   --out outputs/current-model/scenarios
+./fem/run.sh python -m tecooledmct.integrated_reference_figures   --from-dir outputs/current-model/scenarios
+```
 
-| Parameter and trial interval | Endpoint difference in die K |
-| --- | ---: |
-| TEC P/N thermal conductivity ×0.80 to ×1.20 | 18.936 |
-| TEC P/N Seebeck coefficient ×0.90 to ×1.10 | 10.759 |
-| Die electrical dissipation 0.5 to 5 mW | 2.263 |
-| TEC P/N resistivity ×0.80 to ×1.20 | 2.199 |
-| Gas pressure 0 to 101,325 Pa, Kr | 0.877 |
-| Effective gas area ×0.50 to ×1.50 | 0.866 |
-| Hot-side sink resistance 0.5 to 5 K/W | 0.440 |
-| Cap gray emissivity 0.08 to 0.65 | 0.307 |
-| Au bond conductance ×0.75 to ×1.25 | 0.235 |
-| Die attach conductivity 0.5 to 3 W/(m K) | 0.154 |
+Use new output locations. The operator/study builders refuse existing output
+directories. The legacy scenario CLI can overwrite its chosen directory, so do
+not target sealed archives or earlier versioned data.
 
-These are **one-factor engineering scenario spans**, not propagated
-probability intervals. Their ranking depends on the chosen trial widths,
-operating point, assumed geometry and simplified physics. Never equate the
-gas sensitivity with proof that cavity convection or cap exchanges are
-negligible in the actual manufactured device.
+| Output | Contents |
+| --- | --- |
+| `summary.json` | All 63 attempts, accepted budgets, model/source identity, full rejection diagnostics, sensitivity and grid-minimum warnings |
+| `sweep.csv` | Accepted current points only; never inferred observations across failed intervals |
+| `sensitivity.csv` | One-factor endpoint spans, not probability intervals |
+| `transport/comparison.json` | Ten independent BVP checks, 16/32/64 leg levels, timings and three package-current convergence sequences |
+| `operator_N.json` | Source hashes, native face audit, 14 proxy surfaces, raw/balanced view factors and geometric chords |
+| `exchange/summary.json` | Three ray levels at fixed temperatures, pressure sweep and all surface/node powers |
+| `development_failures.json` | Explicitly unaccepted initial zero-current energy/initialization failures, retained separately from final results |
 
-## Remaining limitations and next decision gates
+When `--exchange` is used, `gas_gap_m`, `cold_surface_factor`,
+`cap_view_factor` and `window_die_view_factor` are inactive legacy controls.
+Actual proxy geometry sets areas, chords and view factors. `gas_area_factor`
+remains an explicitly effective gas-conductance multiplier; it does not change
+geometry. The nonlinear leg solver uses a constant-law package result only as
+an initial iterate; all reported final temperatures satisfy the nonlinear laws.
 
-1. **No spatially resolved enclosed-package field.** Next build a corrected-
-   geometry cap/window and independently audited cavity-contact/surface
-   registry, then reuse the G3b heat-exchange algorithms only after
-   geometry-specific visibility/reciprocity/energy audits. Do not copy old
-   geometry or fake FEM execution.
-2. **Temperature-dependent thermoelectric materials are not yet used in the
-   3D solver.** Introduce an explicitly named analog grade, with source
-   domain, bounded nonlinear behavior and grade variants. The existing
-   bounded 1D material solver is a numerical-screening tool; do not force it
-   to fit an unidentified OEM stack.
-3. **Missing package physics:** realistic heat-sink spatial spreading,
-   contact resistance, nonisothermal cap/window, die intravolume gradients,
-   corrected-gas convection screening, optical window throughput, MCT
-   electro-optical/photo-current/noise transport, thermistor circuit.
-4. **Numerical release blocked:** historical raw bath 1% failures, cold
-   interface 5% failures and approved Rev3 are unaltered. This phase is
-   a reduced-order reference scenario, not release qualification.
-5. **High-value next step:** compare the source-backed 1D P/N curves and
-   credible analog-grade ranges; then implement a corrected 3D surface
-   operator and test paired true Elmer cases with/without each heat-load
-   mechanism, using conserved, bounded source terms.
+## Current results and numerical evidence
 
-The recommended allocation is to improve uncertainty in P/N transport
-before large-scale gas-ray refinement, while maintaining package physics
-development to reach the target comprehensive simulator.
+At 300 K ambient, 0.15 A, 2 mW imposed die heating:
 
-### Cross-model diagnostic against archived genuine 3D Elmer
+| Scenario | Constant / old reservoir die K | Nonlinear / old reservoir die K | Nonlinear / new proxy die K | New proxy terminal V / W |
+| --- | ---: | ---: | ---: | --- |
+| Low-parasitic vacuum | 242.055 | 229.787 | 230.975 | 1.15443 / 0.173164 |
+| Nominal Kr 30 kPa | 243.280 | 231.192 | 232.209 | 1.15193 / 0.172790 |
+| High-parasitic N2 | 247.615 | 236.253 | 235.031 | 1.14554 / 0.171830 |
 
-At 0.1 A with a nominal 2 mW die source, the screening model was also run
-with effective hot-sink resistance set to zero, no gas/radiation, and both
-hybrid wire conductances zero. It yields **MCT 257.756276 K, TEC voltage
-0.585608855 V**. The historical corrected 88-leg solid-only Elmer reference
-(Cu OFF, Au OFF) reports **MCT 265.592524 K and 0.551939871 V**.
-The differences are **−7.836248 K and +0.033669 V**, respectively.
+The proxy nominal bath rejects 0.182196 W; warm-reservoir exchanges account
+for the difference from source power plus die heat. These comparisons change
+material and/or package approximations; they do not isolate manufactured-device
+accuracy. The versioned 0–1 A grids have 63/63 accepted for the original constant
+model, 49/63 for affine analog, **50/63 nonlinear with old reservoirs**, and
+**52/63 nonlinear with the proxy**. Different current acceptance is not a
+retroactive pass for any archived failure. Every rejected attempt remains visible.
 
-This comparison is *not* a matched boundary-value verification: the reduced
-model clamps the hot TEC ceramic to 300 K, whereas the true 3D model clamps
-only the Kovar underside and resolves hot-joint/header spreading. The
-reduced model also omits explicit current-spreading, local ceramic/Cu bypass,
-and many 3D interfaces. These structural differences may each contribute.
-Neither model is manufacturer-validated. The discrepancy must be preserved
-as evidence of missing reduced-model physics, **not fitted away** or described
-as an OEM error.
+At 0.9 A, nominal old-reservoir nonlinear32→64 changes die temperature by
+0.000350 K and terminal voltage by 0.1643 mV. No continuum error bound or
+GCI is inferred from these three levels. At low current, knot crossings produce
+small nonmonotonic refinement differences. Source/geometry uncertainties still
+exceed the demonstrated discretization changes.
+
+## Limits and next work
+
+1. The enclosure is a closed **proxy**: filled interstage core, omitted pins,
+   wires, exposed copper and interleg gas voids. Native areas and proxy areas
+   differ; neither native full-surface visibility nor gas diffusion is qualified.
+2. Cap/window/header reservoirs are prescribed, die is isothermal, contacts
+   ideal and bypasses simplified. There is no new 3D field, spectral window,
+   electro-optical detector or convection solution.
+3. The assumed high-T P/N and low-T gas continuations are internally checked,
+   not experimentally validated. Low/nominal/high runs are not confidence bounds.
+4. Existing bath <1% and cold-interface <5% criteria remain unmet in preserved
+   historical production evidence. Reduced-model conservation does not replace
+   them or alter the approved Rev3 REVIEW DRAFT.
+5. Next bounded work should improve native-surface exchange and contact/bypass/
+   reservoir sensitivity, with paired mechanism tests. Do not force a large
+   conformal gas/TEC remesh or a proprietary OEM fit to complete useful studies.
+
+Preserved cross-model warning: at 0.1 A/2 mW, a constant reduced solid-only
+case with hot ceramic clamped gives die257.756276 K / 0.585608855 V; the
+archived corrected Elmer case with only Kovar underside clamped gives
+die265.592524 K / 0.551939871 V. The -7.836248 K / +33.669 mV difference
+has unmatched boundaries and missing spatial paths; it is not fitted away.
