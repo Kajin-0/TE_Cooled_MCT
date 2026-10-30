@@ -1,0 +1,17 @@
+{
+  "registered_before_solver":true,
+  "geometry":"independent CAD-arc two-ear extruded Kovar-like footprint, two mount holes and nine source-positioned glass bores; no TEC, no fitted device field",
+  "k_W_m_K":17.3,
+  "height_m":0.0015,
+  "xy_sizes_m":[0.001,0.0005,0.00025],
+  "z_intervals":[2,4,8],
+  "cases":["affine level0","quadratic full levels0,1,2","quadratic normal-only coarseXY/nz8"],
+  "exact_T":"300+z*(10+2000*x-1500*y)-200*z*z; affine case300+10*z",
+  "source_W_m3":6920,
+  "bottom":"Dirichlet300K; exact signed outward q=k*(10+2000*x-1500*y)",
+  "top":"exact incoming Neumann k*(10+2000*x-1500*y-400*H), linear load integrated consistently",
+  "sides":"analytic Dirichlet T; conservative continuum flux/source balance evaluated independently",
+  "targets":{"finest_raw_bath_relative":0.01,"affine_raw_relative":1e-6,"free_residual_W":1e-6},
+  "tetrahedron_cap":300000,"node_cap":100000,"solver_timeout_s":300,
+  "scope":"independent operator manufactured verification; model geometry and side BC differ from device; no device flux recovery or OEM validation"
+}

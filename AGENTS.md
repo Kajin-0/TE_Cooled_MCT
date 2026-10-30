@@ -716,3 +716,42 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   Final logs and reference hashes are retained separately at
   fem/verification/cold_bath_rev3_20261030 so the numerical archive and sealed
   report editions remain unchanged. Numerical release still incomplete.
+
+## Spatial bath diagnosis checkpoint, 2026-10-30
+
+- Read BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION_WORK_ORDER.md,
+  docs/BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION.md and static
+  docs/BATH_SPATIAL_DIAGNOSIS_CHECKPOINT.md. PhaseA immutable evidence is
+  fem/results/bath_spatial_diagnosis_20261030; verify with
+  fem/archive_bath_spatial_diagnosis.py --verify. Its named sources/tests/
+  resource plans are frozen. Later work must add versions/files.
+- Cross-product actual-field audit reproduces four raw failures, signed powers
+  and true Kovar-only333.919817mm2 underside. Full bath-node signed identity
+  attributes latest625.048uW deficit to617.301uW internal gradient jumps plus
+  7.747uW other weighted exterior flux. This is diagnostic, not flux recovery.
+  Physical patch continuum error is unknown. Broad opposing jump terms and
+  unchanged414um tangential face scale prevent a single-source attribution.
+- Normal depth halves296->148->74um while apex offset/height medians grow
+  .602->1.203->2.940. Original failures remain FAILED. Actual boundary audit
+  finds only tag101 at300K; glass7.812665mm2 underside remains adiabatic TEST BC.
+- Five genuine independent3D manufactured HeatSolver cases pass operator
+  verification: affine relative3.8e-12; full errors1.427%FAIL,.441%PASS,.376%PASS;
+  normal-only.326%PASS. No universal transverse claim or device GCI. Preserve
+  failed body-index setup and323352-tet original300k preflight rejection;
+  explicit350k scalar resource amendment precedes the actual fine solve.
+- Registered full owner-star transverse/volume pair has784696/1099293tets,
+  minSICN.04231/.01835, every cold/TEC/pin cell byte-identical, material volumes
+  and physical areas exact. Geometry+Elmer maps verified and archived here.
+  Full144 opt-in tests,20 focused, CLI/demo and original guards pass.
+- PhaseB actual coupled runs are outputs/bath-spatial/transverse1_case and
+  transverse2_case, from separate genuine675496-tet bath P1 guesses, each
+  3000s/4CPU/12GiB. Never overwrite cases or use unconverged fields as final.
+  Workspace draft bath_spatial_device.py is not yet part of the phaseA
+  checkpoint; verify it on a completed field before committing that addition.
+  After BOTH bath raw1% checks/trend are independently verified, conditionally
+  combine exact previously verified cold-normal1 with each bath mesh using
+  bath_spatial_mesh --combined; caps1.2M independent/1.4M combined,12GiB fixed.
+  Original5%/1%,177cuts and all residual/nonlinear gates stay unchanged.
+- Approved15-page Rev3 public copy and sealedB remain byte-identical; oldRev2
+  and all accepted/failed baselines preserved. No cap/window/gas/radiation,
+  Cu/Au ON, carriers, OEM validation, unrelated repository/session or LSDDTS.

@@ -1,0 +1,22 @@
+{
+  "registered_before_new_coupled_fields":true,
+  "parent":"fem/results/cold20_completion_20261030/bath_mesh",
+  "basis":"independent audit: unchanged transverse edges, increasing apex skew and broad signed internal-gradient defects; no single localized source",
+  "level1":"all actual Kovar bath-face owner tetrahedra: split all six edges and complete incident tetrahedral/physical-face stars, adding transverse surface and free interior nodes",
+  "level2":"repeat full owner-star refinement on bath faces whose centroid lies within the source central-header circle radius8.75mm; fixed before either new field, not an observed-error or threshold-fit mask; outer ears retained",
+  "central_radius_m":0.00875,
+  "allowed_changed_bodies":[300,401,402,403,404,405,406,407,408,409],
+  "fixed":"all cold,TEC,pin,joint and other cells byte-identical; original points, material volumes and every physical contact area preserved",
+  "independent_tetrahedron_cap":1200000,
+  "combined_tetrahedron_cap":1400000,
+  "minimum_SICN":0.01,
+  "solver_timeout_s":3000,
+  "memory_GiB":12,
+  "CPU_cap":4,
+  "new_raw_disk_budget_GiB":20,
+  "combined":"only after independent bath rawabs<1% with stable trend; combine same verified cold-normal1 with each qualifying bath mesh; comparator required, not just one combined pass",
+  "combined_resource_note":"up to173421 cold tets added to bath pair; explicit1.4M cap,12GiB stays fixed; do not run if measured/estimated resource evidence exceeds bound",
+  "original_gates":{"raw_bath":0.01,"raw_cold":0.05,"current177":0.005,"heat_W":1e-6,"current_A":1e-6,"nonlinear":1e-9},
+  "target_margin_bath":0.009,
+  "full_device_GCI":"not inferred from local/nonuniform refinement; report observed QoI and raw-flux sensitivities"
+}

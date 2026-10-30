@@ -1,0 +1,111 @@
+"""Actual3D HeatSolver manufactured signed bath: transverse vs normal refinement."""
+import argparse,json
+from pathlib import Path
+import numpy as np
+from .geometry_rebaseline import ROOT,sha,write,cad_outline
+from .geometry_registry import load,value,pins
+from .flux_presolder_coupon import extrude,skin
+from .bath_spatial_audit import gradients
+from .fem_g1_run import execute
+PLAN=ROOT/'data/bath_spatial/benchmark_plan.json'
+REGISTRY=ROOT/'data/geometry_complete/reference_v2.json'
+AMENDMENT=ROOT/'data/bath_spatial/benchmark_resource_amendment.json'
+def planar(h):
+    import gmsh
+    r=load(REGISTRY);gmsh.initialize()
+    try:
+        gmsh.option.setNumber('General.Terminal',0);gmsh.model.add('manufactured_two_ear');o=gmsh.model.occ
+        s=cad_outline(o,r,.001);holes=[(2,o.addDisk(x,0,0,.00185,.00185)) for x in [-.0122,.0122]]
+        holes += [(2,o.addDisk(*[v*.001 for v in p['xy_mm']],0,.00065,.00065)) for p in pins(r)]
+        o.cut([(2,s)],holes);o.synchronize();gmsh.option.setNumber('Mesh.MeshSizeMin',h);gmsh.option.setNumber('Mesh.MeshSizeMax',h);gmsh.option.setNumber('Mesh.MeshSizeFromCurvature',16);gmsh.model.mesh.generate(2)
+        tags,xyz,_=gmsh.model.mesh.getNodes();ids,tri=gmsh.model.mesh.getElementsByType(2);tri=tri.reshape(-1,3);used=np.unique(tri)
+        lookup={int(t):i for i,t in enumerate(tags)};xy=xyz.reshape(-1,3)[[lookup[int(t)] for t in used],:2];tri=np.searchsorted(used,tri)
+        return xy,tri
+    finally:gmsh.finalize()
+def solve(out,level,affine=False,normal_only=False):
+    import meshio
+    from reports.field_geometry import node_map,cell_map
+    plan=json.loads(PLAN.read_text());plan.update(json.loads(AMENDMENT.read_text()));h=plan['xy_sizes_m'][0 if normal_only else level];nz=plan['z_intervals'][level];H=plan['height_m'];k=plan['k_W_m_K']
+    xy,tri=planar(h);p,c,b=extrude(xy,tri,np.linspace(0,H,nz+1),[300]*nz);f,owner=skin(c)
+    if len(p)>plan['node_cap'] or len(c)>plan['tetrahedron_cap']:raise ValueError('Manufactured mesh resource bound exceeded')
+    tags=np.full(len(f),103);tags[np.all(abs(p[f,2])<1e-13,axis=1)]=101;tags[np.all(abs(p[f,2]-H)<1e-13,axis=1)]=102
+    out.mkdir(parents=True,exist_ok=False);np.savez_compressed(out/'mesh.npz',points=p,cells=c,bodies=b,faces=f,boundaries=tags)
+    meshio.write(out/'case.msh',meshio.Mesh(p,[('triangle',f),('tetra',c)],cell_data={'gmsh:physical':[tags,b],'gmsh:geometrical':[tags,b]}),file_format='gmsh22',binary=False)
+    execute(['ElmerGrid','14','2','case.msh','-out','elmer'],out,'grid',timeout=120)
+    bx,by,cz=(0.,0.,0.) if affine else (2000.,-1500.,-200.);source=-2*k*cz
+    text=f'''Header
+ Mesh DB "{(out/'elmer').resolve()}" "."
+End
+Simulation
+ Coordinate System = Cartesian 3D
+ Simulation Type = Steady State
+ Steady State Max Iterations = 1
+ Post File = "fields.vtu"
+End
+Equation 1
+ Active Solvers(1) = 1
+End
+Solver 1
+ Equation = "Heat Equation"
+ Variable = Temperature
+ Procedure = "HeatSolve" "HeatSolver"
+ Linear System Solver = Direct
+ Linear System Direct Method = UMFPACK
+ Nonlinear System Max Iterations = 1
+End
+Body 1
+ Target Bodies(1) = 300
+ Equation = 1
+ Material = 1
+ Body Force = 1
+End
+Material 1
+ Heat Conductivity = Real {k}
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Body Force 1
+ Heat Source = Real {source}
+End
+Boundary Condition 1
+ Target Boundaries(1) = 101
+ Temperature = Real 300
+End
+Boundary Condition 2
+ Target Boundaries(1) = 102
+ Heat Flux = Variable Coordinate 1,Coordinate 2
+  Real MATC "{k}*(10+{bx}*tx(0)+{by}*tx(1)+{2*cz*H})"
+End
+Boundary Condition 3
+ Target Boundaries(1) = 103
+ Temperature = Variable Coordinate 1,Coordinate 2,Coordinate 3
+  Real MATC "300+tx(2)*(10+{bx}*tx(0)+{by}*tx(1))+{cz}*tx(2)^2"
+End
+'''
+    (out/'case.sif').write_text(text);sources=[Path(__file__),PLAN,AMENDMENT,REGISTRY,ROOT/'tecooledmct/bath_spatial_audit.py'];hashes={str(x.relative_to(ROOT)):sha(x) for x in sources}
+    status,_=execute(['ElmerSolver','case.sif'],out,'solver',timeout=plan['solver_timeout_s'])
+    raw=next(out.rglob('fields*.vtu'));field=meshio.read(raw);ix,dist=node_map(p,field.points);cell_map(c,np.argsort(ix)[field.cells_dict['tetra']]);T=field.point_data['temperature'].ravel()[ix]
+    vol,g=gradients(p,c,T);q=-k*g;xyz=p[f];av=np.cross(xyz[:,1]-xyz[:,0],xyz[:,2]-xyz[:,0])/2;av[np.einsum('ij,ij->i',av,xyz.mean(1)-p[c[owner]].mean(1))<0]*=-1
+    area=np.linalg.norm(av,axis=1);bath=tags==101;top=tags==102;exact_g=10+bx*xyz[:,:,0]+by*xyz[:,:,1];exact_power=k*area[bath]*exact_g[bath].mean(1);rawpower=np.einsum('ij,ij->i',q[owner[bath]],av[bath]);reference=float(exact_power.sum())
+    exactT=300+p[:,2]*(10+bx*p[:,0]+by*p[:,1])+cz*p[:,2]**2
+    # Independent weak residual, exact constant source and linear top Neumann loads.
+    inv=np.linalg.inv(p[c[:,1:]]-p[c[:,:1]]);basis=np.concatenate([-inv.sum(2)[:,None,:],np.swapaxes(inv,1,2)],axis=1)
+    residual=np.zeros(len(p));local=vol[:,None]*(k*np.einsum('eij,ej->ei',basis,g)-source/4);np.add.at(residual,c.ravel(),local.ravel())
+    flux=k*(exact_g[top]+2*cz*H);load=area[top,None]*(flux.sum(1)[:,None]+flux)/12;np.add.at(residual,f[top].ravel(),-load.ravel())
+    fixed=np.unique(f[np.isin(tags,[101,103])]);free=np.ones(len(p),bool);free[fixed]=False
+    error=float((rawpower.sum()-reference)/reference);mean=float(vol@T[c].mean(1)/vol.sum());mean_g=float(np.sum(area[bath]*exact_g[bath].mean(1))/area[bath].sum());mean_exact=300+H*mean_g/2+cz*H*H/3
+    np.savez_compressed(out/'bath_faces.npz',xyz_m=xyz[bath],raw_power_W=rawpower,analytic_power_W=exact_power,areas_m2=area[bath])
+    result={'level':level,'affine':affine,'normal_only':normal_only,'nodes':len(p),'tetrahedra':len(c),'bath_area_m2':float(area[bath].sum()),
+        'analytic_bath_W':reference,'raw_bath_W':float(rawpower.sum()),'raw_relative_error':error,'raw_1percent_passed':bool(abs(error)<.01),
+        'affine_1ppm_passed':bool(abs(error)<1e-6),'max_nodal_error_K':float(abs(T-exactT).max()),'mean_error_K':mean-mean_exact,
+        'free_residual_L1_W':float(abs(residual[free]).sum()),'free_1microW_passed':bool(abs(residual[free]).sum()<1e-6),
+        'source_power_W':float(source*vol.sum()),'analytical_top_incoming_W':float((area[top]*flux.mean(1)).sum()),
+        'continuum_source_minus_top_minus_bath_W':float(source*vol.sum()+(area[top]*flux.mean(1)).sum()-reference),
+        'solver_status':status,'source_sha256':hashes,'mesh_sha256':sha(out/'mesh.npz'),'sif_sha256':sha(out/'case.sif'),'field_sha256':sha(raw),'field_source':str(raw.relative_to(out)),
+        'scope':'independent3D HeatSolver manufactured operator only; analytic mixed BC and exact per-mesh polygon reference, not device recovery or qualification'}
+    if any(sha(ROOT/n)!=h for n,h in hashes.items()):raise ValueError('Benchmark source changed during execution')
+    write(out/'verification.json',result);print(out.name,result,flush=True);return result
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);a=p.parse_args();out=a.out.resolve();out.mkdir(parents=True,exist_ok=False)
+    cases=[solve(out/'affine',0,affine=True)]+[solve(out/f'full{j}',j) for j in range(3)]+[solve(out/'normal_only',2,normal_only=True)]
+    write(out/'summary.json',{'cases':cases,'benchmark_qualified':cases[0]['affine_1ppm_passed'] and cases[3]['raw_1percent_passed'] and all(c['free_1microW_passed'] for c in cases),'device_qualified':False,'plan_sha256':sha(PLAN)})

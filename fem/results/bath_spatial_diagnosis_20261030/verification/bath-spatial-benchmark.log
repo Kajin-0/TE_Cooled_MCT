@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/bath_spatial_benchmark.py", line 108, in <module>
+    cases=[solve(out/'affine',0,affine=True)]+[solve(out/f'full{j}',j) for j in range(3)]+[solve(out/'normal_only',2,normal_only=True)]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/bath_spatial_benchmark.py", line 84, in solve
+    status,_=execute(['ElmerSolver','case.sif'],out,'solver',timeout=plan['solver_timeout_s'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/fem_g1_run.py", line 32, in execute
+    raise RuntimeError(f"{name} failed: see {directory}/{name}.log (exit {code})")
+RuntimeError: solver failed: see /work/outputs/bath-spatial/benchmark/affine/solver.log (exit 1)
