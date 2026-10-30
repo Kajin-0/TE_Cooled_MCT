@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/geometry_complete_electrical.py", line 112, in <module>
+    result=run(args.mesh.resolve(),args.out.resolve())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/geometry_complete_electrical.py", line 76, in run
+    source=next(out.glob('fields*.vtu'));field=meshio.read(source);dist,ix=cKDTree(field.points).query(p)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration

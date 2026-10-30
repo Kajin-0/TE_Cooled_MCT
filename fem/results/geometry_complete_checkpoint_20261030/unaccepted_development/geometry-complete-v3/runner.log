@@ -1,0 +1,75 @@
+[32;1m
+*******************************************************************
+******        Statistics on Transfer (Write)                 ******[0m
+[32;1m
+*******************************************************************
+******        Transfer Mode = 0  I.E.  As Is       ******[0m
+[32;1m******        Transferring Shape, ShapeType = 0                      ******[0m
+[32;1m** WorkSession : Sending all data[0m
+[32;1m Step File Name : /work/outputs/geometry-complete-v3/reference.step(109721 ents)  Write  Done[0m
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+BFGS update error2
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/geometry_complete.py", line 282, in <module>
+    build(args.out.resolve())
+  File "/work/tecooledmct/geometry_complete.py", line 269, in build
+    proof=audit(m,p,c,b,f,tags,np.array(quality));proof['wire_audit']=wires
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/geometry_complete.py", line 189, in audit
+    if not np.isclose(area,expected[pair]['area_m2'],rtol=.01 if expected[pair].get('curved') else 1e-7):raise ValueError('Actual mesh contact area differs')
+                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Actual mesh contact area differs

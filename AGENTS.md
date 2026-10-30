@@ -477,3 +477,40 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
 - Next priority is full source-geometry return routing/electrical isolation,
   actual88-leg CAD/mesh proof and new cavity operator, then bounded matched
   physics. Do not launch further old-geometry parameter campaigns by default.
+
+## Completed source88-leg geometry/topology checkpoint, 2026-10-30
+
+- Read NEXT_GEOMETRY_COMPLETION_WORK_ORDER.md and
+  docs/GEOMETRY_COMPLETE_TEC_CHECKPOINT.md. New geometry_complete modules and
+  data/geometry_complete/reference_v2.json are additive; previous source/data/
+  archives and historical15-page report remain byte-identical.
+- Actual216-domain source-header assembly now includes four ceramics,88 P/N
+  legs,85 local bridges, two original buried links, two NEW Cu hot-pad routes,
+  their alumina insulation, nine0.76mm pin/glass instances, explicit presolder,
+  die/attach/Au pads. Two-ear header is rebuilt from the source registry, not
+  old G3b ellipse/pins. Actual106767nodes/366156tets,320 material contacts,
+  minimumSICN0.053429, no elements below0.01. Every body/thermal/module assembly
+  is face-connected; no hidden exterior facets, overlaps or conductor shorts.
+- Resolved return body191 connects original stage2 pad183 down to module-hot
+  pad; new input190 connects first pad116. Module183/182 simple path traverses
+  every leg once. Both external pad faces z1.835mm, area0.16mm2 each.
+- Cu pin1/9 supply and Au pin7/8 detector wires are EXPLICIT1D axial hybrid
+  routes with actual endpoint faces, G/R and conservative clearance audits,
+  NOT fictitious meshed3D arcs. Hybrid TEC graph187/186. Signal-pin TEC current
+  is structural zero with ideal ceramic/glass; signal/pin potential PDE absent.
+- Genuine Elmer StatCurrentSolver on the new183-body conductive subset passes
+  all175 original cuts +2 new route cuts (<0.5%; max0.401282%), terminal/current
+  and I*V/Joule balance. Vmodule0.361453728V at0.1A, constant verification sigma,
+  no Seebeck/thermal solve, no OEM resistance/voltage validation claim.
+- Full114 opt-in tests, CLI and geometry_demo pass. Independent actual-mesh
+  source silhouette error0.031101mm, hole/pin/ceramic/endpoint measurements pass.
+  fem/archive_geometry_complete.py publishes/--verify checks the scoped ledger,
+  genuine fields and prior guards. Retain rejected HXT, coarse-curvature,
+  endpoint-capsule and two DC runner-development attempts separately.
+- Milestone B is NOT RUN: corrected-geometry coupled Peltier/Joule thermal
+  lead-off/on tests, independent bath1%, convergence and newly generated cavity
+  exchange remain next. Cap/window/carriers and thermistor internals absent;
+  no old gas/radiation operator reuse. Original raw bath failures remain FAILED.
+- VIGO housing + independent TEC candidate is a synthetic reference, not an
+  identified commercial assembly. Existing sim/pinned4CPU/12GiB runtime only;
+  no other repository/session, report, LSDDTS or unrelated project work.

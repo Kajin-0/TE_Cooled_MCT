@@ -1,0 +1,1310 @@
+Header
+ Mesh DB "/work/outputs/geometry-complete-dc-v1/elmer" "."
+End
+Simulation
+ Coordinate System = Cartesian 3D
+ Simulation Type = Steady State
+ Steady State Max Iterations = 1
+ Post File = "fields.vtu"
+End
+Equation 1
+ Active Solvers(1) = 1
+End
+Solver 1
+ Equation = "Static Current"
+ Variable = Potential
+ Variable DOFs = 1
+ Procedure = "StatCurrentSolve" "StatCurrentSolver"
+ Linear System Solver = Direct
+ Linear System Direct Method = UMFPACK
+ Nonlinear System Max Iterations = 1
+End
+Boundary Condition 1
+ Target Boundaries(1) = 103
+ Current Density = Real 625000.00000000081
+End
+Boundary Condition 2
+ Target Boundaries(1) = 104
+ Potential = Real 0
+End
+Body 190
+ Equation = 1
+ Material = 190
+End
+Material 190
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 116
+ Equation = 1
+ Material = 116
+End
+Material 116
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 5
+ Equation = 1
+ Material = 5
+End
+Material 5
+ Electric Conductivity = Real 165500
+End
+Body 61
+ Equation = 1
+ Material = 61
+End
+Material 61
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 6
+ Equation = 1
+ Material = 6
+End
+Material 6
+ Electric Conductivity = Real 140000
+End
+Body 62
+ Equation = 1
+ Material = 62
+End
+Material 62
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 7
+ Equation = 1
+ Material = 7
+End
+Material 7
+ Electric Conductivity = Real 165500
+End
+Body 63
+ Equation = 1
+ Material = 63
+End
+Material 63
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 8
+ Equation = 1
+ Material = 8
+End
+Material 8
+ Electric Conductivity = Real 140000
+End
+Body 64
+ Equation = 1
+ Material = 64
+End
+Material 64
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 9
+ Equation = 1
+ Material = 9
+End
+Material 9
+ Electric Conductivity = Real 165500
+End
+Body 65
+ Equation = 1
+ Material = 65
+End
+Material 65
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 10
+ Equation = 1
+ Material = 10
+End
+Material 10
+ Electric Conductivity = Real 140000
+End
+Body 66
+ Equation = 1
+ Material = 66
+End
+Material 66
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 11
+ Equation = 1
+ Material = 11
+End
+Material 11
+ Electric Conductivity = Real 165500
+End
+Body 67
+ Equation = 1
+ Material = 67
+End
+Material 67
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 12
+ Equation = 1
+ Material = 12
+End
+Material 12
+ Electric Conductivity = Real 140000
+End
+Body 68
+ Equation = 1
+ Material = 68
+End
+Material 68
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 13
+ Equation = 1
+ Material = 13
+End
+Material 13
+ Electric Conductivity = Real 165500
+End
+Body 69
+ Equation = 1
+ Material = 69
+End
+Material 69
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 14
+ Equation = 1
+ Material = 14
+End
+Material 14
+ Electric Conductivity = Real 140000
+End
+Body 70
+ Equation = 1
+ Material = 70
+End
+Material 70
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 15
+ Equation = 1
+ Material = 15
+End
+Material 15
+ Electric Conductivity = Real 165500
+End
+Body 71
+ Equation = 1
+ Material = 71
+End
+Material 71
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 16
+ Equation = 1
+ Material = 16
+End
+Material 16
+ Electric Conductivity = Real 140000
+End
+Body 72
+ Equation = 1
+ Material = 72
+End
+Material 72
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 17
+ Equation = 1
+ Material = 17
+End
+Material 17
+ Electric Conductivity = Real 165500
+End
+Body 73
+ Equation = 1
+ Material = 73
+End
+Material 73
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 18
+ Equation = 1
+ Material = 18
+End
+Material 18
+ Electric Conductivity = Real 140000
+End
+Body 74
+ Equation = 1
+ Material = 74
+End
+Material 74
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 19
+ Equation = 1
+ Material = 19
+End
+Material 19
+ Electric Conductivity = Real 165500
+End
+Body 75
+ Equation = 1
+ Material = 75
+End
+Material 75
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 20
+ Equation = 1
+ Material = 20
+End
+Material 20
+ Electric Conductivity = Real 140000
+End
+Body 76
+ Equation = 1
+ Material = 76
+End
+Material 76
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 21
+ Equation = 1
+ Material = 21
+End
+Material 21
+ Electric Conductivity = Real 165500
+End
+Body 77
+ Equation = 1
+ Material = 77
+End
+Material 77
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 22
+ Equation = 1
+ Material = 22
+End
+Material 22
+ Electric Conductivity = Real 140000
+End
+Body 78
+ Equation = 1
+ Material = 78
+End
+Material 78
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 23
+ Equation = 1
+ Material = 23
+End
+Material 23
+ Electric Conductivity = Real 165500
+End
+Body 79
+ Equation = 1
+ Material = 79
+End
+Material 79
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 24
+ Equation = 1
+ Material = 24
+End
+Material 24
+ Electric Conductivity = Real 140000
+End
+Body 80
+ Equation = 1
+ Material = 80
+End
+Material 80
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 25
+ Equation = 1
+ Material = 25
+End
+Material 25
+ Electric Conductivity = Real 165500
+End
+Body 81
+ Equation = 1
+ Material = 81
+End
+Material 81
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 26
+ Equation = 1
+ Material = 26
+End
+Material 26
+ Electric Conductivity = Real 140000
+End
+Body 82
+ Equation = 1
+ Material = 82
+End
+Material 82
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 27
+ Equation = 1
+ Material = 27
+End
+Material 27
+ Electric Conductivity = Real 165500
+End
+Body 83
+ Equation = 1
+ Material = 83
+End
+Material 83
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 28
+ Equation = 1
+ Material = 28
+End
+Material 28
+ Electric Conductivity = Real 140000
+End
+Body 84
+ Equation = 1
+ Material = 84
+End
+Material 84
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 29
+ Equation = 1
+ Material = 29
+End
+Material 29
+ Electric Conductivity = Real 165500
+End
+Body 85
+ Equation = 1
+ Material = 85
+End
+Material 85
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 30
+ Equation = 1
+ Material = 30
+End
+Material 30
+ Electric Conductivity = Real 140000
+End
+Body 86
+ Equation = 1
+ Material = 86
+End
+Material 86
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 31
+ Equation = 1
+ Material = 31
+End
+Material 31
+ Electric Conductivity = Real 165500
+End
+Body 87
+ Equation = 1
+ Material = 87
+End
+Material 87
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 32
+ Equation = 1
+ Material = 32
+End
+Material 32
+ Electric Conductivity = Real 140000
+End
+Body 88
+ Equation = 1
+ Material = 88
+End
+Material 88
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 33
+ Equation = 1
+ Material = 33
+End
+Material 33
+ Electric Conductivity = Real 165500
+End
+Body 89
+ Equation = 1
+ Material = 89
+End
+Material 89
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 34
+ Equation = 1
+ Material = 34
+End
+Material 34
+ Electric Conductivity = Real 140000
+End
+Body 90
+ Equation = 1
+ Material = 90
+End
+Material 90
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 35
+ Equation = 1
+ Material = 35
+End
+Material 35
+ Electric Conductivity = Real 165500
+End
+Body 91
+ Equation = 1
+ Material = 91
+End
+Material 91
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 36
+ Equation = 1
+ Material = 36
+End
+Material 36
+ Electric Conductivity = Real 140000
+End
+Body 92
+ Equation = 1
+ Material = 92
+End
+Material 92
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 37
+ Equation = 1
+ Material = 37
+End
+Material 37
+ Electric Conductivity = Real 165500
+End
+Body 93
+ Equation = 1
+ Material = 93
+End
+Material 93
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 38
+ Equation = 1
+ Material = 38
+End
+Material 38
+ Electric Conductivity = Real 140000
+End
+Body 94
+ Equation = 1
+ Material = 94
+End
+Material 94
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 39
+ Equation = 1
+ Material = 39
+End
+Material 39
+ Electric Conductivity = Real 165500
+End
+Body 95
+ Equation = 1
+ Material = 95
+End
+Material 95
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 40
+ Equation = 1
+ Material = 40
+End
+Material 40
+ Electric Conductivity = Real 140000
+End
+Body 96
+ Equation = 1
+ Material = 96
+End
+Material 96
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 41
+ Equation = 1
+ Material = 41
+End
+Material 41
+ Electric Conductivity = Real 165500
+End
+Body 97
+ Equation = 1
+ Material = 97
+End
+Material 97
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 42
+ Equation = 1
+ Material = 42
+End
+Material 42
+ Electric Conductivity = Real 140000
+End
+Body 98
+ Equation = 1
+ Material = 98
+End
+Material 98
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 43
+ Equation = 1
+ Material = 43
+End
+Material 43
+ Electric Conductivity = Real 165500
+End
+Body 99
+ Equation = 1
+ Material = 99
+End
+Material 99
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 44
+ Equation = 1
+ Material = 44
+End
+Material 44
+ Electric Conductivity = Real 140000
+End
+Body 100
+ Equation = 1
+ Material = 100
+End
+Material 100
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 45
+ Equation = 1
+ Material = 45
+End
+Material 45
+ Electric Conductivity = Real 165500
+End
+Body 101
+ Equation = 1
+ Material = 101
+End
+Material 101
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 46
+ Equation = 1
+ Material = 46
+End
+Material 46
+ Electric Conductivity = Real 140000
+End
+Body 102
+ Equation = 1
+ Material = 102
+End
+Material 102
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 47
+ Equation = 1
+ Material = 47
+End
+Material 47
+ Electric Conductivity = Real 165500
+End
+Body 103
+ Equation = 1
+ Material = 103
+End
+Material 103
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 48
+ Equation = 1
+ Material = 48
+End
+Material 48
+ Electric Conductivity = Real 140000
+End
+Body 104
+ Equation = 1
+ Material = 104
+End
+Material 104
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 49
+ Equation = 1
+ Material = 49
+End
+Material 49
+ Electric Conductivity = Real 165500
+End
+Body 105
+ Equation = 1
+ Material = 105
+End
+Material 105
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 50
+ Equation = 1
+ Material = 50
+End
+Material 50
+ Electric Conductivity = Real 140000
+End
+Body 106
+ Equation = 1
+ Material = 106
+End
+Material 106
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 51
+ Equation = 1
+ Material = 51
+End
+Material 51
+ Electric Conductivity = Real 165500
+End
+Body 107
+ Equation = 1
+ Material = 107
+End
+Material 107
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 52
+ Equation = 1
+ Material = 52
+End
+Material 52
+ Electric Conductivity = Real 140000
+End
+Body 108
+ Equation = 1
+ Material = 108
+End
+Material 108
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 53
+ Equation = 1
+ Material = 53
+End
+Material 53
+ Electric Conductivity = Real 165500
+End
+Body 109
+ Equation = 1
+ Material = 109
+End
+Material 109
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 54
+ Equation = 1
+ Material = 54
+End
+Material 54
+ Electric Conductivity = Real 140000
+End
+Body 110
+ Equation = 1
+ Material = 110
+End
+Material 110
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 55
+ Equation = 1
+ Material = 55
+End
+Material 55
+ Electric Conductivity = Real 165500
+End
+Body 111
+ Equation = 1
+ Material = 111
+End
+Material 111
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 56
+ Equation = 1
+ Material = 56
+End
+Material 56
+ Electric Conductivity = Real 140000
+End
+Body 112
+ Equation = 1
+ Material = 112
+End
+Material 112
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 57
+ Equation = 1
+ Material = 57
+End
+Material 57
+ Electric Conductivity = Real 165500
+End
+Body 113
+ Equation = 1
+ Material = 113
+End
+Material 113
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 58
+ Equation = 1
+ Material = 58
+End
+Material 58
+ Electric Conductivity = Real 140000
+End
+Body 114
+ Equation = 1
+ Material = 114
+End
+Material 114
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 59
+ Equation = 1
+ Material = 59
+End
+Material 59
+ Electric Conductivity = Real 165500
+End
+Body 115
+ Equation = 1
+ Material = 115
+End
+Material 115
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 60
+ Equation = 1
+ Material = 60
+End
+Material 60
+ Electric Conductivity = Real 140000
+End
+Body 117
+ Equation = 1
+ Material = 117
+End
+Material 117
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 184
+ Equation = 1
+ Material = 184
+End
+Material 184
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 165
+ Equation = 1
+ Material = 165
+End
+Material 165
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 118
+ Equation = 1
+ Material = 118
+End
+Material 118
+ Electric Conductivity = Real 165500
+End
+Body 142
+ Equation = 1
+ Material = 142
+End
+Material 142
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 119
+ Equation = 1
+ Material = 119
+End
+Material 119
+ Electric Conductivity = Real 140000
+End
+Body 143
+ Equation = 1
+ Material = 143
+End
+Material 143
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 120
+ Equation = 1
+ Material = 120
+End
+Material 120
+ Electric Conductivity = Real 165500
+End
+Body 144
+ Equation = 1
+ Material = 144
+End
+Material 144
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 121
+ Equation = 1
+ Material = 121
+End
+Material 121
+ Electric Conductivity = Real 140000
+End
+Body 145
+ Equation = 1
+ Material = 145
+End
+Material 145
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 122
+ Equation = 1
+ Material = 122
+End
+Material 122
+ Electric Conductivity = Real 165500
+End
+Body 146
+ Equation = 1
+ Material = 146
+End
+Material 146
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 123
+ Equation = 1
+ Material = 123
+End
+Material 123
+ Electric Conductivity = Real 140000
+End
+Body 147
+ Equation = 1
+ Material = 147
+End
+Material 147
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 124
+ Equation = 1
+ Material = 124
+End
+Material 124
+ Electric Conductivity = Real 165500
+End
+Body 148
+ Equation = 1
+ Material = 148
+End
+Material 148
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 125
+ Equation = 1
+ Material = 125
+End
+Material 125
+ Electric Conductivity = Real 140000
+End
+Body 149
+ Equation = 1
+ Material = 149
+End
+Material 149
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 126
+ Equation = 1
+ Material = 126
+End
+Material 126
+ Electric Conductivity = Real 165500
+End
+Body 150
+ Equation = 1
+ Material = 150
+End
+Material 150
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 127
+ Equation = 1
+ Material = 127
+End
+Material 127
+ Electric Conductivity = Real 140000
+End
+Body 151
+ Equation = 1
+ Material = 151
+End
+Material 151
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 128
+ Equation = 1
+ Material = 128
+End
+Material 128
+ Electric Conductivity = Real 165500
+End
+Body 152
+ Equation = 1
+ Material = 152
+End
+Material 152
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 129
+ Equation = 1
+ Material = 129
+End
+Material 129
+ Electric Conductivity = Real 140000
+End
+Body 153
+ Equation = 1
+ Material = 153
+End
+Material 153
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 130
+ Equation = 1
+ Material = 130
+End
+Material 130
+ Electric Conductivity = Real 165500
+End
+Body 154
+ Equation = 1
+ Material = 154
+End
+Material 154
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 131
+ Equation = 1
+ Material = 131
+End
+Material 131
+ Electric Conductivity = Real 140000
+End
+Body 155
+ Equation = 1
+ Material = 155
+End
+Material 155
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 132
+ Equation = 1
+ Material = 132
+End
+Material 132
+ Electric Conductivity = Real 165500
+End
+Body 156
+ Equation = 1
+ Material = 156
+End
+Material 156
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 133
+ Equation = 1
+ Material = 133
+End
+Material 133
+ Electric Conductivity = Real 140000
+End
+Body 157
+ Equation = 1
+ Material = 157
+End
+Material 157
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 134
+ Equation = 1
+ Material = 134
+End
+Material 134
+ Electric Conductivity = Real 165500
+End
+Body 158
+ Equation = 1
+ Material = 158
+End
+Material 158
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 135
+ Equation = 1
+ Material = 135
+End
+Material 135
+ Electric Conductivity = Real 140000
+End
+Body 159
+ Equation = 1
+ Material = 159
+End
+Material 159
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 136
+ Equation = 1
+ Material = 136
+End
+Material 136
+ Electric Conductivity = Real 165500
+End
+Body 160
+ Equation = 1
+ Material = 160
+End
+Material 160
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 137
+ Equation = 1
+ Material = 137
+End
+Material 137
+ Electric Conductivity = Real 140000
+End
+Body 161
+ Equation = 1
+ Material = 161
+End
+Material 161
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 138
+ Equation = 1
+ Material = 138
+End
+Material 138
+ Electric Conductivity = Real 165500
+End
+Body 162
+ Equation = 1
+ Material = 162
+End
+Material 162
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 139
+ Equation = 1
+ Material = 139
+End
+Material 139
+ Electric Conductivity = Real 140000
+End
+Body 163
+ Equation = 1
+ Material = 163
+End
+Material 163
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 140
+ Equation = 1
+ Material = 140
+End
+Material 140
+ Electric Conductivity = Real 165500
+End
+Body 164
+ Equation = 1
+ Material = 164
+End
+Material 164
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 141
+ Equation = 1
+ Material = 141
+End
+Material 141
+ Electric Conductivity = Real 140000
+End
+Body 166
+ Equation = 1
+ Material = 166
+End
+Material 166
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 185
+ Equation = 1
+ Material = 185
+End
+Material 185
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 182
+ Equation = 1
+ Material = 182
+End
+Material 182
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 167
+ Equation = 1
+ Material = 167
+End
+Material 167
+ Electric Conductivity = Real 165500
+End
+Body 175
+ Equation = 1
+ Material = 175
+End
+Material 175
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 168
+ Equation = 1
+ Material = 168
+End
+Material 168
+ Electric Conductivity = Real 140000
+End
+Body 176
+ Equation = 1
+ Material = 176
+End
+Material 176
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 169
+ Equation = 1
+ Material = 169
+End
+Material 169
+ Electric Conductivity = Real 165500
+End
+Body 177
+ Equation = 1
+ Material = 177
+End
+Material 177
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 170
+ Equation = 1
+ Material = 170
+End
+Material 170
+ Electric Conductivity = Real 140000
+End
+Body 178
+ Equation = 1
+ Material = 178
+End
+Material 178
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 171
+ Equation = 1
+ Material = 171
+End
+Material 171
+ Electric Conductivity = Real 165500
+End
+Body 179
+ Equation = 1
+ Material = 179
+End
+Material 179
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 172
+ Equation = 1
+ Material = 172
+End
+Material 172
+ Electric Conductivity = Real 140000
+End
+Body 180
+ Equation = 1
+ Material = 180
+End
+Material 180
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 173
+ Equation = 1
+ Material = 173
+End
+Material 173
+ Electric Conductivity = Real 165500
+End
+Body 181
+ Equation = 1
+ Material = 181
+End
+Material 181
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 174
+ Equation = 1
+ Material = 174
+End
+Material 174
+ Electric Conductivity = Real 140000
+End
+Body 183
+ Equation = 1
+ Material = 183
+End
+Material 183
+ Electric Conductivity = Real 58139534.883720934
+End
+Body 191
+ Equation = 1
+ Material = 191
+End
+Material 191
+ Electric Conductivity = Real 58139534.883720934
+End

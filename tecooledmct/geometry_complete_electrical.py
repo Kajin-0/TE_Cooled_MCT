@@ -1,0 +1,113 @@
+"""Genuine Elmer DC-conduction topology test on the new resolved183-body module.
+
+This is NOT a thermoelectric/thermal package performance solve. Perfect ceramic
+insulation is imposed by excluding dielectric domains from the electrical PDE.
+Cu supply wires are declared1D series elements; pins/signals are topology only.
+"""
+import argparse,json,shutil
+from pathlib import Path
+import numpy as np
+from scipy.spatial import cKDTree
+from .geometry_rebaseline import sha,write,ROOT
+from .fem_g1 import tetra_geometry
+from .fem_g1_run import execute
+from .fem_g2a import PROPERTIES,mesh_adjacency
+from .fem_g2b_post import cut_flux
+
+
+def run(mesh,out):
+    import meshio
+    if out.exists():raise ValueError('Choose a new electrical execution label')
+    m=json.loads((mesh/'manifest.json').read_text());d=np.load(mesh/'mesh.npz');fullp=d['points'];fullc=d['cells'];fullb=d['bodies']
+    ids=m['conductor_path'];select=np.isin(fullb,ids);cells=fullc[select];b=fullb[select];nodes=np.unique(cells)
+    inverse=np.full(len(fullp),-1,int);inverse[nodes]=np.arange(len(nodes));p=fullp[nodes];c=inverse[cells]
+    adj=mesh_adjacency(c);f=np.array([face for face,ix in adj.items() if len(ix)==1]);tags=np.full(len(f),105)
+    rawfaces={tuple(sorted(inverse[face])):int(tag) for face,tag in zip(d['faces'],d['boundaries']) if tag in (103,104)}
+    for i,face in enumerate(f):tags[i]=rawfaces.get(tuple(face),105)
+    if set(tags)!={103,104,105}:raise ValueError('Missing actual hot-pad electrical faces')
+    out.mkdir(parents=True);np.savez_compressed(out/'electrical_mesh.npz',points=p,cells=c,bodies=b,faces=f,boundaries=tags,full_node_ids=nodes)
+    meshio.write(out/'electrical.msh',meshio.Mesh(p,[('triangle',f),('tetra',c)],cell_data={'gmsh:physical':[tags,b],'gmsh:geometrical':[tags,b]}),file_format='gmsh22',binary=False)
+    execute(['ElmerGrid','14','2','electrical.msh','-out','elmer'],out,'grid',timeout=120)
+    x=p[f];area=np.linalg.norm(np.cross(x[:,1]-x[:,0],x[:,2]-x[:,0]),axis=1)/2;A=area[tags==103].sum();I=.1
+    text=f'''Header
+ Mesh DB "{(out/'elmer').resolve()}" "."
+End
+Simulation
+ Coordinate System = Cartesian 3D
+ Simulation Type = Steady State
+ Steady State Max Iterations = 1
+ Post File = "fields.vtu"
+End
+Equation 1
+ Active Solvers(1) = 1
+End
+Solver 1
+ Equation = "Static Current"
+ Variable = Potential
+ Variable DOFs = 1
+ Procedure = "StatCurrentSolve" "StatCurrentSolver"
+ Linear System Solver = Direct
+ Linear System Direct Method = UMFPACK
+ Nonlinear System Max Iterations = 1
+End
+Boundary Condition 1
+ Target Boundaries(1) = 103
+ Current Density = Real {I/A:.17g}
+End
+Boundary Condition 2
+ Target Boundaries(1) = 104
+ Potential = Real 0
+End
+'''
+    by={row['id']:row for row in m['bodies']}
+    for index,bid in enumerate(ids,1):
+        mat=by[bid]['material'];sigma=PROPERTIES[mat][1]
+        text+=f'''Body {index}
+ Target Bodies(1) = {bid}
+ Equation = 1
+ Material = {index}
+End
+Material {index}
+ Electric Conductivity = Real {sigma:.17g}
+End
+'''
+    (out/'case.sif').write_text(text);sources={str(Path(__file__).relative_to(ROOT)):sha(Path(__file__))}
+    status,_=execute(['ElmerSolver','case.sif'],out,'solver',timeout=600)
+    source=next(out.rglob('fields*.vtu'));field=meshio.read(source);dist,ix=cKDTree(field.points).query(p)
+    if dist.max()>1e-12 or len(np.unique(ix))!=len(p):raise ValueError('Elmer node mapping differs')
+    phi=field.point_data['potential'].ravel()[ix];vol,g=tetra_geometry(p,c);grad=np.einsum('ei,eij->ej',phi[c],g)
+    sigma=np.array([PROPERTIES[by[int(bid)]['material']][1] for bid in b]);J=-sigma[:,None]*grad
+    residual=np.zeros(len(p));local=vol[:,None]*sigma[:,None]*np.einsum('eij,ej->ei',g,grad)
+    np.add.at(residual,c.ravel(),local.ravel());free=residual.copy()
+    np.add.at(free,f[tags==103].ravel(),-np.repeat(area[tags==103]*I/A/3,3));ground=np.unique(f[tags==104]);free[ground]=0
+    V=float(np.dot(area[tags==103],phi[f[tags==103]].mean(1))/A);work=float(np.dot(vol,sigma*np.sum(grad*grad,axis=1)))
+    current_out=-float(residual[ground].sum());cuts=[];zeros=np.zeros((len(c),3));T=np.full(len(p),300.)
+    for row in m['bodies']:
+        if 'cut_axis' not in row:continue
+        flux=cut_flux(p,c,b,[row['id']],row['cut_axis'],row['cut_coordinate_m'],J,zeros,T,np.zeros(len(c)),np.zeros(len(c)))
+        measured=row['current_sign']*flux['current_positive_axis_a'];cuts.append({'body':row['id'],'name':row['name'],'area_m2':flux['area_m2'],
+            'expected_area_m2':row['cut_area_m2'],'current_a':measured,'relative_error':(measured-I)/I,'new_hot_route':row['id'] in (190,191)})
+    original=[r for r in cuts if not r['new_hot_route']];allcuts=max(abs(v['relative_error']) for v in cuts)
+    checks={'solver_zero':status['exit_code']==0,'all_175_original_cuts_present':len(original)==175,
+            'both_new_routes_cut':len(cuts)==177,'all_cut_areas':all(np.isclose(r['area_m2'],r['expected_area_m2'],rtol=1e-7) for r in cuts),
+            'all_177_raw_cuts_half_percent':allcuts<.005,'terminal_current_1uA':abs(current_out-I)<1e-6,
+            'free_current_L1_1uA':float(abs(free).sum())<1e-6,'Joule_power_work_1percent':abs(work/(I*V)-1)<.01}
+    wire=json.loads((mesh/'wire_routes.json').read_text());R=sum(v['R_ohm'] for v in wire['wires'] if v['material']=='Cu')
+    result={'status':'DC conduction topology check only; not coupled thermal performance','solver_executed':True,'current_a':I,'module_voltage_v':V,
+            'module_resistance_ohm':V/I,'series_Cu_wire_R_ohm':R,'module_plus_reduced_wire_voltage_v':V+I*R,
+            'wire_Joule_w':I*I*R,'volume_Joule_w':work,'I_times_module_V_w':I*V,'current_out_a':current_out,
+            'free_current_residual_L1_a':float(abs(free).sum()),'worst_raw_cut_relative_error':allcuts,'cuts':cuts,'checks':checks,'passed':all(checks.values()),
+            'signal_pin_TEC_current':'structural zero in ideal-insulator hybrid graph; no signal/bias PDE solved',
+            'feedthrough_pin_potential_field':'not solved in this module electrical test; no full-package voltage prediction',
+            'thermal_or_Peltier_physics':False,'source_sha256':sources,'full_mesh_sha256':sha(mesh/'mesh.npz'),
+            'electrical_mesh_sha256':sha(out/'electrical_mesh.npz'),'sif_sha256':sha(out/'case.sif'),'vtu_sha256':sha(source),'field_source':str(source.relative_to(out)),'solver_status':status}
+    meshio.write(out/'derived_current.vtu',meshio.Mesh(p,[('tetra',c)],point_data={'potential':phi},cell_data={'J_A_m2':[J],'body_id':[b],'joule_W_m3':[sigma*np.sum(grad*grad,axis=1)]}))
+    if any(sha(ROOT/name)!=digest for name,digest in sources.items()):raise ValueError('Electrical source changed during solve')
+    write(out/'verification.json',result);print('DC topology','PASS' if result['passed'] else 'FAILED',V,'max cut error',allcuts,checks,flush=True)
+    return result
+
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser();parser.add_argument('--mesh',type=Path,required=True);parser.add_argument('--out',type=Path,required=True);args=parser.parse_args()
+    result=run(args.mesh.resolve(),args.out.resolve())
+    if not result['passed']:raise SystemExit('Retained unaccepted DC cut gate; do not call Milestone A qualified')

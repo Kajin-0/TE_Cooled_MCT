@@ -1,0 +1,38 @@
+{
+  "status": "Milestone A solid geometry + explicitly hybrid wiring and DC topology verified",
+  "solid_and_hybrid_topology_passed": true,
+  "coupled_thermal_qualification": false,
+  "OEM_validation": false,
+  "resolved_3D_wire_arcs": false,
+  "resolved_88leg_module": true,
+  "cap_window_gas_radiation": "not implemented for new geometry; no old operator reused",
+  "original_raw_bath_1percent_gate": "unchanged FAILED historical fine points; no new thermal gate result",
+  "source_header_mesh_and_module_graph": {
+    "nodes": 106767,
+    "tets": 366156,
+    "domains": 216,
+    "module183_182": true,
+    "hybrid187_186": true
+  },
+  "genuine_DC_all175_plus2_cuts": {
+    "solver_zero": true,
+    "all_175_original_cuts_present": true,
+    "both_new_routes_cut": true,
+    "all_cut_areas": true,
+    "all_177_raw_cuts_half_percent": true,
+    "terminal_current_1uA": true,
+    "free_current_L1_1uA": true,
+    "Joule_power_work_1percent": true
+  },
+  "DC_worst_raw_cut_relative_error": 0.004012823666771359,
+  "signal_pin_current_scope": "structural zero for ideal-insulator hybrid topology; no signal or feedthrough potential PDE solved",
+  "image_id": "sha256:24aa962831260903f1aeeb5209969ae012efab09d188cd8aac99f2f55f739195",
+  "execution_resources": "existing network-none Docker4CPU/12GiB; no installation or other session",
+  "development_failures_retained": [
+    "endpoint spherical capsule too conservative",
+    "HXT volume recovery",
+    "curvature-disabled interface area failure",
+    "SIF body index failure",
+    "DC postprocessor field-directory failure"
+  ]
+}

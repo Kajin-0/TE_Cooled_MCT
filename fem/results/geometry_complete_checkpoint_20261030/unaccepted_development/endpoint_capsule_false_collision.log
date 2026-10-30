@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/geometry_complete.py", line 273, in <module>
+    build(args.out.resolve())
+  File "/work/tecooledmct/geometry_complete.py", line 213, in build
+    m=manifest();wires=wire_routes(m);out.mkdir(parents=True);start=time.monotonic()
+                       ^^^^^^^^^^^^^^
+  File "/work/tecooledmct/geometry_complete.py", line 87, in wire_routes
+    if clearance<=0:raise ValueError('Wire collision or insufficient certified clearance: '+str(pin))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Wire collision or insufficient certified clearance: 1

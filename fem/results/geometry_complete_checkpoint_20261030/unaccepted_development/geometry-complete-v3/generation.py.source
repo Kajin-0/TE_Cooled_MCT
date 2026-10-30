@@ -1,0 +1,282 @@
+"""Source-header + resolved88-leg/hot-return construction; explicitly hybrid wires.
+
+No older package generator, ellipse, pin registry or cavity operator is imported.
+The independent internal box registry remains an inferred reference construction.
+"""
+import argparse,copy,json,time
+from pathlib import Path
+import numpy as np
+from .geometry_registry import load,value,pins,analytic_metrics,ROOT
+from .geometry_rebaseline import cad_outline,mesh_outline,sha,write,overlay
+from .fem_g2b_connected import orthogonal_audit
+from .fem_g2a import validate_path,mesh_adjacency
+from .fem_g2b_connectivity import connectivity
+from .fem_g1 import tetra_geometry
+from .fem_g1_run import execute
+
+REGISTRY=ROOT/'data/geometry_complete/reference_v2.json'
+
+
+def manifest(path=REGISTRY):
+    r=load(path);m=copy.deepcopy(r['stack']);orthogonal_audit(m)
+    shift=(value(r,'header_thickness')+value(r,'presolder_thickness'))*.001-m['hot_z_m']
+    for b in m['bodies']:
+        for box in b['boxes_m']:box[2]+=shift
+        if 'box_m' in b:b['box_m'][2]+=shift
+        if b.get('cut_axis')==2:b['cut_coordinate_m']+=shift
+    for p in m['terminal_planes'].values():p['coordinate_m']+=shift
+    m['hot_z_m']+=shift;m['cold_z_m']+=shift;m['registry']=r
+    m['original_stage2_return_body']=183;m['physical_hot_terminal_bodies']=[190,191]
+    m['dielectric_cutout_conductors']=m.pop('interstage_links')
+    def box(bid,name,mat,kind,xyz):
+        m['bodies'].append({'id':bid,'name':name,'material':mat,'kind':kind,'boxes_m':[xyz],
+                            'expected_volume_m3':float(np.prod(xyz[3:])),'certainty':'test-only'})
+    w=value(r,'tec_hot_width')*.001;h=value(r,'header_thickness')*.001;j=value(r,'presolder_thickness')*.001
+    box(301,'presolder_unknown_alloy','Presolder','presolder',[-w/2,-w/2,h,w,w,j])
+    s=value(r,'die_width')*.001;a=value(r,'die_attach_thickness')*.001;t=value(r,'die_thickness')*.001
+    z=m['cold_z_m'];box(302,'die_attach_hypothesis','Attach','die_attach',[-s/2,-s/2,z,s,s,a])
+    box(303,'MCT_thermal_domain_hypothesis','MCT','die',[-s/2,-s/2,z+a,s,s,t]);m['mct_body']=303
+    pw=value(r,'gold_pad_width')*.001;pt=value(r,'gold_pad_thickness')*.001
+    for bid,x in ((304,.0003),(305,-.0003)):box(bid,'detector_Au_pad_'+str(bid),'Au','bond_pad',[x-pw/2,-pw/2,z+a+t,pw,pw,pt])
+    for pair,area in [((300,301),w*w),((1,301),w*w),((4,302),s*s),((302,303),s*s),((303,304),pw*pw),((303,305),pw*pw)]:
+        m['contacts'].append({'bodies':sorted(pair),'area_m2':area})
+    m['bodies'].append({'id':300,'name':'VIGO_reference_two_ear_Kovar_header','material':'Kovar','kind':'header',
+                       'expected_volume_m3':analytic_metrics(r)['header_volume_mm3']*1e-9,'certainty':'source envelope, inferred radii'})
+    m['pin_tops']=[]
+    ro=value(r,'glass_od')*.0005;ri=value(r,'pin_diameter')*.0005;below=value(r,'pin_below_header')*.001;stub=value(r,'pin_stub')*.001
+    for row in pins(r):
+        i=row['pin'];x,y=np.array(row['xy_mm'])*.001
+        for bid,name,mat,kind,volume in [(400+i,'glass_pin'+str(i),'Glass','glass',np.pi*(ro*ro-ri*ri)*h),
+                                        (500+i,'metal_pin'+str(i)+'_'+row['function'],'Pin','pin',np.pi*ri*ri*(below+h+stub))]:
+            m['bodies'].append({'id':bid,'name':name,'material':mat,'kind':kind,'expected_volume_m3':float(volume),
+                               'center_xy_m':[x,y],'pin_number':i,'function':row['function']})
+        m['contacts'] += [{'bodies':[300,400+i],'area_m2':2*np.pi*ro*h,'curved':True},
+                          {'bodies':[400+i,500+i],'area_m2':2*np.pi*ri*h,'curved':True}]
+        m['pin_tops'].append({'pin':i,'body':500+i,'tag':6000+i,'z_m':h+stub,'center_xy_m':[x,y]})
+    for i,row in enumerate(sorted(m['contacts'],key=lambda v:v['bodies'])):row['boundary_id']=10001+i
+    m['representation']=r['representation'];m['coupled_thermal_solution']=False
+    m['external_pin_TEC_graph_path']=[501,601]+m['conductor_path']+[609,509]
+    return m
+
+
+def wire_routes(m):
+    """Resolved endpoint faces, reduced axial wires: audit conservative clearance bounds."""
+    from scipy.spatial import cKDTree
+    r=m['registry'];by={b['id']:b for b in m['bodies']};rows=[];clouds=[]
+    for pin,bid,lead,mat,height in ((1,190,601,'Cu',.0028),(9,191,609,'Cu',.0028),(7,304,607,'Au',.006),(8,305,608,'Au',.006)):
+        p=next(v for v in m['pin_tops'] if v['pin']==pin);start=np.r_[p['center_xy_m'],p['z_m']]
+        b=by[bid]['boxes_m'][0];end=np.array(b[:3])+[b[3]/2,b[4]/2,b[5]]
+        path=np.array([start,[*start[:2],height],[*end[:2],height],end]);lengths=np.linalg.norm(np.diff(path,axis=0),axis=1)
+        sampled=np.concatenate([np.linspace(a,b,max(2,int(np.ceil(L/.00002))+1)) for a,b,L in zip(path[:-1],path[1:],lengths)])
+        radius=value(r,'lead_diameter' if mat=='Cu' else 'gold_wire_diameter')*.0005
+        clearance=np.inf
+        for body in m['bodies']:
+            if body['id'] in (bid,500+pin):continue
+            for box in body.get('boxes_m',[]):
+                lo=np.array(box[:3]);hi=lo+box[3:]
+                for a,z in zip(path[:-1],path[1:]):
+                    if np.linalg.norm(a[:2]-z[:2])<1e-15:
+                        # Flat axial wire end on pad: a spherical end-cap would
+                        # falsely extend below the copper into the ceramic.
+                        radial=max(0.,float(np.linalg.norm(np.maximum(np.maximum(lo[:2]-a[:2],a[:2]-hi[:2]),0)))-radius)
+                        axial=max(0.,lo[2]-max(a[2],z[2]),min(a[2],z[2])-hi[2])
+                        distance=float(np.hypot(radial,axial))
+                    else:
+                        points=np.linspace(a,z,max(2,int(np.ceil(np.linalg.norm(z-a)/.00002))+1))
+                        distance=float(np.linalg.norm(np.maximum(np.maximum(lo-points,points-hi),0),axis=1).min())-.00001-radius
+                    clearance=min(clearance,distance)
+            if body['kind'] in ('pin','glass'):
+                x,y=body['center_xy_m'];lo=-value(r,'pin_below_header')*.001 if body['kind']=='pin' else 0.
+                hi=value(r,'header_thickness')*.001+(value(r,'pin_stub')*.001 if body['kind']=='pin' else 0.)
+                rr=value(r,'pin_diameter' if body['kind']=='pin' else 'glass_od')*.0005
+                dr=np.maximum(np.linalg.norm(sampled[:,:2]-[x,y],axis=1)-rr,0)
+                dz=np.maximum(np.maximum(lo-sampled[:,2],sampled[:,2]-hi),0)
+                clearance=min(clearance,float(np.hypot(dr,dz).min())-.00001-radius)
+        clearance=min(clearance,float(sampled[:,2].min()-value(r,'header_thickness')*.001-radius))
+        if clearance<=0:raise ValueError('Wire collision or insufficient certified clearance: '+str(pin))
+        if mat=='Cu' and abs(end[2]-(m['hot_z_m']+value(r,'ceramic_thickness')*.001+.000065))>1e-12:
+            raise ValueError('TEC wire terminates away from module hot pad')
+        k,rho=(400.,1.72e-8) if mat=='Cu' else (315.,2.44e-8)
+        A=np.pi*radius**2;L=float(lengths.sum())
+        rows.append({'lead_body_id':lead,'pin':pin,'material':mat,'pin_body':500+pin,'target_body':bid,
+                     'pin_face_tag':6000+pin,'target_face_tag':103 if pin==1 else 104 if pin==9 else 6100+pin,
+                     'polyline_m':path.tolist(),'length_m':L,'diameter_m':2*radius,'area_m2':A,
+                     'certified_other_solid_clearance_lower_bound_m':clearance,
+                     'G_W_K':k*A/L,'R_ohm':rho*L/A,'coefficients_status':'constant verification proxies, no OEM material claim',
+                     'representation':'1D axial hybrid; no meshed3D wire arc, no distributed gas/radiation, piecewise straight route hypothesis',
+                     'endpoint_distribution':'uniform face average/injection; attachment locations unknown'})
+        clouds.append((sampled,radius))
+    minimum=np.inf
+    for i,(p,radius) in enumerate(clouds):
+        for q,r2 in clouds[i+1:]:minimum=min(minimum,float(cKDTree(q).query(p)[0].min())-.00002-radius-r2)
+    if minimum<=0:raise ValueError('Reduced wire centreline capsules may short')
+    return {'wires':rows,'minimum_wire_pair_clearance_lower_bound_m':minimum,
+            'hybrid_TEC_graph':validate_path(m['external_pin_TEC_graph_path'],list(zip(m['external_pin_TEC_graph_path'],m['external_pin_TEC_graph_path'][1:])),[501,509]),
+            'no_TEC_current_path_to_signal_pins':True,'internal_thermistor_circuit':'not present'}
+
+
+def construct(gmsh,m,cad=False):
+    occ=gmsh.model.occ;r=m['registry'];scale=1000. if cad else 1.;created={}
+    def fused(boxes):
+        s=[(3,occ.addBox(*(np.array(b)*scale))) for b in boxes]
+        return s if len(s)==1 else occ.fuse(s[:1],s[1:])[0]
+    for b in m['bodies']:
+        if 'boxes_m' in b:created[b['id']]=fused(b['boxes_m'])
+    cutouts=[q for bid in m['dielectric_cutout_conductors'] for q in created[bid]]
+    for b in m['bodies']:
+        if b['material']=='Alumina':created[b['id']]=occ.cut(created[b['id']],cutouts,removeTool=False)[0]
+    h=value(r,'header_thickness')*.001*scale
+    fs=[cad_outline(occ,r)] if cad else mesh_outline(occ,r)
+    hs=[]
+    for f in fs:hs +=[v for v in occ.extrude([(2,f)],0,0,h) if v[0]==3]
+    if len(hs)>1:hs=occ.fuse(hs[:1],hs[1:])[0]
+    ro=value(r,'glass_od')*.0005*scale;ri=value(r,'pin_diameter')*.0005*scale
+    d=value(r,'hole_pitch')*.0005*scale
+    holes=[(3,occ.addCylinder(x,0,0,0,0,h,value(r,'hole_diameter')*.0005*scale)) for x in (-d,d)]
+    for row in pins(r):
+        i=row['pin'];x,y=np.array(row['xy_mm'])*.001*scale
+        holes.append((3,occ.addCylinder(x,y,0,0,0,h,ro)))
+        outer=occ.addCylinder(x,y,0,0,0,h,ro);inner=occ.addCylinder(x,y,0,0,0,h,ri)
+        created[400+i]=occ.cut([(3,outer)],[(3,inner)])[0]
+        below=value(r,'pin_below_header')*.001*scale;stub=value(r,'pin_stub')*.001*scale
+        created[500+i]=[(3,occ.addCylinder(x,y,-below,0,0,below+h+stub,ri))]
+    created[300]=occ.cut(hs,holes)[0]
+    objects=[];owners=[]
+    for bid,entities in created.items():objects+=entities;owners +=[bid]*len(entities)
+    _,mapping=occ.fragment(objects[:1],objects[1:]);occ.synchronize();owner={};groups={}
+    for bid,entities in zip(owners,mapping):
+        for dim,tag in entities:
+            if dim!=3:continue
+            if tag in owner and owner[tag]!=bid:raise ValueError('Solid penetration/overlap')
+            owner[tag]=bid;groups.setdefault(bid,set()).add(tag)
+    for b in m['bodies']:
+        volume=sum(occ.getMass(3,v) for v in groups[b['id']])/scale**3
+        if not np.isclose(volume,b['expected_volume_m3'],rtol=2e-7,atol=1e-20):raise ValueError('CAD/independent volume disagreement: '+b['name'])
+        gmsh.model.addPhysicalGroup(3,sorted(groups[b['id']]),b['id'],b['name'])
+    expected={tuple(v['bodies']):v for v in m['contacts']};surfaces={};actual={}
+    for _,face in gmsh.model.getEntities(2):
+        up,_=gmsh.model.getAdjacencies(2,face);pair=tuple(sorted({owner[int(v)] for v in up}));center=np.array(occ.getCenterOfMass(2,face))/scale
+        if len(pair)==2:
+            if pair not in expected:raise ValueError('Unexpected mating: '+str(pair))
+            tag=expected[pair]['boundary_id'];actual[pair]=actual.get(pair,0)+occ.getMass(2,face)/scale**2
+        elif len(pair)==1:
+            bid=pair[0];tag=105
+            if bid==300 and abs(center[2])<1e-10:tag=101
+            for key,plane in m['terminal_planes'].items():
+                if bid==plane['body'] and abs(center[plane['axis']]-plane['coordinate_m'])<1e-10:tag=int(key)
+            for p in m['pin_tops']:
+                if bid==p['body'] and abs(center[2]-p['z_m'])<1e-10:tag=p['tag']
+            if bid in (304,305) and abs(center[2]-sum((next(b for b in m['bodies'] if b['id']==bid)['boxes_m'][0][k] for k in (2,5))))<1e-10:tag=6107 if bid==304 else 6108
+        else:raise ValueError('Nonmanifold CAD incidence')
+        surfaces.setdefault(tag,[]).append(face)
+    if set(actual)!=set(expected):raise ValueError('Missing CAD mating')
+    for pair,area in actual.items():
+        if not np.isclose(area,expected[pair]['area_m2'],rtol=2e-7,atol=1e-20):raise ValueError('Independent contact-area disagreement '+str(pair))
+    for tag,entities in surfaces.items():gmsh.model.addPhysicalGroup(2,entities,tag,'surface_'+str(tag))
+    return owner,surfaces
+
+
+def audit(m,p,c,b,f,tags,q):
+    vol,_=tetra_geometry(p,c);adj=mesh_adjacency(c);areas={}
+    for face,ix in adj.items():
+        if len(ix)>2:raise ValueError('Nonmanifold mesh')
+        if len(ix)==2 and b[ix[0]]!=b[ix[1]]:
+            pair=tuple(sorted((int(b[ix[0]]),int(b[ix[1]]))));v=p[list(face)]
+            areas[pair]=areas.get(pair,0)+np.linalg.norm(np.cross(v[1]-v[0],v[2]-v[0]))/2
+    expected={tuple(row['bodies']):row for row in m['contacts']}
+    if set(areas)!=set(expected):raise ValueError('Actual mesh mating graph differs')
+    for pair,area in areas.items():
+        if not np.isclose(area,expected[pair]['area_m2'],rtol=.01 if expected[pair].get('curved') else 1e-7):raise ValueError('Actual mesh contact area differs')
+    exterior={face for face,ix in adj.items() if len(ix)==1}
+    declared={tuple(sorted(face)) for face,tag in zip(f,tags) if tag<10001}
+    if exterior!=declared:raise ValueError('Hidden crack or missing exterior boundary')
+    volumes={}
+    for row in m['bodies']:
+        actual=float(vol[b==row['id']].sum());volumes[row['name']]=actual
+        if not np.isclose(actual,row['expected_volume_m3'],rtol=.01 if row['kind'] in ('pin','glass','header') else 1e-7,atol=1e-22):raise ValueError('Actual volume differs: '+row['name'])
+    cid=set(m['conductor_path']);edges=[pair for pair in areas if set(pair)<=cid]
+    graph=validate_path(cid,edges,m['terminals'])
+    if set(map(tuple,map(sorted,zip(m['conductor_path'],m['conductor_path'][1:]))))!=set(edges):raise ValueError('Series path bypass/short')
+    conductive={v['id'] for v in m['bodies'] if v['material'] not in ('Alumina','Glass','Attach')}
+    node_bodies=[set() for _ in p]
+    for bid in conductive:
+        for node in np.unique(c[b==bid]):node_bodies[node].add(bid)
+    for joined in node_bodies:
+        ids=sorted(joined)
+        for i,a in enumerate(ids):
+            if any((a,z) not in expected for z in ids[i+1:]):raise ValueError('Point/edge metal short')
+    proof=connectivity(c,b,cid)
+    if not np.isfinite(q).all() or q.min()<=0:raise ValueError('Nonpositive mesh quality')
+    return {'passed':True,'nodes':len(p),'tetrahedra':len(c),'domains':len(m['bodies']),
+            'module_graph':graph,'connectivity':proof,'all88legs':sum(v['kind']=='leg' for v in m['bodies'])==88,
+            'four_primary_ceramic_plates':sum(v['kind']=='ceramic' for v in m['bodies'])==4,
+            'min_SICN':float(q.min()),'SICN_below_0p01':int(np.sum(q<.01)),
+            'all_exterior_facets_declared':True,'no_unintended_point_edge_contacts':True,
+            'volumes_m3':volumes,'contact_areas_m2':{str(k):v for k,v in areas.items()},
+            'representation':m['representation'],'coupled_thermal_solution':False}
+
+
+def build(out,h=.00020):
+    import gmsh,meshio
+    if out.exists():raise ValueError('Choose a new immutable output label')
+    m=manifest();wires=wire_routes(m);out.mkdir(parents=True);start=time.monotonic()
+    hashes={str(p.relative_to(ROOT)):sha(p) for p in (Path(__file__),REGISTRY)}
+    write(out/'manifest.json',m);write(out/'wire_routes.json',wires)
+    gmsh.initialize();gmsh.logger.start()
+    try:
+        gmsh.option.setNumber('General.Terminal',0);gmsh.option.setNumber('General.NumThreads',4)
+        gmsh.model.add('source_reference_mm_CAD');construct(gmsh,m,True);gmsh.write(str(out/'reference.step'))
+        gmsh.clear();gmsh.model.add('source_reference_SI_FEM');owner,surfaces=construct(gmsh,m)
+        gmsh.option.setNumber('Mesh.MeshSizeExtendFromBoundary',0);gmsh.option.setNumber('Mesh.MeshSizeFromPoints',0)
+        gmsh.option.setNumber('Mesh.MeshSizeFromCurvature',0);gmsh.option.setNumber('Mesh.MinimumCirclePoints',32)
+        gmsh.option.setNumber('Mesh.MeshSizeMin',.000018);gmsh.option.setNumber('Mesh.MeshSizeMax',.0008)
+        gmsh.option.setNumber('Mesh.Algorithm3D',1);gmsh.option.setNumber('Mesh.RandomSeed',20261030)
+        fields=[]
+        def boxfield(low,high,size):
+            field=gmsh.model.mesh.field.add('Box')
+            for key,val in zip(('XMin','YMin','ZMin'),low):gmsh.model.mesh.field.setNumber(field,key,float(val)-1e-8)
+            for key,val in zip(('XMax','YMax','ZMax'),high):gmsh.model.mesh.field.setNumber(field,key,float(val)+1e-8)
+            gmsh.model.mesh.field.setNumber(field,'VIn',size);gmsh.model.mesh.field.setNumber(field,'VOut',.0008)
+            gmsh.model.mesh.field.setNumber(field,'Thickness',size*2);fields.append(field)
+        boxfield([-.0033,-.0033,m['hot_z_m']],[.0033,.0033,m['cold_z_m']+.0003],h)
+        for row in m['bodies']:
+            if row['kind']=='bridge':
+                box=np.array(row['boxes_m'][0]);lo=box[:3].copy();hi=lo+box[3:];axis=row['cut_axis'];lo[axis]+=.0004;hi[axis]-=.0004
+                if hi[axis]>lo[axis]:boxfield(lo,hi,.000035)
+            if row['kind']=='hot_route':
+                for box in row['boxes_m']:
+                    lo=np.array(box[:3]);boxfield(lo,lo+box[3:],.000055)
+        field=gmsh.model.mesh.field.add('Min');gmsh.model.mesh.field.setNumbers(field,'FieldsList',fields);gmsh.model.mesh.field.setAsBackgroundMesh(field)
+        gmsh.model.mesh.generate(3);gmsh.model.mesh.optimize('Netgen')
+        ntags,xyz,_=gmsh.model.mesh.getNodes();p=np.array(xyz).reshape(-1,3);lookup={int(t):i for i,t in enumerate(ntags)}
+        def remap(nodes,width):return np.fromiter((lookup[int(t)] for t in nodes),int).reshape(-1,width)
+        cells=[];bodies=[];faces=[];boundaries=[];quality=[]
+        for volume,bid in owner.items():
+            types,ets,arrays=gmsh.model.mesh.getElements(3,volume)
+            for typ,ids,nodes in zip(types,ets,arrays):
+                if typ!=4:raise ValueError('Linear tetrahedra only')
+                cc=remap(nodes,4);cells.append(cc);bodies.extend([bid]*len(cc));quality.extend(gmsh.model.mesh.getElementQualities(ids,'minSICN'))
+        if sum(map(len,cells))>900000:raise ValueError('Bounded900000-tet geometry budget exceeded')
+        for tag,ss in surfaces.items():
+            for surface in ss:
+                types,_,arrays=gmsh.model.mesh.getElements(2,surface)
+                for typ,nodes in zip(types,arrays):
+                    if typ!=2:raise ValueError('Triangle faces only')
+                    ff=remap(nodes,3);faces.append(ff);boundaries.extend([tag]*len(ff))
+        c=np.concatenate(cells);b=np.array(bodies);f=np.concatenate(faces);tags=np.array(boundaries)
+        np.savez_compressed(out/'mesh.npz',points=p,cells=c,bodies=b,faces=f,boundaries=tags,quality=np.array(quality))
+        gmsh.option.setNumber('Mesh.MshFileVersion',2.2);gmsh.write(str(out/'connected.msh'))
+        proof=audit(m,p,c,b,f,tags,np.array(quality));proof['wire_audit']=wires
+        meshio.write(out/'geometry_only.vtu',meshio.Mesh(p,[('tetra',c)],cell_data={'body_id':[b]}))
+    finally:
+        (out/'gmsh.log').write_text('\n'.join(gmsh.logger.get()));gmsh.finalize()
+    if any(sha(ROOT/p)!=v for p,v in hashes.items()):raise ValueError('Geometry source changed during execution')
+    proof.update(source_sha256=hashes,mesh_sha256=sha(out/'mesh.npz'),manifest_sha256=sha(out/'manifest.json'),elapsed_s=time.monotonic()-start)
+    write(out/'audit.json',proof);overlay(m['registry'],out)
+    execute(['ElmerGrid','14','2','connected.msh','-out','elmer'],out,'grid')
+    print('New source88-leg mesh PASS',len(p),len(c),len(m['bodies']),'module183/182 +hybrid187/186',flush=True)
+
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser();parser.add_argument('--out',type=Path,required=True);args=parser.parse_args()
+    build(args.out.resolve())

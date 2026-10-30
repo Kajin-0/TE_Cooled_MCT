@@ -1,0 +1,20 @@
+[32;1m
+*******************************************************************
+******        Statistics on Transfer (Write)                 ******[0m
+[32;1m
+*******************************************************************
+******        Transfer Mode = 0  I.E.  As Is       ******[0m
+[32;1m******        Transferring Shape, ShapeType = 0                      ******[0m
+[32;1m** WorkSession : Sending all data[0m
+[32;1m Step File Name : /work/outputs/geometry-complete-v2/reference.step(109721 ents)  Write  Done[0m
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/geometry_complete.py", line 282, in <module>
+    build(args.out.resolve())
+  File "/work/tecooledmct/geometry_complete.py", line 250, in build
+    gmsh.model.mesh.generate(3);gmsh.model.mesh.optimize('Netgen')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/gmsh.py", line 2060, in generate
+    raise Exception(logger.getLastError())
+Exception: HXT 3D mesh failed
