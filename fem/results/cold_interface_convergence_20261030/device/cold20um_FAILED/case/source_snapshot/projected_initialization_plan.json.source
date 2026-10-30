@@ -1,0 +1,10 @@
+{
+  "registered_before_retry": true,
+  "reason": "Cold20 32bit factorization failed;64bit fresh300K run takes about5minutes per nonlinear step within unchanged1200s bound",
+  "initialization_only": "Nearest actual solved mid-mesh T/phi at each target Elmer node; not final fields, not FE interpolation across voids as evidence",
+  "format_validation": "First write identity-permutation ASCII3 restart on the SAME middle mesh from its genuine solved field; require actual rerun to reproduce temperature/voltage and all residuals",
+  "new_fine_retry": "Identical corrected fine mesh,PDE,0.1A,2mW,Au/Cu OFF,64bit direct solver; projected guess only; actual ThermoElectricSolver must converge below1e-9 and all old gates are computed without relaxation",
+  "timeout_seconds": 1200,
+  "resource_wrapper": "unchanged fem/run_g2b.sh4CPU/12GiB",
+  "interpretation": "Retain every failed attempt. A projected initial field is never archived/labeled as a solved field; a failed solver produces no accepted fine QoI. No threshold or physical input change."
+}

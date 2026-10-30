@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/cold_roi_big_run.py", line 47, in <module>
+    a=p.parse_args();run(a.mesh.resolve(),a.case.resolve(),a.failed.resolve())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/cold_roi_big_run.py", line 24, in run
+    if text!= (failed/'case.sif').read_text():raise ValueError('Retry inputs differ before index-mode change')
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Retry inputs differ before index-mode change

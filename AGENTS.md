@@ -559,3 +559,43 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   for a new mesh rather than editing this frozen source. Separate Au ON and
   source-traced enclosure/carriers/new cavity operators remain pending. No OEM
   accuracy claim or historical scientific PDF update is justified yet.
+
+## Cold-interface discretization investigation, 2026-10-30
+
+- Read COLD_INTERFACE_MESH_CONVERGENCE_WORK_ORDER.md and
+  docs/CORRECTED_THERMAL_INTERFACE_MESH_CONVERGENCE_RESULT.md, with
+  docs/COLD_INTERFACE_CONVERGENCE_REPRODUCIBILITY.md. All earlier source and
+  archive guards remain mandatory; new cold_* modules are additive.
+- Independent true-face/difference-gradient extraction reproduces original
+  +41.348101%/-47.827846% cold jumps. Original adjacent normal heights are
+  median220um alumina/15um attach/103um MCT. Arithmetic triangle-density
+  averaging does not explain the error; coarse corner centroids undersample
+  the inner100um bin. Raw MCT whole-body outward0.567mW vs2mW source FAIL.
+- Six actual independent3D HeatSolver runs use three220/30/200um layers,
+  30/1/1.1W/mK,2mW flux/source and an analytic transverse harmonic field.
+  Source-layer raw flux errors12.5/6.25/3.125%, mean errors
+  -1.855/-0.464/-0.116mK; finest preregistered gates PASS. Coarser source
+  failures remain FAILED. Benchmark-only p1 flux/p2 mean-T/GCI is analytic
+  verification, not package/OEM convergence or a reaction-based reference.
+- Same corrected source registry; three actual conformal216-domain meshes:
+  original366156, cold30um458061, cold20um647657tets. Fixed cold-ROI actual
+  h76.724/25.484/17.608um; attach finalr1.278<1.3, bath essentially fixed.
+  Original200um MCT retained;120um work-order prose was older geometry.
+- Actual completed coupled mesh levels2/3. Cold30 die265.613621647K,
+  jumps+8.694593%/-6.975844%, bath-1.306057% FAIL;177cut worst0.415013%
+  PASS. Cold20 geometry PASS, actual32bit factorization FAILED and64bit
+  bounded attempts FAILED; no final fine field/QoI or three-level GCI.
+- Same-mesh actual projected-restart check:2 iterations, die0.340uK and
+  V4.77nV difference from genuine middle field. Projected nearest-node values
+  are INITIAL GUESSES only; final fine evidence requires its own actual PDE,
+  nonlinear1e-9 and unchanged independent residual/current/flux checks.
+- Full121 opt-in tests and CLI/demo pass. Retain raw bath1%,177cut0.5%,
+  interface5%, all failed solver attempts and previous bath failures. No
+  recovered-flux waiver, standard full-device GCI, qualified Tc or30uK Cu
+  benefit. No report, enclosure/gas/radiation, other repo/session or LSDDTS.
+- Publication/--verify: fem/archive_cold_convergence.py; immutable evidence
+  fem/results/cold_interface_convergence_20261030. Geometry/material/OEM
+  uncertainty remains separate from derivative/spatial error. Next: targeted
+  completion of Cold20 using a better verified projection/solver plan, then
+  cold normal refinement and independent bath mesh study before matched
+  refined Cu ON, Au ON or enclosure physics.

@@ -1,0 +1,69 @@
+{
+  "actual_coupled_meshes": 2,
+  "actual_new_coupled_solutions": 2,
+  "actual_new_HeatSolver_solutions": 6,
+  "benchmark_finest_qualified": true,
+  "device_GCI_qualified": false,
+  "full_device_qualification": false,
+  "OEM_validated": false,
+  "cold_interface_5percent_passes": [
+    false,
+    false
+  ],
+  "raw_bath_1percent_passes": [
+    true,
+    false
+  ],
+  "all177_current_halfpercent_passed": true,
+  "refined_Cu_ON": "NOT RUN",
+  "refined_Cu_ON_reason": "NOT RUN: OFF bath1% and/or cold5% gates fail; do not infer physical30uK benefit",
+  "historical_bath_failures": "UNCHANGED FAILED; no recovered flux waiver",
+  "old_report": "UNCHANGED15 pages",
+  "scope": "solid-only synthetic reference, no enclosure/gas/radiation or carrier physics",
+  "image_id": "sha256:24aa962831260903f1aeeb5209969ae012efab09d188cd8aac99f2f55f739195",
+  "retained_attempts": {
+    "32bit": "UMFPACK factorization FAILED",
+    "64bit_setup": "rejected before solve",
+    "64bit_fresh_start_status": {
+      "command": [
+        "ElmerSolver",
+        "case.sif"
+      ],
+      "exit_code": 124,
+      "elapsed_s": 1200.6058762010653,
+      "cpu_s": 1200.380972,
+      "peak_rss_kib": 5985024,
+      "timed_out": true,
+      "nonlinear_iterations": 3,
+      "nonlinear_last_relative_change": 0.005277925916897789
+    },
+    "same_mesh_projected_restart": {
+      "passed": true,
+      "mesh_sha256": "10a147f5dcca91d0e78f46c886edf912ae56ed849cbdce1d37c40cf14785a3df",
+      "die_difference_K": 3.400098194106249e-07,
+      "voltage_difference_V": -4.770343231541574e-09,
+      "proof": "actual same-mesh coupled rerun from identity-permutation ASCII3 guess; no analytical output substitution"
+    },
+    "fine_projected_start_failed_levels": [
+      {
+        "level": "cold20um",
+        "case": "outputs/cold-convergence/cu_off20_projected",
+        "solver_status": {
+          "command": [
+            "ElmerSolver",
+            "case.sif"
+          ],
+          "exit_code": 124,
+          "elapsed_s": 1200.5527546899393,
+          "cpu_s": 1200.3898350000002,
+          "peak_rss_kib": 5984804,
+          "timed_out": true,
+          "nonlinear_iterations": 3,
+          "nonlinear_last_relative_change": 0.0015880008397954368
+        },
+        "status": "FAILED actual execution; no final coupled field or QoI",
+        "mesh_sha256": "92db30994fc878a87088b592e888983485b2087965f07ca2b97ac61727b4319c"
+      }
+    ]
+  }
+}

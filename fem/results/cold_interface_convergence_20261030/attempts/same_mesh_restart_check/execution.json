@@ -1,0 +1,46 @@
+{
+  "source_sha256": {
+    "tecooledmct/cold_roi_projected_run.py": "6cea014d388b1ca95403d83c4256fa00a0e609c34ac64b664be2cde62cf0a302",
+    "tecooledmct/corrected_thermal.py": "91361a99be054da801900f5a5c10a7f0bc6ba514ebdbc97588f9222f89ac8b47",
+    "tecooledmct/corrected_thermal_post.py": "b980b2cb6e0a50f1ff48cefe9de7e7bce397eb3ddf7c542031bafb99a7ee4b8b",
+    "data/cold_convergence/projected_initialization_plan.json": "96f50cb99dc829b950be65476a1e3ec83ac4754e70c2cca4eea62ab4b28f4ccc"
+  },
+  "mesh_sha256": "10a147f5dcca91d0e78f46c886edf912ae56ed849cbdce1d37c40cf14785a3df",
+  "manifest_sha256": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+  "sif_sha256": "1e28b9cbf5b73a88168638bb1c86354539cf5f926c6dae07e6119147dcaf62b9",
+  "vtu_sha256": "f9e3e861717691cc20e984fc1cd84e3664abee26384b76a7d26a05a9b27e91f1",
+  "field_source": "fields_t0001.vtu",
+  "started_UTC": "2026-10-30T05:47:24.800344+00:00",
+  "finished_UTC": "2026-10-30T05:49:06.955030+00:00",
+  "solver_status": {
+    "command": [
+      "ElmerSolver",
+      "case.sif"
+    ],
+    "exit_code": 0,
+    "elapsed_s": 102.12362666800618,
+    "cpu_s": 101.95399900000001,
+    "peak_rss_kib": 2270420,
+    "timed_out": false,
+    "nonlinear_iterations": 2,
+    "nonlinear_last_relative_change": 2.766555525159443e-10
+  },
+  "initial_state": {
+    "method": "nearest actual field node; INITIAL GUESS ONLY",
+    "same_mesh": true,
+    "seed_field_sha256": "3c00fa803eaf23c966431102b132d33b8285f3fb448fab62234de96c1cf2be4b",
+    "seed_case": "/work/outputs/cold-convergence/cu_off30",
+    "maximum_nearest_distance_m": 0.0,
+    "distance_quantiles_m": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "initial_guess_sha256": "e58a8b3c350c377225185276e82c57707a72996d1393f5047198d73e8fcf3677",
+    "plan_sha256": "96f50cb99dc829b950be65476a1e3ec83ac4754e70c2cca4eea62ab4b28f4ccc",
+    "same_mesh_format_proof": null
+  },
+  "linear_index_mode": "64bit big umfpack; same PDE",
+  "scope": "projected initial guess only; final genuine coupled solve on its own fine mesh"
+}

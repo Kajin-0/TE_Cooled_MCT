@@ -1,0 +1,30 @@
+{
+  "scope": "Independent3D layered HeatSolver benchmark and corrected216-domain cold-ROI refinement; no OEM claim",
+  "registered_before_new_solves": true,
+  "benchmark": {
+    "area_m2": 1e-6,
+    "layer_thickness_m": [0.00022, 0.00003, 0.00020],
+    "layer_k_W_mK": [30.0, 1.0, 1.1],
+    "cases": ["constant_flux", "distributed_MCT_source"],
+    "power_W": 0.002,
+    "lateral_harmonic_T_K": "0.04*(x^2-y^2)/L^2 +0.03*x*y/L^2; L=1mm",
+    "xy_intervals": [8, 16, 32],
+    "z_intervals_by_layer": [[2,1,4], [4,2,8], [8,4,16]],
+    "finest_gate": {"constant_flux_interface_relative_error": 0.01, "distributed_interface_relative_error": 0.05, "interface_mismatch": 0.05, "volume_mean_T_error_K": 0.0002, "weak_energy_W": 1e-8},
+    "reference": "analytic mixed boundary piecewise T(z)+harmonic transverse field; never FE reactions"
+  },
+  "full_device": {
+    "levels": ["protected_original", "cold30um", "cold20um"],
+    "inner_ROI_halfwidth_m": 0.00065,
+    "inner_ROI_z_relative_to_cold_top_m": [-0.00015, 0.00025],
+    "inner_h_m": [0.00003, 0.00002],
+    "outer_cold_h_m": [0.00010, 0.000067],
+    "unchanged": "source geometry/materials,0.1A,2mW MCT,Au OFF,Cu OFF for mesh series; same original global/bridge/route/pin/bath controls",
+    "hard_gates": {"raw_bath_relative_error":0.01,"raw_177_cut_current_relative_error":0.005,"raw_interface_relative_mismatch":0.05,"global_and_stage_energy_W":1e-6},
+    "mesh_cap_tets":900000,
+    "solver_timeout_seconds":1200,
+    "h_eff": "(fixed physical ROI volume/actual tetra count)^(1/3); body-specific and geometric ROI recorded",
+    "GCI": "only if three levels, effective r>=1.3, monotonic/asymptotic evidence and admissible observed order; otherwise no GCI claim"
+  },
+  "original_die_thickness_note": "Corrected canonical registry/actual mesh have200um MCT.120um in the work-order prose is the older package value; not used to change geometry."
+}

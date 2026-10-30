@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/cold_roi_run.py", line 44, in <module>
+    a=p.parse_args();run(a.mesh.resolve(),a.case.resolve(),a.cu,a.restart.resolve() if a.restart else None)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/cold_roi_run.py", line 25, in run
+    started=datetime.datetime.now(datetime.timezone.utc).isoformat();status=execute_solver(case,timeout=1200)
+                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/fem_g2b_physics.py", line 174, in execute_solver
+    raise RuntimeError(f"Actual coupled solve FAILED: {case}; see solver.log/status")
+RuntimeError: Actual coupled solve FAILED: /work/outputs/cold-convergence/cu_off20; see solver.log/status
