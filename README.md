@@ -2,6 +2,10 @@
 
 **Current objective (2026-10-30):** [Plausible reference-device modeling policy](docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md). Build a physically defensible integrated TEC-cooled HgCdTe/TO-66 model using documented inputs where available and clearly identified engineering assumptions/ranges where proprietary OEM details are unknown. Prioritize coupled heat budgets, practical operating scenarios and sensitivity; OEM comparison is a non-blocking plausibility check, not a requirement to reconstruct a particular commercial device. The [earlier OEM-first validation track](docs/OEM_FIRST_VALIDATION_TRACK_20261030.md) and opt-in bounded 1D material screen remain useful secondary research. Archived FEM raw-flux failures, numerical-release criteria and the approved Rev3 REVIEW DRAFT remain unchanged.
 
+**Newest completed simulation capability (2026-10-30):** [integrated reference thermal-budget study](docs/INTEGRATED_REFERENCE_THERMAL_20261030.md) uses the protected corrected **synthetic** 88-leg geometry, assumed three-stage TEC P/N laws, archived inferred Cu/Au wire-route dimensions, effective cap/window radiation and gas conduction, die heating, and hot-side heat-sink resistance. Includes 63 operating points (0–1 A), individual heat-path and conservation budgets, one-at-a-time sensitivity, tests, [temperature plot](data/integrated_reference_20261030/die_temperature_vs_current.png) and [sensitivity plot](data/integrated_reference_20261030/sensitivity_spans.png). This is a **5-node, reduced-order screening model**, NOT a new enclosed-package Elmer solve and NOT an OEM-validated device.
+
+Reproduce: `./fem/run.sh python -m tecooledmct.integrated_reference --out data/integrated_reference_20261030`
+
 Open, reproducible **proof-of-concept multiphysics model** of a three-stage thermoelectrically cooled HgCdTe (MCT) detector in a nine-pin TO-66-style hermetic package.
 
 **Phase 0: research prototype, NOT a validated digital twin.** The initial solver is a 4-node steady-state thermoelectric/thermal network and includes exploratory material, gas, radiation, detector loading, electrical, sensitivity and cooldown calculations.
