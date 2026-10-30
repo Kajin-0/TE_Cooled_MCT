@@ -644,3 +644,31 @@ Do NOT modify, invoke, import or integrate Kajin-0/mct-refactor/LSDDTS. Treat ol
   failed trials, actual figures and independent bath diagnostics retained.
   Old PDF and all accepted/failed baselines unchanged; no other repo/session
   or LSDDTS work. Next: cold-interface normal refinement before qualification.
+
+## Revision 3 review policy authorized now, 2026-10-30
+
+- Read COLD_BATH_GATES_AND_REPORT_REV3_WORK_ORDER.md and
+  docs/REPORT_REVISION3_REVIEW_CRITERIA.md. This USER authorization supersedes
+  earlier "no new standalone report until qualified" notes for a clearly marked
+  REVIEW DRAFT. Create the corrected standalone Rev3 now, using actual corrected
+  geometry/solved fields and prominent failed qualification. Preserve Rev2 bytes.
+- Report current copy: reports/generated/
+  HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf. Retain immutable editions
+  and external machine provenance. No usernames/paths/hashes/repo links/internal
+  milestone jargon in reader pages. No old elliptical/cap/gas/rad figures.
+- Release later requires same-mesh rawcold<5% AND rawbath<1%, plus systematically
+  refined comparator passing both,177cuts<0.5%, heat/free residuals<1uW,
+  current residual<1uA, homogeneous/reproducibility and quantified QoI sensitivity.
+  Targets4.5%/.9% are margins only. No OEM certification or unjustified GCI.
+- Independent cold-normal and bath-volume studies retain unchanged physics,
+  source geometry and gates; combine only verified candidates. Do not defer the
+  human review PDF indefinitely if a refinement fails or times out.
+
+- Initial Rev3 edition20261030_a is now a13-page standalone REVIEW DRAFT using
+  archived corrected mesh/fields only. Every page rendered/inspected; source
+  and reader/metadata gates pass. Old15-page PDF remains byte-identical.
+  Read docs/REPORT_REVISION3_REPRODUCIBILITY.md; current.json and sealed edition
+  checksums protect the current public PDF and all scientific figures.
+  Source scripts have archival .source snapshots; later editions never rewrite
+  this edition. Initial data freeze explicitly marks new normal-volume solves
+  pending. Original6.48% cold and1.29% bath failures remain prominent.
