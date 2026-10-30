@@ -232,7 +232,8 @@ The measured 40–300 K table is unchanged; the selected analog domain remains
 one-sided finite differences and strict domain boundaries. `S/rho/k` used by
 the existing stage calculations are unchanged; all 49 prior accepted
 analog points retain temperature, voltage and stage heat results within
-1e-9 K / 1e-11 V or W regression tolerances.
+1e-7 K / 1e-9 V or W snapshot regression tolerances. Constitutive S/rho/k
+inputs also have exact-array equality checks against the previous law.
 
 The enclosure builder rejects missing, nonnumeric, Boolean, nonfinite,
 zero or negative dimensions before constructing CAD. It checks
@@ -322,9 +323,22 @@ Reproduce into new/local output locations:
 ./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/graded-corrective/geometry
 ```
 
-Focused verification: **98 tests passed**, including the native standalone
+Final focused verification: **100 tests passed**, including the native standalone
 Gmsh fixture, six nonlinear BVP comparisons and diagnostic failure branches.
 Full opt-in regression: **253 passed** in 339.94 s, including genuine Elmer
-smoke checks (14 third-party matplotlib/pyparsing deprecation warnings).
+smoke checks, before the two extra exact-law assertions below (14 third-party
+matplotlib/pyparsing deprecation warnings). Production solver/material code
+is unchanged after that run. Final standard regression, including those two
+assertions: **244 passed / 11 skipped** in 31.63 s; skipped tests are opt-in
+FEM cases. The native enclosure fixture is exercised locally.
 The complete archive verifier passed, preserving all historical failed gates
 and approved Rev3. Legacy CLI and geometry-demo commands also passed.
+
+CI portability correction: the first hosted run used SciPy 1.17.1 and
+reported 240 passes / 12 skips, with one newly added snapshot assertion
+failing on a **2.894e-9 K** optimizer-root difference. Its original 1e-9 K
+snapshot tolerance was unnecessarily sensitive to dependency/platform
+roundoff. The snapshot tolerances above are distinct from, and do not alter,
+the 1e-8 W solve gate, any conservation gate, or historical raw-flux criteria.
+The exact-law tests independently ensure that the stage's material inputs
+are unchanged. No archived results were updated to satisfy CI.
