@@ -97,10 +97,11 @@ increases from **0.84437 V** to **1.15539 V** (about +36.8%).
 This large grade sensitivity **does not establish that either
 variant is more accurate** for an unknown OEM assembly.
 
-The broad 0–1 A grid contains **49 accepted / 14 deliberately
-failed-closed** analog cases. Several high-current states are below
-the deliberately restricted 180 K lower modeling boundary or are
-infeasible under the restricted model. Their temperatures must not be
+The broad 0–1 A grid contains **49 accepted / 14
+failed-closed** analog cases. The corrective checkpoint below records that
+all 14 rejected candidates reach the lower temperature bound and retain
+unacceptable residuals. That does not prove an out-of-domain physical
+solution or physical infeasibility. Their temperatures must not be
 clamped, interpolated across, or treated as physically successful
 operating points. The summary JSON records every failure and warns
 when a grid minimum is not a qualified optimum. The plotted curves
@@ -209,3 +210,121 @@ mesh and `geometry_audit.json`.
    numerical release while original raw bath 1% and cold-face
    5% criteria remain unresolved. Historical FEM sources/fields,
    old failed gates and approved Rev3 are preserved.
+
+## Small corrective checkpoint — 2026-10-30
+
+This increment was executed through the existing `sim:0.0` Codex session.
+It preserves the original source tables, standalone CAD/mesh archive,
+previous scenario artifacts and approved Rev2/Rev3. It adds no full-device
+3D solve and makes no OEM identification or numerical-release claim.
+
+### Active-law consistency and geometry guards
+
+`graded_tec.props()` now derives `sigma = 1/rho` after the assumed
+continuation, and returns `thomson_v_k = T*dS/dT` for the actual active
+law. Interior measured-table knots use the source's **right derivative**.
+At exactly **300 K**, use the final measured segment's **left derivative**;
+at temperatures strictly above 300 K use 0.25 times that slope. At exactly
+**390 K**, use the continuation's **left derivative**. No two-sided
+derivative is asserted at 300 K. Evaluations outside 180–390 K fail closed.
+The measured 40–300 K table is unchanged; the selected analog domain remains
+180–390 K. Tests cover scalar/vector evaluation, reciprocal identity,
+one-sided finite differences and strict domain boundaries. `S/rho/k` used by
+the existing stage calculations are unchanged; all 49 prior accepted
+analog points retain temperature, voltage and stage heat results within
+1e-9 K / 1e-11 V or W regression tolerances.
+
+The enclosure builder rejects missing, nonnumeric, Boolean, nonfinite,
+zero or negative dimensions before constructing CAD. It checks
+`0 < window_radius < inner_cap_radius < outer_cap_radius`, a positive
+cavity and solid volumes, roof clearance to internals and pins, and wire
+clearance including wire radius. This fixture still requires equal window
+and roof thickness; unequal thickness needs a separately designed seat.
+No protected geometry archive was rebuilt.
+
+### Rejected-current diagnostics
+
+New scenario output is in
+`data/graded_corrective_20261030/scenarios/summary.json`; prior
+`data/integrated_graded_20261030` files are retained. Each rejected case
+records its scenario, last candidate temperatures, four physical node
+residuals in W, separate hot-sink residual in K, optimizer-scaled residuals,
+optimizer success/status/message/evaluation count/active mask, model and
+measured P/N domains, active bounds and an explicit failure classification.
+Unavailable values after an evaluation error are `null`, never invented.
+
+All 14 actual rejected grid cases classify as
+`active_bound_residual_failure`: optimizer termination reports success,
+but the cold ceramic is at 180.000001 K and physical residuals fail the
+unchanged acceptance gate. For example, nominal Kr at 0.65 A has a maximum
+node residual **4.582915 mW**, far above the 1e-8 W gate. Its stored
+temperatures are **rejected candidates**, not operating predictions.
+An active bound does not establish that a solution exists below the bound.
+Optimizer failure and material/evaluation failure are separately tested.
+Failed cases remain absent from accepted sweep CSV rows; existing plots
+retain gaps and the optimum warnings remain intact.
+
+The optimizer's last residual row remains the hot-sink temperature residual
+divided by 2, as before. Diagnostics label this scaling explicitly rather
+than interpreting that row as a physical W balance. Accepted calculations
+and their historical residual gate have not been changed.
+
+### Broader independent nonlinear leg comparison
+
+`tecooledmct.graded_tec_checks` compares the affine stage against the
+independent conservative `oem_phase_a.bounded_leg` solver, using both
+16 and 32 intervals per P/N leg and corrected stage dimensions. Stage
+indices 0/1/2 run from hot to cold. All boundary and solved interior
+temperatures in these six cases lie **strictly inside 40–300 K**.
+These are approximation checks using the same research-specimen transport,
+not measurements of the synthetic device.
+
+| Stage | Th / Tc (K) | I (A) | abs Qc error (mW) | relative Qc error (%) | abs V error (mV) | relative V error (%) |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| 0 | 295 / 250 | 0.10 | 0.141640 | 0.058338 | 0.531456 | 0.066693 |
+| 0 | 295 / 285 | 0.15 | 0.332227 | 0.101261 | 1.825869 | 0.287575 |
+| 1 | 280 / 250 | 0.15 | 0.005985 | 0.020888 | 0.016015 | 0.005634 |
+| 2 | 250 / 230 | 0.15 | 0.002096 | 0.021038 | 0.002052 | 0.003340 |
+| 2 | 230 / 190 | 0.50 | 0.115150 | 0.551612 | 0.235985 | 0.166319 |
+| 0 | 260 / 240 | 0.70 | 7.986864 | 0.972654 | 147.220545 | 6.481337 |
+
+Errors are `abs(affine - BVP32)`; relative errors divide by `abs(BVP32)`.
+Signed values, BVP results, source provenance, local conservation and
+16-to-32 changes are in
+`data/graded_corrective_20261030/bvp_comparison.json`.
+At 0.70 A, the nonlinear leg interior reaches **273.178856 K**, above both
+boundary temperatures; the affine profile cannot represent this Joule-driven
+curvature. The 16-to-32 changes there are 0.026965 mW and 0.517298 mV,
+considerably smaller than the affine discrepancies. This is evidence of a
+high-current approximation limitation, not a rigorous continuum error bound.
+Relative cooling errors also become unstable near zero cooling. No global
+error bound or extrapolation to untested operating points is established.
+
+The assumed **300–390 K** law is tested for internal consistency and guards
+only. This measured-domain BVP study does **not validate** that continuation.
+For high-current quantitative budgets, prefer the bounded nonlinear leg
+reduction in a future scoped checkpoint before spending resources on a
+new full-package FEM solve. The immediate scope remains a plausible
+synthetic reference, with OEM comparison optional.
+
+Reproduce into new/local output locations:
+
+```bash
+./fem/run.sh python -m tecooledmct.graded_tec_checks \
+  --out outputs/graded-corrective/bvp_comparison.json
+./fem/run.sh python -m tecooledmct.integrated_reference \
+  --material zhang2025_analog --out outputs/graded-corrective/scenarios
+./fem/run.sh python -m pytest -q tests/test_graded_tec.py \
+  tests/test_corrected_enclosure.py tests/test_integrated_reference.py
+./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs
+./fem/run.sh python fem/archive_bath_spatial_device.py --verify
+./fem/run.sh python -m tecooledmct.cli --quick --out outputs/graded-corrective/cli
+./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/graded-corrective/geometry
+```
+
+Focused verification: **98 tests passed**, including the native standalone
+Gmsh fixture, six nonlinear BVP comparisons and diagnostic failure branches.
+Full opt-in regression: **253 passed** in 339.94 s, including genuine Elmer
+smoke checks (14 third-party matplotlib/pyparsing deprecation warnings).
+The complete archive verifier passed, preserving all historical failed gates
+and approved Rev3. Legacy CLI and geometry-demo commands also passed.

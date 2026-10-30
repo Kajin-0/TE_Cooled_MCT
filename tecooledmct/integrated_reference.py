@@ -22,6 +22,65 @@ from .g2d_data import ROOT
 GEOMETRY=ROOT/'fem/results/geometry_complete_checkpoint_20261030'
 GEOM_FILES=('manifest.json','wire_routes.json')
 STAGE_MATERIAL_STATUS='constant first-principles G1 verification proxy (NOT OEM transport grade)'
+TEMPERATURE_NODES=('hot_ceramic','stage1','stage2','cold_ceramic','MCT_die')
+
+
+class OperatingPointFailure(ValueError):
+    """Rejected solve with auditable candidates, never an accepted state."""
+
+    def __init__(self,message,diagnostics):
+        super().__init__(message)
+        self.diagnostics=diagnostics
+
+
+def failure_diagnostics(s,x=None,residual=None,fit=None,*,error=None):
+    """Keep physical W residuals separate from the optimizer's scaled K row."""
+    lower,upper=180.+1e-6,390.-1e-6
+    finite=x is not None and bool(np.isfinite(x).all())
+    temperatures=dict(zip(TEMPERATURE_NODES,map(float,x))) if finite else None
+    active={name:('lower' if t-lower<=1e-4 else 'upper' if upper-t<=1e-4 else None)
+            for name,t in temperatures.items()} if finite else None
+    valid_r=residual is not None and bool(np.isfinite(residual).all())
+    r=np.asarray(residual) if valid_r else None
+    if fit is None:
+        classification='evaluation_or_input_error'
+    elif not fit.success:
+        classification='optimizer_failure'
+    elif active and any(active.values()) and valid_r and np.max(np.abs(r))>1e-8:
+        classification='active_bound_residual_failure'
+    else:
+        classification='residual_or_energy_gate_failure'
+    return {
+        'classification':classification,
+        'scenario':asdict(s),
+        'last_candidate_temperatures_k':temperatures,
+        'node_balance_residuals_w':dict(zip(TEMPERATURE_NODES[1:],map(float,r[:4]))) if valid_r else None,
+        'max_node_balance_residual_w':float(np.max(np.abs(r[:4]))) if valid_r else None,
+        'hot_sink_temperature_residual_k':float(2*r[4]) if valid_r else None,
+        'optimizer_scaled_residuals':r.tolist() if valid_r else None,
+        'max_optimizer_scaled_residual':float(np.max(np.abs(r))) if valid_r else None,
+        'optimizer_residual_units':'first four W; last K divided by 2 (optimizer scaling only)',
+        'active_temperature_bounds':active,
+        'active_temperature_bound_tolerance_k':1e-4,
+        'any_active_temperature_bound':bool(any(active.values())) if active else None,
+        'physical_domain':{
+            'model_temperature_interval_k':[180.,390.],
+            'optimizer_temperature_interval_k':[lower,upper],
+            'candidate_within_model_domain':bool(min(x)>=180 and max(x)<=390) if finite else None,
+            'measured_PN_interval_k':[40.,300.] if s.material_model=='zhang2025_analog' else None,
+            'PN_candidate_within_measured_interval':bool(min(x[:4])>=40 and max(x[:4])<=300)
+                if finite and s.material_model=='zhang2025_analog' else None,
+            'assumed_high_T_continuation_used':bool(max(x[:4])>300)
+                if finite and s.material_model=='zhang2025_analog' else None,
+            'interpretation':'An active bound does not prove an out-of-domain physical solution or physical infeasibility.'},
+        'optimizer':{'success':bool(fit.success) if fit is not None else None,
+                     'status':int(fit.status) if fit is not None else None,
+                     'message':str(fit.message) if fit is not None else error,
+                     'nfev':int(fit.nfev) if fit is not None else None,
+                     'active_mask':np.asarray(fit.active_mask,dtype=int).tolist() if fit is not None else None},
+        'evaluation_error':error,
+        'candidate_is_accepted':False,
+    }
 
 
 @dataclass(frozen=True)
@@ -235,12 +294,28 @@ def solve(s:Scenario,g=None):
     if s.current_a<.02:init[:]=s.ambient_k
     lower=np.full(5,180.+1e-6);upper=np.full(5,390.-1e-6)
     x0=np.clip(init,lower+1e-4,upper-1e-4)
-    fit=least_squares(lambda x:evaluate(x)[2],x0,bounds=(lower,upper),
-                      max_nfev=250,ftol=1e-12,xtol=1e-12,gtol=1e-12)
-    stages,paths,residual=evaluate(fit.x)
+    last={'x':None,'residual':None}
+    def objective(x):
+        last['x']=np.array(x,copy=True)
+        last['residual']=None
+        result=evaluate(x)[2]
+        last['residual']=result
+        return result
+    fit=None
+    try:
+        fit=least_squares(objective,x0,bounds=(lower,upper),
+                          max_nfev=250,ftol=1e-12,xtol=1e-12,gtol=1e-12)
+        last['x']=np.array(fit.x,copy=True)
+        last['residual']=None
+        stages,paths,residual=evaluate(fit.x)
+    except (ValueError,RuntimeError,FloatingPointError) as error:
+        raise OperatingPointFailure(str(error),failure_diagnostics(
+            s,last['x'],last['residual'],fit,error=str(error))) from error
     maximum=float(np.max(np.abs(residual)))
     if not fit.success or maximum>1e-8 or any(t<180 or t>390 for t in fit.x):
-        raise ValueError(f'Nonconverged/infeasible plausible operating point, residual={maximum:.5g}')
+        raise OperatingPointFailure(
+            f'Nonconverged/infeasible plausible operating point, residual={maximum:.5g}',
+            failure_diagnostics(s,fit.x,residual,fit))
     vtec=sum(st['voltage_v'] for st in stages)
     vwire=s.current_a*sum(w['R_ohm'] for w in g['wires'] if w['material']=='Cu')
     pin_in=paths['Cu_conduction_into_hot_w']-.5*paths['Cu_total_joule_w']
@@ -248,7 +323,10 @@ def solve(s:Scenario,g=None):
     q_bath=stages[0]['qh_w']+paths['Cu_conduction_into_hot_w']+.5*paths['Cu_total_joule_w']
     global_error=(vtec+vwire)*s.current_a+paths['die_internal_heating_w']+extcold+pin_in-q_bath
     if abs(global_error)>1e-8 or any(abs(st['energy_residual_w'])>1e-9 for st in stages):
-        raise ValueError('Power bookkeeping failed')
+        diagnostics=failure_diagnostics(s,fit.x,residual,fit)
+        diagnostics['global_energy_residual_w']=float(global_error)
+        diagnostics['stage_energy_residuals_w']=[st['energy_residual_w'] for st in stages]
+        raise OperatingPointFailure('Power bookkeeping failed',diagnostics)
     from .graded_tec import source_evidence
     out={'method':'corrected-geometry, 5-node conservative screening; NOT 3D FEM or OEM-validated',
          'transport_source':source_evidence() if s.material_model=='zhang2025_analog' else
@@ -339,7 +417,11 @@ def run(out, material_model='g1_constant'):
                              'terminal_power_w':result['terminal_electrical_power_w'],
                              'bath_w':result['bath_rejected_power_w']})
             except ValueError as error:
-                cases[label]={'status':'FAILED CLOSED','reason':str(error)}
+                diagnostics=getattr(error,'diagnostics',None)
+                if diagnostics is None:
+                    diagnostics=failure_diagnostics(replace(s,current_a=i),error=str(error))
+                cases[label]={'status':'FAILED CLOSED','reason':str(error),
+                              'diagnostics':diagnostics}
     oat=sensitivity(g,material_model=material_model)
     grid_best={}
     for name in scenarios():

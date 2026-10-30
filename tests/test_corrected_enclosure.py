@@ -65,3 +65,26 @@ def test_nonphysical_enclosure_rejected(monkeypatch,tmp_path,change,value):
     monkeypatch.setattr(c,'REGISTRY',f)
     with pytest.raises(ValueError):
         c.assumptions()
+
+
+@pytest.mark.parametrize('dimension',[
+    'cap_wall_thickness_m','cap_height_above_header_m','cap_roof_thickness_m',
+    'window_diameter_m','window_thickness_m',
+])
+@pytest.mark.parametrize('invalid',[0.,-.0001,float('nan'),float('inf'),-float('inf'),None,True])
+def test_invalid_dimensions_fail_before_cad(monkeypatch,tmp_path,dimension,invalid):
+    data=json.loads(c.REGISTRY.read_text());data[dimension]=invalid
+    path=tmp_path/'bad.json';path.write_text(json.dumps(data))
+    monkeypatch.setattr(c,'REGISTRY',path)
+    with pytest.raises(ValueError,match='Finite positive'):
+        c.assumptions()
+
+
+@pytest.mark.parametrize('wall,height',[(.0076,.0086),(.0018,.0086),(.0005,.0040)])
+def test_impossible_void_or_internal_collision(monkeypatch,tmp_path,wall,height):
+    data=json.loads(c.REGISTRY.read_text())
+    data.update(cap_wall_thickness_m=wall,cap_height_above_header_m=height)
+    path=tmp_path/'collision.json';path.write_text(json.dumps(data))
+    monkeypatch.setattr(c,'REGISTRY',path)
+    with pytest.raises(ValueError):
+        c.assumptions()

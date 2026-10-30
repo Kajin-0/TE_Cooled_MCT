@@ -46,7 +46,12 @@ def source_evidence():
 
 
 def props(polarity, temp):
-    """Evaluate source curves + finite explicit high-T analog continuation."""
+    """Evaluate the active law, including its reciprocal and derivative.
+
+    Interior source knots use the source's right derivative. At 300 K use
+    the measured LEFT derivative; strictly above it use the assumed tangent.
+    At 390 K use the continuation's LEFT derivative (no law beyond 390 K).
+    """
     values=np.asarray(temp,dtype=float)
     if not np.all(np.isfinite(values)) or np.any(values<LOW_K) or np.any(values>HIGH_K):
         raise ValueError('Analog property evaluation outside 180..390 K')
@@ -58,8 +63,16 @@ def props(polarity, temp):
         base=np.asarray(result[key],dtype=float)
         slope=float(p.curves[polarity][curve].slope(300.))
         result[key]=base+above*(HIGH_T_SLOPE_FACTOR*slope)
-    if np.any(result['rho']<=0) or np.any(result['k']<=0):
+    if (any(not np.all(np.isfinite(result[key])) for key in ('rho','k','S'))
+            or np.any(result['rho']<=0) or np.any(result['k']<=0)):
         raise ValueError('Analog continuation violates passivity')
+    if np.any(result['S']*(1 if polarity=='P' else -1)<=0):
+        raise ValueError('Analog continuation violates P/N thermopower sign')
+    slope_s=np.where(values>PUBLISHED_HIGH_K,
+                     HIGH_T_SLOPE_FACTOR*p.curves[polarity]['S'].slope(PUBLISHED_HIGH_K),
+                     p.curves[polarity]['S'].slope(x))
+    result['sigma']=1/result['rho']
+    result['thomson_v_k']=values*slope_s
     return result
 
 

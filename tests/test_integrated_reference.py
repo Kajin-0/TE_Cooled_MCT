@@ -131,3 +131,40 @@ def test_reproducible_current_grid_and_best_label(tmp_path):
             if row['scenario']==scenario)
     for name in ('summary.json','sweep.csv','sensitivity.csv'):
         assert (tmp_path/'new'/name).is_file()
+
+
+def test_failed_optimizer_keeps_candidate_and_physical_residual_units(monkeypatch):
+    import tecooledmct.integrated_reference as ir
+    real=ir.least_squares
+    def stop_after_initial(fun,x0,**kwargs):
+        kwargs['max_nfev']=1
+        return real(fun,x0,**kwargs)
+    monkeypatch.setattr(ir,'least_squares',stop_after_initial)
+    with pytest.raises(ir.OperatingPointFailure) as caught:
+        ir.solve(ir.Scenario(material_model='zhang2025_analog'))
+    d=caught.value.diagnostics
+    assert d['classification']=='optimizer_failure'
+    assert d['optimizer']['success'] is False
+    assert d['optimizer']['status']==0
+    assert d['optimizer']['nfev']==1
+    assert d['candidate_is_accepted'] is False
+    assert d['max_node_balance_residual_w']==max(abs(v) for v in d['node_balance_residuals_w'].values())
+    assert d['hot_sink_temperature_residual_k']==2*d['optimizer_scaled_residuals'][4]
+    assert len(d['last_candidate_temperatures_k'])==5
+
+
+def test_material_evaluation_error_keeps_last_attempt_without_invented_residual(monkeypatch):
+    import tecooledmct.integrated_reference as ir
+    from tecooledmct import graded_tec
+    def reject(*args,**kwargs):
+        raise ValueError('deliberate test domain rejection')
+    monkeypatch.setattr(graded_tec,'stage',reject)
+    with pytest.raises(ir.OperatingPointFailure) as caught:
+        ir.solve(ir.Scenario(material_model='zhang2025_analog'))
+    d=caught.value.diagnostics
+    assert d['classification']=='evaluation_or_input_error'
+    assert len(d['last_candidate_temperatures_k'])==5
+    assert d['node_balance_residuals_w'] is None
+    assert d['optimizer']['success'] is None
+    assert d['evaluation_error']=='deliberate test domain rejection'
+    assert d['candidate_is_accepted'] is False

@@ -31,13 +31,20 @@ def assumptions():
     cfg=json.loads(REGISTRY.read_text())
     if cfg['schema']!='corrected-enclosure-cad-hypothesis-v1':
         raise ValueError('Unknown enclosure assumptions schema')
+    for name in ('cap_height_above_header_m','cap_wall_thickness_m',
+                 'cap_roof_thickness_m','window_diameter_m','window_thickness_m'):
+        value=cfg.get(name)
+        if (isinstance(value,bool) or not isinstance(value,(int,float))
+                or not math.isfinite(value) or value<=0):
+            raise ValueError('Finite positive enclosure dimension required: '+name)
     ro=outer['simulated']*.0005
     ri=ro-cfg['cap_wall_thickness_m']
     rw=.5*cfg['window_diameter_m']
     z0=header['simulated']*.001
     ztop=z0+cfg['cap_height_above_header_m']
     zr=ztop-cfg['cap_roof_thickness_m']
-    if min(ri,rw,z0,zr)>0 and ri>rw and cfg['cap_roof_thickness_m']>0 and cfg['window_thickness_m']==cfg['cap_roof_thickness_m']:
+    if (0<rw<ri<ro and math.isfinite(ztop) and math.isfinite(zr) and z0<zr
+            and cfg['window_thickness_m']==cfg['cap_roof_thickness_m']):
         pass
     else:raise ValueError('Nonphysical enclosure assumption')
     if cfg['cap_height_above_header_m']<=cfg['cap_roof_thickness_m']:
@@ -64,11 +71,14 @@ def assumptions():
     for w in source['wires']:
         points=np.asarray(w['polyline_m'])
         radial=np.sqrt((points[:,:2]**2).sum(axis=1)).max()+w['diameter_m']/2
-        if radial>=ri or points[:,2].max()>=zr:raise ValueError('Hybrid wire cap clearance failed')
+        if radial>=ri or points[:,2].max()+w['diameter_m']/2>=zr:
+            raise ValueError('Hybrid wire cap clearance failed')
     shell_h=zr-z0
     expected={'shell':math.pi*(ro**2-ri**2)*shell_h,
               'roof':math.pi*(ro**2-rw**2)*cfg['cap_roof_thickness_m'],
               'window':math.pi*rw**2*cfg['window_thickness_m']}
+    if any(not math.isfinite(v) or v<=0 for v in expected.values()):
+        raise ValueError('Nonphysical enclosure volume')
     return {'config':cfg,'outer_radius_m':ro,'inner_radius_m':ri,'window_radius_m':rw,
             'header_top_z_m':z0,'cavity_roof_z_m':zr,'roof_top_z_m':ztop,
             'cavity_height_m':shell_h,'window_to_die_top_min_m':zr-die_top_z,

@@ -1,0 +1,324 @@
+{
+  "scope": "Numerical approximation comparison for a synthetic reference; NOT OEM or measured-device validation.",
+  "source": {
+    "source_id": "zhang2025_he_digitized_40_300_v2r1",
+    "source_doi": "10.1088/0256-307X/42/5/056304",
+    "file_sha256": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+    "measured_K": [
+      40.0,
+      300.0
+    ],
+    "analog_model_K": [
+      180.0,
+      390.0
+    ],
+    "commercial_grade_matched": false,
+    "high_T_extension": "ENGINEERING HYPOTHESIS: beyond 300K, use 0.25 x slope of final 280..300K measured segment, through 390K; P/N grades are not matched"
+  },
+  "boundary_and_interior_temperature_requirement": "strictly 40<T<300 K",
+  "assumed_300_390K_continuation_validated": false,
+  "relative_error_definition": "abs(affine-BVP32)/abs(BVP32); null only if reference is exactly zero",
+  "discretization_warning": "16/32 differences are diagnostics, not a rigorous continuum error bound.",
+  "rows": [
+    {
+      "stage_index": 0,
+      "hot_k": 295.0,
+      "cold_k": 250.0,
+      "current_a": 0.1,
+      "geometry": {
+        "couples": 28,
+        "leg_length_m": 0.00107,
+        "leg_area_m2": 1.6e-07
+      },
+      "affine": {
+        "qc_w": -0.24265144763674745,
+        "voltage_v": 0.7974060798281778
+      },
+      "bvp_levels": [
+        {
+          "intervals": 16,
+          "qc_w": -0.24279509861170814,
+          "voltage_v": 0.7968767005394893,
+          "temperature_min_k": 250.0,
+          "temperature_max_k": 295.0,
+          "max_leg_balance_residual_w": 7.952985470183195e-15,
+          "max_leg_energy_error_w": 2.5262124836444854e-16
+        },
+        {
+          "intervals": 32,
+          "qc_w": -0.2427930879851195,
+          "voltage_v": 0.7968746240747073,
+          "temperature_min_k": 250.0,
+          "temperature_max_k": 295.0,
+          "max_leg_balance_residual_w": 1.327534846495837e-14,
+          "max_leg_energy_error_w": 7.415656000375748e-15
+        }
+      ],
+      "errors": {
+        "qc_w": {
+          "signed_error": 0.00014164034837205186,
+          "absolute_error": 0.00014164034837205186,
+          "relative_error_abs": 0.000583378833176391,
+          "reference_16_to_32_abs_change": 2.0106265886388197e-06
+        },
+        "voltage_v": {
+          "signed_error": 0.0005314557534704667,
+          "absolute_error": 0.0005314557534704667,
+          "relative_error_abs": 0.0006669251817217391,
+          "reference_16_to_32_abs_change": 2.0764647820081805e-06
+        }
+      },
+      "caution": "Relative Qc errors grow near zero cooling; high-current Joule/Thomson curvature is absent from affine T."
+    },
+    {
+      "stage_index": 0,
+      "hot_k": 295.0,
+      "cold_k": 285.0,
+      "current_a": 0.15,
+      "geometry": {
+        "couples": 28,
+        "leg_length_m": 0.00107,
+        "leg_area_m2": 1.6e-07
+      },
+      "affine": {
+        "qc_w": 0.32775938569475815,
+        "voltage_v": 0.633094130876446
+      },
+      "bvp_levels": [
+        {
+          "intervals": 16,
+          "qc_w": 0.32808941888835574,
+          "voltage_v": 0.6349146047269538,
+          "temperature_min_k": 285.0,
+          "temperature_max_k": 295.0,
+          "max_leg_balance_residual_w": 7.18646333552897e-15,
+          "max_leg_energy_error_w": 3.41935083270073e-14
+        },
+        {
+          "intervals": 32,
+          "qc_w": 0.3280916129741168,
+          "voltage_v": 0.6349199998708407,
+          "temperature_min_k": 285.0,
+          "temperature_max_k": 295.0,
+          "max_leg_balance_residual_w": 1.3030876289121808e-14,
+          "max_leg_energy_error_w": 5.272449925541878e-15
+        }
+      ],
+      "errors": {
+        "qc_w": {
+          "signed_error": -0.0003322272793586656,
+          "absolute_error": 0.0003322272793586656,
+          "relative_error_abs": 0.0010126052182409034,
+          "reference_16_to_32_abs_change": 2.1940857610758258e-06
+        },
+        "voltage_v": {
+          "signed_error": -0.0018258689943947415,
+          "absolute_error": 0.0018258689943947415,
+          "relative_error_abs": 0.0028757465425032617,
+          "reference_16_to_32_abs_change": 5.395143886866016e-06
+        }
+      },
+      "caution": "Relative Qc errors grow near zero cooling; high-current Joule/Thomson curvature is absent from affine T."
+    },
+    {
+      "stage_index": 1,
+      "hot_k": 280.0,
+      "cold_k": 250.0,
+      "current_a": 0.15,
+      "geometry": {
+        "couples": 12,
+        "leg_length_m": 0.00082,
+        "leg_area_m2": 1.6e-07
+      },
+      "affine": {
+        "qc_w": -0.02864787056221164,
+        "voltage_v": 0.2842211743571611
+      },
+      "bvp_levels": [
+        {
+          "intervals": 16,
+          "qc_w": -0.02865482299335413,
+          "voltage_v": 0.2842372876920569,
+          "temperature_min_k": 250.0,
+          "temperature_max_k": 280.0,
+          "max_leg_balance_residual_w": 3.729946911334992e-15,
+          "max_leg_energy_error_w": 1.6274861991405489e-15
+        },
+        {
+          "intervals": 32,
+          "qc_w": -0.028653855695758828,
+          "voltage_v": 0.28423718966305683,
+          "temperature_min_k": 250.0,
+          "temperature_max_k": 280.0,
+          "max_leg_balance_residual_w": 1.033004082273692e-14,
+          "max_leg_energy_error_w": 3.908062353730202e-15
+        }
+      ],
+      "errors": {
+        "qc_w": {
+          "signed_error": 5.985133547187216e-06,
+          "absolute_error": 5.985133547187216e-06,
+          "relative_error_abs": 0.00020887707437128956,
+          "reference_16_to_32_abs_change": 9.6729759530359e-07
+        },
+        "voltage_v": {
+          "signed_error": -1.6015305895733523e-05,
+          "absolute_error": 1.6015305895733523e-05,
+          "relative_error_abs": 5.634486435331893e-05,
+          "reference_16_to_32_abs_change": 9.802900008404336e-08
+        }
+      },
+      "caution": "Relative Qc errors grow near zero cooling; high-current Joule/Thomson curvature is absent from affine T."
+    },
+    {
+      "stage_index": 2,
+      "hot_k": 250.0,
+      "cold_k": 230.0,
+      "current_a": 0.15,
+      "geometry": {
+        "couples": 4,
+        "leg_length_m": 0.00064,
+        "leg_area_m2": 1.6e-07
+      },
+      "affine": {
+        "qc_w": -0.009961801297789421,
+        "voltage_v": 0.06142699732402421
+      },
+      "bvp_levels": [
+        {
+          "intervals": 16,
+          "qc_w": -0.00996416078644748,
+          "voltage_v": 0.061424951065493665,
+          "temperature_min_k": 230.0,
+          "temperature_max_k": 250.0,
+          "max_leg_balance_residual_w": 1.3357930583879351e-15,
+          "max_leg_energy_error_w": 1.6123522073030473e-16
+        },
+        {
+          "intervals": 32,
+          "qc_w": -0.009963897480770409,
+          "voltage_v": 0.06142494568893095,
+          "temperature_min_k": 230.0,
+          "temperature_max_k": 250.0,
+          "max_leg_balance_residual_w": 2.167362254112959e-15,
+          "max_leg_energy_error_w": 7.654307410120964e-16
+        }
+      ],
+      "errors": {
+        "qc_w": {
+          "signed_error": 2.0961829809880428e-06,
+          "absolute_error": 2.0961829809880428e-06,
+          "relative_error_abs": 0.00021037781500999204,
+          "reference_16_to_32_abs_change": 2.6330567707080754e-07
+        },
+        "voltage_v": {
+          "signed_error": 2.0516350932586747e-06,
+          "absolute_error": 2.0516350932586747e-06,
+          "relative_error_abs": 3.3400682251289127e-05,
+          "reference_16_to_32_abs_change": 5.376562715875277e-09
+        }
+      },
+      "caution": "Relative Qc errors grow near zero cooling; high-current Joule/Thomson curvature is absent from affine T."
+    },
+    {
+      "stage_index": 2,
+      "hot_k": 230.0,
+      "cold_k": 190.0,
+      "current_a": 0.5,
+      "geometry": {
+        "couples": 4,
+        "leg_length_m": 0.00064,
+        "leg_area_m2": 1.6e-07
+      },
+      "affine": {
+        "qc_w": -0.020990307432871856,
+        "voltage_v": 0.14165108143794863
+      },
+      "bvp_levels": [
+        {
+          "intervals": 16,
+          "qc_w": -0.020880331155938146,
+          "voltage_v": 0.14188632558494244,
+          "temperature_min_k": 190.0,
+          "temperature_max_k": 230.0,
+          "max_leg_balance_residual_w": 1.1135125532746316e-15,
+          "max_leg_energy_error_w": 2.1420419216156005e-16
+        },
+        {
+          "intervals": 32,
+          "qc_w": -0.020875157566255114,
+          "voltage_v": 0.14188706689267888,
+          "temperature_min_k": 190.0,
+          "temperature_max_k": 230.0,
+          "max_leg_balance_residual_w": 1.568259904161096e-15,
+          "max_leg_energy_error_w": 2.37487256526947e-16
+        }
+      ],
+      "errors": {
+        "qc_w": {
+          "signed_error": -0.00011514986661674206,
+          "absolute_error": 0.00011514986661674206,
+          "relative_error_abs": 0.005516119638918697,
+          "reference_16_to_32_abs_change": 5.173589683032248e-06
+        },
+        "voltage_v": {
+          "signed_error": -0.00023598545473024757,
+          "absolute_error": 0.00023598545473024757,
+          "relative_error_abs": 0.0016631921421615065,
+          "reference_16_to_32_abs_change": 7.413077364459841e-07
+        }
+      },
+      "caution": "Relative Qc errors grow near zero cooling; high-current Joule/Thomson curvature is absent from affine T."
+    },
+    {
+      "stage_index": 0,
+      "hot_k": 260.0,
+      "cold_k": 240.0,
+      "current_a": 0.7,
+      "geometry": {
+        "couples": 28,
+        "leg_length_m": 0.00107,
+        "leg_area_m2": 1.6e-07
+      },
+      "affine": {
+        "qc_w": 0.8291283088543774,
+        "voltage_v": 2.1242328535937816
+      },
+      "bvp_levels": [
+        {
+          "intervals": 16,
+          "qc_w": 0.8211144797764376,
+          "voltage_v": 2.2709361005712188,
+          "temperature_min_k": 240.0,
+          "temperature_max_k": 273.1648094302464,
+          "max_leg_balance_residual_w": 6.975606083869934e-15,
+          "max_leg_energy_error_w": 2.2426247596740726e-14
+        },
+        {
+          "intervals": 32,
+          "qc_w": 0.8211414450799762,
+          "voltage_v": 2.2714533984910634,
+          "temperature_min_k": 240.0,
+          "temperature_max_k": 273.1788558205486,
+          "max_leg_balance_residual_w": 1.1041993275284767e-14,
+          "max_leg_energy_error_w": 2.8032809495925906e-14
+        }
+      ],
+      "errors": {
+        "qc_w": {
+          "signed_error": 0.007986863774401165,
+          "absolute_error": 0.007986863774401165,
+          "relative_error_abs": 0.009726538371989338,
+          "reference_16_to_32_abs_change": 2.6965303538628582e-05
+        },
+        "voltage_v": {
+          "signed_error": -0.14722054489728187,
+          "absolute_error": 0.14722054489728187,
+          "relative_error_abs": 0.06481336794982505,
+          "reference_16_to_32_abs_change": 0.0005172979198446725
+        }
+      },
+      "caution": "Relative Qc errors grow near zero cooling; high-current Joule/Thomson curvature is absent from affine T."
+    }
+  ]
+}

@@ -75,10 +75,29 @@ def test_graded_run_preserves_failed_current_cases(tmp_path):
     assert len(r['cases'])==63
     bad=[v for v in r['cases'].values() if v.get('status')=='FAILED CLOSED']
     assert bad, 'Do not silently clamp high-current solutions into domain'
+    for rejected in bad:
+        d=rejected['diagnostics']
+        assert d['candidate_is_accepted'] is False
+        assert len(d['last_candidate_temperatures_k'])==5
+        assert len(d['node_balance_residuals_w'])==4
+        assert d['max_optimizer_scaled_residual']>1e-8
+        assert d['optimizer']['message'] and isinstance(d['optimizer']['status'],int)
+        assert d['physical_domain']['candidate_within_model_domain'] is True
     assert r['grid_best']['nominal_krypton']['unqualified_optimum_if_failures']
     assert all(r['cases'][key]['status']=='FAILED CLOSED' for key in
                r['grid_best']['nominal_krypton']['failed_case_labels'])
     assert (tmp_path/'analog'/'summary.json').exists()
+    from pathlib import Path
+    original=json.loads((Path(__file__).resolve().parents[1]/'data/integrated_graded_20261030/summary.json').read_text())
+    for label,case in original['cases'].items():
+        updated=r['cases'][label]
+        assert case.get('status')==updated.get('status')
+        if 'status' not in case:
+            assert updated['MCT_die_k']==pytest.approx(case['MCT_die_k'],abs=1e-9)
+            assert updated['terminal_voltage_v']==pytest.approx(case['terminal_voltage_v'],abs=1e-11)
+            for old,new in zip(case['stage_budget'],updated['stage_budget']):
+                for key in ('qc_w','qh_w','voltage_v'):
+                    assert new[key]==pytest.approx(old[key],abs=1e-11)
 
 
 @pytest.mark.parametrize('bad',[
@@ -111,3 +130,56 @@ def test_affine_analog_against_independent_bounded_1d_leg_bvp():
     full_v=n_couple*(n['electric_integral_v']-p['electric_integral_v'])
     assert abs(approximate['qc_w']-full_qc)<.0005
     assert abs(approximate['voltage_v']-full_v)<.001
+
+
+@pytest.mark.parametrize('polarity',['P','N'])
+@pytest.mark.parametrize('temperature',[299.9999,300.,300.0001,390.])
+def test_active_property_law_reciprocal_and_one_sided_derivative(polarity,temperature):
+    p=graded_tec.props(polarity,temperature)
+    curve=graded_tec.source().curves[polarity]['S']
+    factor=1. if temperature<=300 else .25
+    assert p['sigma']==1/p['rho']
+    assert p['thomson_v_k']==temperature*factor*curve.slope(min(temperature,300.))
+    # At 300 use measured left limit; at 390 continuation left limit.
+    step=-1e-5 if temperature in (300.,390.) else 1e-5
+    finite_difference=(graded_tec.props(polarity,temperature+step)['S']-p['S'])/step
+    assert p['thomson_v_k']==pytest.approx(temperature*finite_difference,rel=2e-7,abs=1e-12)
+
+
+def test_vector_property_derivatives_and_strict_guards():
+    for pol in ('P','N'):
+        temperatures=np.array([180.,280.,299.999,300.,300.001,390.])
+        result=graded_tec.props(pol,temperatures)
+        assert np.array_equal(result['sigma'],1/result['rho'])
+        assert all(result['S']*(1 if pol=='P' else -1)>0)
+        for i,temp in enumerate(temperatures):
+            assert result['thomson_v_k'][i]==graded_tec.props(pol,temp)['thomson_v_k']
+    for temp in (np.nan,np.inf,-np.inf,np.nextafter(180.,0.),np.nextafter(390.,np.inf)):
+        with pytest.raises(ValueError):
+            graded_tec.props('P',temp)
+
+
+def test_prior_accepted_stage_values_unchanged():
+    result=solve(Scenario(material_model='zhang2025_analog'))
+    from pathlib import Path
+    old=json.loads((Path(__file__).resolve().parents[1]/'data/integrated_graded_20261030/summary.json').read_text())
+    original=old['cases']['nominal_krypton_I0.15']
+    assert result['MCT_die_k']==pytest.approx(original['MCT_die_k'],abs=1e-10)
+    assert result['terminal_voltage_v']==pytest.approx(original['terminal_voltage_v'],abs=1e-12)
+
+
+def test_representative_nonlinear_bvp_checks():
+    from tecooledmct.graded_tec_checks import compare
+    report=compare()
+    assert len(report['rows'])==6
+    assert report['assumed_300_390K_continuation_validated'] is False
+    for row in report['rows']:
+        for level in row['bvp_levels']:
+            assert 40<level['temperature_min_k']<=level['temperature_max_k']<300
+            assert level['max_leg_balance_residual_w']<1e-6
+            assert level['max_leg_energy_error_w']<1e-6
+        for error in row['errors'].values():
+            assert np.isfinite(error['relative_error_abs'])
+            assert error['absolute_error']>=0
+    # A practical comparison check at the original low-current point.
+    assert report['rows'][0]['errors']['qc_w']['absolute_error']<.0005
