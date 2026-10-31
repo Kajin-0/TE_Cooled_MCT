@@ -1,11 +1,32 @@
 # CURRENT PROJECT CONTRACT
 
-This is the authoritative continuation contract, updated 2026-10-30. Historical
+This is the authoritative continuation contract, updated 2026-10-31. Historical
 work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
 ## Objective and execution ownership
+
+This TO-66 / three-stage TEC / HgCdTe reference is a **VIRTUAL MULTIPHYSICS
+EXPERIMENTAL/DESIGN PLATFORM**, beyond a single-point temperature calculation or OEM replica.
+Future parametric goals include:
+
+- Pure N2/Ar/Kr/Xe gases, mixtures and vacuum; pressure, external ambience and
+  orientation; conduction/convection/radiation in physically appropriate continuum,
+  transition/free-molecular regimes. Apply Rayleigh/Knudsen gates; never presume convection.
+- Header alloys and interfaces; TEC P/N grades, pellet count/area/length and stage
+  allocation; MCT area/thickness/composition/bias and self-heating; heat-sink conditions.
+- Coupled temperature/electrical responses, thermal-path budgets, lowest physically
+  feasible T, Qmax, DeltaTmax, Seebeck(T), R, V-I, COP and Qc-versus-DeltaT maps,
+  with explicitly matched operating conditions.
+
+Prioritize first-principles insight, mechanistic sensitivity, credible assumptions
+and experimental uncertainties, and controlled paired parameter studies. Report actual
+solved 3D fields versus reduced estimates honestly. Use meaningful technical visuals,
+equations, 3D meshes, plots and diagrams to explain physics, never as decoration.
+The ONE continually enhanced standalone Rev3 remains canonical; add only validated
+quantitative results and actual solved fields as work warrants. These long-term goals
+do not claim present implementation or change the ordered next science priorities.
 
 Develop an **engineering-plausible synthetic** three-stage TEC-cooled HgCdTe
 reference device in a nine-pin, two-ear TO-66 package. Fill unknown construction
