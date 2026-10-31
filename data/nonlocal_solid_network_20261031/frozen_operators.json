@@ -1,0 +1,38 @@
+{
+  "registration": "# Internal Milestone 2: geometry-derived nonlocal solid paths\n\nThis is an opt-in diagnostic, not a replacement for the original five-node\nmodel or the single Rev3 master. Milestone 1 and all original numerical gates\nremain intact. No whole-device FEM or gas calculation is authorized here.\n\n## Registration before comparative calculations\n\nFix the model using only the corrected manifest, actual mesh geometry and SIF\nmaterial constants. Do not load solved fields, measured heat flows or Milestone 1\ncomparison outputs until all three geometry operators are written and fingerprinted.\n\n- Model Cu 184/185/190/191 and alumina 186/187/188/189/192 as an orthogonal,\n  positive-conductance local finite-volume/resistor network. Raw support boxes\n  are cut by Cu before assignment; reject overlapping material ownership.\n  Use exact box-coordinate planes, shared-face areas and half-cell series\n  resistances: G=A/(di/ki+dj/kj). This is a local reduced conduction fixture,\n  not a solved full-device 3D thermoelectric field.\n- Audit every retained body volume and contact area against the manifest and\n  actual native tetrahedra. Face neighbors alone connect cells; no edge/point\n  contacts. Outside faces are adiabatic. Reject any unmapped solid contact.\n- Thermal ports: source ceramics 1/2/3 and adjacent original Cu pads are\n  isothermal at their corresponding reduced node temperatures. This omits\n  finite plate/pad spreading and is an explicit closure, not a fitted contact R.\n  All declared contact areas come from geometry, including the distributed\n  Cu/alumina interfaces. No FEM heat-flow-derived K is permitted.\n- The 192/174 side contact gets its own thermal port at its geometric area\n  centroid. Split P leg 174 into two conduction segments there, keeping its\n  original length, area, k, electrical R and total Joule heat. Retain the full\n  stage Seebeck/Peltier terms; distribute segment Joule conservatively. The\n  rest of the P/N stages retain the original alpha/R/K without rescaling.\n- Solve the four disconnected Cu routes electrically using their geometry and\n  rho=1.72e-8 ohm m, with equipotential contact ports, prescribed series 0.1 A\n  and no current in alumina. Derive route R and spatial Joule from this operator;\n  conserve IV=sum(Joule), including boundary half-cell elements. Original Cu\n  bridges/pads outside the retained domain remain omitted, not silently fitted.\n  Split intercell element heat equally; split a material-boundary element\n  between cell/thermal port, while external adiabatic-terminal heat stays in Cu.\n- Condense internal thermal nodes to a multiport response and Joule source.\n  Keep nonlocal off-diagonal terms; never replace them with stage-local K values.\n\nFixed numerical levels: maximum coordinate spacing 160/80/40 micrometres,\nat most 60,000 active cells / 200,000 edges per level, 180 seconds per build,\n4 CPUs / 8 GiB runtime. No target-driven mesh adjustment or parameter search.\nAll three operators must be fixed before comparative data are opened.\n\nBaseline and controls: fixed hot ceramic 300.1148977882757 K, I=0.1 A, uniform\ndie source 2 mW, external Cu/Au OFF, gas/radiation OFF. OFF must recover the\noriginal matched five-node result within 2 microK / 20 nV. ON is solved once\nper registered level; no additional operating sweep. Passive unit-temperature,\nuniform-temperature, zero-current/load, analytic layered-bar, invalid-input and\nsign-reversal tests verify the network independently.\n\nReject geometry mismatches above 1e-8 relative (absolute tolerances 1e-20 m3 /\n1e-18 m2). Require positive face G, reciprocal/symmetric reduced operators,\nnonpositive off-diagonals and nonnegative eigenvalues within 1e-10 relative\nroundoff, row closure <1e-10 W/K, and port/electrical/thermal work balances <1 nW.\nReject temperatures outside 180\u2013390 K and singular/disconnected port problems;\nnever clip a result. A coarse-to-fine difference >0.1 K cold temperature or >5%\npath heat flags unresolved numerical sensitivity, not an invitation to tune.\n\nReport before/after ceramic temperatures, stage lifts, isothermal die and a\nseparate source-law finite-die readout estimate, module voltage, per-route Joule,\nnode budgets and remaining discrepancies. Compare sharp horizontal path fluxes\nat the same geometry-derived leg-midplanes; do not subtract Milestone 1 P1\nindicator powers from sharp-plane predictions. Archive gradients remain unqualified.\n\nEven an improved match cannot establish a unique physical mapping from ceramic\nvolume means to contact temperatures. If that closure or discretization prevents\nattribution, retain the residual and specify ONE bounded passive port/spreading\nexperiment. Do not add fitted bypasses, unregistered closures or new production\nFEM. Rev3 changes require a verified predictive conclusion worth presenting;\notherwise preserve its exact current bytes and publish this internal note only.\n\n",
+  "geometry_audit": {
+    "input_sha256": {
+      "fem/results/geometry_complete_checkpoint_20261030/manifest.json": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+      "fem/results/geometry_complete_checkpoint_20261030/mesh.npz": "a2bc5e347ae026e78a52f13498c41c2ed5032150f9ddb53b2620a86612cf4614",
+      "fem/results/corrected_coupled_thermal_20261030/cases/cu_off/case.sif": "dae237c82ce3c0e32978e29f3ab2c9a06ee088160b35cbc7fd402f680fed5bbd"
+    },
+    "native_volumes_m3": {
+      "184": 2.060399999999993e-11,
+      "185": 8.675999999999933e-12,
+      "186": 2.821199999999999e-11,
+      "187": 1.8720000000000025e-12,
+      "188": 3.1790000000000027e-11,
+      "189": 1.8720000000000054e-12,
+      "190": 1.5959999999999963e-11,
+      "191": 4.565999999999996e-11,
+      "192": 1.9492000000000055e-10
+    },
+    "native_contacts_verified": true
+  },
+  "source_sha256": {
+    "tecooledmct/nonlocal_solid_network.py": "d33bef6247a0768fad1d8ead32af92e825dfd400acb8da4ae8ca08170265819d",
+    "tecooledmct/nonlocal_solid_study.py": "6e2dd2a664efa83c13414c894a5cf25d428953da8dc22b506f2e8237fa533a80",
+    "tecooledmct/integrated_reference.py": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "tecooledmct/fem_g2a.py": "d6654b9466ac7ef49c7336217e23310a8920b1121a2e3933cf1e0d795ce546fc",
+    "reports/field_geometry.py": "8fb0a4db0339af801ee40e1dfc78450a03864e11ac910f4a3ef485906e47e64b"
+  },
+  "operator_sha256": {
+    "operator_160um.json": "8beb298b5817a2a136e0f95378dd54d0dcd8e123366198d53a82303948a80b59",
+    "operator_160um.npz": "9aa782033985d98b4428c32215ea194bba362a6fdae6964294e361f777118aa1",
+    "operator_80um.json": "3111efe4a8400a1749ad6aebf154ae7666e84a1459eefef44aa29666f7bcf14b",
+    "operator_80um.npz": "0904b7c8be03a834adf2855fbe990646e6f2974143992b08407b17e6c2ca6882",
+    "operator_40um.json": "afc4c143372c3da9cd2472b9e9e90f00a2a5ecf7fb8ebc23328d38c133c2ab23",
+    "operator_40um.npz": "7100578f69a167dd0952d4cfa6503baa32558a461e4a2b02d4e7a28a5f0ac4ff"
+  },
+  "ordering": "All three operators frozen before reference data or nonzero ON comparisons"
+}

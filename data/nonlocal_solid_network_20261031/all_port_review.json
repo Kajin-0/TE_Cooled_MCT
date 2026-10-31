@@ -1,0 +1,49 @@
+{
+  "schema": "independent-all-port-review-v1",
+  "cold_coarse_fine_k": 0.09077019770148809,
+  "ports": [
+    {
+      "port": "hot",
+      "coarse_w": -0.04558904782799399,
+      "fine_w": -0.04611920298624552,
+      "relative_change": 0.011495323507859395,
+      "exceeds_5_percent": false
+    },
+    {
+      "port": "intermediate_1",
+      "coarse_w": 0.0055943660413364455,
+      "fine_w": 0.005677239074494234,
+      "relative_change": 0.0145974182292423,
+      "exceeds_5_percent": false
+    },
+    {
+      "port": "intermediate_2",
+      "coarse_w": 0.0393839411731531,
+      "fine_w": 0.03968637567403614,
+      "relative_change": 0.007620612760587789,
+      "exceeds_5_percent": false
+    },
+    {
+      "port": "P174_side_contact",
+      "coarse_w": 0.0016541978261590817,
+      "fine_w": 0.0017840119770975848,
+      "relative_change": 0.07276529115555498,
+      "exceeds_5_percent": true
+    }
+  ],
+  "sharp_cut_screen_exceeded": false,
+  "all_port_screen_exceeded": true,
+  "registered_sensitivity_exceeded": true,
+  "numerical_convergence_established": false,
+  "physical_mean_to_contact_closure_qualified": false,
+  "new_mesh_release": false,
+  "decision": "Stop at registered levels. Retain all predictions as conditional diagnostics; no refined-grid chase, fitted K or report change.",
+  "initial_screen_limit": "diagnostic.json discretization.unresolved_flag tests cold T and sharp cuts only; it excludes the side-contact port and is not an overall pass.",
+  "input_sha256": {
+    "diagnostic.json": "4adb2fede201808d6fda4a10d2a641d4f5ba017ad4dec585abaee0392a599410",
+    "frozen_operators.json": "78242a9f2ab6251083eed87733d8d09b47d7cd309d51a9e9a1ef7c376a800837"
+  },
+  "source_sha256": {
+    "tecooledmct/nonlocal_solid_review.py": "f8c98d283a8bdf10bb97a1810372524f86905866a18cb8e0397143f335abe963"
+  }
+}

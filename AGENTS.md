@@ -73,6 +73,7 @@ inspect every page of a rebuilt master before publication.
 | `integrated_reference.py` | **Five-node** conservative package; three TEC stages, die attach, hot-side Cu leads, Au bonds, sink and reservoir loads | Reduced spatial description; preserve `g1_constant` and affine `zhang2025_analog` compatibility |
 | `nonlinear_tec.py`, `graded_tec.py` | Opt-in `zhang2025_nonlinear`: conservative bounded nonlinear 1D P/N profiles, analytic banded Newton and exact-key cache; independent bounded BVP comparisons | Research specimens measured 40–300 K; active 180–390 K; **assumed quarter-tangent** continuation above 300 K; not an identified commercial grade |
 | Corrected enclosure / exchange | Source-aligned candidate STEP/mesh and native-face audit; **preliminary filled stepped-core** diffuse-gray radiation and gas chord network (14 surfaces / 8 effective nodes) | Full native-surface visibility, interleg/pin/wire exchange, gas diffusion, optical transmission and coupled 3D cavity fields are **not implemented** |
+| `nonlocal_solid_network.py` diagnostic | Opt-in geometry-derived local Cu/alumina multiport plus unchanged affine P/N stages; actual interfaces, nonlocal return and P174 side contact | Isothermal ceramic/pad closure is unqualified; not full-device FEM; 7.277% side-port sensitivity exceeds registered 5% screen |
 | `model.py`, `cli.py`, `experiments.py` | Original **four-node legacy demonstrations**, retained for compatibility | Not the current corrected package; older OEM-anchored assumptions are historical |
 
 - Archived 177-cut/current, weak heat and global/stage balance checks pass, but
@@ -103,6 +104,11 @@ inspect every page of a rebuilt master before publication.
   tests pass**, including actual Elmer smoke. Archive verifier and legacy demos
   pass. Records: `reports/master/verification/summary.json`. Check CI for each
   newly pushed commit; historical test counts are not new executions.
+- Current nonlocal diagnostic verification: **62 focused / 331 full opt-in**
+  tests pass, including existing Elmer smoke; archive/master integrity and both
+  legacy demos pass. Record: `data/nonlocal_solid_network_20261031/verification.json`.
+  Those software gates do not pass the flagged side-port sensitivity or qualify
+  ceramic spreading. The 28-page master and historical evidence are unchanged.
 
 ## Read-first order
 
@@ -118,13 +124,18 @@ inspect every page of a rebuilt master before publication.
 ## Ordered next science milestones
 
 1. **Matched solid-model comparison:** follow
-   `docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md`. Milestone 1 audit is verified;
-   records are in `data/solid_model_diagnostic_20261031/verification.json`.
-   Hot-boundary matching explains
-   only 0.097305 K; the cold-ceramic residual is 7.630466 K. Actual Cu/support
-   channels and voltage accounting are audited; causal kelvins per path remain
-   unresolved. Next is a geometry-derived nonlocal route/support port network
-   with fixed-condition OFF/ON controls, no fitted bypass or new FEM campaign.
+   `docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md` and the current
+   `docs/NONLOCAL_PORT_NETWORK_20261031.md`. Geometry-only Milestone 2 predicts
+   8.412629 K warming against the original 7.630466 K cold-ceramic gap, leaving
+   FEM minus prediction −0.782163 K and +7.810466 mV. No fitted K or new FEM.
+   The registered grids stop at 40 µm: P174 side heat changes 7.277%, despite
+   cold T changing only 0.090770 K. Use `all_port_review.json`, not the initial
+   sharp-cut-only screen, for the overall sensitivity decision. Unknown plate
+   mean-to-contact mapping prevents unique causal attribution; Rev3 stays intact.
+   **One next discriminator:** bounded passive routes + original ceramic/pad
+   fixture, unit-temperature P/N footprint ports, reaction/mean-to-face offsets;
+   pre-register cell/time caps before execution. No fitted bypass, calibration,
+   further grid chase or whole-device solve is authorized by this checkpoint.
 2. **Native-surface exchange:** replace the filled-core shortcut with a bounded
    actual-surface visibility fixture/operator from corrected cap/window and
    package surfaces, exposing interleg voids, pins and wires. Audit face ownership,
@@ -142,8 +153,10 @@ inspect every page of a rebuilt master before publication.
    refined comparator, plus all current/heat/nonlinear/reproducibility gates.
    This is not authorization for another large refinement campaign.
 
-At **every milestone**, improve the existing Rev3 substantively in place and
-keep README, these newer technical guides and this contract coherent. They are
+At **every milestone**, assess whether verified substantive science warrants
+improving the existing Rev3 in place; otherwise preserve its bytes and state the
+reason internally. Do not change the master merely to record progress or an
+unqualified diagnostic. Keep README, newer technical guides and this contract coherent. They are
 **internal methods/reproduction documents**, not competing scientific reports.
 Revise stale mutable guidance rather than adding another checkpoint near the end.
 

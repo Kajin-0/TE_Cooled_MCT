@@ -30,7 +30,7 @@ milestone instructions have been relocated to historical context.
 | What is documented, inferred or assumed? | Source matrices in those guides; [materials](docs/materials_and_provenance.md) |
 | What is the corrected physical construction? | [Geometry specification](GEOMETRY_SOURCE_OF_TRUTH_SPEC.md), protected geometry manifest and wire routes |
 | What is actually solved in 3D? | [Corrected solid-only thermal work](CORRECTED_GEOMETRY_COUPLED_THERMAL_WORK_ORDER.md), archived Elmer evidence |
-| Why do reduced and corrected 3D temperatures differ? | [Matched solid-model diagnostic](docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md): hot-boundary control, actual Cu/support heat channels, voltage accounting and unresolved temperature residual |
+| Why do reduced and corrected 3D temperatures differ? | [Matched audit](docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md) and [geometry-only nonlocal diagnostic](docs/NONLOCAL_PORT_NETWORK_20261031.md): 8.413 K predicted warming, 0.782 K residual; unresolved side-port sensitivity and ceramic spreading |
 | What must future development preserve? | [Current contract](AGENTS.md), sealed numerical evidence and original historical PDFs; continuously improve the live Rev3 |
 
 ## Current capabilities and their scope
@@ -127,11 +127,13 @@ reduced budgets nor stable temperatures replace those criteria. See
 [the preserved spatial-bath result](docs/BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION.md).
 
 The [contract's ordered science milestones](AGENTS.md#ordered-next-science-milestones)
-govern continuation: first the bounded geometry-derived route/support comparison
-from the matched-solid audit, then native-surface visibility/exchange with actual
+govern continuation: the geometry-derived route/support comparison is complete
+as a conditional diagnostic; one bounded passive ceramic/pad spreading fixture
+is the next discriminator. Then native-surface visibility/exchange with actual
 interleg/pin/wire geometry and paired mechanisms/contact/bypass/grade/
 reservoir scenarios in the bounded nonlinear package. A later 3D qualification
 experiment needs an engineering justification and all original gates; no OEM
-calibration or large remesh is the next required milestone. Update this README,
-the existing technical guides and the same Rev3 master with each increment.
+calibration or large remesh is the next required milestone. Keep this README and
+existing technical guides coherent with each increment; promote verified,
+substantive scientific results into the same Rev3 master when warranted.
 All development stays in the existing VPS sim:0.0 Codex session; LSDDTS is outside scope.

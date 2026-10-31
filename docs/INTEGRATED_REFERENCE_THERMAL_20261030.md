@@ -171,5 +171,11 @@ only 0.097305 K. Observed die/readout differences account for another 0.108477 K
 7.630466 K remains between cold-ceramic means. Same-indicator field accounting
 finds 41.392/36.293 mW parallel Cu/alumina leakage in the lower two gaps,
 and volume-work accounting closes the voltage difference. These identify omitted
-paths, not unique causal kelvins per path. Follow the registered port-network
-control before expanding scope; no fitted bypass, new FEM or Rev3 change is claimed.
+paths, not unique causal kelvins per path. The subsequent
+[geometry-derived nonlocal control](NONLOCAL_PORT_NETWORK_20261031.md) retains
+these paths without fitting and predicts 8.412629 K warming: the cold residual
+becomes FEM minus prediction −0.782163 K. Its original five-node baseline is
+unchanged. Actual ceramic/pad contacts are nonisothermal and the P174 side heat
+changes 7.277% across registered grids, so this is a conditional mechanism test,
+not a qualified cross-model reconciliation. One bounded passive plate/pad port
+fixture is specified next; no new FEM or Rev3 change is claimed here.

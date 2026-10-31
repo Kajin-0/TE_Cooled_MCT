@@ -1,0 +1,128 @@
+{
+  "status": "LOCAL SOFTWARE AND EVIDENCE GATES PASS; physical closure and all-port sensitivity UNQUALIFIED",
+  "focused_tests": {
+    "command": "./fem/run.sh python -m pytest -q tests/test_nonlocal_solid_network.py tests/test_solid_model_diagnostic.py tests/test_integrated_reference.py tests/test_engineering_report.py",
+    "passed": 62,
+    "seconds": 3.21,
+    "exit_code": 0,
+    "log": "verification/focused.log"
+  },
+  "full_opt_in": {
+    "command": "./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs",
+    "passed": 331,
+    "skipped": 0,
+    "warnings": 14,
+    "seconds": 350.16,
+    "exit_code": 0,
+    "log": "verification/full_opt_in.log"
+  },
+  "archive_verifier": {
+    "command": "./fem/run.sh python fem/archive_bath_spatial_device.py --verify",
+    "exit_code": 0,
+    "log": "verification/archive_verifier.log",
+    "all_prior_failures_preserved": true
+  },
+  "master_integrity": {
+    "command": "python3 -B -m reports.master.validate --current",
+    "exit_code": 0,
+    "log": "verification/master_integrity.log",
+    "unchanged_pdf_sha256": "1bc0d793ac59cfa8b003454846bba2f7c9fe6bf431d57980ae7d95f8bee7ebff",
+    "sealed_original_pdf_sha256": "d173a8ba952462e1b6bf857739406f58eeb8d5c82b900f9fc65b84d40573acc1",
+    "sealed_original_manifest_sha256": "c06183c06ffb711449b764d50e763eed3c4da448bc4930281a2361c626c5e9c8",
+    "no_PDF_changes": true
+  },
+  "legacy_demos": {
+    "exit_codes": [
+      0,
+      0
+    ],
+    "commands": [
+      "./fem/run.sh python -m tecooledmct.cli --quick --out outputs/nonlocal-check/legacy-cli",
+      "./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/nonlocal-check/legacy-geometry"
+    ],
+    "logs": [
+      "verification/legacy_cli.log",
+      "verification/legacy_geometry.log"
+    ]
+  },
+  "runtime": {
+    "image": "sha256:ce4f061bbfd77b8f9f2437771bad2b90dde5bc00f82eab8e1058ceca7fe3bbc5",
+    "rebuild_or_install": false,
+    "network": "none",
+    "cpus": 4,
+    "memory_gib": 8,
+    "prior_restoration_evidence": "../solid_model_diagnostic_20261031/runtime_restore.json"
+  },
+  "additional_dependency_sha256": {
+    "tecooledmct/solid_model_diagnostic.py": "dd2d047ef5709623367ea85919f61086d31c7bd3819b2c0948cf323ad0926872",
+    "tecooledmct/fem_g1.py": "3ab0d3ceefdb83fdaacf3f9746380f5800476d02dba30dbb4c48add981a1b488",
+    "tecooledmct/corrected_thermal.py": "91361a99be054da801900f5a5c10a7f0bc6ba514ebdbc97588f9222f89ac8b47",
+    "tests/test_nonlocal_solid_network.py": "8735832157f62039f2e893ac38e3d045fe334716055e4a9ca35690c12463017a"
+  },
+  "diagnostic_conditions": {
+    "current_a": 0.1,
+    "load_w": 0.002,
+    "hot_ceramic_k": 300.1148977882757,
+    "levels_um": [
+      160,
+      80,
+      40
+    ],
+    "coefficient_fitting": false,
+    "new_production_FEM": 0,
+    "new_passive_FEM": 0,
+    "existing_Elmer_regression_smoke": true
+  },
+  "scientific_decision": "Registered side-port heat change 7.277% exceeds 5%; no convergence/physical closure or mesh release. Stop at fixed levels; one bounded passive plate/pad experiment is specified, not executed.",
+  "remaining_voltage_accounting_v": {
+    "ceramic_mean_drop_difference_v": 0.0042727267016530734,
+    "all_Cu_minus_four_geometry_routes_v": 0.0020856647863948096,
+    "nonisothermal_reversible_correction_v": 0.0014410065477212242,
+    "PN_nonuniform_current_extra_v": 1.1073007383788358e-05,
+    "terminal_and_passive_v": -5.496049003022737e-09
+  },
+  "voltage_accounting_closure_v": 1.5265566588595902e-16,
+  "visual_review": {
+    "geometry_and_ports_png": true,
+    "prediction_and_sharp_paths_png": true,
+    "master_rerendered": false,
+    "reason": "Master bytes unchanged; integrity guard passed"
+  },
+  "development_failures_preserved": {
+    "initial_zero_control": "Exact equality failed at 1.95e-15 V; final test uses explicit 1e-12 roundoff tolerance. No model result changed.",
+    "initial_command": "Two nonexistent report test paths caused collection exit 4; corrected invocation is recorded above.",
+    "logs": [
+      "verification/initial_zero_control.log",
+      "verification/initial_command_path_error.log"
+    ]
+  },
+  "contract_and_link_checks": true,
+  "CI": "Check exact pushed commit in GitHub Actions; external record avoids a self-referential commit hash",
+  "artifact_sha256": {
+    "all_port_review.json": "e1f6c20b814dc0688570a9ff5244cb7f756128e080013809b52d15955530b382",
+    "checksums.json": "7cdebef933b5daa5ed77cd6cfd4b1652a74a68b883c6d142e76283648fe962d8",
+    "diagnostic.json": "4adb2fede201808d6fda4a10d2a641d4f5ba017ad4dec585abaee0392a599410",
+    "frozen_operators.json": "78242a9f2ab6251083eed87733d8d09b47d7cd309d51a9e9a1ef7c376a800837",
+    "geometry_and_ports.pdf": "a21f554f721c0a91091d141b0d6c08e6c79dfd75f398ebd73cd47b592d634d6c",
+    "geometry_and_ports.png": "fef0e98b6bdeff0c9b3fa9d64fa6afb46b7e91475690bf8dfa279891b50fb56d",
+    "operator_160um.json": "8beb298b5817a2a136e0f95378dd54d0dcd8e123366198d53a82303948a80b59",
+    "operator_160um.npz": "9aa782033985d98b4428c32215ea194bba362a6fdae6964294e361f777118aa1",
+    "operator_40um.json": "afc4c143372c3da9cd2472b9e9e90f00a2a5ecf7fb8ebc23328d38c133c2ab23",
+    "operator_40um.npz": "7100578f69a167dd0952d4cfa6503baa32558a461e4a2b02d4e7a28a5f0ac4ff",
+    "operator_80um.json": "3111efe4a8400a1749ad6aebf154ae7666e84a1459eefef44aa29666f7bcf14b",
+    "operator_80um.npz": "0904b7c8be03a834adf2855fbe990646e6f2974143992b08407b17e6c2ca6882",
+    "prediction_160um.npz": "e08ba8b8f49b0b0f9be83009ef3bc7f9795197298bbd3e2e16d88437d10c5a27",
+    "prediction_40um.npz": "cf8416bfdf17302e53396d2ee85bc73280d5776f39474b6231e5c2392ea2000d",
+    "prediction_80um.npz": "db30e7572f771dab12ccd503f75377181360792848cb1a24e4359e8291e377fe",
+    "prediction_and_sharp_paths.pdf": "a17853dfffc0ccf1726719ccf69c6ed91d95c1c6969b822a54cd7c82fd2fa907",
+    "prediction_and_sharp_paths.png": "bbde76390e0dd4a1f1cc9a65ceb1c0ba456210e7c505f5254ec63d4386918790",
+    "verification/archive_verifier.log": "3314847f48aacde2dbc35a0f1f0614d16ad0a28b96e2255eb9e3f2746f8cfae9",
+    "verification/focused.log": "1e4130c257d1a1dabcc43aea68b636f685dc048101a22da63143ae2e924251fa",
+    "verification/full_opt_in.log": "6a26614ca3fa52d7bbbfaf14323e2c1de4b99d73c1e581a09d63c6f0d28c5e94",
+    "verification/initial_command_path_error.log": "ba888bad8d779e3bbf400615c4aa04d4599f3fc104e66ccb5e752d4b236e17c6",
+    "verification/initial_zero_control.log": "b8999b835d3e7328a1ad2694782a0940e981e12f49232e652b8c1367bb809fa8",
+    "verification/legacy_cli.log": "f37c6e58d7200cfc1c8238bb19d82e1310706ac418d9f610a526179522380442",
+    "verification/legacy_geometry.log": "206f5017522ce2973ea0cc21edb731c0f29bb55872d1341ec7c5e0257fd3e204",
+    "verification/master_integrity.log": "a9ac0c3ac83c40e1b4c3416066d63d324ee9f8c144641dfeed72d140b6557245"
+  }
+}
