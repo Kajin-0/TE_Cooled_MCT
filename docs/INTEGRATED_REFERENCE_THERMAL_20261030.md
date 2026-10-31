@@ -158,8 +158,8 @@ exceed the demonstrated discretization changes.
 4. Existing bath <1% and cold-interface <5% criteria remain unmet in preserved
    historical production evidence. Reduced-model conservation does not replace
    them. Update the live Rev3 master in place while preserving its sealed original bytes.
-5. Next bounded work should improve native-surface exchange and contact/bypass/
-   reservoir sensitivity, with paired mechanism tests. Do not force a large
+5. Next is independent native interleg gas conduction after the stopped solid
+   port audit, then native-surface exchange and paired mechanism/sensitivity tests. Do not force a large
    conformal gas/TEC remesh or a proprietary OEM fit to complete useful studies.
 
 The [matched solid-model diagnostic](MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md)
@@ -177,5 +177,9 @@ these paths without fitting and predicts 8.412629 K warming: the cold residual
 becomes FEM minus prediction −0.782163 K. Its original five-node baseline is
 unchanged. Actual ceramic/pad contacts are nonisothermal and the P174 side heat
 changes 7.277% across registered grids, so this is a conditional mechanism test,
-not a qualified cross-model reconciliation. One bounded passive plate/pad port
-fixture is specified next; no new FEM or Rev3 change is claimed here.
+not a qualified cross-model reconciliation. The one
+[passive plate/pad follow-up](PASSIVE_PLATE_PORT_AUDIT_20261031.md) stopped before
+any grid or solve: its independent side/hot-foot constants conflict on a native
+0.220 mm edge, and two physical cut interfaces have no condition. No spreading
+fraction or causal kelvin closure is established. Independent native interleg
+gas conduction is next; no further solid-side fit/grid or Rev3 change is claimed.

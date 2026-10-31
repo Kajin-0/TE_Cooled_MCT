@@ -31,6 +31,7 @@ milestone instructions have been relocated to historical context.
 | What is the corrected physical construction? | [Geometry specification](GEOMETRY_SOURCE_OF_TRUTH_SPEC.md), protected geometry manifest and wire routes |
 | What is actually solved in 3D? | [Corrected solid-only thermal work](CORRECTED_GEOMETRY_COUPLED_THERMAL_WORK_ORDER.md), archived Elmer evidence |
 | Why do reduced and corrected 3D temperatures differ? | [Matched audit](docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md) and [geometry-only nonlocal diagnostic](docs/NONLOCAL_PORT_NETWORK_20261031.md): 8.413 K predicted warming, 0.782 K residual; unresolved side-port sensitivity and ceramic spreading |
+| Can the seven-port plate fixture isolate spreading? | [Native interface/admissibility audit](docs/PASSIVE_PLATE_PORT_AUDIT_20261031.md): stopped before solves; missing cut conditions and incompatible side/hot-foot traces; no causal heat attribution |
 | What must future development preserve? | [Current contract](AGENTS.md), sealed numerical evidence and original historical PDFs; continuously improve the live Rev3 |
 
 ## Current capabilities and their scope
@@ -127,9 +128,10 @@ reduced budgets nor stable temperatures replace those criteria. See
 [the preserved spatial-bath result](docs/BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION.md).
 
 The [contract's ordered science milestones](AGENTS.md#ordered-next-science-milestones)
-govern continuation: the geometry-derived route/support comparison is complete
-as a conditional diagnostic; one bounded passive ceramic/pad spreading fixture
-is the next discriminator. Then native-surface visibility/exchange with actual
+govern continuation: the geometry-derived route/support comparison remains
+conditional and its one plate-fixture follow-up stopped at the seven-port
+admissibility gate. **Independent native interleg gas conduction is next**;
+further solid fitting/refinement is outside that stop. Then native-surface visibility/exchange with actual
 interleg/pin/wire geometry and paired mechanisms/contact/bypass/grade/
 reservoir scenarios in the bounded nonlinear package. A later 3D qualification
 experiment needs an engineering justification and all original gates; no OEM

@@ -74,6 +74,7 @@ inspect every page of a rebuilt master before publication.
 | `nonlinear_tec.py`, `graded_tec.py` | Opt-in `zhang2025_nonlinear`: conservative bounded nonlinear 1D P/N profiles, analytic banded Newton and exact-key cache; independent bounded BVP comparisons | Research specimens measured 40–300 K; active 180–390 K; **assumed quarter-tangent** continuation above 300 K; not an identified commercial grade |
 | Corrected enclosure / exchange | Source-aligned candidate STEP/mesh and native-face audit; **preliminary filled stepped-core** diffuse-gray radiation and gas chord network (14 surfaces / 8 effective nodes) | Full native-surface visibility, interleg/pin/wire exchange, gas diffusion, optical transmission and coupled 3D cavity fields are **not implemented** |
 | `nonlocal_solid_network.py` diagnostic | Opt-in geometry-derived local Cu/alumina multiport plus unchanged affine P/N stages; actual interfaces, nonlocal return and P174 side contact | Isothermal ceramic/pad closure is unqualified; not full-device FEM; 7.277% side-port sensitivity exceeds registered 5% screen |
+| `passive_plate_audit.py` | Source-only audit of four plates, original Cu pads and routes/supports; 104 bodies | Seven-port follow-up **STOPPED before grid/solves**: two unmapped cuts and incompatible P174 side/hot-foot trace on a 0.220 mm edge; no spreading attribution |
 | `model.py`, `cli.py`, `experiments.py` | Original **four-node legacy demonstrations**, retained for compatibility | Not the current corrected package; older OEM-anchored assumptions are historical |
 
 - Archived 177-cut/current, weak heat and global/stage balance checks pass, but
@@ -104,11 +105,12 @@ inspect every page of a rebuilt master before publication.
   tests pass**, including actual Elmer smoke. Archive verifier and legacy demos
   pass. Records: `reports/master/verification/summary.json`. Check CI for each
   newly pushed commit; historical test counts are not new executions.
-- Current nonlocal diagnostic verification: **62 focused / 331 full opt-in**
+- Current passive-audit verification: **45 focused / 341 full opt-in**
   tests pass, including existing Elmer smoke; archive/master integrity and both
-  legacy demos pass. Record: `data/nonlocal_solid_network_20261031/verification.json`.
-  Those software gates do not pass the flagged side-port sensitivity or qualify
-  ceramic spreading. The 28-page master and historical evidence are unchanged.
+  legacy demos pass. Record: `data/passive_plate_port_audit_20261031/verification.json`.
+  Those software gates do not admit the seven-port fixture, pass the earlier
+  side-port sensitivity or qualify ceramic spreading. The 28-page master and
+  historical evidence are unchanged.
 
 ## Read-first order
 
@@ -123,31 +125,35 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-1. **Matched solid-model comparison:** follow
+1. **Solid comparison is stopped at its registered boundary:** follow
    `docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md` and the current
    `docs/NONLOCAL_PORT_NETWORK_20261031.md`. Geometry-only Milestone 2 predicts
    8.412629 K warming against the original 7.630466 K cold-ceramic gap, leaving
    FEM minus prediction −0.782163 K and +7.810466 mV. No fitted K or new FEM.
-   The registered grids stop at 40 µm: P174 side heat changes 7.277%, despite
-   cold T changing only 0.090770 K. Use `all_port_review.json`, not the initial
-   sharp-cut-only screen, for the overall sensitivity decision. Unknown plate
-   mean-to-contact mapping prevents unique causal attribution; Rev3 stays intact.
-   **One next discriminator:** bounded passive routes + original ceramic/pad
-   fixture, unit-temperature P/N footprint ports, reaction/mean-to-face offsets;
-   pre-register cell/time caps before execution. No fitted bypass, calibration,
-   further grid chase or whole-device solve is authorized by this checkpoint.
-2. **Native-surface exchange:** replace the filled-core shortcut with a bounded
+   Its 7.277% side-port sensitivity still fails. The one follow-up is recorded in
+   `docs/PASSIVE_PLATE_PORT_AUDIT_20261031.md`: seven independent constant ports
+   have incompatible native edge traces and omit hot/presolder plus cold/attach
+   cuts. It stopped with **zero grids/solves**, without reading reference fields
+   or adding conditions. Spreading contributions remain unidentifiable; Rev3
+   remains intact. No further solid fit/grid/fixture or causal kelvin claim.
+2. **Independent native interleg gas conduction is NEXT.** Use corrected actual
+   voids/surfaces, complete thermal boundaries and a bounded independent
+   conduction fixture with analytic/conservation checks. Apply Knudsen/Rayleigh
+   regime gates; do not presume convection, reuse old G3b gas geometry or turn
+   its gas-film chord into a claimed gas-domain Laplace solution. No gas/CFD
+   execution belongs to the stopped plate audit; register the next scope first.
+3. **Native-surface radiation/exchange:** replace the filled-core shortcut with a bounded
    actual-surface visibility fixture/operator from corrected cap/window and
    package surfaces, exposing interleg voids, pins and wires. Audit face ownership,
    normals, areas, first-hit visibility, blocked pairs, reciprocity, closure,
    refinement and heat conservation. Retain the present proxy as a comparator;
    do not imply a new 3D thermal field or force an expensive conformal cap merge.
-3. **Integrated mechanism and uncertainty comparisons:** paired gas/radiation/
+4. **Integrated mechanism and uncertainty comparisons:** paired gas/radiation/
    lead controls plus contact, bypass, material-grade and cap/window/sink-reservoir
    hypotheses in the bounded five-node/nonlinear model. Report accepted-domain
    coverage, rejected candidates, heat budgets and power at matched detector
    targets. Use labeled scenario spans; no OEM fit or invented observations.
-4. **Conditional later 3D qualification:** pursue a justified, resource-bounded
+5. **Conditional later 3D qualification:** pursue a justified, resource-bounded
    experiment only when required by the engineering question. A numerical release
    still requires both original raw limits on the same mesh and a systematically
    refined comparator, plus all current/heat/nonlinear/reproducibility gates.

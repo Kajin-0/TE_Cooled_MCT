@@ -1,0 +1,97 @@
+{
+  "status": "SOFTWARE/EVIDENCE GATES PASS; registered seven-port physical experiment STOPPED at boundary admissibility",
+  "focused_tests": {
+    "command": "./fem/run.sh python -m pytest -q tests/test_passive_plate_audit.py tests/test_nonlocal_solid_network.py tests/test_solid_model_diagnostic.py tests/test_engineering_report.py",
+    "passed": 45,
+    "seconds": 2.16,
+    "exit_code": 0,
+    "log": "verification/focused.log"
+  },
+  "full_opt_in": {
+    "command": "./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs",
+    "passed": 341,
+    "skipped": 0,
+    "warnings": 14,
+    "seconds": 337.98,
+    "exit_code": 0,
+    "log": "verification/full_opt_in.log"
+  },
+  "archive_verifier": {
+    "command": "./fem/run.sh python fem/archive_bath_spatial_device.py --verify",
+    "exit_code": 0,
+    "log": "verification/archive_verifier.log",
+    "original_failed_release_gates_preserved": true
+  },
+  "master_integrity": {
+    "command": "python3 -B -m reports.master.validate --current",
+    "exit_code": 0,
+    "log": "verification/master_integrity.log",
+    "unchanged_pdf_sha256": "1bc0d793ac59cfa8b003454846bba2f7c9fe6bf431d57980ae7d95f8bee7ebff",
+    "original_sealed_pdf_sha256": "d173a8ba952462e1b6bf857739406f58eeb8d5c82b900f9fc65b84d40573acc1",
+    "original_sealed_manifest_sha256": "c06183c06ffb711449b764d50e763eed3c4da448bc4930281a2361c626c5e9c8",
+    "PDF_modified": false
+  },
+  "legacy_demos": {
+    "exit_codes": [
+      0,
+      0
+    ],
+    "commands": [
+      "./fem/run.sh python -m tecooledmct.cli --quick --out outputs/passive-plate-check/legacy-cli",
+      "./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/passive-plate-check/legacy-geometry"
+    ],
+    "logs": [
+      "verification/legacy_cli.log",
+      "verification/legacy_geometry.log"
+    ]
+  },
+  "previous_checkpoint_guard": {
+    "verification_sha256": "2292a632639a7791e628ac4cad89c1a07458192bf5d922cc06978ee2bddd07a6",
+    "artifact_hashes_verified": 25,
+    "all_unchanged": true,
+    "git_diff_previous_M2_code_data_note": "empty"
+  },
+  "runtime": {
+    "image": "sha256:ce4f061bbfd77b8f9f2437771bad2b90dde5bc00f82eab8e1058ceca7fe3bbc5",
+    "rebuild_or_install": false,
+    "network": "none",
+    "cpus": 4,
+    "memory_gib": 8
+  },
+  "experiment_execution": {
+    "source_only_audits": 1,
+    "source_only_audit_seconds": 4.451196213951334,
+    "fixture_discretizations": 0,
+    "passive_unit_solves": 0,
+    "new_production_FEM": 0,
+    "new_passive_FEM": 0,
+    "reference_temperature_fields_read": false,
+    "extra_boundary_conditions_added": false,
+    "existing_Elmer_regression_smoke_executed": true
+  },
+  "operator_physics_verification": "NOT RUN: no admissible seven-port operator; actual reciprocity, balances and entropy not claimed",
+  "independent_controls": "Native face ownership and source identities; shared-edge/disjoint/unmapped synthetic gates; analytic wedge energy/cutoff/sign/zero and entropy bounds",
+  "causal_spreading_attribution": "UNIDENTIFIABLE; null comparisons retained, not zero mW or fitted kelvins",
+  "visual_review": {
+    "native_geometry_and_edge_png": true,
+    "native_interface_area_png": true,
+    "master_rerendered": false,
+    "reason": "Master exact bytes unchanged; integrity guard passed"
+  },
+  "contract_and_links": "PASS; next priority independent native interleg gas conduction, no further solid fits/grids/fixtures",
+  "test_source_sha256": "a88f1cda5026ed9abd96b5f27d117c1918ba9c3c070dbfd99f40c5300f723283",
+  "CI": "Verify exact pushed commit externally in GitHub Actions; avoids a self-referential commit hash here",
+  "artifact_sha256": {
+    "boundary_audit.json": "6113b1502e1fa65f691db152e23391ae31764ecebc6105a288bd816b4dd2db15",
+    "checksums.json": "ea151c4b1140d8fb04c912c47961d18d919891eae4506e48cdfd577d179405a0",
+    "native_boundary_geometry.npz": "87e0b19fc884aa9be535dccdc0a499a608b261b1c03f442539539e2665c5c6f6",
+    "native_port_coverage.png": "dc4824eef413cb11207b8b65e69ed54622dd8ac7ef9a14b96e2e68a6400906bc",
+    "native_port_geometry.png": "192353742f135ac2a344b1acd1364fad3696fb35cf1739f126c1052c2f6cb9d2",
+    "verification/archive_verifier.log": "3314847f48aacde2dbc35a0f1f0614d16ad0a28b96e2255eb9e3f2746f8cfae9",
+    "verification/focused.log": "0ccfddfea01d47c1273af8ed0b0cb7433f5d2b5ee75830bb2e17179f94bc94fa",
+    "verification/full_opt_in.log": "42b93855324b76dc63f6bbe37232459781300b3eefcb77bf850d921d71455612",
+    "verification/legacy_cli.log": "f37c6e58d7200cfc1c8238bb19d82e1310706ac418d9f610a526179522380442",
+    "verification/legacy_geometry.log": "206f5017522ce2973ea0cc21edb731c0f29bb55872d1341ec7c5e0257fd3e204",
+    "verification/master_integrity.log": "a9ac0c3ac83c40e1b4c3416066d63d324ee9f8c144641dfeed72d140b6557245"
+  }
+}
