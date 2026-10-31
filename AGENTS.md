@@ -117,18 +117,26 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-1. **Native-surface exchange:** replace the filled-core shortcut with a bounded
+1. **Matched solid-model comparison:** follow
+   `docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md`. Milestone 1 audit is verified;
+   records are in `data/solid_model_diagnostic_20261031/verification.json`.
+   Hot-boundary matching explains
+   only 0.097305 K; the cold-ceramic residual is 7.630466 K. Actual Cu/support
+   channels and voltage accounting are audited; causal kelvins per path remain
+   unresolved. Next is a geometry-derived nonlocal route/support port network
+   with fixed-condition OFF/ON controls, no fitted bypass or new FEM campaign.
+2. **Native-surface exchange:** replace the filled-core shortcut with a bounded
    actual-surface visibility fixture/operator from corrected cap/window and
    package surfaces, exposing interleg voids, pins and wires. Audit face ownership,
    normals, areas, first-hit visibility, blocked pairs, reciprocity, closure,
    refinement and heat conservation. Retain the present proxy as a comparator;
    do not imply a new 3D thermal field or force an expensive conformal cap merge.
-2. **Integrated mechanism and uncertainty comparisons:** paired gas/radiation/
+3. **Integrated mechanism and uncertainty comparisons:** paired gas/radiation/
    lead controls plus contact, bypass, material-grade and cap/window/sink-reservoir
    hypotheses in the bounded five-node/nonlinear model. Report accepted-domain
    coverage, rejected candidates, heat budgets and power at matched detector
    targets. Use labeled scenario spans; no OEM fit or invented observations.
-3. **Conditional later 3D qualification:** pursue a justified, resource-bounded
+4. **Conditional later 3D qualification:** pursue a justified, resource-bounded
    experiment only when required by the engineering question. A numerical release
    still requires both original raw limits on the same mesh and a systematically
    refined comparator, plus all current/heat/nonlinear/reproducibility gates.

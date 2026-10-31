@@ -162,8 +162,14 @@ exceed the demonstrated discretization changes.
    reservoir sensitivity, with paired mechanism tests. Do not force a large
    conformal gas/TEC remesh or a proprietary OEM fit to complete useful studies.
 
-Preserved cross-model warning: at 0.1 A/2 mW, a constant reduced solid-only
-case with hot ceramic clamped gives die257.756276 K / 0.585608855 V; the
-archived corrected Elmer case with only Kovar underside clamped gives
-die265.592524 K / 0.551939871 V. The -7.836248 K / +33.669 mV difference
-has unmatched boundaries and missing spatial paths; it is not fitted away.
+The [matched solid-model diagnostic](MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md)
+now quantifies the 0.1 A/2 mW discrepancy. The constant reduced case gives
+257.756276 K / 0.585608855 V at a 300 K hot ceramic; the actual corrected Elmer
+case gives 265.592524 K / 0.551939871 V with its 300 K Kovar underside.
+Matching the archived hot ceramic (300.114898 K) changes the reduced die by
+only 0.097305 K. Observed die/readout differences account for another 0.108477 K;
+7.630466 K remains between cold-ceramic means. Same-indicator field accounting
+finds 41.392/36.293 mW parallel Cu/alumina leakage in the lower two gaps,
+and volume-work accounting closes the voltage difference. These identify omitted
+paths, not unique causal kelvins per path. Follow the registered port-network
+control before expanding scope; no fitted bypass, new FEM or Rev3 change is claimed.

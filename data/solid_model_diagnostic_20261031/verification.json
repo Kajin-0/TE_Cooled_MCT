@@ -1,0 +1,72 @@
+{
+  "checkpoint_status": "LOCAL VERIFICATION COMPLETE; exact pushed-commit CI is recorded externally in GitHub Actions",
+  "focused_tests": {
+    "passed": 71,
+    "seconds": 3.89,
+    "log": "focused_final.log"
+  },
+  "full_opt_in": {
+    "passed": 312,
+    "skipped": 0,
+    "warnings": 14,
+    "seconds": 354.74,
+    "TE_FEM_SMOKE": "1",
+    "log": "full_opt_in.log"
+  },
+  "full_archive_verifier": {
+    "passed": true,
+    "log": "archive_verifier.log",
+    "original_failed_gates_retained": true
+  },
+  "master_integrity": {
+    "passed": true,
+    "log": "master_integrity.log",
+    "pdf_sha256": "1bc0d793ac59cfa8b003454846bba2f7c9fe6bf431d57980ae7d95f8bee7ebff",
+    "PDF_unchanged": true
+  },
+  "legacy_demos": {
+    "passed": true,
+    "logs": [
+      "legacy_cli.log",
+      "legacy_geometry.log"
+    ]
+  },
+  "runtime_restore": "runtime_restore.json",
+  "two_actual_data_figures_previously_visually_inspected": true,
+  "scientific_data_sha256_unchanged": "af406576ef39c9f9ffa29da3adca79d223e7a4f00de38048342332986cffe3a4",
+  "new_diagnostic_or_production_FEM_cases": 0,
+  "existing_Elmer_regression_smoke_cases_executed": true,
+  "targeted_diagnostic_original_solver_calls": 8,
+  "modified_historical_evidence": false,
+  "CI": "Verify workflow for exact pushed commit; external status avoids a self-referential commit hash in this record",
+  "prior_runtime_interruption": {
+    "checkpoint_status": "UNCOMMITTED; final runtime gates blocked",
+    "focused_tests": {
+      "passed": 39,
+      "seconds": 1.22,
+      "runtime_tag": "tecooledmct-fem:26.2.1",
+      "ran_before_runtime_disappeared": true
+    },
+    "host_report_tests": {
+      "passed": 14,
+      "seconds": 1.5
+    },
+    "master_and_links": "PASS; master unchanged",
+    "independent_hash_check": {
+      "scope": "Independent stdlib SHA-256 ledger checks; does not execute the NumPy-dependent archive verifier or numerical gate predicates",
+      "checked_file_hashes": 3828,
+      "mismatches": [],
+      "all_checked_hashes_match": true
+    },
+    "two_actual_data_figures_visually_inspected": true,
+    "full_archive_verifier": "BLOCKED: host NumPy absent; pinned Docker image unavailable",
+    "full_regression": "BLOCKED: pinned Docker image unavailable",
+    "CI": "NOT RUN: no new commit or push",
+    "expected_archived_runtime_id": "sha256:24aa962831260903f1aeeb5209969ae012efab09d188cd8aac99f2f55f739195",
+    "runtime_recovery": "Cache-only, network-disabled attempt cancelled on first uncached RUN; no installation or compilation",
+    "new_FEM_executions": 0,
+    "modified_historical_evidence": false,
+    "targeted_diagnostic_original_solver_calls": 8,
+    "call_count_scope": "Four registered diagnostic conditions reproduced twice; excludes existing regression test controls."
+  }
+}

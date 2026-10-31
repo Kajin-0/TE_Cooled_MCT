@@ -1,0 +1,96 @@
+{
+  "authorization": "One bounded build of unchanged fem/Dockerfile; no host installs or version changes",
+  "registration": {
+    "dockerfile_sha256": "1dd10a8f2684011a5c8fde55f4debe510d628d2a68e5e5e4b8cdad9c6975795c",
+    "base_digest": "sha256:78d4744ead1f5b19b04d0df558ab182a5300903900755e515b2ca4d10eb2044d",
+    "Elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+    "build_command": [
+      "docker",
+      "build",
+      "--file",
+      "/home/User/TE_Cooled_MCT/outputs/milestone1-runtime-rebuild-20261031/context/fem/Dockerfile",
+      "--tag",
+      "tecooledmct-fem:26.2.1",
+      "--cpu-period",
+      "100000",
+      "--cpu-quota",
+      "400000",
+      "--cpuset-cpus",
+      "0,1,2,3",
+      "--memory",
+      "10g",
+      "--memory-swap",
+      "10g",
+      "--network",
+      "default",
+      "--force-rm",
+      "--iidfile",
+      "/home/User/TE_Cooled_MCT/outputs/milestone1-runtime-rebuild-20261031/image-id.txt",
+      "/home/User/TE_Cooled_MCT/outputs/milestone1-runtime-rebuild-20261031/context"
+    ],
+    "builder": "existing legacy backend; enforces per-RUN CPU/memory limits",
+    "context_source_files": [
+      "fem/Dockerfile",
+      ".dockerignore"
+    ],
+    "context_source_bytes": 2086,
+    "prior_context_preflight": "outputs/milestone1-runtime-restore-20261031/build.log; CLI rejected stdin before any Dockerfile step",
+    "free_disk_before_bytes": 69497073664,
+    "limits": {
+      "cpus": 4,
+      "memory_bytes": 10737418240,
+      "memory_plus_swap_bytes": 10737418240,
+      "wall_seconds": 1200,
+      "maximum_disk_growth_bytes": 16106127360,
+      "minimum_free_disk_bytes": 26843545600
+    }
+  },
+  "actual_build_status": {
+    "exit_code": 0,
+    "stopped_by_guard": null,
+    "wall_seconds": 534.0672177060042,
+    "free_disk_after_bytes": 67781509120,
+    "dockerfile_unchanged": true
+  },
+  "observed_resource_limits": [
+    {
+      "container": "01cf35e68532",
+      "CpuQuota": 400000,
+      "CpuPeriod": 100000,
+      "CpusetCpus": "0,1,2,3",
+      "Memory": 10737418240,
+      "MemorySwap": 10737418240
+    }
+  ],
+  "provenance_check": {
+    "base_digest": "sha256:78d4744ead1f5b19b04d0df558ab182a5300903900755e515b2ca4d10eb2044d",
+    "base_RepoDigests": [
+      "ubuntu:24.04@sha256:78d4744ead1f5b19b04d0df558ab182a5300903900755e515b2ca4d10eb2044d"
+    ],
+    "base_id": "sha256:78d4744ead1f5b19b04d0df558ab182a5300903900755e515b2ca4d10eb2044d",
+    "rebuilt_image_id": "sha256:ce4f061bbfd77b8f9f2437771bad2b90dde5bc00f82eab8e1058ceca7fe3bbc5",
+    "historical_image_id": "sha256:24aa962831260903f1aeeb5209969ae012efab09d188cd8aac99f2f55f739195",
+    "same_declared_Dockerfile": true,
+    "base_layers_match_original": true,
+    "pip_package_versions_match": true,
+    "pip_packages": 24,
+    "apt_package_versions_match": true,
+    "apt_packages": 252,
+    "Elmer_source_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+    "ThermoElectricSolver_F90_sha256": "a9671bbadae47cfda008d0708359914f2caac0c3c439ead2662b6f2218629df4",
+    "runtime_offline": true,
+    "rebuilt_image_is_not_claimed_byte_identical_to_historical_image": true,
+    "preflight_validation_note": "Initial literal ubuntu@ comparison rejected Docker RepoDigests spelling ubuntu:24.04@; exact digest suffix and historical base layers both match."
+  },
+  "runtime_inventory": "runtime_inventory.json",
+  "runtime_inventory_sha256": "fee1dc0661d23de01255b5619dec35e1040a4b54aa338a14fea44dd1998f113c",
+  "build_log_path": "outputs/milestone1-runtime-rebuild-20261031/build.log",
+  "build_log_sha256": "a9cdb61cf2107d3ce74d0acf20e80e666f1d4ecf2a2f7fd985233aeead517691",
+  "context_preflight_failure": {
+    "before_any_Dockerfile_step": true,
+    "message": "unable to prepare context from STDIN: ambiguous Dockerfile source: both stdin and flag correspond to Dockerfiles",
+    "log_sha256": "489b99798fa7b169018bda734ab3b6677c475a0eb6d539edf8ad70757a16177b"
+  },
+  "actual_Dockerfile_builds": 1,
+  "historical_runtime_identifiers_unchanged": true
+}

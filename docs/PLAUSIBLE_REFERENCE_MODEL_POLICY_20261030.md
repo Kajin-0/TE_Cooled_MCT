@@ -54,7 +54,9 @@ reference article.
 
 ## Current next milestones
 
-First implement bounded native-surface visibility/exchange from corrected source
+Immediate bounded priority: the [matched solid-model diagnostic](MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md)
+and its geometry-derived route/support port control, before expanding exchange physics.
+Then implement bounded native-surface visibility/exchange from corrected source
 faces, retaining the filled-core proxy as a comparator. Then run paired
 mechanisms and contact/bypass/grade/reservoir hypotheses in the existing nonlinear
 five-node package. The contract gives the required audits and the conditional
