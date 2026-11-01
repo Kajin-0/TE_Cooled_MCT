@@ -150,6 +150,11 @@ MSH and registry above remain SI-consistent. The earlier in-memory BREP/mesh
 checks did not establish exported STEP physical-unit consistency. Preserve that
 STEP as evidence; a separate unit-correct derivative with round-trip checks is
 required before native gas assembly. No gas PDE was run.
+The [single derivative attempt](UNIT_CORRECT_CAP_AND_NATIVE_GAS_20261101.md)
+also failed: mm authoring followed an SI import in the same process, and the
+exported cap became 1,000× too large. The producer/output are quarantined;
+no unit-correct derivative is advertised. A fresh writer process separated from
+the SI reader is the next implementation requirement, not a changed cap shape.
 The builder rejects nonfinite/nonpositive dimensions, impossible voids and
 collisions, including wire radius. Window thickness currently equals roof
 thickness; a different seat needs new geometry.

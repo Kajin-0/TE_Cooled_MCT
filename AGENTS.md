@@ -76,6 +76,7 @@ inspect every page of a rebuilt master before publication.
 | `nonlocal_solid_network.py` diagnostic | Opt-in geometry-derived local Cu/alumina multiport plus unchanged affine P/N stages; actual interfaces, nonlocal return and P174 side contact | Isothermal ceramic/pad closure is unqualified; not full-device FEM; 7.277% side-port sensitivity exceeds registered 5% screen |
 | `passive_plate_audit.py` | Source-only audit of four plates, original Cu pads and routes/supports; 104 bodies | Seven-port follow-up **STOPPED before grid/solves**: two unmapped cuts and incompatible P174 side/hot-foot trace on a 0.220 mm edge; no spreading attribution |
 | `native_gas_audit.py` | Source-only STEP/SI reader audit and conditional N2 Kn/Ra screens | Gas **STOPPED before extraction/mesh/PDE**: cap STEP declares mm for metre-sized coordinates, 1,000× length mismatch; native SI cap MSH remains consistent |
+| `cap_export_validation.py` | Read-only validation of one quarantined unit-correction attempt | **Phase A FAILED**: attempted cap is 1,000× too large after an exporter unit-state assumption; no valid derivative, Phase B/C NOT RUN; failed producer is a snapshot only |
 | `model.py`, `cli.py`, `experiments.py` | Original **four-node legacy demonstrations**, retained for compatibility | Not the current corrected package; older OEM-anchored assumptions are historical |
 
 - Archived 177-cut/current, weak heat and global/stage balance checks pass, but
@@ -106,11 +107,12 @@ inspect every page of a rebuilt master before publication.
   tests pass**, including actual Elmer smoke. Archive verifier and legacy demos
   pass. Records: `reports/master/verification/summary.json`. Check CI for each
   newly pushed commit; historical test counts are not new executions.
-- Current native-gas source-audit verification: **87 focused / 355 full opt-in**
+- Current cap-export failure-validation checks: **68 focused / 365 full opt-in**
   tests pass, including existing Elmer smoke; archive/master integrity and both
-  legacy demos pass. Record: `data/native_gas_domain_audit_20261101/verification.json`.
-  Software gates do not admit a gas domain or the earlier seven-port fixture,
-  pass the old side-port sensitivity or qualify ceramic spreading. The 28-page master and
+  legacy demos pass. Record: `data/unit_correct_cap_native_gas_20261101/verification.json`.
+  The authoring attempt itself FAILED; no valid derivative or Phase B/C result
+  exists. Software gates do not admit gas, pass old side-port sensitivity or
+  qualify ceramic spreading. The 28-page master and
   historical evidence are unchanged.
 
 ## Read-first order
@@ -143,6 +145,14 @@ inspect every page of a rebuilt master before publication.
    and lies inside the Kovar header; native cap MSH/registry remain SI-consistent.
    **Minimum next fix:** publish a separate unit-correct cap STEP derivative,
    with explicit-unit export/import bbox/volume checks; preserve archived bytes.
+   The single follow-up attempt is now closed at **Phase A FAIL**, recorded in
+   `docs/UNIT_CORRECT_CAP_AND_NATIVE_GAS_20261101.md`. New exporter code assumed
+   clearing an import option reset writer units after an SI cube import; the
+   attempted cap instead has radius 7.6 m. It is quarantined, not approved CAD.
+   No actual assembly contradiction was established by that implementation error.
+   Next implementation must isolate fresh mm authoring/export from the separate
+   metre-target reader process; export cube/cap before any SI imports. No further
+   export was performed under this checkpoint's one-attempt stop.
    Then resume native solid subtraction, seals/access, connected watertight void,
    ownership/normals and one bounded gas diffusion calculation. No gas region,
    stage heat budget or new device T exists yet. At a 150 µm source gap, N2

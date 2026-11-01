@@ -185,4 +185,7 @@ any grid or solve: its independent side/hot-foot constants conflict on a native
 fraction or causal kelvin closure is established. Independent native interleg
 gas conduction remains the priority, with the
 [cap STEP unit prerequisite](NATIVE_GAS_DOMAIN_AUDIT_20261101.md) now exposed.
+The [one correction attempt](UNIT_CORRECT_CAP_AND_NATIVE_GAS_20261101.md)
+failed before Phase B; no approved derivative exists. Writer/reader unit-state
+isolation is required next, without changing the registered physical geometry.
 No gas solve, further solid-side fit/grid or Rev3 change is claimed.

@@ -1,0 +1,27 @@
+[32;1m
+*******************************************************************
+******        Statistics on Transfer (Write)                 ******[0m
+[32;1m
+*******************************************************************
+******        Transfer Mode = 0  I.E.  As Is       ******[0m
+[32;1m******        Transferring Shape, ShapeType = 0                      ******[0m
+[32;1m** WorkSession : Sending all data[0m
+[32;1m Step File Name : data/unit_correct_cap_native_gas_20261101/phase_A/one_mm_cube.step(350 ents)  Write  Done[0m
+[32;1m
+*******************************************************************
+******        Statistics on Transfer (Write)                 ******[0m
+[32;1m
+*******************************************************************
+******        Transfer Mode = 0  I.E.  As Is       ******[0m
+[32;1m******        Transferring Shape, ShapeType = 0                      ******[0m
+[32;1m** WorkSession : Sending all data[0m
+[32;1m Step File Name : data/unit_correct_cap_native_gas_20261101/phase_A/cap_window_unit_correct.step(585 ents)  Write  Done[0m
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/cap_unit_derivative.py", line 108, in <module>
+    result=run(a.out);print('Phase A qualified:',result['phase_A_qualified'],result['cap_roles'])
+           ^^^^^^^^^^
+  File "/work/tecooledmct/cap_unit_derivative.py", line 63, in run
+    raise ValueError('STEP physical radii/context disagree with registry')
+ValueError: STEP physical radii/context disagree with registry

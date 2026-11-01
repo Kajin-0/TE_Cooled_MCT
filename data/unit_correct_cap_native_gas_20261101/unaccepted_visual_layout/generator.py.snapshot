@@ -1,0 +1,34 @@
+"""Diagram of actual STEP/SI scale observations, not a gas/thermal field."""
+import argparse
+from pathlib import Path
+import numpy as np
+from .native_gas_audit import ROOT,read,write,sha
+
+
+def run(folder):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    folder=Path(folder);r=read(folder/'phase_A_validation.json')
+    old_path=ROOT/'data/native_gas_domain_audit_20261101/audit.json';old=read(old_path)
+    target=folder/'physical_scale_failure.png'
+    if target.exists():raise ValueError('Do not overwrite diagram evidence')
+    radii=[old['cap_STEP_declared_outer_radius_m'],r['intended_outer_radius_m'],r['candidate_outer_radius_m']]
+    ratios=[x/r['intended_outer_radius_m'] for x in radii]
+    labels=['Original archived STEP','Intended registry / SI mesh','Unaccepted authoring attempt']
+    fig,ax=plt.subplots(figsize=(9,3.5));y=np.arange(3)
+    ax.barh(y,radii,color=['#b95843','#347f70','#bd7932']);ax.set_xscale('log')
+    for i,(radius,ratio) in enumerate(zip(radii,ratios)):
+        ax.text(radius*1.3,i,f'{radius:g} m  ({ratio:g} × intended)',va='center',fontsize=9)
+    ax.set(yticks=y,yticklabels=labels,xlim=(1e-6,150),xlabel='Physical outer radius from declared units (m, logarithmic scale)',
+           title='Source-unit gate: neither exported cap has the intended physical scale')
+    ax.invert_yaxis();ax.grid(axis='x',alpha=.2)
+    fig.text(.03,.015,'Actual STEP parsing and metre-target CAD imports. No valid derivative, gas domain or thermal field is shown.',fontsize=8)
+    fig.tight_layout(rect=(0,.05,1,1));fig.savefig(target,dpi=220);plt.close(fig)
+    write(folder/'figure_provenance.json',{'input_sha256':{'phase_A_validation.json':sha(folder/'phase_A_validation.json'),
+        str(old_path.relative_to(ROOT)):sha(old_path)},'source_sha256':sha(Path(__file__)),'figure_sha256':sha(target),
+        'radii_m':radii,'kind':'physical-scale diagnostic only; not CAD boundary mesh or gas field'})
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--data',type=Path,required=True);a=p.parse_args();run(a.data)

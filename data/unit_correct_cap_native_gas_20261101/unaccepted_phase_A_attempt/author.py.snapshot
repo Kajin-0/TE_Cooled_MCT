@@ -1,0 +1,108 @@
+"""Separate, physically unit-correct STEP export; original artifacts immutable."""
+import argparse
+import gzip
+from pathlib import Path
+import time
+
+import numpy as np
+
+from .corrected_enclosure import assumptions,REGISTRY
+from .native_gas_audit import ROOT,PACKAGE,CAP,sha,read,write,step_units,import_record
+from .exchange_geometry import verify_sources,read_msh
+
+NOTE=ROOT/'docs/UNIT_CORRECT_CAP_AND_NATIVE_GAS_20261101.md'
+
+
+def expected_boxes(a):
+    ro,ri,rw=a['outer_radius_m'],a['inner_radius_m'],a['window_radius_m']
+    z0,zr,zt=a['header_top_z_m'],a['cavity_roof_z_m'],a['roof_top_z_m']
+    return {'shell':[-ro,-ro,z0,ro,ro,zr],'roof':[-ro,-ro,zr,ro,ro,zt],
+            'window':[-rw,-rw,zr,rw,rw,zt]}
+
+
+def classify_cap(rows,a):
+    expected=a['expected_solid_volumes_m3'];boxes=expected_boxes(a);result={}
+    for row in rows:
+        names=[name for name,v in expected.items() if np.isclose(row['volume_m3'],v,rtol=1e-8,atol=1e-20)
+               and np.max(abs(np.array(row['bbox_m'])-boxes[name]))<2.1e-7]
+        if len(names)!=1 or names[0] in result:raise ValueError('Nonunique/missing cap role or physical dimensions')
+        result[names[0]]=row
+    if set(result)!=set(expected):raise ValueError('Missing cap solid')
+    return result
+
+
+def author_cap(gmsh,a,path):
+    """OCC coordinates in mm; STEP writer declares mm; physical dimensions fixed."""
+    gmsh.clear();gmsh.option.setString('Geometry.OCCTargetUnit','');gmsh.model.add('unit_correct_cap_mm')
+    occ=gmsh.model.occ;ro,ri,rw=[a[k]*1000 for k in ('outer_radius_m','inner_radius_m','window_radius_m')]
+    z0,zr,zt=[a[k]*1000 for k in ('header_top_z_m','cavity_roof_z_m','roof_top_z_m')]
+    outer=occ.addCylinder(0,0,z0,0,0,zr-z0,ro);inner=occ.addCylinder(0,0,z0,0,0,zr-z0,ri)
+    shell=occ.cut([(3,outer)],[(3,inner)])[0]
+    outer=occ.addCylinder(0,0,zr,0,0,zt-zr,ro);bore=occ.addCylinder(0,0,zr,0,0,zt-zr,rw)
+    roof=occ.cut([(3,outer)],[(3,bore)])[0];window=[(3,occ.addCylinder(0,0,zr,0,0,zt-zr,rw))]
+    occ.fragment(shell,roof+window);occ.synchronize()
+    gmsh.write(str(path))
+
+
+def run(out):
+    start=time.monotonic();out=Path(out)
+    if out.exists():raise ValueError('Use an absent derivative directory')
+    inputs=verify_sources();a=assumptions();out.mkdir(parents=True)
+    import gmsh
+    gmsh.initialize();gmsh.option.setNumber('General.Terminal',0);gmsh.option.setNumber('General.NumThreads',4)
+    try:
+        cube=out/'one_mm_cube.step';gmsh.model.add('one_mm_cube')
+        gmsh.model.occ.addBox(0,0,0,1,1,1);gmsh.model.occ.synchronize();gmsh.write(str(cube))
+        cube_units=step_units(cube.read_text());cube_rows=import_record(gmsh,cube)
+        if cube_units['metres_per_coordinate_unit']!=1e-3 or len(cube_rows)!=1 or not np.isclose(cube_rows[0]['volume_m3'],1e-9,rtol=1e-8):
+            raise ValueError('Independent cube export/import control failed')
+        derivative=out/'cap_window_unit_correct.step';author_cap(gmsh,a,derivative)
+        parsed=step_units(derivative.read_text())
+        if parsed['metres_per_coordinate_unit']!=1e-3 or not np.allclose(parsed['cylinder_radii_declared_m'],
+                sorted([a['outer_radius_m'],a['inner_radius_m'],a['window_radius_m']]),rtol=1e-12,atol=1e-15):
+            raise ValueError('STEP physical radii/context disagree with registry')
+        rows=import_record(gmsh,derivative);roles=classify_cap(rows,a)
+        labels={v['tag']:k for k,v in roles.items()};interfaces={}
+        for _,face in gmsh.model.getEntities(2):
+            up,_=gmsh.model.getAdjacencies(2,face)
+            if len(up)==2:
+                pair=tuple(sorted(labels[int(t)] for t in up));interfaces[str(pair)]=interfaces.get(str(pair),0.)+gmsh.model.occ.getMass(2,face)
+            elif len(up)!=1:raise ValueError('Nonmanifold derivative cap face')
+        expected={str(('roof','shell')):np.pi*(a['outer_radius_m']**2-a['inner_radius_m']**2),
+                  str(('roof','window')):2*np.pi*a['window_radius_m']*(a['roof_top_z_m']-a['cavity_roof_z_m'])}
+        if set(interfaces)!=set(expected) or any(not np.isclose(interfaces[k],v,rtol=1e-8,atol=1e-18) for k,v in expected.items()):
+            raise ValueError('Cap interface closure/area failed')
+        # Positive-volume intrusion into the header is excluded by exact lower-z
+        # support: all cap solids start at or above header top, with nominal contact.
+        minimum=min(expected_boxes(a)[k][2] for k in roles)
+        if minimum<a['header_top_z_m']-1e-14:raise ValueError('Cap penetrates header plane')
+        version=gmsh.__version__
+    finally:gmsh.finalize()
+    nodes,tets,_=read_msh(CAP/'cap_window_only.msh');native={}
+    for group,ids in tets:
+        xyz=np.array([nodes[i] for i in ids]);v=float(np.linalg.det((xyz[1:]-xyz[0]).T)/6)
+        if v<=0:raise ValueError('Original native cap mesh changed sign')
+        native[group]=native.get(group,0.)+v
+    old=read(CAP/'geometry_audit.json')
+    mesh_error={name:native[tag]/roles[name]['volume_m3']-1 for name,tag in old['volume_physical_groups'].items()}
+    if max(abs(v) for v in mesh_error.values())>.01:raise ValueError('Derivative/native SI mesh mismatch')
+    if time.monotonic()-start>120:raise ValueError('Phase A time bound exceeded')
+    result={'phase_A_qualified':True,'attempts':1,'writer_convention':'OCC numerical coordinates in mm; STEP declares mm; independent import targets M',
+        'physical_geometry_changed':False,'source_archive_modified':False,'gmsh_version':version,
+        'registration':NOTE.read_text().split('## Results')[0], 'parsed_derivative_units':parsed,
+        'cube_control':{'parsed_units':cube_units,'imported':cube_rows,'passed':True},
+        'cap_roles':roles,'interfaces_m2':interfaces,'analytic_volumes_m3':a['expected_solid_volumes_m3'],
+        'expected_bbox_m':expected_boxes(a),'native_mesh_volume_relative_errors':mesh_error,
+        'header_top_z_m':a['header_top_z_m'],'positive_volume_header_intrusion':False,
+        'assumptions':a,'original_bad_STEP_sha256':sha(CAP/'corrected_cap_window.step'),
+        'derivative_STEP_sha256':sha(derivative),'input_sha256':inputs,
+        'source_sha256':{n:sha(ROOT/n) for n in ('tecooledmct/cap_unit_derivative.py','tecooledmct/corrected_enclosure.py','tecooledmct/native_gas_audit.py')},
+        'elapsed_seconds':time.monotonic()-start,'gas_solution':None}
+    write(out/'phase_A.json',result)
+    write(out/'checksums.json',{'artifact_sha256':{p.name:sha(p) for p in sorted(out.iterdir()) if p.is_file()}})
+    return result
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);a=p.parse_args()
+    result=run(a.out);print('Phase A qualified:',result['phase_A_qualified'],result['cap_roles'])

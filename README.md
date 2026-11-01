@@ -33,6 +33,7 @@ milestone instructions have been relocated to historical context.
 | Why do reduced and corrected 3D temperatures differ? | [Matched audit](docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md) and [geometry-only nonlocal diagnostic](docs/NONLOCAL_PORT_NETWORK_20261031.md): 8.413 K predicted warming, 0.782 K residual; unresolved side-port sensitivity and ceramic spreading |
 | Can the seven-port plate fixture isolate spreading? | [Native interface/admissibility audit](docs/PASSIVE_PLATE_PORT_AUDIT_20261031.md): stopped before solves; missing cut conditions and incompatible side/hot-foot traces; no causal heat attribution |
 | Is there an independent native gas PDE baseline? | [Native gas source-unit audit](docs/NATIVE_GAS_DOMAIN_AUDIT_20261101.md): stopped before extraction; cap STEP is 1,000× too small under declared units. SI mesh is consistent; a unit-correct CAD derivative is required next |
+| Did the separate cap correction pass? | [Single export attempt](docs/UNIT_CORRECT_CAP_AND_NATIVE_GAS_20261101.md): Phase A failed an exporter unit-state assumption; attempted cap is quarantined at 1,000× too large. No valid derivative or gas solve |
 | What must future development preserve? | [Current contract](AGENTS.md), sealed numerical evidence and original historical PDFs; continuously improve the live Rev3 |
 
 ## Current capabilities and their scope
@@ -132,7 +133,9 @@ The [contract's ordered science milestones](AGENTS.md#ordered-next-science-miles
 govern continuation: the geometry-derived route/support comparison remains
 conditional and its one plate-fixture follow-up stopped at the seven-port
 admissibility gate. **Native gas extraction stopped at a verified STEP unit defect**;
-a separate unit-correct cap CAD derivative is the next prerequisite to independent
+a separate unit-correct cap CAD derivative remains the prerequisite; its single
+follow-up attempt failed and is quarantined. Fresh writer/SI-reader process
+isolation must replace the unverified writer-reset assumption before independent
 interleg gas diffusion. Further solid fitting/refinement is outside those stops.
 Then native-surface visibility/exchange with actual
 interleg/pin/wire geometry and paired mechanisms/contact/bypass/grade/

@@ -1,0 +1,150 @@
+{
+  "status": "PHASE A FAILED; source artifact unchanged; candidate explicitly UNACCEPTED",
+  "registration": "# Unit-correct cap derivative and bounded native gas experiment\n\n## Registration before construction or comparative field access\n\nPreserve the original STEP/MSH, source registry, prior fields/failures and Rev3.\nThe seven-port solid studies remain stopped. One attempt at each conditional\nphase; no geometry changes to match transport output, retries or refinement.\n\n**A \u2014 derivative.** Construct the exact registered shell/roof/window in Gmsh's\nmillimetre CAD convention, using SI registry lengths converted numerically to mm.\nExport a separate STEP with explicit millimetre context; never overwrite or\npatch the archived bad STEP. Independently parse length/radius declarations,\nthen import with target unit M. A separately authored 1 mm cube must import as\n1e-9 m\u00b3. Require three unique solids, physical radii 7.6/7.1/2.95 mm, z datums\n1.5/9.65/10.1 mm, volumes within 1e-8 relative of analytic/source values and\nbboxes within 2.1e-7 m (kernel padding). Confirm shared cap interfaces and no\npositive-volume header penetration. Keep original/derivative hashes.\n\n**B \u2014 native void.** Import the corrected source package and new cap in metres.\nMap every solid uniquely to its registered bbox and volume (2.1e-7 m / 2e-7\nrelative). Explicitly select **external hybrid Cu/Au wires OFF**, matching the\narchived wire-off geometry; do not invent volumetric wires. All 216 resolved\npackage bodies and three cap solids remain, including 88 legs and nine seals/pins.\nOne Boolean partition with the exact inner-cap cylinder defines gas as envelope\nfragments owned by no solid. Require source-volume preservation, no multi-solid\nownership, positive bounded gas volume, one connected gas region, complete\ngas/solid face ownership, oriented manifold closure and outward normals. Audit\ncap/header and roof/window sealing areas and original solid contact pairs.\nAssume exact nominal contacts impermeable; this is a hypothetical construction.\nStop on any ambiguity/failure or >180 s CAD; no tolerance tuning or discarded slivers.\n\n**C \u2014 one deliberately conduction-only N2 control, only after B passes.**\nNo archived solved temperatures are needed: impose a compatible analytic wall\ncontrol. Reservoir surfaces (header, seals/pins, cap/window) are 300 K. All\nstack surfaces share `T(z)=300-50 u\u00b2(3-2u)`,\n`u=(z-1.5 mm)/(highest stack top-1.5 mm)`; stack endpoints are 300/250 K.\nThe common smooth profile is continuous at every solid junction, including\nP174 and its hot foot. It is prescribed wall data, not a solved device field.\nFreeze that definition with geometry before any result comparison.\n\nUse constant k=0.0259 W/(m K), the registered N2 value at 300 K, with all\ntemperatures inside the sourced 200\u2013400 K interval. Pressure 101325 Pa passes\nthe 150 \u00b5m gap Kn screen (~0.000452); 100 Pa fails (~0.458). Nominal cavity\nRa~2501 flags possible buoyancy. Suppress flow deliberately: this is a gas\ndiffusion baseline, not full steady gas behavior or a gas-selection result.\n\nOne gas-only P1 mesh: core size 180 \u00b5m, outer 600 \u00b5m, minimum 30 \u00b5m, curvature\n16; intended <=300k tets, hard stop at 500k, no refinement. CAD/mesh each <=180 s;\nPDE <=120 s, <=4 CPUs/8 GiB, pinned tools, no installation or full TEC solve.\nRequire positive cells and exact boundary incidence. Independent analytic slab\nand uniform controls validate the P1 operator; check interior nodal reactions\nand global heat below 1 nW, plus independent raw-gradient global flux <1%.\nReport raw surface flux separately from conservative nodal reactions partitioned\nby incident face area at shared nodes. The latter is a declared allocation,\nnot a replacement for raw flux. Flag any failed gate and stop without remeshing.\nSave actual stage/body gas surfaces and heat budgets; never use all-Cu volume\nintegrals as gas port power. No new detector temperature, convection, ranking,\nOEM validation or retrospective numerical release is implied.\n\nProduce one concise internal record and an actual geometry/field diagram if\ncomputed. Null stages remain NOT RUN. Run focused/opt-in regression, archive,\nmaster and legacy checks; commit/push verified scoped work and check exact CI.\n\n",
+  "geometry_authoring_attempts": 1,
+  "additional_exports_in_validation": 0,
+  "gmsh_version": "4.13.1",
+  "reader_target_unit": "M",
+  "cube_control": {
+    "parsed": {
+      "length_prefix": ".MILLI.",
+      "length_contexts": 1,
+      "metres_per_coordinate_unit": 0.001,
+      "cylinder_radii_declared_m": []
+    },
+    "imported": [
+      {
+        "tag": 1,
+        "volume_m3": 1e-09,
+        "bbox_m": [
+          -1e-07,
+          -1e-07,
+          -1e-07,
+          0.0010001,
+          0.0010001,
+          0.0010001
+        ]
+      }
+    ],
+    "passed": true
+  },
+  "candidate_parsed_units": {
+    "length_prefix": ".MILLI.",
+    "length_contexts": 4,
+    "metres_per_coordinate_unit": 0.001,
+    "cylinder_radii_declared_m": [
+      2.95,
+      7.1000000000000005,
+      7.6000000000000005
+    ]
+  },
+  "candidate_imported_solids": [
+    {
+      "tag": 1,
+      "volume_m3": 188.18925393166694,
+      "bbox_m": [
+        -7.600000100000001,
+        -7.600000100000001,
+        1.4999999,
+        7.600000100000001,
+        7.600000100000001,
+        9.6500001
+      ]
+    },
+    {
+      "tag": 2,
+      "volume_m3": 69.35340672156792,
+      "bbox_m": [
+        -7.600000100000001,
+        -7.600000100000001,
+        9.649999900000001,
+        7.600000100000001,
+        7.600000100000001,
+        10.100000099999999
+      ]
+    },
+    {
+      "tag": 3,
+      "volume_m3": 12.302869530539311,
+      "bbox_m": [
+        -2.9500001,
+        -2.9500001,
+        9.649999900000001,
+        2.9500001,
+        2.9500001,
+        10.100000099999999
+      ]
+    }
+  ],
+  "scale_check": {
+    "volume_ratios_to_intended": [
+      999999999.9999987,
+      1000000000.0000196,
+      1000000000.0000238
+    ],
+    "length_ratios_from_volumes": [
+      999.9999999999995,
+      1000.0000000000065,
+      1000.000000000008
+    ],
+    "physical_scale_qualified": false,
+    "uniform_scale_error": true
+  },
+  "intended_outer_radius_m": 0.0076,
+  "candidate_outer_radius_m": 7.6000000000000005,
+  "outer_radius_ratio_to_intended": 1000.0000000000001,
+  "candidate_bbox_m": {
+    "low": [
+      -7.600000100000001,
+      -7.600000100000001,
+      1.4999999
+    ],
+    "high": [
+      7.600000100000001,
+      7.600000100000001,
+      10.100000099999999
+    ],
+    "kernel_padding_note": "Bounding boxes include 1e-7 m padding"
+  },
+  "intended_header_top_m": 0.0015,
+  "candidate_foot_minus_header_m": 1.4984998999999999,
+  "source_original_bad_STEP_sha256": "1abfefc8b8ac2b176554d60f6ee3f4d743cd49f924d90c51de6ae3fd683adcba",
+  "candidate_STEP_sha256": "8098425a7a8a8b9f817df080813a68eb26d0d4ec931d03ac4f0389b2027fb642",
+  "candidate_classification": "Quarantined failed authoring output; NOT a unit-correct derivative or gas assembly input",
+  "verified_observation": "Attempt authored numerical mm dimensions after a metre-target import; exported STEP values acquired another factor 1000. Resetting OCCTargetUnit to empty did not restore the assumed writer context in this run.",
+  "root_cause_scope": "Exporter unit-state assumption in new code, not a newly established contradiction in the registered physical assembly",
+  "next_implementation": "Isolate authoring/export in a fresh process that performs no SI imports; author both mm cube and mm cap before a separate metre-target reader process. Independently validate units, radii, datums, volumes and seals before Phase B. Not executed under the one-attempt stop.",
+  "phase_A_qualified": false,
+  "valid_derivative_published": false,
+  "phase_B": {
+    "status": "NOT RUN",
+    "Boolean_void_extractions": 0,
+    "gas_cells": 0,
+    "boundary_qualification": null
+  },
+  "phase_C": {
+    "status": "NOT RUN",
+    "gas_PDE_solves": 0,
+    "gas_heat_budgets_w": null,
+    "temperature_field": null
+  },
+  "comparative_fields_read": false,
+  "source_geometry_or_laws_changed": false,
+  "Rev3_modified": false,
+  "source_sha256": {
+    "tecooledmct/cap_export_validation.py": "6daa9335a70463b7d59694f31567a24c48dcd83ca819acd3170dd0a3e1d3d776",
+    "tecooledmct/corrected_enclosure.py": "a4611649992b6741e43c4008fe20515b912ec74b4aea34a1ef5f3479927c2538",
+    "tecooledmct/native_gas_audit.py": "91e3cfd26814297edb739a195026befedaa9ada25bd7727440390d93d9e8e535"
+  },
+  "input_sha256": {
+    "fem/results/corrected_enclosure_geometry_20261030/cap_window_only.msh": "b94211721b7764775d1603c8f267944f9c2baa2e2e0b8eab3a81c7e021dfb373",
+    "fem/results/corrected_enclosure_geometry_20261030/corrected_cap_window.step": "1abfefc8b8ac2b176554d60f6ee3f4d743cd49f924d90c51de6ae3fd683adcba",
+    "fem/results/corrected_enclosure_geometry_20261030/geometry_audit.json": "823d650739fb2f346ce47fb04c7233aff025b7b45f729be801f035cde7baa5de",
+    "fem/results/geometry_complete_checkpoint_20261030/manifest.json": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+    "fem/results/geometry_complete_checkpoint_20261030/mesh.npz": "a2bc5e347ae026e78a52f13498c41c2ed5032150f9ddb53b2620a86612cf4614",
+    "fem/results/geometry_complete_checkpoint_20261030/wire_routes.json": "e751350be5e48af2104eaf2e85c864fecf8ce08e2c03fe2e3349ebdbe96b757f",
+    "data/corrected_enclosure/geometry_hypothesis_v1.json": "aab9370215c061cc3e39a345bd1651bae9086a42827219fb756eec8eba646647"
+  },
+  "failed_author_snapshot_sha256": "390d899f52facd0b87176a384c01ebf47961648b1630394f52540896171b5431",
+  "elapsed_seconds": 0.08649610099382699
+}

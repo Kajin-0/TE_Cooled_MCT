@@ -59,7 +59,10 @@ their registered stops. Current priority is the
 [native interleg gas geometry gate](NATIVE_GAS_DOMAIN_AUDIT_20261101.md): correct
 the cap STEP unit interchange in a separate derivative, preserving its original
 bytes, then audit the actual void before independent gas diffusion. The existing
-SI cap mesh remains consistent. Then implement bounded native-surface visibility/
+SI cap mesh remains consistent. The one derivative attempt failed its unit gate
+and is quarantined; isolate fresh writer and SI-reader processes before another
+registered export. That implementation error is not a physical assembly result.
+Then implement bounded native-surface visibility/
 exchange from corrected source faces, retaining the filled-core proxy as a
 comparator. Then run paired
 mechanisms and contact/bypass/grade/reservoir hypotheses in the existing nonlinear

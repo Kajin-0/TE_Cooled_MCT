@@ -1,0 +1,109 @@
+{
+  "status": "PHASE A EXPORT FAILED; read-only failure evidence and software/old-archive gates verified; requested minimum fix INCOMPLETE",
+  "authoring_attempt": {
+    "attempts": 1,
+    "exit_code": 1,
+    "failure": "STEP physical radii/context disagree with registry",
+    "producer_snapshot": "unaccepted_phase_A_attempt/author.py.snapshot",
+    "failure_log": "unaccepted_phase_A_attempt/author_failure.log",
+    "new_valid_derivative": false,
+    "additional_exports_after_failure": 0
+  },
+  "read_only_validation": {
+    "command": "./fem/run.sh timeout --kill-after=5s 120s python -m tecooledmct.cap_export_validation --attempt data/unit_correct_cap_native_gas_20261101/unaccepted_phase_A_attempt",
+    "exit_code": 0,
+    "log": "verification/read_only_validation.log",
+    "meaning": "Confirmed incorrect 1000x length / 1e9 volume; no authoring retry"
+  },
+  "focused_tests": {
+    "command": "./fem/run.sh python -m pytest -q tests/test_cap_export_validation.py tests/test_native_gas_audit.py tests/test_corrected_enclosure.py",
+    "exit_code": 0,
+    "passed": 68,
+    "seconds": 1.58,
+    "log": "verification/focused.log"
+  },
+  "full_opt_in": {
+    "command": "./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs",
+    "exit_code": 0,
+    "passed": 365,
+    "skipped": 0,
+    "warnings": 14,
+    "seconds": 328.94,
+    "log": "verification/full_opt_in.log",
+    "existing_Elmer_smoke_executed": true
+  },
+  "archive_verifier": {
+    "command": "./fem/run.sh python fem/archive_bath_spatial_device.py --verify",
+    "exit_code": 0,
+    "log": "verification/archive_verifier.log",
+    "original_failed_gates_retained": true
+  },
+  "master_integrity": {
+    "command": "python3 -B -m reports.master.validate --current",
+    "exit_code": 0,
+    "log": "verification/master_integrity.log",
+    "PDF_unchanged": true,
+    "pdf_sha256": "1bc0d793ac59cfa8b003454846bba2f7c9fe6bf431d57980ae7d95f8bee7ebff",
+    "sealed_original_pdf_sha256": "d173a8ba952462e1b6bf857739406f58eeb8d5c82b900f9fc65b84d40573acc1",
+    "sealed_original_manifest_sha256": "c06183c06ffb711449b764d50e763eed3c4da448bc4930281a2361c626c5e9c8"
+  },
+  "legacy_demos": {
+    "exit_codes": [
+      0,
+      0
+    ],
+    "commands": [
+      "./fem/run.sh python -m tecooledmct.cli --quick --out outputs/cap-export-check/legacy-cli",
+      "./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/cap-export-check/legacy-geometry"
+    ],
+    "logs": [
+      "verification/legacy_cli.log",
+      "verification/legacy_geometry.log"
+    ]
+  },
+  "prior_checkpoint_artifact_hashes_verified_unchanged": 47,
+  "runtime": {
+    "image": "sha256:ce4f061bbfd77b8f9f2437771bad2b90dde5bc00f82eab8e1058ceca7fe3bbc5",
+    "new_tools_or_install": false,
+    "network": "none",
+    "cpus": 4,
+    "memory_gib": 8
+  },
+  "phase_B": "NOT RUN",
+  "phase_C": "NOT RUN",
+  "gas_void_extractions": 0,
+  "gas_meshes": 0,
+  "gas_PDE_solves": 0,
+  "comparative_fields_read_by_experiment": false,
+  "new_thermoelectric_production_solves": 0,
+  "visual_review": {
+    "final_scale_diagram_inspected": true,
+    "initial_clipped_layout_preserved": "unaccepted_visual_layout",
+    "no_gas_or_thermal_field_depicted": true
+  },
+  "source_of_stop": "User Phase A: stop if corrected export fails; single bounded correction attempt. Not a usage/rate-limit stop.",
+  "contract_and_links": "PASS; current code is validation only, failed producer quarantined; writer/reader process isolation specified but not executed",
+  "test_source_sha256": "7d825fb4805120987b25ead08d513b7fd35bfc673954a5fbae1f84091165f8c0",
+  "CI": "Verify exact pushed commit externally; no self-referential commit hash in this record",
+  "artifact_sha256": {
+    ".gitattributes": "c9bda38b64f487f3e1b014a73660b3f02fe3f65dbbc3024ee226c858c8227a18",
+    "checksums.json": "9c6aec5c4253f417e783f887531e6b70f8e8107abbe41012d8e247654e1c18b9",
+    "figure_provenance.json": "3ff23993b341c24dff0a95e1d5108e6aa9bdb373f6c975e2772f896f33b60116",
+    "phase_A_validation.json": "ba5c51a1c3503fdd77d36f8f4d675a75c3ab7e4922ae9c451bb9961f8df644d3",
+    "physical_scale_failure.png": "cdfb253cf03c9650d9f166b0651cf07d165449d74eb74bed20299551bea0cbe2",
+    "unaccepted_phase_A_attempt/author.py.snapshot": "390d899f52facd0b87176a384c01ebf47961648b1630394f52540896171b5431",
+    "unaccepted_phase_A_attempt/author_failure.log": "50ab3fcab1a5deab0da0b40e5e63ebed91d74a5fea2d9965a8553e10e5ed2fa5",
+    "unaccepted_phase_A_attempt/cap_window_unit_correct.step": "8098425a7a8a8b9f817df080813a68eb26d0d4ec931d03ac4f0389b2027fb642",
+    "unaccepted_phase_A_attempt/one_mm_cube.step": "34282907f77762f0b4cacf7adb9a77f3b084bde8eee1f81ff1884b58beebf2f0",
+    "unaccepted_visual_layout/figure_provenance.json": "c0eb6a9d181a2ccea1de2d9f5a178a2f2d4e478628ec8089e88d42824c448375",
+    "unaccepted_visual_layout/generator.py.snapshot": "0e68304abd9dd0e5df5a80f6c5ae1e1e1cb89bb808a30a6d96c4cf7dc421b6f7",
+    "unaccepted_visual_layout/physical_scale_failure.png": "579b492dfca1fb8b794e6c0ff203df5e47a9e207b12c034abb592d92471d89de",
+    "verification/archive_verifier.log": "3314847f48aacde2dbc35a0f1f0614d16ad0a28b96e2255eb9e3f2746f8cfae9",
+    "verification/focused.log": "dbc6177246fe2928218aadc9e703c4a8ff31b41bdb7921627577736dea176e37",
+    "verification/full_opt_in.log": "c18c504733082e8ea2e4fe806448e2ababc5d98241b77f5653e3e1665af977ed",
+    "verification/legacy_cli.log": "f37c6e58d7200cfc1c8238bb19d82e1310706ac418d9f610a526179522380442",
+    "verification/legacy_geometry.log": "206f5017522ce2973ea0cc21edb731c0f29bb55872d1341ec7c5e0257fd3e204",
+    "verification/master_integrity.log": "a9ac0c3ac83c40e1b4c3416066d63d324ee9f8c144641dfeed72d140b6557245",
+    "verification/read_only_validation.log": "f4b613de1e9aff77471940f9c74fa35956c4fc301fc9c3a54a8544aa292ab261"
+  }
+}
