@@ -1,0 +1,273 @@
+"""Read-only cofactor/face-jump/sparse-energy audit of frozen gas fields.
+
+No import of the original extractor, Gmsh, solver, remesher or linear solver.
+All calculations consume archived coordinates/connectivity/temperatures.
+"""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import re
+import time
+
+import numpy as np
+
+ROOT = Path(__file__).resolve().parents[1]
+FROZEN = ROOT/'data/isolated_cap_native_gas_20261101'
+NOTE = ROOT/'docs/NATIVE_GAS_FLUX_FORENSICS_20261101.md'
+
+
+def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+def read(path): return json.loads(Path(path).read_text())
+
+
+def write(path, data):
+    def native(x):
+        if isinstance(x,np.ndarray): return x.tolist()
+        if isinstance(x,np.generic): return x.item()
+        raise TypeError(type(x).__name__)
+    Path(path).write_text(json.dumps(data,indent=2,default=native,allow_nan=False)+'\n')
+
+
+def row_map(reference, target):
+    """Exact connectivity matching, independent of element/vertex order."""
+    a,b=np.sort(np.asarray(reference,dtype=np.int64),axis=1),np.sort(np.asarray(target,dtype=np.int64),axis=1)
+    if a.shape[1]!=b.shape[1] or len(a)==0: raise ValueError('Invalid connectivity widths/counts')
+    order=np.lexsort(a.T[::-1]);a=np.ascontiguousarray(a[order]);b=np.ascontiguousarray(b)
+    if np.any(np.all(a[1:]==a[:-1],axis=1)): raise ValueError('Duplicate reference connectivity')
+    dtype=np.dtype([(str(i),np.int64) for i in range(a.shape[1])])
+    av,bv=a.view(dtype).ravel(),b.view(dtype).ravel();ix=np.searchsorted(av,bv)
+    if np.any(ix>=len(a)) or not np.array_equal(av[ix],bv): raise ValueError('Missing mesh connectivity')
+    return order[ix]
+
+
+def coordinate_map(reference, target):
+    from scipy.spatial import cKDTree
+    if len(reference)!=len(target): raise ValueError('Node counts differ')
+    distance,ix=cKDTree(reference).query(target)
+    if distance.max()>1e-11 or len(np.unique(ix))!=len(reference): raise ValueError('Nonbijective coordinate map')
+    return ix,float(distance.max())
+
+
+def cofactor_geometry(points,cells):
+    x=points[cells];a,b,c=(x[:,i]-x[:,0] for i in (1,2,3))
+    cross=np.stack([np.cross(b,c),np.cross(c,a),np.cross(a,b)],axis=1)
+    determinant=np.einsum('ei,ei->e',a,cross[:,0])
+    if not np.isfinite(determinant).all() or np.any(determinant==0): raise ValueError('Degenerate/nonfinite tetrahedron')
+    g=np.empty((len(cells),4,3));g[:,1:]=cross/determinant[:,None,None];g[:,0]=-g[:,1:].sum(1)
+    return abs(determinant)/6,g,determinant
+
+
+def oriented_incidence(points,cells):
+    local=np.array([[1,2,3],[0,2,3],[0,1,3],[0,1,2]])
+    faces=cells[:,local].reshape(-1,3);parent=np.repeat(np.arange(len(cells)),4)
+    xyz=points[faces];A=np.cross(xyz[:,1]-xyz[:,0],xyz[:,2]-xyz[:,0])/2
+    toward_opposite=points[cells].reshape(-1,3)-xyz[:,0]
+    dot=np.einsum('ij,ij->i',A,toward_opposite)
+    if np.any(dot==0): raise ValueError('Degenerate face orientation')
+    A[dot>0]*=-1
+    unique,first,inverse,count=np.unique(np.sort(faces,axis=1),axis=0,return_index=True,return_inverse=True,return_counts=True)
+    if count.max()>2: raise ValueError('Nonmanifold tetrahedral face')
+    return {'faces':faces,'parent':parent,'vectors':A,'unique':unique,'first':first,'inverse':inverse,'count':count}
+
+
+def reconstruct(points,cells,T,k):
+    """Unconstrained K and exact facet jump identity, without solving K T=b."""
+    from scipy.sparse import coo_matrix
+    if not np.isfinite(k) or k<=0: raise ValueError('Positive finite conductivity required')
+    if not np.isfinite(T).all(): raise ValueError('Nonfinite temperature')
+    volume,g,det=cofactor_geometry(points,cells);inc=oriented_incidence(points,cells)
+    # Difference form avoids cancellation of the 300 K reference.
+    gradient=np.einsum('ei,eij->ej',T[cells[:,1:]]-T[cells[:,:1]],g[:,1:])
+    q=-k*gradient
+    power=np.einsum('ij,ij->i',q[inc['parent']],inc['vectors'])
+    face_power=np.bincount(inc['inverse'],weights=power,minlength=len(inc['unique']))
+    boundary=inc['count']==1;interior=inc['count']==2
+    b=np.bincount(inc['unique'][boundary].ravel(),weights=np.repeat(face_power[boundary]/3,3),minlength=len(points))
+    j=np.bincount(inc['unique'][interior].ravel(),weights=np.repeat(face_power[interior]/3,3),minlength=len(points))
+    local=k*volume[:,None,None]*np.einsum('eia,eja->eij',g,g)
+    K=coo_matrix((local.ravel(),(np.repeat(cells,4,axis=1).ravel(),np.tile(cells,(1,4)).ravel())),shape=(len(points),len(points))).tocsr()
+    reaction=K@(T-300.)
+    return {'volume':volume,'basis':g,'determinant':det,'incidence':inc,'gradient':gradient,'power':power,
+            'face_power':face_power,'boundary_node_raw':b,'node_jump':j,'K':K,'reaction':reaction}
+
+
+def allocation_decomposition(faces,bodies,raw,area,reaction,b,j):
+    n=len(reaction);total_area=np.bincount(faces.ravel(),weights=np.repeat(area/3,3),minlength=n)
+    rows=[];facet_reaction=np.zeros(len(faces))
+    for body in sorted(set(bodies.tolist())):
+        mask=bodies==body;f=faces[mask]
+        ai=np.bincount(f.ravel(),weights=np.repeat(area[mask]/3,3),minlength=n)
+        weight=np.zeros(n);np.divide(ai,total_area,out=weight,where=total_area>0)
+        bg=np.bincount(f.ravel(),weights=np.repeat(raw[mask]/3,3),minlength=n)
+        R=-weight@reaction;J=weight@j;C=weight@b-bg.sum()
+        rows.append({'body':int(body),'area_m2':area[mask].sum(),'raw_W':raw[mask].sum(),'reaction_W':R,
+                     'difference_W':R-raw[mask].sum(),'jump_contribution_W':J,'shared_node_redistribution_W':C,
+                     'identity_error_W':R-raw[mask].sum()-J-C})
+        facet_reaction[mask]=np.sum(-reaction[f]*(area[mask,None]/3)/total_area[f],axis=1)
+    return rows,facet_reaction,total_area
+
+
+def boundary_laws(sif):
+    k=float(re.search(r'Heat Conductivity = Real\s+(\S+)',sif).group(1))
+    if re.search(r'Heat Source|Heat Flux|Convection|Radiation',sif,re.I): raise ValueError('Unexpected source or mixed boundary physics')
+    laws={}
+    for block in re.findall(r'Boundary Condition \d+\n(.*?)\nEnd',sif,re.S):
+        tag=int(re.search(r'Target Boundaries\(1\) = (\d+)',block).group(1))
+        if 'Temperature = Real 300' in block: laws[tag]=None
+        else:
+            match=re.search(r'300-50\*\(\(tx-([\d.eE+-]+)\)/([\d.eE+-]+)\)\^2\*\(3-2\*\(\(tx-([\d.eE+-]+)\)/([\d.eE+-]+)\)\)',block)
+            if not match or match.group(1,2)!=match.group(3,4): raise ValueError('Unexpected analytic wall law')
+            laws[tag]=tuple(map(float,match.group(1,2)))
+    if not laws: raise ValueError('Missing Dirichlet walls')
+    return k,laws
+
+
+def wall_values(points,law):
+    if law is None:return np.full(len(points),300.)
+    u=(points[:,2]-law[0])/law[1]
+    if u.min() < -1e-10 or u.max()>1+1e-10:raise ValueError('Wall law outside registered domain')
+    return 300-50*u*u*(3-2*u)
+
+
+def run(out):
+    import meshio
+    from scipy.sparse.csgraph import connected_components
+    start=time.monotonic();out=Path(out).resolve()
+    if out.exists():raise ValueError('Use absent forensic output; frozen inputs are never overwritten')
+    ledger=read(FROZEN/'checksums.json')['artifact_sha256']
+    for path,digest in ledger.items():
+        if sha(FROZEN/path)!=digest:raise ValueError('Frozen artifact changed: '+path)
+    out.mkdir(parents=True)
+    source=FROZEN/'phase_C';m=np.load(source/'mesh.npz');p,c,f,body,native=[m[n] for n in ('points','cells','faces','solid_bodies','native_faces')]
+    write(out/'registration.json',{'registration':NOTE.read_text().split('## Results')[0],
+          'frozen_checksums_sha256':sha(FROZEN/'checksums.json'),'source_sha256':sha(__file__),
+          'original_extractor_sha256':sha(ROOT/'tecooledmct/native_gas_conduction.py'),
+          'read_only':True,'new_meshes':0,'PDE_solves':0})
+    field=meshio.read(source/'elmer/fields_t0001.vtu');ix,dist=coordinate_map(p,field.points)
+    T=np.empty(len(p));T[ix]=field.point_data['temperature'].ravel()
+    if len(np.unique(row_map(c,ix[field.cells_dict['tetra']])))!=len(c):raise ValueError('VTU cell bijection failed')
+    fi=row_map(f,ix[field.cells_dict['triangle']]);vtuid=field.cell_data_dict['GeometryIds']
+    if len(np.unique(fi))!=len(f) or not np.array_equal(vtuid['triangle'],20000+body[fi]):raise ValueError('VTU boundary ownership failed')
+    if not np.all(vtuid['tetra']==8000):raise ValueError('Unexpected VTU body')
+    # Independent raw MSH connectivity/physical group audit.
+    gm=meshio.read(source/'gas.msh');gi,gdist=coordinate_map(p,gm.points)
+    if len(np.unique(row_map(c,gi[gm.cells_dict['tetra']])))!=len(c):raise ValueError('MSH tetrahedron coverage failed')
+    gf=row_map(f,gi[gm.cells_dict['triangle']]);gdata=gm.cell_data_dict
+    if len(np.unique(gf))!=len(f) or not np.array_equal(gdata['gmsh:physical']['triangle'],20000+body[gf]) or not np.array_equal(gdata['gmsh:geometrical']['triangle'],native[gf]):raise ValueError('MSH source boundary mapping failed')
+    # ElmerGrid parent element/face incidence, independent of saved owner array.
+    en=np.loadtxt(source/'elmer/mesh.nodes');ee=np.loadtxt(source/'elmer/mesh.elements',dtype=np.int64);eb=np.loadtxt(source/'elmer/mesh.boundary',dtype=np.int64)
+    eo=np.argsort(en[:,0]);en=en[eo];ei,edist=coordinate_map(p,en[:,2:5]);eid=en[:,0].astype(np.int64)
+    ec=ei[np.searchsorted(eid,ee[:,3:])];e_to_c=row_map(c,ec)
+    ef=ei[np.searchsorted(eid,eb[:,5:])];e_to_f=row_map(f,ef)
+    if len(np.unique(e_to_f))!=len(f) or not np.array_equal(eb[:,1],20000+body[e_to_f]):raise ValueError('Elmer boundary physical IDs differ')
+    if not np.all(ee[:,1]==8000) or not np.all(ee[:,2]==504) or not np.all(eb[:,4]==303) or not np.all(eb[:,3]==0):raise ValueError('Unexpected Elmer element type or boundary parents')
+    eorder=np.argsort(ee[:,0]);parent=e_to_c[eorder[np.searchsorted(ee[eorder,0],eb[:,2])]]
+    k,laws=boundary_laws((source/'case.sif').read_text())
+    if set(laws)!=set((20000+body).tolist()):raise ValueError('SIF Dirichlet group coverage differs')
+    a=reconstruct(p,c,T,k);inc=a['incidence'];ids=row_map(inc['unique'],f)
+    if len(np.unique(ids))!=len(f) or not np.array_equal(np.sort(ids),np.flatnonzero(inc['count']==1)):raise ValueError('Missing/duplicate physical boundary face')
+    boundary_parent=inc['parent'][inc['first'][ids]]
+    if not np.array_equal(boundary_parent[e_to_f],parent):raise ValueError('Independent owner vs Elmer parent mismatch')
+    vectors=inc['vectors'][inc['first'][ids]];raw=a['face_power'][ids];area=np.linalg.norm(vectors,axis=1)
+    fixed=np.zeros(len(p),bool);fixed[np.unique(f)]=True;shared=np.zeros(len(p),int)
+    tmin=np.full(len(p),np.inf);tmax=np.full(len(p),-np.inf);trace_error=0.;interpolation_error=0.
+    # Actual triangle traces; a common P1 nodal trace is continuous along edges.
+    for b in np.unique(body):
+        mask=body==b;nodes=np.unique(f[mask]);values=wall_values(p[nodes],laws[20000+int(b)])
+        tmin[nodes]=np.minimum(tmin[nodes],values);tmax[nodes]=np.maximum(tmax[nodes],values);shared[nodes]+=1
+        trace_error=max(trace_error,float(abs(T[nodes]-values).max()))
+        centers=p[f[mask]].mean(1)
+        interpolation_error=max(interpolation_error,float(abs(wall_values(centers,laws[20000+int(b)])-T[f[mask]].mean(1)).max()))
+    conflict=float((tmax[fixed]-tmin[fixed]).max())
+    edges=np.concatenate([f[:,[0,1]],f[:,[1,2]],f[:,[2,0]]]);edge_body=np.tile(body,3);order=np.lexsort(np.sort(edges,axis=1).T[::-1]);edges=edges[order];edge_body=edge_body[order]
+    edge_keys=np.sort(edges,axis=1);joins=np.flatnonzero(np.all(edge_keys[1:]==edge_keys[:-1],axis=1)&(edge_body[1:]!=edge_body[:-1]));edge_conflict=0.
+    for i in joins:
+        midpoint=p[edges[i]].mean(0)[None,:]
+        edge_conflict=max(edge_conflict,float(abs(wall_values(midpoint,laws[20000+int(edge_body[i])])-wall_values(midpoint,laws[20000+int(edge_body[i+1])]))[0]))
+    rows,allocated,nodal_area=allocation_decomposition(f,body,raw,area,a['reaction'],a['boundary_node_raw'],a['node_jump'])
+    # Match geometric face signatures against the prior qualified native CAD.
+    cad=read(FROZEN/'phase_B/gas_faces.json');geom=[];used=set()
+    for tag in np.unique(native):
+        sel=native==tag;b=int(body[sel][0])
+        if not np.all(body[sel]==b):raise ValueError('Mixed physical owners on native face')
+        xyz=p[np.unique(f[sel])];bbox=np.r_[xyz.min(0),xyz.max(0)];A=area[sel].sum();center=(area[sel,None]*p[f[sel]].mean(1)).sum(0)/A
+        candidates=[q for q in cad if q['body']==b and abs(A/q['area_m2']-1)<.05 and np.max(abs(bbox-q['bbox_m']))<1e-5 and np.linalg.norm(center-q['centroid_m'])<1e-5]
+        if len(candidates)!=1 or candidates[0]['tag'] in used:raise ValueError('Ambiguous native CAD/mesh face signature')
+        q=candidates[0];used.add(q['tag']);planar=np.min(np.array(q['bbox_m'][3:])-q['bbox_m'][:3])<2.1e-7
+        geom.append({'mesh_face':int(tag),'CAD_face':q['tag'],'body':b,'planar':bool(planar),
+                     'CAD_area_m2':q['area_m2'],'mesh_area_m2':A,'area_relative_error':A/q['area_m2']-1,
+                     'raw_W':raw[sel].sum(),'allocated_W':allocated[sel].sum()})
+    if len(used)!=927:raise ValueError('Incomplete native source-face qualification coverage')
+    # Numerical checks computed without using original saved flux as input.
+    internal=inc['count']==2;J=a['face_power'][internal];bn=a['boundary_node_raw'];jn=a['node_jump'];r=a['reaction']
+    closure_vectors=np.sum(inc['vectors'].reshape(-1,4,3),axis=1)
+    local_power=a['power'].reshape(-1,4).sum(1)
+    deltaK=a['K']-a['K'].T;U=T-300;work=U@r;energy=k*np.sum(a['volume']*np.sum(a['gradient']**2,axis=1))
+    fixed_count=fixed[c].sum(1);edges_c=np.array([[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]])
+    l2=np.sum((p[c[:,edges_c[:,0]]]-p[c[:,edges_c[:,1]]])**2,axis=2)
+    quality=12*(3*a['volume'])**(2/3)/l2.sum(1)
+    node_components=connected_components(a['K'],directed=False,return_labels=False)
+    reproduction=np.einsum('eia,eib->eab',p[c]-p[c[:,:1]],a['basis'])
+    # Comparative readout only after independent reconstruction is complete.
+    saved=np.load(source/'audited_field.npz');original=read(source/'result.json')
+    checks={'raw_face_max_difference_W':float(abs(raw-saved['raw_face_power_W']).max()),
+            'gradient_max_difference_K_m':float(abs(a['gradient']-saved['gradient_K_m']).max()),
+            'area_vector_max_difference_m2':float(abs(vectors-saved['area_vectors_m2']).max()),
+            'allocated_face_max_difference_W':float(abs(allocated-saved['allocated_face_power_W']).max()),
+            'temperature_max_difference_K':float(abs(T-saved['temperature_K']).max()),
+            'owner_mismatches':int(np.sum(boundary_parent!=saved['face_owner_tet']))}
+    result={'scope':'Frozen-field algebraic forensic audit; no new physical experiment or solve',
+       'nodes':len(p),'tets':len(c),'boundary_triangles':len(f),'interior_faces':int(internal.sum()),
+       'native_CAD_faces_matched':len(used),'node_connected_components':int(node_components),
+       'VTU_variable_names':list(field.point_data),'Elmer_original_gradient_available':False,
+       'coordinate_match_max_m':{'VTU':dist,'MSH':gdist,'Elmer_mesh':edist},'independent_reproduction':checks,
+       'all_signed_tets_positive':bool(np.all(a['determinant']>0)),
+       'tet_area_vector_closure_max_m2':float(np.linalg.norm(closure_vectors,axis=1).max()),
+       'tet_divergence_power_max_W':float(abs(local_power).max()),
+       'shape_gradient_sum_max_per_m':float(abs(a['basis'].sum(1)).max()),
+       'shape_coordinate_reproduction_error':float(abs(reproduction-np.eye(3)).max()),
+       'paired_interior_area_closure_max_m2':float(max(np.max(abs(np.bincount(inc['inverse'],weights=inc['vectors'][:,i])[internal])) for i in range(3))),
+       'raw_positive_W':float(raw[raw>0].sum()),'raw_negative_W':float(raw[raw<0].sum()),'raw_sum_W':float(raw.sum()),
+       'interior_jump_signed_W':float(J.sum()),'interior_jump_L1_W':float(abs(J).sum()),
+       'boundary_plus_interior_jumps_W':float(raw.sum()+J.sum()),
+       'nodal_integration_by_parts_max_W':float(abs(r+bn+jn).max()),
+       'jump_at_boundary_nodes_W':float(jn[fixed].sum()),'jump_at_free_nodes_W':float(jn[~fixed].sum()),
+       'free_reaction_L1_W':float(abs(r[~fixed]).sum()),'free_reaction_max_W':float(abs(r[~fixed]).max()),
+       'reaction_global_W':float(r.sum()),'boundary_reaction_sum_W':float(-r[fixed].sum()),
+       'allocated_reaction_sum_W':float(allocated.sum()),'work_W_times_K':float(work),'energy_W_times_K':float(energy),
+       'K_symmetry_max_W_per_K':float(abs(deltaK.data).max()) if deltaK.nnz else 0.,
+       'K_uniform_nullspace_max_W_per_K':float(abs(a['K']@np.ones(len(p))).max()),
+       'Dirichlet_nodes':int(fixed.sum()),'multiple_body_boundary_nodes':int(np.sum(shared>1)),
+       'node_trace_conflict_K':conflict,'shared_edge_midpoint_trace_conflict_K':edge_conflict,
+       'Dirichlet_trace_max_error_K':trace_error,'triangle_centroid_analytic_vs_P1_trace_max_K':interpolation_error,
+       'global_shared_node_redistribution_W':float(sum(b['shared_node_redistribution_W'] for b in rows)),
+       'global_group_decomposition_error_W':float(max(abs(b['identity_error_W']) for b in rows)),
+       'mean_ratio_quality_quantiles':dict(zip(['min','p01','p10','median'],np.quantile(quality,[0,.01,.1,.5]).tolist())),
+       'boundary_tet_fixed_node_counts':{str(i):int(np.sum(fixed_count[np.unique(boundary_parent)]==i)) for i in range(1,5)},
+       'boundary_power_by_owner_fixed_nodes':{str(i):{'triangles':int(np.sum(fixed_count[boundary_parent]==i)),
+          'raw_W':float(raw[fixed_count[boundary_parent]==i].sum()),
+          'allocation_minus_raw_W':float((allocated-raw)[fixed_count[boundary_parent]==i].sum())} for i in (3,4)},
+       'planar_vs_curved':{label:{'CAD_faces':sum(g['planar']==flag for g in geom),
+          'raw_W':sum(g['raw_W'] for g in geom if g['planar']==flag),
+          'allocation_minus_raw_W':sum(g['allocated_W']-g['raw_W'] for g in geom if g['planar']==flag),
+          'max_abs_area_relative_error':max(abs(g['area_relative_error']) for g in geom if g['planar']==flag)} for label,flag in [('planar',True),('curved',False)]},
+       'groups':rows,'original_raw_1percent_passed':original['gates']['raw_global_1percent'],
+       'original_raw_relative_mismatch':original['raw_global_relative_mismatch'],'new_device_temperature':None,
+       'new_meshes':0,'Elmer_runs':0,'linear_solves':0,'Rev3_modified':False,
+       'elapsed_seconds':time.monotonic()-start}
+    if checks['raw_face_max_difference_W']>1e-10 or checks['owner_mismatches'] or result['nodal_integration_by_parts_max_W']>1e-10 or abs(result['boundary_plus_interior_jumps_W'])>1e-10 or conflict>1e-8 or result['global_group_decomposition_error_W']>1e-10:
+        raise ValueError('Forensic identity or extraction consistency failed; do not assign a cause')
+    write(out/'audit.json',result);write(out/'native_face_audit.json',geom)
+    np.savez_compressed(out/'diagnostic_arrays.npz',raw_boundary_W=raw,allocated_boundary_W=allocated,
+       boundary_area_m2=area,boundary_parent=boundary_parent,node_jump_W=jn,node_raw_boundary_W=bn,
+       reactions_W=r,interior_jump_W=J,interior_face_nodes=inc['unique'][internal],
+       tet_mean_ratio_quality=quality,tet_boundary_node_count=fixed_count)
+    for path,digest in ledger.items():
+        if sha(FROZEN/path)!=digest:raise ValueError('Frozen input changed during audit: '+path)
+    print(json.dumps({n:result[n] for n in ('raw_sum_W','interior_jump_signed_W','nodal_integration_by_parts_max_W','global_shared_node_redistribution_W','elapsed_seconds')}))
+    return result
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);args=p.parse_args();run(args.out)

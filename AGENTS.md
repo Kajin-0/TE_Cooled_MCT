@@ -78,6 +78,7 @@ inspect every page of a rebuilt master before publication.
 | `native_gas_audit.py`, `cap_export_validation.py` | Historical unit gates, original and quarantined failed STEP bytes preserved | Original STEP 1,000× too small; first correction 1,000× too large; neither is an accepted gas geometry input |
 | `isolated_cap_*`, `native_gas_csg.py` | Fresh mm writer / separate SI reader; accepted derivative; actual 216+3-solid partition, one connected gas void, 927 owned faces | Nominal ideal seals, external wires OFF; geometry validation is not manufactured-assembly validation |
 | `native_gas_conduction.py` | One actual gas-only Elmer Laplace control, 228,710 positive tets, analytic 250–300 K walls | **STOP: raw flux 32.6274% FAILS 1%**, despite conservative reactions; N2 at 101325 Pa, constant k; buoyancy suppressed; no qualified gas budget or new device T |
+| `native_gas_flux_forensics.py` | Read-only independent cofactor/face incidence and sparse P1 audit: +11.347300 mW interior normal-flux jumps explain −11.347300 mW raw boundary sum | No extraction/trace error found; shared-node redistribution sums to zero; no new solve, convergence result or raw-gate qualification |
 | `model.py`, `cli.py`, `experiments.py` | Original **four-node legacy demonstrations**, retained for compatibility | Not the current corrected package; older OEM-anchored assumptions are historical |
 
 - Archived 177-cut/current, weak heat and global/stage balance checks pass, but
@@ -115,6 +116,12 @@ inspect every page of a rebuilt master before publication.
   are separate in `verification.json`; their success cannot qualify gas flux,
   pass old side-port sensitivity or establish ceramic spreading. The 28-page
   master and original historical evidence remain unchanged.
+- Frozen-field forensics: `docs/NATIVE_GAS_FLUX_FORENSICS_20261101.md` and
+  `data/native_gas_flux_forensics_20261101`. Exact jump/reaction identities and
+  native-group decomposition verified, **32 focused / 385 applicable opt-in
+  tests pass**, with 12 runtime CAD/mesh/Elmer cases explicitly excluded. Current
+  verification records distinguish applicable regression from excluded runtime
+  CAD/mesh/Elmer tests under this audit's explicit no-solve limit.
 
 ## Read-first order
 
@@ -148,9 +155,13 @@ inspect every page of a rebuilt master before publication.
    solids, contacts, ownership, manifold closure and normal witnesses passed;
    gas volume 1.253174211e-6 m³. One 228,710-tet gas control completed with
    **32.6274% raw global mismatch >1%**. Reaction closure is not raw qualification.
-   The authorized attempt is exhausted: no new grid/solve or fitted correction.
-   Next decision: audit frozen raw-versus-reaction localization and analytic
-   wall discretization before registering a new numerical experiment. Do not
+   The field audit is now complete: read `docs/NATIVE_GAS_FLUX_FORENSICS_20261101.md`.
+   Normal-flux jumps of the C0 P1 field account for the entire net defect;
+   shared-node splitting cannot change it. No mapping/trace error was found.
+   The one proposed next experiment is a globally affine Dirichlet control on
+   the exact existing mesh (known facet fluxes), **not authorized or executed**.
+   It would test the solver/output pipeline, not qualify the original curved
+   field or establish convergence. No new grid/solve or fitted correction. Do not
    couple unqualified powers into device predictions. No old G3b geometry/chords,
    filled core, CFD or reopening stopped solid fixtures. N2 Kn=0.458 at 100 Pa
    fails; at 101325 Pa Kn=0.000452 but nominal Ra~2501 flags buoyancy. This was a

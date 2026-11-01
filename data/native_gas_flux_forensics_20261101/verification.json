@@ -1,0 +1,92 @@
+{
+  "status": "Read-only forensic identities verified; original raw 32.6274% FAIL against 1% preserved; no gas qualification",
+  "scientific_calculation": {
+    "seconds": 7.298703693086281,
+    "new_meshes": 0,
+    "new_Elmer_runs": 0,
+    "linear_solves": 0,
+    "source": "tecooledmct/native_gas_flux_forensics.py",
+    "original_extractor_called": false,
+    "physical_parameters_or_fields_modified": false
+  },
+  "focused_tests": {
+    "command": "./fem/run.sh pytest -q tests/test_native_gas_flux_forensics.py tests/test_isolated_cap_native_gas.py",
+    "exit_code": 0,
+    "passed": 32,
+    "seconds": 4.76,
+    "log": "verification/focused.log"
+  },
+  "full_applicable_opt_in": {
+    "command": "./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs --deselect=tests/test_corrected_enclosure.py::test_gmsh_geometry_and_interface_area_audit --deselect=tests/test_fem_g1.py::test_real_elmer_coupled_smoke --deselect=tests/test_fem_g2a.py::test_real_four_couple_solver_smoke --deselect=tests/test_fem_g2b_connected.py::test_actual_two_terminal_88_leg_mesh --deselect=tests/test_fem_g2b_geometry.py::test_real_88_leg_mesh_feasibility --deselect=tests/test_fem_g2b_physics.py::test_actual_two_terminal_full_stack_smoke --deselect=tests/test_fem_g2c.py::test_real_local_temperature_adapter_and_runtime_guard --deselect=tests/test_fem_g3b.py::test_genuine_elmer_compiled_exchange_does_not_stagnate_at_zero_initial_flux --deselect=tests/test_flux_presolder.py::test_genuine_three_dimensional_layered_elmer_coupon --deselect=tests/test_full_presolder.py::test_genuine_oblique_elmer_and_independent_quadratic_reference --deselect=tests/test_geometry_rebaseline.py::test_independent_cad_and_actual_conformal_header_mesh",
+    "exit_code": 0,
+    "passed": 385,
+    "deselected": 12,
+    "skipped": 0,
+    "warnings": 14,
+    "seconds": 43.1,
+    "log": "verification/applicable_opt_in.log",
+    "selection": "verification/regression_selection.json",
+    "reason": "Explicit user no-Elmer/no-new-CAD/mesh limit; existing 12 runtime cases excluded, not claimed passed"
+  },
+  "archive_verifier": {
+    "command": "./fem/run.sh python fem/archive_bath_spatial_device.py --verify",
+    "exit_code": 0,
+    "log": "verification/archive_verifier.log",
+    "old_failed_gates_retained": true
+  },
+  "master_integrity": {
+    "command": "python3 -B -m reports.master.validate --current",
+    "exit_code": 0,
+    "log": "verification/master_integrity.log",
+    "PDF_unchanged": true,
+    "pdf_sha256": "1bc0d793ac59cfa8b003454846bba2f7c9fe6bf431d57980ae7d95f8bee7ebff",
+    "sealed_original_pdf_sha256": "d173a8ba952462e1b6bf857739406f58eeb8d5c82b900f9fc65b84d40573acc1"
+  },
+  "legacy_demos": {
+    "exit_codes": [
+      0,
+      0
+    ],
+    "commands": [
+      "./fem/run.sh python -m tecooledmct.cli --quick --out outputs/gas-forensics-check/legacy-cli",
+      "./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/gas-forensics-check/legacy-geometry"
+    ],
+    "scope": "Requested existing legacy regression demonstrations; not new native gas experiments",
+    "logs": [
+      "verification/legacy_cli.log",
+      "verification/legacy_geometry.log"
+    ]
+  },
+  "runtime": {
+    "image": "tecooledmct-fem:26.2.1",
+    "cpus": 4,
+    "memory_gib": 8,
+    "network": "none",
+    "installs_or_rebuilds": false
+  },
+  "frozen_previous_scientific_artifact_hashes_verified": 48,
+  "new_scientific_artifact_hashes_verified": 11,
+  "visual_review": {
+    "actual_boundary_triangle_plot_inspected": true,
+    "no_clipped_bars_labels_or_margins": true,
+    "allocation_not_pointwise_flux_explicit": true,
+    "Rev3_rebuild": false
+  },
+  "contract_and_links": {
+    "local_links": 54,
+    "resolved": true,
+    "same_mesh_affine_control_proposed_only": true,
+    "no_follow_on_work": true
+  },
+  "test_source_sha256": "80bfc2734fd937d16b09a00cc8c9fb7ca54034007b2cc21cbea2ef0a23942d2f",
+  "CI": "Check exact pushed commit; no self-referential commit identity in this record",
+  "verification_artifact_sha256": {
+    "verification/archive_verifier.log": "3314847f48aacde2dbc35a0f1f0614d16ad0a28b96e2255eb9e3f2746f8cfae9",
+    "verification/legacy_geometry.log": "206f5017522ce2973ea0cc21edb731c0f29bb55872d1341ec7c5e0257fd3e204",
+    "verification/legacy_cli.log": "f37c6e58d7200cfc1c8238bb19d82e1310706ac418d9f610a526179522380442",
+    "verification/regression_selection.json": "98793be0707cfccbc17b0aa7d4d1b082721394a14807fb2cb8d46556add10827",
+    "verification/focused.log": "92020069379bef1baaaf0cbc6509fe61ff15dc31fc60041354ccbfb0c0f83e95",
+    "verification/master_integrity.log": "a9ac0c3ac83c40e1b4c3416066d63d324ee9f8c144641dfeed72d140b6557245",
+    "verification/applicable_opt_in.log": "868e369ae08f34ea08ebd4bc535080777d4c133593760f3e07db7cc816d5b3c9"
+  }
+}

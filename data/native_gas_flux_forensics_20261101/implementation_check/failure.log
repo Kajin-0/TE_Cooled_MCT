@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/native_gas_flux_forensics.py", line 273, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);args=p.parse_args();run(args.out)
+                                                                                                    ^^^^^^^^^^^^^
+  File "/work/tecooledmct/native_gas_flux_forensics.py", line 151, in run
+    if len(np.unique(fi))!=len(f) or not np.array_equal(vtuid['triangle'],20000+body[fi]):raise ValueError('VTU boundary ownership failed')
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: VTU boundary ownership failed

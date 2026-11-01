@@ -58,9 +58,11 @@ The matched solid diagnostic and its one passive plate follow-up have reached
 their registered stops. The [isolated cap/native gas control](ISOLATED_CAP_AND_NATIVE_GAS_20261101.md)
 now qualifies a separate SI-correct derivative and actual void, preserving both
 earlier bad STEP files. Its one standalone Elmer gas calculation fails raw flux
-balance (32.6274% against 1%); conservative reactions do not qualify it. Current
-priority is auditing frozen raw-versus-reaction localization before registering
-further numerical work. No new device temperature or physical validation follows.
+balance (32.6274% against 1%); conservative reactions do not qualify it. The
+[frozen-field forensic audit](NATIVE_GAS_FLUX_FORENSICS_20261101.md) now
+identifies the exact P1 normal-flux jump defect, with no new solve. An affine
+same-mesh control is proposed only; no new device temperature, convergence or
+physical validation follows.
 Then implement bounded native-surface visibility/
 exchange from corrected source faces, retaining the filled-core proxy as a
 comparator. Then run paired

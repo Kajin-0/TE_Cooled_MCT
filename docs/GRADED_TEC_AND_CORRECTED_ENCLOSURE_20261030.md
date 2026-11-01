@@ -259,8 +259,10 @@ constant, corrective-checkpoint and sealed FEM data are untouched. Full verifica
 ./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/current-model/legacy-geometry
 ```
 
-The current contract stops the one native gas experiment at failed raw flux;
-audit its frozen localization before registering further work, then native-surface exchange
+The current contract stops the native gas experiment at failed raw flux. The
+[frozen-field audit](NATIVE_GAS_FLUX_FORENSICS_20261101.md) identifies exact P1
+normal-flux jumps; its proposed affine same-mesh control remains unexecuted.
+Further registered work may then address native-surface exchange
 without filled interstage voids and paired mechanism/sensitivity tests. Keep improving
 these current guides and README with each increment. Preserve all frozen source,
 actual fields, original raw 1% bath / 5% interface failures, Rev2 and sealed original

@@ -160,7 +160,9 @@ exceed the demonstrated discretization changes.
    them. Update the live Rev3 master in place while preserving its sealed original bytes.
 5. A separate unit-correct cap derivative and actual native void now pass;
    one standalone gas control fails raw balance at 32.6274% against 1%.
-   Audit frozen localization before further native-surface exchange or paired studies. Do not force a large
+   The [read-only audit](NATIVE_GAS_FLUX_FORENSICS_20261101.md) explains the net
+   defect through P1 normal-flux jumps, without qualification or a new solve.
+   Do not force a large
    conformal gas/TEC remesh or a proprietary OEM fit to complete useful studies.
 
 The [matched solid-model diagnostic](MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md)
