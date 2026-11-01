@@ -54,6 +54,15 @@ reference article.
 
 ## Current next milestones
 
+The user-prioritized [material-hypothesis study](TEC_MATERIAL_PLAUSIBILITY_20261101.md)
+now demonstrates conditional <200 K reduced samples, not actual package
+feasibility. All three triples are engineering hypotheses; literal 27 C module
+comparisons need assumed >300 K continuation and show large joint lift/voltage
+differences. Existing algorithms and geometry are unchanged; no fit or commercial
+grade was identified. Material/geometry/contact and omitted-path evidence comes
+before claiming real-device performance; deferred exchange work is not resumed
+automatically by this checkpoint.
+
 The matched solid diagnostic and its one passive plate follow-up have reached
 their registered stops. The [isolated cap/native gas control](ISOLATED_CAP_AND_NATIVE_GAS_20261101.md)
 now qualifies a separate SI-correct derivative and actual void, preserving both

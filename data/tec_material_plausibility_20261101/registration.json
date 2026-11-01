@@ -1,0 +1,3124 @@
+{
+  "UTC": "2026-11-01T06:22:29.346451+00:00",
+  "baseline": "c24dd2535f52c813bb92c06190c2fd0a371f8955",
+  "registration": "# Reduced TEC material hypotheses and datasheet plausibility\n\n## Registration before scenario evaluation\n\nUser priority: bounded material/operating-condition insight, not OEM fitting or\nthe deferred radiation experiment. Preserve existing G1, affine and nonlinear\ncode/laws, 28/12/4 geometry, all historical fields/failures and the one Rev3.\nThis is an internal reduced-model record, not a new standalone report.\n\nSource: corrected `zhang2025_he_digitized_40_300_v2r1`, DOI\n10.1088/0256-307X/42/5/056304. P-HE and N-HE-1 are different measured research\nspecimens, not a matched commercial P/N module grade. Use unchanged\n`zhang2025_nonlinear`, 32 axial intervals, active 180\u2013390 K. Properties below\n300 K are source interpolations; above 300 K use the existing **ASSUMED quarter\nterminal-tangent** law. All local leg extrema, not only junctions, determine\nwhether continuation was used. No silent extrapolation or clipping of results.\n\nFixed triples `(S scale, rho scale, k scale)`:\n\n| Hypothesis | Triple | Equal-area couple ZT / nominal |\n| --- | --- | ---: |\n| Nominal research analog | (1, 1, 1) | 1 |\n| Lower-performance engineering hypothesis | (0.9, 1.2, 1.2) | 0.5625 |\n| Higher-performance engineering hypothesis | (1.1, 0.8, 0.8) | 1.890625 |\n\nThese reuse the already declared engineering ranges, retaining complete\ntemperature-law shapes and positivity. Their covariance/manufacturability is\nunknown; they are not experimental grades or confidence intervals. No scale,\ngeometry, current grid or acceptance choice is selected from OEM residuals.\nCharacterize both polarities and the equal-area couple at source/assumed T,\nwith sigma=1/rho and Thomson=T*dS/dT of the actual scaled piecewise law.\nInterior knots use right derivatives, 300 K the measured left derivative,\nabove 300 K the quarter slope, 390 K its left limit.\n\n**Fixed operating grids:** currents 0/0.1/0.15/0.2/0.25/0.3/0.4/0.5/0.6/0.8/1 A.\nAt Thot=300 K and die load 2 mW run all three triples with (a) all external\nCu/Au wires OFF, (b) actual reduced Cu/Au wire paths ON; no gas/radiation in\neither control. R_sink=0 fixes the hot ceramic, preserving the finite die attach.\nWire OFF removes the external wire list, not just its conductance scale, so\nno hidden wire resistance/Joule heat remains. No CAD changes are made.\nAlso run G1 on the wire-OFF grid; 24 hot/load controls (three triples,\nThot=290/310 K, load=0/5 mW, I=0.15/0.4 A, wires OFF); and 12 registered\none-factor endpoints at nominal Thot=300 K, I=0.25 A, load=2 mW: S/rho/k\nranges above, Thot=290/310 K, load=0/5 mW and attach k=0.5/3 W/(m K).\nThe wire-ON/OFF pair at the same nominal point is an additional paired contrast.\n\n**Datasheet:** use all existing 27 C vacuum scalar readings and all unique\nI/Qc conditions, all three triples, literal Thot=300.15 K, external wires and\nside exchange OFF. Report cooler cold-ceramic lift and **module** V, never\ndetector temperature against zero-load lift. Auxiliary die attach is allowed\nonly after verifying its invariance for these prescribed-load, exchange-OFF\nmodule balances. Six nominal zero-load current controls use 300 K separately\nto quantify the 0.15 K reference offset; they are not exact chart matches.\nEngineering-law comparisons have matched stated hot/current/load/environment,\nbut unidentified module internals/grade and unspecified vacuum parasitics\nremain limitations. Strict measured-law comparison at 300.15 K is\n**NOT COMPARABLE**, beyond 300 K; dry-N2 panels and package-detector points are\nalso NOT COMPARABLE. Preserve calibration/holdout labels, already examined;\nno new blindness, fit or OEM validation. Historical G2d residuals belong to old\ngeometry/materials, with rank-8/9 identifiability, not current residual evidence.\n\n**Observables/gates:** retain full successful stage/path budgets and failed\ncandidate/optimizer/domain diagnostics; count accepted/rejected/NOT RUN cases.\nUse existing node/global 1e-8 and stage 1e-9 W gates, unchanged leg residuals\nand source/sign/positivity guards. Qc is net heat absorbed at the cold ceramic;\ndie COP is imposed die load / terminal input, cooler COP is Qc / module input,\nonly when input is positive. A target demonstration requires an actual admitted\nThot=300 K, load=2 mW case with Tdie<=200 K; discrete minima are not global\noptima, and rejections do not prove physical infeasibility. Report measured-only\nand assumed-continuation coverage separately. Qmax/DeltaTmax are NOT RUN.\n\n**Verification/bounds:** analytic constant/zero/negative controls; scaled P/N\ncomparison against independent bounded BVP at two measured-domain stage points\n(stage 0: 295/250 K, 0.15 A; stage 2: 260/210 K, 0.3 A), all triples; attach\ninvariance; source-knot/300/390 K semantics; frozen baseline snapshots/hashes.\nNo new FEM/CAD/gas/radiation jobs. Per reduced solve 8 s; total scenario budget\n600 s, remaining cases NOT RUN on exhaustion; no retries or adaptive tuning.\nUse existing pinned wrapper <=4 CPUs/8 GiB. Existing runtime mesh/Elmer smoke\ntests are excluded under the no-new-3D instruction; remaining opt-in regression,\narchive/master integrity and legacy checks still run. Optional nonlocal-shunt\ncomparison is NOT RUN: its 7.277% side-port gate remains failed.\n\n",
+  "hypotheses": {
+    "nominal": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "lower": [
+      0.9,
+      1.2,
+      1.2
+    ],
+    "higher": [
+      1.1,
+      0.8,
+      0.8
+    ]
+  },
+  "cases": [
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "000"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.1,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "001"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.15,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "002"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.2,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "003"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "004"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.3,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "005"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.4,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "006"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.5,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "007"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.6,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "008"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.8,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "009"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 1.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "010"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "011"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.1,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "012"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.15,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "013"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.2,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "014"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "015"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.3,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "016"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.4,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "017"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.5,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "018"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.6,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "019"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 0.8,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "020"
+    },
+    {
+      "group": "core",
+      "hypothesis": "nominal",
+      "current_A": 1.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "021"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "022"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.1,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "023"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.15,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "024"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.2,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "025"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "026"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.3,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "027"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.4,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "028"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.5,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "029"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.6,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "030"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.8,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "031"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 1.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "032"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "033"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.1,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "034"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.15,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "035"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.2,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "036"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "037"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.3,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "038"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.4,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "039"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.5,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "040"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.6,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "041"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 0.8,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "042"
+    },
+    {
+      "group": "core",
+      "hypothesis": "lower",
+      "current_A": 1.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "043"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "044"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.1,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "045"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.15,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "046"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.2,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "047"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "048"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.3,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "049"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.4,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "050"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.5,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "051"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.6,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "052"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.8,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "053"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 1.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "054"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "055"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.1,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "056"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.15,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "057"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.2,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "058"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "059"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.3,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "060"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.4,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "061"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.5,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "062"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.6,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "063"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 0.8,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "064"
+    },
+    {
+      "group": "core",
+      "hypothesis": "higher",
+      "current_A": 1.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": true,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "065"
+    },
+    {
+      "group": "G1_control",
+      "hypothesis": "nominal",
+      "current_A": 0.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "g1_constant",
+      "label": null,
+      "id": "066"
+    },
+    {
+      "group": "G1_control",
+      "hypothesis": "nominal",
+      "current_A": 0.1,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "g1_constant",
+      "label": null,
+      "id": "067"
+    },
+    {
+      "group": "G1_control",
+      "hypothesis": "nominal",
+      "current_A": 0.15,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "g1_constant",
+      "label": null,
+      "id": "068"
+    },
+    {
+      "group": "G1_control",
+      "hypothesis": "nominal",
+      "current_A": 0.2,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "g1_constant",
+      "label": null,
+      "id": "069"
+    },
+    {
+      "group": "G1_control",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "g1_constant",
+      "label": null,
+      "id": "070"
+    },
+    {
+      "group": "G1_control",
+      "hypothesis": "nominal",
+      "current_A": 0.3,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "g1_constant",
+      "label": null,
+      "id": "071"
+    },
+    {
+      "group": "G1_control",
+      "hypothesis": "nominal",
+      "current_A": 0.4,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "g1_constant",
+      "label": null,
+      "id": "072"
+    },
+    {
+      "group": "G1_control",
+      "hypothesis": "nominal",
+      "current_A": 0.5,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "g1_constant",
+      "label": null,
+      "id": "073"
+    },
+    {
+      "group": "G1_control",
+      "hypothesis": "nominal",
+      "current_A": 0.6,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "g1_constant",
+      "label": null,
+      "id": "074"
+    },
+    {
+      "group": "G1_control",
+      "hypothesis": "nominal",
+      "current_A": 0.8,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "g1_constant",
+      "label": null,
+      "id": "075"
+    },
+    {
+      "group": "G1_control",
+      "hypothesis": "nominal",
+      "current_A": 1.0,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "g1_constant",
+      "label": null,
+      "id": "076"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "nominal",
+      "current_A": 0.15,
+      "die_load_W": 0.0,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "077"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "nominal",
+      "current_A": 0.4,
+      "die_load_W": 0.0,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "078"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "nominal",
+      "current_A": 0.15,
+      "die_load_W": 0.005,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "079"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "nominal",
+      "current_A": 0.4,
+      "die_load_W": 0.005,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "080"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "nominal",
+      "current_A": 0.15,
+      "die_load_W": 0.0,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "081"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "nominal",
+      "current_A": 0.4,
+      "die_load_W": 0.0,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "082"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "nominal",
+      "current_A": 0.15,
+      "die_load_W": 0.005,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "083"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "nominal",
+      "current_A": 0.4,
+      "die_load_W": 0.005,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "084"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "lower",
+      "current_A": 0.15,
+      "die_load_W": 0.0,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "085"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "lower",
+      "current_A": 0.4,
+      "die_load_W": 0.0,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "086"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "lower",
+      "current_A": 0.15,
+      "die_load_W": 0.005,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "087"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "lower",
+      "current_A": 0.4,
+      "die_load_W": 0.005,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "088"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "lower",
+      "current_A": 0.15,
+      "die_load_W": 0.0,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "089"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "lower",
+      "current_A": 0.4,
+      "die_load_W": 0.0,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "090"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "lower",
+      "current_A": 0.15,
+      "die_load_W": 0.005,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "091"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "lower",
+      "current_A": 0.4,
+      "die_load_W": 0.005,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "092"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "higher",
+      "current_A": 0.15,
+      "die_load_W": 0.0,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "093"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "higher",
+      "current_A": 0.4,
+      "die_load_W": 0.0,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "094"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "higher",
+      "current_A": 0.15,
+      "die_load_W": 0.005,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "095"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "higher",
+      "current_A": 0.4,
+      "die_load_W": 0.005,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "096"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "higher",
+      "current_A": 0.15,
+      "die_load_W": 0.0,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "097"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "higher",
+      "current_A": 0.4,
+      "die_load_W": 0.0,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "098"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "higher",
+      "current_A": 0.15,
+      "die_load_W": 0.005,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "099"
+    },
+    {
+      "group": "hot_load",
+      "hypothesis": "higher",
+      "current_A": 0.4,
+      "die_load_W": 0.005,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "100"
+    },
+    {
+      "group": "OAT",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": "S_0.9",
+      "id": "101"
+    },
+    {
+      "group": "OAT",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": "S_1.1",
+      "id": "102"
+    },
+    {
+      "group": "OAT",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        0.8,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": "rho_0.8",
+      "id": "103"
+    },
+    {
+      "group": "OAT",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.2,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": "rho_1.2",
+      "id": "104"
+    },
+    {
+      "group": "OAT",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": "k_0.8",
+      "id": "105"
+    },
+    {
+      "group": "OAT",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": "k_1.2",
+      "id": "106"
+    },
+    {
+      "group": "OAT",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 290.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": "hot_290.0",
+      "id": "107"
+    },
+    {
+      "group": "OAT",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 310.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": "hot_310.0",
+      "id": "108"
+    },
+    {
+      "group": "OAT",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.0,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": "load_0.0",
+      "id": "109"
+    },
+    {
+      "group": "OAT",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.005,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": "load_0.005",
+      "id": "110"
+    },
+    {
+      "group": "OAT",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 0.5,
+      "material_model": "zhang2025_nonlinear",
+      "label": "attach_0.5",
+      "id": "111"
+    },
+    {
+      "group": "OAT",
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "die_load_W": 0.002,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 3.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": "attach_3.0",
+      "id": "112"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.1,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "113"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.2,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "114"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.2,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "115"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.4,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "116"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.4,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "117"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.4,
+      "die_load_W": 0.2,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "118"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.6,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "119"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.6,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "120"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.6,
+      "die_load_W": 0.2,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "121"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.6,
+      "die_load_W": 0.31,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "122"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.8,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "123"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.8,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "124"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.8,
+      "die_load_W": 0.2,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "125"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.8,
+      "die_load_W": 0.31,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "126"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 0.8,
+      "die_load_W": 0.41,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "127"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 1.0,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "128"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 1.0,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "129"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 1.0,
+      "die_load_W": 0.2,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "130"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 1.0,
+      "die_load_W": 0.31,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "131"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "nominal",
+      "current_A": 1.0,
+      "die_load_W": 0.41,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "132"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.1,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "133"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.2,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "134"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.2,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "135"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.4,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "136"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.4,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "137"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.4,
+      "die_load_W": 0.2,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "138"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.6,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "139"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.6,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "140"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.6,
+      "die_load_W": 0.2,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "141"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.6,
+      "die_load_W": 0.31,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "142"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.8,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "143"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.8,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "144"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.8,
+      "die_load_W": 0.2,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "145"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.8,
+      "die_load_W": 0.31,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "146"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 0.8,
+      "die_load_W": 0.41,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "147"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 1.0,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "148"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 1.0,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "149"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 1.0,
+      "die_load_W": 0.2,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "150"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 1.0,
+      "die_load_W": 0.31,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "151"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "lower",
+      "current_A": 1.0,
+      "die_load_W": 0.41,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "152"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.1,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "153"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.2,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "154"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.2,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "155"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.4,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "156"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.4,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "157"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.4,
+      "die_load_W": 0.2,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "158"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.6,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "159"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.6,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "160"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.6,
+      "die_load_W": 0.2,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "161"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.6,
+      "die_load_W": 0.31,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "162"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.8,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "163"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.8,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "164"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.8,
+      "die_load_W": 0.2,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "165"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.8,
+      "die_load_W": 0.31,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "166"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 0.8,
+      "die_load_W": 0.41,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "167"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 1.0,
+      "die_load_W": 0.0,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "168"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 1.0,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "169"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 1.0,
+      "die_load_W": 0.2,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "170"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 1.0,
+      "die_load_W": 0.31,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "171"
+    },
+    {
+      "group": "OEM_literal",
+      "hypothesis": "higher",
+      "current_A": 1.0,
+      "die_load_W": 0.41,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "172"
+    },
+    {
+      "group": "OEM_300K_reference",
+      "hypothesis": "nominal",
+      "current_A": 0.1,
+      "die_load_W": 0.0,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "173"
+    },
+    {
+      "group": "OEM_300K_reference",
+      "hypothesis": "nominal",
+      "current_A": 0.2,
+      "die_load_W": 0.0,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "174"
+    },
+    {
+      "group": "OEM_300K_reference",
+      "hypothesis": "nominal",
+      "current_A": 0.4,
+      "die_load_W": 0.0,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "175"
+    },
+    {
+      "group": "OEM_300K_reference",
+      "hypothesis": "nominal",
+      "current_A": 0.6,
+      "die_load_W": 0.0,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "176"
+    },
+    {
+      "group": "OEM_300K_reference",
+      "hypothesis": "nominal",
+      "current_A": 0.8,
+      "die_load_W": 0.0,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "177"
+    },
+    {
+      "group": "OEM_300K_reference",
+      "hypothesis": "nominal",
+      "current_A": 1.0,
+      "die_load_W": 0.0,
+      "hot_K": 300.0,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 1.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "178"
+    },
+    {
+      "group": "attach_invariance",
+      "hypothesis": "nominal",
+      "current_A": 0.2,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 0.5,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "179"
+    },
+    {
+      "group": "attach_invariance",
+      "hypothesis": "nominal",
+      "current_A": 0.2,
+      "die_load_W": 0.1,
+      "hot_K": 300.15,
+      "wires_ON": false,
+      "scales": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "attach_k_W_mK": 3.0,
+      "material_model": "zhang2025_nonlinear",
+      "label": null,
+      "id": "180"
+    }
+  ],
+  "input_sha256": {
+    "tecooledmct/graded_tec.py": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "tecooledmct/nonlinear_tec.py": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "tecooledmct/integrated_reference.py": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "tecooledmct/material_profiles.py": "b332771e082c5e389cfdb819b184cd710f8ae7992cb597cf37b26aabc06ee7d6",
+    "tecooledmct/oem_phase_a.py": "efe026a71bca341774523fa56226169ff37e6d40500db7fe963dd3b9e59caa93",
+    "tecooledmct/fem_g2a.py": "d6654b9466ac7ef49c7336217e23310a8920b1121a2e3933cf1e0d795ce546fc",
+    "data/g2c/zhang2025_he_40_300_v2.json": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+    "data/g2c/oem2019_curves_v1.json": "b6de59e07ad02dde83d5ddeb880e650cd74f73557d63d2ba8b35ba94b214b1e0",
+    "data/g2c/source_registry.json": "69844d52f00dbb2d8a86b16d3171671b110bb4809c256bbed5e7a1f0232f3360",
+    "data/g2d/oem_source_review.json": "57c5e1bd3cbdc089fda3ec7623e01b49137732d881bd26e8aa64ea48bde05b71",
+    "data/g2d/preregistration.json": "0f3b63e4be59ec5f22ed582172a2ffdd902494a87567f5d2feb479b56214f269",
+    "data/g2d/calibration_reserved.json": "9e870d76769851c2efbb21203de7b93fc47bcfc2117088ded64f1d3537de2af0",
+    "data/g2d/validation_holdout.json": "75c5b357b6e0893cd853b7015d0715bd516263c9189a72ca5644070ab31fe4e2",
+    "fem/results/geometry_complete_checkpoint_20261030/manifest.json": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+    "fem/results/geometry_complete_checkpoint_20261030/wire_routes.json": "e751350be5e48af2104eaf2e85c864fecf8ce08e2c03fe2e3349ebdbe96b757f"
+  },
+  "study_code_sha256": "1e894074d22363c03110af28718b2035b845f4078120e479c1d75f7645205472",
+  "per_case_seconds": 8.0,
+  "total_case_budget_seconds": 600.0,
+  "source_material_id": "zhang2025_he_digitized_40_300_v2r1",
+  "fitted_parameters": false,
+  "new_3D_solves": 0
+}

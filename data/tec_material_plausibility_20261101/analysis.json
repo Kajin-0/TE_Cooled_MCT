@@ -1,0 +1,293 @@
+{
+  "OAT_baseline": {
+    "id": "004",
+    "group": "core",
+    "hypothesis": "nominal",
+    "current_A": 0.25,
+    "hot_K": 300.0,
+    "die_load_W": 0.002,
+    "wires_ON": false,
+    "Tdie_K": 205.72202926072382,
+    "Tcold_ceramic_K": 205.6620292607238,
+    "cold_lift_K": 94.33797073927619,
+    "stage_lifts_K": [
+      44.91273766505364,
+      29.483541216230122,
+      19.941691857992424
+    ],
+    "Qc_cold_W": 0.0020000000000001943,
+    "module_voltage_V": 1.7135479449003024,
+    "terminal_voltage_V": 1.7135479449003024,
+    "module_input_W": 0.4283869862250756,
+    "terminal_input_W": 0.4283869862250756,
+    "cooler_COP": 0.004668675903589166,
+    "die_COP": 0.004668675903588712,
+    "local_leg_min_K": 205.6620292607238,
+    "local_leg_max_K": 300.0,
+    "assumed_continuation_used": false,
+    "all_legs_within_measured_domain": true,
+    "module_boundary": "conditional idealized vacuum with prescribed hot ceramic and cold load, no external exchange",
+    "material_grade_identified": false,
+    "label": null
+  },
+  "one_factor_endpoint_rankings": [
+    {
+      "factor": "k",
+      "case_ids": [
+        "105",
+        "106"
+      ],
+      "low_Tdie_K": 192.60319019223027,
+      "high_Tdie_K": 215.95203943643074,
+      "endpoint_span_K": 23.348849244200466
+    },
+    {
+      "factor": "S",
+      "case_ids": [
+        "101",
+        "102"
+      ],
+      "low_Tdie_K": 213.133751671851,
+      "high_Tdie_K": 198.96122509103324,
+      "endpoint_span_K": 14.17252658081776
+    },
+    {
+      "factor": "hot_K",
+      "case_ids": [
+        "107",
+        "108"
+      ],
+      "low_Tdie_K": 201.1897786140913,
+      "high_Tdie_K": 210.27462480487324,
+      "endpoint_span_K": 9.084846190781946
+    },
+    {
+      "factor": "rho",
+      "case_ids": [
+        "103",
+        "104"
+      ],
+      "low_Tdie_K": 203.28578479677958,
+      "high_Tdie_K": 208.24575768994958,
+      "endpoint_span_K": 4.959972893170004
+    },
+    {
+      "factor": "load_W",
+      "case_ids": [
+        "109",
+        "110"
+      ],
+      "low_Tdie_K": 204.83532991737644,
+      "high_Tdie_K": 207.05433498036862,
+      "endpoint_span_K": 2.2190050629921814
+    },
+    {
+      "factor": "attach_k",
+      "case_ids": [
+        "111",
+        "112"
+      ],
+      "low_Tdie_K": 205.7820292607237,
+      "high_Tdie_K": 205.68202926118173,
+      "endpoint_span_K": 0.09999999954197847
+    }
+  ],
+  "isothermal_PN_reference": {
+    "nominal": {
+      "temperature_K": [
+        200.0,
+        300.0
+      ],
+      "R_PN_ohm": [
+        2.7636905954840496,
+        5.19542447640334
+      ],
+      "couple_ZT": [
+        0.589829967440649,
+        0.9890926154239539
+      ]
+    },
+    "lower": {
+      "temperature_K": [
+        200.0,
+        300.0
+      ],
+      "R_PN_ohm": [
+        3.3164287145808595,
+        6.234509371684008
+      ],
+      "couple_ZT": [
+        0.331779356685365,
+        0.556364596175974
+      ]
+    },
+    "higher": {
+      "temperature_K": [
+        200.0,
+        300.0
+      ],
+      "R_PN_ohm": [
+        2.2109524763872397,
+        4.156339581122673
+      ],
+      "couple_ZT": [
+        1.1151472821924762,
+        1.8700032260359127
+      ]
+    }
+  },
+  "wire_ON_minus_OFF_at_nominal_025A_K": 0.6848662702426509,
+  "OEM_error_metrics": [
+    {
+      "scope": "all_admitted",
+      "hypothesis": "nominal",
+      "field": "delta_t_k",
+      "count": 18,
+      "mean_signed_difference": -2.275424221780284,
+      "MAE": 19.854872215171117,
+      "max_abs": 47.26430552840185,
+      "mean_abs_relative": 0.5350596994394864
+    },
+    {
+      "scope": "all_admitted",
+      "hypothesis": "nominal",
+      "field": "voltage_v",
+      "count": 18,
+      "mean_signed_difference": 1.3697522296874514,
+      "MAE": 1.3697522296874514,
+      "max_abs": 2.120667324896972,
+      "mean_abs_relative": 0.6238333260103975
+    },
+    {
+      "scope": "all_admitted",
+      "hypothesis": "lower",
+      "field": "delta_t_k",
+      "count": 15,
+      "mean_signed_difference": -26.188081785622547,
+      "MAE": 30.220770924725173,
+      "max_abs": 78.95895359861076,
+      "mean_abs_relative": 0.8384981336325193
+    },
+    {
+      "scope": "all_admitted",
+      "hypothesis": "lower",
+      "field": "voltage_v",
+      "count": 15,
+      "mean_signed_difference": 1.5487823557509885,
+      "MAE": 1.5487823557509885,
+      "max_abs": 2.3202619595921714,
+      "mean_abs_relative": 0.7972800239770456
+    },
+    {
+      "scope": "all_admitted",
+      "hypothesis": "higher",
+      "field": "delta_t_k",
+      "count": 13,
+      "mean_signed_difference": 30.334836880376105,
+      "MAE": 30.334836880376105,
+      "max_abs": 50.96006876919312,
+      "mean_abs_relative": 0.7964044845437587
+    },
+    {
+      "scope": "all_admitted",
+      "hypothesis": "higher",
+      "field": "voltage_v",
+      "count": 13,
+      "mean_signed_difference": 0.8356715077922575,
+      "MAE": 0.8356715077922575,
+      "max_abs": 1.2654670750632806,
+      "mean_abs_relative": 0.4767780966681222
+    },
+    {
+      "scope": "common_admitted",
+      "hypothesis": "nominal",
+      "field": "delta_t_k",
+      "count": 10,
+      "mean_signed_difference": 4.158925647412893,
+      "MAE": 17.13558160844355,
+      "max_abs": 31.224436594403173,
+      "mean_abs_relative": 0.568937305337725
+    },
+    {
+      "scope": "common_admitted",
+      "hypothesis": "nominal",
+      "field": "voltage_v",
+      "count": 10,
+      "mean_signed_difference": 1.0588452772635657,
+      "MAE": 1.0588452772635657,
+      "max_abs": 1.6877894168854808,
+      "mean_abs_relative": 0.6433948325677118
+    },
+    {
+      "scope": "common_admitted",
+      "hypothesis": "lower",
+      "field": "delta_t_k",
+      "count": 10,
+      "mean_signed_difference": -27.711118101411735,
+      "MAE": 32.79800033657229,
+      "max_abs": 78.95895359861076,
+      "mean_abs_relative": 1.1216232759431854
+    },
+    {
+      "scope": "common_admitted",
+      "hypothesis": "lower",
+      "field": "voltage_v",
+      "count": 10,
+      "mean_signed_difference": 1.4271389795935823,
+      "MAE": 1.4271389795935823,
+      "max_abs": 2.3202619595921714,
+      "mean_abs_relative": 0.8184571219069529
+    },
+    {
+      "scope": "common_admitted",
+      "hypothesis": "higher",
+      "field": "delta_t_k",
+      "count": 10,
+      "mean_signed_difference": 32.44612111488494,
+      "MAE": 32.44612111488494,
+      "max_abs": 50.96006876919312,
+      "mean_abs_relative": 0.8869621190030219
+    },
+    {
+      "scope": "common_admitted",
+      "hypothesis": "higher",
+      "field": "voltage_v",
+      "count": 10,
+      "mean_signed_difference": 0.7188853878115702,
+      "MAE": 0.7188853878115702,
+      "max_abs": 0.949713252933094,
+      "mean_abs_relative": 0.5063368197236473
+    }
+  ],
+  "OEM_common_admitted_scalar_points": 20,
+  "hot_reference_offset_effect": [
+    {
+      "current_A": 0.1,
+      "literal_minus_300K_lift_K": 0.05048248451188897,
+      "literal_minus_300K_voltage_V": 0.0007863481189797072
+    },
+    {
+      "current_A": 0.2,
+      "literal_minus_300K_lift_K": 0.074942236903496,
+      "literal_minus_300K_voltage_V": 0.001294250140931208
+    },
+    {
+      "current_A": 0.4,
+      "literal_minus_300K_lift_K": 0.09662909472442038,
+      "literal_minus_300K_voltage_V": 0.0020342664149661793
+    },
+    {
+      "current_A": 1.0,
+      "literal_minus_300K_lift_K": 0.10590502259489654,
+      "literal_minus_300K_voltage_V": 0.0018211911873615705
+    }
+  ],
+  "source_domain_counts": {
+    "accepted_nonlinear": 130,
+    "measured_domain_only": 56,
+    "assumed_continuation": 74
+  },
+  "max_global_residual_W": 5.315681228523772e-11,
+  "max_stage_residual_W": 2.890909733821445e-12,
+  "interpretation": "Engineering conditional sensitivities; unequal admitted coverage is not a fair grade ranking; common-point metrics are descriptive, no fit"
+}

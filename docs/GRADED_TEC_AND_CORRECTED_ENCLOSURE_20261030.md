@@ -262,6 +262,10 @@ constant, corrective-checkpoint and sealed FEM data are untouched. Full verifica
 The current contract stops the native gas experiment at failed raw flux. The
 [frozen-field audit](NATIVE_GAS_FLUX_FORENSICS_20261101.md) identifies exact P1
 normal-flux jumps; its proposed affine same-mesh control remains unexecuted.
+The subsequently prioritized [material-hypothesis study](TEC_MATERIAL_PLAUSIBILITY_20261101.md)
+uses these same unmodified transport laws, with explicit S/rho/k scenario triples;
+its conditional low-temperature samples do not identify an OEM grade or qualify
+the omitted package/exchange paths. Above-300-K cases remain assumed-law results.
 Further registered work may then address native-surface exchange
 without filled interstage voids and paired mechanism/sensitivity tests. Keep improving
 these current guides and README with each increment. Preserve all frozen source,

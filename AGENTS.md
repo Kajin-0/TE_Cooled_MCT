@@ -89,6 +89,7 @@ inspect every page of a rebuilt master before publication.
 | Corrected 88-leg Elmer | Genuine coupled 3D Peltier/Joule/Fourier solid fields; header, explicit joints/attach and MCT; principal mesh 216 domains / 647,657 tets | Constant verification P/N properties; principal 0.1 A / 2 mW / 300 K underside case has external Cu/Au paths OFF; no enclosed-package gas/radiation field |
 | `integrated_reference.py` | **Five-node** conservative package; three TEC stages, die attach, hot-side Cu leads, Au bonds, sink and reservoir loads | Reduced spatial description; preserve `g1_constant` and affine `zhang2025_analog` compatibility |
 | `nonlinear_tec.py`, `graded_tec.py` | Opt-in `zhang2025_nonlinear`: conservative bounded nonlinear 1D P/N profiles, analytic banded Newton and exact-key cache; independent bounded BVP comparisons | Research specimens measured 40–300 K; active 180–390 K; **assumed quarter-tangent** continuation above 300 K; not an identified commercial grade |
+| `tec_material_plausibility.py` | Separate registered scale-hypothesis study using unchanged nonlinear/G1 algorithms; 141/181 admitted, 40 rejected; conditional literal-27-C module comparison | Nominal fixed-300-K/2-mW/wires-ON sample reaches 186.484 K at 0.4 A within measured leg coverage; no full-device or commercial-grade qualification; substantial joint OEM lift/voltage mismatch |
 | Corrected enclosure / exchange | Source-aligned candidate STEP/mesh and native-face audit; **preliminary filled stepped-core** diffuse-gray radiation and gas chord network (14 surfaces / 8 effective nodes) | Integrated native gas diffusion, full native visibility, optical transmission and coupled solids/cavity fields remain absent; standalone stopped gas control below |
 | `nonlocal_solid_network.py` diagnostic | Opt-in geometry-derived local Cu/alumina multiport plus unchanged affine P/N stages; actual interfaces, nonlocal return and P174 side contact | Isothermal ceramic/pad closure is unqualified; not full-device FEM; 7.277% side-port sensitivity exceeds registered 5% screen |
 | `passive_plate_audit.py` | Source-only audit of four plates, original Cu pads and routes/supports; 104 bodies | Seven-port follow-up **STOPPED before grid/solves**: two unmapped cuts and incompatible P174 side/hot-foot trace on a 0.220 mm edge; no spreading attribution |
@@ -153,6 +154,24 @@ inspect every page of a rebuilt master before publication.
    archive ledger. Add new versions when sources are sealed; do not modify archives.
 
 ## Ordered next science milestones
+
+**Current user-priority override (2026-11-01):** the bounded reduced TEC
+material-hypothesis / condition-matched datasheet study is now verified in
+`docs/TEC_MATERIAL_PLAUSIBILITY_20261101.md` (91 focused / 403 applicable opt-in
+tests; 12 runtime CAD/mesh/Elmer cases excluded). Nominal/higher assumptions admit
+the 200 K target on a discrete idealized grid, while the lower hypothesis does
+not demonstrate it; actual package feasibility remains unresolved. At the fixed
+0.25 A control, specified-range endpoint spans rank k 23.349 K, S 14.173 K,
+hot boundary 9.085 K, rho 4.960 K, die load 2.219 K, attach 0.100 K. Literal
+300.15 K chart comparisons require assumed continuation; no source-grade match,
+fresh blind holdout, fit, Qmax/DeltaTmax or optional shunt run is claimed.
+Existing nonlinear/G1 algorithms, laws, 28/12/4 geometry and evidence remain
+frozen; no OEM fit or new 3D FEM/CAD/gas/radiation campaign. Lower/higher transport
+triples are engineering hypotheses, not measured commercial grades; >300 K is
+assumed continuation. The next need is independently supported grade/geometry/
+contact and nonlocal-path evidence, not tuning against already examined curves;
+no follow-on scientific work is authorized by completing this study. Keep the
+stopped/deferred tasks below as context, not automatically resumed jobs.
 
 1. **Solid comparison is stopped at its registered boundary:** follow
    `docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md` and the current

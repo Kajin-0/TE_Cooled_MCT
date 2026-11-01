@@ -1,0 +1,121 @@
+{
+  "scientific_status": "Conditional reduced target demonstrated in nominal/higher hypotheses; real-device feasibility unresolved; no OEM grade identification or validation",
+  "registered_computation": {
+    "cases": 181,
+    "accepted": 141,
+    "rejected": 40,
+    "not_run": 0,
+    "seconds": 81.72431732993573,
+    "independent_BVP_checks": 6,
+    "new_3D_or_CAD_gas_radiation_runs": 0,
+    "fit": false,
+    "Qmax": "NOT RUN",
+    "DeltaTmax": "NOT RUN",
+    "optional_nonlocal": "NOT RUN; side-port gate remains failed"
+  },
+  "focused_tests": {
+    "command": "./fem/run.sh pytest -q tests/test_tec_material_plausibility.py tests/test_graded_tec.py tests/test_nonlinear_tec.py tests/test_integrated_reference.py",
+    "exit_code": 0,
+    "passed": 91,
+    "seconds": 21.71,
+    "log": "verification/focused.log"
+  },
+  "full_applicable_opt_in": {
+    "command_argv": [
+      "./fem/run.sh",
+      "env",
+      "TE_FEM_SMOKE=1",
+      "pytest",
+      "-q",
+      "--ignore=outputs",
+      "--deselect=tests/test_corrected_enclosure.py::test_gmsh_geometry_and_interface_area_audit",
+      "--deselect=tests/test_fem_g1.py::test_real_elmer_coupled_smoke",
+      "--deselect=tests/test_fem_g2a.py::test_real_four_couple_solver_smoke",
+      "--deselect=tests/test_fem_g2b_connected.py::test_actual_two_terminal_88_leg_mesh",
+      "--deselect=tests/test_fem_g2b_geometry.py::test_real_88_leg_mesh_feasibility",
+      "--deselect=tests/test_fem_g2b_physics.py::test_actual_two_terminal_full_stack_smoke",
+      "--deselect=tests/test_fem_g2c.py::test_real_local_temperature_adapter_and_runtime_guard",
+      "--deselect=tests/test_fem_g3b.py::test_genuine_elmer_compiled_exchange_does_not_stagnate_at_zero_initial_flux",
+      "--deselect=tests/test_flux_presolder.py::test_genuine_three_dimensional_layered_elmer_coupon",
+      "--deselect=tests/test_full_presolder.py::test_genuine_oblique_elmer_and_independent_quadratic_reference",
+      "--deselect=tests/test_geometry_rebaseline.py::test_independent_cad_and_actual_conformal_header_mesh"
+    ],
+    "exit_code": 0,
+    "passed": 403,
+    "deselected": 12,
+    "skipped": 0,
+    "warnings": 14,
+    "seconds": 93.82,
+    "log": "verification/applicable_opt_in.log",
+    "selection": "verification/regression_selection.json"
+  },
+  "archive_verifier": {
+    "command": "./fem/run.sh python fem/archive_bath_spatial_device.py --verify",
+    "exit_code": 0,
+    "log": "verification/archive_verifier.log",
+    "all_original_failed_gates_retained": true
+  },
+  "master_integrity": {
+    "command": "python3 -B -m reports.master.validate --current",
+    "exit_code": 0,
+    "log": "verification/master_integrity.log",
+    "Rev3_unchanged": true,
+    "PDF_sha256": "1bc0d793ac59cfa8b003454846bba2f7c9fe6bf431d57980ae7d95f8bee7ebff",
+    "sealed_original_PDF_sha256": "d173a8ba952462e1b6bf857739406f58eeb8d5c82b900f9fc65b84d40573acc1"
+  },
+  "legacy_demos": {
+    "exit_codes": [
+      0,
+      0
+    ],
+    "commands": [
+      "./fem/run.sh python -m tecooledmct.cli --quick --out outputs/tec-material-check/legacy-cli",
+      "./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/tec-material-check/legacy-geometry"
+    ],
+    "logs": [
+      "verification/legacy_cli.log",
+      "verification/legacy_geometry.log"
+    ]
+  },
+  "frozen_baseline": {
+    "commit": "c24dd2535f52c813bb92c06190c2fd0a371f8955",
+    "registered_source_hashes": 15,
+    "compared_to_git_baseline_objects": true,
+    "algorithms_material_laws_geometry_unchanged": true
+  },
+  "runtime": {
+    "image": "tecooledmct-fem:26.2.1",
+    "cpus": 4,
+    "memory_GiB": 8,
+    "network": "none",
+    "installs_or_rebuilds": false
+  },
+  "visual_review": {
+    "three_actual_data_plots_inspected": true,
+    "labels_legends_axes_margins_legible": true,
+    "rejected_intervals_are_gaps": true,
+    "continuation_and_OEM_limits_explicit": true,
+    "new_PDF": false
+  },
+  "implementation_check": {
+    "preflight_syntax_error_preserved": true,
+    "before_any_numerical_evaluation": true,
+    "fix": "Missing brace in final reporting JSON only; no registered physics or existing code altered"
+  },
+  "contract_and_links": {
+    "local_links_resolved": 80,
+    "chronology_prior_bytes_preserved": true,
+    "no_follow_on_scientific_work_authorized": true
+  },
+  "test_source_sha256": "b0bd9c9973dd5b0650fa6ab307142b25b4cd9a263194ebd2901d507f344c016e",
+  "CI": "Verify exact pushed source commit; completion is appended separately in chronology",
+  "verification_artifact_sha256": {
+    "verification/archive_verifier.log": "3314847f48aacde2dbc35a0f1f0614d16ad0a28b96e2255eb9e3f2746f8cfae9",
+    "verification/legacy_geometry.log": "206f5017522ce2973ea0cc21edb731c0f29bb55872d1341ec7c5e0257fd3e204",
+    "verification/legacy_cli.log": "f37c6e58d7200cfc1c8238bb19d82e1310706ac418d9f610a526179522380442",
+    "verification/regression_selection.json": "5524763a78737d31d19b1dbbe0bf57c7962428452421c358a7c89c080a031b71",
+    "verification/focused.log": "a2cac18ef8ccfebdfbc18cf182bdc8619ce8e6211ff95ab9eedf5337c6d6636b",
+    "verification/master_integrity.log": "a9ac0c3ac83c40e1b4c3416066d63d324ee9f8c144641dfeed72d140b6557245",
+    "verification/applicable_opt_in.log": "44744945b38ea762e0194215e2c269535e8c0b487f18ee92cf066568937db288"
+  }
+}

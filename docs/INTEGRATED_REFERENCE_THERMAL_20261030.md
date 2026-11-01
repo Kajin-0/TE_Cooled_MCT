@@ -123,6 +123,15 @@ an initial iterate; all reported final temperatures satisfy the nonlinear laws.
 
 ## Current results and numerical evidence
 
+The separate [registered material study](TEC_MATERIAL_PLAUSIBILITY_20261101.md)
+holds the hot ceramic at 300 K, turns gas/radiation OFF, and varies complete
+transport triples plus wire controls without changing this model. Its nominal
+wire-ON 2 mW sample reaches 186.484 K at 0.4 A (0.971 W terminal input), with
+all legs inside measured coverage. This does not supersede the reservoir/proxy
+results below: boundaries/current differ, nonlocal/spreading paths remain absent,
+and conditional module datasheet lift/voltage residuals remain large. The lower
+transport hypothesis does not demonstrate 200 K on the registered grid.
+
 At 300 K ambient, 0.15 A, 2 mW imposed die heating:
 
 | Scenario | Constant / old reservoir die K | Nonlinear / old reservoir die K | Nonlinear / new proxy die K | New proxy terminal V / W |

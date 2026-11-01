@@ -1,0 +1,291 @@
+{
+  "scope": "Material-law hypotheses and conditional module-boundary plausibility; no OEM fit or new FEM",
+  "counts": {
+    "G1_control": {
+      "ACCEPTED": 11,
+      "REJECTED": 0,
+      "NOT RUN": 0
+    },
+    "OAT": {
+      "ACCEPTED": 12,
+      "REJECTED": 0,
+      "NOT RUN": 0
+    },
+    "OEM_300K_reference": {
+      "ACCEPTED": 4,
+      "REJECTED": 2,
+      "NOT RUN": 0
+    },
+    "OEM_literal": {
+      "ACCEPTED": 46,
+      "REJECTED": 14,
+      "NOT RUN": 0
+    },
+    "attach_invariance": {
+      "ACCEPTED": 2,
+      "REJECTED": 0,
+      "NOT RUN": 0
+    },
+    "core": {
+      "ACCEPTED": 46,
+      "REJECTED": 20,
+      "NOT RUN": 0
+    },
+    "hot_load": {
+      "ACCEPTED": 20,
+      "REJECTED": 4,
+      "NOT RUN": 0
+    }
+  },
+  "targets": {
+    "nominal_wires_OFF": {
+      "minimum_accepted_sample": {
+        "id": "006",
+        "group": "core",
+        "hypothesis": "nominal",
+        "current_A": 0.4,
+        "hot_K": 300.0,
+        "die_load_W": 0.002,
+        "wires_ON": false,
+        "Tdie_K": 185.75169917372773,
+        "Tcold_ceramic_K": 185.69169917372776,
+        "cold_lift_K": 114.30830082627224,
+        "stage_lifts_K": [
+          53.96749725973848,
+          36.11465120308344,
+          24.226152363450325
+        ],
+        "Qc_cold_W": 0.0019999999999978637,
+        "module_voltage_V": 2.426538979883334,
+        "terminal_voltage_V": 2.426538979883334,
+        "module_input_W": 0.9706155919533336,
+        "terminal_input_W": 0.9706155919533336,
+        "cooler_COP": 0.0020605479827218993,
+        "die_COP": 0.0020605479827241003,
+        "local_leg_min_K": 185.69169917372776,
+        "local_leg_max_K": 300.0,
+        "assumed_continuation_used": false,
+        "all_legs_within_measured_domain": true,
+        "module_boundary": "conditional idealized vacuum with prescribed hot ceramic and cold load, no external exchange",
+        "material_grade_identified": false
+      },
+      "target_hit_case_ids": [
+        "005",
+        "006",
+        "010"
+      ],
+      "target_demonstrated_in_registered_reduced_assumptions": true,
+      "strict_measured_domain_target_ids": [
+        "005",
+        "006"
+      ],
+      "meaning": "Discrete admitted reduced-model result only; not actual assembly feasibility or an unrestricted optimum"
+    },
+    "nominal_wires_ON": {
+      "minimum_accepted_sample": {
+        "id": "017",
+        "group": "core",
+        "hypothesis": "nominal",
+        "current_A": 0.4,
+        "hot_K": 300.0,
+        "die_load_W": 0.002,
+        "wires_ON": true,
+        "Tdie_K": 186.4839522384163,
+        "Tcold_ceramic_K": 186.36781304138304,
+        "cold_lift_K": 113.63218695861696,
+        "stage_lifts_K": [
+          53.85981739965891,
+          35.9533713105441,
+          23.818998248413948
+        ],
+        "Qc_cold_W": 0.0038713065677743325,
+        "module_voltage_V": 2.4255084216210094,
+        "terminal_voltage_V": 2.426999245949638,
+        "module_input_W": 0.9702033686484038,
+        "terminal_input_W": 0.9707996983798552,
+        "cooler_COP": 0.003990201119552361,
+        "die_COP": 0.002060157211974574,
+        "local_leg_min_K": 186.36781304138304,
+        "local_leg_max_K": 300.0,
+        "assumed_continuation_used": false,
+        "all_legs_within_measured_domain": true,
+        "module_boundary": "conditional idealized vacuum with prescribed hot ceramic and cold load, no external exchange",
+        "material_grade_identified": false
+      },
+      "target_hit_case_ids": [
+        "016",
+        "017",
+        "021"
+      ],
+      "target_demonstrated_in_registered_reduced_assumptions": true,
+      "strict_measured_domain_target_ids": [
+        "016",
+        "017"
+      ],
+      "meaning": "Discrete admitted reduced-model result only; not actual assembly feasibility or an unrestricted optimum"
+    },
+    "lower_wires_OFF": {
+      "minimum_accepted_sample": {
+        "id": "029",
+        "group": "core",
+        "hypothesis": "lower",
+        "current_A": 0.5,
+        "hot_K": 300.0,
+        "die_load_W": 0.002,
+        "wires_ON": false,
+        "Tdie_K": 208.25518983505654,
+        "Tcold_ceramic_K": 208.19518983505654,
+        "cold_lift_K": 91.80481016494346,
+        "stage_lifts_K": [
+          31.530997625336454,
+          33.267359925051295,
+          27.006452614555712
+        ],
+        "Qc_cold_W": 0.002000000000000041,
+        "module_voltage_V": 3.2540128060570725,
+        "terminal_voltage_V": 3.2540128060570725,
+        "module_input_W": 1.6270064030285363,
+        "terminal_input_W": 1.6270064030285363,
+        "cooler_COP": 0.0012292514622420712,
+        "die_COP": 0.001229251462242046,
+        "local_leg_min_K": 208.19518983505654,
+        "local_leg_max_K": 302.8422874302462,
+        "assumed_continuation_used": true,
+        "all_legs_within_measured_domain": false,
+        "module_boundary": "conditional idealized vacuum with prescribed hot ceramic and cold load, no external exchange",
+        "material_grade_identified": false
+      },
+      "target_hit_case_ids": [],
+      "target_demonstrated_in_registered_reduced_assumptions": false,
+      "strict_measured_domain_target_ids": [],
+      "meaning": "Discrete admitted reduced-model result only; not actual assembly feasibility or an unrestricted optimum"
+    },
+    "lower_wires_ON": {
+      "minimum_accepted_sample": {
+        "id": "040",
+        "group": "core",
+        "hypothesis": "lower",
+        "current_A": 0.5,
+        "hot_K": 300.00000000000006,
+        "die_load_W": 0.002,
+        "wires_ON": true,
+        "Tdie_K": 208.8036624111851,
+        "Tcold_ceramic_K": 208.6985613942944,
+        "cold_lift_K": 91.30143860570567,
+        "stage_lifts_K": [
+          31.442075845314378,
+          33.142797670621036,
+          26.716565089770256
+        ],
+        "Qc_cold_W": 0.0035033672359210764,
+        "module_voltage_V": 3.253759694341352,
+        "terminal_voltage_V": 3.2556232247521377,
+        "module_input_W": 1.626879847170676,
+        "terminal_input_W": 1.6278116123760689,
+        "cooler_COP": 0.002153427151989017,
+        "die_COP": 0.0012286434036925555,
+        "local_leg_min_K": 208.6985613942944,
+        "local_leg_max_K": 302.86672088799526,
+        "assumed_continuation_used": true,
+        "all_legs_within_measured_domain": false,
+        "module_boundary": "conditional idealized vacuum with prescribed hot ceramic and cold load, no external exchange",
+        "material_grade_identified": false
+      },
+      "target_hit_case_ids": [],
+      "target_demonstrated_in_registered_reduced_assumptions": false,
+      "strict_measured_domain_target_ids": [],
+      "meaning": "Discrete admitted reduced-model result only; not actual assembly feasibility or an unrestricted optimum"
+    },
+    "higher_wires_OFF": {
+      "minimum_accepted_sample": {
+        "id": "048",
+        "group": "core",
+        "hypothesis": "higher",
+        "current_A": 0.25,
+        "hot_K": 300.0,
+        "die_load_W": 0.002,
+        "wires_ON": false,
+        "Tdie_K": 183.30238152444696,
+        "Tcold_ceramic_K": 183.24238152444633,
+        "cold_lift_K": 116.75761847555367,
+        "stage_lifts_K": [
+          60.56889094525718,
+          34.69901790223136,
+          21.48970962806513
+        ],
+        "Qc_cold_W": 0.002000000000037006,
+        "module_voltage_V": 1.6957874979729837,
+        "terminal_voltage_V": 1.6957874979729837,
+        "module_input_W": 0.4239468744932459,
+        "terminal_input_W": 0.4239468744932459,
+        "cooler_COP": 0.004717572225122912,
+        "die_COP": 0.004717572225035623,
+        "local_leg_min_K": 183.24238152444633,
+        "local_leg_max_K": 300.0,
+        "assumed_continuation_used": false,
+        "all_legs_within_measured_domain": true,
+        "module_boundary": "conditional idealized vacuum with prescribed hot ceramic and cold load, no external exchange",
+        "material_grade_identified": false
+      },
+      "target_hit_case_ids": [
+        "047",
+        "048"
+      ],
+      "target_demonstrated_in_registered_reduced_assumptions": true,
+      "strict_measured_domain_target_ids": [
+        "047",
+        "048"
+      ],
+      "meaning": "Discrete admitted reduced-model result only; not actual assembly feasibility or an unrestricted optimum"
+    },
+    "higher_wires_ON": {
+      "minimum_accepted_sample": {
+        "id": "059",
+        "group": "core",
+        "hypothesis": "higher",
+        "current_A": 0.25,
+        "hot_K": 300.0,
+        "die_load_W": 0.002,
+        "wires_ON": true,
+        "Tdie_K": 184.22866910627266,
+        "Tcold_ceramic_K": 184.11141456223237,
+        "cold_lift_K": 115.88858543776763,
+        "stage_lifts_K": [
+          60.44036337176419,
+          34.49254012027038,
+          20.955681945733062
+        ],
+        "Qc_cold_W": 0.003908484801343747,
+        "module_voltage_V": 1.6935745978169843,
+        "terminal_voltage_V": 1.6945063630223771,
+        "module_input_W": 0.42339364945424607,
+        "terminal_input_W": 0.4236265907555943,
+        "cooler_COP": 0.009231325992682646,
+        "die_COP": 0.0047211389550234194,
+        "local_leg_min_K": 184.11141456223237,
+        "local_leg_max_K": 300.0,
+        "assumed_continuation_used": false,
+        "all_legs_within_measured_domain": true,
+        "module_boundary": "conditional idealized vacuum with prescribed hot ceramic and cold load, no external exchange",
+        "material_grade_identified": false
+      },
+      "target_hit_case_ids": [
+        "058",
+        "059"
+      ],
+      "target_demonstrated_in_registered_reduced_assumptions": true,
+      "strict_measured_domain_target_ids": [
+        "058",
+        "059"
+      ],
+      "meaning": "Discrete admitted reduced-model result only; not actual assembly feasibility or an unrestricted optimum"
+    }
+  },
+  "total_seconds": 81.72431732993573,
+  "cases": 181,
+  "accepted": 141,
+  "rejected": 40,
+  "not_run": 0,
+  "Rev3_modified": false,
+  "optional_nonlocal_scenario": "NOT RUN; prior 7.277% side-port gate remains failed"
+}
