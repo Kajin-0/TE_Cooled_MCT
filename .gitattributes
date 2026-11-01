@@ -6,3 +6,9 @@ fem/results/**/*.npz -diff
 # Preserve the live master's machine-generated TeX diagnostics verbatim.
 reports/master/generated/report.log -whitespace
 reports/master/generated/report.aux -whitespace
+# New CAD/solver evidence is byte-preserved, including generated whitespace.
+data/isolated_cap_native_gas_20261101/** linguist-generated=true -whitespace
+data/isolated_cap_native_gas_20261101/**/*.step -text -diff
+data/isolated_cap_native_gas_20261101/**/*.brep -text -diff
+data/isolated_cap_native_gas_20261101/**/*.msh -diff
+data/isolated_cap_native_gas_20261101/**/*.vtu -diff

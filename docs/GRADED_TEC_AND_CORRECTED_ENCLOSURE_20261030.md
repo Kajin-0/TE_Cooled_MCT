@@ -19,7 +19,7 @@ synthetic reference device; numerical checks do not establish device accuracy.
 | Nonlinear bounded legs | `nonlinear_tec.py` | Direct 32-interval banded Newton, independent old BVP comparisons, 16/32/64 checks |
 | Independent reference | Unmodified `oem_phase_a.bounded_leg` | Conservative midpoint equations solved by bounded least-squares; not an OEM fit |
 | Actual cap/window fixture | `corrected_enclosure.py` | Protected 8,143-tet SI mesh, three domains/nine groups; exported STEP unit defect is documented below |
-| Native gas source-unit gate | `native_gas_audit.py` | Independent SI CAD import and analytic cube control; STOP before void extraction, no gas PDE |
+| Native gas control | `isolated_cap_*`, `native_gas_csg.py`, `native_gas_conduction.py` | Separate SI-correct derivative and audited native void; one actual gas Laplace solve, raw balance FAIL 32.6274%; not coupled to the proxy/package |
 | Native source-face audit | `exchange_geometry.py` | Exact package/fixture hashes, ownership, areas, interface incidence and positive cap tets |
 | Preliminary exchange | `corrected_exchange.py` | Closed analytic cylinder with a filled stepped-core proxy, 14 surfaces / 8 effective nodes |
 | Package coupling | `integrated_reference.py` | Opt-in nonlinear transport and exchange; no new enclosed-package 3D field |
@@ -148,13 +148,14 @@ found the archived cap STEP declares millimetres while storing metre-sized
 coordinates. A metre-target import is 1,000× too small in length; the native
 MSH and registry above remain SI-consistent. The earlier in-memory BREP/mesh
 checks did not establish exported STEP physical-unit consistency. Preserve that
-STEP as evidence; a separate unit-correct derivative with round-trip checks is
-required before native gas assembly. No gas PDE was run.
-The [single derivative attempt](UNIT_CORRECT_CAP_AND_NATIVE_GAS_20261101.md)
+STEP as evidence. The [first derivative attempt](UNIT_CORRECT_CAP_AND_NATIVE_GAS_20261101.md)
 also failed: mm authoring followed an SI import in the same process, and the
 exported cap became 1,000× too large. The producer/output are quarantined;
-no unit-correct derivative is advertised. A fresh writer process separated from
-the SI reader is the next implementation requirement, not a changed cap shape.
+it remains historical evidence. The separately authorized
+[isolated writer/reader follow-up](ISOLATED_CAP_AND_NATIVE_GAS_20261101.md)
+now qualifies an exact unit-correct derivative and native gas volume. One
+228,710-tet Elmer gas-only control completed with analytic walls, but raw global
+flux mismatch 32.6274% fails 1%; no qualified gas budget or new device T follows.
 The builder rejects nonfinite/nonpositive dimensions, impossible voids and
 collisions, including wire radius. Window thickness currently equals roof
 thickness; a different seat needs new geometry.
@@ -243,7 +244,7 @@ blocked-ray tests accompany package hot/cold/reservoir conservation checks.
 | Legacy CLI and geometry demo | Passed | Existing demonstration workflows remain runnable |
 | Documentation links and new figures | Checked | Current local links resolve; figures retain failed-interval gaps |
 | Current proxy/package global balance | Maximum 1.41e-11 W over accepted grid cases | Conservative reduced implementation, not device accuracy |
-| Actual native full-cavity visibility / gas diffusion | Not implemented | Filled-core chord model remains a preliminary proxy |
+| Native gas diffusion / full-cavity visibility | One standalone native gas PDE, failed raw balance; native visibility absent | Gas control has prescribed walls/flow suppressed; filled-core chord model remains the integrated proxy |
 | Experiment / OEM accuracy / numerical release | Not established | Original material/model uncertainty and raw-flux requirements remain |
 
 Use the exact commands in the [package guide](INTEGRATED_REFERENCE_THERMAL_20261030.md).
@@ -258,8 +259,8 @@ constant, corrective-checkpoint and sealed FEM data are untouched. Full verifica
 ./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/current-model/legacy-geometry
 ```
 
-The current contract orders next priorities: resolve the cap STEP unit prerequisite,
-audit the native interleg void and gas diffusion, then native-surface exchange
+The current contract stops the one native gas experiment at failed raw flux;
+audit its frozen localization before registering further work, then native-surface exchange
 without filled interstage voids and paired mechanism/sensitivity tests. Keep improving
 these current guides and README with each increment. Preserve all frozen source,
 actual fields, original raw 1% bath / 5% interface failures, Rev2 and sealed original

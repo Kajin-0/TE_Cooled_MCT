@@ -158,9 +158,9 @@ exceed the demonstrated discretization changes.
 4. Existing bath <1% and cold-interface <5% criteria remain unmet in preserved
    historical production evidence. Reduced-model conservation does not replace
    them. Update the live Rev3 master in place while preserving its sealed original bytes.
-5. Native interleg gas extraction has stopped at an exported cap STEP unit
-   defect; a separate unit-correct derivative is required before void/conduction
-   checks. Then native-surface exchange and paired mechanism/sensitivity tests. Do not force a large
+5. A separate unit-correct cap derivative and actual native void now pass;
+   one standalone gas control fails raw balance at 32.6274% against 1%.
+   Audit frozen localization before further native-surface exchange or paired studies. Do not force a large
    conformal gas/TEC remesh or a proprietary OEM fit to complete useful studies.
 
 The [matched solid-model diagnostic](MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md)
@@ -182,10 +182,10 @@ not a qualified cross-model reconciliation. The one
 [passive plate/pad follow-up](PASSIVE_PLATE_PORT_AUDIT_20261031.md) stopped before
 any grid or solve: its independent side/hot-foot constants conflict on a native
 0.220 mm edge, and two physical cut interfaces have no condition. No spreading
-fraction or causal kelvin closure is established. Independent native interleg
-gas conduction remains the priority, with the
-[cap STEP unit prerequisite](NATIVE_GAS_DOMAIN_AUDIT_20261101.md) now exposed.
-The [one correction attempt](UNIT_CORRECT_CAP_AND_NATIVE_GAS_20261101.md)
-failed before Phase B; no approved derivative exists. Writer/reader unit-state
-isolation is required next, without changing the registered physical geometry.
-No gas solve, further solid-side fit/grid or Rev3 change is claimed.
+fraction or causal kelvin closure is established. The subsequent
+[isolated cap/native gas control](ISOLATED_CAP_AND_NATIVE_GAS_20261101.md)
+qualifies the exact derivative and native void, then stops after one actual
+gas-only solve: raw flux balance fails 32.6274%. Analytic walls and suppressed
+buoyancy make this a limiting control, not a solved device or an integrated
+gas budget. Both earlier bad STEP files remain preserved. No further solid-side
+fit/grid, qualified gas prediction or Rev3 change is claimed.

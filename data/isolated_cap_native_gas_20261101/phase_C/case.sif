@@ -1,0 +1,1096 @@
+Header
+ Mesh DB "/work/data/isolated_cap_native_gas_20261101/phase_C/elmer" "."
+End
+Simulation
+ Coordinate System = Cartesian 3D
+ Simulation Type = Steady State
+ Steady State Max Iterations = 1
+ Post File = "fields.vtu"
+End
+Equation 1
+ Active Solvers(1) = 1
+End
+Solver 1
+ Equation = "Heat Equation"
+ Variable = Temperature
+ Procedure = "HeatSolve" "HeatSolver"
+ Linear System Solver = Iterative
+ Linear System Iterative Method = BiCGStab
+ Linear System Preconditioning = ILU1
+ Linear System Convergence Tolerance = 1.0e-12
+ Linear System Max Iterations = 2000
+ Nonlinear System Max Iterations = 1
+End
+Body 1
+ Target Bodies(1) = 8000
+ Equation = 1
+ Material = 1
+End
+Material 1
+ Heat Conductivity = Real 0.0259
+ Density = Real 1
+ Heat Capacity = Real 1
+End
+Boundary Condition 1
+ Target Boundaries(1) = 20001
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 2
+ Target Boundaries(1) = 20002
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 3
+ Target Boundaries(1) = 20003
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 4
+ Target Boundaries(1) = 20004
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 5
+ Target Boundaries(1) = 20005
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 6
+ Target Boundaries(1) = 20006
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 7
+ Target Boundaries(1) = 20007
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 8
+ Target Boundaries(1) = 20008
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 9
+ Target Boundaries(1) = 20009
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 10
+ Target Boundaries(1) = 20010
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 11
+ Target Boundaries(1) = 20011
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 12
+ Target Boundaries(1) = 20012
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 13
+ Target Boundaries(1) = 20013
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 14
+ Target Boundaries(1) = 20014
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 15
+ Target Boundaries(1) = 20015
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 16
+ Target Boundaries(1) = 20016
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 17
+ Target Boundaries(1) = 20017
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 18
+ Target Boundaries(1) = 20018
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 19
+ Target Boundaries(1) = 20019
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 20
+ Target Boundaries(1) = 20020
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 21
+ Target Boundaries(1) = 20021
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 22
+ Target Boundaries(1) = 20022
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 23
+ Target Boundaries(1) = 20023
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 24
+ Target Boundaries(1) = 20024
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 25
+ Target Boundaries(1) = 20025
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 26
+ Target Boundaries(1) = 20026
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 27
+ Target Boundaries(1) = 20027
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 28
+ Target Boundaries(1) = 20028
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 29
+ Target Boundaries(1) = 20029
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 30
+ Target Boundaries(1) = 20030
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 31
+ Target Boundaries(1) = 20031
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 32
+ Target Boundaries(1) = 20032
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 33
+ Target Boundaries(1) = 20033
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 34
+ Target Boundaries(1) = 20034
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 35
+ Target Boundaries(1) = 20035
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 36
+ Target Boundaries(1) = 20036
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 37
+ Target Boundaries(1) = 20037
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 38
+ Target Boundaries(1) = 20038
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 39
+ Target Boundaries(1) = 20039
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 40
+ Target Boundaries(1) = 20040
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 41
+ Target Boundaries(1) = 20041
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 42
+ Target Boundaries(1) = 20042
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 43
+ Target Boundaries(1) = 20043
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 44
+ Target Boundaries(1) = 20044
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 45
+ Target Boundaries(1) = 20045
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 46
+ Target Boundaries(1) = 20046
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 47
+ Target Boundaries(1) = 20047
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 48
+ Target Boundaries(1) = 20048
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 49
+ Target Boundaries(1) = 20049
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 50
+ Target Boundaries(1) = 20050
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 51
+ Target Boundaries(1) = 20051
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 52
+ Target Boundaries(1) = 20052
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 53
+ Target Boundaries(1) = 20053
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 54
+ Target Boundaries(1) = 20054
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 55
+ Target Boundaries(1) = 20055
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 56
+ Target Boundaries(1) = 20056
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 57
+ Target Boundaries(1) = 20057
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 58
+ Target Boundaries(1) = 20058
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 59
+ Target Boundaries(1) = 20059
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 60
+ Target Boundaries(1) = 20060
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 61
+ Target Boundaries(1) = 20061
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 62
+ Target Boundaries(1) = 20062
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 63
+ Target Boundaries(1) = 20063
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 64
+ Target Boundaries(1) = 20064
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 65
+ Target Boundaries(1) = 20065
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 66
+ Target Boundaries(1) = 20066
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 67
+ Target Boundaries(1) = 20067
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 68
+ Target Boundaries(1) = 20068
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 69
+ Target Boundaries(1) = 20069
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 70
+ Target Boundaries(1) = 20070
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 71
+ Target Boundaries(1) = 20071
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 72
+ Target Boundaries(1) = 20072
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 73
+ Target Boundaries(1) = 20073
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 74
+ Target Boundaries(1) = 20074
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 75
+ Target Boundaries(1) = 20075
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 76
+ Target Boundaries(1) = 20076
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 77
+ Target Boundaries(1) = 20077
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 78
+ Target Boundaries(1) = 20078
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 79
+ Target Boundaries(1) = 20079
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 80
+ Target Boundaries(1) = 20080
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 81
+ Target Boundaries(1) = 20081
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 82
+ Target Boundaries(1) = 20082
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 83
+ Target Boundaries(1) = 20083
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 84
+ Target Boundaries(1) = 20084
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 85
+ Target Boundaries(1) = 20085
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 86
+ Target Boundaries(1) = 20086
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 87
+ Target Boundaries(1) = 20087
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 88
+ Target Boundaries(1) = 20088
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 89
+ Target Boundaries(1) = 20089
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 90
+ Target Boundaries(1) = 20090
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 91
+ Target Boundaries(1) = 20091
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 92
+ Target Boundaries(1) = 20092
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 93
+ Target Boundaries(1) = 20093
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 94
+ Target Boundaries(1) = 20094
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 95
+ Target Boundaries(1) = 20095
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 96
+ Target Boundaries(1) = 20096
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 97
+ Target Boundaries(1) = 20097
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 98
+ Target Boundaries(1) = 20098
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 99
+ Target Boundaries(1) = 20099
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 100
+ Target Boundaries(1) = 20100
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 101
+ Target Boundaries(1) = 20101
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 102
+ Target Boundaries(1) = 20102
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 103
+ Target Boundaries(1) = 20103
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 104
+ Target Boundaries(1) = 20104
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 105
+ Target Boundaries(1) = 20105
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 106
+ Target Boundaries(1) = 20106
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 107
+ Target Boundaries(1) = 20107
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 108
+ Target Boundaries(1) = 20108
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 109
+ Target Boundaries(1) = 20109
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 110
+ Target Boundaries(1) = 20110
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 111
+ Target Boundaries(1) = 20111
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 112
+ Target Boundaries(1) = 20112
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 113
+ Target Boundaries(1) = 20113
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 114
+ Target Boundaries(1) = 20114
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 115
+ Target Boundaries(1) = 20115
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 116
+ Target Boundaries(1) = 20116
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 117
+ Target Boundaries(1) = 20117
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 118
+ Target Boundaries(1) = 20118
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 119
+ Target Boundaries(1) = 20119
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 120
+ Target Boundaries(1) = 20120
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 121
+ Target Boundaries(1) = 20121
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 122
+ Target Boundaries(1) = 20122
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 123
+ Target Boundaries(1) = 20123
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 124
+ Target Boundaries(1) = 20124
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 125
+ Target Boundaries(1) = 20125
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 126
+ Target Boundaries(1) = 20126
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 127
+ Target Boundaries(1) = 20127
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 128
+ Target Boundaries(1) = 20128
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 129
+ Target Boundaries(1) = 20129
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 130
+ Target Boundaries(1) = 20130
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 131
+ Target Boundaries(1) = 20131
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 132
+ Target Boundaries(1) = 20132
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 133
+ Target Boundaries(1) = 20133
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 134
+ Target Boundaries(1) = 20134
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 135
+ Target Boundaries(1) = 20135
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 136
+ Target Boundaries(1) = 20136
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 137
+ Target Boundaries(1) = 20137
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 138
+ Target Boundaries(1) = 20138
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 139
+ Target Boundaries(1) = 20139
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 140
+ Target Boundaries(1) = 20140
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 141
+ Target Boundaries(1) = 20141
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 142
+ Target Boundaries(1) = 20142
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 143
+ Target Boundaries(1) = 20143
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 144
+ Target Boundaries(1) = 20144
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 145
+ Target Boundaries(1) = 20145
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 146
+ Target Boundaries(1) = 20146
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 147
+ Target Boundaries(1) = 20147
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 148
+ Target Boundaries(1) = 20148
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 149
+ Target Boundaries(1) = 20149
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 150
+ Target Boundaries(1) = 20150
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 151
+ Target Boundaries(1) = 20151
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 152
+ Target Boundaries(1) = 20152
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 153
+ Target Boundaries(1) = 20153
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 154
+ Target Boundaries(1) = 20154
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 155
+ Target Boundaries(1) = 20155
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 156
+ Target Boundaries(1) = 20156
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 157
+ Target Boundaries(1) = 20157
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 158
+ Target Boundaries(1) = 20158
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 159
+ Target Boundaries(1) = 20159
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 160
+ Target Boundaries(1) = 20160
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 161
+ Target Boundaries(1) = 20161
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 162
+ Target Boundaries(1) = 20162
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 163
+ Target Boundaries(1) = 20163
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 164
+ Target Boundaries(1) = 20164
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 165
+ Target Boundaries(1) = 20165
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 166
+ Target Boundaries(1) = 20166
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 167
+ Target Boundaries(1) = 20167
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 168
+ Target Boundaries(1) = 20168
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 169
+ Target Boundaries(1) = 20169
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 170
+ Target Boundaries(1) = 20170
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 171
+ Target Boundaries(1) = 20171
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 172
+ Target Boundaries(1) = 20172
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 173
+ Target Boundaries(1) = 20173
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 174
+ Target Boundaries(1) = 20174
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 175
+ Target Boundaries(1) = 20175
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 176
+ Target Boundaries(1) = 20176
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 177
+ Target Boundaries(1) = 20177
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 178
+ Target Boundaries(1) = 20178
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 179
+ Target Boundaries(1) = 20179
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 180
+ Target Boundaries(1) = 20180
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 181
+ Target Boundaries(1) = 20181
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 182
+ Target Boundaries(1) = 20182
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 183
+ Target Boundaries(1) = 20183
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 184
+ Target Boundaries(1) = 20186
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 185
+ Target Boundaries(1) = 20187
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 186
+ Target Boundaries(1) = 20188
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 187
+ Target Boundaries(1) = 20189
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 188
+ Target Boundaries(1) = 20190
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 189
+ Target Boundaries(1) = 20191
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 190
+ Target Boundaries(1) = 20192
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 191
+ Target Boundaries(1) = 20300
+ Temperature = Real 300
+End
+Boundary Condition 192
+ Target Boundaries(1) = 20301
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 193
+ Target Boundaries(1) = 20302
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 194
+ Target Boundaries(1) = 20303
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 195
+ Target Boundaries(1) = 20304
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 196
+ Target Boundaries(1) = 20305
+ Temperature = Variable Coordinate 3
+  Real MATC "300-50*((tx-0.0015)/0.0040899999999999982)^2*(3-2*((tx-0.0015)/0.0040899999999999982))"
+End
+Boundary Condition 197
+ Target Boundaries(1) = 20401
+ Temperature = Real 300
+End
+Boundary Condition 198
+ Target Boundaries(1) = 20402
+ Temperature = Real 300
+End
+Boundary Condition 199
+ Target Boundaries(1) = 20403
+ Temperature = Real 300
+End
+Boundary Condition 200
+ Target Boundaries(1) = 20404
+ Temperature = Real 300
+End
+Boundary Condition 201
+ Target Boundaries(1) = 20405
+ Temperature = Real 300
+End
+Boundary Condition 202
+ Target Boundaries(1) = 20406
+ Temperature = Real 300
+End
+Boundary Condition 203
+ Target Boundaries(1) = 20407
+ Temperature = Real 300
+End
+Boundary Condition 204
+ Target Boundaries(1) = 20408
+ Temperature = Real 300
+End
+Boundary Condition 205
+ Target Boundaries(1) = 20409
+ Temperature = Real 300
+End
+Boundary Condition 206
+ Target Boundaries(1) = 20501
+ Temperature = Real 300
+End
+Boundary Condition 207
+ Target Boundaries(1) = 20502
+ Temperature = Real 300
+End
+Boundary Condition 208
+ Target Boundaries(1) = 20503
+ Temperature = Real 300
+End
+Boundary Condition 209
+ Target Boundaries(1) = 20504
+ Temperature = Real 300
+End
+Boundary Condition 210
+ Target Boundaries(1) = 20505
+ Temperature = Real 300
+End
+Boundary Condition 211
+ Target Boundaries(1) = 20506
+ Temperature = Real 300
+End
+Boundary Condition 212
+ Target Boundaries(1) = 20507
+ Temperature = Real 300
+End
+Boundary Condition 213
+ Target Boundaries(1) = 20508
+ Temperature = Real 300
+End
+Boundary Condition 214
+ Target Boundaries(1) = 20509
+ Temperature = Real 300
+End
+Boundary Condition 215
+ Target Boundaries(1) = 27301
+ Temperature = Real 300
+End
+Boundary Condition 216
+ Target Boundaries(1) = 27302
+ Temperature = Real 300
+End
+Boundary Condition 217
+ Target Boundaries(1) = 27303
+ Temperature = Real 300
+End

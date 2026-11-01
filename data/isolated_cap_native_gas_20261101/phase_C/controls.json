@@ -1,0 +1,46 @@
+{
+  "wall_temperature": "reservoir 300 K; stack 300-50*u^2*(3-2*u), u=(z-.0015)/(stack_top-.0015)",
+  "stack_top_m": 0.005589999999999999,
+  "z0_m": 0.0015,
+  "k_w_mk": 0.0259,
+  "pressure_pa": 101325.0,
+  "regime": {
+    "gas": "N2",
+    "pressure_pa": 101325.0,
+    "T_k": 300.0,
+    "contrast_k": 50.0,
+    "k_w_mk": 0.0259,
+    "lambda_m": 6.78072239747146e-08,
+    "Kn_interleg": 0.0004520481598314307,
+    "Kn_cavity_height": 8.31990478217357e-06,
+    "Ra_interleg": 0.015595382953115366,
+    "Ra_nominal_cavity_height": 2501.468812520574,
+    "interleg_continuum_screen_Kn_below_001": true,
+    "nominal_cavity_buoyancy_flag": true,
+    "orientation": "z vertical, header below cap; 1708 is a heated-below slab flag, not a universal cavity threshold",
+    "closure": "Registered NIST k(200..400 K); ideal gas and Eucken viscosity estimate, not measured viscosity or rarefied validation",
+    "scope": "Conditional nominal SI-geometry scales only; no admitted gas domain or selected operating case"
+  },
+  "controls": {
+    "slab_exact_Q_w": 0.001295,
+    "slab_raw_relative_error": 0.0,
+    "uniform_max_W": 0.0,
+    "work_W_K": 0.06475000000000006,
+    "dissipation_W_K": 0.06475000000000004,
+    "passed": true
+  },
+  "scope": "One-way prescribed analytic walls, constant-k N2 conduction-only limiting baseline; buoyancy deliberately suppressed",
+  "geometry_sha256": "9c635bfe6534c2daaa5cb9b8154c6943d76550ac046e184f1f94818de3d6062d",
+  "BREP_sha256": "be26323c626b6b9f38f66a59c0fc8c8e6ee615616cfb01b3db3684bd219e9ed8",
+  "source_sha256": "2bf4f46dc76a7e38a04de457ecc5101f91b68a9aa7ce25518f0b8a4481fd167d",
+  "mesh_attempts_authorized": 1,
+  "mesh_sizes_m": {
+    "core": 0.00018,
+    "outer": 0.0006,
+    "min": 3e-05
+  },
+  "tet_target": 300000,
+  "tet_hard_stop": 500000,
+  "mesh_timeout_seconds": 180,
+  "PDE_timeout_seconds": 120
+}

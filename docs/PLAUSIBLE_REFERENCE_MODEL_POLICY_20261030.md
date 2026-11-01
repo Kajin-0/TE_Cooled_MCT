@@ -55,13 +55,12 @@ reference article.
 ## Current next milestones
 
 The matched solid diagnostic and its one passive plate follow-up have reached
-their registered stops. Current priority is the
-[native interleg gas geometry gate](NATIVE_GAS_DOMAIN_AUDIT_20261101.md): correct
-the cap STEP unit interchange in a separate derivative, preserving its original
-bytes, then audit the actual void before independent gas diffusion. The existing
-SI cap mesh remains consistent. The one derivative attempt failed its unit gate
-and is quarantined; isolate fresh writer and SI-reader processes before another
-registered export. That implementation error is not a physical assembly result.
+their registered stops. The [isolated cap/native gas control](ISOLATED_CAP_AND_NATIVE_GAS_20261101.md)
+now qualifies a separate SI-correct derivative and actual void, preserving both
+earlier bad STEP files. Its one standalone Elmer gas calculation fails raw flux
+balance (32.6274% against 1%); conservative reactions do not qualify it. Current
+priority is auditing frozen raw-versus-reaction localization before registering
+further numerical work. No new device temperature or physical validation follows.
 Then implement bounded native-surface visibility/
 exchange from corrected source faces, retaining the filled-core proxy as a
 comparator. Then run paired

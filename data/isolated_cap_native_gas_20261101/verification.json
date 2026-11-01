@@ -1,0 +1,89 @@
+{
+  "scientific_status": "Phase A and B geometry PASS; Phase C STOP, raw flux 32.6274% FAILS 1%; no qualified gas budget/device T",
+  "focused_tests": {
+    "command": "./fem/run.sh pytest -q tests/test_isolated_cap_native_gas.py tests/test_cap_export_validation.py tests/test_native_gas_audit.py tests/test_corrected_enclosure.py",
+    "exit_code": 0,
+    "passed": 87,
+    "seconds": 3.43,
+    "log": "verification/focused.log"
+  },
+  "full_opt_in": {
+    "command": "./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs",
+    "exit_code": 0,
+    "passed": 384,
+    "skipped": 0,
+    "warnings": 14,
+    "seconds": 324.59,
+    "existing_Elmer_smoke_executed": true,
+    "log": "verification/full_opt_in.log"
+  },
+  "archive_verifier": {
+    "command": "./fem/run.sh python fem/archive_bath_spatial_device.py --verify",
+    "exit_code": 0,
+    "log": "verification/archive_verifier.log",
+    "original_failed_gates_retained": true
+  },
+  "master_integrity": {
+    "command": "python3 -B -m reports.master.validate --current",
+    "exit_code": 0,
+    "log": "verification/master_integrity.log",
+    "PDF_unchanged": true,
+    "pages": 28,
+    "pdf_sha256": "1bc0d793ac59cfa8b003454846bba2f7c9fe6bf431d57980ae7d95f8bee7ebff",
+    "sealed_original_pdf_sha256": "d173a8ba952462e1b6bf857739406f58eeb8d5c82b900f9fc65b84d40573acc1"
+  },
+  "legacy_demos": {
+    "exit_codes": [
+      0,
+      0
+    ],
+    "commands": [
+      "./fem/run.sh python -m tecooledmct.cli --quick --out outputs/isolated-native-check/legacy-cli",
+      "./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/isolated-native-check/legacy-geometry"
+    ],
+    "logs": [
+      "verification/legacy_cli.log",
+      "verification/legacy_geometry.log"
+    ]
+  },
+  "runtime": {
+    "image": "sha256:ce4f061bbfd77b8f9f2437771bad2b90dde5bc00f82eab8e1058ceca7fe3bbc5",
+    "Gmsh": "4.13.1",
+    "Elmer": "26.2.1",
+    "cpus": 4,
+    "memory_gib": 8,
+    "network": "none",
+    "new_tools_or_install": false
+  },
+  "attempts": {
+    "fresh_cap_writer": 1,
+    "SI_reader_revalidation_after_metadata_only_fix": 1,
+    "native_CSG": 1,
+    "gas_mesh": 1,
+    "gas_PDE": 1,
+    "new_TE_production": 0
+  },
+  "actual_CAD_seconds": 51.77130351494998,
+  "actual_mesh_and_check_seconds": 16.107946791220456,
+  "actual_PDE_seconds": 5.987140529090539,
+  "visual_review": {
+    "actual_mesh_section_and_field_inspected": true,
+    "final_labels_legends_margins_clear": true,
+    "raw_failure_explicit": true,
+    "source": "tecooledmct/native_gas_figures.py",
+    "no_report_rebuild": true
+  },
+  "new_scientific_artifact_hashes_verified": 48,
+  "prior_stopped_checkpoints_unchanged": true,
+  "contract_and_links": "PASS, 50 mutable-document local links resolve; native gas stop and single master are explicit",
+  "test_source_sha256": "50145c6593a780d816953381f6e7375aee85295606bdbbc54e921a5a59c5bee6",
+  "CI": "Check exact pushed commit; do not insert a self-referential commit hash into this record",
+  "verification_log_sha256": {
+    "verification/full_opt_in.log": "b4864fdf0f2fc6bcb8d8141fad8dda87c3dbfce937765a2d3f6bdcf3286098a3",
+    "verification/archive_verifier.log": "3314847f48aacde2dbc35a0f1f0614d16ad0a28b96e2255eb9e3f2746f8cfae9",
+    "verification/legacy_geometry.log": "206f5017522ce2973ea0cc21edb731c0f29bb55872d1341ec7c5e0257fd3e204",
+    "verification/legacy_cli.log": "f37c6e58d7200cfc1c8238bb19d82e1310706ac418d9f610a526179522380442",
+    "verification/focused.log": "f9b2611d958c942a89d116806037a652de2a444aa438a663946ab5295a7b0971",
+    "verification/master_integrity.log": "a9ac0c3ac83c40e1b4c3416066d63d324ee9f8c144641dfeed72d140b6557245"
+  }
+}

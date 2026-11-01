@@ -72,11 +72,12 @@ inspect every page of a rebuilt master before publication.
 | Corrected 88-leg Elmer | Genuine coupled 3D Peltier/Joule/Fourier solid fields; header, explicit joints/attach and MCT; principal mesh 216 domains / 647,657 tets | Constant verification P/N properties; principal 0.1 A / 2 mW / 300 K underside case has external Cu/Au paths OFF; no enclosed-package gas/radiation field |
 | `integrated_reference.py` | **Five-node** conservative package; three TEC stages, die attach, hot-side Cu leads, Au bonds, sink and reservoir loads | Reduced spatial description; preserve `g1_constant` and affine `zhang2025_analog` compatibility |
 | `nonlinear_tec.py`, `graded_tec.py` | Opt-in `zhang2025_nonlinear`: conservative bounded nonlinear 1D P/N profiles, analytic banded Newton and exact-key cache; independent bounded BVP comparisons | Research specimens measured 40–300 K; active 180–390 K; **assumed quarter-tangent** continuation above 300 K; not an identified commercial grade |
-| Corrected enclosure / exchange | Source-aligned candidate STEP/mesh and native-face audit; **preliminary filled stepped-core** diffuse-gray radiation and gas chord network (14 surfaces / 8 effective nodes) | Full native-surface visibility, interleg/pin/wire exchange, gas diffusion, optical transmission and coupled 3D cavity fields are **not implemented** |
+| Corrected enclosure / exchange | Source-aligned candidate STEP/mesh and native-face audit; **preliminary filled stepped-core** diffuse-gray radiation and gas chord network (14 surfaces / 8 effective nodes) | Integrated native gas diffusion, full native visibility, optical transmission and coupled solids/cavity fields remain absent; standalone stopped gas control below |
 | `nonlocal_solid_network.py` diagnostic | Opt-in geometry-derived local Cu/alumina multiport plus unchanged affine P/N stages; actual interfaces, nonlocal return and P174 side contact | Isothermal ceramic/pad closure is unqualified; not full-device FEM; 7.277% side-port sensitivity exceeds registered 5% screen |
 | `passive_plate_audit.py` | Source-only audit of four plates, original Cu pads and routes/supports; 104 bodies | Seven-port follow-up **STOPPED before grid/solves**: two unmapped cuts and incompatible P174 side/hot-foot trace on a 0.220 mm edge; no spreading attribution |
-| `native_gas_audit.py` | Source-only STEP/SI reader audit and conditional N2 Kn/Ra screens | Gas **STOPPED before extraction/mesh/PDE**: cap STEP declares mm for metre-sized coordinates, 1,000× length mismatch; native SI cap MSH remains consistent |
-| `cap_export_validation.py` | Read-only validation of one quarantined unit-correction attempt | **Phase A FAILED**: attempted cap is 1,000× too large after an exporter unit-state assumption; no valid derivative, Phase B/C NOT RUN; failed producer is a snapshot only |
+| `native_gas_audit.py`, `cap_export_validation.py` | Historical unit gates, original and quarantined failed STEP bytes preserved | Original STEP 1,000× too small; first correction 1,000× too large; neither is an accepted gas geometry input |
+| `isolated_cap_*`, `native_gas_csg.py` | Fresh mm writer / separate SI reader; accepted derivative; actual 216+3-solid partition, one connected gas void, 927 owned faces | Nominal ideal seals, external wires OFF; geometry validation is not manufactured-assembly validation |
+| `native_gas_conduction.py` | One actual gas-only Elmer Laplace control, 228,710 positive tets, analytic 250–300 K walls | **STOP: raw flux 32.6274% FAILS 1%**, despite conservative reactions; N2 at 101325 Pa, constant k; buoyancy suppressed; no qualified gas budget or new device T |
 | `model.py`, `cli.py`, `experiments.py` | Original **four-node legacy demonstrations**, retained for compatibility | Not the current corrected package; older OEM-anchored assumptions are historical |
 
 - Archived 177-cut/current, weak heat and global/stage balance checks pass, but
@@ -107,13 +108,13 @@ inspect every page of a rebuilt master before publication.
   tests pass**, including actual Elmer smoke. Archive verifier and legacy demos
   pass. Records: `reports/master/verification/summary.json`. Check CI for each
   newly pushed commit; historical test counts are not new executions.
-- Current cap-export failure-validation checks: **68 focused / 365 full opt-in**
-  tests pass, including existing Elmer smoke; archive/master integrity and both
-  legacy demos pass. Record: `data/unit_correct_cap_native_gas_20261101/verification.json`.
-  The authoring attempt itself FAILED; no valid derivative or Phase B/C result
-  exists. Software gates do not admit gas, pass old side-port sensitivity or
-  qualify ceramic spreading. The 28-page master and
-  historical evidence are unchanged.
+- Current native gas checkpoint: `data/isolated_cap_native_gas_20261101` and
+  `docs/ISOLATED_CAP_AND_NATIVE_GAS_20261101.md`. A/B PASS, C failed raw balance;
+  one export, one partition, one mesh/solve, no retry. **87 focused / 384 full
+  opt-in tests pass**, including existing Elmer smoke. Software regression records
+  are separate in `verification.json`; their success cannot qualify gas flux,
+  pass old side-port sensitivity or establish ceramic spreading. The 28-page
+  master and original historical evidence remain unchanged.
 
 ## Read-first order
 
@@ -139,27 +140,21 @@ inspect every page of a rebuilt master before publication.
    cuts. It stopped with **zero grids/solves**, without reading reference fields
    or adding conditions. Spreading contributions remain unidentifiable; Rev3
    remains intact. No further solid fit/grid/fixture or causal kelvin claim.
-2. **Native gas domain is stopped at its source-unit gate.** Read
-   `docs/NATIVE_GAS_DOMAIN_AUDIT_20261101.md`. A metre-target CAD import confirms
-   the package scale, but the original cap STEP is 1,000× too small in length
-   and lies inside the Kovar header; native cap MSH/registry remain SI-consistent.
-   **Minimum next fix:** publish a separate unit-correct cap STEP derivative,
-   with explicit-unit export/import bbox/volume checks; preserve archived bytes.
-   The single follow-up attempt is now closed at **Phase A FAIL**, recorded in
-   `docs/UNIT_CORRECT_CAP_AND_NATIVE_GAS_20261101.md`. New exporter code assumed
-   clearing an import option reset writer units after an SI cube import; the
-   attempted cap instead has radius 7.6 m. It is quarantined, not approved CAD.
-   No actual assembly contradiction was established by that implementation error.
-   Next implementation must isolate fresh mm authoring/export from the separate
-   metre-target reader process; export cube/cap before any SI imports. No further
-   export was performed under this checkpoint's one-attempt stop.
-   Then resume native solid subtraction, seals/access, connected watertight void,
-   ownership/normals and one bounded gas diffusion calculation. No gas region,
-   stage heat budget or new device T exists yet. At a 150 µm source gap, N2
-   Kn is 0.458 at 100 Pa and 0.000452 at 101325 Pa; nominal cavity Ra~2501
-   flags possible buoyancy at atmospheric pressure. These are conditional
-   screens, not selected operating conditions. No old G3b geometry/chord matrix,
-   filled core, CFD, solid-side reopening or unqualified residual claim.
+2. **Native gas is now stopped at its raw flux gate.** Read
+   `docs/ISOLATED_CAP_AND_NATIVE_GAS_20261101.md` first for this branch, then the
+   historical `NATIVE_GAS_DOMAIN_AUDIT_20261101.md` and
+   `UNIT_CORRECT_CAP_AND_NATIVE_GAS_20261101.md`. Separate writer/reader processes
+   fixed physical STEP units without changing intended geometry. All 219 actual
+   solids, contacts, ownership, manifold closure and normal witnesses passed;
+   gas volume 1.253174211e-6 m³. One 228,710-tet gas control completed with
+   **32.6274% raw global mismatch >1%**. Reaction closure is not raw qualification.
+   The authorized attempt is exhausted: no new grid/solve or fitted correction.
+   Next decision: audit frozen raw-versus-reaction localization and analytic
+   wall discretization before registering a new numerical experiment. Do not
+   couple unqualified powers into device predictions. No old G3b geometry/chords,
+   filled core, CFD or reopening stopped solid fixtures. N2 Kn=0.458 at 100 Pa
+   fails; at 101325 Pa Kn=0.000452 but nominal Ra~2501 flags buoyancy. This was a
+   deliberately flow-suppressed conduction control, not actual steady gas behavior.
 3. **Native-surface radiation/exchange:** replace the filled-core shortcut with a bounded
    actual-surface visibility fixture/operator from corrected cap/window and
    package surfaces, exposing interleg voids, pins and wires. Audit face ownership,
