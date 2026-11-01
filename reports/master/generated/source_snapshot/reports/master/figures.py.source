@@ -156,6 +156,8 @@ def generate(out):
     inputs.extend(material_screening(out,save))
     from .identifiability import generate as identifiability
     inputs.extend(identifiability(out,save))
+    from .finite_sink import generate as finite_sink
+    inputs.extend(finite_sink(out,save))
     d=read(out/'report_inputs.json');d['edition_kind']='CONTINUOUS REV3 MASTER';d['review_draft']=False
     d['old_report_unchanged']=True;d['original_rev3_historical_snapshot_preserved']=True
     for path in inputs:d['inputs'][str(path.relative_to(ROOT))]=sha(path)
@@ -167,8 +169,10 @@ def generate(out):
         'new_physics_runs':0,'actual_device_feasibility':'unresolved'}
     d['identifiability']={'registered':269,'accepted':260,'rejected':9,
         'admitted_pairs_passed':35,'new_3D_runs':0,'commercial_geometry_grade_identified':False}
+    d['finite_sink']={'primary_grid':288,'accepted':203,'rejected':85,'actual_target_solves':54,
+        'nominal_target_crossings':6,'new_3D_runs':0,'real_device_feasibility':'unresolved'}
     d['figure_generators']={name:sha(ROOT/name) for name in (
-        'reports/master/figures.py','reports/master/material_screening.py','reports/master/identifiability.py','reports/rev3_review/build.py',
+        'reports/master/figures.py','reports/master/material_screening.py','reports/master/identifiability.py','reports/master/finite_sink.py','reports/rev3_review/build.py',
         'reports/rev3_review/latest_study.py','reports/field_geometry.py',
         'tecooledmct/graded_tec.py','tecooledmct/material_profiles.py')}
     write(out/'report_inputs.json',d)

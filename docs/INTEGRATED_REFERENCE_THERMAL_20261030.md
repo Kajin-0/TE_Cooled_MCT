@@ -140,6 +140,16 @@ At 300.15 K/0.2 A/zero load, A/L ×1.7 still overcools by 6.372118 K and
 overvolts by 0.088846 V; all 176 native full-footprint contacts fail that area
 realization. These are conditional scenarios, not an adopted model or fitted grade.
 
+The [registered finite-sink study](FINITE_SINK_MATCHED_TARGET_20261101.md) keeps
+the original geometry/wires and exchange OFF, varying Rθ=0–10 K/W at 300 K
+ambient and 2 mW die heat. Six actual nominal 199.995–200 K crossings require
+0.548425–0.622176 W input; at 10 K/W the hot ceramic is 305.826317 K and the
+sink rejects 0.582632 W. Independent accounting gives
+`Qsink=Pterminal+Qdie+Qau+Qcu-I²Rcu/2`, not simply IV. Every admitted finite-Rθ
+state uses assumed continuation. The 203/288 admitted grid cases, 85 failures,
+controls/branches and unchanged ideal-sink replays are separate evidence; no
+global optimum, real grade/sink or omitted-package qualification follows.
+
 At 300 K ambient, 0.15 A, 2 mW imposed die heating:
 
 | Scenario | Constant / old reservoir die K | Nonlinear / old reservoir die K | Nonlinear / new proxy die K | New proxy terminal V / W |

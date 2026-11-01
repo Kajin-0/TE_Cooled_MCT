@@ -68,7 +68,12 @@ proves an exact nonlinear ambiguity between common A/L and reciprocal rho/k
 factors, with 260/269 admitted cases and no fitting. A larger effective A/L reduces
 joint chart residuals but fails unchanged native-pad coverage; it identifies
 neither dimensions nor a manufactured grade. Independent construction/material/
-contact evidence and finite-sink target power are proposed next questions only.
+contact evidence remains proposed. The subsequent user-authorized
+[finite-sink study](FINITE_SINK_MATCHED_TARGET_20261101.md) now quantifies a
+conditional 13.4478% nominal matched-200 K power increase between ideal and
+10 K/W sinks, without changing geometry/laws or fitting. All finite-R states
+require assumed continuation; no hardware feasibility or global optimum is
+established. Completion does not authorize another scientific experiment.
 
 The matched solid diagnostic and its one passive plate follow-up have reached
 their registered stops. The [isolated cap/native gas control](ISOLATED_CAP_AND_NATIVE_GAS_20261101.md)

@@ -1,0 +1,72 @@
+"""New-edition supplement from immutable normal-volume study evidence only."""
+import json
+from pathlib import Path
+from reports.rev3_review.build import ROOT,sha,write
+ARCHIVE=ROOT/'fem/results/cold_bath_rev3_20261030'
+LABELS={'cold1':'Cold normal refinement','bath2':'Bath normal refinement 1','bath3':'Bath normal refinement 2','combined':'Combined refinement'}
+def supplement(out):
+    if (out/'edition_checksums.json').exists():raise ValueError('Published edition is immutable; use a new output directory')
+    import numpy as np,matplotlib.pyplot as plt
+    from matplotlib.collections import PolyCollection
+    from matplotlib.colors import Normalize,SymLogNorm
+    if not ARCHIVE.exists():return
+    plt.rcParams.update({'font.family':'serif','font.size':10,'axes.titlesize':9,'axes.labelsize':10,'xtick.labelsize':9,'ytick.labelsize':9,'pdf.fonttype':42,'mathtext.fontset':'dejavuserif'})
+    ledger=json.loads((ARCHIVE/'checksums.json').read_text())
+    for n,h in ledger['artifacts'].items():
+        if sha(ARCHIVE/n)!=h:raise ValueError('Changed actual normal-volume evidence')
+    study=json.loads((ARCHIVE/'summary.json').read_text());sources=[ARCHIVE/'checksums.json',ARCHIVE/'summary.json'];rows=[]
+    actual={}
+    for label in study['trials']:
+        path=ARCHIVE/(label+'_audit')/'summary.json'
+        if not path.exists():continue
+        a=json.loads(path.read_text());e=json.loads((ARCHIVE/'cases'/label/'execution.json').read_text());mesh=ARCHIVE/'meshes'/label/'mesh.npz'
+        if sha(mesh)!=a['mesh_sha256'] or a['field_sha256']!=e['vtu_sha256'] or not a['genuine_completed_coupled'] or not a['all_nonraw_gates_passed']:raise ValueError('Unverified normal-volume field')
+        sources.extend([path,ARCHIVE/'cases'/label/'execution.json',mesh]);actual[label]=a
+        rows.append(f"{LABELS[label]} & {a['tetrahedra']:,} & {a['die_mean_K']:.6f} & {a['voltage_V']:.9f} & {a['cold_mismatches'][0]*100:+.3f} & {a['bath_relative_error']*100:+.3f}"+r' \\')
+    latest=actual.get('combined',actual.get('bath3',actual['bath2']))
+    combined=actual.get('combined');passed=bool(combined and combined['same_case_raw_gates_passed'])
+    cover=(r'\textbf{Latest refinement checkpoint.} '+
+        (f"A single combined case now meets the raw limits: ceramic/attach {abs(combined['cold_mismatches'][0])*100:.3f}\\%, bath {abs(combined['bath_relative_error'])*100:.3f}\\%. " if passed else f"The cold-normal case passes at {abs(actual['cold1']['cold_mismatches'][0])*100:.3f}\\%, but the latest independent bath error is {abs(latest['bath_relative_error'])*100:.3f}\\% (FAIL). No combined passing case has been established. ")+\
+        r'\textbf{Numerical release remains incomplete}: a systematically refined comparator passing both gates is absent. The table below retains earlier failures; subsequent solved results are documented separately.\par'+'\n')
+    (out/'latest_cover.tex').write_text(cover)
+    text=[r'\clearpage\section{Subsequent independent normal-volume studies}',
+        r'These additional actual Elmer runs retain the same 0.1\,A, 2\,mW, 300\,K bath, material laws and disabled external links. They supplement the initial fields shown earlier; no historical failed gate is relabeled. Normal-edge bisection adds free owner-volume nodes while keeping target surface triangles unchanged. Region locks and material connectivity are audited on the actual tetrahedra.',
+        r'\begin{center}\footnotesize\begin{tabular}{lrrrrr}\toprule Study & Tetrahedra & Die mean (K) & Voltage (V) & Cold raw (\%) & Bath raw (\%)\\\midrule',*rows,r'\bottomrule\end{tabular}\end{center}',
+        r'The cold track changes only the cold ceramic, attach and die; every bath and TEC-conductor cell is fixed. Ceramic/attach mismatch falls from 6.477\% to 4.795\%, passing 5\% but not the preferred 4.5\% margin. Attach/die mismatch falls to 2.306\%. The die mean changes by only 24.94\,$\mu$K and voltage by 0.58\,nV, despite the larger change in the raw boundary gradient.',
+        r'The bath tracks change only Kovar owner volumes; every cold, glass, pin and TEC cell is fixed. Median owner normal heights successively halve from 295.961 to 147.981 and 73.990\,$\mu$m. The first new bath level gives a raw error of 1.069\% and remains FAILED. The table reports the next actual level without changing the 1\% criterion. This is local anisotropic boundary refinement, not a qualified whole-device GCI.']
+    if 'bath3' in actual:
+        a,z=actual['bath2'],actual['bath3']
+        text.append(f"The second bath-normal level gives {abs(z['bath_relative_error'])*100:.3f}\\% raw error, slightly worse than {abs(a['bath_relative_error'])*100:.3f}\\% at the preceding level. The response is nonmonotone despite exact normal-height halving. Die mean changes by {(z['die_mean_K']-a['die_mean_K'])*1e6:+.3f}\\,$\\mu$K and voltage by {(z['voltage_V']-a['voltage_V'])*1e6:+.6f}\\,$\\mu$V. Normal refinement alone has not established raw bath convergence; transverse resolution and signed local cancellation need further controlled investigation.")
+    if combined:
+        text.append(f"The combined mesh contains {combined['tetrahedra']:,} tetrahedra. Ceramic/attach and attach/die mismatches are {combined['cold_mismatches'][0]*100:+.3f}\\% and {combined['cold_mismatches'][1]*100:+.3f}\\%; independent bath error is {combined['bath_relative_error']*100:+.3f}\\%. All 177 current cuts and the global/stage/free-residual checks pass. The maximum current-cut error is {combined['worst_cut_relative']*100:.4f}\\%.")
+        cold=actual['cold1'];text.append(f"Relative to the cold-only refined case, the combined bath refinement shifts the die mean by {(combined['die_mean_K']-cold['die_mean_K'])*1000:+.6f}\\,mK and voltage by {(combined['voltage_V']-cold['voltage_V'])*1e6:+.6f}\\,$\\mu$V. The cold discretization is held fixed in this comparison.")
+    text.append(r'\textbf{Release status: incomplete.} Separate passing tracks, or a single combined passing mesh, are insufficient. Both original raw thresholds must also pass on a systematically refined comparator, with all conservation checks and quantified output sensitivity. The earlier 5\%/1\% failures remain archived. No OEM assembly validation or device GCI is claimed.')
+    text.append(r'\clearpage\subsection{Actual refined-field evidence and stage conservation}')
+    text.append(f"All three new cases pass all 177 current cuts and the global, stage and free-residual checks. Their worst cut error is {max(a['worst_cut_relative'] for a in actual.values())*100:.6f}\\%. Maximum global heat error is {max(abs(a['global_heat_error_W']) for a in actual.values())*1e6:.6f}\\,$\\mu$W; maximum free thermal and current residuals are {max(a['free_heat_L1_W'] for a in actual.values())*1e6:.6f}\\,$\\mu$W and {max(a['free_current_L1_A'] for a in actual.values())*1e6:.6f}\\,$\\mu$A. These checks remain distinct from the failed raw bath criterion.")
+    # The plotted raw fluxes belong to archived actual fields and matching meshes.
+    fig,axs=plt.subplots(1,2,figsize=(6.35,2.8),layout='constrained')
+    for ax,label,title in zip(axs,['cold1',('combined' if combined else 'bath3')],['Cold refinement:\nCeramic trace','Latest bath:\nSigned outward flux']):
+        mesh=ARCHIVE/'meshes'/label/'mesh.npz';p=np.load(mesh)['points']
+        if label=='cold1':
+            path=ARCHIVE/'cold1_audit/cold/face_4_302.npz';d=np.load(path);value=-d['power_outward_w'][:,0]/d['areas_m2'];norm=Normalize(1700,2200);limits=(-.5,.5);cmap='viridis'
+        else:
+            path=ARCHIVE/(label+'_audit')/'bath/face_data.npz';d=np.load(path);value=d['outward_density_W_m2'];norm=SymLogNorm(linthresh=1,vmin=-2e4,vmax=2e4);limits=(-16,16);cmap='coolwarm'
+        sources.append(path);coll=PolyCollection(p[d['faces']][:,:,:2]*1e3,array=value,norm=norm,cmap=cmap,edgecolors='none',rasterized=True);ax.add_collection(coll);ax.set(xlim=limits,ylim=limits if label=='cold1' else (-9,9),xlabel='$x$ (mm)',ylabel='$y$ (mm)',title=title);ax.set_aspect('equal');fig.colorbar(coll,ax=ax,shrink=.65,label='$q$ (W m$^{-2}$)',ticks=None if label=='cold1' else [-1e4,-1e2,0,1e2,1e4])
+    generated=[]
+    for ext in ['png','pdf']:
+        path=out/'figures'/('latest_raw_flux.'+ext);fig.savefig(path,dpi=600,bbox_inches='tight',**({'metadata':{'CreationDate':None,'ModDate':None,'Author':''}} if ext=='pdf' else {}));generated.append(path)
+    plt.close(fig)
+    text.append(r'\fig{latest_raw_flux}{.98}{Actual independent owner-gradient flux from the refined solved fields. The ceramic trace uses the cold-normal mesh; the signed bath map uses the latest completed bath or combined case, as identified in the table. These are separate field integrals; visual similarity does not establish a passing combined mesh.}')
+    text.append(r'\begin{center}\small\begin{tabular}{lrrrr}\toprule Study & Solve (s) & Iterations & Last relative change & Peak RSS (GiB)\\\midrule')
+    for label,a in actual.items():
+        n=a['nonlinear'];text.append(f"{LABELS[label]} & {n['elapsed_s']:.1f} & {n['nonlinear_iterations']} & {n['nonlinear_last_relative_change']:.2e} & {n['peak_rss_kib']/1048576:.2f}"+r' \\')
+    text.append(r'\bottomrule\end{tabular}\end{center}')
+    if latest:
+        text.append('The stage balances below refer to the latest completed '+('combined case.' if combined else 'second bath-normal case.'))
+        text.append(r'\begin{center}\small\begin{tabular}{lrrrr}\toprule Stage band & Hot out (mW) & Cold out (mW) & Electrical work (mW) & Residual ($\mu$W)\\\midrule')
+        for row in latest['stage_control_volumes']:
+            text.append(f"{row['band']+1} & {row['hot_out_w']*1000:.6f} & {row['cold_out_downward_w']*1000:.6f} & {row['electrical_work_w']*1000:.6f} & {row['energy_error_w']*1e6:.6f}"+r' \\')
+        text.extend([r'\bottomrule\end{tabular}\end{center}',r'The coldest band includes the 2\,mW die source. The stage table uses independent weak control-volume checks; those checks do not replace the raw boundary-flux limits.'])
+    text=[line+r'\par' if not line.startswith('\\') and not line.rstrip().endswith(r'\\') else line for line in text]
+    (out/'latest_study.tex').write_text('\n'.join(text)+'\n')
+    d=json.loads((out/'report_inputs.json').read_text());d['inputs'].update({str(p.relative_to(ROOT)):sha(p) for p in sources});d['figures'].update({p.name:sha(p) for p in generated});d['generator']['reports/rev3_review/latest_study.py']=sha(Path(__file__));d['normal_volume_study']={'actual_completed_cases':list(actual),'combined_same_case_raw_passed':passed,'full_numerical_release':False};write(out/'report_inputs.json',d)

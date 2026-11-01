@@ -38,6 +38,14 @@ def verify_historical():
             raise ValueError('Prior 34-page Rev3 bytes changed')
         for name,digest in d['snapshot_sha256'].items():
             if sha(material_master/name)!=digest:raise ValueError('Prior material report provenance changed: '+name)
+    finite_predecessor=ROOT/'reports/historical/rev3_pre_finite_sink_20261101'
+    if finite_predecessor.exists():
+        d=json.loads((finite_predecessor/'historical_identity.json').read_text())
+        expected='96265010b41a9f41f53fa31c2fa4e8c3098806696675b3766e69f0554a27e006'
+        if d['pdf_sha256']!=expected or sha(finite_predecessor/'report.pdf')!=expected or d['pages']!=36:
+            raise ValueError('Prior 36-page Rev3 bytes changed')
+        for name,h in d['snapshot_sha256'].items():
+            if sha(finite_predecessor/name)!=h:raise ValueError('Prior identifiability report provenance changed: '+name)
     return True
 
 def preserve():

@@ -23,7 +23,7 @@ Their numerical evidence, original errors and acceptance criteria remain intact.
    **NOT RUN** unexecuted work, **PENDING** incomplete verification. A proposed
    next experiment is not authorization; do not restart stopped work automatically.
 5. Preserve sealed inputs, fields, original failures/gates and historical PDFs
-   (Rev2, original 15-page and prior 28-/34-page Rev3). The ONE live Rev3 evolves only
+   (Rev2, original 15-page and prior 28-/34-/36-page Rev3). The ONE live Rev3 evolves only
    for authorized substantive science; do not rebuild it for administrative edits.
 6. Append observed UTC PENDING at task begin and actual PASS/FAIL/STOP at end,
    including source, evidence, immutable impact and blocker/next authorized step.
@@ -127,6 +127,7 @@ inspect every page of a rebuilt master before publication.
 | `nonlinear_tec.py`, `graded_tec.py` | Opt-in `zhang2025_nonlinear`: conservative bounded nonlinear 1D P/N profiles, analytic banded Newton and exact-key cache; independent bounded BVP comparisons | Research specimens measured 40–300 K; active 180–390 K; **assumed quarter-tangent** continuation above 300 K; not an identified commercial grade |
 | `tec_material_plausibility.py` | Separate registered scale-hypothesis study using unchanged nonlinear/G1 algorithms; 141/181 admitted, 40 rejected; conditional literal-27-C module comparison | Nominal fixed-300-K/2-mW/wires-ON sample reaches 186.484 K at 0.4 A within measured leg coverage; no full-device or commercial-grade qualification; substantial joint OEM lift/voltage mismatch |
 | `tec_identifiability.py` | Separate preregistered reduced diagnostic, 260/269 admitted; exact nonlinear geometry/material gauge and normalized raw SVD; no fitting | Common A/L cannot be distinguished from reciprocal rho/k factors by endpoint transport; g=1.7 still overcools/overvolts and fails all 176 unchanged native full-pad contacts; no altered CAD or identified grade |
+| `finite_sink_study.py` | Separate registered sink/current study on unchanged geometry/laws, wires ON, exchange OFF; 203/288 grid cases admitted, 85 retained failures; six actually solved nominal 200 K crossings | At 10 K/W, target input 0.622176 W vs ideal 0.548425 W (+13.4478%); hot 305.826317 K requires assumed continuation; Qsink differs from IV through explicit lead paths; no actual-device feasibility or global optimum |
 | Corrected enclosure / exchange | Source-aligned candidate STEP/mesh and native-face audit; **preliminary filled stepped-core** diffuse-gray radiation and gas chord network (14 surfaces / 8 effective nodes) | Integrated native gas diffusion, full native visibility, optical transmission and coupled solids/cavity fields remain absent; standalone stopped gas control below |
 | `nonlocal_solid_network.py` diagnostic | Opt-in geometry-derived local Cu/alumina multiport plus unchanged affine P/N stages; actual interfaces, nonlocal return and P174 side contact | Isothermal ceramic/pad closure is unqualified; not full-device FEM; 7.277% side-port sensitivity exceeds registered 5% screen |
 | `passive_plate_audit.py` | Source-only audit of four plates, original Cu pads and routes/supports; 104 bodies | Seven-port follow-up **STOPPED before grid/solves**: two unmapped cuts and incompatible P174 side/hot-foot trace on a 0.220 mm edge; no spreading attribution |
@@ -159,19 +160,18 @@ inspect every page of a rebuilt master before publication.
   above 300 K the quarter tangent, exactly 390 K its left limit. Domain-check
   interior Joule overshoot. Never clamp accepted results, bridge rejected plot
   intervals, erase failure diagnostics or turn chosen ranges into confidence intervals.
-- Current master: **36 pages**, every page rendered and visually inspected;
-  PDF, 46 figure files and all 36 rendered pages reproduce exactly across two
-  independent builds. All 44 predecessor figures are byte-identical. The verified
+- Current master: **38 pages**, every page rendered and visually inspected;
+  PDF, 50 figure files and all 38 rendered pages reproduce exactly across two
+  independent builds. All 46 predecessor figures are byte-identical. The verified
   nonlinear scaling ambiguity, raw-rank caveat, signed manufacturer residuals
   and failed native-pad realization are integrated with the earlier material
-  hypotheses and distinct proxy baseline; no device validation or numerical
-  release is claimed. Exact prior 34-page PDF/provenance are retained under
-  `reports/historical/rev3_pre_identifiability_20261101`, alongside the earlier
-  28-page snapshot, original 15-page Rev3 and Rev2. Current scoped verification:
-  `data/tec_identifiability_20261101/verification.json`, with the retained initial
-  CI failure and factor-reconstruction portability checks under
-  `data/tec_identifiability_20261101/verification/ci_portability_20261101/summary.json`;
-  existing scientific laws,
+  hypotheses and distinct proxy baseline; the finite-sink target/power and signed
+  heat budgets are integrated without device validation or numerical release.
+  Exact prior 36-page PDF/provenance are retained under
+  `reports/historical/rev3_pre_finite_sink_20261101`, alongside earlier 34-/28-page
+  snapshots, original 15-page Rev3 and Rev2. Current scoped verification:
+  `data/finite_sink_20261101/verification.json`; earlier study/CI failure records
+  remain intact. Existing scientific laws,
   geometry, fields, failures and all historical report hashes remain unchanged.
 - Current native gas checkpoint: `data/isolated_cap_native_gas_20261101` and
   `docs/ISOLATED_CAP_AND_NATIVE_GAS_20261101.md`. A/B PASS, C failed raw balance;
@@ -209,11 +209,18 @@ raw 300.15 K SVD rank changes 4-to-3 at the fixed cutoff and is not a unique
 dimension measurement. At 0.2 A/zero load g=1.7 leaves +6.372118 K/+0.088846 V
 chart residuals and fails unchanged native pad coverage. Assumed continuation,
 unknown internal contacts and real-device feasibility remain unresolved.
-Independent dimensions/same-grade transport/contact evidence and finite-sink
-matched-target power are **proposed only**; no further science is authorized.
-The user-authorized concise in-place Rev3 integration retains exact prior PDF
-bytes. Never execute externally suggested fitted triples or reopen gas/solid
-stops as an automatic follow-up; all earlier evidence and priorities remain.
+The subsequently authorized finite-sink study is now complete; read
+`docs/FINITE_SINK_MATCHED_TARGET_20261101.md`. Its one 193.560 s execution kept
+geometry/laws unchanged: 203 admitted / 85 rejected grid cases; nine analytic
+controls, four independent root checks and 54 actual target midpoint solves pass.
+All 33 matching ideal-sink baseline outcomes are unchanged. Every admitted
+finite-resistance case requires assumed >300 K continuation; numerical target
+crossings are not real-device feasibility or global power minima. The same Rev3
+now includes the verified sink insight and retains its exact predecessor bytes.
+Independent dimensions/same-grade transport/contact evidence remains proposed;
+**no further scientific experiment is authorized**. Do not execute fitted triples,
+reopen stopped solid/gas work, optimize currents or introduce new sink/cavity
+physics automatically. Existing historical stops and longer-term priorities remain.
 
 1. **Solid comparison is stopped at its registered boundary:** follow
    `docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md` and the current

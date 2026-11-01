@@ -7,12 +7,14 @@ facing scientific assessment. It distinguishes genuine corrected-geometry 3D
 solid fields from the nonlinear reduced package and preliminary cavity proxy.
 The legacy download filename is retained for compatibility; the document itself
 is the Revision 3 engineering master. Historical PDF bytes remain sealed evidence.
-The current master has 36 pages; all pages were visually reviewed and the PDF
+The current master has 38 pages; all pages were visually reviewed and the PDF
 and source-derived figures reproduce exactly. It includes the frozen 181-case
 material screening, conditional 200 K target, rejected coverage and candid
 manufacturer lift/voltage discrepancy. It now derives the nonlinear geometry/material
 ambiguity and distinguishes a reduced residual improvement from failed native-pad
-realization. Original numerical failures remain explicit.
+realization. A matched-200 K finite-sink study quantifies nominal input rising
+from 0.548425 to 0.622176 W between ideal and 10 K/W sink, conditional on assumed
+continuation. Original numerical failures remain explicit.
 
 A reproducible engineering model of a **plausible synthetic** three-stage
 TEC-cooled HgCdTe detector in a nine-pin, two-ear TO-66 package. The objective
@@ -33,6 +35,7 @@ milestone instructions have been relocated to historical context.
 | Which P/N laws and transport approximations are available? | [Transport and enclosure guide](docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md) |
 | Can admitted material assumptions reach 200 K, and resemble published module curves? | [Material-hypothesis study](docs/TEC_MATERIAL_PLAUSIBILITY_20261101.md): 141/181 admitted; nominal idealized 300 K/2 mW/wires-ON sample 186.484 K at 0.4 A; substantial joint datasheet mismatch and no full-device qualification |
 | Can steady cooling/voltage identify leg dimensions rather than material changes? | [Registered identifiability diagnostic](docs/TEC_GEOMETRY_MATERIAL_IDENTIFIABILITY_20261101.md): 260/269 admitted; exact A/L–rho–k ambiguity, raw SVD caveat and failed unchanged native-pad realization; no OEM fitting |
+| How much does finite hot-side resistance cost at a matched die target? | [Finite-sink study](docs/FINITE_SINK_MATCHED_TARGET_20261101.md): 203/288 grid states admitted; six actual nominal 200 K crossings; 10 K/W raises target input 13.4478%, with assumed >300 K transport and explicit wire/sink heat accounting |
 | What is documented, inferred or assumed? | Source matrices in those guides; [materials](docs/materials_and_provenance.md) |
 | What is the corrected physical construction? | [Geometry specification](GEOMETRY_SOURCE_OF_TRUTH_SPEC.md), protected geometry manifest and wire routes |
 | What is actually solved in 3D? | [Corrected solid-only thermal work](CORRECTED_GEOMETRY_COUPLED_THERMAL_WORK_ORDER.md), archived Elmer evidence |
@@ -139,8 +142,9 @@ reduced budgets nor stable temperatures replace those criteria. See
 The [contract's ordered science milestones](AGENTS.md#ordered-next-science-milestones)
 govern continuation. The bounded identifiability study is complete: geometry
 and reciprocal material changes are transport-equivalent, with no identified
-commercial dimensions or grade. Independent construction/contact evidence and
-finite-sink target power are proposals, not authorization for further runs.
+commercial dimensions or grade. The subsequently authorized finite-sink study is
+also complete, preserving all old baseline outcomes and report bytes. Independent
+construction/contact evidence remains proposed; no next science is authorized.
 The geometry-derived route/support comparison remains
 conditional and its one plate-fixture follow-up stopped at the seven-port
 admissibility gate. The later isolated writer/SI reader qualified a separate

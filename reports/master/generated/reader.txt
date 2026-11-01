@@ -27,9 +27,10 @@ predicts approximately 232.2 K and 1.152 V. Its 52 accepted and 11 rejected stat
 comparison. A further preregistered material screening admits 141 of 181 reduced cases. With fixed
 300 K hot ceramic, 2 mW die heat and wires ON, but enclosure and nonlocal leakage omitted, the
 nominal analog admits 186.484 K at 0.4 A and 0.970800 W input. This is a sampled conditional
-result, not demonstrated assembly feasibility. A boundary-matched manufacturer comparison shows
-substantial lift and voltage disagreement. Above 300 K material continuation is assumed; no measured
-device-accuracy interval is established.
+result, not demonstrated assembly feasibility. A manufacturer comparison shows substantial lift and
+voltage disagreement. A separate matched-200 K finite-sink study increases nominal input from 0.548
+to 0.622 W between 0 and 10 K W−1; finite-sink states require assumed above-300 K continuation,
+not a measured device-accuracy interval.
 
 Engineering interpretation. Source geometry, physical hypotheses, numerical verification and
 empirical accuracy are treated separately. Numerical digits identify conditional calculations, not
@@ -96,16 +97,16 @@ Mesh sensitivity and independent analytical benchmark
 25
 
 15 Heat budgets and dominant paths
-32
+34
 
 16 Sensitivity, model-form uncertainty and physical interpretation
-33
-
-17 Overall verification and engineering conclusions
 35
 
+17 Overall verification and engineering conclusions
+37
+
 References
-36
+38
 
 2
 
@@ -2624,13 +2625,288 @@ design impossible.
 
 In the separate 300 K, 2 mW die, wires-ON control, g = 1.7 admits 198.492 K at 0.5 A and 0.967238 W
 input. It is not an exact 200 K point or power optimum. External warm series resistance raises
-voltage; a cold-face thermal resistance changes loaded-face temperature but has no zero-load effect
-in that limiting placement.
-Unknown internal contacts, finite-sink matched-target power and
-independently measured dimensions remain future questions; no fitted grade or actual package
+voltage; a cold-face thermal resistance changes loaded-face temperature but has no zero-load effect in
+that limiting placement. Unknown internal contacts and independently measured dimensions remain
+future questions; finite-sink target comparisons follow below. No fitted grade or actual package
 feasibility is established.
 
 31
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+14.8
+Finite-sink temperature and matched-target electrical demand
+
+A separately registered comparison holds ambient and warm pin reservoirs at 300 K, die heat at
+2 mW, original 28/12/4 geometry and Cu/Au wires ON. Enclosure exchange and nonlocal bypass
+are OFF. Six effective sink resistances 0, 0.5, 1, 2, 5 and 10 K W−1 are engineering hypotheses, not
+measured hardware. All three existing material triples are evaluated at 16 fixed currents from 0 to
+1 A: 203 of 288 grid cases are admitted, with 85 rejections retained. No fitted material or altered leg
+geometry is adopted.
+
+180
+
+200
+
+220
+
+240
+
+260
+
+280
+
+300
+
+Die temperature (K)
+
+Nominal current grid
+
+0 K/W
+0.5 K/W
+1 K/W
+
+2 K/W
+5 K/W
+10 K/W
+
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Current (A)
+
+0
+0.5
+
+1
+2
+5
+10
+
+Rejected
+
+R (K/W)
+
+196
+198
+200
+202
+204
+206
+Attained die temperature (K)
+
+0.45
+
+0.50
+
+0.55
+
+0.60
+
+0.65
+
+0.70
+
+0.75
+
+Terminal input (W)
+
+Target neighborhood
+
+Figure 22: Reduced nonlinear finite-sink results. Left: nominal current grid; lines retain rejected
+gaps. Filled/open circles indicate measured-domain/assumed-continuation legs; the lower strip shows
+rejected cases by sink resistance, without assigning a temperature. Right: actual power/temperature
+samples near the target. Open diamonds are solved nominal target endpoints, not interpolated esti-
+mates or global optima. All finite-resistance states shown require assumed above-300 K continuation.
+
+For nominal transport, the first adjacent admitted falling bracket at each sink is bisected with actual
+midpoint solves, at most ten per sink. All six reach 199.995 ≤Td ≤200 K after 54 total midpoint
+solves. A rejected midpoint would stop its bracket. The admitted endpoints are:
+
+Rθ
+I
+Th
+Terminal
+Input
+Sink
+Input rise
+(K/W)
+(A)
+(K)
+(V)
+(W)
+(W)
+(%)
+
+0
+0.288135
+300.000
+1.903363
+0.548425
+0.551919
+0.00
+0.5
+0.288867
+300.277
+1.909978
+0.551730
+0.553181
+0.60
+1
+0.289624
+300.555
+1.916736
+0.555133
+0.554530
+1.22
+2
+0.291162
+301.115
+1.930370
+0.562051
+0.557311
+2.48
+5
+0.295850
+302.830
+1.972059
+0.583433
+0.566021
+6.38
+10
+0.304175
+305.826
+2.045456
+0.622176
+0.582632
+13.45
+
+Relative to ideal sink, the 10 K W−1 target requires 13.4478% more terminal input. The discrete
+minimum-power Td ≤200 K grid samples instead give 0.588295 W at 0.3 A for ideal sink and
+0.700595 W at 0.325 A for 10 K W−1. Those coarse choices and the bounded crossings are different
+comparisons; neither proves a continuous power optimum or actual detector feasibility.
+
+32
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+14.9
+Sink rejection, direct wire paths and interpretation
+
+With signs positive into the hot pad or die, define QCu = GCu(Ta −Th), QAu = GAu(Ta −Td)
+and JCu = I2RCu. Here G is W K−1, RCu is ohm and powers are W. Original route proxies give
+GCu = 0.007383834 W K−1 and GAu = 1.648495 10−5 W K−1. Independent balances are
+
+Qsink = Qh,1 + QCu + 1
+
+2JCu,
+Th −Ta = RθQsink,
+(20)
+
+Qsink = Pterminal + Qdie + QAu + QCu −1
+
+2JCu,
+(21)
+
+Qc,cold = Qdie + QAu.
+(22)
+
+Half of Cu Joule heat leaves directly at the pin reservoir. Au heat is additional to the imposed 2 mW
+die source. Cu is a separate parallel route; its conductance is not counted again in Rθ. Thus Qsink
+is not assumed equal to IV .
+
+0
+1
+2
+3
+4
+5
+Actual sink rejection (W)
+
+0
+
+5
+
+10
+
+15
+
+20
+
+25
+
+30
+
+35
+
+Hot rise above ambient (K)
+
+0 K/W
+0.5 K/W
+1 K/W
+
+2 K/W
+5 K/W
+10 K/W
+
+0
+0.5
+1
+2
+5
+10
+Sink resistance (K/W)
+
+−40
+
+−30
+
+−20
+
+−10
+
+0
+
+Sink minus input (mW)
+
+Sink minus input
+
+Die heat
+
+Au from ambient
+
+Cu into hot pad
+
+Cu Joule to pins
+
+Figure 23: Left: actual nominal sink rejection and hot rise, with dashed RθQ controls for 0.5–3 W
+total sink loads; these are not new die-load simulations. Right: signed contributions to sink rejection
+minus terminal input at the actual 199.995–200 K target endpoints. The negative Cu term is heat
+leaving the hot pad toward ambient, not negative conductivity.
+
+At the 10 K W−1 target, terminal input is 0.622176 W while the sink rejects 0.582632 W. Au
+contributes +1.648538 mW, Cu conduction contributes −43.020560 mW, and half-Cu Joule heat
+contributes −0.172418 mW in the second balance. Total net ambient rejection, including direct wire
+paths, is 0.624176 W, equal to terminal input plus die heat. Replacing Qsink by IV would overstate
+hot rise by 0.395444 K here. Cold-stage Qc ≃3.6485 mW includes Au heat; die/cooler COP changes
+from 0.00364681/0.00665654 at ideal sink to 0.00321452/0.00586741 at 10 K W−1.
+
+Of 203 admitted grid states, 25 remain in measured material coverage and 178 use continuation.
+Every admitted finite-resistance state is continuation-dependent. The lower transport hypothesis does
+not admit 200 K on this grid; higher and nominal do. Nine constant-property controls, four nonlinear
+checks from two seeds at each of two sink values, and 33 ideal-sink replays (23 states and ten rejection
+classifications) pass; maximum independent global power residual is 2.08 10−11 W. These verify
+equations and selected branches, not a real sink, manufactured grade, omitted spreading/contacts or
+qualified cavity loads. All original solid and standalone-gas release failures remain unchanged.
+
+33
 
 
 TEC-cooled HgCdTe reference device
@@ -2671,7 +2947,7 @@ Radiation
 Au conduction
 Imposed die heat
 
-Figure 22: Net positive heat loads at the four cold/intermediate reduced nodes for nominal 0.15 A
+Figure 24: Net positive heat loads at the four cold/intermediate reduced nodes for nominal 0.15 A
 Kr. Attach transfer and interstage thermoelectric flows are internal and are not stacked again as
 external loads. Vertical proxy surfaces distribute heat using their stated node weights.
 
@@ -2719,7 +2995,7 @@ the pad is warmer than its ambient pin. The nominal global discrepancy is below 
 maximum over accepted proxy grid points is approximately 1.41 10−11 W. Those figures establish
 bookkeeping consistency, not a physical heat-leak uncertainty.
 
-32
+34
 
 
 TEC-cooled HgCdTe reference device
@@ -2758,7 +3034,7 @@ Seebeck coefficient, 0.9–1.1 ×
 
 P/N thermal conductivity, 0.8–1.2 ×
 
-Figure 23: One-factor engineering endpoint spans about nominal 0.15 A, with nonlinear transport
+Figure 25: One-factor engineering endpoint spans about nominal 0.15 A, with nonlinear transport
 and the filled-core closure. Trial intervals are shown explicitly. They are chosen hypothesis ranges,
 not probability distributions or confidence intervals. Different trial widths would change the ranking.
 
@@ -2779,7 +3055,7 @@ prietary data need not prevent bounded synthetic studies. Empirical comparison, 
 requires matched boundary temperature, current, imposed load and ambient conditions. No inferred
 confidence interval or commercial performance claim follows from the present sensitivity spans.
 
-33
+35
 
 
 TEC-cooled HgCdTe reference device
@@ -2820,7 +3096,7 @@ property changes are manufacturable, or whether actual gas/radiation and nonloca
 small. The earlier 0.15 A proxy sensitivity uses different boundaries and remains a separate study;
 its endpoint spans are not silently replaced by these controls.
 
-34
+36
 
 
 TEC-cooled HgCdTe reference device
@@ -2910,13 +3186,13 @@ failed raw bath/cold criteria. Stable temperatures and voltages do not establish
 Bounded nonlinear transport improves high-current agreement with an independent one-dimensional
 reference; neither that agreement nor algebraic conservation validates a physical material grade.
 
-Two reduced operating contexts must remain distinct. The 0.15 A nominal krypton proxy gives
-approximately 232.2 K, 0.173 W electrical input and 0.182 W sink rejection. The independent fixed-
-hot, exchange-OFF screening admits nominal 186.484 K at 0.4 A, wires ON and 0.970800 W input,
-wholly inside measured leg coverage. Its 200 K target is demonstrated only under those admitted
-hypotheses, not for an actual assembly. Large joint manufacturer lift/voltage discrepancies, unknown
-contacts and omitted nonlocal paths prevent a commercial or physical-accuracy claim. No continuous
-optimum or device confidence interval is established.
+Reduced contexts remain distinct. The 0.15 A krypton proxy gives approximately 232.2 K, 0.173 W
+input and 0.182 W sink rejection. Fixed-hot, exchange-OFF screening admits nominal 186.484 K
+at 0.4 A, wires ON and 0.970800 W input, inside measured leg coverage. At the separately solved
+200 K target, nominal input rises from 0.548425 to 0.622176 W between ideal and 10 K W−1 sink;
+finite-sink states require assumed continuation. All are conditional reduced results. Manufacturer
+disagreement, unknown contacts and omitted nonlocal paths prevent a physical-accuracy claim; no
+global optimum or device confidence interval follows.
 
 The filled-core proxy conserves power while omitting native transport. The separate gas control
 retains its 32.6274% raw failure against 1%; those powers are not coupled here. Nonlinear scaling
@@ -2932,7 +3208,7 @@ independent boundary-value comparisons; rejections remain visible. Candidate geo
 are audited separately. Source/input identities, field provenance and deterministic figure records are
 retained independently. Rebuilding figures implies no new physics solve.
 
-35
+37
 
 
 TEC-cooled HgCdTe reference device
@@ -2958,6 +3234,6 @@ Digitized P/N specimen transport, 40–300 K; no commercial grade identification
 [5] M. L. Huber, Thermal Conductivity of Gases, NIST/CRC (2019), NIST thermophysical-property
 tabulation. Dilute-gas conductivity data; package transport is separately approximated.
 
-36
+38
 
 

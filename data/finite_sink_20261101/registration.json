@@ -1,0 +1,2804 @@
+{
+  "observed_UTC": "2026-11-01T14:02:36.764807+00:00",
+  "baseline": "641bf5df70d5c585cb9027efd5d1420e604c2e59",
+  "protocol": "# Finite hot-side sink: bounded matched-target power study\n\nInternal technical record; the single public scientific assessment remains Rev3.\n\n## Preregistration before new reduced solves\n\nBaseline: clean main `641bf5df70d5c585cb9027efd5d1420e604c2e59`. The user now\nauthorizes this finite-sink question prospectively; earlier proposals/stops and\ntheir original evidence are not rewritten. Preserve existing nonlinear/affine/G1\nalgorithms, source laws, native CAD/mesh, all prior studies and failed gates.\nNo OEM fitting, new CAD/mesh/Elmer/gas/radiation, hardware or changed geometry.\n\n### Fixed physics, hypotheses and outputs\n\nUse unchanged `integrated_reference.solve`, `zhang2025_nonlinear`, 32 axial\nintervals, original 28/12/4 couples, area 0.16 mm\u00b2 and lengths 1.07/0.82/0.64 mm.\nAmbient/pin reservoir is **300 K**, imposed die heat **0.002 W**, original Cu/Au\nwires **ON**, ideal stage contacts and zero bypass. Die attach remains unchanged.\nGas pressure and cap/window emissivities are zero; no exchange operator is used.\nThe sink is the existing effective hot-ceramic-to-ambient resistance, not resolved\nheader/contact spreading. The Cu wire paths separately connect hot pads to the\nprescribed pin reservoir and must not be folded into the sink a second time.\n\n| Input | Registered values | Status / provenance |\n| --- | --- | --- |\n| R\u03b8, K/W | 0, 0.5, 1, 2, 5, 10 | Engineering hypotheses: ideal control, prior 0.5\u20135 range plus explicit 10 K/W stress; not measured hardware |\n| Current, A | 0, .1, .15, .2, .25, .275, .3, .325, .35, .375, .4, .45, .5, .6, .8, 1 | Fixed grid, no current optimization |\n| Nominal (S,rho,k) factors | (1,1,1) | Corrected Zhang2025 distinct P/N research specimens |\n| Lower hypothesis | (.9,1.2,1.2) | Previously registered coherent engineering triple, covariance/manufacturability unknown |\n| Higher hypothesis | (1.1,.8,.8) | Same caveat; higher hypothetical ZT is neither a characterized grade nor proof of impossibility |\n\nAll three hypotheses use the whole current/sink grid: **288 primary cases**.\nThe 40\u2013300 K source laws remain intact; active solver domain is 180\u2013390 K.\nAbove 300 K the quarter terminal-tangent is **ASSUMED**, not measured. Record\neach stage's full local extrema, not just junctions; fail outside active domain.\nPreserve sigma=1/rho, Thomson=T*dS/dT and one-sided knot semantics. No fitted\n(.892,.603,1.731) triple, g=1.7 scenario or OEM comparison is run; the latter\ngeometry hypothesis fails all 176 original full-pad footprint checks.\n\nRetain Tdie, all five temperatures, stage lifts/local extrema, cold-stage Qc,\nmodule/terminal voltage and input, sink rejection, signed wire/ambient paths,\nglobal/node/stage residuals and source coverage. Die COP is Qdie/Pterminal;\ncooler COP is Qc,cold/Pmodule, undefined at zero input. Accepted/rejected/NOT RUN\nare separate, with complete available failure diagnostics and visible gaps.\nMinimum-power and nondominated <=200 K **grid samples** are not global optima.\nNo admitted sample does not prove physical infeasibility; Qmax/DeltaTmax NOT RUN.\n\n### Independent balances and controls\n\nSigns are positive into the hot pad/die for Cu/Au conduction, positive out to\nthe sink for Qsink. Let Gcu/Gau and Rcu be sums from original wire routes,\nJcu=I\u00b2Rcu, Qau=Gau*(Ta-Tdie), Qcu=Gcu*(Ta-Th), Qdet=0.002 W:\n\n```text\nQsink = Qh,hot-stage + Qcu + Jcu/2                 [W]\nTh = Ta + R\u03b8*Qsink                                [K]\nPterminal = I*Vmodule + Jcu                        [W]\nQsink = Pterminal + Qdet + Qau + Qcu - Jcu/2       [W]\nQc,cold = Qdet + Qau                              [W]\n```\n\nThese are independently recomputed from temperatures, route coefficients and\nstage endpoints, never by overwriting a reported power. The other half of Cu\nJoule heat goes to the pin reservoir; Au thermal loading is not detector bias.\nWith exchange OFF there are no hidden enclosure/warm-surface loads. Total\nrejection to ambient, including signed direct lead paths, equals Pterminal+Qdet.\nDo not assume Qsink=IV or add failed gas/nonlocal fluxes as new loads.\n\nBefore primary cases: solve **nine G1 constant-property controls**, I=0/.3/.8 A\nat R\u03b8=0/2/10 K/W, against an independently assembled exact 5x5 linear system.\nAt I=0 also check the independent series/parallel resistance formula, including\nAu and the parallel Cu/sink path. Gates: temperatures 1e-6 K, V 1e-7 V and\nheat 1e-8 W. Negative/nonfinite R\u03b8, invalid current/material scales and 179.999 /\n390.001 K property queries must reject without being physical scenario outputs.\n\nFor every admitted primary point independently audit node/global energy <1e-8 W,\nstage energy <1e-9 W and hot-sink residual <2e-8 K (unchanged optimizer K/2\nscaling). Replay all matching R\u03b8=0/wires-ON points from the frozen material\nstudy within 1e-6 K / 1e-7 V; retain matching rejection classifications.\nAssess signed temperature/power response only on accepted pairs with identical\ncurrent/grade/load; monotonicity is an observation, not a universal imposed gate.\n\nAfter the grid, independently reconstruct the nonlinear five balances and solve\nat nominal I=.3 A, R\u03b8=2/10 using **two fixed seeds** each:\n(301,270,240,210,210.1) K and (310,260,220,195,195.1) K in hot-to-die order.\nUse bounded least-squares and unchanged nonlinear stage transport, at most 120\nevaluations, without the production solver's G1 initialization. Compare accepted\nroots with the primary point within 1e-5 K / 1e-7 V / 1e-8 W. Four checks test\nselected initialization dependence, not all possible branches or stability.\nIf a reference point rejects, comparison is NOT RUN; any failed independent\nbalance/control or differing admitted root stops comparative conclusions.\n\n### Bounded matched-target rule and cost\n\nFor **nominal only**, inspect all adjacent original current-grid pairs at each\nR\u03b8 after the grid. Register every admitted falling 200 K bracket; execute only\nthe first such pair in ascending current. Both endpoints must be accepted,\nwith Tdie(left)>200 and Tdie(right)<=200. Rejected gaps are never bridged.\nUse actual midpoint-current solves, at most **10 per R\u03b8 / 60 total**, until\nthe accepted cold endpoint satisfies 0<=200-Tdie<=**0.005 K**. No interpolated\ntemperature or root is reported. Stop that bracket on a rejection or midpoint\ntemperature outside the endpoint range by >1e-5 K; do not try a different\ninterval, retune parameters or claim uniqueness. Exhaustion gives an unresolved\nbounded bracket, not an exact target. Saved brackets/attempts remain visible.\nThis is a conditional crossing on one sampled branch, not minimum global power.\n\nMaximum **361 top-level** package/root calls: 288 grid + 9 analytic controls + 4 branch\nchecks + 60 target midpoints; <=**600 s total reduced execution**, <=**8 s**\nper call, including the unchanged production solver's internal G1 initial guess.\nThose initial guesses are not additional admitted nonlinear observations.\nNo retries; all remaining registered slots become NOT RUN on budget\nexhaustion. Existing offline pinned wrapper <=4 CPUs/8 GiB; no install/rebuild.\nKnown invalid-input checks do not solve a model. Frozen sources, previous raw\nresults and source geometry hashes are registered before controls. Previous\nlive PDF hashes are baseline identities, with exact bytes preserved separately\nif this study later merits an authorized in-place master update.\n\nPlots from saved actual data only: (1) nominal Tdie/current by sink, source\ncoverage and explicit rejection markers with gaps; (2) input/Tdie and <=200 K\nnondominated samples, with conditional solved target points distinguished;\n(3) hot rise versus actual Qsink and an auditable signed target heat budget.\nThe 0.5/1/2/3 W sink-load scaling table is deltaT=R\u03b8*Q, **not new die loads**.\nOverlay actual solved Qsink; never replace it by IV. Nonlocal paths, real contacts,\nspreading and qualified gas/radiation remain omitted limitations.\n\nFocused and applicable opt-in regression exclude the 12 CAD/mesh/Elmer runtime\ncases. Run archive/master and both legacy gates. Assess same-Rev3 integration\nonly after science checks; any update requires exact predecessor preservation,\nindependent deterministic builds and every-page visual QA. Append true UTC\nPASS/FAIL/STOP events; commit/push verified scope and exact CI, then stop.\n\n",
+  "producer_sha256": "d43e21b0daebd50c62bb4a1ebf9bd5683e25e0f8d1df8f1ba45408f89fec3487",
+  "design": {
+    "grid": [
+      {
+        "id": "grid_nominal_R0_I0",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_nominal_R0_I0.1",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_nominal_R0_I0.15",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_nominal_R0_I0.2",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_nominal_R0_I0.25",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_nominal_R0_I0.275",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_nominal_R0_I0.3",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_nominal_R0_I0.325",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_nominal_R0_I0.35",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_nominal_R0_I0.375",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_nominal_R0_I0.4",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_nominal_R0_I0.45",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_nominal_R0_I0.5",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_nominal_R0_I0.6",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_nominal_R0_I0.8",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_nominal_R0_I1",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_nominal_R0.5_I0",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.1",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.15",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.2",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.25",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.275",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.3",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.325",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.35",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.375",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.4",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.45",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.5",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.6",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_nominal_R0.5_I0.8",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_nominal_R0.5_I1",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_nominal_R1_I0",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_nominal_R1_I0.1",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_nominal_R1_I0.15",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_nominal_R1_I0.2",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_nominal_R1_I0.25",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_nominal_R1_I0.275",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_nominal_R1_I0.3",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_nominal_R1_I0.325",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_nominal_R1_I0.35",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_nominal_R1_I0.375",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_nominal_R1_I0.4",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_nominal_R1_I0.45",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_nominal_R1_I0.5",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_nominal_R1_I0.6",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_nominal_R1_I0.8",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_nominal_R1_I1",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_nominal_R2_I0",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_nominal_R2_I0.1",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_nominal_R2_I0.15",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_nominal_R2_I0.2",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_nominal_R2_I0.25",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_nominal_R2_I0.275",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_nominal_R2_I0.3",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_nominal_R2_I0.325",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_nominal_R2_I0.35",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_nominal_R2_I0.375",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_nominal_R2_I0.4",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_nominal_R2_I0.45",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_nominal_R2_I0.5",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_nominal_R2_I0.6",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_nominal_R2_I0.8",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_nominal_R2_I1",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_nominal_R5_I0",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_nominal_R5_I0.1",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_nominal_R5_I0.15",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_nominal_R5_I0.2",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_nominal_R5_I0.25",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_nominal_R5_I0.275",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_nominal_R5_I0.3",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_nominal_R5_I0.325",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_nominal_R5_I0.35",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_nominal_R5_I0.375",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_nominal_R5_I0.4",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_nominal_R5_I0.45",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_nominal_R5_I0.5",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_nominal_R5_I0.6",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_nominal_R5_I0.8",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_nominal_R5_I1",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_nominal_R10_I0",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_nominal_R10_I0.1",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_nominal_R10_I0.15",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_nominal_R10_I0.2",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_nominal_R10_I0.25",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_nominal_R10_I0.275",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_nominal_R10_I0.3",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_nominal_R10_I0.325",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_nominal_R10_I0.35",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_nominal_R10_I0.375",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_nominal_R10_I0.4",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_nominal_R10_I0.45",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_nominal_R10_I0.5",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_nominal_R10_I0.6",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_nominal_R10_I0.8",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_nominal_R10_I1",
+        "family": "grid",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_lower_R0_I0",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_lower_R0_I0.1",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_lower_R0_I0.15",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_lower_R0_I0.2",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_lower_R0_I0.25",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_lower_R0_I0.275",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_lower_R0_I0.3",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_lower_R0_I0.325",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_lower_R0_I0.35",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_lower_R0_I0.375",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_lower_R0_I0.4",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_lower_R0_I0.45",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_lower_R0_I0.5",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_lower_R0_I0.6",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_lower_R0_I0.8",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_lower_R0_I1",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_lower_R0.5_I0",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_lower_R0.5_I0.1",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_lower_R0.5_I0.15",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_lower_R0.5_I0.2",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_lower_R0.5_I0.25",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_lower_R0.5_I0.275",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_lower_R0.5_I0.3",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_lower_R0.5_I0.325",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_lower_R0.5_I0.35",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_lower_R0.5_I0.375",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_lower_R0.5_I0.4",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_lower_R0.5_I0.45",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_lower_R0.5_I0.5",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_lower_R0.5_I0.6",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_lower_R0.5_I0.8",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_lower_R0.5_I1",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 0.5,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_lower_R1_I0",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_lower_R1_I0.1",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_lower_R1_I0.15",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_lower_R1_I0.2",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_lower_R1_I0.25",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_lower_R1_I0.275",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_lower_R1_I0.3",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_lower_R1_I0.325",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_lower_R1_I0.35",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_lower_R1_I0.375",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_lower_R1_I0.4",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_lower_R1_I0.45",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_lower_R1_I0.5",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_lower_R1_I0.6",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_lower_R1_I0.8",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_lower_R1_I1",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 1.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_lower_R2_I0",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_lower_R2_I0.1",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_lower_R2_I0.15",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_lower_R2_I0.2",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_lower_R2_I0.25",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_lower_R2_I0.275",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_lower_R2_I0.3",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_lower_R2_I0.325",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_lower_R2_I0.35",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_lower_R2_I0.375",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_lower_R2_I0.4",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_lower_R2_I0.45",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_lower_R2_I0.5",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_lower_R2_I0.6",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_lower_R2_I0.8",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_lower_R2_I1",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 2.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_lower_R5_I0",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_lower_R5_I0.1",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_lower_R5_I0.15",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_lower_R5_I0.2",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_lower_R5_I0.25",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_lower_R5_I0.275",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_lower_R5_I0.3",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_lower_R5_I0.325",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_lower_R5_I0.35",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_lower_R5_I0.375",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_lower_R5_I0.4",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_lower_R5_I0.45",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_lower_R5_I0.5",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_lower_R5_I0.6",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_lower_R5_I0.8",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_lower_R5_I1",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 5.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_lower_R10_I0",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_lower_R10_I0.1",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_lower_R10_I0.15",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_lower_R10_I0.2",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_lower_R10_I0.25",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_lower_R10_I0.275",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_lower_R10_I0.3",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_lower_R10_I0.325",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_lower_R10_I0.35",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_lower_R10_I0.375",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_lower_R10_I0.4",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_lower_R10_I0.45",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_lower_R10_I0.5",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_lower_R10_I0.6",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_lower_R10_I0.8",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_lower_R10_I1",
+        "family": "grid",
+        "hypothesis": "lower",
+        "sink_K_W": 10.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_higher_R0_I0",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_higher_R0_I0.1",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_higher_R0_I0.15",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_higher_R0_I0.2",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_higher_R0_I0.25",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_higher_R0_I0.275",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_higher_R0_I0.3",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_higher_R0_I0.325",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_higher_R0_I0.35",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_higher_R0_I0.375",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_higher_R0_I0.4",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_higher_R0_I0.45",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_higher_R0_I0.5",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_higher_R0_I0.6",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_higher_R0_I0.8",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_higher_R0_I1",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_higher_R0.5_I0",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_higher_R0.5_I0.1",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_higher_R0.5_I0.15",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_higher_R0.5_I0.2",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_higher_R0.5_I0.25",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_higher_R0.5_I0.275",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_higher_R0.5_I0.3",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_higher_R0.5_I0.325",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_higher_R0.5_I0.35",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_higher_R0.5_I0.375",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_higher_R0.5_I0.4",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_higher_R0.5_I0.45",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_higher_R0.5_I0.5",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_higher_R0.5_I0.6",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_higher_R0.5_I0.8",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_higher_R0.5_I1",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 0.5,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_higher_R1_I0",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_higher_R1_I0.1",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_higher_R1_I0.15",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_higher_R1_I0.2",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_higher_R1_I0.25",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_higher_R1_I0.275",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_higher_R1_I0.3",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_higher_R1_I0.325",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_higher_R1_I0.35",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_higher_R1_I0.375",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_higher_R1_I0.4",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_higher_R1_I0.45",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_higher_R1_I0.5",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_higher_R1_I0.6",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_higher_R1_I0.8",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_higher_R1_I1",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 1.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_higher_R2_I0",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_higher_R2_I0.1",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_higher_R2_I0.15",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_higher_R2_I0.2",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_higher_R2_I0.25",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_higher_R2_I0.275",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_higher_R2_I0.3",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_higher_R2_I0.325",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_higher_R2_I0.35",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_higher_R2_I0.375",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_higher_R2_I0.4",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_higher_R2_I0.45",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_higher_R2_I0.5",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_higher_R2_I0.6",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_higher_R2_I0.8",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_higher_R2_I1",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 2.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_higher_R5_I0",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_higher_R5_I0.1",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_higher_R5_I0.15",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_higher_R5_I0.2",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_higher_R5_I0.25",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_higher_R5_I0.275",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_higher_R5_I0.3",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_higher_R5_I0.325",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_higher_R5_I0.35",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_higher_R5_I0.375",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_higher_R5_I0.4",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_higher_R5_I0.45",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_higher_R5_I0.5",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_higher_R5_I0.6",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_higher_R5_I0.8",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_higher_R5_I1",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 5.0,
+        "current_A": 1.0
+      },
+      {
+        "id": "grid_higher_R10_I0",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.0
+      },
+      {
+        "id": "grid_higher_R10_I0.1",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.1
+      },
+      {
+        "id": "grid_higher_R10_I0.15",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.15
+      },
+      {
+        "id": "grid_higher_R10_I0.2",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.2
+      },
+      {
+        "id": "grid_higher_R10_I0.25",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.25
+      },
+      {
+        "id": "grid_higher_R10_I0.275",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.275
+      },
+      {
+        "id": "grid_higher_R10_I0.3",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.3
+      },
+      {
+        "id": "grid_higher_R10_I0.325",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.325
+      },
+      {
+        "id": "grid_higher_R10_I0.35",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.35
+      },
+      {
+        "id": "grid_higher_R10_I0.375",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.375
+      },
+      {
+        "id": "grid_higher_R10_I0.4",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.4
+      },
+      {
+        "id": "grid_higher_R10_I0.45",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.45
+      },
+      {
+        "id": "grid_higher_R10_I0.5",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.5
+      },
+      {
+        "id": "grid_higher_R10_I0.6",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.6
+      },
+      {
+        "id": "grid_higher_R10_I0.8",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 0.8
+      },
+      {
+        "id": "grid_higher_R10_I1",
+        "family": "grid",
+        "hypothesis": "higher",
+        "sink_K_W": 10.0,
+        "current_A": 1.0
+      }
+    ],
+    "constant": [
+      {
+        "id": "constant_R0_I0",
+        "family": "constant",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.0,
+        "material": "g1_constant"
+      },
+      {
+        "id": "constant_R0_I0.3",
+        "family": "constant",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.3,
+        "material": "g1_constant"
+      },
+      {
+        "id": "constant_R0_I0.8",
+        "family": "constant",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "current_A": 0.8,
+        "material": "g1_constant"
+      },
+      {
+        "id": "constant_R2_I0",
+        "family": "constant",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.0,
+        "material": "g1_constant"
+      },
+      {
+        "id": "constant_R2_I0.3",
+        "family": "constant",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.3,
+        "material": "g1_constant"
+      },
+      {
+        "id": "constant_R2_I0.8",
+        "family": "constant",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.8,
+        "material": "g1_constant"
+      },
+      {
+        "id": "constant_R10_I0",
+        "family": "constant",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.0,
+        "material": "g1_constant"
+      },
+      {
+        "id": "constant_R10_I0.3",
+        "family": "constant",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.3,
+        "material": "g1_constant"
+      },
+      {
+        "id": "constant_R10_I0.8",
+        "family": "constant",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.8,
+        "material": "g1_constant"
+      }
+    ],
+    "branch": [
+      {
+        "id": "branch_R2_seed0",
+        "family": "branch",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.3,
+        "seed_K": [
+          301.0,
+          270.0,
+          240.0,
+          210.0,
+          210.1
+        ]
+      },
+      {
+        "id": "branch_R2_seed1",
+        "family": "branch",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "current_A": 0.3,
+        "seed_K": [
+          310.0,
+          260.0,
+          220.0,
+          195.0,
+          195.1
+        ]
+      },
+      {
+        "id": "branch_R10_seed0",
+        "family": "branch",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.3,
+        "seed_K": [
+          301.0,
+          270.0,
+          240.0,
+          210.0,
+          210.1
+        ]
+      },
+      {
+        "id": "branch_R10_seed1",
+        "family": "branch",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "current_A": 0.3,
+        "seed_K": [
+          310.0,
+          260.0,
+          220.0,
+          195.0,
+          195.1
+        ]
+      }
+    ],
+    "target_slots": [
+      {
+        "id": "target_R0_step0",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0_step1",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0_step2",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0_step3",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0_step4",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0_step5",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0_step6",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0_step7",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0_step8",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0_step9",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0.5_step0",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0.5_step1",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0.5_step2",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0.5_step3",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0.5_step4",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0.5_step5",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0.5_step6",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0.5_step7",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0.5_step8",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R0.5_step9",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 0.5,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R1_step0",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R1_step1",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R1_step2",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R1_step3",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R1_step4",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R1_step5",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R1_step6",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R1_step7",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R1_step8",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R1_step9",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 1.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R2_step0",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R2_step1",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R2_step2",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R2_step3",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R2_step4",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R2_step5",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R2_step6",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R2_step7",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R2_step8",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R2_step9",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 2.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R5_step0",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R5_step1",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R5_step2",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R5_step3",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R5_step4",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R5_step5",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R5_step6",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R5_step7",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R5_step8",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R5_step9",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 5.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R10_step0",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R10_step1",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R10_step2",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R10_step3",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R10_step4",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R10_step5",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R10_step6",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R10_step7",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R10_step8",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      },
+      {
+        "id": "target_R10_step9",
+        "family": "target",
+        "hypothesis": "nominal",
+        "sink_K_W": 10.0,
+        "midpoint_rule": "first admitted falling 200 K bracket; at most ten real midpoint solves"
+      }
+    ],
+    "maximum_top_level_calls": 361,
+    "total_seconds": 600.0,
+    "per_call_seconds": 8.0
+  },
+  "input_sha256": {
+    "tecooledmct/graded_tec.py": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "tecooledmct/nonlinear_tec.py": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "tecooledmct/integrated_reference.py": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "tecooledmct/material_profiles.py": "b332771e082c5e389cfdb819b184cd710f8ae7992cb597cf37b26aabc06ee7d6",
+    "tecooledmct/oem_phase_a.py": "efe026a71bca341774523fa56226169ff37e6d40500db7fe963dd3b9e59caa93",
+    "tecooledmct/fem_g2a.py": "d6654b9466ac7ef49c7336217e23310a8920b1121a2e3933cf1e0d795ce546fc",
+    "data/g2c/zhang2025_he_40_300_v2.json": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+    "data/g2c/oem2019_curves_v1.json": "b6de59e07ad02dde83d5ddeb880e650cd74f73557d63d2ba8b35ba94b214b1e0",
+    "data/g2c/source_registry.json": "69844d52f00dbb2d8a86b16d3171671b110bb4809c256bbed5e7a1f0232f3360",
+    "data/g2d/oem_source_review.json": "57c5e1bd3cbdc089fda3ec7623e01b49137732d881bd26e8aa64ea48bde05b71",
+    "data/g2d/preregistration.json": "0f3b63e4be59ec5f22ed582172a2ffdd902494a87567f5d2feb479b56214f269",
+    "data/g2d/calibration_reserved.json": "9e870d76769851c2efbb21203de7b93fc47bcfc2117088ded64f1d3537de2af0",
+    "data/g2d/validation_holdout.json": "75c5b357b6e0893cd853b7015d0715bd516263c9189a72ca5644070ab31fe4e2",
+    "fem/results/geometry_complete_checkpoint_20261030/manifest.json": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+    "fem/results/geometry_complete_checkpoint_20261030/wire_routes.json": "e751350be5e48af2104eaf2e85c864fecf8ce08e2c03fe2e3349ebdbe96b757f",
+    "fem/results/geometry_complete_checkpoint_20261030/checksums.json": "5d7904dc1e75d6d57586c305ea0e636bdcba30088298fed15a85d00cc99b4888",
+    "fem/results/geometry_complete_checkpoint_20261030/mesh.npz": "a2bc5e347ae026e78a52f13498c41c2ed5032150f9ddb53b2620a86612cf4614",
+    "fem/results/geometry_complete_checkpoint_20261030/reference.step.gz": "da0fd06b429d7ad842b32dac1fb2c2a424d1640aa379140ef8a92fefbef150ca",
+    "data/tec_material_plausibility_20261101/cases.json": "84e1d0aa0ed0b2e22312538c04440e7d8a303deaa45f010868e65e66c8aa2992",
+    "data/tec_material_plausibility_20261101/checksums.json": "951aedb503a4a4936281f64d5a29c0a47afefe606d478b3f1b5b96535c1c80a1",
+    "data/tec_material_plausibility_20261101/registration.json": "a9bd3af0f8b1d7c5525157ddb87fdf94a5b7803bb7d81c53472a4237ac2c38f8",
+    "data/tec_identifiability_20261101/checksums.json": "d2793075045a7cd77dbf9f6fccb3ba04938259d7ae36a7894f05973a2cf35d87"
+  },
+  "baseline_live_Rev3_sha256": "96265010b41a9f41f53fa31c2fa4e8c3098806696675b3766e69f0554a27e006",
+  "original_geometry": {
+    "stages": [
+      {
+        "couples": 28,
+        "leg_length_m": 0.00107,
+        "leg_area_m2": 1.6e-07
+      },
+      {
+        "couples": 12,
+        "leg_length_m": 0.00082,
+        "leg_area_m2": 1.6e-07
+      },
+      {
+        "couples": 4,
+        "leg_length_m": 0.00064,
+        "leg_area_m2": 1.6e-07
+      }
+    ],
+    "ceramic_sides_area_m2": [
+      4.096e-05,
+      2.07025e-05,
+      1.05625e-05,
+      5.759999999999999e-06
+    ],
+    "die_area_m2": 1e-06,
+    "die_attach_thickness_over_area_m_inverse": 30.000000000000004,
+    "wires": [
+      {
+        "lead_body_id": 601,
+        "pin": 1,
+        "material": "Cu",
+        "pin_body": 501,
+        "target_body": 190,
+        "pin_face_tag": 6001,
+        "target_face_tag": 103,
+        "polyline_m": [
+          [
+            -0.004368691769624717,
+            -0.003174040362379355,
+            0.002
+          ],
+          [
+            -0.004368691769624717,
+            -0.003174040362379355,
+            0.0028
+          ],
+          [
+            -0.0028,
+            -0.0026999999999999997,
+            0.0028
+          ],
+          [
+            -0.0028,
+            -0.0026999999999999997,
+            0.001835
+          ]
+        ],
+        "length_m": 0.0034037520048052043,
+        "diameter_m": 0.0002,
+        "area_m2": 3.141592653589793e-08,
+        "certified_other_solid_clearance_lower_bound_m": 6.499999999999995e-05,
+        "G_W_K": 0.0036919172127166597,
+        "R_ohm": 0.0018635304107855175,
+        "coefficients_status": "constant verification proxies, no OEM material claim",
+        "representation": "1D axial hybrid; no meshed3D wire arc, no distributed gas/radiation, piecewise straight route hypothesis",
+        "endpoint_distribution": "uniform face average/injection; attachment locations unknown"
+      },
+      {
+        "lead_body_id": 609,
+        "pin": 9,
+        "material": "Cu",
+        "pin_body": 509,
+        "target_body": 191,
+        "pin_face_tag": 6009,
+        "target_face_tag": 104,
+        "polyline_m": [
+          [
+            -0.0043686917696247165,
+            0.0031740403623793565,
+            0.002
+          ],
+          [
+            -0.0043686917696247165,
+            0.0031740403623793565,
+            0.0028
+          ],
+          [
+            -0.0028,
+            0.0027,
+            0.0028
+          ],
+          [
+            -0.0028,
+            0.0027,
+            0.001835
+          ]
+        ],
+        "length_m": 0.0034037520048052035,
+        "diameter_m": 0.0002,
+        "area_m2": 3.141592653589793e-08,
+        "certified_other_solid_clearance_lower_bound_m": 6.499999999999995e-05,
+        "G_W_K": 0.0036919172127166605,
+        "R_ohm": 0.0018635304107855169,
+        "coefficients_status": "constant verification proxies, no OEM material claim",
+        "representation": "1D axial hybrid; no meshed3D wire arc, no distributed gas/radiation, piecewise straight route hypothesis",
+        "endpoint_distribution": "uniform face average/injection; attachment locations unknown"
+      },
+      {
+        "lead_body_id": 607,
+        "pin": 7,
+        "material": "Au",
+        "pin_body": 507,
+        "target_body": 304,
+        "pin_face_tag": 6007,
+        "target_face_tag": 6107,
+        "polyline_m": [
+          [
+            0.001668691769624717,
+            0.00513570518799383,
+            0.002
+          ],
+          [
+            0.001668691769624717,
+            0.00513570518799383,
+            0.006
+          ],
+          [
+            0.0003,
+            0.0,
+            0.006
+          ],
+          [
+            0.0003,
+            0.0,
+            0.005589999999999999
+          ]
+        ],
+        "length_m": 0.009724958601741426,
+        "diameter_m": 1.8e-05,
+        "area_m2": 2.5446900494077326e-10,
+        "certified_other_solid_clearance_lower_bound_m": 9.999999999999593e-06,
+        "G_W_K": 8.24247586431781e-06,
+        "R_ohm": 0.9324868069402753,
+        "coefficients_status": "constant verification proxies, no OEM material claim",
+        "representation": "1D axial hybrid; no meshed3D wire arc, no distributed gas/radiation, piecewise straight route hypothesis",
+        "endpoint_distribution": "uniform face average/injection; attachment locations unknown"
+      },
+      {
+        "lead_body_id": 608,
+        "pin": 8,
+        "material": "Au",
+        "pin_body": 508,
+        "target_body": 305,
+        "pin_face_tag": 6008,
+        "target_face_tag": 6108,
+        "polyline_m": [
+          [
+            -0.0016686917696247152,
+            0.0051357051879938305,
+            0.002
+          ],
+          [
+            -0.0016686917696247152,
+            0.0051357051879938305,
+            0.006
+          ],
+          [
+            -0.0003,
+            0.0,
+            0.006
+          ],
+          [
+            -0.0003,
+            0.0,
+            0.005589999999999999
+          ]
+        ],
+        "length_m": 0.009724958601741426,
+        "diameter_m": 1.8e-05,
+        "area_m2": 2.5446900494077326e-10,
+        "certified_other_solid_clearance_lower_bound_m": 9.999999999999593e-06,
+        "G_W_K": 8.24247586431781e-06,
+        "R_ohm": 0.9324868069402753,
+        "coefficients_status": "constant verification proxies, no OEM material claim",
+        "representation": "1D axial hybrid; no meshed3D wire arc, no distributed gas/radiation, piecewise straight route hypothesis",
+        "endpoint_distribution": "uniform face average/injection; attachment locations unknown"
+      }
+    ],
+    "source_archive": "fem/results/geometry_complete_checkpoint_20261030",
+    "source_sha256": {
+      "manifest.json": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+      "wire_routes.json": "e751350be5e48af2104eaf2e85c864fecf8ce08e2c03fe2e3349ebdbe96b757f"
+    },
+    "material_status": "constant first-principles G1 verification proxy (NOT OEM transport grade)"
+  },
+  "no_fitting_or_new_3D": true
+}

@@ -30,7 +30,7 @@ def required_content(text):
                   '0.583231','32.6274%','engineering hypotheses',
                   'not measured commercial grades','actual reference-device feasibility',
                   'structural non-identifiability','269','260','61.339405',
-                  '0.957962','2.758235','176'):
+                  '0.957962','2.758235','176','finite-sink','203','288','0.548425','0.622176','13.4478'):
         if value not in s:raise ValueError('Required scientific evidence missing: '+value)
     return True
 
@@ -107,6 +107,10 @@ def verify_current():
         raise ValueError('Identifiability evidence coverage differs')
     if ident['new_3D_runs'] or ident['commercial_geometry_grade_identified']:
         raise ValueError('False identifiability physical scope')
+    sink=d['finite_sink']
+    if (sink['primary_grid'],sink['accepted'],sink['rejected'],sink['actual_target_solves'],sink['nominal_target_crossings'])!=(288,203,85,54,6):
+        raise ValueError('Finite-sink evidence coverage differs')
+    if sink['new_3D_runs'] or sink['real_device_feasibility']!='unresolved':raise ValueError('False finite-sink physical scope')
     return True
 
 
