@@ -1,0 +1,30 @@
+Actual corrected-field figures verified outputs/rev3-material-integration-a
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/reports/master/figures.py", line 174, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);a=p.parse_args();generate(a.out)
+                                                                                                 ^^^^^^^^^^^^^^^
+  File "/work/reports/master/figures.py", line 156, in generate
+    inputs.extend(material_screening(out,save))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/reports/master/material_screening.py", line 60, in generate
+    macro('ManufacturerRows','\n'.join(
+                             ^^^^^^^^^^
+  File "/work/reports/master/material_screening.py", line 62, in <genexpr>
+    f" & {r['model_value']:.6f} & {r['source_value']:.6f} & {r['signed_difference']:+.6f} & {r['signed_relative_difference']*100:+.2f}"+r' \\'
+          ~^^^^^^^^^^^^^^^
+KeyError: 'model_value'
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/User/TE_Cooled_MCT/reports/master/build.py", line 87, in <module>
+    else:print(prepare(a.out,figures=not a.reuse_figures))
+               ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/User/TE_Cooled_MCT/reports/master/build.py", line 29, in prepare
+    subprocess.run([str(ROOT/'fem/run.sh'),'python','-m','reports.master.figures','--out',str(out.relative_to(ROOT))],cwd=ROOT,check=True)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['/home/User/TE_Cooled_MCT/fem/run.sh', 'python', '-m', 'reports.master.figures', '--out', 'outputs/rev3-material-integration-a']' returned non-zero exit status 1.

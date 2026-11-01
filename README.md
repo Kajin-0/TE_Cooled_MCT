@@ -7,8 +7,10 @@ facing scientific assessment. It distinguishes genuine corrected-geometry 3D
 solid fields from the nonlinear reduced package and preliminary cavity proxy.
 The legacy download filename is retained for compatibility; the document itself
 is the Revision 3 engineering master. Historical PDF bytes remain sealed evidence.
-The current master has 28 pages; all pages were visually reviewed and the PDF
-and source-derived figures reproduce exactly. Original numerical failures remain explicit.
+The current master has 34 pages; all pages were visually reviewed and the PDF
+and source-derived figures reproduce exactly. It includes the frozen 181-case
+material screening, conditional 200 K target, rejected coverage and candid
+manufacturer lift/voltage discrepancy. Original numerical failures remain explicit.
 
 A reproducible engineering model of a **plausible synthetic** three-stage
 TEC-cooled HgCdTe detector in a nine-pin, two-ear TO-66 package. The objective

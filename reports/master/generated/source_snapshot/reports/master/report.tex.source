@@ -10,19 +10,19 @@
 \setcounter{tocdepth}{1}
 \newcommand{\fig}[3]{\begin{figure}[!ht]\centering\includegraphics[width=#2\linewidth]{figures/#1.pdf}\caption{#3}\end{figure}}
 \newcommand{\fail}{\textcolor{failure}{\textbf{FAIL}}}
-\input{numerics.tex}\input{master_numerics.tex}
+\input{numerics.tex}\input{master_numerics.tex}\input{screening_numerics.tex}
 \begin{document}
 \thispagestyle{empty}
 {\Large\bfseries Thermoelectrically Cooled HgCdTe Reference Device\par}
 \vspace{4mm}{\large Engineering Assessment\par}
 \vspace{4mm}{\large\bfseries Revision 3\par}
-30 October 2026
+1 November 2026
 \vspace{3mm}\hrule\vspace{4mm}
 \textcolor{failure}{\textbf{Hypothetical reference article. Numerical release incomplete.}}
 
 \textbf{Abstract.} A source-referenced nine-pin, two-ear housing and an independently selected three-stage cooler envelope define a synthetic HgCdTe detector article. This assessment combines two distinct numerical descriptions. A genuine coupled three-dimensional solid calculation resolves 88 thermoelectric legs, internal conductors, a header, explicit joint and attach layers, and the detector. At 0.1\,A, 300\,K underside bath and 2\,mW imposed die heat, its principal fine mesh gives approximately 265.6\,K die temperature and 0.552\,V. Current and conservative heat checks pass, while original raw boundary-gradient requirements remain unmet: the principal ceramic/attach mismatch is 6.48\% against 5\%, and the best independent normal-refinement bath error is 1.069\% against 1\%. Later transverse cases remain near 1.29\%. No passing combined mesh and systematically refined comparator have established numerical release.
 
-A separate five-temperature model uses bounded nonlinear one-dimensional P/N transport, corrected wire routes, a configurable sink, imposed detector heating and preliminary gas/radiation exchange. Its enclosure is an explicitly filled stepped-core proxy inside candidate cap/window solids, not a fully resolved native cavity. At nominal 300\,K, 0.15\,A, 30\,kPa krypton and 2\,mW die heat, this model predicts approximately 232.2\,K and 1.152\,V. Of 63 prescribed scenario/current points, 52 are accepted numerically and 11 remain rejected with diagnostics. Material laws above 300\,K are assumed; no optical transmission, detector carrier transport or measured device-performance uncertainty is established.
+A separate five-temperature model uses bounded nonlinear one-dimensional P/N transport, corrected wire routes, a configurable sink, imposed detector heating and preliminary gas/radiation exchange. Its enclosure is an explicitly filled stepped-core proxy inside candidate cap/window solids, not a fully resolved native cavity. At nominal 300\,K, 0.15\,A, 30\,kPa krypton and 2\,mW die heat, this model predicts approximately 232.2\,K and 1.152\,V. Its 52 accepted and 11 rejected states remain a separate comparison. A further preregistered material screening admits 141 of 181 reduced cases. With fixed 300\,K hot ceramic, 2\,mW die heat and wires ON, but enclosure and nonlocal leakage omitted, the nominal analog admits \ScreenDie\,K at 0.4\,A and \ScreenPower\,W input. This is a sampled conditional result, not demonstrated assembly feasibility. A boundary-matched manufacturer comparison shows substantial lift and voltage disagreement. Above 300\,K material continuation is assumed; no measured device-accuracy interval is established.
 
 \textbf{Engineering interpretation.} Source geometry, physical hypotheses, numerical verification and empirical accuracy are treated separately. Numerical digits identify conditional calculations, not manufacturing tolerances. Neither the VIGO housing plus candidate cooler reference nor the reduced enclosure model is a verified commercial assembly. The report supports bounded engineering exploration; it does not certify a device or a numerical release.
 \clearpage
@@ -120,13 +120,55 @@ All other exposed solid surfaces are adiabatic; no arbitrary 300\,K condition is
 
 \clearpage
 \subsection{Temperature-dependent research analog for reduced transport}
-The reduced model uses source-traced P/N research-specimen curves from Zhang et al.\ [4]. Complete measured-table coverage is 40--300\,K. The P and N samples are different laboratory specimens; they are not an identified commercial matched pair. The selected operating model restricts all leg temperatures to 180--390\,K. Between 180 and 300\,K, properties are interpolated on the source knots. Between 300 and 390\,K, the slope of each property is \emph{assumed} to be one quarter of its final measured-interval tangent. No measured validity above 300\,K is implied.
+The reduced model uses source-traced P/N research-specimen curves from Zhang et al.\ [4]. Complete measured-table coverage is 40--300\,K. The P-HE and N-HE-1 samples are distinct research specimens; they are not an identified commercial matched pair. The selected operating model restricts all leg temperatures to 180--390\,K. Between 180 and 300\,K, properties are interpolated on the source knots. Between 300 and 390\,K, the slope of each property is \emph{assumed} to be one quarter of its final measured-interval tangent. No measured validity above 300\,K is implied.
 
 \fig{material_laws}{1.0}{P/N active material laws used only by the reduced analog models. Solid lines lie within the measured-table domain; dashed lines and the shaded region denote the assumed 300--390\,K continuation. The three-dimensional field shown elsewhere retains the constant verification properties.}
 
 Resistivity $\rho$ is in $\Omega$\,m, conductivity is identically $\sigma=1/\rho$, thermopower $S$ is in V\,K$^{-1}$, and $k$ is in W\,m$^{-1}$K$^{-1}$. The Thomson coefficient is $\tau=T\,dS/dT$. At an interior source knot the right derivative is used; exactly 300\,K uses the measured left derivative, strictly above 300\,K the quarter tangent, and exactly 390\,K its left limit. A two-sided derivative is not asserted at the slope discontinuity.
 
 All evaluated states must be finite, with positive $\rho$ and $k$ and the correct P/N sign of $S$. No solution is accepted by clipping it to a temperature limit. Interior Joule heating can activate the assumed continuation even when both boundary temperatures are below 300\,K. Continuation tests establish internal consistency only, not experimental validation. The research-specimen choice, digitization and assumed extension are consequential physical uncertainties.
+
+\clearpage
+\subsection{Coherent transport hypotheses and local pair characterization}
+Three fixed transport triples scale the complete nominal laws,
+$(S,\rho,k)=(m_S S_0,m_\rho\rho_0,m_k k_0)$, for both polarities. Their
+source-aligned temperature dependence is retained, but the lower/higher triples
+are \textbf{engineering hypotheses, not measured commercial grades}.
+The source supplies a same-specimen triple within each polarity; it does not
+establish that the two specimens form a matched cooler pair [4]. No multiplier
+was selected by fitting manufacturer curves. Their joint covariance and
+manufacturability are unknown.
+
+\begin{center}\begin{tabular}{lcc}\toprule
+Hypothesis & $(m_S,m_\rho,m_k)$ & $ZT_{pair}$ at 200 / 300 K\\\midrule
+\HypothesisRows
+\bottomrule\end{tabular}\end{center}
+For equal-area, equal-length P/N legs, the local idealized couple indicator is
+\begin{equation}
+ZT_{pair}=\frac{(S_P-S_N)^2T}{(\rho_P+\rho_N)(k_P+k_N)}.
+\end{equation}
+Here $ZT_{pair}$ is dimensionless and all properties are evaluated at the same
+$T$. This is neither a cascade figure of merit nor its operating coefficient
+of performance. Relative to nominal, the lower and higher hypotheses scale
+this indicator by 0.5625 and 1.890625, respectively; favorable values do not
+identify an available manufactured grade.
+
+The inferred stages contain 28, 12 and 4 couples. Each leg has a 0.4 by
+0.4\,mm section; stage lengths are 1.07, 0.82 and 0.64\,mm. It is fixed throughout the screening, as are
+the 32-interval nonlinear transport algorithm, source signs, reciprocal
+conductivity and one-sided Thomson semantics. The constant-property controls
+and earlier affine/nonlinear analog results are retained as separate baselines.
+Neither these hypotheses nor the apparent precision of their outputs resolves
+unknown electrical/thermal contacts, lateral ceramic spreading, current
+localization or buried Cu/alumina leakage.
+
+Coverage is determined from the \emph{entire solved leg profile}, including
+Joule-heated interior extrema, rather than junction temperatures alone. An
+accepted operating point can therefore require the assumed continuation even
+when its hot ceramic is nominally 300\,K. The operating and manufacturer
+comparisons below distinguish such points from entirely measured-domain
+transport. Numerical acceptance of the continuation is not experimental support
+for its high-temperature slope.
 
 \clearpage
 \section{Coupled field equations and solution verification}
@@ -358,6 +400,107 @@ The approximately 12\,K constant-to-analog difference is far larger than the 0.0
 
 The constant solid-only reduced case at 0.1\,A and 2\,mW gives 257.756\,K and 0.58561\,V when the hot ceramic is held at 300\,K. The genuine three-dimensional case holds only the Kovar underside at 300\,K and gives 265.593\,K and 0.55194\,V on its original mesh. Their difference is not a matched-boundary error estimate: spatial spreading, bypass and joint/header paths differ. It is retained as a warning about reduced-model structural omissions, not fitted away.
 
+\clearpage
+\subsection{Material screening at a fixed hot ceramic}
+A separate preregistered screening keeps the hot ceramic at 300\,K and die heat
+at 2\,mW. External Cu/Au links are either present or entirely removed, including
+their electrical resistance and Joule heat. Gas, radiation and nonlocal
+Cu/alumina leakage are OFF; the warm wire ends share the hot-side reservoir.
+This is distinct from the 0.15\,A, finite-sink krypton proxy scenario above.
+
+\fig{material_operating_grid}{1.0}{Frozen admitted samples for the three material hypotheses and external wires ON/OFF. The horizontal line marks 200\,K; gaps retain rejected cases. The right panel shows module voltage, excluding external lead loss. The constant-property control is a separate baseline. Curves are reduced estimates, not measured performance or qualified continuous optima.}
+
+\begin{center}\small\begin{tabular}{lrrrrr}\toprule
+Sample & $I$ (A) & $T_d$ (K) & Terminal (V) & Input (W) & $Q_{c,cold}$ (mW)\\\midrule
+\MaterialOperatingRows
+\bottomrule\end{tabular}\end{center}
+These are the lowest admitted \emph{sampled} wire-ON die temperatures, not
+continuous optima. Nominal and higher samples stay inside measured leg coverage;
+the lower sample reaches a 302.867\,K internal peak and uses assumed continuation.
+Nominal $Q_{c,cold}=\ScreenQc$\,mW includes Au heat as well as the imposed 2\,mW.
+Thus die COP, $Q_{die}/P_{terminal}=\ScreenCOP$, differs from cooler COP,
+$Q_{c,cold}/P_{module}\simeq0.003990$.
+
+The nominal/higher hypotheses demonstrate a conditional $T_d\leq200$\,K target
+on this grid; the lower hypothesis does not. Actual reference-device feasibility
+remains unresolved because the grade, contacts and omitted heat paths are not
+identified. No previous different-law bypass shift is added to these predictions.
+
+\clearpage
+\subsection{Admitted domain and rejected operating states}
+All 181 preregistered cases were attempted: 141 passed the unchanged reduced
+numerical gates and 40 were rejected. Of 130 admitted nonlinear cases, 56 stay
+entirely within measured material coverage and 74 require assumed continuation;
+the other 11 are constant-property controls. No registered point was omitted
+for budget reasons.
+
+\begin{center}\begin{tabular}{lrr}\toprule
+Family & Accepted & Rejected\\\midrule
+\CoverageRows
+\midrule Total & 141 & 40\\\bottomrule\end{tabular}\end{center}
+Seven rejections fail the leg residual/domain check and 33 fail package
+residual/bound acceptance. Last available temperatures, residuals, active bounds
+and optimizer diagnostics are retained; they are not reported as operating
+observations. In the nominal grid, 0.5/0.6/0.8\,A points reject while 1\,A can be
+admitted on a warmer branch. Disconnected accepted samples therefore cannot
+establish a global optimum, a continuous branch or physical infeasibility.
+The active 180\,K floor and nonlinear initialization constrain admitted coverage.
+Neither $Q_{max}$ nor $\Delta T_{max}$ was computed.
+
+Six independent same-grid bounded boundary-value checks, covering all three
+triples and two measured-domain stage conditions, differ by at most
+$2.18\,10^{-13}$\,W in $Q_c$ and $1.01\,10^{-13}$\,V. They test implementation
+agreement, not experimental accuracy or continuum discretization error.
+Across admitted package cases the maximum global energy residual is
+$5.32\,10^{-11}$\,W and stage error $2.90\,10^{-12}$\,W, within the unchanged
+$10^{-8}$\,W package and $10^{-9}$\,W stage gates. Such conservation cannot
+qualify spatial fluxes or compensate for omitted device physics.
+
+\clearpage
+\subsection{Manufacturer plausibility under explicitly matched boundaries}
+The 2019 TEC Microsystems 3MC04-044-05 vacuum charts [2] specify nominal
+27\,$^\circ$C, interpreted literally as 300.15\,K. The conditional panel matches
+stated current and prescribed cold load and compares \emph{cold-ceramic lift}
+and \emph{module voltage}; external wires and side exchange are OFF. It does
+not compare a loaded detector temperature with module-only zero-load lift.
+
+\fig{manufacturer_plausibility}{1.0}{Conditional idealized vacuum module comparison at literal 300.15\,K. Symbols are existing published chart readings with digitization bounds, not manufacturer uncertainty bars. Lines are frozen reduced calculations; rejected samples remain gaps. All model points require assumed above-300\,K continuation. The discrepancy is not empirical agreement or commercial-grade identification.}
+
+\begin{center}\small\begin{tabular}{lrrrr}\toprule
+Zero load, 0.2 A & Model & Chart & Difference & Relative (\%)\\\midrule
+\ManufacturerRows
+\bottomrule\end{tabular}\end{center}
+Across the ten common admitted current/load conditions, nominal mean absolute
+errors are \LiftMAE\,K in lift and \VoltageMAE\,V. The 300-to-300.15\,K control
+changes the 0.2\,A zero-load result by only 0.074942\,K and 1.294\,mV; it cannot
+explain the approximately 29.991\,K / 0.583231\,V mismatch.
+
+\clearpage
+\subsection{Limits of the manufacturer comparison}
+A strict measured-only comparison at 300.15\,K is \textbf{not comparable}:
+the source tables end at 300\,K. The panel is conditional on the engineering
+continuation, with local Joule overshoot also checked. A separate 300\,K control
+is not an exact literal-27\,$^\circ$C match. Dry-N$_2$ charts are not comparable
+to this exchange-OFF calculation. Likewise, the 2\,mW package-detector result is
+not a module-only zero-load measurement. Rejected cases have no accepted
+prediction; they are neither filled in nor hidden when assessing coverage.
+
+Actual P/N grade, internal geometry and 28/12/4 allocation, contacts, vacuum
+pressure and radiative parasitics remain unidentified. Matching documented
+boundary variables and the observable does not establish equivalence of the
+physical module. Prescribed-load attach controls change die temperature while
+cold ceramic and module voltage remain invariant within $10^{-10}$\,K and
+$3\,10^{-13}$\,V, respectively; they do not validate real contact properties.
+
+All chart subsets have already been examined; retained calibration/holdout
+labels do not create a fresh blind validation. Earlier identification found
+rank eight of nine for a different model, illustrating non-uniqueness rather
+than determining a grade. Its historical lift/voltage residual is not the
+current discrepancy. Simultaneous changes in grade, construction and missing
+paths cannot be attributed uniquely from this panel. An independent
+geometry/material/contact diagnostic is therefore a future scientific need,
+not proof that a favorable grade adjustment is correct.
+
 \subsection{Meaning of apparent numerical precision}
 Several tables retain extra digits to distinguish solved states and audit balances. Without identified material grades, contact impedances, die loading, accommodation and reservoir conditions, such digits do not provide a physical accuracy interval. A microkelvin-scale change in an output can coexist with a failed raw spatial flux criterion, as the solid refinements demonstrate. A small reduced-model residual similarly cannot certify a real detector temperature.
 
@@ -388,6 +531,30 @@ These results support prioritizing grade/contact and loading hypotheses when int
 Unknown construction and operating inputs should therefore be treated as alternative engineering hypotheses. Independent thermal/electrical measurements would constrain them, but absent proprietary data need not prevent bounded synthetic studies. Empirical comparison, when available, requires matched boundary temperature, current, imposed load and ambient conditions. No inferred confidence interval or commercial performance claim follows from the present sensitivity spans.
 
 \clearpage
+\subsection{Controlled input spans in the independent material screening}
+The exchange-OFF, wire-OFF nominal control at 0.25\,A, fixed hot ceramic 300\,K
+and 2\,mW die heat gives $T_d=\ScreenBaselineDie$\,K. Each row varies only its
+stated input; the other laws, dimensions and conditions remain fixed.
+
+\begin{center}\begin{tabular}{lr}\toprule
+Input interval & Absolute endpoint $T_d$ span (K)\\\midrule
+\ScreenSensitivityRows
+\bottomrule\end{tabular}\end{center}
+Turning the wires ON at the same control adds 0.684866\,K. These are mechanistic
+paired contrasts, not probability ranges or a confidence ranking. The widths and
+units differ: transport spans per percentage point are approximately 0.709\,K
+for $S$, 0.584\,K for $k$ and 0.124\,K for $\rho$. These secants are not local
+derivatives, and their ordering differs from the raw endpoint spans. Neither
+comparison measures unknown manufacturing scatter.
+
+The strong conductivity and thermopower effects motivate independent material
+and construction evidence. They do not establish which physical grade should
+be selected, whether the assumed joint property changes are manufacturable,
+or whether actual gas/radiation and nonlocal leakage are small. The earlier
+0.15\,A proxy sensitivity uses different boundaries and remains a separate
+study; its endpoint spans are not silently replaced by these controls.
+
+\clearpage
 \section{Overall verification and engineering conclusions}
 \small\begin{tabularx}{\linewidth}{p{35mm}p{30mm}X}\toprule
 Assessment & Result & Interpretation\\\midrule
@@ -398,26 +565,28 @@ Same-mesh release/comparator & Not demonstrated & Both raw limits and all other 
 Bounded nonlinear leg transport & PASS tested comparisons & Same-grid/analytical/refined numerical checks; not grade validation\\
 Reduced package conservation & PASS numerical checks & Accepted states meet unchanged energy/domain gates; rejected candidates retained\\
 Proxy visibility/reciprocity/closure & PASS consistency checks & Closed filled-core rays and balanced exchange; 0.04043 maximum last-level correction\\
-Native full-cavity exchange & Not implemented & No actual all-surface view factors, gas diffusion or new coupled cavity field\\
-Material and device accuracy & Not established & Research analogs, assumed extensions and construction remain uncertain\\\bottomrule
+Native full-cavity exchange & Not implemented & No integrated gas diffusion, all-surface view factors or coupled cavity field\\
+Material screening & 141 accepted / 40 rejected & 56 measured-domain nonlinear; 74 continuation; 11 constant controls\\
+Standalone gas raw flux & \fail & \GasRawMismatch\% mismatch against 1\%; not a qualified device heat budget\\
+Material and device accuracy & Not established & Large joint manufacturer discrepancy; grade/construction uncertain\\\bottomrule
 \end{tabularx}\normalsize
 
 \subsection{Engineering conclusions}
-The source-referenced solid model demonstrates a two-terminal 88-leg coupled calculation with meaningful electrical/heat verification, while exposing unresolved raw boundary gradients. Stable temperature and voltage do not remove the original release failures. The direct nonlinear transport option markedly improves high-current consistency with a refined one-dimensional reference at practical scenario cost. Its physical grade and high-temperature continuation remain assumptions.
+The corrected 88-leg solid calculation passes electrical and conservative heat checks while retaining failed raw bath/cold criteria. Stable temperatures and voltages do not establish numerical release. Bounded nonlinear transport improves high-current agreement with an independent one-dimensional reference; neither that agreement nor algebraic conservation validates a physical material grade.
 
-The preliminary enclosure operator makes reservoir heat exchange explicit and conservative, and records its geometric corrections. Its filled-core closure is useful for bounded comparisons, but it should not be interpreted as an accurate hermetic-cavity field. Native interleg/pin surfaces, contact and bypass paths, and cap reservoir behavior are the important unresolved physical descriptions. A large geometry refinement alone cannot establish their correctness.
+Two reduced operating contexts must remain distinct. The 0.15\,A nominal krypton proxy gives approximately 232.2\,K, 0.173\,W electrical input and 0.182\,W sink rejection. The independent fixed-hot, exchange-OFF screening admits nominal \ScreenDie\,K at 0.4\,A, wires ON and \ScreenPower\,W input, wholly inside measured leg coverage. Its 200\,K target is demonstrated only under those admitted hypotheses, not for an actual assembly. Large joint manufacturer lift/voltage discrepancies, unknown contacts and omitted nonlocal paths prevent a commercial or physical-accuracy claim. No continuous optimum or device confidence interval is established.
 
-For the specified nominal reduced scenario, approximately 232.2\,K die temperature, 0.173\,W electrical input and 0.182\,W sink rejection describe one conditional synthetic operating point. Material-law and imposed-load sensitivity dominate the chosen scenario spans. Neither an optimum current nor a defensible device-performance confidence interval is established. The assessment supports transparent engineering exploration while maintaining a clear boundary between computation, hypothesis and measurement.
+The filled-core exchange proxy conserves reservoir power but omits important native surfaces and transport. A separate native gas control remains unqualified: raw mismatch \GasRawMismatch\% fails 1\% despite reaction closure. Its powers are not coupled into these predictions. Independent geometry/material/contact evidence remains necessary; no new coupled three-dimensional field or numerical release follows from this screening.
 
 \subsection{Reproducible scientific method}
-The three-dimensional figures use exact intersections of stored tetrahedra and solved fields, with independent node/cell correspondence; voids are retained. The reduced figures are calculated from completed scenario data and independent boundary-value comparisons, with failures visible. Native candidate geometry is audited separately from the proxy. Sources, numerical inputs, archived field identities and deterministic figure/build records are retained outside the reader-facing pages. No field is invented to draw a figure and no additional production solve is implied by a figure rebuild.
+Three-dimensional figures are exact intersections of archived tetrahedra and solved fields, with independent node/cell correspondence and voids preserved. Reduced plots use completed cases and independent boundary-value comparisons; rejections remain visible. Candidate geometry and proxy are audited separately. Source/input identities, field provenance and deterministic figure records are retained independently. Rebuilding figures implies no new physics solve.
 
 \clearpage
 \phantomsection
 \addcontentsline{toc}{section}{References}
 \begin{thebibliography}{9}
 \bibitem{vigo} VIGO Photonics, \emph{3TE-TO66(9p)-wW PVI/PCI Detector Technical Drawing}, ZTM-TO66-Z030, Revision 9, 1 March 2024. Public family drawing; no identified composite assembly.
-\bibitem{tec} TEC Microsystems, \emph{3MC04-044-05 Thermoelectric Cooler Datasheet}, 2019. Independent candidate cooler envelope.
+\bibitem{tec} TEC Microsystems, \emph{3MC04-044-05 Thermoelectric Cooler Datasheet}, 2019. \href{https://www.tec-microsystems.com/Download/Datasheets/Thermoelectric\%20Coolers/MC04\%20Series/3MC04-044-05_Datasheet_2019.pdf}{Manufacturer specification and performance charts}. Independent candidate envelope; digitization bounds are not measurement uncertainty.
 \bibitem{mct} E. M. Heckman, L. P. Gonzalez and S. Guha, \emph{Measurement of optical and thermal properties of Hg$_{1-x}$Cd$_x$Te}, Applied Optics \textbf{47}, 578--582 (2008), \href{https://doi.org/10.1364/AO.47.000578}{doi:10.1364/AO.47.000578}. Composition-dependent thermal model.
 \bibitem{zhang} J. Zhang et al., \emph{Accurate Measurements and Error Analysis of Bi$_2$Te$_3$-Based Low-Temperature Thermoelectrics}, \emph{Chinese Physics Letters} \textbf{42}, 056304 (2025), \href{https://doi.org/10.1088/0256-307X/42/5/056304}{doi:10.1088/0256-307X/42/5/056304}. Digitized P/N specimen transport, 40--300\,K; no commercial grade identification.
 \bibitem{gas} M. L. Huber, \emph{Thermal Conductivity of Gases}, NIST/CRC (2019), \href{https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=926438}{NIST thermophysical-property tabulation}. Dilute-gas conductivity data; package transport is separately approximated.

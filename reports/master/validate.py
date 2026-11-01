@@ -25,7 +25,10 @@ def required_content(text):
                   '88','216','177','647,657','265.616','232.209','1.15193',
                   '52','63','0.04043','1.069','1.2885','1.2907','6.48%',
                   '40','300','390','quarter','stepped','native','not implemented',
-                  'radiation','gas','sensitivity','fail','references'):
+                  'radiation','gas','sensitivity','fail','references',
+                  '181','141','186.484','0.970800','300.15','29.990715',
+                  '0.583231','32.6274%','engineering hypotheses',
+                  'not measured commercial grades','actual reference-device feasibility'):
         if value not in s:raise ValueError('Required scientific evidence missing: '+value)
     return True
 
@@ -92,6 +95,11 @@ def verify_current():
     d=json.loads((out/'report_inputs.json').read_text())
     if d['master_scope']['new_enclosed_3D_field'] or d['master_scope']['full_native_cavity_visibility']:
         raise ValueError('False physical scope')
+    screening=d['material_screening']
+    if (screening['registered'],screening['accepted'],screening['rejected'])!=(181,141,40):
+        raise ValueError('Material screening coverage differs from frozen study')
+    if screening['new_physics_runs'] or screening['actual_device_feasibility']!='unresolved':
+        raise ValueError('False material screening scope')
     return True
 
 

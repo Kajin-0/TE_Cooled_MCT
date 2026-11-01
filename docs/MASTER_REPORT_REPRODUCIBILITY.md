@@ -37,14 +37,29 @@ public-reference check now verifies the new master through that live pointer.
 The guard's message about the approved report refers to the preserved original.
 No failed raw gate, source hash, field archive or historical manifest is waived.
 
-The current master has 28 pages. All pages were rendered and visually inspected;
-all 40 figure files and the final PDF reproduce byte for byte. Focused report
-tests passed 32/32; full pinned opt-in regression passed 300/300 in 338.73 s,
-including actual Elmer smoke, with 14 third-party deprecation warnings. The full
-archive verifier and both legacy demos passed. Logs and exact input/PDF identities
-are in `reports/master/verification/summary.json` and the live build sidecars.
-These numerical/report checks do not clear the failed physical-interface/bath
-release criteria or establish material/device accuracy.
+The current master has **34 pages**. The report-only material integration uses
+frozen `data/tec_material_plausibility_20261101` JSON, with no calls to transport
+solvers or changed material laws. `reports/master/material_screening.py` derives
+two report figures and numerical tables; the 40 predecessor figures remain
+byte-identical, giving 44 PDF/PNG figure files. The 141/181 admitted states,
+40 rejections, measured/assumed coverage, conditional 200 K samples, controlled
+sensitivity and manufacturer discrepancy are woven into existing sections.
+This is not device validation; all prior raw release failures remain explicit.
+
+Prior exact 28-page PDF bytes, full input/figure identities, generator snapshots
+and numerical/visual verification are separately retained in
+`reports/historical/rev3_pre_material_20261101`, with full prior live assets also
+available at the exact source commit recorded there. These are historical
+evidence, not another current report. `verify_historical()` checks both this
+predecessor and the original 15-page/Rev2 identities.
+
+Every current page was rendered and visually inspected; PDF, 44 figures and
+34 rendered pages reproduce byte for byte across two independent builds. Current
+report-only checks, archive/master integrity and legacy evidence are recorded in
+`reports/master/verification/material_integration_20261101/summary.json`.
+The original report-build verification remains in `reports/master/verification/summary.json`
+as historical scope; its 300 full opt-in passes are not new executions.
+No new CAD/mesh/Elmer smoke or scenario campaign is part of this report-only update.
 
 ## Build and review
 
@@ -90,12 +105,17 @@ After all page reviews and checks pass:
 ```bash
 python3 -B -m reports.master.build --out outputs/master-rebuild --publish
 python3 -B -m reports.master.validate --current
-./fem/run.sh python -m pytest -q tests/test_rev3_master.py tests/test_rev3_review.py tests/test_engineering_report.py
-./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs
+./fem/run.sh python -m pytest -q tests/test_master_material_screening.py tests/test_rev3_master.py tests/test_rev3_review.py tests/test_engineering_report.py
 ./fem/run.sh python fem/archive_bath_spatial_device.py --verify
 ./fem/run.sh python -m tecooledmct.cli --quick --out outputs/master-check/legacy-cli
 ./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/master-check/legacy-geometry
 ```
+
+These are the bounded report-only gates. A full opt-in physics regression,
+including CAD/mesh/Elmer runtime cases, belongs to separately authorized physics
+work under the project contract; do not launch those jobs for this frozen-data
+integration. Default exact-commit CI additionally runs the standard unit suite
+with runtime cases skipped. Neither suite changes archived numerical failures.
 
 Publication first checks the new provenance through the unchanged legacy API,
 then updates the canonical bytes and live reference. Unknown/generated-history

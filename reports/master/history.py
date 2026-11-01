@@ -22,6 +22,14 @@ def verify_historical():
         d=json.loads(RECORD.read_text())
         if d['sha256']!=ORIGINAL_SHA or ROOT/d['historical_pdf']!=ORIGINAL:
             raise ValueError('Historical PDF identity record changed')
+    predecessor=ROOT/'reports/historical/rev3_pre_material_20261101'
+    if predecessor.exists():
+        d=json.loads((predecessor/'historical_identity.json').read_text())
+        expected='1bc0d793ac59cfa8b003454846bba2f7c9fe6bf431d57980ae7d95f8bee7ebff'
+        if d['pdf_sha256']!=expected or sha(predecessor/'report.pdf')!=expected or d['pages']!=28:
+            raise ValueError('Prior 28-page Rev3 bytes changed')
+        for name,digest in d['snapshot_sha256'].items():
+            if sha(predecessor/name)!=digest:raise ValueError('Prior Rev3 provenance changed: '+name)
     return True
 
 def preserve():

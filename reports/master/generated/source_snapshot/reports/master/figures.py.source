@@ -152,6 +152,8 @@ def generate(out):
         rows.append(f"{label} & {c['tetrahedra']:,} & {metrics['die_mean_k']:.6f} & {metrics['voltage_v']:.9f} & {c['bath_relative_error']*100:+.4f}"+r' \\')
     macro('SpatialRows','\n'.join(rows))
     (out/'master_numerics.tex').write_text('\n'.join(tex)+'\n')
+    from .material_screening import generate as material_screening
+    inputs.extend(material_screening(out,save))
     d=read(out/'report_inputs.json');d['edition_kind']='CONTINUOUS REV3 MASTER';d['review_draft']=False
     d['old_report_unchanged']=True;d['original_rev3_historical_snapshot_preserved']=True
     for path in inputs:d['inputs'][str(path.relative_to(ROOT))]=sha(path)
@@ -159,8 +161,10 @@ def generate(out):
     d['master_scope']={'nonlinear_leg_intervals':32,'accepted_proxy_cases':len(report['summary_rows']),
         'total_proxy_cases':len(report['cases']),'full_native_cavity_visibility':False,
         'new_enclosed_3D_field':False,'ray_max_absolute_correction':exchange['rows'][-1]['ray_audit']['max_absolute_view_factor_correction']}
+    d['material_screening']={'registered':181,'accepted':141,'rejected':40,
+        'new_physics_runs':0,'actual_device_feasibility':'unresolved'}
     d['figure_generators']={name:sha(ROOT/name) for name in (
-        'reports/master/figures.py','reports/rev3_review/build.py',
+        'reports/master/figures.py','reports/master/material_screening.py','reports/rev3_review/build.py',
         'reports/rev3_review/latest_study.py','reports/field_geometry.py',
         'tecooledmct/graded_tec.py','tecooledmct/material_profiles.py')}
     write(out/'report_inputs.json',d)

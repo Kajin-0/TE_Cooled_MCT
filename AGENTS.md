@@ -122,18 +122,24 @@ inspect every page of a rebuilt master before publication.
   above 300 K the quarter tangent, exactly 390 K its left limit. Domain-check
   interior Joule overshoot. Never clamp accepted results, bridge rejected plot
   intervals, erase failure diagnostics or turn chosen ranges into confidence intervals.
-- Latest recorded report checkpoint: **28 pages**, all rendered/inspected;
-  PDF and 40 figure files reproduce exactly; 32 focused and **300 full opt-in
-  tests pass**, including actual Elmer smoke. Archive verifier and legacy demos
-  pass. Records: `reports/master/verification/summary.json`. Check CI for each
-  newly pushed commit; historical test counts are not new executions.
+- Current master: **34 pages**, every page rendered and visually inspected;
+  PDF, 44 figure files and all 34 rendered pages reproduce exactly across two
+  independent builds. All 40 predecessor figures are byte-identical. Material
+  hypotheses, 141/181 admitted cases, conditional 200 K target, sensitivity and
+  substantial manufacturer discrepancy are integrated professionally in place;
+  no device validation or numerical release is claimed. Prior exact 28-page PDF
+  and provenance are retained under `reports/historical/rev3_pre_material_20261101`;
+  the original 15-page Rev3 and Rev2 remain sealed. Verification is recorded in
+  `reports/master/verification/material_integration_20261101/summary.json`.
+  This update is report-only; 35 focused report tests, archive/master integrity
+  and both legacy checks pass, with no new solver/material law/scenario/geometry.
 - Current native gas checkpoint: `data/isolated_cap_native_gas_20261101` and
   `docs/ISOLATED_CAP_AND_NATIVE_GAS_20261101.md`. A/B PASS, C failed raw balance;
   one export, one partition, one mesh/solve, no retry. **87 focused / 384 full
   opt-in tests pass**, including existing Elmer smoke. Software regression records
   are separate in `verification.json`; their success cannot qualify gas flux,
-  pass old side-port sensitivity or establish ceramic spreading. The 28-page
-  master and original historical evidence remain unchanged.
+  pass old side-port sensitivity or establish ceramic spreading. At that checkpoint the 28-page
+  master was unchanged; its exact predecessor bytes are now historical evidence.
 - Frozen-field forensics: `docs/NATIVE_GAS_FLUX_FORENSICS_20261101.md` and
   `data/native_gas_flux_forensics_20261101`. Exact jump/reaction identities and
   native-group decomposition verified, **32 focused / 385 applicable opt-in
@@ -155,7 +161,10 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current user-priority override (2026-11-01):** the bounded reduced TEC
+**Current user-priority override (2026-11-01):** the verified material study
+merits integration into the ONE live Rev3; the user has expressly authorized
+this report-only update, preserving its predecessor and all numerical evidence.
+No further physics or identifiability experiment is authorized. The bounded reduced TEC
 material-hypothesis / condition-matched datasheet study is now verified in
 `docs/TEC_MATERIAL_PLAUSIBILITY_20261101.md` (91 focused / 403 applicable opt-in
 tests; 12 runtime CAD/mesh/Elmer cases excluded). Nominal/higher assumptions admit

@@ -277,5 +277,9 @@ nonlocal-path evidence, followed by a separately registered coupled comparison;
 not fitting these multipliers to previously seen OEM charts. The optional
 nonlocal scenario is NOT RUN and its 7.277% side-port failure remains. No new
 3D field, measured grade, gas/radiation result or full-reference-device 200 K
-claim is established. Rev3 stays byte-identical: these useful reduced design
-hypotheses still lack the physical equivalence needed for a device conclusion.
+claim is established. The study checkpoint preserved the then-current 28-page
+Rev3 bytes. The subsequent user-authorized report-only integration includes these
+substantive hypotheses, conditional performance and discrepancies in the same
+live Rev3, preserving that predecessor as historical evidence; this does not
+establish the physical equivalence needed for a device conclusion or authorize
+follow-on physics.
