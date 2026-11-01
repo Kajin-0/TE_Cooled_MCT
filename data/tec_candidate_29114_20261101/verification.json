@@ -1,0 +1,133 @@
+{
+  "baseline": "332634c5209606d80aade9b01e0db02bb315f486",
+  "scientific_status": "STOP full alignment; geometry PASS only",
+  "checks": [
+    {
+      "name": "focused",
+      "command_argv": [
+        "./fem/run.sh",
+        "pytest",
+        "-q",
+        "tests/test_tec_candidate.py",
+        "tests/test_physical_input_qualification.py",
+        "tests/test_tec_material_plausibility.py",
+        "tests/test_tec_identifiability.py",
+        "tests/test_finite_sink_study.py",
+        "tests/test_graded_tec.py",
+        "tests/test_nonlinear_tec.py",
+        "tests/test_integrated_reference.py"
+      ],
+      "observed_begin_UTC": "2026-11-01T21:02:23.277717+00:00",
+      "observed_end_UTC": "2026-11-01T21:02:46.644260+00:00",
+      "exit_code": 0,
+      "seconds": 23.36653692694381,
+      "log": "verification/focused.log",
+      "passed": 149,
+      "deselected": 0
+    },
+    {
+      "name": "applicable",
+      "command_argv": [
+        "./fem/run.sh",
+        "env",
+        "TE_FEM_SMOKE=1",
+        "pytest",
+        "-q",
+        "--ignore=outputs",
+        "--deselect=tests/test_corrected_enclosure.py::test_gmsh_geometry_and_interface_area_audit",
+        "--deselect=tests/test_fem_g1.py::test_real_elmer_coupled_smoke",
+        "--deselect=tests/test_fem_g2a.py::test_real_four_couple_solver_smoke",
+        "--deselect=tests/test_fem_g2b_connected.py::test_actual_two_terminal_88_leg_mesh",
+        "--deselect=tests/test_fem_g2b_geometry.py::test_real_88_leg_mesh_feasibility",
+        "--deselect=tests/test_fem_g2b_physics.py::test_actual_two_terminal_full_stack_smoke",
+        "--deselect=tests/test_fem_g2c.py::test_real_local_temperature_adapter_and_runtime_guard",
+        "--deselect=tests/test_fem_g3b.py::test_genuine_elmer_compiled_exchange_does_not_stagnate_at_zero_initial_flux",
+        "--deselect=tests/test_flux_presolder.py::test_genuine_three_dimensional_layered_elmer_coupon",
+        "--deselect=tests/test_full_presolder.py::test_genuine_oblique_elmer_and_independent_quadratic_reference",
+        "--deselect=tests/test_geometry_rebaseline.py::test_independent_cad_and_actual_conformal_header_mesh"
+      ],
+      "observed_begin_UTC": "2026-11-01T21:02:46.644810+00:00",
+      "observed_end_UTC": "2026-11-01T21:03:34.685510+00:00",
+      "exit_code": 0,
+      "seconds": 48.040712385904044,
+      "log": "verification/applicable.log",
+      "passed": 468,
+      "deselected": 12
+    },
+    {
+      "name": "master",
+      "command_argv": [
+        "python3",
+        "-B",
+        "-m",
+        "reports.master.validate",
+        "--current"
+      ],
+      "observed_begin_UTC": "2026-11-01T21:03:34.685910+00:00",
+      "observed_end_UTC": "2026-11-01T21:03:35.446734+00:00",
+      "exit_code": 0,
+      "seconds": 0.7608435428701341,
+      "log": "verification/master.log"
+    },
+    {
+      "name": "archive",
+      "command_argv": [
+        "./fem/run.sh",
+        "python",
+        "fem/archive_bath_spatial_device.py",
+        "--verify"
+      ],
+      "observed_begin_UTC": "2026-11-01T21:03:35.447154+00:00",
+      "observed_end_UTC": "2026-11-01T21:03:52.481160+00:00",
+      "exit_code": 0,
+      "seconds": 17.03402448585257,
+      "log": "verification/archive.log"
+    },
+    {
+      "name": "legacy_cli",
+      "command_argv": [
+        "./fem/run.sh",
+        "python",
+        "-m",
+        "tecooledmct.cli",
+        "--quick",
+        "--out",
+        "outputs/tec-candidate-checks/legacy-cli"
+      ],
+      "observed_begin_UTC": "2026-11-01T21:03:52.481581+00:00",
+      "observed_end_UTC": "2026-11-01T21:03:54.619991+00:00",
+      "exit_code": 0,
+      "seconds": 2.138425919925794,
+      "log": "verification/legacy_cli.log"
+    },
+    {
+      "name": "legacy_geometry",
+      "command_argv": [
+        "./fem/run.sh",
+        "python",
+        "-m",
+        "tecooledmct.geometry_demo",
+        "--out",
+        "outputs/tec-candidate-checks/legacy-geometry"
+      ],
+      "observed_begin_UTC": "2026-11-01T21:03:54.620326+00:00",
+      "observed_end_UTC": "2026-11-01T21:03:59.344673+00:00",
+      "exit_code": 0,
+      "seconds": 4.724366831127554,
+      "log": "verification/legacy_geometry.log"
+    }
+  ],
+  "runtime_exclusions": "Existing12 runtime CAD/mesh/Elmer tests excluded; one separately authorized CAD export/import already recorded; no production FEM",
+  "publication_CI": "PENDING",
+  "Rev3": "Exact38-page canonical PDF unchanged",
+  "focused_passed": 149,
+  "applicable_passed": 468,
+  "runtime_deselected": 12,
+  "original_identities": 31,
+  "local_links": 62,
+  "figures_visually_reviewed": true,
+  "exact_figure_reproduction": "verification/figure_reproduction.json",
+  "CAD_export_attempts": 1,
+  "actual_SI_imports": 1,
+  "initial_reader_stop_preserved": true
+}

@@ -1,0 +1,158 @@
+{
+  "observed_UTC": "2026-11-01T20:39:39.699110+00:00",
+  "protocol": "# Separate source-constrained 29/11/4 TEC candidate\n\nInternal design study, not another public report. Baseline main\n`332634c5209606d80aade9b01e0db02bb315f486`. The user's new authorization permits\ncalibration **only for this separate candidate**, prospectively superseding the\nold no-fit rule here. Original 28/12/4 geometry, laws, studies, fields and failed\ngates remain immutable; no fitted material is substituted into that reference.\n\n## Preregistration before candidate construction or transport solves\n\n### Source identity and geometric design\n\nFreshly fetched/inspected TEC Microsystems2019 PDF has the same protected digest\nas the earlier source. It documents 6.4\u00b1.1 mm hot /2.4\u00b1.1 mm cold /3.8\u00b1.15 mm\nheight, .2 mm terminal wires, Al2O3 and Sn\u2013Sb assembly, high-grade hot-extruded\nBiTe, and chart27C vacuum with hot stabilized to ambient. Its series page gives\nincreasing height/resistance and decreasing current for -05/-08/-10/-12.\nCurrent RMT separately documents .4\u00d7.4 mm pellets and 44 couples, but -05\nperformance117K/.61W/1.14A/3.6V/2.74ohm/H3.75mm differs from TEC2019.\nHistorical RMT2008 indexed source text gives N=4+11+29, h=.5 mm and H3.8 mm,\n112K/.53W/1A/3.5V/ACR2.85ohm. Local historical HTML fetch403; full historical\ndrawing **NOT locally inspected**. This is remotely web-indexed text evidence,\nnot proof of TEC2019 internals. Current part-number diagram identifies final\ncode as pellet height, not a generic assembly height.\n\nCandidate **rmt2008_inspired_29114_h05_v1**: hot-to-cold couples29/11/4, leg\n.4\u00d7.4\u00d7.5 mm. Historical source supports the count multiset, not independently\nverified stage order; assigning29 to hot/4 to cold is an explicitly inferred\ncapacity ordering. Candidate routing/counts must be independently audited.\nNo old g=1.7 area enlargement or reused native pad pattern.\n\nOne fixed layer design in mm: four ceramics of thickness .5, widths\n6.4/5.2/3.8/2.4; three .5 leg layers; each leg face has .02 solder plus .03 Cu.\nTotal **2.0+1.5+.3=3.8 mm**. Intermediate widths, layer partition, support,\ncontact metallurgy detail and all routing are engineering assumptions. Grid\npitch .58, leg gap .18; .44 square pads provide full footprint plus .02 margin,\nand at least .1 ceramic-edge pullback. Manufacturer's \u201cMC400\u00b5m trace spacing\u201d\nis retained as source wording, **not silently equated to leg gap/pitch**; this\npitch is a new design hypothesis, not verified RMT artwork.\n\nSerpentine58/22/8 alternating N/P legs; opposite-face pair links and dedicated\nCu interstage/return conductors must form one unbranched two-terminal chain.\nBoth external endpoints are hot-side pads, x\u00b12.8 mm; .2 mm Cu lead tails use\nraised hot-pad stubs to avoid ceramic penetration. Internal free bent Cu links\nare design hypotheses, not a reused OEM drawing. Audit their actual ownership,\nclearance, contacts and individual volumes; mechanical strength/fatigue and\nfabrication process capability are NOT RUN. No stage-metal thermal leakage or\nspreading is silently declared solved by the reduced transport model.\n\n**Hard geometry gates before transport:** exactly88 legs and176 full solder/Cu\nfootprints; positive disjoint solid interiors, no shorts, correct89 conductor\nnodes with degree1 only at terminals, one chain through every leg; positive\nclearance between unrelated conductor bodies; intended contact faces fully\nowned; layer sum3.8 within source tolerance, .1 mm patterned edge pullback;\nno header penetration and cap-envelope clearance in the existing source frame.\nExport a new exact candidate STEP using fresh mm-authoring process, then a\nseparate fresh SI reader verifies explicit units, all per-body volumes and bbox\n(relative1e-7 volume /2.1e-7 m bbox tolerance). No mesh or production Elmer.\nOne CAD attempt <=180 s, <=600 solids, offline pinned4CPU/8GiB. A failed hard\ngate STOPs transport; do not tune geometry from curve residuals.\n\n### Fixed reduced comparisons and optional two-parameter calibration\n\nUse original `integrated_reference.solve` and nonlinear32 transport unchanged,\npassing isolated candidate geometry only. Module-only: external wires removed,\nvacuum surrogate exchange OFF, ideal hot reservoir300.15K, prescribed cold load.\nCompare **cold ceramic lift / module V**, not auxiliary die T. The auxiliary\n30\u00b5m/1mm\u00b2 attach must be invariant under k=.5/3 at(.2A,.1W) for cold lift/V.\nThis intrinsic benchmark omits ceramic spreading, solder/contact impedance,\nCu trace resistance and nonlocal conduction, radiation and actual vacuum losses;\nCAD qualification cannot qualify those omissions. All source specimens remain\ndistinct Zhang P/N research analogs40\u2013300K, not an identified commercial pair;\n300\u2013390K quarter-tangent is ASSUMED. Active domain180\u2013390K includes leg extrema.\n\nFirst no-fit candidate: all20 existing unique vacuum chart conditions, currents\n.1/.2/.4/.6/.8/1.0A at the available printed loads0/.1/.2/.31/.41W (not an\ninvented rectangular grid). Reuse frozen original-model comparisons at identical\nconditions; six additional300K/zero-load current controls quantify the .15K\nreference offset and actual measured/assumed coverage. No higher-Thot dry-N2\ncomparison is claimed matched; those panels remain NOT COMPARABLE / NOT RUN.\n\nApproximate alignment gate, declared now: **all20 candidate conditions admitted**,\nmean absolute lift error<=8K, RMS relative V error<=15%, maximum lift error<=15K\nand maximum relative V error<=25%. Gate uses known digitized reference readings,\nnot experimental likelihood; retain their reading bounds. Successful approximate\nagreement is calibration/plausibility, never independent OEM validation.\n\nIf no-fit fails, calibrate only two common factors, **S\u2208[.9,1.1] and\nrho\u2208[.8,1.2], k=1**, using prior declared engineering ranges as hard design\nconstraints, not claimed measured grade bounds. No geometry, stage split,\nsource-law shape or third material/contact knob may change. Calibration subset:\n(.2A,0),(.2A,.1W),(.6A,0),(.6A,.1W), eight lift/V readings. Evaluation subset:\nremaining16 conditions/32 readings, all previously seen; **not blind holdouts**.\nObjective mean squared `(lift residual/5K, V residual/.1V)` with fixed engineering\nweights (not measurement error). Start with the nine registered S=.9/1/1.1,\nrho=.8/1/1.2 vertices; exact-key reuse only. Optional bounded least-squares from\nbest admitted vertex, max8 function evaluations with finite-difference Jacobian.\nRecord every trial/current solve including rejects; any rejected refinement trial\nSTOPs refinement, never fabricates penalty observations. Retain best *actually\nevaluated* calibration point and state optimizer success separately. No widened\nbounds/restarts. Apply same approximate gate to all20 and separately evaluate16.\nReport signed lift/V residuals, absolute/relative errors, coverage and bound hits.\n\nAt most **240 outer reduced solves /600 s total /8 s each**, pinned4CPU/8GiB;\nremaining cases NOT RUN, no solver retry. Stage/global/node gates remain\n1e-9/1e-8/1e-8 W, source/sign/passivity and exact power conservation unchanged.\nIndependent analytic geometry/constant-property controls and measured-domain\nbounded P/N BVP comparisons on candidate dimensions precede interpretation.\nACR2.9ohm is a frequency/fixture-dependent check, not DC V/I or a fit target.\nQmax and DeltaTmax **NOT RUN** unless their explicit extremum problems are solved;\nsampled zero-load max lift is not DeltaTmax. No candidate200K package/sink/gas\nprediction is authorized automatically by this intrinsic benchmark.\n\nFreeze preregistration, source audit, candidate input geometry and original\nsource/data/PDF hashes before comparisons. Full applicable regression excludes\n12 existing runtime mesh/Elmer cases; archive/master and both legacy gates run.\nAssess Rev3 integration only after results: no unqualified design or supplier\nidentity is promoted, no alternative public report, full predecessor preservation\nand all-page/deterministic QA if the master changes. Stop after this study.\n\n",
+  "source_sha256": "862a9b9b473769905473fe01c49036f85b8f1cbe444ccad600316815210107b3",
+  "candidate_geometry": {
+    "stages": [
+      {
+        "couples": 29,
+        "leg_area_m2": 1.6e-07,
+        "leg_length_m": 0.0005
+      },
+      {
+        "couples": 11,
+        "leg_area_m2": 1.6e-07,
+        "leg_length_m": 0.0005
+      },
+      {
+        "couples": 4,
+        "leg_area_m2": 1.6e-07,
+        "leg_length_m": 0.0005
+      }
+    ],
+    "ceramic_sides_area_m2": [
+      4.096e-05,
+      2.7040000000000005e-05,
+      1.444e-05,
+      5.759999999999999e-06
+    ],
+    "die_area_m2": 1e-06,
+    "die_attach_thickness_over_area_m_inverse": 30.0,
+    "wires": [],
+    "source_archive": "data/tec_candidate_29114_20261101",
+    "source_sha256": {
+      "candidate_design": "4a1b68baa33ba673ba0d9c6849fa42a4aa1ec3480285078a557c00377437c349",
+      "candidate_STEP": "03a9b1e2aac418fdf4e9bc160955dd1f1c0428d616c29adf8c9ef03ad0e901d7"
+    },
+    "material_status": "distinct source specimens; candidate calibration separate, no manufactured grade identification"
+  },
+  "conditions": [
+    [
+      0.1,
+      0
+    ],
+    [
+      0.2,
+      0
+    ],
+    [
+      0.2,
+      0.1
+    ],
+    [
+      0.4,
+      0
+    ],
+    [
+      0.4,
+      0.1
+    ],
+    [
+      0.4,
+      0.2
+    ],
+    [
+      0.6,
+      0
+    ],
+    [
+      0.6,
+      0.1
+    ],
+    [
+      0.6,
+      0.2
+    ],
+    [
+      0.6,
+      0.31
+    ],
+    [
+      0.8,
+      0
+    ],
+    [
+      0.8,
+      0.1
+    ],
+    [
+      0.8,
+      0.2
+    ],
+    [
+      0.8,
+      0.31
+    ],
+    [
+      0.8,
+      0.41
+    ],
+    [
+      1.0,
+      0
+    ],
+    [
+      1.0,
+      0.1
+    ],
+    [
+      1.0,
+      0.2
+    ],
+    [
+      1.0,
+      0.31
+    ],
+    [
+      1.0,
+      0.41
+    ]
+  ],
+  "calibration": [
+    [
+      0.2,
+      0.0
+    ],
+    [
+      0.2,
+      0.1
+    ],
+    [
+      0.6,
+      0.0
+    ],
+    [
+      0.6,
+      0.1
+    ]
+  ],
+  "S_bounds": [
+    0.9,
+    1.1
+  ],
+  "rho_bounds": [
+    0.8,
+    1.2
+  ],
+  "k_scale": 1.0,
+  "maximum_calls": 240,
+  "total_seconds": 600.0,
+  "per_call_seconds": 8.0,
+  "jacobian_fractional_step": 0.001,
+  "max_refinement_nfev": 8,
+  "dependency_sha256": {
+    "tecooledmct/physical_input_qualification.py": "b36c1b106d6a16e54d9cb25462cb9d4c64e63aab8f6e6cc773c748f313d42dbb",
+    "tecooledmct/tec_material_plausibility.py": "1e894074d22363c03110af28718b2035b845f4078120e479c1d75f7645205472",
+    "tecooledmct/tec_candidate_geometry.py": "49dc93be6dc406f7b6c3c66ee8a1f1fd4d88b84302bd8a7f692fb8f8f9118622"
+  }
+}

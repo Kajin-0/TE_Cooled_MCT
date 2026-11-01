@@ -1,0 +1,197 @@
+"""Separate 29/11/4 candidate: exact box topology and fresh-mm STEP authoring."""
+import argparse
+from collections import Counter
+from pathlib import Path
+import time
+import numpy as np
+
+from .tec_material_plausibility import ROOT,read,write,sha
+
+COUNTS=(29,11,4)
+WIDTHS=(6.4,5.2,3.8,2.4)
+BASES=(.5,1.6,2.7)
+ID='rmt2008_inspired_29114_h05_v1'
+
+
+def union_volume(boxes):
+    """Exact rectilinear union via independent coordinate partitions, mm^3."""
+    b=np.asarray(boxes,float);axes=[np.unique(np.r_[b[:,i],b[:,i]+b[:,i+3]]) for i in range(3)]
+    mask=np.zeros(tuple(len(x)-1 for x in axes),bool)
+    for box in b:
+        edges=[np.searchsorted(x,[box[i],box[i]+box[i+3]]) for i,x in enumerate(axes)]
+        mask[tuple(slice(*e) for e in edges)]=True
+    return float(np.einsum('ijk,i,j,k->',mask,np.diff(axes[0]),np.diff(axes[1]),np.diff(axes[2])))
+
+
+def path_boxes(points,width=.1,thickness=.03):
+    out=[]
+    for a,b in zip(points,points[1:]):
+        a=np.array(a,float);b=np.array(b,float);delta=abs(b-a)
+        if np.count_nonzero(delta>1e-10)!=1:raise ValueError('Orthogonal nonzero path required')
+        size=np.array([width,width,thickness]);origin=np.minimum(a,b)-size/2
+        size+=delta;out.append([*origin,*size])
+    return out
+
+
+def design():
+    bodies=[];copper={j:[] for j in range(89)};legs=[];offset=0
+    def add(name,kind,boxes,**kw):
+        bodies.append(dict(name=name,kind=kind,boxes_mm=boxes,volume_mm3=union_volume(boxes),**kw))
+    for j,(w,z) in enumerate(zip(WIDTHS,(0,1.1,2.2,3.3))):
+        add(f'ceramic{j}','Al2O3',[[-w/2,-w/2,z,w,w,.5]])
+    for stage,(n,cols,rows,z) in enumerate(zip(COUNTS,(8,6,4),(8,4,2),BASES)):
+        positions=[]
+        for row in range(rows):
+            order=range(cols) if row%2==0 else reversed(range(cols))
+            positions.extend(((col-(cols-1)/2)*.58,(row-(rows-1)/2)*.58) for col in order)
+        for index,(x,y) in enumerate(positions[:2*n]):
+            j=offset+index;pol='N' if index%2==0 else 'P'
+            lower=j if pol=='N' else j+1;upper=j+1 if pol=='N' else j
+            add(f'leg{j}_{pol}',pol,[[x-.2,y-.2,z+.05,.4,.4,.5]],stage=stage,nodes=[lower,upper],chain_index=j)
+            legs.append(dict(index=j,stage=stage,polarity=pol,center_mm=[x,y],hot_node=lower,cold_node=upper))
+            for face,node,sz,cz in [('hot',lower,z+.03,z),('cold',upper,z+.55,z+.57)]:
+                add(f'solder{j}_{face}','SnSb',[[x-.2,y-.2,sz,.4,.4,.02]],node=node,leg=j,face=face)
+                copper[node].append([x-.22,y-.22,cz,.44,.44,.03])
+        offset+=2*n
+    # Ordinary pair links use the exact adjacent serpentine leg centers.
+    for node,boxes in copper.items():
+        if len(boxes)==2 and abs(boxes[0][2]-boxes[1][2])<1e-9:
+            lo=np.minimum(boxes[0][:3],boxes[1][:3]);hi=np.maximum(np.array(boxes[0][:3])+boxes[0][3:],np.array(boxes[1][:3])+boxes[1][3:])
+            copper[node].append([*lo,*(hi-lo)])
+    def p(j,z):return [*legs[j]['center_mm'],z]
+    routes={
+        0:[p(0,.515),[-2.03,-2.8,.515],[2.8,-2.8,.515]],
+        58:[p(57,.515),[1.45,2.9,.515],[3.,2.9,.515],[3.,2.9,1.615],
+            [3.,-2.9,1.615],[-1.45,-2.9,1.615],p(58,1.615)],
+        80:[p(79,1.615),[-.29,1.8,1.615],[2.3,1.8,1.615],[2.3,1.8,2.715],
+            [2.3,-1.7,2.715],[-.87,-1.7,2.715],p(80,2.715)],
+        88:[p(87,2.715),[-.87,1.1,2.715],[-3.,1.1,2.715],[-3.,1.1,.515],[-3.,-2.8,.515],[-2.8,-2.8,.515]]}
+    for node,points in routes.items():copper[node]+=path_boxes(points)
+    for node,x in ((0,2.8),(88,-2.8)):
+        copper[node]+=[[x-.1,-2.9,.5,.2,.2,.3],[x-.1,-3.5,.6,.2,.7,.2]]
+    for node,boxes in copper.items():add(f'Cu_node{node}','Cu',boxes,node=node)
+    add('auxiliary_attach','Attach',[[-.5,-.5,3.8,1,1,.03]])
+    add('hypothetical_MCT','MCT',[[-.5,-.5,3.83,1,1,.2]])
+    return dict(id=ID,coordinate_unit='mm',stage_couples_hot_to_cold=list(COUNTS),
+        leg_mm=[.4,.4,.5],ceramic_widths_mm=list(WIDTHS),ceramic_thickness_mm=.5,
+        copper_thickness_mm=.03,solder_thickness_mm=.02,pitch_mm=.58,bodies=bodies,legs=legs,
+        Cu_routes_mm=routes,lead_tails=[dict(node=node,x_mm=x,y_start_mm=-3.5,y_end_mm=-5.,z_mm=.7,radius_mm=.1)
+            for node,x in ((0,2.8),(88,-2.8))],
+        context='Separate hypothetical candidate, not frozen native package or identified manufacturer internals')
+
+
+def audit(d):
+    b=d['bodies'];legs=d['legs'];cu={x['node']:x for x in b if x['kind']=='Cu'}
+    if len(legs)!=88 or len(cu)!=89 or Counter(x['stage'] for x in legs)!=dict(enumerate([58,22,8])):
+        raise ValueError('Count/ownership defect')
+    contacts=[];pullback=[]
+    for leg in legs:
+        j=leg['index'];x,y=leg['center_mm'];st=leg['stage']
+        for face,node,z in [('hot',leg['hot_node'],BASES[st]+.03),('cold',leg['cold_node'],BASES[st]+.55)]:
+            solder=next(x for x in b if x['name']==f'solder{j}_{face}')['boxes_mm'][0]
+            # One explicit full-area pad owner, not a nearest-body label.
+            owners=[q['node'] for q in cu.values() if any(abs(box[2]-(z-.03 if face=='hot' else z+.02))<1e-9
+                and box[0]<=x-.2+1e-10 and box[1]<=y-.2+1e-10
+                and box[0]+box[3]>=x+.2-1e-10 and box[1]+box[4]>=y+.2-1e-10 for box in q['boxes_mm'])]
+            if owners!=[node] or not np.allclose(solder[:2],[x-.2,y-.2],atol=1e-12):raise ValueError('Incomplete/ambiguous axial contact')
+            contacts.append(dict(leg=j,face=face,node=node,area_mm2=.16))
+            host=WIDTHS[st+(face=='cold')]
+            pullback.append(host/2-max(abs(x),abs(y))-.22)
+    if min(pullback)<.1-1e-10:raise ValueError('Patterned edge pullback fails')
+    degrees=Counter()
+    for l in legs:degrees.update([l['hot_node'],l['cold_node']])
+    if degrees!=Counter({j:1 if j in (0,88) else 2 for j in range(89)}):raise ValueError('Branched/broken circuit')
+    # Every index advances exactly one consecutive circuit node: connected chain.
+    for l in legs:
+        if sorted([l['hot_node'],l['cold_node']])!=[l['index'],l['index']+1]:raise ValueError('Not a series chain')
+    minimum_cu_gap=float('inf')
+    for i,a in enumerate(b):
+        A=np.array(a['boxes_mm']);alo=A[:,:3];ahi=alo+A[:,3:]
+        for c in b[i+1:]:
+            B=np.array(c['boxes_mm']);blo=B[:,:3];bhi=blo+B[:,3:]
+            overlap=np.minimum(ahi[:,None],bhi)-np.maximum(alo[:,None],blo)
+            if np.any(np.all(overlap>1e-9,axis=2)):raise ValueError('Positive solid overlap: '+a['name']+' / '+c['name'])
+            if a['kind']==c['kind']=='Cu':
+                gap=np.maximum(0,np.maximum(alo[:,None]-bhi,blo-ahi[:,None]))
+                minimum_cu_gap=min(minimum_cu_gap,float(np.linalg.norm(gap,axis=2).min()))
+    if minimum_cu_gap<1e-6:raise ValueError('Unrelated copper short/contact')
+    # Lead cylinders have conservative independent AABB clearance from all boxes.
+    for tail in d['lead_tails']:
+        lo=np.array([tail['x_mm']-.1,-5.,.6]);hi=np.array([tail['x_mm']+.1,-3.5,.8])
+        for body in b:
+            for box in body['boxes_mm']:
+                if np.all(np.minimum(hi,np.array(box[:3])+box[3:])-np.maximum(lo,box[:3])>1e-9):
+                    raise ValueError('Lead tail penetrates body')
+    # Conservative all-primitive cap fit; global origin follows existing header.
+    rad=max(np.hypot(max(abs(q[0]),abs(q[0]+q[3])),max(abs(q[1]),abs(q[1]+q[4]))) for a in b for q in a['boxes_mm'])
+    rad=max(rad,np.hypot(2.9,5.0));world_top_mm=1.55+4.03
+    if rad>=7.1 or world_top_mm>=9.65:raise ValueError('Cap envelope violated')
+    return dict(status='PASS',scope='Exact analytic assembly/contact/electrical topology, not thermal FEM or manufacturability certification',
+        legs=88,couples=[29,11,4],solid_count=len(b)+2,contact_count=len(contacts),contacts=contacts,
+        minimum_pattern_pullback_mm=min(pullback),minimum_unrelated_Cu_gap_mm=minimum_cu_gap,
+        TEC_ceramic_height_mm=3.8,global_bottom_mm=1.55,header_top_mm=1.5,
+        global_die_top_mm=world_top_mm,cap_roof_clearance_mm=9.65-world_top_mm,
+        cap_radial_clearance_lower_bound_mm=7.1-rad,external_pin_connections='NOT IMPLEMENTED',
+        mechanical_strength_fatigue='NOT RUN',copper_thermal_leakage_spreading='NOT SOLVED')
+
+
+def writer(out):
+    out=Path(out)
+    if out.exists():raise ValueError('Absent CAD output required; no retry')
+    out.mkdir(parents=True);start=time.monotonic();d=design();a=audit(d)
+    write(out/'design.json',d);write(out/'analytic_audit.json',a)
+    import gmsh
+    gmsh.initialize();gmsh.option.setNumber('General.Terminal',0);gmsh.option.setNumber('General.NumThreads',4)
+    gmsh.option.setString('Geometry.OCCTargetUnit','MM');gmsh.model.add(ID);occ=gmsh.model.occ
+    records=[]
+    try:
+        for body in d['bodies']:
+            tags=[(3,occ.addBox(*box)) for box in body['boxes_mm']]
+            if len(tags)>1:tags=occ.fuse(tags[:1],tags[1:])[0]
+            if len(tags)!=1:raise ValueError('Disconnected native conductor/body: '+body['name'])
+            tag=tags[0][1];v=occ.getMass(3,tag)
+            if not np.isclose(v,body['volume_mm3'],rtol=1e-7,atol=1e-10):raise ValueError('CAD union volume mismatch')
+            records.append(dict(name=body['name'],tag=tag,volume_m3=v*1e-9,bbox_m=[x*.001 for x in occ.getBoundingBox(3,tag)]))
+        for t in d['lead_tails']:
+            tag=occ.addCylinder(t['x_mm'],-3.5,.7,0,-1.5,0,.1)
+            records.append(dict(name=f"Cu_tail_node{t['node']}",tag=tag,volume_m3=occ.getMass(3,tag)*1e-9,
+                                bbox_m=[x*.001 for x in occ.getBoundingBox(3,tag)]))
+        occ.synchronize()
+        for r in records:gmsh.model.setEntityName(3,r['tag'],r['name'])
+        gmsh.write(str(out/'candidate_mm.step'))
+        # Export is finished before any reader process; this writer imports nothing.
+        write(out/'cad_writer.json',dict(records=records,seconds=time.monotonic()-start,
+            gmsh_version=gmsh.__version__,STEP_sha256=sha(out/'candidate_mm.step'),CAD_imports=0,source_sha256=sha(__file__)))
+    finally:gmsh.finalize()
+    print('Candidate CAD author PASS',len(records),time.monotonic()-start)
+
+
+def reader(out):
+    out=Path(out);raw=(out/'candidate_mm.step').read_text()
+    from .native_gas_audit import step_units
+    units=step_units(raw)
+    if units['metres_per_coordinate_unit']!=1e-3:raise ValueError('STEP did not declare millimetres')
+    import gmsh
+    gmsh.initialize();gmsh.option.setNumber('General.Terminal',0);gmsh.option.setString('Geometry.OCCTargetUnit','M')
+    try:
+        tags=gmsh.model.occ.importShapes(str(out/'candidate_mm.step'));gmsh.model.occ.synchronize()
+        expected=read(out/'cad_writer.json')['records'];got=[t for dim,t in tags if dim==3]
+        if len(got)!=len(expected):raise ValueError('SI import body count')
+        errors=[]
+        # STEP traversal preserves export order; unique volume/bbox signatures cross-check it.
+        available=set(got)
+        for r in expected:
+            matches=[t for t in available if np.allclose(gmsh.model.occ.getBoundingBox(3,t),r['bbox_m'],rtol=0,atol=2.1e-7)
+                     and np.isclose(gmsh.model.occ.getMass(3,t),r['volume_m3'],rtol=1e-7,atol=1e-20)]
+            if len(matches)!=1:raise ValueError('SI signature mismatch/ambiguity: '+r['name'])
+            t=matches[0];available.remove(t);errors.append(abs(gmsh.model.occ.getMass(3,t)/r['volume_m3']-1))
+        write(out/'si_reader.json',dict(status='PASS',import_target='M',bodies=len(got),
+            max_relative_volume_error=max(errors),separate_fresh_process=True,STEP_sha256=sha(out/'candidate_mm.step'),
+            parsed_units=units,reader_source_sha256=sha(__file__)))
+    finally:gmsh.finalize()
+    print('Independent SI import PASS',len(got))
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('role',choices=['writer','reader']);p.add_argument('--out',type=Path,required=True)
+    args=p.parse_args();(writer if args.role=='writer' else reader)(args.out)

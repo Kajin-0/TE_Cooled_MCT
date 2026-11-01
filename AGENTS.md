@@ -129,6 +129,7 @@ inspect every page of a rebuilt master before publication.
 | `tec_identifiability.py` | Separate preregistered reduced diagnostic, 260/269 admitted; exact nonlinear geometry/material gauge and normalized raw SVD; no fitting | Common A/L cannot be distinguished from reciprocal rho/k factors by endpoint transport; g=1.7 still overcools/overvolts and fails all 176 unchanged native full-pad contacts; no altered CAD or identified grade |
 | `finite_sink_study.py` | Separate registered sink/current study on unchanged geometry/laws, wires ON, exchange OFF; 203/288 grid cases admitted, 85 retained failures; six actually solved nominal 200 K crossings | At 10 K/W, target input 0.622176 W vs ideal 0.548425 W (+13.4478%); hot 305.826317 K requires assumed continuation; Qsink differs from IV through explicit lead paths; no actual-device feasibility or global optimum |
 | `physical_input_qualification.py`, `physical_input_evidence.py` | Registered local evidence-priority audit: 102/102 admitted calls in 44.531 s; 11 actual 200 K targets at 2 K/W; independent derivatives/balances and cached primary-source audit | Fixed-geometry conditional target-power elasticities S −2.490, k +2.214, rho +1.245; not physical uncertainty or separate grade/geometry identification. Gas/nonlocal/contact power sensitivities NOT RUN; current Rev3 unchanged |
+| `tec_candidate_geometry.py`, `tec_candidate_study.py` | **Separate candidate**: source-inspired29/11/4,.5mm; one361-solid STEP/independent SI gate PASS;155 reduced calls150 admitted/5 rejected, two-factor calibration explicitly user-authorized here only | Full curve alignment **FAIL**: no-fit18/20, selected20/20 but25.111K maximum lift error>15K. Geometric PASS is not qualified1A operation: omitted Cu/contact/spreading remains; original reference unchanged; Rev3 unchanged |
 | Corrected enclosure / exchange | Source-aligned candidate STEP/mesh and native-face audit; **preliminary filled stepped-core** diffuse-gray radiation and gas chord network (14 surfaces / 8 effective nodes) | Integrated native gas diffusion, full native visibility, optical transmission and coupled solids/cavity fields remain absent; standalone stopped gas control below |
 | `nonlocal_solid_network.py` diagnostic | Opt-in geometry-derived local Cu/alumina multiport plus unchanged affine P/N stages; actual interfaces, nonlocal return and P174 side contact | Isothermal ceramic/pad closure is unqualified; not full-device FEM; 7.277% side-port sensitivity exceeds registered 5% screen |
 | `passive_plate_audit.py` | Source-only audit of four plates, original Cu pads and routes/supports; 104 bodies | Seven-port follow-up **STOPPED before grid/solves**: two unmapped cuts and incompatible P174 side/hot-foot trace on a 0.220 mm edge; no spreading attribution |
@@ -202,7 +203,26 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current evidence-priority study complete (2026-11-01):** read
+**Current separate candidate reaches scientific STOP (2026-11-01):** read
+`docs/SOURCE_CONSTRAINED_TEC_CANDIDATE_20261101.md` and its frozen registration.
+One361-solid candidate STEP passes footprint/circuit/envelope/SI gates; historical
+RMT stage ordering remains inferred, not proven TEC2019 construction. The one
+65.242s study admits150/155 calls; explicit two-factor candidate calibration
+selects S=.9427924,rho=1.2,k=1 but **FAILS** the registered full-data gate
+(25.111K maximum lift error). At1A the loaded response fails despite close
+zero-load lift; no qualified datasheet-aligned or operable device is delivered.
+The rough post-hoc .314ohm Cu omission estimate is NOT coupled/validated heat.
+Preserve the first reader-token STOP, its source and the exact unchanged export;
+the corrected independent parser/import passed without a second CAD export.
+Calibration authorization applied **only to this separate candidate**. Do not
+widen bounds, introduce another knob, alter the original28/12/4 reference or
+reopen stopped fixtures. Numerical Cu/contact qualification is a proposed next
+experiment, **NOT RUN / not authorized**; no further science follows this checkpoint.
+The exact38-page Rev3 stays unchanged because full alignment/physical operation
+is unqualified. Source acquisition, controls and scoped software checks are in
+the candidate record, separate from old numerical-release failures.
+
+Prior evidence-priority study complete (2026-11-01): read
 `docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md`, its registration, source audit
 and scoped verification. One 44.531 s execution retained 102 admitted / zero
 rejected calls and 48 unused slots; all eleven actual target crossings use assumed

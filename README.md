@@ -37,6 +37,7 @@ milestone instructions have been relocated to historical context.
 | Can steady cooling/voltage identify leg dimensions rather than material changes? | [Registered identifiability diagnostic](docs/TEC_GEOMETRY_MATERIAL_IDENTIFIABILITY_20261101.md): 260/269 admitted; exact A/L–rho–k ambiguity, raw SVD caveat and failed unchanged native-pad realization; no OEM fitting |
 | How much does finite hot-side resistance cost at a matched die target? | [Finite-sink study](docs/FINITE_SINK_MATCHED_TARGET_20261101.md): 203/288 grid states admitted; six actual nominal 200 K crossings; 10 K/W raises target input 13.4478%, with assumed >300 K transport and explicit wire/sink heat accounting |
 | Which physical evidence would most improve temperature/power credibility? | [Input/path qualification program](docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md): primary-source domains, matched-target local derivatives, independent measurement requests and explicit failed/NOT RUN paths |
+| Does fresh source-constrained geometry yield a feasible datasheet-aligned candidate? | [Separate29/11/4 candidate](docs/SOURCE_CONSTRAINED_TEC_CANDIDATE_20261101.md): geometric361-solid STEP gates PASS; no-fit and explicitly authorized two-factor calibration FAIL full alignment. Loaded25.11K error and omitted Cu physics prevent a qualified candidate; original reference untouched |
 | What is documented, inferred or assumed? | Source matrices in those guides; [materials](docs/materials_and_provenance.md) |
 | What is the corrected physical construction? | [Geometry specification](GEOMETRY_SOURCE_OF_TRUTH_SPEC.md), protected geometry manifest and wire routes |
 | What is actually solved in 3D? | [Corrected solid-only thermal work](CORRECTED_GEOMETRY_COUPLED_THERMAL_WORK_ORDER.md), archived Elmer evidence |
@@ -152,6 +153,12 @@ At a matched 200 K target / 2 K/W sink, equal-fraction power leverage is S, k,
 then rho; this is conditional sensitivity, not empirical uncertainty or grade
 identification. Native gas/nonlocal/contact impacts remain unqualified or NOT RUN.
 The same 38-page Rev3 is unchanged; no next experiment/acquisition is authorized.
+The subsequently authorized separate source-inspired candidate now reaches its
+[registered STOP](docs/SOURCE_CONSTRAINED_TEC_CANDIDATE_20261101.md): a geometrically
+consistent29/11/4,.5mm prototype substantially improves the intrinsic comparison,
+but bounded calibration fails full loaded agreement. No fitted property enters
+the original reference; Cu/contact/ceramic electrothermal behavior is unqualified.
+Its proposed Cu electrical fixture is NOT RUN; no follow-on campaign is authorized.
 The geometry-derived route/support comparison remains
 conditional and its one plate-fixture follow-up stopped at the seven-port
 admissibility gate. The later isolated writer/SI reader qualified a separate
