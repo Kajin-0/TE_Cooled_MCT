@@ -1,0 +1,323 @@
+"""Registered geometry/material identifiability; unchanged reduced solvers, no fit."""
+import argparse
+from copy import deepcopy
+from datetime import datetime,timezone
+import json
+from pathlib import Path
+import signal
+import time
+
+import numpy as np
+
+from .integrated_reference import Scenario,geometry,solve,coefficients,stage_thermoelectric
+from .nonlinear_tec import leg
+from . import graded_tec
+from .tec_material_plausibility import ROOT,SOURCES,read,write,sha,summarize
+
+NOTE=ROOT/'docs/TEC_GEOMETRY_MATERIAL_IDENTIFIABILITY_20261101.md'
+BASELINE='294f53f670f39fcaf8e492651434dbb555faffe7'
+FACTORS=(.8,1.,1.2,1.7)
+STEPS=(.005,.0025)
+POINTS=tuple((i,q) for i in (.1,.2,.4) for q in (0.,.1))
+NULL=np.array([1.,1.,-1.,0.])/np.sqrt(3)
+
+
+def invariant_factors(a=1.,l=1.,r=1.,k=1.,s=1.):
+    if not np.isfinite((a,l,r,k,s)).all() or min(a,l,r,k,s)<=0:
+        raise ValueError('Positive finite geometry/property factors required')
+    g=a/l
+    return {'g':g,'R':r/g,'K':k*g,'RK':r*k,'ZT':s*s/(r*k),'intrinsic_PF':s*s/r}
+
+
+def design():
+    cases=[];lookup={};global_rows=[];pairs=[];targets=[];jac={}
+    def add(group,hot=300.15,I=.2,Q=0.,a=1.,l=1.,r=1.,k=1.,s=1.,wires=False,counts=(28,12,4)):
+        invariant_factors(a,l,r,k,s)
+        c={'hot_K':float(hot),'current_A':float(I),'load_W':float(Q),'a':float(a),'l':float(l),
+           'r':float(r),'k':float(k),'s':float(s),'wires_ON':bool(wires),'counts':list(counts)}
+        key=json.dumps(c,sort_keys=True)
+        if key not in lookup:
+            lookup[key]=len(cases);cases.append(dict(c,id=f'{len(cases):03d}',uses=[]))
+        out=cases[lookup[key]]
+        if group not in out['uses']:out['uses'].append(group)
+        return out['id']
+    for hot,points in ((300.15,POINTS),(295.,((.1,0.),(.2,.1),(.4,.1)))):
+        rows=[]
+        for I,Q in points:
+            row={'I':I,'Q':Q,'base':add('jacobian',hot,I,Q),'steps':{}}
+            for step in STEPS:
+                deriv={}
+                for parameter in ('a','r','k','s'):
+                    deriv[parameter]=[add('jacobian',hot,I,Q,**{parameter:float(np.exp(sign*step))}) for sign in (-1,1)]
+                row['steps'][str(step)]=deriv
+            rows.append(row)
+        jac[str(hot)]=rows
+    for I,Q in POINTS:
+        for factor in FACTORS:
+            cid=add('global_geometry',I=I,Q=Q,a=factor)
+            global_rows.append({'kind':'geometry','factor':factor,'I':I,'Q':Q,'case':cid})
+            if factor!=1.:
+                equiv=add('reciprocal_material',I=I,Q=Q,r=1/factor,k=factor)
+                pairs.append({'kind':'geometry_material','left':cid,'right':equiv,'heat_factor':1.,'compare_die':True})
+        for parameter,values in (('r',(.8,1.2)),('k',(.8,1.2)),('s',(.9,1.1))):
+            for value in values:
+                global_rows.append({'kind':parameter,'factor':value,'I':I,'Q':Q,
+                                    'case':add('global_material',I=I,Q=Q,**{parameter:value})})
+    for I,Q in ((.1,0.),(.2,.1),(.4,0.)):
+        base=add('gauge',I=I,Q=Q)
+        for c in (.8,1.2,1.7):
+            pairs.append({'kind':'gauge_profile','c':c,'left':base,
+                'right':add('gauge',I=I,Q=Q,a=c,r=c,k=1/c),'heat_factor':1.,'compare_die':True})
+    for g in (.8,1.2,1.7):
+        left=add('separate_dimensions',I=.2,Q=.1,a=g)
+        right=add('separate_dimensions',I=.2,Q=.1,l=1/g)
+        pairs.append({'kind':'area_vs_length','left':left,'right':right,'heat_factor':1.,'compare_die':True})
+    pairs.append({'kind':'common_area_length','left':add('separate_dimensions',I=.2,Q=.1),
+        'right':add('separate_dimensions',I=.2,Q=.1,a=1.2,l=1.2),'heat_factor':1.,'compare_die':True})
+    for I,Q in ((.1,0.),(.2,.1),(.4,0.)):
+        pairs.append({'kind':'current_load_similarity','left':add('similarity',I=I,Q=Q,a=1.7),
+            'right':add('similarity',I=I/1.7,Q=Q/1.7),'heat_factor':1.7,'compare_die':False})
+    for g in FACTORS:
+        for I in (.1,.2,.3,.4,.5,.8):
+            targets.append({'g':g,'I':I,'case':add('target',hot=300.,I=I,Q=.002,a=g,wires=True)})
+    for I in (.3,.4):
+        pairs.append({'kind':'wires_ON_equivalence','left':add('target',hot=300.,I=I,Q=.002,a=1.7,wires=True),
+            'right':add('target_equivalence',hot=300.,I=I,Q=.002,r=1/1.7,k=1.7,wires=True),
+            'heat_factor':1.,'compare_die':True})
+    topology=[{'I':I,'Q':Q,'case':add('topology',I=I,Q=Q,counts=(26,12,6))} for I,Q in ((.2,0.),(.2,.1))]
+    return {'cases':cases,'jacobian':jac,'global':global_rows,'pairs':pairs,'targets':targets,'topology':topology}
+
+
+def scenario_geometry(c,base):
+    invariant_factors(c['a'],c['l'],c['r'],c['k'],c['s'])
+    if len(c['counts'])!=3 or sum(c['counts'])!=44 or any(not isinstance(n,int) or n<1 for n in c['counts']):
+        raise ValueError('Scenario must retain 44 positive integer couples')
+    g=deepcopy(base)
+    for st,n in zip(g['stages'],c['counts']):
+        st['leg_area_m2']*=c['a'];st['leg_length_m']*=c['l'];st['couples']=n
+    if not c['wires_ON']:g['wires']=[]
+    s=Scenario(ambient_k=c['hot_K'],current_a=c['current_A'],material_model='zhang2025_nonlinear',
+        heat_sink_k_w=0.,detector_bias_w=c['load_W'],detector_absorbed_w=0.,cavity_pressure_pa=0.,
+        cap_emissivity=0.,window_thermal_emissivity=0.,pn_seebeck_scale=c['s'],
+        pn_resistivity_scale=c['r'],pn_thermal_conductivity_scale=c['k'])
+    return s,g
+
+
+def rectangle_union_area(rectangles):
+    if not rectangles:return 0.
+    xs=sorted({v for r in rectangles for v in (r[0],r[2])});total=0.
+    for left,right in zip(xs,xs[1:]):
+        spans=sorted((r[1],r[3]) for r in rectangles if r[0]<right and r[2]>left)
+        length=0.;end=-np.inf
+        for low,high in spans:
+            length+=max(0.,high-max(low,end));end=max(end,high)
+        total+=(right-left)*length
+    return total
+
+
+def native_geometry_audit(a=1.,l=1.):
+    invariant_factors(a,l)
+    m=read(ROOT/'fem/results/geometry_complete_checkpoint_20261030/manifest.json')
+    legs=[b for b in m['bodies'] if b['kind']=='leg'];copper=[b for b in m['bodies'] if b['material']=='Cu']
+    faces=[];candidate=[]
+    for b in legs:
+        x,y,z,w,d,h=b['boxes_m'][0];w1=w*np.sqrt(a);d1=d*np.sqrt(a)
+        rect=(x+(w-w1)/2,y+(d-d1)/2,x+(w+w1)/2,y+(d+d1)/2)
+        candidate.append((b['stage'],rect))
+        for plane in (z,z+h):
+            owners=[];clips=[]
+            for body in copper:
+                for box in body['boxes_m']:
+                    bx,by,bz,bw,bd,bh=box
+                    if min(abs(bz-plane),abs(bz+bh-plane))>1e-11:continue
+                    clip=(max(rect[0],bx),max(rect[1],by),min(rect[2],bx+bw),min(rect[3],by+bd))
+                    if clip[2]>clip[0] and clip[3]>clip[1]:clips.append(clip);owners.append(body['id'])
+            fraction=rectangle_union_area(clips)/(a*w*d)
+            faces.append({'leg':b['id'],'plane_m':plane,'Cu_owners':sorted(set(owners)),
+                          'footprint_coverage_fraction':fraction})
+    gap=np.inf;overlap=False
+    for i,(stage,ra) in enumerate(candidate):
+        for other,rb in candidate[i+1:]:
+            if other!=stage:continue
+            dx=max(ra[0]-rb[2],rb[0]-ra[2],0.);dy=max(ra[1]-rb[3],rb[1]-ra[3],0.)
+            gap=min(gap,np.hypot(dx,dy))
+            overlap|=min(ra[2],rb[2])-max(ra[0],rb[0])>1e-12 and min(ra[3],rb[3])-max(ra[1],rb[1])>1e-12
+    bad=[r for r in faces if r['footprint_coverage_fraction']<1-1e-8]
+    height=m['overall_height_m']+(l-1)*sum(n['leg_height_m'] for n in m['stage_nets'])
+    return {'area_factor':a,'length_factor':l,'legs':len(legs),'axial_faces':len(faces),
+        'native_full_Cu_footprint_failures':len(bad),'minimum_footprint_coverage':min(r['footprint_coverage_fraction'] for r in faces),
+        'minimum_interleg_gap_m':float(gap),'leg_overlap':bool(overlap),'axial_mating_preserved':abs(l-1)<1e-12,
+        'repacked_stack_height_m_fixed_other_layers':height,'within_candidate_height_tolerance':abs(height-.0038)<=.00015+1e-12,
+        'admissible_on_frozen_native_pads':not bad and not overlap and abs(l-1)<1e-12,
+        'face_ownership':faces,'meaning':'Box/footprint screen only; altered geometry is not CAD/mesh qualified or identified OEM artwork'}
+
+
+def independent_controls(base):
+    rows=[]
+    for g in FACTORS:
+        geo=deepcopy(base)
+        for st in geo['stages']:st['leg_area_m2']*=g
+        coeff=coefficients(Scenario(),geo);ref=coefficients(Scenario(),base)
+        for cc,rr in zip(coeff,ref):
+            for I in (0.,.1,-.1):
+                hot,cold=295.,250.;R=rr['r_ohm']/g;K=rr['k_w_k']*g;alpha=rr['alpha_v_k']
+                exact=(alpha*I*cold-.5*I*I*R-K*(hot-cold),I*R+alpha*(hot-cold))
+                computed=stage_thermoelectric(cc,hot,cold,I)
+                rows.append(max(abs(computed['qc_w']-exact[0]),abs(computed['voltage_v']-exact[1]),
+                    abs(cc['r_ohm']*cc['k_w_k']-rr['r_ohm']*rr['k_w_k']),abs(computed['energy_residual_w'])))
+    profiles=[];geom=base['stages'][0];g=1.7;A=geom['leg_area_m2'];L=geom['leg_length_m']
+    for pol,sign in (('P',-1),('N',1)):
+        p=leg(pol,295.,250.,sign*.15/(A*g),L)
+        q=leg(pol,295.,250.,sign*.15/A,L,scales=(1.,1/g,g))
+        scale=leg(pol,295.,250.,sign*.15/(A*g),L,scales=(1.,g,1/g))
+        common=leg(pol,295.,250.,sign*.15/(A*g),L*g)
+        reference=leg(pol,295.,250.,sign*.15/A,L)
+        row={'polarity':pol,'geometry_material_profile_error_K':float(np.max(np.abs(np.array(p['temperatures_k'])-q['temperatures_k']))),
+            'geometry_material_Q_error_W':max(abs(A*g*p[key]-A*q[key]) for key in ('q_hot_w_m2','q_cold_w_m2')),
+            'gauge_profile_error_K':float(np.max(np.abs(np.array(scale['temperatures_k'])-reference['temperatures_k']))),
+            'common_A_L_profile_error_K':float(np.max(np.abs(np.array(common['temperatures_k'])-reference['temperatures_k'])))}
+        profiles.append(row)
+    t=np.array([180.,299.9999,300.,300.0001,390.]);law=[]
+    for pol in ('P','N'):
+        p=graded_tec.props(pol,t);slope=graded_tec.source().curves[pol]['S'].slope(np.minimum(t,300.))*np.where(t>300,.25,1)
+        law.append(bool(np.all(p['sigma']==1/p['rho']) and np.all(p['thomson_v_k']==t*slope)))
+    passed=max(rows)<1e-12 and all(r['geometry_material_profile_error_K']<1e-6 and r['gauge_profile_error_K']<1e-6 and r['common_A_L_profile_error_K']<1e-6 and r['geometry_material_Q_error_W']<1e-8 for r in profiles) and all(law)
+    return {'passed':passed,'constant_control_max_error':max(rows),'nonlinear_profiles':profiles,'reciprocal_Thomson_laws_passed':all(law)}
+
+
+def svd_record(matrix):
+    u,s,vh=np.linalg.svd(matrix,full_matrices=False);rank=int(np.sum(s>s[0]*1e-5))
+    return {'matrix':matrix,'singular_values':s,'right_vectors':vh,'rank_relative_1e_5':rank,
+            'retained_condition_number':float(s[0]/s[rank-1]) if rank else None,
+            'full_condition_number':float(s[0]/s[-1]) if s[-1]>0 else None}
+
+
+def analyze(plan,results):
+    def accepted(cid):return results[cid]['status']=='ACCEPTED'
+    def y(cid):
+        s=results[cid]['summary'];return np.array([s['cold_lift_K']/100,s['module_voltage_V']])
+    pair_rows=[]
+    for p in plan['pairs']:
+        row=dict(p,status='NOT RUN: paired point rejected/unattempted')
+        if accepted(p['left']) and accepted(p['right']):
+            left=results[p['left']]['result'];right=results[p['right']]['result'];f=p['heat_factor']
+            names=['hot_ceramic','stage1','stage2','cold_ceramic']+(['MCT_die'] if p['compare_die'] else [])
+            row.update(max_temperature_difference_K=max(abs(left['temperatures_k'][n]-right['temperatures_k'][n]) for n in names),
+                voltage_difference_V=abs(left['module_voltage_v']-right['module_voltage_v']),
+                max_stage_heat_difference_W=max(abs(l[k]-f*r[k]) for l,r in zip(left['stage_budget'],right['stage_budget']) for k in ('qc_w','qh_w')),
+                power_difference_W=abs(left['module_electrical_power_w']-f*right['module_electrical_power_w']))
+            row['passed']=row['max_temperature_difference_K']<1e-6 and row['voltage_difference_V']<1e-7 and row['max_stage_heat_difference_W']<1e-8 and row['power_difference_W']<1e-8
+            row['status']='PASS' if row['passed'] else 'FAIL'
+        pair_rows.append(row)
+    failures=[r for r in pair_rows if r['status']=='FAIL']
+    if failures:
+        raise ValueError('Invariant failure; comparisons stopped: '+json.dumps(failures))
+    jac={}
+    for hot,points in plan['jacobian'].items():
+        blocks={};missing=[]
+        for step in STEPS:
+            rows=[]
+            for p in points:
+                if not all(accepted(cid) for ids in p['steps'][str(step)].values() for cid in ids):missing.append(p['base']);continue
+                rows.append(np.stack([(y(ids[1])-y(ids[0]))/(2*step) for ids in p['steps'][str(step)].values()],axis=1))
+            if len(rows)!=len(points):continue
+            raw=np.vstack(rows);structured=raw.copy();structured[:,0]=-raw[:,1]+raw[:,2]
+            # External limiting contacts: R_e/1 ohm, R_th/10 K/W.
+            contacts=np.array([[0.,-p['Q']*10/100] if j==0 else [p['I'],0.] for p in points for j in range(2)])
+            blocks[str(step)]={'raw':svd_record(raw),'chain_rule_constrained':svd_record(structured),
+                'extended_contacts':svd_record(np.column_stack([raw,contacts])),
+                'single_condition_ranks':[svd_record(r)['rank_relative_1e_5'] for r in rows],
+                'raw_null_defect_relative':float(np.linalg.norm(raw@NULL)/np.linalg.norm(raw)),
+                'null_cosine':float(abs(svd_record(raw)['right_vectors'][-1]@NULL))}
+        obj={'steps':blocks,'missing_case_ids':sorted(set(missing))}
+        if len(blocks)==2:
+            a,b=[np.array(blocks[str(h)]['raw']['matrix']) for h in STEPS]
+            obj.update(step_difference_Frobenius_relative=float(np.linalg.norm(a-b)/np.linalg.norm(b)),
+                       finite_difference_stability_passed=bool(np.linalg.norm(a-b)/np.linalg.norm(b)<=.01))
+        jac[hot]=obj
+    source=read(ROOT/'data/g2c/oem2019_curves_v1.json');oem=[]
+    for row in plan['global']:
+        if row['kind']!='geometry':continue
+        result=results[row['case']]
+        for field in ('delta_t_k','voltage_v'):
+            p=next((p for p in source['points'] if p['panel']=='300K_vacuum' and p['current_a']==row['I'] and p['load_w']==row['Q'] and p['field']==field),None)
+            if p is None:
+                oem.append({**row,'field':field,'status':'NOT COMPARABLE: no exact digitized source reading; no interpolation'})
+                continue
+            rec={**row,'field':field,'source_id':p['id'],'source_value':p['value'],'reading_bound':p['value_reading_bound'],'old_split_already_viewed':p['split'],'status':'NOT COMPARABLE: rejected/unattempted'}
+            if result['status']=='ACCEPTED':
+                value=result['summary']['cold_lift_K' if field=='delta_t_k' else 'module_voltage_V'];diff=value-p['value']
+                rec.update(status='CONDITIONAL',model_value=value,difference=diff,relative_difference=diff/p['value'],
+                           assumed_continuation=result['summary']['assumed_continuation_used'])
+            oem.append(rec)
+    contacts=[]
+    for point in plan['jacobian']['300.15']:
+        if not accepted(point['base']):continue
+        b=results[point['base']]['summary']
+        for Re,Rth in ((0.,0.),(.1,0.),(.3,0.),(0.,5.),(0.,20.)):
+            extra=point['I']**2*Re;contacts.append({'case':point['base'],'I':point['I'],'Q':point['Q'],'Re_ohm':Re,'Rth_K_W':Rth,
+                'external_cold_face_K':b['Tcold_ceramic_K']+point['Q']*Rth,'external_voltage_V':b['module_voltage_V']+point['I']*Re,
+                'extra_hot_reservoir_rejection_W':extra,'extra_work_W':point['I']*(point['I']*Re),
+                'thermal_contact_entropy_W_K':point['Q']*(1/b['Tcold_ceramic_K']-1/(b['Tcold_ceramic_K']+point['Q']*Rth))})
+    old=read(ROOT/'data/tec_material_plausibility_20261101/cases.json');replays=[]
+    for c in plan['cases']:
+        if c['a']!=1 or c['l']!=1 or c['r']!=1 or c['k']!=1 or c['s']!=1 or c['counts']!=[28,12,4] or c['wires_ON'] or c['hot_K']!=300.15:continue
+        previous=next((r for r in old.values() if r['status']=='ACCEPTED' and r['summary']['group']=='OEM_literal' and r['summary']['hypothesis']=='nominal' and r['summary']['current_A']==c['current_A'] and r['summary']['die_load_W']==c['load_W']),None)
+        if previous and accepted(c['id']):
+            r=results[c['id']]['summary'];p=previous['summary'];replays.append({'case':c['id'],'Tc_error_K':abs(r['Tcold_ceramic_K']-p['Tcold_ceramic_K']),'V_error_V':abs(r['module_voltage_V']-p['module_voltage_V'])})
+    good=[r for r in results.values() if r['status']=='ACCEPTED']
+    return {'pairs':pair_rows,'jacobians':jac,'oem_rows':oem,'external_contact_limits':contacts,'baseline_replays':replays,
+        'higher_Thot_panel':{'source_panel':'323K_dry_n2','literal_hot_K':323.15,'status':'NOT COMPARABLE','new_solve':'NOT RUN','reason':'Dry-N2 external exchange/pressure/radiation and contact placement are not matched by exchange-OFF module'},
+        'max_global_energy_error_W':max(abs(r['result']['global_energy_residual_w']) for r in good),
+        'max_stage_energy_error_W':max(abs(s['energy_residual_w']) for r in good for s in r['result']['stage_budget']),
+        'coverage':{'accepted':len(good),'rejected':sum(r['status']=='REJECTED' for r in results.values()),'not_run':sum(r['status']=='NOT RUN' for r in results.values()),
+            'measured_domain':sum(not r['summary']['assumed_continuation_used'] for r in good),'assumed_continuation':sum(r['summary']['assumed_continuation_used'] for r in good)},
+        'unverified_suggested_triple_algebra_only':{'S':.89,'rho':.60,'k':1.73,'RK':.60*1.73,'ZT_relative':.89**2/(.60*1.73),'geometry_like_factor':np.sqrt(1.73/.60),'common_bulk_factor':np.sqrt(.60*1.73),'exact_triple_simulated':False},
+        'structural_null_log_g_r_k_s':NULL,'no_fit':True,'commercial_geometry_grade_identified':False,
+        'internal_distributed_contacts':'NOT RUN; only explicitly external limiting placements evaluated'}
+
+
+def run(out):
+    out=Path(out).resolve()
+    if out.exists():raise ValueError('Choose absent output directory; preserve prior attempts')
+    out.mkdir(parents=True);plan=design();base=geometry();start=time.monotonic()
+    inputs=(*SOURCES,'data/tec_material_plausibility_20261101/cases.json','data/tec_material_plausibility_20261101/checksums.json')
+    hashes={p:sha(ROOT/p) for p in inputs}
+    write(out/'registration.json',{'UTC':datetime.now(timezone.utc).isoformat(),'baseline':BASELINE,
+        'protocol':NOTE.read_text().split('## Results')[0],'protocol_sha256':sha(NOTE),'study_code_sha256':sha(__file__),
+        'input_sha256':hashes,'design':plan,'seconds':600.,'per_case_seconds':8.,'no_OEM_fit':True,'new_3D_runs':0})
+    controls=independent_controls(base);write(out/'controls.json',controls)
+    if not controls['passed']:raise ValueError('Independent controls failed; no comparative package solves')
+    audits=[native_geometry_audit(a,l) for a,l in ((1.,1.),(.8,1.),(1.2,1.),(1.7,1.),(1.,1/.8),(1.,1/1.2),(1.,1/1.7),(1.2,1.2))]
+    write(out/'geometry_audit.json',audits)
+    if not audits[0]['admissible_on_frozen_native_pads']:raise ValueError('Native baseline axial ownership failed; stop')
+    results={}
+    def timeout(signum,frame):raise TimeoutError('Registered 8-second case limit')
+    previous=signal.signal(signal.SIGALRM,timeout)
+    try:
+        for c in plan['cases']:
+            remaining=600-(time.monotonic()-start)
+            if remaining<=0:
+                results[c['id']]={'status':'NOT RUN','reason':'600-second registered budget exhausted'};continue
+            signal.setitimer(signal.ITIMER_REAL,min(8.,remaining));t=time.monotonic()
+            try:
+                s,g=scenario_geometry(c,base);r=solve(s,g,transport_intervals=32)
+                old_shape={'id':c['id'],'group':c['uses'][0],'hypothesis':'registered diagnostic','current_A':c['current_A'],'die_load_W':c['load_W'],'wires_ON':c['wires_ON'],'material_model':'zhang2025_nonlinear'}
+                r['geometry_scenario']={'area_factor':c['a'],'length_factor':c['l'],'couples':c['counts'],'native_CAD_changed':False,'scope':'Transport-only hypothetical dimensions; baseline archive is source, not modified geometry validation'}
+                results[c['id']]={'status':'ACCEPTED','summary':summarize(old_shape,r),'result':r,'seconds':time.monotonic()-t}
+            except (ValueError,RuntimeError,TimeoutError,FloatingPointError) as e:
+                results[c['id']]={'status':'REJECTED','reason':str(e),'diagnostics':getattr(e,'diagnostics',None),'seconds':time.monotonic()-t}
+            finally:signal.setitimer(signal.ITIMER_REAL,0.)
+            write(out/'cases.json',results)
+    finally:signal.signal(signal.SIGALRM,previous)
+    write(out/'cases.json',results);analysis=analyze(plan,results)
+    for p,digest in hashes.items():
+        if sha(ROOT/p)!=digest:raise ValueError('Frozen input changed: '+p)
+    analysis['seconds']=time.monotonic()-start;write(out/'analysis.json',analysis)
+    print(json.dumps({'cases':len(plan['cases']),'coverage':analysis['coverage'],'seconds':analysis['seconds'],
+                      'pair_failures':sum(p['status']=='FAIL' for p in analysis['pairs'])}))
+    return analysis
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);a=p.parse_args();run(a.out)

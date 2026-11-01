@@ -154,6 +154,8 @@ def generate(out):
     (out/'master_numerics.tex').write_text('\n'.join(tex)+'\n')
     from .material_screening import generate as material_screening
     inputs.extend(material_screening(out,save))
+    from .identifiability import generate as identifiability
+    inputs.extend(identifiability(out,save))
     d=read(out/'report_inputs.json');d['edition_kind']='CONTINUOUS REV3 MASTER';d['review_draft']=False
     d['old_report_unchanged']=True;d['original_rev3_historical_snapshot_preserved']=True
     for path in inputs:d['inputs'][str(path.relative_to(ROOT))]=sha(path)
@@ -163,8 +165,10 @@ def generate(out):
         'new_enclosed_3D_field':False,'ray_max_absolute_correction':exchange['rows'][-1]['ray_audit']['max_absolute_view_factor_correction']}
     d['material_screening']={'registered':181,'accepted':141,'rejected':40,
         'new_physics_runs':0,'actual_device_feasibility':'unresolved'}
+    d['identifiability']={'registered':269,'accepted':260,'rejected':9,
+        'admitted_pairs_passed':35,'new_3D_runs':0,'commercial_geometry_grade_identified':False}
     d['figure_generators']={name:sha(ROOT/name) for name in (
-        'reports/master/figures.py','reports/master/material_screening.py','reports/rev3_review/build.py',
+        'reports/master/figures.py','reports/master/material_screening.py','reports/master/identifiability.py','reports/rev3_review/build.py',
         'reports/rev3_review/latest_study.py','reports/field_geometry.py',
         'tecooledmct/graded_tec.py','tecooledmct/material_profiles.py')}
     write(out/'report_inputs.json',d)

@@ -132,6 +132,14 @@ results below: boundaries/current differ, nonlocal/spreading paths remain absent
 and conditional module datasheet lift/voltage residuals remain large. The lower
 transport hypothesis does not demonstrate 200 K on the registered grid.
 
+The separate [identifiability diagnostic](TEC_GEOMETRY_MATERIAL_IDENTIFIABILITY_20261101.md)
+copies reduced geometry without changing this solver or the native assembly.
+Its 260/269 admitted cases confirm exact transport dependence on rho/(A/L),
+k*(A/L) and S, leaving a structural ambiguity even across operating conditions.
+At 300.15 K/0.2 A/zero load, A/L ×1.7 still overcools by 6.372118 K and
+overvolts by 0.088846 V; all 176 native full-footprint contacts fail that area
+realization. These are conditional scenarios, not an adopted model or fitted grade.
+
 At 300 K ambient, 0.15 A, 2 mW imposed die heating:
 
 | Scenario | Constant / old reservoir die K | Nonlinear / old reservoir die K | Nonlinear / new proxy die K | New proxy terminal V / W |

@@ -1,0 +1,6642 @@
+{
+  "UTC": "2026-11-01T12:45:38.596650+00:00",
+  "baseline": "294f53f670f39fcaf8e492651434dbb555faffe7",
+  "protocol": "# Geometry versus material identifiability of reduced TEC transport\n\nInternal technical record; the single public scientific report remains Rev3.\n\n## Preregistration before comparative runs\n\nBaseline: clean `294f53f670f39fcaf8e492651434dbb555faffe7`; new user authorization\nsupersedes the previous prospective no-identifiability instruction only for this\nbounded study. Original nonlinear/affine/G1 algorithms, source tables, corrected\n88-leg CAD/mesh/manifests, prior studies and raw release failures remain unchanged.\nNo OEM fitting, new 3D solver/CAD/mesh, gas/radiation or reopened plate fixture.\n\n**Question.** Can a common effective leg geometry factor account for joint lift\nand voltage disagreement, and can those outputs distinguish geometry from bulk\nproperties? A coherent change in both residuals is not a unique causal attribution.\nThe suggested `(S,rho,k)=(.89,.60,1.73)` is an unverified hypothesis, not evidence\nor a target: analyze its algebra only, never optimize or execute that exact triple.\n\n### Structural model and physical boundaries\n\nWrite `a=A/A0`, `l=L/L0`, `g=a/l`, `s=S/S0`, `r=rho/rho0`, `h=k/k0`.\nAll P/N temperature laws scale together by polarity with these common factors.\nFor normalized axial coordinate `x=z/L`, steady endpoint transport depends on\n`r_eff=r/g`, `k_eff=h*g`, and `s`. Therefore the candidate exact gauge is\n`(g,r,h,s) -> (c*g,c*r,h/c,s)`. Its log null direction is `(1,1,-1,0)`;\nindependent `a,l` add a second null direction. Check this for nonlinear Joule and\nThomson transport, not just constant R/K formulas. Common geometry leaves\n`R*K` unchanged; pair `ZT` scales as `s\u00b2/(r*h)` and intrinsic power factor\n`S\u00b2/rho` as `s\u00b2/r`. Intrinsic power factor is not a module conductance.\n\nGeometry scenarios alter only copied reduced geometry, never the actual native\nconstruction. Independently audit all 88 original boxes, axial Cu ownership/\nfootprint coverage, nearest interleg gap and the stack-height consequence of\nlength changes. Missing full native pad contact or changed axial mating is a\nphysical-realization failure, even if the reduced equations solve. This is not\na redesigned or manufactured cooler. Stage counts stay 28/12/4 except one\nexplicit 26/12/6 transport-only alternative (44 couples), with no new routing.\n\nModule boundaries: fixed hot ceramic, gas/radiation OFF, external wires fully\nremoved, imposed cold load transmitted through the unchanged auxiliary attach.\nCompare cold ceramic lift and module V, not loaded die T against zero-load lift.\nKeep active 180\u2013390 K, measured 40\u2013300 K and assumed quarter-tangent >300 K;\nclassify source coverage from full leg extrema. Material specimens remain distinct\nZhang2025 research specimens, not a commercial matched P/N grade.\n\n### Fixed cases, sensitivity and contacts\n\n- Primary six module conditions: literal 300.15 K, I=.1/.2/.4 A, Qc=0/.1 W.\n  Extra source-domain controls at 295 K: (.1 A,0), (.2 A,.1 W), (.4 A,.1 W).\n- Central log derivatives of `(g,r,h,s)` at nominal, steps .005 and .0025,\n  at all nine conditions. Normalize lift by **100 K**, V by **1 V**; no chart\n  error weighting or likelihood. Report raw Jacobians/SVD/null vectors at both\n  steps, nominal rank threshold `1e-5*sigma_max`, retained condition numbers,\n  and step-difference Frobenius ratio (gate <=1%). Missing derivative samples\n  mean NOT RUN, never filled. Report single-point versus stacked ranks.\n- Also form the explicitly chain-rule constrained matrix with\n  `Jg=-Jr+Jh`; its null is imposed by the derived structure, not independent\n  empirical evidence. Preserve the raw matrix and its finite-difference defect.\n- Global geometry g=.8/1.2/1.7, with direct reciprocal material alternatives\n  `(r,h)=(1/g,g)` at each primary condition. Independent OAT r/h=.8/1.2 and\n  s=.9/1.1 at the same conditions. No residual-minimizing choice among them.\n- Gauge profile c=.8/1.2/1.7 at three registered module conditions; separate\n  A-only versus L-only realizations and common A,L scaling at (.2 A,.1 W).\n  Three current/load similarity controls use `I/g,Qc/g`, g=1.7; compare module\n  outputs and correctly scaled heat/power, not auxiliary die T.\n- Target controls: Th=300 K, Qdie=2 mW, original wires ON, g=.8/1/1.2/1.7,\n  I=.1/.2/.3/.4/.5/.8 A. Two reciprocal-material controls at g=1.7, I=.3/.4 A.\n  Preserve rejected gaps; admitted <=200 K is conditional, not an optimum or\n  evidence that altered dimensions fit the native pads.\n- Only two passive contact limiting placements: external series R=0/.1/.3 ohm,\n  wholly thermalized to the prescribed hot reservoir (`dV=I*R`, added rejection\n  `I\u00b2R`), and a cold-face thermal R=0/5/20 K/W at fixed Qc (`Tface=Tc+Qc*R`).\n  These analytic controls do not change internal stage temperatures, model\n  distributed pellet contacts or identify their actual placement. Extended SVD\n  adds analytic columns normalized by 1 ohm and 10 K/W; zero-load data alone\n  cannot observe the latter. Area-specific internal contact physics is NOT RUN.\n\n### Evidence matching and numerical acceptance\n\nUse original digitized 2019 27 C vacuum readings at the six primary conditions,\npreserving source IDs/reading bounds and already-inspected split labels. Record\nabsolute/signed/relative lift and voltage residuals with equal admitted coverage.\nDo not call those bounds measurement error or the old split newly blind. At\nleast the 50 C dry-N2 panel is screened for matching: absent matched environmental\nheat paths it is **NOT COMPARABLE**, with no invented high-Thot prediction.\nHistorical rank-8/9 G2d fit and its old-geometry residual are context only.\n\nBefore module runs verify independent constant-property g/R/K/energy identities\nat zero/positive/reverse current, and actual nonlinear measured-domain P/N\nprofile equivalence. Gates: equivalent accepted module Tc/Tdie/stage temperatures\nwithin 1e-6 K, V within 1e-7 V, endpoint heat/work within 1e-8 W; source stage\nenergy <1e-9 W and package node/global <1e-8 W unchanged. A/L individual-field\ndensities may differ and must not be equated to total powers. Baseline replay\nmust match frozen material-study points within 1e-6 K / 1e-7 V.\n\nUse the existing offline pinned image, <=4 CPU/8 GiB (below the 12 GiB cap).\nRegister all unique cases/references and input hashes before any solve. Per\npackage timeout **8 s**, combined reduced execution **600 s**, no retries or\nadaptive extra scenarios; unattempted cases are NOT RUN. Stop comparisons on\nindependent-control or invariant failure; retain failures and diagnose without\ntuning physics. Focused plus applicable opt-in regression exclude new CAD/mesh/\nElmer runtime tests; archive/master and legacy checks remain mandatory. Evaluate\nRev3 inclusion only after results; any update requires full deterministic build,\nall-page visual QA and preserved predecessor bytes. No further science is implied.\n\n",
+  "protocol_sha256": "3b9e8f848948cd8d141b984c6ce7cf66cc110770589b11e607d5e4a7879d3a0e",
+  "study_code_sha256": "82a44a5bf8d5d0879663bfada1a32fb6461b733f34498ab4854e525c90959e9f",
+  "input_sha256": {
+    "tecooledmct/graded_tec.py": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "tecooledmct/nonlinear_tec.py": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "tecooledmct/integrated_reference.py": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "tecooledmct/material_profiles.py": "b332771e082c5e389cfdb819b184cd710f8ae7992cb597cf37b26aabc06ee7d6",
+    "tecooledmct/oem_phase_a.py": "efe026a71bca341774523fa56226169ff37e6d40500db7fe963dd3b9e59caa93",
+    "tecooledmct/fem_g2a.py": "d6654b9466ac7ef49c7336217e23310a8920b1121a2e3933cf1e0d795ce546fc",
+    "data/g2c/zhang2025_he_40_300_v2.json": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+    "data/g2c/oem2019_curves_v1.json": "b6de59e07ad02dde83d5ddeb880e650cd74f73557d63d2ba8b35ba94b214b1e0",
+    "data/g2c/source_registry.json": "69844d52f00dbb2d8a86b16d3171671b110bb4809c256bbed5e7a1f0232f3360",
+    "data/g2d/oem_source_review.json": "57c5e1bd3cbdc089fda3ec7623e01b49137732d881bd26e8aa64ea48bde05b71",
+    "data/g2d/preregistration.json": "0f3b63e4be59ec5f22ed582172a2ffdd902494a87567f5d2feb479b56214f269",
+    "data/g2d/calibration_reserved.json": "9e870d76769851c2efbb21203de7b93fc47bcfc2117088ded64f1d3537de2af0",
+    "data/g2d/validation_holdout.json": "75c5b357b6e0893cd853b7015d0715bd516263c9189a72ca5644070ab31fe4e2",
+    "fem/results/geometry_complete_checkpoint_20261030/manifest.json": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+    "fem/results/geometry_complete_checkpoint_20261030/wire_routes.json": "e751350be5e48af2104eaf2e85c864fecf8ce08e2c03fe2e3349ebdbe96b757f",
+    "data/tec_material_plausibility_20261101/cases.json": "84e1d0aa0ed0b2e22312538c04440e7d8a303deaa45f010868e65e66c8aa2992",
+    "data/tec_material_plausibility_20261101/checksums.json": "951aedb503a4a4936281f64d5a29c0a47afefe606d478b3f1b5b96535c1c80a1"
+  },
+  "design": {
+    "cases": [
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "000",
+        "uses": [
+          "jacobian",
+          "global_geometry",
+          "gauge"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 0.9950124791926823,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "001",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.005012520859401,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "002",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9950124791926823,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "003",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.005012520859401,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "004",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9950124791926823,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "005",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.005012520859401,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "006",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9950124791926823,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "007",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.005012520859401,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "008",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 0.9975031223974601,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "009",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.002503127605795,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "010",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9975031223974601,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "011",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.002503127605795,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "012",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9975031223974601,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "013",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.002503127605795,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "014",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9975031223974601,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "015",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.002503127605795,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "016",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "017",
+        "uses": [
+          "jacobian",
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 0.9950124791926823,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "018",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.005012520859401,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "019",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9950124791926823,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "020",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.005012520859401,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "021",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9950124791926823,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "022",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.005012520859401,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "023",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9950124791926823,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "024",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.005012520859401,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "025",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 0.9975031223974601,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "026",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.002503127605795,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "027",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9975031223974601,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "028",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.002503127605795,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "029",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9975031223974601,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "030",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.002503127605795,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "031",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9975031223974601,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "032",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.002503127605795,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "033",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "034",
+        "uses": [
+          "jacobian",
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 0.9950124791926823,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "035",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.005012520859401,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "036",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9950124791926823,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "037",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.005012520859401,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "038",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9950124791926823,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "039",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.005012520859401,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "040",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9950124791926823,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "041",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.005012520859401,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "042",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 0.9975031223974601,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "043",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.002503127605795,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "044",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9975031223974601,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "045",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.002503127605795,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "046",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9975031223974601,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "047",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.002503127605795,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "048",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9975031223974601,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "049",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.002503127605795,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "050",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "051",
+        "uses": [
+          "jacobian",
+          "global_geometry",
+          "gauge",
+          "separate_dimensions"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 0.9950124791926823,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "052",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.005012520859401,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "053",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9950124791926823,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "054",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.005012520859401,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "055",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9950124791926823,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "056",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.005012520859401,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "057",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9950124791926823,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "058",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.005012520859401,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "059",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 0.9975031223974601,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "060",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.002503127605795,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "061",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9975031223974601,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "062",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.002503127605795,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "063",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9975031223974601,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "064",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.002503127605795,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "065",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9975031223974601,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "066",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.002503127605795,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "067",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "068",
+        "uses": [
+          "jacobian",
+          "global_geometry",
+          "gauge"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 0.9950124791926823,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "069",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.005012520859401,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "070",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9950124791926823,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "071",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.005012520859401,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "072",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9950124791926823,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "073",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.005012520859401,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "074",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9950124791926823,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "075",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.005012520859401,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "076",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 0.9975031223974601,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "077",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.002503127605795,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "078",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9975031223974601,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "079",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.002503127605795,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "080",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9975031223974601,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "081",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.002503127605795,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "082",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9975031223974601,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "083",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.002503127605795,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "084",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "085",
+        "uses": [
+          "jacobian",
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 0.9950124791926823,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "086",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.005012520859401,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "087",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9950124791926823,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "088",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.005012520859401,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "089",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9950124791926823,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "090",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.005012520859401,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "091",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9950124791926823,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "092",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.005012520859401,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "093",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 0.9975031223974601,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "094",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.002503127605795,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "095",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9975031223974601,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "096",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.002503127605795,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "097",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9975031223974601,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "098",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.002503127605795,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "099",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9975031223974601,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "100",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.002503127605795,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "101",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "102",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 0.9950124791926823,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "103",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.005012520859401,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "104",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9950124791926823,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "105",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.005012520859401,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "106",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9950124791926823,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "107",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.005012520859401,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "108",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9950124791926823,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "109",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.005012520859401,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "110",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 0.9975031223974601,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "111",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.002503127605795,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "112",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9975031223974601,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "113",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.002503127605795,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "114",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9975031223974601,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "115",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.002503127605795,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "116",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9975031223974601,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "117",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.002503127605795,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "118",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "119",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 0.9950124791926823,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "120",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.005012520859401,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "121",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9950124791926823,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "122",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.005012520859401,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "123",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9950124791926823,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "124",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.005012520859401,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "125",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9950124791926823,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "126",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.005012520859401,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "127",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 0.9975031223974601,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "128",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.002503127605795,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "129",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9975031223974601,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "130",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.002503127605795,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "131",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9975031223974601,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "132",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.002503127605795,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "133",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9975031223974601,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "134",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.002503127605795,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "135",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "136",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 0.9950124791926823,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "137",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.005012520859401,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "138",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9950124791926823,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "139",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.005012520859401,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "140",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9950124791926823,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "141",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.005012520859401,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "142",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9950124791926823,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "143",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.005012520859401,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "144",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 0.9975031223974601,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "145",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.002503127605795,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "146",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.9975031223974601,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "147",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.002503127605795,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "148",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.9975031223974601,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "149",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.002503127605795,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "150",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9975031223974601,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "151",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 295.0,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.002503127605795,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "152",
+        "uses": [
+          "jacobian"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "153",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.25,
+        "k": 0.8,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "154",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "155",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.8333333333333334,
+        "k": 1.2,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "156",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "157",
+        "uses": [
+          "global_geometry",
+          "similarity"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.5882352941176471,
+        "k": 1.7,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "158",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.8,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "159",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.2,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "160",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.8,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "161",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.2,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "162",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "163",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.1,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "164",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "165",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.25,
+        "k": 0.8,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "166",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "167",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.8333333333333334,
+        "k": 1.2,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "168",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "169",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.5882352941176471,
+        "k": 1.7,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "170",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.8,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "171",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.2,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "172",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.8,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "173",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.2,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "174",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "175",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.1,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "176",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "177",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.25,
+        "k": 0.8,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "178",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "179",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.8333333333333334,
+        "k": 1.2,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "180",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "181",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.5882352941176471,
+        "k": 1.7,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "182",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.8,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "183",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.2,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "184",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.8,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "185",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.2,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "186",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "187",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.1,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "188",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "189",
+        "uses": [
+          "global_geometry",
+          "separate_dimensions"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.25,
+        "k": 0.8,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "190",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "191",
+        "uses": [
+          "global_geometry",
+          "separate_dimensions"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.8333333333333334,
+        "k": 1.2,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "192",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "193",
+        "uses": [
+          "global_geometry",
+          "separate_dimensions",
+          "similarity"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.5882352941176471,
+        "k": 1.7,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "194",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.8,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "195",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.2,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "196",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.8,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "197",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.2,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "198",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "199",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.1,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "200",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "201",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.25,
+        "k": 0.8,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "202",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "203",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.8333333333333334,
+        "k": 1.2,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "204",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "205",
+        "uses": [
+          "global_geometry",
+          "similarity"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.5882352941176471,
+        "k": 1.7,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "206",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.8,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "207",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.2,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "208",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.8,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "209",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.2,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "210",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "211",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.1,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "212",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "213",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.25,
+        "k": 0.8,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "214",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "215",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.8333333333333334,
+        "k": 1.2,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "216",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "217",
+        "uses": [
+          "global_geometry"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.5882352941176471,
+        "k": 1.7,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "218",
+        "uses": [
+          "reciprocal_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.8,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "219",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.2,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "220",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 0.8,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "221",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.2,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "222",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 0.9,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "223",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.1,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "224",
+        "uses": [
+          "global_material"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 0.8,
+        "k": 1.25,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "225",
+        "uses": [
+          "gauge"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.2,
+        "k": 0.8333333333333334,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "226",
+        "uses": [
+          "gauge"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.1,
+        "load_W": 0.0,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.7,
+        "k": 0.5882352941176471,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "227",
+        "uses": [
+          "gauge"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 0.8,
+        "k": 1.25,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "228",
+        "uses": [
+          "gauge"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.2,
+        "k": 0.8333333333333334,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "229",
+        "uses": [
+          "gauge"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.7,
+        "k": 0.5882352941176471,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "230",
+        "uses": [
+          "gauge"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 0.8,
+        "k": 1.25,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "231",
+        "uses": [
+          "gauge"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.2,
+        "k": 0.8333333333333334,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "232",
+        "uses": [
+          "gauge"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.4,
+        "load_W": 0.0,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.7,
+        "k": 0.5882352941176471,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "233",
+        "uses": [
+          "gauge"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.25,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "234",
+        "uses": [
+          "separate_dimensions"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 0.8333333333333334,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "235",
+        "uses": [
+          "separate_dimensions"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 0.5882352941176471,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "236",
+        "uses": [
+          "separate_dimensions"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.2,
+        "l": 1.2,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "237",
+        "uses": [
+          "separate_dimensions"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.05882352941176471,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "238",
+        "uses": [
+          "similarity"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.11764705882352942,
+        "load_W": 0.05882352941176471,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "239",
+        "uses": [
+          "similarity"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.23529411764705885,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "240",
+        "uses": [
+          "similarity"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.1,
+        "load_W": 0.002,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "241",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.2,
+        "load_W": 0.002,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "242",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.3,
+        "load_W": 0.002,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "243",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.4,
+        "load_W": 0.002,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "244",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.5,
+        "load_W": 0.002,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "245",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.8,
+        "load_W": 0.002,
+        "a": 0.8,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "246",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.1,
+        "load_W": 0.002,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "247",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.2,
+        "load_W": 0.002,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "248",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.3,
+        "load_W": 0.002,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "249",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.4,
+        "load_W": 0.002,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "250",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.5,
+        "load_W": 0.002,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "251",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.8,
+        "load_W": 0.002,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "252",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.1,
+        "load_W": 0.002,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "253",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.2,
+        "load_W": 0.002,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "254",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.3,
+        "load_W": 0.002,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "255",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.4,
+        "load_W": 0.002,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "256",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.5,
+        "load_W": 0.002,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "257",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.8,
+        "load_W": 0.002,
+        "a": 1.2,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "258",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.1,
+        "load_W": 0.002,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "259",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.2,
+        "load_W": 0.002,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "260",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.3,
+        "load_W": 0.002,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "261",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.4,
+        "load_W": 0.002,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "262",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.5,
+        "load_W": 0.002,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "263",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.8,
+        "load_W": 0.002,
+        "a": 1.7,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "264",
+        "uses": [
+          "target"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.3,
+        "load_W": 0.002,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.5882352941176471,
+        "k": 1.7,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "265",
+        "uses": [
+          "target_equivalence"
+        ]
+      },
+      {
+        "hot_K": 300.0,
+        "current_A": 0.4,
+        "load_W": 0.002,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 0.5882352941176471,
+        "k": 1.7,
+        "s": 1.0,
+        "wires_ON": true,
+        "counts": [
+          28,
+          12,
+          4
+        ],
+        "id": "266",
+        "uses": [
+          "target_equivalence"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.0,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          26,
+          12,
+          6
+        ],
+        "id": "267",
+        "uses": [
+          "topology"
+        ]
+      },
+      {
+        "hot_K": 300.15,
+        "current_A": 0.2,
+        "load_W": 0.1,
+        "a": 1.0,
+        "l": 1.0,
+        "r": 1.0,
+        "k": 1.0,
+        "s": 1.0,
+        "wires_ON": false,
+        "counts": [
+          26,
+          12,
+          6
+        ],
+        "id": "268",
+        "uses": [
+          "topology"
+        ]
+      }
+    ],
+    "jacobian": {
+      "300.15": [
+        {
+          "I": 0.1,
+          "Q": 0.0,
+          "base": "000",
+          "steps": {
+            "0.005": {
+              "a": [
+                "001",
+                "002"
+              ],
+              "r": [
+                "003",
+                "004"
+              ],
+              "k": [
+                "005",
+                "006"
+              ],
+              "s": [
+                "007",
+                "008"
+              ]
+            },
+            "0.0025": {
+              "a": [
+                "009",
+                "010"
+              ],
+              "r": [
+                "011",
+                "012"
+              ],
+              "k": [
+                "013",
+                "014"
+              ],
+              "s": [
+                "015",
+                "016"
+              ]
+            }
+          }
+        },
+        {
+          "I": 0.1,
+          "Q": 0.1,
+          "base": "017",
+          "steps": {
+            "0.005": {
+              "a": [
+                "018",
+                "019"
+              ],
+              "r": [
+                "020",
+                "021"
+              ],
+              "k": [
+                "022",
+                "023"
+              ],
+              "s": [
+                "024",
+                "025"
+              ]
+            },
+            "0.0025": {
+              "a": [
+                "026",
+                "027"
+              ],
+              "r": [
+                "028",
+                "029"
+              ],
+              "k": [
+                "030",
+                "031"
+              ],
+              "s": [
+                "032",
+                "033"
+              ]
+            }
+          }
+        },
+        {
+          "I": 0.2,
+          "Q": 0.0,
+          "base": "034",
+          "steps": {
+            "0.005": {
+              "a": [
+                "035",
+                "036"
+              ],
+              "r": [
+                "037",
+                "038"
+              ],
+              "k": [
+                "039",
+                "040"
+              ],
+              "s": [
+                "041",
+                "042"
+              ]
+            },
+            "0.0025": {
+              "a": [
+                "043",
+                "044"
+              ],
+              "r": [
+                "045",
+                "046"
+              ],
+              "k": [
+                "047",
+                "048"
+              ],
+              "s": [
+                "049",
+                "050"
+              ]
+            }
+          }
+        },
+        {
+          "I": 0.2,
+          "Q": 0.1,
+          "base": "051",
+          "steps": {
+            "0.005": {
+              "a": [
+                "052",
+                "053"
+              ],
+              "r": [
+                "054",
+                "055"
+              ],
+              "k": [
+                "056",
+                "057"
+              ],
+              "s": [
+                "058",
+                "059"
+              ]
+            },
+            "0.0025": {
+              "a": [
+                "060",
+                "061"
+              ],
+              "r": [
+                "062",
+                "063"
+              ],
+              "k": [
+                "064",
+                "065"
+              ],
+              "s": [
+                "066",
+                "067"
+              ]
+            }
+          }
+        },
+        {
+          "I": 0.4,
+          "Q": 0.0,
+          "base": "068",
+          "steps": {
+            "0.005": {
+              "a": [
+                "069",
+                "070"
+              ],
+              "r": [
+                "071",
+                "072"
+              ],
+              "k": [
+                "073",
+                "074"
+              ],
+              "s": [
+                "075",
+                "076"
+              ]
+            },
+            "0.0025": {
+              "a": [
+                "077",
+                "078"
+              ],
+              "r": [
+                "079",
+                "080"
+              ],
+              "k": [
+                "081",
+                "082"
+              ],
+              "s": [
+                "083",
+                "084"
+              ]
+            }
+          }
+        },
+        {
+          "I": 0.4,
+          "Q": 0.1,
+          "base": "085",
+          "steps": {
+            "0.005": {
+              "a": [
+                "086",
+                "087"
+              ],
+              "r": [
+                "088",
+                "089"
+              ],
+              "k": [
+                "090",
+                "091"
+              ],
+              "s": [
+                "092",
+                "093"
+              ]
+            },
+            "0.0025": {
+              "a": [
+                "094",
+                "095"
+              ],
+              "r": [
+                "096",
+                "097"
+              ],
+              "k": [
+                "098",
+                "099"
+              ],
+              "s": [
+                "100",
+                "101"
+              ]
+            }
+          }
+        }
+      ],
+      "295.0": [
+        {
+          "I": 0.1,
+          "Q": 0.0,
+          "base": "102",
+          "steps": {
+            "0.005": {
+              "a": [
+                "103",
+                "104"
+              ],
+              "r": [
+                "105",
+                "106"
+              ],
+              "k": [
+                "107",
+                "108"
+              ],
+              "s": [
+                "109",
+                "110"
+              ]
+            },
+            "0.0025": {
+              "a": [
+                "111",
+                "112"
+              ],
+              "r": [
+                "113",
+                "114"
+              ],
+              "k": [
+                "115",
+                "116"
+              ],
+              "s": [
+                "117",
+                "118"
+              ]
+            }
+          }
+        },
+        {
+          "I": 0.2,
+          "Q": 0.1,
+          "base": "119",
+          "steps": {
+            "0.005": {
+              "a": [
+                "120",
+                "121"
+              ],
+              "r": [
+                "122",
+                "123"
+              ],
+              "k": [
+                "124",
+                "125"
+              ],
+              "s": [
+                "126",
+                "127"
+              ]
+            },
+            "0.0025": {
+              "a": [
+                "128",
+                "129"
+              ],
+              "r": [
+                "130",
+                "131"
+              ],
+              "k": [
+                "132",
+                "133"
+              ],
+              "s": [
+                "134",
+                "135"
+              ]
+            }
+          }
+        },
+        {
+          "I": 0.4,
+          "Q": 0.1,
+          "base": "136",
+          "steps": {
+            "0.005": {
+              "a": [
+                "137",
+                "138"
+              ],
+              "r": [
+                "139",
+                "140"
+              ],
+              "k": [
+                "141",
+                "142"
+              ],
+              "s": [
+                "143",
+                "144"
+              ]
+            },
+            "0.0025": {
+              "a": [
+                "145",
+                "146"
+              ],
+              "r": [
+                "147",
+                "148"
+              ],
+              "k": [
+                "149",
+                "150"
+              ],
+              "s": [
+                "151",
+                "152"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "global": [
+      {
+        "kind": "geometry",
+        "factor": 0.8,
+        "I": 0.1,
+        "Q": 0.0,
+        "case": "153"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.0,
+        "I": 0.1,
+        "Q": 0.0,
+        "case": "000"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.2,
+        "I": 0.1,
+        "Q": 0.0,
+        "case": "155"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.7,
+        "I": 0.1,
+        "Q": 0.0,
+        "case": "157"
+      },
+      {
+        "kind": "r",
+        "factor": 0.8,
+        "I": 0.1,
+        "Q": 0.0,
+        "case": "159"
+      },
+      {
+        "kind": "r",
+        "factor": 1.2,
+        "I": 0.1,
+        "Q": 0.0,
+        "case": "160"
+      },
+      {
+        "kind": "k",
+        "factor": 0.8,
+        "I": 0.1,
+        "Q": 0.0,
+        "case": "161"
+      },
+      {
+        "kind": "k",
+        "factor": 1.2,
+        "I": 0.1,
+        "Q": 0.0,
+        "case": "162"
+      },
+      {
+        "kind": "s",
+        "factor": 0.9,
+        "I": 0.1,
+        "Q": 0.0,
+        "case": "163"
+      },
+      {
+        "kind": "s",
+        "factor": 1.1,
+        "I": 0.1,
+        "Q": 0.0,
+        "case": "164"
+      },
+      {
+        "kind": "geometry",
+        "factor": 0.8,
+        "I": 0.1,
+        "Q": 0.1,
+        "case": "165"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.0,
+        "I": 0.1,
+        "Q": 0.1,
+        "case": "017"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.2,
+        "I": 0.1,
+        "Q": 0.1,
+        "case": "167"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.7,
+        "I": 0.1,
+        "Q": 0.1,
+        "case": "169"
+      },
+      {
+        "kind": "r",
+        "factor": 0.8,
+        "I": 0.1,
+        "Q": 0.1,
+        "case": "171"
+      },
+      {
+        "kind": "r",
+        "factor": 1.2,
+        "I": 0.1,
+        "Q": 0.1,
+        "case": "172"
+      },
+      {
+        "kind": "k",
+        "factor": 0.8,
+        "I": 0.1,
+        "Q": 0.1,
+        "case": "173"
+      },
+      {
+        "kind": "k",
+        "factor": 1.2,
+        "I": 0.1,
+        "Q": 0.1,
+        "case": "174"
+      },
+      {
+        "kind": "s",
+        "factor": 0.9,
+        "I": 0.1,
+        "Q": 0.1,
+        "case": "175"
+      },
+      {
+        "kind": "s",
+        "factor": 1.1,
+        "I": 0.1,
+        "Q": 0.1,
+        "case": "176"
+      },
+      {
+        "kind": "geometry",
+        "factor": 0.8,
+        "I": 0.2,
+        "Q": 0.0,
+        "case": "177"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.0,
+        "I": 0.2,
+        "Q": 0.0,
+        "case": "034"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.2,
+        "I": 0.2,
+        "Q": 0.0,
+        "case": "179"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.7,
+        "I": 0.2,
+        "Q": 0.0,
+        "case": "181"
+      },
+      {
+        "kind": "r",
+        "factor": 0.8,
+        "I": 0.2,
+        "Q": 0.0,
+        "case": "183"
+      },
+      {
+        "kind": "r",
+        "factor": 1.2,
+        "I": 0.2,
+        "Q": 0.0,
+        "case": "184"
+      },
+      {
+        "kind": "k",
+        "factor": 0.8,
+        "I": 0.2,
+        "Q": 0.0,
+        "case": "185"
+      },
+      {
+        "kind": "k",
+        "factor": 1.2,
+        "I": 0.2,
+        "Q": 0.0,
+        "case": "186"
+      },
+      {
+        "kind": "s",
+        "factor": 0.9,
+        "I": 0.2,
+        "Q": 0.0,
+        "case": "187"
+      },
+      {
+        "kind": "s",
+        "factor": 1.1,
+        "I": 0.2,
+        "Q": 0.0,
+        "case": "188"
+      },
+      {
+        "kind": "geometry",
+        "factor": 0.8,
+        "I": 0.2,
+        "Q": 0.1,
+        "case": "189"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.0,
+        "I": 0.2,
+        "Q": 0.1,
+        "case": "051"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.2,
+        "I": 0.2,
+        "Q": 0.1,
+        "case": "191"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.7,
+        "I": 0.2,
+        "Q": 0.1,
+        "case": "193"
+      },
+      {
+        "kind": "r",
+        "factor": 0.8,
+        "I": 0.2,
+        "Q": 0.1,
+        "case": "195"
+      },
+      {
+        "kind": "r",
+        "factor": 1.2,
+        "I": 0.2,
+        "Q": 0.1,
+        "case": "196"
+      },
+      {
+        "kind": "k",
+        "factor": 0.8,
+        "I": 0.2,
+        "Q": 0.1,
+        "case": "197"
+      },
+      {
+        "kind": "k",
+        "factor": 1.2,
+        "I": 0.2,
+        "Q": 0.1,
+        "case": "198"
+      },
+      {
+        "kind": "s",
+        "factor": 0.9,
+        "I": 0.2,
+        "Q": 0.1,
+        "case": "199"
+      },
+      {
+        "kind": "s",
+        "factor": 1.1,
+        "I": 0.2,
+        "Q": 0.1,
+        "case": "200"
+      },
+      {
+        "kind": "geometry",
+        "factor": 0.8,
+        "I": 0.4,
+        "Q": 0.0,
+        "case": "201"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.0,
+        "I": 0.4,
+        "Q": 0.0,
+        "case": "068"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.2,
+        "I": 0.4,
+        "Q": 0.0,
+        "case": "203"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.7,
+        "I": 0.4,
+        "Q": 0.0,
+        "case": "205"
+      },
+      {
+        "kind": "r",
+        "factor": 0.8,
+        "I": 0.4,
+        "Q": 0.0,
+        "case": "207"
+      },
+      {
+        "kind": "r",
+        "factor": 1.2,
+        "I": 0.4,
+        "Q": 0.0,
+        "case": "208"
+      },
+      {
+        "kind": "k",
+        "factor": 0.8,
+        "I": 0.4,
+        "Q": 0.0,
+        "case": "209"
+      },
+      {
+        "kind": "k",
+        "factor": 1.2,
+        "I": 0.4,
+        "Q": 0.0,
+        "case": "210"
+      },
+      {
+        "kind": "s",
+        "factor": 0.9,
+        "I": 0.4,
+        "Q": 0.0,
+        "case": "211"
+      },
+      {
+        "kind": "s",
+        "factor": 1.1,
+        "I": 0.4,
+        "Q": 0.0,
+        "case": "212"
+      },
+      {
+        "kind": "geometry",
+        "factor": 0.8,
+        "I": 0.4,
+        "Q": 0.1,
+        "case": "213"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.0,
+        "I": 0.4,
+        "Q": 0.1,
+        "case": "085"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.2,
+        "I": 0.4,
+        "Q": 0.1,
+        "case": "215"
+      },
+      {
+        "kind": "geometry",
+        "factor": 1.7,
+        "I": 0.4,
+        "Q": 0.1,
+        "case": "217"
+      },
+      {
+        "kind": "r",
+        "factor": 0.8,
+        "I": 0.4,
+        "Q": 0.1,
+        "case": "219"
+      },
+      {
+        "kind": "r",
+        "factor": 1.2,
+        "I": 0.4,
+        "Q": 0.1,
+        "case": "220"
+      },
+      {
+        "kind": "k",
+        "factor": 0.8,
+        "I": 0.4,
+        "Q": 0.1,
+        "case": "221"
+      },
+      {
+        "kind": "k",
+        "factor": 1.2,
+        "I": 0.4,
+        "Q": 0.1,
+        "case": "222"
+      },
+      {
+        "kind": "s",
+        "factor": 0.9,
+        "I": 0.4,
+        "Q": 0.1,
+        "case": "223"
+      },
+      {
+        "kind": "s",
+        "factor": 1.1,
+        "I": 0.4,
+        "Q": 0.1,
+        "case": "224"
+      }
+    ],
+    "pairs": [
+      {
+        "kind": "geometry_material",
+        "left": "153",
+        "right": "154",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "155",
+        "right": "156",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "157",
+        "right": "158",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "165",
+        "right": "166",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "167",
+        "right": "168",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "169",
+        "right": "170",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "177",
+        "right": "178",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "179",
+        "right": "180",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "181",
+        "right": "182",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "189",
+        "right": "190",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "191",
+        "right": "192",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "193",
+        "right": "194",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "201",
+        "right": "202",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "203",
+        "right": "204",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "205",
+        "right": "206",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "213",
+        "right": "214",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "215",
+        "right": "216",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "geometry_material",
+        "left": "217",
+        "right": "218",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "gauge_profile",
+        "c": 0.8,
+        "left": "000",
+        "right": "225",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "gauge_profile",
+        "c": 1.2,
+        "left": "000",
+        "right": "226",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "gauge_profile",
+        "c": 1.7,
+        "left": "000",
+        "right": "227",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "gauge_profile",
+        "c": 0.8,
+        "left": "051",
+        "right": "228",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "gauge_profile",
+        "c": 1.2,
+        "left": "051",
+        "right": "229",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "gauge_profile",
+        "c": 1.7,
+        "left": "051",
+        "right": "230",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "gauge_profile",
+        "c": 0.8,
+        "left": "068",
+        "right": "231",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "gauge_profile",
+        "c": 1.2,
+        "left": "068",
+        "right": "232",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "gauge_profile",
+        "c": 1.7,
+        "left": "068",
+        "right": "233",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "area_vs_length",
+        "left": "189",
+        "right": "234",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "area_vs_length",
+        "left": "191",
+        "right": "235",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "area_vs_length",
+        "left": "193",
+        "right": "236",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "common_area_length",
+        "left": "051",
+        "right": "237",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "current_load_similarity",
+        "left": "157",
+        "right": "238",
+        "heat_factor": 1.7,
+        "compare_die": false
+      },
+      {
+        "kind": "current_load_similarity",
+        "left": "193",
+        "right": "239",
+        "heat_factor": 1.7,
+        "compare_die": false
+      },
+      {
+        "kind": "current_load_similarity",
+        "left": "205",
+        "right": "240",
+        "heat_factor": 1.7,
+        "compare_die": false
+      },
+      {
+        "kind": "wires_ON_equivalence",
+        "left": "261",
+        "right": "265",
+        "heat_factor": 1.0,
+        "compare_die": true
+      },
+      {
+        "kind": "wires_ON_equivalence",
+        "left": "262",
+        "right": "266",
+        "heat_factor": 1.0,
+        "compare_die": true
+      }
+    ],
+    "targets": [
+      {
+        "g": 0.8,
+        "I": 0.1,
+        "case": "241"
+      },
+      {
+        "g": 0.8,
+        "I": 0.2,
+        "case": "242"
+      },
+      {
+        "g": 0.8,
+        "I": 0.3,
+        "case": "243"
+      },
+      {
+        "g": 0.8,
+        "I": 0.4,
+        "case": "244"
+      },
+      {
+        "g": 0.8,
+        "I": 0.5,
+        "case": "245"
+      },
+      {
+        "g": 0.8,
+        "I": 0.8,
+        "case": "246"
+      },
+      {
+        "g": 1.0,
+        "I": 0.1,
+        "case": "247"
+      },
+      {
+        "g": 1.0,
+        "I": 0.2,
+        "case": "248"
+      },
+      {
+        "g": 1.0,
+        "I": 0.3,
+        "case": "249"
+      },
+      {
+        "g": 1.0,
+        "I": 0.4,
+        "case": "250"
+      },
+      {
+        "g": 1.0,
+        "I": 0.5,
+        "case": "251"
+      },
+      {
+        "g": 1.0,
+        "I": 0.8,
+        "case": "252"
+      },
+      {
+        "g": 1.2,
+        "I": 0.1,
+        "case": "253"
+      },
+      {
+        "g": 1.2,
+        "I": 0.2,
+        "case": "254"
+      },
+      {
+        "g": 1.2,
+        "I": 0.3,
+        "case": "255"
+      },
+      {
+        "g": 1.2,
+        "I": 0.4,
+        "case": "256"
+      },
+      {
+        "g": 1.2,
+        "I": 0.5,
+        "case": "257"
+      },
+      {
+        "g": 1.2,
+        "I": 0.8,
+        "case": "258"
+      },
+      {
+        "g": 1.7,
+        "I": 0.1,
+        "case": "259"
+      },
+      {
+        "g": 1.7,
+        "I": 0.2,
+        "case": "260"
+      },
+      {
+        "g": 1.7,
+        "I": 0.3,
+        "case": "261"
+      },
+      {
+        "g": 1.7,
+        "I": 0.4,
+        "case": "262"
+      },
+      {
+        "g": 1.7,
+        "I": 0.5,
+        "case": "263"
+      },
+      {
+        "g": 1.7,
+        "I": 0.8,
+        "case": "264"
+      }
+    ],
+    "topology": [
+      {
+        "I": 0.2,
+        "Q": 0.0,
+        "case": "267"
+      },
+      {
+        "I": 0.2,
+        "Q": 0.1,
+        "case": "268"
+      }
+    ]
+  },
+  "seconds": 600.0,
+  "per_case_seconds": 8.0,
+  "no_OEM_fit": true,
+  "new_3D_runs": 0
+}

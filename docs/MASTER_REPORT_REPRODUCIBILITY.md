@@ -37,13 +37,14 @@ public-reference check now verifies the new master through that live pointer.
 The guard's message about the approved report refers to the preserved original.
 No failed raw gate, source hash, field archive or historical manifest is waived.
 
-The current master has **34 pages**. The report-only material integration uses
-frozen `data/tec_material_plausibility_20261101` JSON, with no calls to transport
-solvers or changed material laws. `reports/master/material_screening.py` derives
-two report figures and numerical tables; the 40 predecessor figures remain
-byte-identical, giving 44 PDF/PNG figure files. The 141/181 admitted states,
-40 rejections, measured/assumed coverage, conditional 200 K samples, controlled
-sensitivity and manufacturer discrepancy are woven into existing sections.
+The current master has **36 pages**. Frozen material and identifiability JSON
+are projected by `reports/master/material_screening.py` and `identifiability.py`,
+with no transport solver calls or changed material laws during report generation.
+The latest integration adds the exact nonlinear geometry/material gauge, raw
+rank 4-to-3 caveat, conditional signed residuals and failed unchanged-pad
+realization. All 44 predecessor figures remain byte-identical, giving 46 PDF/PNG
+figure files. Earlier 141/181 material states, 40 rejections, source coverage,
+conditional target/sensitivity and the distinct cavity-proxy baseline remain.
 This is not device validation; all prior raw release failures remain explicit.
 
 Prior exact 28-page PDF bytes, full input/figure identities, generator snapshots
@@ -51,15 +52,21 @@ and numerical/visual verification are separately retained in
 `reports/historical/rev3_pre_material_20261101`, with full prior live assets also
 available at the exact source commit recorded there. These are historical
 evidence, not another current report. `verify_historical()` checks both this
-predecessor and the original 15-page/Rev2 identities.
+predecessor and the original 15-page/Rev2 identities. The exact subsequent
+34-page PDF and its provenance are likewise preserved under
+`reports/historical/rev3_pre_identifiability_20261101`; its fixed SHA-256 is
+`03eab4a7546301f1f7558afcecf733713c4a804ca1457da7f4c00dbf4917a829`.
+It is historical evidence, never a competing current report.
 
-Every current page was rendered and visually inspected; PDF, 44 figures and
-34 rendered pages reproduce byte for byte across two independent builds. Current
-report-only checks, archive/master integrity and legacy evidence are recorded in
+Every current page was rendered and visually inspected; PDF, 46 figures and
+36 rendered pages reproduce byte for byte across two independent builds. Current
+study/report checks, archive/master integrity and legacy evidence are recorded in
+`data/tec_identifiability_20261101/verification.json`. The preceding report-only
+integration checks remain in
 `reports/master/verification/material_integration_20261101/summary.json`.
 The original report-build verification remains in `reports/master/verification/summary.json`
 as historical scope; its 300 full opt-in passes are not new executions.
-No new CAD/mesh/Elmer smoke or scenario campaign is part of this report-only update.
+No new CAD/mesh/Elmer smoke or repeated scenario run is part of report generation.
 
 ## Build and review
 
@@ -105,7 +112,7 @@ After all page reviews and checks pass:
 ```bash
 python3 -B -m reports.master.build --out outputs/master-rebuild --publish
 python3 -B -m reports.master.validate --current
-./fem/run.sh python -m pytest -q tests/test_master_material_screening.py tests/test_rev3_master.py tests/test_rev3_review.py tests/test_engineering_report.py
+./fem/run.sh python -m pytest -q tests/test_master_identifiability.py tests/test_master_material_screening.py tests/test_rev3_master.py tests/test_rev3_review.py tests/test_engineering_report.py
 ./fem/run.sh python fem/archive_bath_spatial_device.py --verify
 ./fem/run.sh python -m tecooledmct.cli --quick --out outputs/master-check/legacy-cli
 ./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/master-check/legacy-geometry

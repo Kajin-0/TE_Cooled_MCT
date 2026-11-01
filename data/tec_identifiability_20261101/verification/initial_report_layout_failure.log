@@ -1,0 +1,13 @@
+Actual corrected-field figures verified outputs/rev3-identifiability-a
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/User/TE_Cooled_MCT/reports/master/build.py", line 87, in <module>
+    else:print(prepare(a.out,figures=not a.reuse_figures))
+               ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/User/TE_Cooled_MCT/reports/master/build.py", line 45, in prepare
+    return validate(out)
+  File "/home/User/TE_Cooled_MCT/reports/master/validate.py", line 66, in validate
+    if count<180:raise ValueError('Near blank page '+str(i+1))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Near blank page 36

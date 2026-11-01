@@ -101,6 +101,13 @@ stages under finite-difference package Jacobians can therefore reuse exact
 results. A constant-law package result is used only as an initial iterate;
 the accepted result still passes the full nonlinear equations and gates.
 
+The independent [geometry/material diagnostic](TEC_GEOMETRY_MATERIAL_IDENTIFIABILITY_20261101.md)
+normalizes z by L and works with total leg heat A*q. Only rho/(A/L), k*(A/L)
+and S enter these equations, including Joule/Thomson terms. The exact nonlinear
+gauge is confirmed by 35 admitted paired checks; raw finite-difference SVD rank
+4-to-3 is retained as a numerical caveat. This new opt-in study changes no law,
+cache algorithm or production geometry and cannot identify a commercial grade.
+
 ## Transport accuracy, cost and unresolved states
 
 Versioned evidence: `data/nonlinear_exchange_20261030/transport/comparison.json`.

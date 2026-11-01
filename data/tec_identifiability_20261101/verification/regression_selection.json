@@ -1,0 +1,25 @@
+{
+  "command_argv": [
+    "./fem/run.sh",
+    "env",
+    "TE_FEM_SMOKE=1",
+    "pytest",
+    "-q",
+    "--ignore=outputs",
+    "--deselect=tests/test_corrected_enclosure.py::test_gmsh_geometry_and_interface_area_audit",
+    "--deselect=tests/test_fem_g1.py::test_real_elmer_coupled_smoke",
+    "--deselect=tests/test_fem_g2a.py::test_real_four_couple_solver_smoke",
+    "--deselect=tests/test_fem_g2b_connected.py::test_actual_two_terminal_88_leg_mesh",
+    "--deselect=tests/test_fem_g2b_geometry.py::test_real_88_leg_mesh_feasibility",
+    "--deselect=tests/test_fem_g2b_physics.py::test_actual_two_terminal_full_stack_smoke",
+    "--deselect=tests/test_fem_g2c.py::test_real_local_temperature_adapter_and_runtime_guard",
+    "--deselect=tests/test_fem_g3b.py::test_genuine_elmer_compiled_exchange_does_not_stagnate_at_zero_initial_flux",
+    "--deselect=tests/test_flux_presolder.py::test_genuine_three_dimensional_layered_elmer_coupon",
+    "--deselect=tests/test_full_presolder.py::test_genuine_oblique_elmer_and_independent_quadratic_reference",
+    "--deselect=tests/test_geometry_rebaseline.py::test_independent_cad_and_actual_conformal_header_mesh"
+  ],
+  "excluded_runtime_cases": 12,
+  "reason": "Registered no new CAD/mesh/Elmer scope; no full smoke or production FEM in this study",
+  "applicable_passed": 429,
+  "deselected": 12
+}

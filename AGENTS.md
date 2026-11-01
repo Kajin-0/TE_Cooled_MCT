@@ -23,7 +23,7 @@ Their numerical evidence, original errors and acceptance criteria remain intact.
    **NOT RUN** unexecuted work, **PENDING** incomplete verification. A proposed
    next experiment is not authorization; do not restart stopped work automatically.
 5. Preserve sealed inputs, fields, original failures/gates and historical PDFs
-   (Rev2, original 15-page and prior 28-page Rev3). The ONE live Rev3 evolves only
+   (Rev2, original 15-page and prior 28-/34-page Rev3). The ONE live Rev3 evolves only
    for authorized substantive science; do not rebuild it for administrative edits.
 6. Append observed UTC PENDING at task begin and actual PASS/FAIL/STOP at end,
    including source, evidence, immutable impact and blocker/next authorized step.
@@ -126,6 +126,7 @@ inspect every page of a rebuilt master before publication.
 | `integrated_reference.py` | **Five-node** conservative package; three TEC stages, die attach, hot-side Cu leads, Au bonds, sink and reservoir loads | Reduced spatial description; preserve `g1_constant` and affine `zhang2025_analog` compatibility |
 | `nonlinear_tec.py`, `graded_tec.py` | Opt-in `zhang2025_nonlinear`: conservative bounded nonlinear 1D P/N profiles, analytic banded Newton and exact-key cache; independent bounded BVP comparisons | Research specimens measured 40–300 K; active 180–390 K; **assumed quarter-tangent** continuation above 300 K; not an identified commercial grade |
 | `tec_material_plausibility.py` | Separate registered scale-hypothesis study using unchanged nonlinear/G1 algorithms; 141/181 admitted, 40 rejected; conditional literal-27-C module comparison | Nominal fixed-300-K/2-mW/wires-ON sample reaches 186.484 K at 0.4 A within measured leg coverage; no full-device or commercial-grade qualification; substantial joint OEM lift/voltage mismatch |
+| `tec_identifiability.py` | Separate preregistered reduced diagnostic, 260/269 admitted; exact nonlinear geometry/material gauge and normalized raw SVD; no fitting | Common A/L cannot be distinguished from reciprocal rho/k factors by endpoint transport; g=1.7 still overcools/overvolts and fails all 176 unchanged native full-pad contacts; no altered CAD or identified grade |
 | Corrected enclosure / exchange | Source-aligned candidate STEP/mesh and native-face audit; **preliminary filled stepped-core** diffuse-gray radiation and gas chord network (14 surfaces / 8 effective nodes) | Integrated native gas diffusion, full native visibility, optical transmission and coupled solids/cavity fields remain absent; standalone stopped gas control below |
 | `nonlocal_solid_network.py` diagnostic | Opt-in geometry-derived local Cu/alumina multiport plus unchanged affine P/N stages; actual interfaces, nonlocal return and P174 side contact | Isothermal ceramic/pad closure is unqualified; not full-device FEM; 7.277% side-port sensitivity exceeds registered 5% screen |
 | `passive_plate_audit.py` | Source-only audit of four plates, original Cu pads and routes/supports; 104 bodies | Seven-port follow-up **STOPPED before grid/solves**: two unmapped cuts and incompatible P174 side/hot-foot trace on a 0.220 mm edge; no spreading attribution |
@@ -158,17 +159,17 @@ inspect every page of a rebuilt master before publication.
   above 300 K the quarter tangent, exactly 390 K its left limit. Domain-check
   interior Joule overshoot. Never clamp accepted results, bridge rejected plot
   intervals, erase failure diagnostics or turn chosen ranges into confidence intervals.
-- Current master: **34 pages**, every page rendered and visually inspected;
-  PDF, 44 figure files and all 34 rendered pages reproduce exactly across two
-  independent builds. All 40 predecessor figures are byte-identical. Material
-  hypotheses, 141/181 admitted cases, conditional 200 K target, sensitivity and
-  substantial manufacturer discrepancy are integrated professionally in place;
-  no device validation or numerical release is claimed. Prior exact 28-page PDF
-  and provenance are retained under `reports/historical/rev3_pre_material_20261101`;
-  the original 15-page Rev3 and Rev2 remain sealed. Verification is recorded in
-  `reports/master/verification/material_integration_20261101/summary.json`.
-  This update is report-only; 35 focused report tests, archive/master integrity
-  and both legacy checks pass, with no new solver/material law/scenario/geometry.
+- Current master: **36 pages**, every page rendered and visually inspected;
+  PDF, 46 figure files and all 36 rendered pages reproduce exactly across two
+  independent builds. All 44 predecessor figures are byte-identical. The verified
+  nonlinear scaling ambiguity, raw-rank caveat, signed manufacturer residuals
+  and failed native-pad realization are integrated with the earlier material
+  hypotheses and distinct proxy baseline; no device validation or numerical
+  release is claimed. Exact prior 34-page PDF/provenance are retained under
+  `reports/historical/rev3_pre_identifiability_20261101`, alongside the earlier
+  28-page snapshot, original 15-page Rev3 and Rev2. Current scoped verification:
+  `data/tec_identifiability_20261101/verification.json`; existing scientific laws,
+  geometry, fields, failures and all historical report hashes remain unchanged.
 - Current native gas checkpoint: `data/isolated_cap_native_gas_20261101` and
   `docs/ISOLATED_CAP_AND_NATIVE_GAS_20261101.md`. A/B PASS, C failed raw balance;
   one export, one partition, one mesh/solve, no retry. **87 focused / 384 full
@@ -197,26 +198,19 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current user-priority override (2026-11-01):** the verified material study
-merits integration into the ONE live Rev3; the user has expressly authorized
-this report-only update, preserving its predecessor and all numerical evidence.
-No further physics or identifiability experiment is authorized. The bounded reduced TEC
-material-hypothesis / condition-matched datasheet study is now verified in
-`docs/TEC_MATERIAL_PLAUSIBILITY_20261101.md` (91 focused / 403 applicable opt-in
-tests; 12 runtime CAD/mesh/Elmer cases excluded). Nominal/higher assumptions admit
-the 200 K target on a discrete idealized grid, while the lower hypothesis does
-not demonstrate it; actual package feasibility remains unresolved. At the fixed
-0.25 A control, specified-range endpoint spans rank k 23.349 K, S 14.173 K,
-hot boundary 9.085 K, rho 4.960 K, die load 2.219 K, attach 0.100 K. Literal
-300.15 K chart comparisons require assumed continuation; no source-grade match,
-fresh blind holdout, fit, Qmax/DeltaTmax or optional shunt run is claimed.
-Existing nonlinear/G1 algorithms, laws, 28/12/4 geometry and evidence remain
-frozen; no OEM fit or new 3D FEM/CAD/gas/radiation campaign. Lower/higher transport
-triples are engineering hypotheses, not measured commercial grades; >300 K is
-assumed continuation. The next need is independently supported grade/geometry/
-contact and nonlocal-path evidence, not tuning against already examined curves;
-no follow-on scientific work is authorized by completing this study. Keep the
-stopped/deferred tasks below as context, not automatically resumed jobs.
+**Current bounded study complete (2026-11-01):** read
+`docs/TEC_GEOMETRY_MATERIAL_IDENTIFIABILITY_20261101.md` and its frozen registration.
+269 solves gave 260 admitted / 9 rejected; 35 admitted equivalence checks pass.
+The exact gauge `(g,r,k,s)->(c*g,c*r,k/c,s)` proves structural non-identifiability;
+raw 300.15 K SVD rank changes 4-to-3 at the fixed cutoff and is not a unique
+dimension measurement. At 0.2 A/zero load g=1.7 leaves +6.372118 K/+0.088846 V
+chart residuals and fails unchanged native pad coverage. Assumed continuation,
+unknown internal contacts and real-device feasibility remain unresolved.
+Independent dimensions/same-grade transport/contact evidence and finite-sink
+matched-target power are **proposed only**; no further science is authorized.
+The user-authorized concise in-place Rev3 integration retains exact prior PDF
+bytes. Never execute externally suggested fitted triples or reopen gas/solid
+stops as an automatic follow-up; all earlier evidence and priorities remain.
 
 1. **Solid comparison is stopped at its registered boundary:** follow
    `docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md` and the current

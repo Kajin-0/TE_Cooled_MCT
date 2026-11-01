@@ -63,6 +63,13 @@ grade was identified. Material/geometry/contact and omitted-path evidence comes
 before claiming real-device performance; deferred exchange work is not resumed
 automatically by this checkpoint.
 
+The subsequent [registered identifiability study](TEC_GEOMETRY_MATERIAL_IDENTIFIABILITY_20261101.md)
+proves an exact nonlinear ambiguity between common A/L and reciprocal rho/k
+factors, with 260/269 admitted cases and no fitting. A larger effective A/L reduces
+joint chart residuals but fails unchanged native-pad coverage; it identifies
+neither dimensions nor a manufactured grade. Independent construction/material/
+contact evidence and finite-sink target power are proposed next questions only.
+
 The matched solid diagnostic and its one passive plate follow-up have reached
 their registered stops. The [isolated cap/native gas control](ISOLATED_CAP_AND_NATIVE_GAS_20261101.md)
 now qualifies a separate SI-correct derivative and actual void, preserving both

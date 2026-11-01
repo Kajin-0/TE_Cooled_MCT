@@ -28,7 +28,9 @@ def required_content(text):
                   'radiation','gas','sensitivity','fail','references',
                   '181','141','186.484','0.970800','300.15','29.990715',
                   '0.583231','32.6274%','engineering hypotheses',
-                  'not measured commercial grades','actual reference-device feasibility'):
+                  'not measured commercial grades','actual reference-device feasibility',
+                  'structural non-identifiability','269','260','61.339405',
+                  '0.957962','2.758235','176'):
         if value not in s:raise ValueError('Required scientific evidence missing: '+value)
     return True
 
@@ -100,6 +102,11 @@ def verify_current():
         raise ValueError('Material screening coverage differs from frozen study')
     if screening['new_physics_runs'] or screening['actual_device_feasibility']!='unresolved':
         raise ValueError('False material screening scope')
+    ident=d['identifiability']
+    if (ident['registered'],ident['accepted'],ident['rejected'],ident['admitted_pairs_passed'])!=(269,260,9,35):
+        raise ValueError('Identifiability evidence coverage differs')
+    if ident['new_3D_runs'] or ident['commercial_geometry_grade_identified']:
+        raise ValueError('False identifiability physical scope')
     return True
 
 

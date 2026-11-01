@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/tecooledmct/tec_identifiability.py", line 320, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);a=p.parse_args();run(a.out)
+                                                                                                 ^^^^^^^^^^
+  File "/work/tecooledmct/tec_identifiability.py", line 310, in run
+    write(out/'cases.json',results);analysis=analyze(plan,results)
+                                             ^^^^^^^^^^^^^^^^^^^^^
+  File "/work/tecooledmct/tec_identifiability.py", line 243, in analyze
+    p=next(p for p in source['points'] if p['panel']=='300K_vacuum' and p['current_a']==row['I'] and p['load_w']==row['Q'] and p['field']==field)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration
