@@ -5,6 +5,42 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+## Cold-start protocol — no prior chat context required
+
+1. In `/home/User/TE_Cooled_MCT`, check `git branch --show-current`,
+   `git rev-parse HEAD` and `git status --short` before editing. Inspect staged,
+   unstaged and untracked work against the latest chronology; preserve unfinished
+   changes and establish their scope. Never reset, discard or overwrite to get clean.
+2. Inspect `tmux list-sessions` and `tmux list-panes -t sim` read-only; identify
+   existing **sim:0.0** before continuing. Do not create/duplicate/restart sessions,
+   spawn another agent or send commands to unrelated panes/repositories.
+3. Read this whole contract, latest [chronology](docs/ENGINEERING_CHRONOLOGY.md),
+   [README](README.md), the [canonical Rev3](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf),
+   then the read-first guides and task-relevant source/evidence/validation below.
+   Reconcile stale instructions using this contract and verified event/source records.
+4. Reconstruct the current task and its authorization: **PASS** means the named
+   checks passed, **FAIL** a failed criterion, **STOP** a halted scope/gate,
+   **NOT RUN** unexecuted work, **PENDING** incomplete verification. A proposed
+   next experiment is not authorization; do not restart stopped work automatically.
+5. Preserve sealed inputs, fields, original failures/gates and historical PDFs
+   (Rev2, original 15-page and prior 28-page Rev3). The ONE live Rev3 evolves only
+   for authorized substantive science; do not rebuild it for administrative edits.
+6. Append observed UTC PENDING at task begin and actual PASS/FAIL/STOP at end,
+   including source, evidence, immutable impact and blocker/next authorized step.
+   Use existing scope-appropriate verification and archive/master guards below;
+   inspect results, commit only verified scope and verify CI for the exact pushed
+   commit before claiming completion. Do not launch physics for documentation checks.
+
+Orient from [five-node balances](tecooledmct/integrated_reference.py),
+[nonlinear legs](tecooledmct/nonlinear_tec.py) and [material laws](tecooledmct/graded_tec.py):
+commercial grade is unidentified (source 40–300 K, active model 180–390 K);
+300–390 K is assumed continuation, not measured.
+[Native gas](tecooledmct/native_gas_conduction.py) and its
+[forensics](tecooledmct/native_gas_flux_forensics.py) retain **32.6274% FAIL vs 1%**;
+no qualified device gas budget follows. Solid release still requires raw bath
+**<1%** and cold-interface **<5%** on one mesh plus a refined comparator and all
+other gates. Conservative reactions and reduced-model acceptance cannot replace them.
+
 ## Objective and execution ownership
 
 This TO-66 / three-stage TEC / HgCdTe reference is a **VIRTUAL MULTIPHYSICS

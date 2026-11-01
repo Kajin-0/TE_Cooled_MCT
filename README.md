@@ -136,11 +136,13 @@ reduced budgets nor stable temperatures replace those criteria. See
 The [contract's ordered science milestones](AGENTS.md#ordered-next-science-milestones)
 govern continuation: the geometry-derived route/support comparison remains
 conditional and its one plate-fixture follow-up stopped at the seven-port
-admissibility gate. **Native gas extraction stopped at a verified STEP unit defect**;
-a separate unit-correct cap CAD derivative remains the prerequisite; its single
-follow-up attempt failed and is quarantined. Fresh writer/SI-reader process
-isolation must replace the unverified writer-reset assumption before independent
-interleg gas diffusion. Further solid fitting/refinement is outside those stops.
+admissibility gate. The later isolated writer/SI reader qualified a separate
+cap derivative and actual native gas void, preserving both earlier unit failures.
+The [gas-only control](docs/ISOLATED_CAP_AND_NATIVE_GAS_20261101.md) remains
+**STOPPED: 32.6274% raw flux mismatch fails 1%**; its
+[frozen-field forensics](docs/NATIVE_GAS_FLUX_FORENSICS_20261101.md) identify the
+P1 normal-flux jumps without qualifying a gas budget. The proposed affine control
+is neither authorized nor run. Further solid fitting/refinement is outside its stops.
 Then native-surface visibility/exchange with actual
 interleg/pin/wire geometry and paired mechanisms/contact/bypass/grade/
 reservoir scenarios in the bounded nonlinear package. A later 3D qualification
