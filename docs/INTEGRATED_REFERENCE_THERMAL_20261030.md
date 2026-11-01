@@ -158,8 +158,9 @@ exceed the demonstrated discretization changes.
 4. Existing bath <1% and cold-interface <5% criteria remain unmet in preserved
    historical production evidence. Reduced-model conservation does not replace
    them. Update the live Rev3 master in place while preserving its sealed original bytes.
-5. Next is independent native interleg gas conduction after the stopped solid
-   port audit, then native-surface exchange and paired mechanism/sensitivity tests. Do not force a large
+5. Native interleg gas extraction has stopped at an exported cap STEP unit
+   defect; a separate unit-correct derivative is required before void/conduction
+   checks. Then native-surface exchange and paired mechanism/sensitivity tests. Do not force a large
    conformal gas/TEC remesh or a proprietary OEM fit to complete useful studies.
 
 The [matched solid-model diagnostic](MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md)
@@ -182,4 +183,6 @@ not a qualified cross-model reconciliation. The one
 any grid or solve: its independent side/hot-foot constants conflict on a native
 0.220 mm edge, and two physical cut interfaces have no condition. No spreading
 fraction or causal kelvin closure is established. Independent native interleg
-gas conduction is next; no further solid-side fit/grid or Rev3 change is claimed.
+gas conduction remains the priority, with the
+[cap STEP unit prerequisite](NATIVE_GAS_DOMAIN_AUDIT_20261101.md) now exposed.
+No gas solve, further solid-side fit/grid or Rev3 change is claimed.

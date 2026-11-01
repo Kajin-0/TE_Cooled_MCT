@@ -1,0 +1,100 @@
+{
+  "status": "VERIFIED SOURCE-UNIT DEFECT; gas experiment STOPPED before void extraction, mesh or PDE",
+  "CAD_reader": {
+    "command": "./fem/run.sh timeout --kill-after=5s 120s python -m tecooledmct.native_gas_audit --out data/native_gas_domain_audit_20261101",
+    "exit_code": 0,
+    "seconds": 5.123723113909364,
+    "Gmsh_import_sessions": 1,
+    "target_unit": "M",
+    "analytic_one_mm_cube_passed": true,
+    "log": "verification/CAD_reader.log"
+  },
+  "focused_tests": {
+    "command": "./fem/run.sh python -m pytest -q tests/test_native_gas_audit.py tests/test_passive_plate_audit.py tests/test_nonlocal_solid_network.py tests/test_corrected_enclosure.py",
+    "exit_code": 0,
+    "passed": 87,
+    "seconds": 5.18,
+    "log": "verification/focused.log"
+  },
+  "full_opt_in": {
+    "command": "./fem/run.sh env TE_FEM_SMOKE=1 pytest -q --ignore=outputs",
+    "exit_code": 0,
+    "passed": 355,
+    "skipped": 0,
+    "warnings": 14,
+    "seconds": 391.55,
+    "log": "verification/full_opt_in.log",
+    "existing_Elmer_smoke_executed": true
+  },
+  "archive_verifier": {
+    "command": "./fem/run.sh python fem/archive_bath_spatial_device.py --verify",
+    "exit_code": 0,
+    "log": "verification/archive_verifier.log",
+    "original_failed_gates_retained": true
+  },
+  "master_integrity": {
+    "command": "python3 -B -m reports.master.validate --current",
+    "exit_code": 0,
+    "log": "verification/master_integrity.log",
+    "PDF_unchanged": true,
+    "pdf_sha256": "1bc0d793ac59cfa8b003454846bba2f7c9fe6bf431d57980ae7d95f8bee7ebff",
+    "sealed_original_pdf_sha256": "d173a8ba952462e1b6bf857739406f58eeb8d5c82b900f9fc65b84d40573acc1",
+    "sealed_original_manifest_sha256": "c06183c06ffb711449b764d50e763eed3c4da448bc4930281a2361c626c5e9c8"
+  },
+  "legacy_demos": {
+    "exit_codes": [
+      0,
+      0
+    ],
+    "commands": [
+      "./fem/run.sh python -m tecooledmct.cli --quick --out outputs/native-gas-check/legacy-cli",
+      "./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/native-gas-check/legacy-geometry"
+    ],
+    "logs": [
+      "verification/legacy_cli.log",
+      "verification/legacy_geometry.log"
+    ]
+  },
+  "prior_solid_checkpoint_artifact_hashes_verified_unchanged": 36,
+  "runtime": {
+    "image": "sha256:ce4f061bbfd77b8f9f2437771bad2b90dde5bc00f82eab8e1058ceca7fe3bbc5",
+    "new_tools_installed": false,
+    "image_rebuilt": false,
+    "network": "none",
+    "cpus": 4,
+    "memory_gib": 8
+  },
+  "experiment_execution": {
+    "gas_void_extractions": 0,
+    "gas_meshes": 0,
+    "gas_PDE_solves": 0,
+    "new_thermoelectric_production_solves": 0,
+    "comparative_fields_read": false,
+    "unit_correction_applied": false
+  },
+  "gas_checks": {
+    "gas_mesh_conservation": "NOT RUN",
+    "analytic_slab_PDE": "NOT RUN",
+    "gas_solid_normals_areas": "NOT RUN",
+    "gas_region_connectivity": "NOT RUN",
+    "stage_heat_budgets": "NOT RUN"
+  },
+  "conditional_N2_screens": "Nominal SI gap/cavity scales, not selected operating pressure, solved heat or rarefied validation",
+  "current_contract_and_links": "PASS; minimum next fix is a separate unit-correct cap STEP derivative with SI round-trip geometry checks; prior solid studies remain closed",
+  "test_source_sha256": "3c2cf828c08d29b33905fe29b9baf5867797d7a73a0f6242feec7c39cf8b94f8",
+  "CI": "Verify exact pushed-commit workflow externally; no self-referential commit hash here",
+  "artifact_sha256": {
+    "audit.json": "ee09d1d701eeda629272e225ccd5899da90836fb2817d0a2c883c6dbf63f000d",
+    "checksums.json": "362b2604230a05bc95957e9ce4197bac49b3c6a229259657d01ecd7e5ffe4c7b",
+    "reader_controls/one_mm_cube.step": "5bba0c4203aa51d98b9adadc3c137c8a999828dde2a1082798ec6bea702e6e52",
+    "verification/CAD_reader.log": "d3b6996f3782421ea917dde8d5e4abd16c4ee8f8fee2302a933206c386fa2ade",
+    "verification/archive_verifier.log": "3314847f48aacde2dbc35a0f1f0614d16ad0a28b96e2255eb9e3f2746f8cfae9",
+    "verification/focused.log": "d5a8b923f24e6c3c1b1d52f7f331897f6284a40b6a2c28c27e3dad1cbcd2dffc",
+    "verification/full_opt_in.log": "aca3cb13cd47a3a34afbcb9f2b351dbcafd5870384c11321658140d5c1cc8750",
+    "verification/legacy_cli.log": "f37c6e58d7200cfc1c8238bb19d82e1310706ac418d9f610a526179522380442",
+    "verification/legacy_geometry.log": "206f5017522ce2973ea0cc21edb731c0f29bb55872d1341ec7c5e0257fd3e204",
+    "verification/master_integrity.log": "a9ac0c3ac83c40e1b4c3416066d63d324ee9f8c144641dfeed72d140b6557245",
+    "reader_controls/.gitattributes": "6893a8d6a438c00d6eb32912c734bf29beba11b51a4ec38b7ac6e09a890092c2"
+  },
+  "raw_CAD_control_preservation": "Path-specific -text/-diff attributes retain generated STEP bytes; independent SHA and SI import checks remain active. No source archive attribute changed."
+}

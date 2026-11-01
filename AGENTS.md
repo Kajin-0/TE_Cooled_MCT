@@ -1,6 +1,6 @@
 # CURRENT PROJECT CONTRACT
 
-This is the authoritative continuation contract, updated 2026-10-31. Historical
+This is the authoritative continuation contract, updated 2026-11-01. Historical
 work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
@@ -75,6 +75,7 @@ inspect every page of a rebuilt master before publication.
 | Corrected enclosure / exchange | Source-aligned candidate STEP/mesh and native-face audit; **preliminary filled stepped-core** diffuse-gray radiation and gas chord network (14 surfaces / 8 effective nodes) | Full native-surface visibility, interleg/pin/wire exchange, gas diffusion, optical transmission and coupled 3D cavity fields are **not implemented** |
 | `nonlocal_solid_network.py` diagnostic | Opt-in geometry-derived local Cu/alumina multiport plus unchanged affine P/N stages; actual interfaces, nonlocal return and P174 side contact | Isothermal ceramic/pad closure is unqualified; not full-device FEM; 7.277% side-port sensitivity exceeds registered 5% screen |
 | `passive_plate_audit.py` | Source-only audit of four plates, original Cu pads and routes/supports; 104 bodies | Seven-port follow-up **STOPPED before grid/solves**: two unmapped cuts and incompatible P174 side/hot-foot trace on a 0.220 mm edge; no spreading attribution |
+| `native_gas_audit.py` | Source-only STEP/SI reader audit and conditional N2 Kn/Ra screens | Gas **STOPPED before extraction/mesh/PDE**: cap STEP declares mm for metre-sized coordinates, 1,000× length mismatch; native SI cap MSH remains consistent |
 | `model.py`, `cli.py`, `experiments.py` | Original **four-node legacy demonstrations**, retained for compatibility | Not the current corrected package; older OEM-anchored assumptions are historical |
 
 - Archived 177-cut/current, weak heat and global/stage balance checks pass, but
@@ -105,11 +106,11 @@ inspect every page of a rebuilt master before publication.
   tests pass**, including actual Elmer smoke. Archive verifier and legacy demos
   pass. Records: `reports/master/verification/summary.json`. Check CI for each
   newly pushed commit; historical test counts are not new executions.
-- Current passive-audit verification: **45 focused / 341 full opt-in**
+- Current native-gas source-audit verification: **87 focused / 355 full opt-in**
   tests pass, including existing Elmer smoke; archive/master integrity and both
-  legacy demos pass. Record: `data/passive_plate_port_audit_20261031/verification.json`.
-  Those software gates do not admit the seven-port fixture, pass the earlier
-  side-port sensitivity or qualify ceramic spreading. The 28-page master and
+  legacy demos pass. Record: `data/native_gas_domain_audit_20261101/verification.json`.
+  Software gates do not admit a gas domain or the earlier seven-port fixture,
+  pass the old side-port sensitivity or qualify ceramic spreading. The 28-page master and
   historical evidence are unchanged.
 
 ## Read-first order
@@ -136,12 +137,19 @@ inspect every page of a rebuilt master before publication.
    cuts. It stopped with **zero grids/solves**, without reading reference fields
    or adding conditions. Spreading contributions remain unidentifiable; Rev3
    remains intact. No further solid fit/grid/fixture or causal kelvin claim.
-2. **Independent native interleg gas conduction is NEXT.** Use corrected actual
-   voids/surfaces, complete thermal boundaries and a bounded independent
-   conduction fixture with analytic/conservation checks. Apply Knudsen/Rayleigh
-   regime gates; do not presume convection, reuse old G3b gas geometry or turn
-   its gas-film chord into a claimed gas-domain Laplace solution. No gas/CFD
-   execution belongs to the stopped plate audit; register the next scope first.
+2. **Native gas domain is stopped at its source-unit gate.** Read
+   `docs/NATIVE_GAS_DOMAIN_AUDIT_20261101.md`. A metre-target CAD import confirms
+   the package scale, but the original cap STEP is 1,000× too small in length
+   and lies inside the Kovar header; native cap MSH/registry remain SI-consistent.
+   **Minimum next fix:** publish a separate unit-correct cap STEP derivative,
+   with explicit-unit export/import bbox/volume checks; preserve archived bytes.
+   Then resume native solid subtraction, seals/access, connected watertight void,
+   ownership/normals and one bounded gas diffusion calculation. No gas region,
+   stage heat budget or new device T exists yet. At a 150 µm source gap, N2
+   Kn is 0.458 at 100 Pa and 0.000452 at 101325 Pa; nominal cavity Ra~2501
+   flags possible buoyancy at atmospheric pressure. These are conditional
+   screens, not selected operating conditions. No old G3b geometry/chord matrix,
+   filled core, CFD, solid-side reopening or unqualified residual claim.
 3. **Native-surface radiation/exchange:** replace the filled-core shortcut with a bounded
    actual-surface visibility fixture/operator from corrected cap/window and
    package surfaces, exposing interleg voids, pins and wires. Audit face ownership,

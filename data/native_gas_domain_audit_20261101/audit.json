@@ -1,0 +1,251 @@
+{
+  "scope": "Source-only native gas geometry prerequisite and conditional N2 scales; no gas field",
+  "registration": "# Native interleg gas conduction: geometry and regime gate\n\n## Registration before comparative field access\n\nUse only the corrected C-layout package and standalone corrected cap/window\nsources. The stopped seven-port solid experiment stays closed. Preserve all\noriginal sources, fields, failures and the single Rev3 master.\n\nSource inspection has identified a possible STEP unit inconsistency: both files\ndeclare millimetres while cap cylinder values resemble SI metre coordinates.\nThis is an unblinded source-format observation, not a transport comparison.\nVerify it independently before choosing a gas domain or reading solved fields.\n\n1. Check protected package/cap STEP, mesh, registry and hypothesis hashes.\n   Parse STEP length declarations independently of Gmsh; compare source cylinder\n   radii, frames and native cap tetrahedral volumes with SI registry dimensions.\n2. ONE bounded Gmsh/OpenCASCADE import session, explicitly targeting metres:\n   verify a separate analytic 1 mm cube STEP round-trip, then import the actual\n   216-body package and three cap/roof/window solids without scaling/healing.\n   Compare package/header and cap volume/frame identities. At most 120 s,\n   4 CPUs / 8 GiB; no retry, tool install, source edit or silent unit correction.\n3. **STOP before Boolean/meshing/PDE** on inconsistent units, missing bodies,\n   solid penetration, unassigned/open boundary or unverifiable sealing/access.\n   Provide the exact defect and one minimum next fix; do not report gas regions,\n   normals, stage heat budgets or conservation as checked when not extracted.\n   Hybrid wire centre-lines are not native volumetric solids; their treatment\n   would need an explicit wire-off scenario or registered 3D construction.\n4. Only after this gate: a single native gas Boolean difference using all\n   resolved solids (88 legs, Cu, supports, ceramics, joints/die, header/pins,\n   cap/window). Nominal cap/header and window contacts are assumed impermeable.\n   Verify positive bounded void volumes, connectivity, watertight/manifold\n   interfaces, exclusive solid ownership, outward normals/areas, no overlap/leak\n   and no filled-core substitute. Bound CAD work to 180 s; one mesh <=300,000\n   tets (hard stop at 500,000), <=180 s meshing, one <=120 s constant-k gas solve.\n   No retries, refinement, full thermoelectric production solve or CFD.\n5. Gas starts with N2 only. Screen actual same-stage interleg gap and nominal\n   cavity height at 100 Pa and 101325 Pa, T=300 K and a declared 50 K contrast.\n   Reuse only registered conductivity/kinetic formulas, never G3b geometry or\n   visibility/chords. The NIST table domain is 200\u2013400 K; Eucken viscosity is\n   an engineering closure. Choose continuum only when the relevant Kn<0.01\n   conservative screening gate passes; Ra/orientation must qualify neglect of\n   buoyancy or explicitly restrict the result to a conduction-only control.\n   A stopped geometry permits conditional scale screens, not a selected case.\n6. An admitted gas calculation must use complete continuous prescribed wall\n   temperatures from a declared archived field or analytic control, conserve\n   mapped heat to 1 nW reactions and <=1% raw global flux discrepancy, pass\n   analytic slab/zero controls, positive tetrahedra and surface ownership checks.\n   Freeze geometry and boundary definitions before comparative fields. It is\n   one-way gas diffusion, not a new device temperature or gas-selection result.\n\nSave actual reader/source identities and targeted negative/analytic tests. If\nstopped, use null heat budgets, zero gas cells/solves and no invented gas field.\nRun focused regression, archive/master integrity and relevant legacy checks;\ncommit only verified scoped evidence and check exact CI. Rev3 remains unchanged\nunless genuinely verified predictive physics warrants an in-place update.\n\n",
+  "parsed_STEP_units": {
+    "package": {
+      "length_prefix": ".MILLI.",
+      "length_contexts": 218,
+      "metres_per_coordinate_unit": 0.001,
+      "cylinder_radii_declared_m": [
+        0.00038,
+        0.0006500000000000001,
+        0.00185,
+        0.0035499999999999998,
+        0.00875
+      ]
+    },
+    "cap": {
+      "length_prefix": ".MILLI.",
+      "length_contexts": 4,
+      "metres_per_coordinate_unit": 0.001,
+      "cylinder_radii_declared_m": [
+        2.95e-06,
+        7.100000000000001e-06,
+        7.6e-06
+      ]
+    }
+  },
+  "gmsh_version": "4.13.1",
+  "reader_target_unit": "M",
+  "analytic_cube": {
+    "units": {
+      "length_prefix": ".MILLI.",
+      "length_contexts": 1,
+      "metres_per_coordinate_unit": 0.001,
+      "cylinder_radii_declared_m": []
+    },
+    "actual": [
+      {
+        "tag": 1,
+        "volume_m3": 1e-09,
+        "bbox_m": [
+          -1e-07,
+          -1e-07,
+          -1e-07,
+          0.0010001,
+          0.0010001,
+          0.0010001
+        ]
+      }
+    ],
+    "expected_volume_m3": 1e-09,
+    "passed": true
+  },
+  "package_CAD": {
+    "volumes": 216,
+    "total_volume_m3": 6.082340665594861e-07,
+    "expected_total_m3": 6.082340665595398e-07,
+    "header": {
+      "tag": 198,
+      "volume_m3": 5.009410451351831e-07,
+      "bbox_m": [
+        -0.0157501,
+        -0.0087501,
+        -1e-07,
+        0.0157501,
+        0.0087501,
+        0.0015001
+      ]
+    },
+    "SI_source_volumes_consistent": true
+  },
+  "cap_CAD_import": [
+    {
+      "tag": 1,
+      "volume_m3": 1.8818925393166623e-16,
+      "bbox_m": [
+        -7.7e-06,
+        -7.7e-06,
+        1.4000000000000001e-06,
+        7.7e-06,
+        7.7e-06,
+        9.750000000000002e-06
+      ]
+    },
+    {
+      "tag": 2,
+      "volume_m3": 6.935340672156787e-17,
+      "bbox_m": [
+        -7.7e-06,
+        -7.7e-06,
+        9.55e-06,
+        7.7e-06,
+        7.7e-06,
+        1.0200000000000002e-05
+      ]
+    },
+    {
+      "tag": 3,
+      "volume_m3": 1.2302869530539306e-17,
+      "bbox_m": [
+        -3.05e-06,
+        -3.05e-06,
+        9.55e-06,
+        3.05e-06,
+        3.05e-06,
+        1.0200000000000002e-05
+      ]
+    }
+  ],
+  "native_cap_mesh": {
+    "tetrahedra": 8143,
+    "counts": {
+      "7301": 5185,
+      "7302": 2482,
+      "7303": 476
+    },
+    "volumes_m3": {
+      "7301": 1.8814712241801435e-07,
+      "7302": 6.935245140410403e-08,
+      "7303": 1.2238263005690838e-08
+    },
+    "SI_registry_consistent_within_1_percent": true
+  },
+  "cap_intended_outer_radius_m": 0.0076,
+  "cap_STEP_declared_outer_radius_m": 7.6e-06,
+  "cap_STEP_to_intended_length_ratio": 0.001,
+  "cap_import_bbox_m": {
+    "low": [
+      -7.7e-06,
+      -7.7e-06,
+      1.4000000000000001e-06
+    ],
+    "high": [
+      7.7e-06,
+      7.7e-06,
+      1.0200000000000002e-05
+    ],
+    "note": "OpenCASCADE bounding boxes include kernel tolerance padding"
+  },
+  "as_imported_cap_inside_Kovar_core": true,
+  "header_top_m": 0.0015,
+  "containment_proof": {
+    "cap_radial_bbox_bound_m": 1.0889444430272833e-05,
+    "nearest_feedthrough_bore_radius_from_origin_m": 0.00475,
+    "nearest_mounting_hole_radius_from_origin_m": 0.010349999999999998,
+    "central_header_disk_radius_m": 0.00875,
+    "meaning": "Entire as-declared cap lies between header planes, inside central disk, outside all bores; cap interior minus header has no gas volume"
+  },
+  "native_counts": {
+    "package_solid_bodies": 216,
+    "legs": 88,
+    "pins": 9,
+    "glass_seals": 9,
+    "cap_solids": 3,
+    "hybrid_wires_without_native_3D_volume": 4
+  },
+  "interleg_source_gaps": [
+    {
+      "stage": 1,
+      "legs": 56,
+      "minimum_xy_surface_gap_m": 0.0001499999999999997
+    },
+    {
+      "stage": 2,
+      "legs": 24,
+      "minimum_xy_surface_gap_m": 0.0001499999999999999
+    },
+    {
+      "stage": 3,
+      "legs": 8,
+      "minimum_xy_surface_gap_m": 0.0001499999999999999
+    }
+  ],
+  "conditional_N2_regime_screens": [
+    {
+      "gas": "N2",
+      "pressure_pa": 100.0,
+      "T_k": 300.0,
+      "contrast_k": 50.0,
+      "k_w_mk": 0.0259,
+      "lambda_m": 6.870566969237955e-05,
+      "Kn_interleg": 0.45803779794919797,
+      "Kn_cavity_height": 0.00843014352053737,
+      "Ra_interleg": 1.519017645178954e-08,
+      "Ra_nominal_cavity_height": 0.002436474485113281,
+      "interleg_continuum_screen_Kn_below_001": false,
+      "nominal_cavity_buoyancy_flag": false,
+      "orientation": "z vertical, header below cap; 1708 is a heated-below slab flag, not a universal cavity threshold",
+      "closure": "Registered NIST k(200..400 K); ideal gas and Eucken viscosity estimate, not measured viscosity or rarefied validation",
+      "scope": "Conditional nominal SI-geometry scales only; no admitted gas domain or selected operating case"
+    },
+    {
+      "gas": "N2",
+      "pressure_pa": 101325.0,
+      "T_k": 300.0,
+      "contrast_k": 50.0,
+      "k_w_mk": 0.0259,
+      "lambda_m": 6.78072239747146e-08,
+      "Kn_interleg": 0.0004520481598314316,
+      "Kn_cavity_height": 8.31990478217357e-06,
+      "Ra_interleg": 0.015595382953115272,
+      "Ra_nominal_cavity_height": 2501.468812520574,
+      "interleg_continuum_screen_Kn_below_001": true,
+      "nominal_cavity_buoyancy_flag": true,
+      "orientation": "z vertical, header below cap; 1708 is a heated-below slab flag, not a universal cavity threshold",
+      "closure": "Registered NIST k(200..400 K); ideal gas and Eucken viscosity estimate, not measured viscosity or rarefied validation",
+      "scope": "Conditional nominal SI-geometry scales only; no admitted gas domain or selected operating case"
+    }
+  ],
+  "decision": {
+    "source_units_admissible": false,
+    "cap_import_to_SI_registry_volume_ratios": [
+      9.999999999999963e-10,
+      1.000000000000017e-09,
+      1.0000000000000205e-09
+    ],
+    "Boolean_void_extractions": 0,
+    "gas_cells": 0,
+    "gas_PDE_solves": 0,
+    "comparative_fields_read": false,
+    "reason": "STOP: unit-aware cap STEP disagrees with its SI registry/native mesh"
+  },
+  "gas_domain_checks": {
+    "connectivity": null,
+    "watertight_manifold_boundary": null,
+    "gas_solid_ownership_normals_areas": null,
+    "gas_mesh_quality": null
+  },
+  "gas_heat_budgets_w": null,
+  "gas_temperature_field": null,
+  "selected_operating_pressure_pa": null,
+  "minimum_next_fix": "Publish a separate unit-correct cap/window STEP derivative with explicit physical units and SI round-trip bbox/volume checks against registry and native mesh; preserve the original archived bytes. Then resume the registered void geometry gate.",
+  "Rev3_modified": false,
+  "original_solid_stops_and_raw_release_failures_retained": true,
+  "elapsed_seconds": 5.123723113909364,
+  "source_sha256": {
+    "tecooledmct/native_gas_audit.py": "91e3cfd26814297edb739a195026befedaa9ada25bd7727440390d93d9e8e535",
+    "tecooledmct/exchange_geometry.py": "91d0091a0653645f6f69115ef09a90ed145ef4467a3bad2f92a37d6aa6b2fc8c",
+    "tecooledmct/fem_g3b_exchange.py": "9e827673ec748129a8e69ee493bcc75b0cda30f9fcb7f2d2517abda03415d08f"
+  },
+  "input_sha256": {
+    "fem/results/geometry_complete_checkpoint_20261030/manifest.json": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+    "fem/results/geometry_complete_checkpoint_20261030/mesh.npz": "a2bc5e347ae026e78a52f13498c41c2ed5032150f9ddb53b2620a86612cf4614",
+    "fem/results/geometry_complete_checkpoint_20261030/reference.step.gz": "da0fd06b429d7ad842b32dac1fb2c2a424d1640aa379140ef8a92fefbef150ca",
+    "fem/results/geometry_complete_checkpoint_20261030/wire_routes.json": "e751350be5e48af2104eaf2e85c864fecf8ce08e2c03fe2e3349ebdbe96b757f",
+    "fem/results/corrected_enclosure_geometry_20261030/corrected_cap_window.step": "1abfefc8b8ac2b176554d60f6ee3f4d743cd49f924d90c51de6ae3fd683adcba",
+    "fem/results/corrected_enclosure_geometry_20261030/cap_window_only.msh": "b94211721b7764775d1603c8f267944f9c2baa2e2e0b8eab3a81c7e021dfb373",
+    "fem/results/corrected_enclosure_geometry_20261030/geometry_audit.json": "823d650739fb2f346ce47fb04c7233aff025b7b45f729be801f035cde7baa5de",
+    "data/corrected_enclosure/geometry_hypothesis_v1.json": "aab9370215c061cc3e39a345bd1651bae9086a42827219fb756eec8eba646647"
+  }
+}

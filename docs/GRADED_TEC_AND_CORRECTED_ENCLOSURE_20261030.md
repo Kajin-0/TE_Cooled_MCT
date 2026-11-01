@@ -18,7 +18,8 @@ synthetic reference device; numerical checks do not establish device accuracy.
 | Original affine-T analog | `graded_tec.py` | Preserved model identifier and 49/63 accepted historical snapshot |
 | Nonlinear bounded legs | `nonlinear_tec.py` | Direct 32-interval banded Newton, independent old BVP comparisons, 16/32/64 checks |
 | Independent reference | Unmodified `oem_phase_a.bounded_leg` | Conservative midpoint equations solved by bounded least-squares; not an OEM fit |
-| Actual cap/window fixture | `corrected_enclosure.py` | Protected STEP + 8,143-tet standalone mesh, three domains and nine physical groups |
+| Actual cap/window fixture | `corrected_enclosure.py` | Protected 8,143-tet SI mesh, three domains/nine groups; exported STEP unit defect is documented below |
+| Native gas source-unit gate | `native_gas_audit.py` | Independent SI CAD import and analytic cube control; STOP before void extraction, no gas PDE |
 | Native source-face audit | `exchange_geometry.py` | Exact package/fixture hashes, ownership, areas, interface incidence and positive cap tets |
 | Preliminary exchange | `corrected_exchange.py` | Closed analytic cylinder with a filled stepped-core proxy, 14 surfaces / 8 effective nodes |
 | Package coupling | `integrated_reference.py` | Opt-in nonlinear transport and exchange; no new enclosed-package 3D field |
@@ -142,6 +143,13 @@ not bridge failures. Previous affine data and all original FEM failures remain.
 The immutable source package has 216 material bodies and 88 legs. The standalone
 cap/window BREP uses documented 15.2 mm cap OD and 1.5 mm header datum;
 height 8.6 mm, wall 0.5 mm, roof/window 0.45 mm and window OD 5.9 mm are assumed.
+**CAD interchange exception:** the [native gas prerequisite audit](NATIVE_GAS_DOMAIN_AUDIT_20261101.md)
+found the archived cap STEP declares millimetres while storing metre-sized
+coordinates. A metre-target import is 1,000× too small in length; the native
+MSH and registry above remain SI-consistent. The earlier in-memory BREP/mesh
+checks did not establish exported STEP physical-unit consistency. Preserve that
+STEP as evidence; a separate unit-correct derivative with round-trip checks is
+required before native gas assembly. No gas PDE was run.
 The builder rejects nonfinite/nonpositive dimensions, impossible voids and
 collisions, including wire radius. Window thickness currently equals roof
 thickness; a different seat needs new geometry.
@@ -225,7 +233,7 @@ blocked-ray tests accompany package hot/cold/reservoir conservation checks.
 | Verification layer | Actual result | What it establishes |
 | --- | --- | --- |
 | Transport/exchange/compatibility checkpoint suite | 131 passed | Analytic limits, independent BVP and ray/heat/domain/negative controls |
-| Latest recorded full pinned opt-in regression | 300 passed in 338.73 s; 14 third-party deprecation warnings | Genuine Elmer smoke plus report gates; logs in master verification records |
+| Master-report checkpoint full pinned opt-in regression | 300 passed in 338.73 s; 14 third-party deprecation warnings | Historical report verification; current checkpoint counts are in the contract |
 | Full archive verifier | Passed | Historical source/field ledgers, original failures and sealed original Rev3 preserved; live master separately verified |
 | Legacy CLI and geometry demo | Passed | Existing demonstration workflows remain runnable |
 | Documentation links and new figures | Checked | Current local links resolve; figures retain failed-interval gaps |
@@ -245,8 +253,9 @@ constant, corrective-checkpoint and sealed FEM data are untouched. Full verifica
 ./fem/run.sh python -m tecooledmct.geometry_demo --out outputs/current-model/legacy-geometry
 ```
 
-The current contract orders next priorities: native-surface exchange without filled interstage voids,
-paired mechanism tests and contact/bypass/reservoir sensitivity. Keep improving
+The current contract orders next priorities: resolve the cap STEP unit prerequisite,
+audit the native interleg void and gas diffusion, then native-surface exchange
+without filled interstage voids and paired mechanism/sensitivity tests. Keep improving
 these current guides and README with each increment. Preserve all frozen source,
 actual fields, original raw 1% bath / 5% interface failures, Rev2 and sealed original
 Rev3 bytes. Improve the live Rev3 in place; no reduced-model milestone constitutes

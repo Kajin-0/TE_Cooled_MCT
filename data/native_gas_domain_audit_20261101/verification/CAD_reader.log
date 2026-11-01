@@ -1,0 +1,62 @@
+[32;1m
+*******************************************************************
+******        Statistics on Transfer (Write)                 ******[0m
+[32;1m
+*******************************************************************
+******        Transfer Mode = 0  I.E.  As Is       ******[0m
+[32;1m******        Transferring Shape, ShapeType = 0                      ******[0m
+[32;1m** WorkSession : Sending all data[0m
+[32;1m Step File Name : data/native_gas_domain_audit_20261101/reader_controls/one_mm_cube.step(350 ents)  Write  Done[0m
+{
+  "decision": {
+    "source_units_admissible": false,
+    "cap_import_to_SI_registry_volume_ratios": [
+      9.999999999999963e-10,
+      1.000000000000017e-09,
+      1.0000000000000205e-09
+    ],
+    "Boolean_void_extractions": 0,
+    "gas_cells": 0,
+    "gas_PDE_solves": 0,
+    "comparative_fields_read": false,
+    "reason": "STOP: unit-aware cap STEP disagrees with its SI registry/native mesh"
+  },
+  "length_ratio": 0.001,
+  "inside_header": true,
+  "regimes": [
+    {
+      "gas": "N2",
+      "pressure_pa": 100.0,
+      "T_k": 300.0,
+      "contrast_k": 50.0,
+      "k_w_mk": 0.0259,
+      "lambda_m": 6.870566969237955e-05,
+      "Kn_interleg": 0.45803779794919797,
+      "Kn_cavity_height": 0.00843014352053737,
+      "Ra_interleg": 1.519017645178954e-08,
+      "Ra_nominal_cavity_height": 0.002436474485113281,
+      "interleg_continuum_screen_Kn_below_001": false,
+      "nominal_cavity_buoyancy_flag": false,
+      "orientation": "z vertical, header below cap; 1708 is a heated-below slab flag, not a universal cavity threshold",
+      "closure": "Registered NIST k(200..400 K); ideal gas and Eucken viscosity estimate, not measured viscosity or rarefied validation",
+      "scope": "Conditional nominal SI-geometry scales only; no admitted gas domain or selected operating case"
+    },
+    {
+      "gas": "N2",
+      "pressure_pa": 101325.0,
+      "T_k": 300.0,
+      "contrast_k": 50.0,
+      "k_w_mk": 0.0259,
+      "lambda_m": 6.78072239747146e-08,
+      "Kn_interleg": 0.0004520481598314316,
+      "Kn_cavity_height": 8.31990478217357e-06,
+      "Ra_interleg": 0.015595382953115272,
+      "Ra_nominal_cavity_height": 2501.468812520574,
+      "interleg_continuum_screen_Kn_below_001": true,
+      "nominal_cavity_buoyancy_flag": true,
+      "orientation": "z vertical, header below cap; 1708 is a heated-below slab flag, not a universal cavity threshold",
+      "closure": "Registered NIST k(200..400 K); ideal gas and Eucken viscosity estimate, not measured viscosity or rarefied validation",
+      "scope": "Conditional nominal SI-geometry scales only; no admitted gas domain or selected operating case"
+    }
+  ]
+}

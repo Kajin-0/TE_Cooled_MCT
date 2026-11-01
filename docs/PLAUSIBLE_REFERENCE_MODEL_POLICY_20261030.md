@@ -54,10 +54,14 @@ reference article.
 
 ## Current next milestones
 
-Immediate bounded priority: the [matched solid-model diagnostic](MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md)
-and its geometry-derived route/support port control, before expanding exchange physics.
-Then implement bounded native-surface visibility/exchange from corrected source
-faces, retaining the filled-core proxy as a comparator. Then run paired
+The matched solid diagnostic and its one passive plate follow-up have reached
+their registered stops. Current priority is the
+[native interleg gas geometry gate](NATIVE_GAS_DOMAIN_AUDIT_20261101.md): correct
+the cap STEP unit interchange in a separate derivative, preserving its original
+bytes, then audit the actual void before independent gas diffusion. The existing
+SI cap mesh remains consistent. Then implement bounded native-surface visibility/
+exchange from corrected source faces, retaining the filled-core proxy as a
+comparator. Then run paired
 mechanisms and contact/bypass/grade/reservoir hypotheses in the existing nonlinear
 five-node package. The contract gives the required audits and the conditional
 later 3D qualification path. OEM calibration and a large remesh are not prerequisites.
