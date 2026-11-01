@@ -128,6 +128,7 @@ inspect every page of a rebuilt master before publication.
 | `tec_material_plausibility.py` | Separate registered scale-hypothesis study using unchanged nonlinear/G1 algorithms; 141/181 admitted, 40 rejected; conditional literal-27-C module comparison | Nominal fixed-300-K/2-mW/wires-ON sample reaches 186.484 K at 0.4 A within measured leg coverage; no full-device or commercial-grade qualification; substantial joint OEM lift/voltage mismatch |
 | `tec_identifiability.py` | Separate preregistered reduced diagnostic, 260/269 admitted; exact nonlinear geometry/material gauge and normalized raw SVD; no fitting | Common A/L cannot be distinguished from reciprocal rho/k factors by endpoint transport; g=1.7 still overcools/overvolts and fails all 176 unchanged native full-pad contacts; no altered CAD or identified grade |
 | `finite_sink_study.py` | Separate registered sink/current study on unchanged geometry/laws, wires ON, exchange OFF; 203/288 grid cases admitted, 85 retained failures; six actually solved nominal 200 K crossings | At 10 K/W, target input 0.622176 W vs ideal 0.548425 W (+13.4478%); hot 305.826317 K requires assumed continuation; Qsink differs from IV through explicit lead paths; no actual-device feasibility or global optimum |
+| `physical_input_qualification.py`, `physical_input_evidence.py` | Registered local evidence-priority audit: 102/102 admitted calls in 44.531 s; 11 actual 200 K targets at 2 K/W; independent derivatives/balances and cached primary-source audit | Fixed-geometry conditional target-power elasticities S −2.490, k +2.214, rho +1.245; not physical uncertainty or separate grade/geometry identification. Gas/nonlocal/contact power sensitivities NOT RUN; current Rev3 unchanged |
 | Corrected enclosure / exchange | Source-aligned candidate STEP/mesh and native-face audit; **preliminary filled stepped-core** diffuse-gray radiation and gas chord network (14 surfaces / 8 effective nodes) | Integrated native gas diffusion, full native visibility, optical transmission and coupled solids/cavity fields remain absent; standalone stopped gas control below |
 | `nonlocal_solid_network.py` diagnostic | Opt-in geometry-derived local Cu/alumina multiport plus unchanged affine P/N stages; actual interfaces, nonlocal return and P174 side contact | Isothermal ceramic/pad closure is unqualified; not full-device FEM; 7.277% side-port sensitivity exceeds registered 5% screen |
 | `passive_plate_audit.py` | Source-only audit of four plates, original Cu pads and routes/supports; 104 bodies | Seven-port follow-up **STOPPED before grid/solves**: two unmapped cuts and incompatible P174 side/hot-foot trace on a 0.220 mm edge; no spreading attribution |
@@ -201,7 +202,21 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current bounded study complete (2026-11-01):** read
+**Current evidence-priority study complete (2026-11-01):** read
+`docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md`, its registration, source audit
+and scoped verification. One 44.531 s execution retained 102 admitted / zero
+rejected calls and 48 unused slots; all eleven actual target crossings use assumed
+>300 K continuation. Equal-fraction local temperature/target-power effects differ
+from unequal-span sensitivity rankings. Independent same-grade transport plus
+dimensions, then matched calorimetry/lead/contact evidence, are the acquisition
+priorities; no measurement, grade identity or statistical uncertainty is claimed.
+The canonical 38-page Rev3 stays byte-identical because this is an internal
+qualification program, not independently established new device physics.
+No further scientific experiment or external acquisition is authorized. The
+same-mesh affine gas control remains one **proposed, NOT RUN** experiment;
+it would not qualify the original field. Never inject failed gas/nonlocal powers.
+
+Prior bounded studies remain evidence: read
 `docs/TEC_GEOMETRY_MATERIAL_IDENTIFIABILITY_20261101.md` and its frozen registration.
 269 solves gave 260 admitted / 9 rejected; 35 admitted equivalence checks pass.
 The exact gauge `(g,r,k,s)->(c*g,c*r,k/c,s)` proves structural non-identifiability;
@@ -217,8 +232,8 @@ All 33 matching ideal-sink baseline outcomes are unchanged. Every admitted
 finite-resistance case requires assumed >300 K continuation; numerical target
 crossings are not real-device feasibility or global power minima. The same Rev3
 now includes the verified sink insight and retains its exact predecessor bytes.
-Independent dimensions/same-grade transport/contact evidence remains proposed;
-**no further scientific experiment is authorized**. Do not execute fitted triples,
+Independent dimensions/same-grade transport/contact evidence remains proposed.
+Do not execute fitted triples,
 reopen stopped solid/gas work, optimize currents or introduce new sink/cavity
 physics automatically. Existing historical stops and longer-term priorities remain.
 

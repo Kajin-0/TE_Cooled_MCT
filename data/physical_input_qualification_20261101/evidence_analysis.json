@@ -1,0 +1,163 @@
+{
+  "nominal_target_case": "nominal_step4",
+  "nominal_target": {
+    "Tdie_K": 199.99991183818915,
+    "hot_K": 301.1144698200872,
+    "cold_ceramic_K": 199.89045693940238,
+    "terminal_W": 0.5619734306920677,
+    "terminal_V": 1.9302566943483186,
+    "sink_W": 0.5572349100436015,
+    "Qc_cold_W": 0.0036484966262416733,
+    "Au_into_die_W": 0.001648496626206758,
+    "Cu_into_hot_W": -0.008229060623666408,
+    "Cu_joule_W": 0.0003159133012349119,
+    "attach_W": 0.0036484966262255126,
+    "node_errors_W": [
+      -2.886579864025407e-15,
+      -5.93275428784068e-16,
+      1.6160683902199935e-14,
+      1.8754529179654256e-14
+    ],
+    "stage_errors_W": [
+      -5.939693181744587e-14,
+      -3.6100289424467746e-13,
+      -1.457167719820518e-16
+    ],
+    "global_error_W": 3.8913317013111737e-13,
+    "hot_error_K": 5.551115123125783e-15,
+    "leg_extrema_K": [
+      [
+        252.5869355958017,
+        301.1144698200872
+      ],
+      [
+        220.90689174096866,
+        252.5869355958017
+      ],
+      [
+        199.89045693940238,
+        220.90689174096866
+      ]
+    ],
+    "assumed_continuation": true,
+    "net_ambient_rejection_W": 0.5639734306916786,
+    "die_COP": 0.003558887112397839
+  },
+  "nominal_current_A": 0.29113922119140623,
+  "sensitivities": [
+    {
+      "factor": "pn_seebeck_scale",
+      "label": "Seebeck S",
+      "status": "PASS",
+      "fixed_current_K_per_log_factor": -75.12519763239425,
+      "current_A_per_log_factor": -0.5003542845231677,
+      "power_W_per_log_factor": -1.3992687049575556,
+      "power_elasticity": -2.4899196804275294,
+      "actual_target_W_per_log_factor": -1.400873081843701,
+      "actual_target_elasticity": -2.4927745785392954,
+      "actual_power_derivative_error_W_per_log_factor": 0.0016043768861453422,
+      "actual_derivative_tolerance_W_per_log_factor": 0.028120217653326045,
+      "target_temperature_propagation_W_per_log_factor": 0.00013484355417493323,
+      "chain_rule_agrees": true,
+      "signal_resolution": "RESOLVED",
+      "target_minus_case": "pn_seebeck_scale_-1_step9",
+      "target_plus_case": "pn_seebeck_scale_+1_step8",
+      "conditional_fractional_measurement_TARGET": 0.01,
+      "TARGET_scope": "At most verified 1%; fixed geometry/other factors. Not a measured tolerance or statistical CI."
+    },
+    {
+      "factor": "pn_resistivity_scale",
+      "label": "Resistivity rho",
+      "status": "PASS",
+      "fixed_current_K_per_log_factor": 15.71011516418821,
+      "current_A_per_log_factor": 0.10463364730456869,
+      "power_W_per_log_factor": 0.699447426746673,
+      "power_elasticity": 1.244627216424283,
+      "actual_target_W_per_log_factor": 0.6994101619213544,
+      "actual_target_elasticity": 1.244560905770997,
+      "actual_power_derivative_error_W_per_log_factor": 3.726482531862807e-05,
+      "actual_derivative_tolerance_W_per_log_factor": 0.014127746026599915,
+      "target_temperature_propagation_W_per_log_factor": 0.00013879749166645366,
+      "chain_rule_agrees": true,
+      "signal_resolution": "RESOLVED",
+      "target_minus_case": "pn_resistivity_scale_-1_step6",
+      "target_plus_case": "pn_resistivity_scale_+1_step6",
+      "conditional_fractional_measurement_TARGET": 0.01,
+      "TARGET_scope": "At most verified 1%; fixed geometry/other factors. Not a measured tolerance or statistical CI."
+    },
+    {
+      "factor": "pn_thermal_conductivity_scale",
+      "label": "Conductivity k",
+      "status": "PASS",
+      "fixed_current_K_per_log_factor": 58.44582395710631,
+      "current_A_per_log_factor": 0.3892651114546285,
+      "power_W_per_log_factor": 1.2441612197182783,
+      "power_elasticity": 2.2139146653002784,
+      "actual_target_W_per_log_factor": 1.2442884472655458,
+      "actual_target_elasticity": 2.2141410595394344,
+      "actual_power_derivative_error_W_per_log_factor": 0.0001272275472674611,
+      "actual_derivative_tolerance_W_per_log_factor": 0.024962733026174116,
+      "target_temperature_propagation_W_per_log_factor": 7.950863180854825e-05,
+      "chain_rule_agrees": true,
+      "signal_resolution": "RESOLVED",
+      "target_minus_case": "pn_thermal_conductivity_scale_-1_step8",
+      "target_plus_case": "pn_thermal_conductivity_scale_+1_step7",
+      "conditional_fractional_measurement_TARGET": 0.01,
+      "TARGET_scope": "At most verified 1%; fixed geometry/other factors. Not a measured tolerance or statistical CI."
+    },
+    {
+      "factor": "au_wire_conductance_scale",
+      "label": "Au effective G",
+      "status": "PASS",
+      "fixed_current_K_per_log_factor": 0.7009446708849509,
+      "current_A_per_log_factor": 0.0046684824844937895,
+      "power_W_per_log_factor": 0.015386708741234083,
+      "power_elasticity": 0.027379779720698577,
+      "actual_target_W_per_log_factor": 0.015385790027733215,
+      "actual_target_elasticity": 0.027378144921879465,
+      "actual_power_derivative_error_W_per_log_factor": 9.187135008685565e-07,
+      "actual_derivative_tolerance_W_per_log_factor": 0.0005049522586935559,
+      "target_temperature_propagation_W_per_log_factor": 0.00019721808386887415,
+      "chain_rule_agrees": true,
+      "signal_resolution": "RESOLVED",
+      "target_minus_case": "au_wire_conductance_scale_-1_step0",
+      "target_plus_case": "au_wire_conductance_scale_+1_step0",
+      "conditional_fractional_measurement_TARGET": 0.01,
+      "TARGET_scope": "At most verified 1%; fixed geometry/other factors. Not a measured tolerance or statistical CI."
+    },
+    {
+      "factor": "die_attach_conductivity_w_mk",
+      "label": "Attach effective k",
+      "status": "PASS",
+      "fixed_current_K_per_log_factor": -0.10869210972543897,
+      "current_A_per_log_factor": -0.0007239190645607678,
+      "power_W_per_log_factor": -0.0024453098757963175,
+      "power_elasticity": -0.0043512909013953376,
+      "actual_target_W_per_log_factor": -0.0024451654694113145,
+      "actual_target_elasticity": -0.00435103393838407,
+      "actual_power_derivative_error_W_per_log_factor": 1.4440638500300487e-07,
+      "actual_derivative_tolerance_W_per_log_factor": 0.0002227259286281762,
+      "target_temperature_propagation_W_per_log_factor": 0.00017381973111224984,
+      "chain_rule_agrees": true,
+      "signal_resolution": "RESOLVED",
+      "target_minus_case": "die_attach_conductivity_w_mk_-1_step0",
+      "target_plus_case": "die_attach_conductivity_w_mk_+1_step0",
+      "conditional_fractional_measurement_TARGET": 0.01,
+      "TARGET_scope": "At most verified 1%; fixed geometry/other factors. Not a measured tolerance or statistical CI."
+    }
+  ],
+  "all_actual_target_chain_rules_pass": true,
+  "planning_budgets": {
+    "fixed_current_temperature_K": 1.0,
+    "target_power_fraction": 0.05,
+    "maximum_local_fraction": 0.01
+  },
+  "physical_validation": false,
+  "native_gas_nonlocal_contact_matched_target_sensitivity": "NOT RUN",
+  "next_affine_gas_control": "proposed only; NOT RUN; cannot qualify original field",
+  "gauge_derived_common_A_over_L_partial": {
+    "fixed_current_K_per_log_g": 42.7357087929181,
+    "target_power_elasticity": 0.9692874488759953,
+    "definition": "Analytic tangent only: d/dln(g) = d/dln(k scale) - d/dln(rho scale). No geometry scenario executed; no pad compatibility claim."
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "observed_UTC": "2026-11-01T18:31:39.216770+00:00",
+  "baseline": "84e1b4f90e090604739f65c3ba1e2d5c3c4a2a39",
+  "protocol": "# Physical-input and parasitic-path evidence priorities\n\nInternal qualification record; the ONE public engineering assessment remains Rev3.\n\n## Preregistered scope \u2014 before new reduced solves\n\nBaseline: `84e1b4f90e090604739f65c3ba1e2d5c3c4a2a39`, clean main before the\nobserved UTC chronology entry. This prospectively authorized audit preserves all\nprevious PASS/FAIL/STOP records. No OEM fitting, changed CAD/laws, new 3D, gas,\ncontact, radiation or stopped solid fixture. The canonical 38-page PDF is an\ninput, not an administrative output of this study.\n\nEvidence taxonomy: **DOCUMENTED** (identified source and domain), **ANALOG**\n(different specimen/product), **INFERRED** (unexposed construction), **SCENARIO**\n(chosen condition), **UNKNOWN** (no independent constraint). Record numerical\nverification separately from physical qualification; PASS names its specific\ntest, FAIL retains its threshold, STOP is a scope boundary, NOT RUN is no result.\nConservation alone identifies neither material grade nor physical heat paths.\n\n### Fixed comparison, metrics and hard budget\n\nUse unchanged `integrated_reference.solve`, `zhang2025_nonlinear`, 32 intervals,\noriginal 28/12/4 couples and native leg A/L. Ambient/pins 300 K, sink **2 K/W**,\ndie **2 mW**, original Cu/Au wires ON, exchange OFF, no bypass/contact additions.\nBaseline current is the archived accepted `target_R2_step8` current. The archived\nfinal falling bracket supplies the only initial target bracket. All new cases\nmust remain on its nearby falling branch, in **0.25\u20130.35 A** and **180\u2013390 K**\nincluding internal leg extrema. Above 300 K is assumed quarter-tangent, not data.\n\nOne factor at a time: S scale, rho scale, k scale, effective Au-wire conductance,\nand attach k. Their existing allowed ranges are respectively .9\u20131.1, .8\u20131.2,\n.8\u20131.2, .75\u20131.25 and .5\u20133 W/(m K); only **\u00b11% and \u00b10.5% about nominal** are\nsampled here. No quantitative native-gas/nonlocal/contact ranking is invented.\n\n1. One baseline replay, 20 fixed-current factor cases, two current cases at\n   Iref \u00b10.001 A: at most **23** calls. Fractional central derivatives use\n   `(f(p(1+h))-f(p(1-h)))/(2h)`, approximating df/dln(p). Require agreement\n   between h=.01 and .005 within 2%, using denominator floors .01 K and\n   1e-4 W for near-zero derivatives. Unstable factors have unresolved ranking.\n   Current derivatives are compared to the saved final-bracket secant at 2%\n   with the same output-unit floors; no claim of global monotonicity follows.\n2. Refine the archived nominal target bracket with at most **7** midpoint calls.\n3. For ten \u00b11% factor endpoints, predict a current using the implicit derivative\n   dI*/dln(p) = \u2212T_p/T_I. Solve two actual endpoints at prediction \u00b1\n   `max(5e-6 A, .05*abs(predicted shift))`, then at most **10** midpoints.\n   A missing accepted falling bracket, rejected midpoint, nonmonotone temperature\n   outside endpoint values by >1e-5 K, or domain failure stops that crossing.\n   No expansion, retry, interpolation across gaps or optimized scale is allowed.\n\nMaximum **150 calls / 600 s total / 8 s per call**, 4 CPUs / 8 GiB pinned offline\nruntime (within 12 GiB user limit). Stop when budget expires. Each reported\ntarget is an actual cold-side solve at **199.9999\u2013200 K**, not a corrected number\nor proven minimum-power optimum. Save all attempts, failure diagnostics, unused\nslots and times. Parameter \u00b1 endpoints are not statistical confidence limits.\n\nFor accepted cases independently reconstruct signed stage/node/global balances,\nterminal voltage/work, Au G including its scale, Cu conduction and split Joule,\nattach heat, Qsink and hot = 300 + R\u03b8 Qsink. Require stage <1e-9 W,\nnode/global <1e-8 W, hot residual <2e-8 K, reported path agreement <1e-10.\nReplay tolerance is 1e-6 K / 1e-7 V. Preserve source-domain/optimizer diagnostics;\nno clamping of accepted results. Old raw bath 1% / cold 5%, native-gas 1% and\nnonlocal side-port 5% gates remain unchanged and failed as previously recorded.\n\nReport fixed-current temperature partials and matched-target power elasticities\n`E_P=(P_p-P_I*T_p/T_I)/P`. Compare this independent chain rule with actual target\npairs; 2% agreement uses a 1e-4 W/log-factor floor plus actual target tolerance\npropagated through |P_I/T_I|. A signal below ten times that propagated error is\nresolution-limited, not proof of insignificance. Define planning budgets **1 K**\nfixed-current shift and **5%** target-power shift (not release gates or measured\nerrors). A local fractional measurement TARGET is at most 1%, further reduced\nby these derivative budgets; never extrapolate a verified \u00b11% response into an\nempirical uncertainty interval. Audit each factor's physical observability and\nthe exact A/L\u2013rho\u2013k gauge before requesting separate measurements.\n\n### Primary-source and immutable-input audit\n\nInspect existing cached Zhang PDF, TEC Microsystems 2019 datasheet, VIGO Rev9\nfamily drawing and Huber/NIST gas table; retain SHA, URL/DOI, inspected locations\nand paraphrased scope in a source manifest. No source is silently refreshed.\nThe older registry's v1 ingestion is historical; active material is corrected\n`zhang2025_he_digitized_40_300_v2r1`. A paper's uncertainty is not the uncertainty\nof a digitized unmatched synthetic cooler. Manufacturer module and housing are\nindependent candidates, not a confirmed assembly; ACR is not DC V/I.\n\nFreeze core laws/solvers, native manifests/STEP/mesh/wires, previous study ledgers,\ncurrent PDF and preregistration before calculations. Source-law, independent\nanalytic derivative, balance, failed/gapped bracket and budget controls; focused\nand applicable opt-in regression excluding the existing 12 runtime cases;\narchive/master guards and both legacy demos are required. No new solver smoke.\nRank evidence by observability, gauge breaking and conditional impact, separating\nphysical measurement from a software/numerical gate. Cost/effort is unknown or\nexplicitly hypothetical. Completion authorizes no next experiment.\n\n",
+  "producer_sha256": "b36c1b106d6a16e54d9cb25462cb9d4c64e63aab8f6e6cc773c748f313d42dbb",
+  "input_sha256": {
+    "tecooledmct/graded_tec.py": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "tecooledmct/nonlinear_tec.py": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "tecooledmct/integrated_reference.py": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "tecooledmct/material_profiles.py": "b332771e082c5e389cfdb819b184cd710f8ae7992cb597cf37b26aabc06ee7d6",
+    "tecooledmct/oem_phase_a.py": "efe026a71bca341774523fa56226169ff37e6d40500db7fe963dd3b9e59caa93",
+    "tecooledmct/fem_g2a.py": "d6654b9466ac7ef49c7336217e23310a8920b1121a2e3933cf1e0d795ce546fc",
+    "data/g2c/zhang2025_he_40_300_v2.json": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+    "data/g2c/oem2019_curves_v1.json": "b6de59e07ad02dde83d5ddeb880e650cd74f73557d63d2ba8b35ba94b214b1e0",
+    "data/g2c/source_registry.json": "69844d52f00dbb2d8a86b16d3171671b110bb4809c256bbed5e7a1f0232f3360",
+    "data/g2d/oem_source_review.json": "57c5e1bd3cbdc089fda3ec7623e01b49137732d881bd26e8aa64ea48bde05b71",
+    "data/g2d/preregistration.json": "0f3b63e4be59ec5f22ed582172a2ffdd902494a87567f5d2feb479b56214f269",
+    "data/g2d/calibration_reserved.json": "9e870d76769851c2efbb21203de7b93fc47bcfc2117088ded64f1d3537de2af0",
+    "data/g2d/validation_holdout.json": "75c5b357b6e0893cd853b7015d0715bd516263c9189a72ca5644070ab31fe4e2",
+    "fem/results/geometry_complete_checkpoint_20261030/manifest.json": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+    "fem/results/geometry_complete_checkpoint_20261030/wire_routes.json": "e751350be5e48af2104eaf2e85c864fecf8ce08e2c03fe2e3349ebdbe96b757f",
+    "fem/results/geometry_complete_checkpoint_20261030/checksums.json": "5d7904dc1e75d6d57586c305ea0e636bdcba30088298fed15a85d00cc99b4888",
+    "fem/results/geometry_complete_checkpoint_20261030/mesh.npz": "a2bc5e347ae026e78a52f13498c41c2ed5032150f9ddb53b2620a86612cf4614",
+    "fem/results/geometry_complete_checkpoint_20261030/reference.step.gz": "da0fd06b429d7ad842b32dac1fb2c2a424d1640aa379140ef8a92fefbef150ca",
+    "data/tec_material_plausibility_20261101/cases.json": "84e1d0aa0ed0b2e22312538c04440e7d8a303deaa45f010868e65e66c8aa2992",
+    "data/tec_material_plausibility_20261101/checksums.json": "951aedb503a4a4936281f64d5a29c0a47afefe606d478b3f1b5b96535c1c80a1",
+    "data/tec_material_plausibility_20261101/registration.json": "a9bd3af0f8b1d7c5525157ddb87fdf94a5b7803bb7d81c53472a4237ac2c38f8",
+    "data/tec_identifiability_20261101/checksums.json": "d2793075045a7cd77dbf9f6fccb3ba04938259d7ae36a7894f05973a2cf35d87",
+    "tecooledmct/finite_sink_study.py": "d43e21b0daebd50c62bb4a1ebf9bd5683e25e0f8d1df8f1ba45408f89fec3487",
+    "data/finite_sink_20261101/cases.json": "554812b3174c4d8b5ecf50458a8cae0741de93e1797929b74f9461a1ad4f38ad",
+    "data/finite_sink_20261101/checksums.json": "ffe100ff11ad838ff3f82d1cc32a65945a013bb0a88e30e61311605c7d525302",
+    "data/tec_identifiability_20261101/analysis.json": "76ad8b4b1ba026dec298ccfc2de9570f4582d6b73375753bd228e290094a99a9",
+    "data/native_gas_flux_forensics_20261101/checksums.json": "4db8e868f6c668b363489d20c31da6a3dc14024c51625e1659f7d501f2317e7a",
+    "data/isolated_cap_native_gas_20261101/phase_A/cap_window_mm_derivative.step": "ff94fcc158796a41b289b9c505765f2edb719a34c80e04e8f1c61aa194af8a4f",
+    "reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf": "882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248"
+  },
+  "reference_case": "target_R2_step8",
+  "reference_current_A": 0.291162109375,
+  "factors": [
+    "pn_seebeck_scale",
+    "pn_resistivity_scale",
+    "pn_thermal_conductivity_scale",
+    "au_wire_conductance_scale",
+    "die_attach_conductivity_w_mk"
+  ],
+  "fractional_steps": [
+    0.01,
+    0.005
+  ],
+  "maximum_calls": 150,
+  "seconds_limit": 600.0,
+  "individual_seconds_limit": 8.0,
+  "nominal_target_slots": 7,
+  "endpoint_target_slots": 10,
+  "original_geometry": {
+    "stages": [
+      {
+        "couples": 28,
+        "leg_length_m": 0.00107,
+        "leg_area_m2": 1.6e-07
+      },
+      {
+        "couples": 12,
+        "leg_length_m": 0.00082,
+        "leg_area_m2": 1.6e-07
+      },
+      {
+        "couples": 4,
+        "leg_length_m": 0.00064,
+        "leg_area_m2": 1.6e-07
+      }
+    ],
+    "ceramic_sides_area_m2": [
+      4.096e-05,
+      2.07025e-05,
+      1.05625e-05,
+      5.759999999999999e-06
+    ],
+    "die_area_m2": 1e-06,
+    "die_attach_thickness_over_area_m_inverse": 30.000000000000004,
+    "wires": [
+      {
+        "lead_body_id": 601,
+        "pin": 1,
+        "material": "Cu",
+        "pin_body": 501,
+        "target_body": 190,
+        "pin_face_tag": 6001,
+        "target_face_tag": 103,
+        "polyline_m": [
+          [
+            -0.004368691769624717,
+            -0.003174040362379355,
+            0.002
+          ],
+          [
+            -0.004368691769624717,
+            -0.003174040362379355,
+            0.0028
+          ],
+          [
+            -0.0028,
+            -0.0026999999999999997,
+            0.0028
+          ],
+          [
+            -0.0028,
+            -0.0026999999999999997,
+            0.001835
+          ]
+        ],
+        "length_m": 0.0034037520048052043,
+        "diameter_m": 0.0002,
+        "area_m2": 3.141592653589793e-08,
+        "certified_other_solid_clearance_lower_bound_m": 6.499999999999995e-05,
+        "G_W_K": 0.0036919172127166597,
+        "R_ohm": 0.0018635304107855175,
+        "coefficients_status": "constant verification proxies, no OEM material claim",
+        "representation": "1D axial hybrid; no meshed3D wire arc, no distributed gas/radiation, piecewise straight route hypothesis",
+        "endpoint_distribution": "uniform face average/injection; attachment locations unknown"
+      },
+      {
+        "lead_body_id": 609,
+        "pin": 9,
+        "material": "Cu",
+        "pin_body": 509,
+        "target_body": 191,
+        "pin_face_tag": 6009,
+        "target_face_tag": 104,
+        "polyline_m": [
+          [
+            -0.0043686917696247165,
+            0.0031740403623793565,
+            0.002
+          ],
+          [
+            -0.0043686917696247165,
+            0.0031740403623793565,
+            0.0028
+          ],
+          [
+            -0.0028,
+            0.0027,
+            0.0028
+          ],
+          [
+            -0.0028,
+            0.0027,
+            0.001835
+          ]
+        ],
+        "length_m": 0.0034037520048052035,
+        "diameter_m": 0.0002,
+        "area_m2": 3.141592653589793e-08,
+        "certified_other_solid_clearance_lower_bound_m": 6.499999999999995e-05,
+        "G_W_K": 0.0036919172127166605,
+        "R_ohm": 0.0018635304107855169,
+        "coefficients_status": "constant verification proxies, no OEM material claim",
+        "representation": "1D axial hybrid; no meshed3D wire arc, no distributed gas/radiation, piecewise straight route hypothesis",
+        "endpoint_distribution": "uniform face average/injection; attachment locations unknown"
+      },
+      {
+        "lead_body_id": 607,
+        "pin": 7,
+        "material": "Au",
+        "pin_body": 507,
+        "target_body": 304,
+        "pin_face_tag": 6007,
+        "target_face_tag": 6107,
+        "polyline_m": [
+          [
+            0.001668691769624717,
+            0.00513570518799383,
+            0.002
+          ],
+          [
+            0.001668691769624717,
+            0.00513570518799383,
+            0.006
+          ],
+          [
+            0.0003,
+            0.0,
+            0.006
+          ],
+          [
+            0.0003,
+            0.0,
+            0.005589999999999999
+          ]
+        ],
+        "length_m": 0.009724958601741426,
+        "diameter_m": 1.8e-05,
+        "area_m2": 2.5446900494077326e-10,
+        "certified_other_solid_clearance_lower_bound_m": 9.999999999999593e-06,
+        "G_W_K": 8.24247586431781e-06,
+        "R_ohm": 0.9324868069402753,
+        "coefficients_status": "constant verification proxies, no OEM material claim",
+        "representation": "1D axial hybrid; no meshed3D wire arc, no distributed gas/radiation, piecewise straight route hypothesis",
+        "endpoint_distribution": "uniform face average/injection; attachment locations unknown"
+      },
+      {
+        "lead_body_id": 608,
+        "pin": 8,
+        "material": "Au",
+        "pin_body": 508,
+        "target_body": 305,
+        "pin_face_tag": 6008,
+        "target_face_tag": 6108,
+        "polyline_m": [
+          [
+            -0.0016686917696247152,
+            0.0051357051879938305,
+            0.002
+          ],
+          [
+            -0.0016686917696247152,
+            0.0051357051879938305,
+            0.006
+          ],
+          [
+            -0.0003,
+            0.0,
+            0.006
+          ],
+          [
+            -0.0003,
+            0.0,
+            0.005589999999999999
+          ]
+        ],
+        "length_m": 0.009724958601741426,
+        "diameter_m": 1.8e-05,
+        "area_m2": 2.5446900494077326e-10,
+        "certified_other_solid_clearance_lower_bound_m": 9.999999999999593e-06,
+        "G_W_K": 8.24247586431781e-06,
+        "R_ohm": 0.9324868069402753,
+        "coefficients_status": "constant verification proxies, no OEM material claim",
+        "representation": "1D axial hybrid; no meshed3D wire arc, no distributed gas/radiation, piecewise straight route hypothesis",
+        "endpoint_distribution": "uniform face average/injection; attachment locations unknown"
+      }
+    ],
+    "source_archive": "fem/results/geometry_complete_checkpoint_20261030",
+    "source_sha256": {
+      "manifest.json": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+      "wire_routes.json": "e751350be5e48af2104eaf2e85c864fecf8ce08e2c03fe2e3349ebdbe96b757f"
+    },
+    "material_status": "constant first-principles G1 verification proxy (NOT OEM transport grade)"
+  },
+  "source_measured_K": [
+    40,
+    300
+  ],
+  "active_K": [
+    180,
+    390
+  ],
+  "actual_device_feasibility": "unresolved",
+  "new_3D_calls": 0
+}

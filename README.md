@@ -36,6 +36,7 @@ milestone instructions have been relocated to historical context.
 | Can admitted material assumptions reach 200 K, and resemble published module curves? | [Material-hypothesis study](docs/TEC_MATERIAL_PLAUSIBILITY_20261101.md): 141/181 admitted; nominal idealized 300 K/2 mW/wires-ON sample 186.484 K at 0.4 A; substantial joint datasheet mismatch and no full-device qualification |
 | Can steady cooling/voltage identify leg dimensions rather than material changes? | [Registered identifiability diagnostic](docs/TEC_GEOMETRY_MATERIAL_IDENTIFIABILITY_20261101.md): 260/269 admitted; exact A/L–rho–k ambiguity, raw SVD caveat and failed unchanged native-pad realization; no OEM fitting |
 | How much does finite hot-side resistance cost at a matched die target? | [Finite-sink study](docs/FINITE_SINK_MATCHED_TARGET_20261101.md): 203/288 grid states admitted; six actual nominal 200 K crossings; 10 K/W raises target input 13.4478%, with assumed >300 K transport and explicit wire/sink heat accounting |
+| Which physical evidence would most improve temperature/power credibility? | [Input/path qualification program](docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md): primary-source domains, matched-target local derivatives, independent measurement requests and explicit failed/NOT RUN paths |
 | What is documented, inferred or assumed? | Source matrices in those guides; [materials](docs/materials_and_provenance.md) |
 | What is the corrected physical construction? | [Geometry specification](GEOMETRY_SOURCE_OF_TRUTH_SPEC.md), protected geometry manifest and wire routes |
 | What is actually solved in 3D? | [Corrected solid-only thermal work](CORRECTED_GEOMETRY_COUPLED_THERMAL_WORK_ORDER.md), archived Elmer evidence |
@@ -143,8 +144,14 @@ The [contract's ordered science milestones](AGENTS.md#ordered-next-science-miles
 govern continuation. The bounded identifiability study is complete: geometry
 and reciprocal material changes are transport-equivalent, with no identified
 commercial dimensions or grade. The subsequently authorized finite-sink study is
-also complete, preserving all old baseline outcomes and report bytes. Independent
-construction/contact evidence remains proposed; no next science is authorized.
+also complete, preserving all old baseline outcomes and predecessor report bytes.
+The [physical-input qualification program](docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md)
+now ranks independent dimensions/same-grade transport and matched calorimetry
+requests, with a source/domain matrix and 102 bounded local reduced calls.
+At a matched 200 K target / 2 K/W sink, equal-fraction power leverage is S, k,
+then rho; this is conditional sensitivity, not empirical uncertainty or grade
+identification. Native gas/nonlocal/contact impacts remain unqualified or NOT RUN.
+The same 38-page Rev3 is unchanged; no next experiment/acquisition is authorized.
 The geometry-derived route/support comparison remains
 conditional and its one plate-fixture follow-up stopped at the seven-port
 admissibility gate. The later isolated writer/SI reader qualified a separate

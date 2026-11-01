@@ -53,6 +53,11 @@ Material multipliers span Seebeck ×0.9–1.1 and resistivity/conductivity ×0.8
 These engineering ranges are selectable hypotheses, not statistical confidence
 intervals. Unknown contacts remain ideal; neither transport refinement nor
 conservation makes the material grade or package assumptions experimentally valid.
+The [physical-input qualification record](PHYSICAL_INPUT_QUALIFICATION_20261101.md)
+adds source/observability and acquisition targets, plus local equal-fraction
+temperature and matched-200-K power derivatives at 2 K/W. It changes no laws or
+baseline geometry and assigns no quantitative impact to failed native gas or
+nonlocal paths. Unequal older scenario spans must not be ranked as measured errors.
 
 ## Governing balances and units
 

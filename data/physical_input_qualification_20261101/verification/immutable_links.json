@@ -1,0 +1,608 @@
+{
+  "baseline": "84e1b4f90e090604739f65c3ba1e2d5c3c4a2a39",
+  "frozen_inputs": [
+    {
+      "path": "tecooledmct/graded_tec.py",
+      "baseline_sha256": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+      "current_sha256": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+      "registered_sha256": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760"
+    },
+    {
+      "path": "tecooledmct/nonlinear_tec.py",
+      "baseline_sha256": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+      "current_sha256": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+      "registered_sha256": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d"
+    },
+    {
+      "path": "tecooledmct/integrated_reference.py",
+      "baseline_sha256": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+      "current_sha256": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+      "registered_sha256": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51"
+    },
+    {
+      "path": "tecooledmct/material_profiles.py",
+      "baseline_sha256": "b332771e082c5e389cfdb819b184cd710f8ae7992cb597cf37b26aabc06ee7d6",
+      "current_sha256": "b332771e082c5e389cfdb819b184cd710f8ae7992cb597cf37b26aabc06ee7d6",
+      "registered_sha256": "b332771e082c5e389cfdb819b184cd710f8ae7992cb597cf37b26aabc06ee7d6"
+    },
+    {
+      "path": "tecooledmct/oem_phase_a.py",
+      "baseline_sha256": "efe026a71bca341774523fa56226169ff37e6d40500db7fe963dd3b9e59caa93",
+      "current_sha256": "efe026a71bca341774523fa56226169ff37e6d40500db7fe963dd3b9e59caa93",
+      "registered_sha256": "efe026a71bca341774523fa56226169ff37e6d40500db7fe963dd3b9e59caa93"
+    },
+    {
+      "path": "tecooledmct/fem_g2a.py",
+      "baseline_sha256": "d6654b9466ac7ef49c7336217e23310a8920b1121a2e3933cf1e0d795ce546fc",
+      "current_sha256": "d6654b9466ac7ef49c7336217e23310a8920b1121a2e3933cf1e0d795ce546fc",
+      "registered_sha256": "d6654b9466ac7ef49c7336217e23310a8920b1121a2e3933cf1e0d795ce546fc"
+    },
+    {
+      "path": "data/g2c/zhang2025_he_40_300_v2.json",
+      "baseline_sha256": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+      "current_sha256": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+      "registered_sha256": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b"
+    },
+    {
+      "path": "data/g2c/oem2019_curves_v1.json",
+      "baseline_sha256": "b6de59e07ad02dde83d5ddeb880e650cd74f73557d63d2ba8b35ba94b214b1e0",
+      "current_sha256": "b6de59e07ad02dde83d5ddeb880e650cd74f73557d63d2ba8b35ba94b214b1e0",
+      "registered_sha256": "b6de59e07ad02dde83d5ddeb880e650cd74f73557d63d2ba8b35ba94b214b1e0"
+    },
+    {
+      "path": "data/g2c/source_registry.json",
+      "baseline_sha256": "69844d52f00dbb2d8a86b16d3171671b110bb4809c256bbed5e7a1f0232f3360",
+      "current_sha256": "69844d52f00dbb2d8a86b16d3171671b110bb4809c256bbed5e7a1f0232f3360",
+      "registered_sha256": "69844d52f00dbb2d8a86b16d3171671b110bb4809c256bbed5e7a1f0232f3360"
+    },
+    {
+      "path": "data/g2d/oem_source_review.json",
+      "baseline_sha256": "57c5e1bd3cbdc089fda3ec7623e01b49137732d881bd26e8aa64ea48bde05b71",
+      "current_sha256": "57c5e1bd3cbdc089fda3ec7623e01b49137732d881bd26e8aa64ea48bde05b71",
+      "registered_sha256": "57c5e1bd3cbdc089fda3ec7623e01b49137732d881bd26e8aa64ea48bde05b71"
+    },
+    {
+      "path": "data/g2d/preregistration.json",
+      "baseline_sha256": "0f3b63e4be59ec5f22ed582172a2ffdd902494a87567f5d2feb479b56214f269",
+      "current_sha256": "0f3b63e4be59ec5f22ed582172a2ffdd902494a87567f5d2feb479b56214f269",
+      "registered_sha256": "0f3b63e4be59ec5f22ed582172a2ffdd902494a87567f5d2feb479b56214f269"
+    },
+    {
+      "path": "data/g2d/calibration_reserved.json",
+      "baseline_sha256": "9e870d76769851c2efbb21203de7b93fc47bcfc2117088ded64f1d3537de2af0",
+      "current_sha256": "9e870d76769851c2efbb21203de7b93fc47bcfc2117088ded64f1d3537de2af0",
+      "registered_sha256": "9e870d76769851c2efbb21203de7b93fc47bcfc2117088ded64f1d3537de2af0"
+    },
+    {
+      "path": "data/g2d/validation_holdout.json",
+      "baseline_sha256": "75c5b357b6e0893cd853b7015d0715bd516263c9189a72ca5644070ab31fe4e2",
+      "current_sha256": "75c5b357b6e0893cd853b7015d0715bd516263c9189a72ca5644070ab31fe4e2",
+      "registered_sha256": "75c5b357b6e0893cd853b7015d0715bd516263c9189a72ca5644070ab31fe4e2"
+    },
+    {
+      "path": "fem/results/geometry_complete_checkpoint_20261030/manifest.json",
+      "baseline_sha256": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+      "current_sha256": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3",
+      "registered_sha256": "fdcca0974b3b2e5af73b4201a9f7720c26956b9794eec647b7f7cb8c4557b3d3"
+    },
+    {
+      "path": "fem/results/geometry_complete_checkpoint_20261030/wire_routes.json",
+      "baseline_sha256": "e751350be5e48af2104eaf2e85c864fecf8ce08e2c03fe2e3349ebdbe96b757f",
+      "current_sha256": "e751350be5e48af2104eaf2e85c864fecf8ce08e2c03fe2e3349ebdbe96b757f",
+      "registered_sha256": "e751350be5e48af2104eaf2e85c864fecf8ce08e2c03fe2e3349ebdbe96b757f"
+    },
+    {
+      "path": "fem/results/geometry_complete_checkpoint_20261030/checksums.json",
+      "baseline_sha256": "5d7904dc1e75d6d57586c305ea0e636bdcba30088298fed15a85d00cc99b4888",
+      "current_sha256": "5d7904dc1e75d6d57586c305ea0e636bdcba30088298fed15a85d00cc99b4888",
+      "registered_sha256": "5d7904dc1e75d6d57586c305ea0e636bdcba30088298fed15a85d00cc99b4888"
+    },
+    {
+      "path": "fem/results/geometry_complete_checkpoint_20261030/mesh.npz",
+      "baseline_sha256": "a2bc5e347ae026e78a52f13498c41c2ed5032150f9ddb53b2620a86612cf4614",
+      "current_sha256": "a2bc5e347ae026e78a52f13498c41c2ed5032150f9ddb53b2620a86612cf4614",
+      "registered_sha256": "a2bc5e347ae026e78a52f13498c41c2ed5032150f9ddb53b2620a86612cf4614"
+    },
+    {
+      "path": "fem/results/geometry_complete_checkpoint_20261030/reference.step.gz",
+      "baseline_sha256": "da0fd06b429d7ad842b32dac1fb2c2a424d1640aa379140ef8a92fefbef150ca",
+      "current_sha256": "da0fd06b429d7ad842b32dac1fb2c2a424d1640aa379140ef8a92fefbef150ca",
+      "registered_sha256": "da0fd06b429d7ad842b32dac1fb2c2a424d1640aa379140ef8a92fefbef150ca"
+    },
+    {
+      "path": "data/tec_material_plausibility_20261101/cases.json",
+      "baseline_sha256": "84e1d0aa0ed0b2e22312538c04440e7d8a303deaa45f010868e65e66c8aa2992",
+      "current_sha256": "84e1d0aa0ed0b2e22312538c04440e7d8a303deaa45f010868e65e66c8aa2992",
+      "registered_sha256": "84e1d0aa0ed0b2e22312538c04440e7d8a303deaa45f010868e65e66c8aa2992"
+    },
+    {
+      "path": "data/tec_material_plausibility_20261101/checksums.json",
+      "baseline_sha256": "951aedb503a4a4936281f64d5a29c0a47afefe606d478b3f1b5b96535c1c80a1",
+      "current_sha256": "951aedb503a4a4936281f64d5a29c0a47afefe606d478b3f1b5b96535c1c80a1",
+      "registered_sha256": "951aedb503a4a4936281f64d5a29c0a47afefe606d478b3f1b5b96535c1c80a1"
+    },
+    {
+      "path": "data/tec_material_plausibility_20261101/registration.json",
+      "baseline_sha256": "a9bd3af0f8b1d7c5525157ddb87fdf94a5b7803bb7d81c53472a4237ac2c38f8",
+      "current_sha256": "a9bd3af0f8b1d7c5525157ddb87fdf94a5b7803bb7d81c53472a4237ac2c38f8",
+      "registered_sha256": "a9bd3af0f8b1d7c5525157ddb87fdf94a5b7803bb7d81c53472a4237ac2c38f8"
+    },
+    {
+      "path": "data/tec_identifiability_20261101/checksums.json",
+      "baseline_sha256": "d2793075045a7cd77dbf9f6fccb3ba04938259d7ae36a7894f05973a2cf35d87",
+      "current_sha256": "d2793075045a7cd77dbf9f6fccb3ba04938259d7ae36a7894f05973a2cf35d87",
+      "registered_sha256": "d2793075045a7cd77dbf9f6fccb3ba04938259d7ae36a7894f05973a2cf35d87"
+    },
+    {
+      "path": "tecooledmct/finite_sink_study.py",
+      "baseline_sha256": "d43e21b0daebd50c62bb4a1ebf9bd5683e25e0f8d1df8f1ba45408f89fec3487",
+      "current_sha256": "d43e21b0daebd50c62bb4a1ebf9bd5683e25e0f8d1df8f1ba45408f89fec3487",
+      "registered_sha256": "d43e21b0daebd50c62bb4a1ebf9bd5683e25e0f8d1df8f1ba45408f89fec3487"
+    },
+    {
+      "path": "data/finite_sink_20261101/cases.json",
+      "baseline_sha256": "554812b3174c4d8b5ecf50458a8cae0741de93e1797929b74f9461a1ad4f38ad",
+      "current_sha256": "554812b3174c4d8b5ecf50458a8cae0741de93e1797929b74f9461a1ad4f38ad",
+      "registered_sha256": "554812b3174c4d8b5ecf50458a8cae0741de93e1797929b74f9461a1ad4f38ad"
+    },
+    {
+      "path": "data/finite_sink_20261101/checksums.json",
+      "baseline_sha256": "ffe100ff11ad838ff3f82d1cc32a65945a013bb0a88e30e61311605c7d525302",
+      "current_sha256": "ffe100ff11ad838ff3f82d1cc32a65945a013bb0a88e30e61311605c7d525302",
+      "registered_sha256": "ffe100ff11ad838ff3f82d1cc32a65945a013bb0a88e30e61311605c7d525302"
+    },
+    {
+      "path": "data/tec_identifiability_20261101/analysis.json",
+      "baseline_sha256": "76ad8b4b1ba026dec298ccfc2de9570f4582d6b73375753bd228e290094a99a9",
+      "current_sha256": "76ad8b4b1ba026dec298ccfc2de9570f4582d6b73375753bd228e290094a99a9",
+      "registered_sha256": "76ad8b4b1ba026dec298ccfc2de9570f4582d6b73375753bd228e290094a99a9"
+    },
+    {
+      "path": "data/native_gas_flux_forensics_20261101/checksums.json",
+      "baseline_sha256": "4db8e868f6c668b363489d20c31da6a3dc14024c51625e1659f7d501f2317e7a",
+      "current_sha256": "4db8e868f6c668b363489d20c31da6a3dc14024c51625e1659f7d501f2317e7a",
+      "registered_sha256": "4db8e868f6c668b363489d20c31da6a3dc14024c51625e1659f7d501f2317e7a"
+    },
+    {
+      "path": "data/isolated_cap_native_gas_20261101/phase_A/cap_window_mm_derivative.step",
+      "baseline_sha256": "ff94fcc158796a41b289b9c505765f2edb719a34c80e04e8f1c61aa194af8a4f",
+      "current_sha256": "ff94fcc158796a41b289b9c505765f2edb719a34c80e04e8f1c61aa194af8a4f",
+      "registered_sha256": "ff94fcc158796a41b289b9c505765f2edb719a34c80e04e8f1c61aa194af8a4f"
+    },
+    {
+      "path": "reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf",
+      "baseline_sha256": "882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248",
+      "current_sha256": "882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248",
+      "registered_sha256": "882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248"
+    }
+  ],
+  "links": [
+    {
+      "source": "AGENTS.md",
+      "target": "docs/ENGINEERING_CHRONOLOGY.md",
+      "exists": true
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "README.md",
+      "exists": true
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf",
+      "exists": true
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "tecooledmct/integrated_reference.py",
+      "exists": true
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "tecooledmct/nonlinear_tec.py",
+      "exists": true
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "tecooledmct/graded_tec.py",
+      "exists": true
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "tecooledmct/native_gas_conduction.py",
+      "exists": true
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "tecooledmct/native_gas_flux_forensics.py",
+      "exists": true
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/ENGINEERING_CHRONOLOGY.md",
+      "exists": true
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/history/AGENTS_BEFORE_CURRENT_CONTRACT_20261030.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "AGENTS.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/MASTER_REPORT_REPRODUCIBILITY.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/TEC_MATERIAL_PLAUSIBILITY_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/TEC_GEOMETRY_MATERIAL_IDENTIFIABILITY_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/FINITE_SINK_MATCHED_TARGET_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/materials_and_provenance.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "GEOMETRY_SOURCE_OF_TRUTH_SPEC.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "CORRECTED_GEOMETRY_COUPLED_THERMAL_WORK_ORDER.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/NONLOCAL_PORT_NETWORK_20261031.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PASSIVE_PLATE_PORT_AUDIT_20261031.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/ISOLATED_CAP_AND_NATIVE_GAS_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/NATIVE_GAS_FLUX_FORENSICS_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/NATIVE_GAS_DOMAIN_AUDIT_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/UNIT_CORRECT_CAP_AND_NATIVE_GAS_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "AGENTS.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "data/nonlinear_exchange_20261030",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "data/nonlinear_exchange_20261030/enclosed_scenarios/die_temperature_vs_current.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/physics_and_sources.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/geometry_sensitivity.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PHASE1_G1_RESULT.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PHASE1_G2A_RESULT.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PHASE1_G2B_TWO_TERMINAL_RESULT.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PHASE1_G2C_RESULT.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PHASE1_G2D_RESULT.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PHASE1_G3A_RESULT.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PHASE1_G3B_RESULT.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/MASTER_REPORT_REPRODUCIBILITY.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "AGENTS.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/ISOLATED_CAP_AND_NATIVE_GAS_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/NATIVE_GAS_FLUX_FORENSICS_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../data/physical_input_qualification_20261101/conditional_sensitivity.png",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../data/physical_input_qualification_20261101/source_audit.json",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../GEOMETRY_SOURCE_OF_TRUTH_SPEC.md",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../data/g2c/zhang2025_he_40_300_v2.json",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/G2C_MATERIAL_PROVENANCE.md",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../fem/results/geometry_complete_checkpoint_20261030/manifest.json",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/G2C_MATERIAL_PROVENANCE.md",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../GEOMETRY_SOURCE_OF_TRUTH_SPEC.md",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../data/g3a/source_review.json",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../fem/results/geometry_complete_checkpoint_20261030/wire_routes.json",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../data/g3a/source_review.json",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/NONLOCAL_PORT_NETWORK_20261031.md",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/ISOLATED_CAP_AND_NATIVE_GAS_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/NATIVE_GAS_FLUX_FORENSICS_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/PHASE1_G3B_RESULT.md",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/BATH_SPATIAL_FLUX_AND_COMBINED_QUALIFICATION.md",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../tecooledmct/physical_input_qualification.py",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../tecooledmct/physical_input_evidence.py",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../data/physical_input_qualification_20261101/registration.json",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../data/physical_input_qualification_20261101/cases.json",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../data/physical_input_qualification_20261101/targets.json",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../data/physical_input_qualification_20261101/evidence_analysis.json",
+      "exists": true
+    },
+    {
+      "source": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "target": "docs/../data/physical_input_qualification_20261101/verification.json",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/../reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/../AGENTS.md",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/PHYSICAL_INPUT_QUALIFICATION_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/TEC_MATERIAL_PLAUSIBILITY_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/TEC_GEOMETRY_MATERIAL_IDENTIFIABILITY_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/FINITE_SINK_MATCHED_TARGET_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/NATIVE_GAS_FLUX_FORENSICS_20261101.md",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/MATCHED_SOLID_MODEL_DIAGNOSTIC_20261031.md",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/NONLOCAL_PORT_NETWORK_20261031.md",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/PASSIVE_PLATE_PORT_AUDIT_20261031.md",
+      "exists": true
+    },
+    {
+      "source": "docs/INTEGRATED_REFERENCE_THERMAL_20261030.md",
+      "target": "docs/ISOLATED_CAP_AND_NATIVE_GAS_20261101.md",
+      "exists": true
+    }
+  ],
+  "chronology_append_only": true,
+  "observed_final_UTC": "2026-11-01T18:49:16.552550+00:00"
+}
