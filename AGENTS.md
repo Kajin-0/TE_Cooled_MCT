@@ -41,6 +41,23 @@ Do not touch, invoke or integrate LSDDTS or another repository. Use the existing
 pinned environment within **4 CPUs / 12 GiB**; prioritize bounded reduced studies.
 No new million-tet campaign merely to advance an exploratory scenario.
 
+## Timestamped operational chronology
+
+[ENGINEERING_CHRONOLOGY.md](docs/ENGINEERING_CHRONOLOGY.md) is the ONE authoritative,
+concise, append-only internal progress chronology. During all future active work,
+append records at substantive milestone begin/end and important stop gates, using
+actual ISO8601 UTC event timestamps captured when observed. Backfill only verified
+Git `%cI` timestamps, explicitly labeled commit times, never inferred run times.
+Each record states PASS/FAIL/STOP/NOT RUN/PENDING, what changed, exact source
+commit/link and diagnostic, validation evidence, immutable-artifact impact,
+blocker and next authorized step; distinguish proposals from authorization.
+Keep entries to 1–2 informative sentences; append corrections, never erase failed
+attempts or call incomplete work released. No polling ticks or repeated no-change
+entries. Detailed equations/plots stay in milestone records; the ONE professional
+Rev3 remains free of operational diary material. Keep this chronology current
+during active sessions; no process writes entries while the session is inactive
+unless separately established automation exists (none is introduced here).
+
 ## ONE continuously maintained professional report
 
 The already established standalone master is
@@ -125,7 +142,8 @@ inspect every page of a rebuilt master before publication.
 
 ## Read-first order
 
-1. This contract, then `README.md` and the ONE canonical Rev3 master PDF.
+1. This contract, latest `docs/ENGINEERING_CHRONOLOGY.md` entries, then `README.md`
+   and the ONE canonical Rev3 master PDF.
 2. `docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md`: assumptions and objective.
 3. `docs/INTEGRATED_REFERENCE_THERMAL_20261030.md`: five-node balances and scenarios.
 4. `docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md`: transport/exchange methods.
