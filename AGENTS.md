@@ -168,7 +168,10 @@ inspect every page of a rebuilt master before publication.
   release is claimed. Exact prior 34-page PDF/provenance are retained under
   `reports/historical/rev3_pre_identifiability_20261101`, alongside the earlier
   28-page snapshot, original 15-page Rev3 and Rev2. Current scoped verification:
-  `data/tec_identifiability_20261101/verification.json`; existing scientific laws,
+  `data/tec_identifiability_20261101/verification.json`, with the retained initial
+  CI failure and factor-reconstruction portability checks under
+  `data/tec_identifiability_20261101/verification/ci_portability_20261101/summary.json`;
+  existing scientific laws,
   geometry, fields, failures and all historical report hashes remain unchanged.
 - Current native gas checkpoint: `data/isolated_cap_native_gas_20261101` and
   `docs/ISOLATED_CAP_AND_NATIVE_GAS_20261101.md`. A/B PASS, C failed raw balance;

@@ -13,6 +13,34 @@ from tecooledmct.tec_material_plausibility import read,sha
 DATA=ROOT/'data/tec_identifiability_20261101'
 
 
+def assert_registered_design(frozen,reconstructed):
+    reconstructed=deepcopy(reconstructed)
+    assert len(frozen['cases'])==len(reconstructed['cases'])==269
+    for old,new in zip(frozen['cases'],reconstructed['cases']):
+        if old['uses']!=['jacobian']:continue
+        # NumPy exp(.0025) differs by one binary64 ULP across the pinned and
+        # CI environments. Only FD factor reconstruction permits that one ULP;
+        # IDs, grouping, steps, operating conditions and all other cases stay exact.
+        for name in ('a','r','k','s'):
+            if old[name]==1.:continue
+            assert abs(old[name]-new[name])<=np.spacing(old[name])
+            new[name]=old[name]  # In-memory comparison only, never archived data.
+    assert reconstructed==frozen
+
+
+def test_registration_comparison_allows_one_exp_ulp_but_rejects_changed_design():
+    frozen=read(DATA/'registration.json')['design'];other=deepcopy(frozen)
+    point=next(c for c in other['cases'] if c['uses']==['jacobian'] and c['a']>1)
+    point['a']=np.nextafter(point['a'],np.inf)
+    assert_registered_design(frozen,other)
+    point['a']=np.nextafter(point['a'],np.inf)
+    with pytest.raises(AssertionError):assert_registered_design(frozen,other)
+    other=deepcopy(frozen);other['cases'][0]['current_A']+=1e-12
+    with pytest.raises(AssertionError):assert_registered_design(frozen,other)
+    other=deepcopy(frozen);other['cases'][0]['counts']=[26,12,6]
+    with pytest.raises(AssertionError):assert_registered_design(frozen,other)
+
+
 @pytest.mark.parametrize('name',['a','l','r','k','s'])
 @pytest.mark.parametrize('bad',[0.,-1.,np.nan])
 def test_nonfinite_or_nonpassive_factors_reject(name,bad):
@@ -52,7 +80,7 @@ def test_native_coverage_and_scenario_copy_do_not_claim_new_cad():
 
 def test_registered_scenarios_frozen_and_no_fitted_triple_added():
     reg=read(DATA/'registration.json')
-    assert reg['design']==design() and len(reg['design']['cases'])==269
+    assert_registered_design(reg['design'],design())
     assert reg['study_code_sha256']==sha(DATA/'executed_study.py.source')
     assert reg['protocol']==(ROOT/'docs/TEC_GEOMETRY_MATERIAL_IDENTIFIABILITY_20261101.md').read_text().split('## Results')[0]
     for c in reg['design']['cases']:

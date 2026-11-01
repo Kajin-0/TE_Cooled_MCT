@@ -1,0 +1,80 @@
+{
+  "observed_local_recheck_UTC": "2026-11-01T13:22:35Z",
+  "initial_pushed_source_commit": "4bb469e311b3d0727620a047c337ab096ba94450",
+  "initial_CI": {
+    "url": "https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41310456867",
+    "head_sha": "4bb469e311b3d0727620a047c337ab096ba94450",
+    "conclusion": "failure",
+    "failed": 1,
+    "passed": 428,
+    "skipped": 12,
+    "seconds": 50.83,
+    "failure": "Exact registration/design equality on exp(.0025); no physics failure",
+    "log": "initial_ci_job.log.gz",
+    "decoded_log_sha256": "f85e7c39b1b4edb27c474e8b929e85c715a67730ed84526191e54ab306863ad2",
+    "log_storage": "Deterministic gzip, decoded bytes identical; preserves original CI whitespace without treating it as source whitespace."
+  },
+  "root_cause": {
+    "pinned_NumPy": "2.1.3",
+    "CI_NumPy": "2.4.6",
+    "registered_exp_0p0025": 1.002503127605795,
+    "CI_exp_0p0025": 1.0025031276057952,
+    "ULPs": 1,
+    "independent_Decimal_60_digit_exp": "1.00250312760579508497462200741078540400884791884020696840801"
+  },
+  "change": "Test-only comparison permits one binary64 ULP solely for reconstructed Jacobian factors. All IDs, uses, operating conditions, fixed cases and steps remain exact; two-ULP/current/count negative controls fail. No producer/design/scenario/registration/result/report change.",
+  "focused_tests": {
+    "command": "./fem/run.sh pytest -q tests/test_tec_identifiability.py",
+    "passed": 22,
+    "seconds": 0.54,
+    "exit_code": 0,
+    "log": "focused.log"
+  },
+  "full_applicable_opt_in": {
+    "command_argv": [
+      "./fem/run.sh",
+      "env",
+      "TE_FEM_SMOKE=1",
+      "pytest",
+      "-q",
+      "--ignore=outputs",
+      "--deselect=tests/test_corrected_enclosure.py::test_gmsh_geometry_and_interface_area_audit",
+      "--deselect=tests/test_fem_g1.py::test_real_elmer_coupled_smoke",
+      "--deselect=tests/test_fem_g2a.py::test_real_four_couple_solver_smoke",
+      "--deselect=tests/test_fem_g2b_connected.py::test_actual_two_terminal_88_leg_mesh",
+      "--deselect=tests/test_fem_g2b_geometry.py::test_real_88_leg_mesh_feasibility",
+      "--deselect=tests/test_fem_g2b_physics.py::test_actual_two_terminal_full_stack_smoke",
+      "--deselect=tests/test_fem_g2c.py::test_real_local_temperature_adapter_and_runtime_guard",
+      "--deselect=tests/test_fem_g3b.py::test_genuine_elmer_compiled_exchange_does_not_stagnate_at_zero_initial_flux",
+      "--deselect=tests/test_flux_presolder.py::test_genuine_three_dimensional_layered_elmer_coupon",
+      "--deselect=tests/test_full_presolder.py::test_genuine_oblique_elmer_and_independent_quadratic_reference",
+      "--deselect=tests/test_geometry_rebaseline.py::test_independent_cad_and_actual_conformal_header_mesh"
+    ],
+    "passed": 430,
+    "deselected": 12,
+    "warnings": 14,
+    "seconds": 43.81,
+    "exit_code": 0,
+    "log": "applicable_opt_in.log"
+  },
+  "archive_verifier": {
+    "exit_code": 0,
+    "log": "archive_verifier.log"
+  },
+  "master_integrity": {
+    "exit_code": 0,
+    "log": "master_integrity.log",
+    "canonical_PDF_unchanged": true,
+    "sha256": "96265010b41a9f41f53fa31c2fa4e8c3098806696675b3766e69f0554a27e006"
+  },
+  "scientific_checksum_ledger_unchanged_and_verified": true,
+  "test_sha256": "66337c289561a5758f481e1879d213a72f1221cbec67ca21ac7a895128f3cf91",
+  "CI_after_correction": "Pending exact correction-commit verification; recorded in append-only chronology",
+  "verification_artifact_sha256": {
+    "applicable_opt_in.log": "225044c9022eafa2cfb54d14d1d33f30c44be6e7b6a8f92573987ef51164b8ea",
+    "archive_verifier.log": "3314847f48aacde2dbc35a0f1f0614d16ad0a28b96e2255eb9e3f2746f8cfae9",
+    "focused.log": "0f52e8940e29a8f77793e66153e8ee15200b634954284b997f9611dd8cbd1b0a",
+    "master_integrity.log": "a9ac0c3ac83c40e1b4c3416066d63d324ee9f8c144641dfeed72d140b6557245",
+    "initial_ci_job.log.gz": "4c24b7e5a9d0ce6a4aa3f655f917fd3918a1e6eec9707f79dc405fcec73efb30"
+  }
+}

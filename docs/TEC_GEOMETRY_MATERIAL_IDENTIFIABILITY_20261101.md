@@ -324,3 +324,14 @@ exactly across independent builds, with all 44 predecessor figures unchanged.
 Exact prior 34-page PDF/provenance are sealed separately, alongside earlier
 28-/15-page and Rev2 evidence. A nearly blank overflow page in the first build
 was rejected and corrected by shortening prose, without changing scientific data.
+
+Exact-commit CI then exposed a verification portability defect: NumPy 2.4.6
+reconstructs exp(.0025) one binary64 ULP above the pinned NumPy value. The
+registration/raw results and all finite-difference steps remain byte-identical.
+Only reconstruction of Jacobian factors permits one ULP in the test; all
+operating conditions, IDs, groups and other scenarios compare exactly. Negative
+controls reject two ULPs and changed current/counts. Initial failed CI and scoped
+rechecks are retained in
+[the portability record](../data/tec_identifiability_20261101/verification/ci_portability_20261101/summary.json):
+22 focused and 430 applicable opt-in tests pass, with 12 runtime cases excluded.
+This changes no scientific acceptance criterion or numerical output.
