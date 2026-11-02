@@ -5,18 +5,25 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
-**Current priority: independent physical-geometry qualification (2026-11-02).**
-Read [audit registration/status](docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md),
-then [V2 prototype](docs/COMPACT_TEC_V2_20261102.md). V2 source/359-solid STEP/SI
-gates PASS; physical design is **NOT REVIEWED**, issue#2 OPEN. No Cu FEM, fitting,
-sink or other physical campaign. Safe checkpoint **e1c431c / exact CI PASS**
-preserves V2 and unexecuted Cu STOP drafts; the five reviewed PR#1 files are
-integrated as sources without merge/approval. The23-source/96-parameter packet
-and independent graph/SI/lap/thermal-path witnesses identify physical STOPs;
-freeze it before the separate review. Builder cannot self-certify. A read-only auditor may
-review only an immutable committed checkpoint, serially with builder writes
-paused and no second worktree; otherwise record NOT REVIEWED. Preserve every
-old STOP/FAIL/field and the exact38-page Rev3. Never run obsolete-post fixtures.
+**Current outcome: independently reviewed physical-geometry STOP (2026-11-02).**
+Read [current audit/status](docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md),
+[verbatim independent review](docs/PHYSICAL_PLAUSIBILITY_INDEPENDENT_REVIEW_20261102.md),
+then [V2 prototype](docs/COMPACT_TEC_V2_20261102.md). Separate read-only model-assisted
+review of immutable **8339307** confirmed nominal circuit/polarity/STEP scale,
+but **STOPPED physical promotion**: actual pin1/9 leads and detector bonds absent;
+foil joint/process, mounting/tolerances, current capability and multi-ceramic
+heat allocation unqualified. Issue#2 remains OPEN; no Cu FEM, fitting, sink or
+other physical campaign is authorized. Builder cannot clear its own STOP.
+Safe **e1c431c** and packet **8339307** have exact CI PASS; V2 and all unexecuted
+Cu drafts are committed, not pending. Only five reviewed PR#1 source files were
+integrated without merge/approval. The 23-source/96-parameter review packet is
+preserved; a versioned IA-08 metadata correction adds one internal hypothesis
+source, normalizes degrees to radians and retains inferred-contour certainty.
+That correction is builder-verified, not independently re-reviewed. No CAD/law/
+field/PDF bytes changed. Preserve every old STOP/FAIL and exact38-page Rev3.
+Next proposed closure is a dimensioned process-backed bridge/return/pin-wire/
+mount assembly; its implementation and any coupon need separate authorization
+and physical acceptance. Never run obsolete-post fixtures.
 
 ## Cold-start protocol — no prior chat context required
 
@@ -220,15 +227,18 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Highest priority: physical-source/evidence audit, not new physics.** Follow
-`docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md`; safe V2/STOP-draft checkpoint
-e1c431c and its exact CI PASS are complete. Only five reviewed PR#1 source files
-were integrated; no merge. Four independent manufacturer families have named
-visual inspections; the23-source/96-parameter registry preserves UNKNOWN ranges.
-Critical builder findings: no actual pin1/9 leads, no resolved100um foil-foot
-lap/process, unqualified three-ceramic return, unknown tolerance/current rating.
-Freeze/review the packet serially before interpreting further physics. Builder
-cannot clear issue#2 or self-certify; no new CAD/FEM, material fit or new campaign.
+**Physical promotion STOP; no next science automatically authorized.** Follow
+`docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md` and the independent review of
+8339307. Four independent manufacturer figure families and nominal CAD/circuit
+PASS do not establish fabrication/current/thermal/package acceptance. The
+reviewer's IA-01–07 require independent process, lead/mount, tolerance, transport
+and boundary evidence; IA-08 audit metadata has a separately versioned builder
+correction. Preserve the original reviewed registry/packet and verdict.
+Only publish the verified audit/receipt and exact CI in this task; issue#2 stays
+OPEN. A complete dimensioned joint/return/pin-wire/mount closure package and a
+later V2-specific coupon are proposals, not permission for CAD or a solver run.
+
+**Historical checkpoint context below is evidence, not current authorization.**
 
 **Prior compact v2 source/CAD prototype gates PASS (2026-11-02); STOP before
 further physics or qualification:**
@@ -254,7 +264,8 @@ cases deselected, original archive/master and both legacy demos PASS. Do not
 relaunch the completed build/export. No substitute/host install, Cu FEM, fit or
 sink work occurred. The prior runtime STOP/cache-only failure is historical.
 Prototype success must never trigger the old fixture or B/C. Preserve the exact
-38-page master, old failed gates and all drafts, left uncommitted; no new CI.
+38-page master, old failed gates and all drafts. They were uncommitted at that
+historical event; safe checkpoint e1c431c now preserves them with exact CI PASS.
 A future architecture-accepted Stage A needs independent fabrication/contact
 bounds and a new v2-specific registration, not old post cuts/heat allocations.
 

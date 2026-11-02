@@ -1,0 +1,84 @@
+{
+  "author_role": "Builder transcription of independent verdict; verbatim report governs",
+  "geometry_target": "e1c431caf5f6dd34e3c6d8d11737aba0ed7ac555",
+  "overall_physical_gate": "STOP",
+  "independent_gate": "STOP",
+  "issue2": "OPEN",
+  "subsystems": [
+    {
+      "subsystem": "selected_TEC_envelope",
+      "source": "PASS",
+      "dimensions_manufacturing": "CONDITIONAL",
+      "topology_material": "CONDITIONAL",
+      "CAD_SI": "PASS",
+      "numerical_solver": "NOT REVIEWED",
+      "OEM_validation": "NOT REVIEWED",
+      "reason": "Only exact external dimensions; no hidden internals"
+    },
+    {
+      "subsystem": "V2_connector_process",
+      "source": "CONDITIONAL",
+      "dimensions_manufacturing": "STOP",
+      "topology_material": "STOP",
+      "CAD_SI": "PASS",
+      "numerical_solver": "NOT RUN",
+      "OEM_validation": "NOT REVIEWED",
+      "reason": "No qualified foil-foot/fillet/adhesion,current limit or thermal multiport"
+    },
+    {
+      "subsystem": "package_pin_detector_mount",
+      "source": "PASS",
+      "dimensions_manufacturing": "STOP",
+      "topology_material": "STOP",
+      "CAD_SI": "CONDITIONAL",
+      "numerical_solver": "NOT RUN",
+      "OEM_validation": "NOT REVIEWED",
+      "reason": "Actual hot pin1/9 leads and detector7/8 bonds/mount absent inV2"
+    },
+    {
+      "subsystem": "materials",
+      "source": "CONDITIONAL",
+      "dimensions_manufacturing": "CONDITIONAL",
+      "topology_material": "STOP",
+      "CAD_SI": "CONDITIONAL",
+      "numerical_solver": "CONDITIONAL",
+      "OEM_validation": "NOT REVIEWED",
+      "reason": "Research P/N and proxy materials do not identify actual grade/contact"
+    },
+    {
+      "subsystem": "native_gas",
+      "source": "CONDITIONAL",
+      "dimensions_manufacturing": "CONDITIONAL",
+      "topology_material": "STOP",
+      "CAD_SI": "PASS",
+      "numerical_solver": "FAIL",
+      "OEM_validation": "NOT REVIEWED",
+      "reason": "32.6274% raw gate retained; no V2gas field"
+    },
+    {
+      "subsystem": "original_88_leg_solid",
+      "source": "CONDITIONAL",
+      "dimensions_manufacturing": "CONDITIONAL",
+      "topology_material": "CONDITIONAL",
+      "CAD_SI": "PASS",
+      "numerical_solver": "FAIL",
+      "OEM_validation": "NOT REVIEWED",
+      "reason": "Bath1%/cold5% incomplete; nonlocal7.277% separate FAIL"
+    }
+  ],
+  "prohibited_next_steps": [
+    "old-post fixture",
+    "new Cu FEM before acceptance",
+    "calibration",
+    "sink/gas/radiation campaign",
+    "physical/OEM promotion"
+  ],
+  "permitted_current_scope": [
+    "source/registry verification",
+    "immutable packet publication",
+    "separate serial read-only audit"
+  ],
+  "review_target": "8339307762ae89e3e9dfa0ef5753df08aa900828",
+  "independent_report": "docs/PHYSICAL_PLAUSIBILITY_INDEPENDENT_REVIEW_20261102.md",
+  "metadata_correction": "IA-08 v2 registry/catalogue builder-verified only; no CAD/law changes"
+}

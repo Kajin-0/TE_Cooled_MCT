@@ -1,0 +1,12 @@
+{
+  "observed_UTC": "2026-11-02T06:33:46Z",
+  "state": "FAIL extraction control; no archive mutation",
+  "initial_producer_sha256": "62ab3648c69dbb862a0e2d0361d0a36f84e414a4a76b4a17cace7d58c1bb8baa",
+  "failure": "Baseline Git blob guard followed a mode120000 report.pdf symlink and compared PDF target bytes to the67-byte link blob",
+  "evidence": {
+    "git_mode": "120000",
+    "unchanged_link_target": "../../generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf",
+    "master_current_validator": true
+  },
+  "fix": "Compare mode120000 symlink target bytes to Git blob; regular files remain content-hashed. Preserve original producer and unchanged old numerical/master gates."
+}

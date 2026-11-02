@@ -2,8 +2,9 @@
 
 **Builder follow-up after safe checkpoint `e1c431c`:** the seed below is retained
 from PR#1 at `771b757`; its earlier live/uncommitted observations and inspection
-claims are historical, not a V2 signoff. Current [23-source catalogue](../data/physical_geometry_audit_20261102/source_catalog.json),
-[96-parameter traceability registry](../data/physical_geometry_audit_20261102/physical_parameter_registry.json)
+claims are historical, not a V2 signoff. Current [catalogue](../data/physical_geometry_audit_20261102/source_catalog_v2.json)
+(23 reviewed records plus one internal hypothesis),
+[96-parameter traceability registry](../data/physical_geometry_audit_20261102/physical_parameter_registry_v2.json)
 and [actual qualification record](PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md)
 govern the present audit. TEC2019 pp1/2/4, Kryotherm printed22/24, the served
 Laird/Tark pp1/2 and official Coherent/Marlow2022 pp1–3 were visually inspected;
@@ -18,13 +19,21 @@ with44mm base andBiSn138°C; Marlow RevK retrieval failed, so official Coherent
 2022 SP2402 is a separately identified source, not silently substituted RevK.
 The Au100µm design rule does not qualify Cu edge wrapping; the v2 declared100µm
 film land is not a resolved100µm foil-foot/solder lap. Physical gate remains STOP
-in builder findings and pending separate independent review; issue#2 stays OPEN.
+in the [completed separate review](PHYSICAL_PLAUSIBILITY_INDEPENDENT_REVIEW_20261102.md)
+of8339307; issue#2 stays OPEN. Its IA-08 correction is versioned separately;
+the original catalogue, registry and reviewed packet are retained unchanged.
 
 **Internal, versioned research index.** Scope: synthetic three-stage 44-couple TEC, separately constrained by a selected TEC Microsystems 3MC04-044-05 2019 data sheet, analogous RMT/Kryotherm/Laird/Marlow/Ferrotec hardware and VIGO 3TE nine-pin package. Reviewed sources below do **not** establish that the housing and TEC are the same commercial assembly. See the root AGENTS.md and [independent review protocol](PHYSICAL_PLAUSIBILITY_AUDIT_PROTOCOL.md). This file does not change CAD, promote physical qualification, or authorize the active VPS `sim:0.0` builder to run further simulation.
 
 This is a **traceable reference suite**, not a count-based vote. Product-specific drawing dimensions outrank different-family analogs; original diagrams must be viewed rather than trusting extracted text, with citations to exact figure/page. Manufacturer illustration is evidence of *architecture*, never a ruler. Distinguish published performance conditions, nominal dimensions and manufacturing-process minima. Multiple sources from a single supplier are **one supplier family** for claims of independent corroboration.
 
-## A. Source library — current status and precise use
+## A. PR seed library — historical inspection claims and proposed use
+
+The rows below retain the PR author's original scope, not this builder/reviewer's
+inspection record. In the actual audit Laird/Tark pages1/2 were viewed; the
+handbook/RevK/patent figures were not. Use the current catalogue and qualification
+record above for observed statuses and separately identified Coherent2022/RMT2019
+sources; do not inherit a seed claim of inspection or independence.
 
 | ID | Source (original/URL and inspected location) | Evidence available; appropriate use | Scope / caution |
 | --- | --- | --- | --- |

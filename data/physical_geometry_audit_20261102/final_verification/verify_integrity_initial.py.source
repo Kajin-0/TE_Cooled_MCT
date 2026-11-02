@@ -1,0 +1,83 @@
+"""Read-only final hash/link checks; writes one new verification record only."""
+import datetime
+import hashlib
+import json
+from pathlib import Path
+import re
+import subprocess
+
+ROOT=Path.cwd()
+BASE=ROOT/'data/physical_geometry_audit_20261102'
+TARGET='8339307762ae89e3e9dfa0ef5753df08aa900828'
+def read(p):return json.loads(Path(p).read_text())
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+
+registered=read(BASE/'registration.json')
+for p,h in registered['protected_inputs'].items():assert sha(p)==h,p
+pending=read(BASE/'pending_work_before.json')['files']
+mutable={'AGENTS.md','README.md','docs/ENGINEERING_CHRONOLOGY.md'}
+for p,r in pending.items():
+    if p not in mutable:assert sha(p)==r['sha256'],p
+supplement=read(BASE/'safe_checkpoint/ignored_STEP_supplement.json')['files']
+for p,r in supplement.items():assert sha(p)==r['sha256'],p
+
+# Original review target remains immutable even as current status docs advance.
+packet=read(BASE/'review_packet.json')['source_and_geometry_byte_hashes']
+for p,h in packet.items():
+    original=subprocess.check_output(['git','show',TARGET+':'+p])
+    assert hashlib.sha256(original).hexdigest()==h,p
+receipt=read(BASE/'independent_review_receipt.json')
+assert sha(receipt['verbatim_report'])==receipt['verbatim_report_sha256']
+for p,h in receipt['guard_before']['ignored_review_sources_sha256'].items():assert sha(p)==h,p
+assert receipt['guard_after']['status']==receipt['guard_before']['status']==''
+assert receipt['guard_after']['head']==receipt['guard_before']['HEAD']==TARGET
+assert receipt['guard_before']['ignored_review_sources_sha256']==receipt['guard_after']['cache']
+
+# All pre-mission tracked blobs except explicitly mutable documentation/attributes.
+oldtree=subprocess.check_output(['git','ls-tree','-rlz',registered['baseline']])
+allowed=mutable|{'.gitattributes'}
+count=total=0
+for entry in oldtree.split(b'\0'):
+    if not entry:continue
+    meta,name=entry.split(b'\t',1);mode,typ,oid,size=meta.split()
+    if typ!=b'blob':continue
+    p=name.decode()
+    if p in allowed:continue
+    size=int(size);h=hashlib.sha1();h.update(b'blob '+str(size).encode()+b'\0')
+    assert Path(p).stat().st_size==size,p
+    with open(p,'rb') as f:
+        for chunk in iter(lambda:f.read(1024*1024),b''):h.update(chunk)
+    assert h.hexdigest()==oid.decode(),p
+    count+=1;total+=size
+
+oldchron=subprocess.check_output(['git','show',TARGET+':docs/ENGINEERING_CHRONOLOGY.md'])
+assert Path('docs/ENGINEERING_CHRONOLOGY.md').read_bytes().startswith(oldchron)
+protocol=Path('docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md').read_text().split('## Results / recovery')[0]
+assert protocol==registered['protocol']
+links=0
+for p in map(Path,['AGENTS.md','README.md','docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md',
+                  'docs/PHYSICAL_PLAUSIBILITY_INDEPENDENT_REVIEW_20261102.md',
+                  'docs/TEC_GEOMETRY_EVIDENCE_LIBRARY_20261102.md']):
+    for target in re.findall(r'\[[^\]]*\]\(([^)]+)\)',p.read_text()):
+        target=target.strip('<>').split('#')[0]
+        if not target or re.match(r'^[a-z]+://',target):continue
+        target=re.sub(r':\d+$','',target)
+        q=Path(target) if target.startswith('/') else p.parent/target
+        assert q.exists(),(str(p),target)
+        links+=1
+
+assert read(BASE/'current_packet.json')['canonical_registry']=='physical_parameter_registry_v2.json'
+ci=read(BASE/'packet_verification/CI.json')
+assert ci['head_sha']==TARGET and ci['conclusion']=='success'
+result=dict(observed_UTC=datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            protected_inputs=len(registered['protected_inputs']),
+            preserved_pending_files=len(pending)-len(mutable),supplemental_STEP_files=len(supplement),
+            frozen_review_packet_hashes=len(packet),cached_review_files=44,
+            baseline_blobs_unchanged=count,baseline_bytes_unchanged=total,
+            baseline_exceptions=sorted(allowed),local_links=links,
+            chronology_prefix_unchanged=True,registration_prefix_unchanged=True,
+            master_sha256=sha('reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf'),
+            physical_gate='Independent STOP; issue2 OPEN; no new physics')
+out=BASE/'final_verification/integrity.json';assert not out.exists()
+out.write_text(json.dumps(result,indent=2)+'\n')
+print(json.dumps(result))

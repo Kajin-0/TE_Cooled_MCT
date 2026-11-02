@@ -16,7 +16,7 @@ def read(p):return json.loads((ROOT/p).read_text())
 
 
 def build():
-    sources={s['id']:s for s in read(str(BASE.relative_to(ROOT)/'source_catalog.json'))['sources']}
+    sources={s['id']:s for s in read(str(BASE.relative_to(ROOT)/'source_catalog_v2.json'))['sources']}
     native=read(NATIVE);d=read(V2+'/source_final/design.json');cfg=read('data/corrected_enclosure/geometry_hypothesis_v1.json')
     rows=[]
     def add(pid,component,value,unit,sids,feature,*,bounds=None,basis='UNKNOWN: no sourced physical interval/tolerance',
@@ -44,21 +44,29 @@ def build():
             closure_test=dict(owner='Independent physical reviewer + supplier/process or metrology evidence',priority=priority,
                 test=closure or 'Independent dimension/process specification and tolerance witness; source-to-CAD recheck before accepting physical use')))
 
-    # Every inherited package dimension is retained with its original scoped range.
+    # Preserve inherited certainty and source identity, independently of its URL.
+    # A drawing-derived contour is not a dimensioned manufacturer feature.
+    unit_map={'mm':(.001,'m'),'deg':(math.pi/180,'rad'),'degree':(math.pi/180,'rad')}
     for key,r in native['registry']['dimensions'].items():
-        factor=.001 if r['unit']=='mm' else math.pi/180 if r['unit']=='deg' else 1.
+        if r['unit'] not in unit_map:
+            raise ValueError('Unregistered native physical unit: '+r['unit'])
+        factor,si_unit=unit_map[r['unit']]
         val=r['simulated']*factor
         if r['nominal'] is not None and r['tolerance'] is not None:
             bounds=[(r['nominal']-r['tolerance'])*factor,(r['nominal']+r['tolerance'])*factor];basis='Printed source tolerance for this selected envelope only'
         elif r['hypothesis_range']:
             bounds=[v*factor for v in r['hypothesis_range']];basis='PREEXISTING SCENARIO range; not physically measured or independently qualified'
         else:bounds=None;basis='UNKNOWN component tolerance; generalISO2768-mK noted onVIGO drawing, not evaluated as a numeric process bound'
-        exact=r['source'] in ('vigo','tec');sid='PKG-01' if r['source']=='vigo' else 'TEC-01'
-        add('native.'+key,'Inherited package/reference geometry',val,'m' if r['unit']=='mm' else 'rad' if r['unit']=='deg' else r['unit'],[sid],
-            'registry.dimensions.'+key,bounds=bounds,basis=basis,cls='DOCUMENTED_EXACT_PRODUCT' if exact else 'SCENARIO',
+        sid={'vigo':'PKG-01','tec':'TEC-01','hypothesis':'HYP-NATIVE','inferred_stack':'HYP-NATIVE'}[r['source']]
+        cls='DOCUMENTED_EXACT_PRODUCT' if r['certainty']=='OEM' and r['source'] in ('vigo','tec') else 'DERIVED_SOURCE_CONTOUR' if r['certainty']=='estimated' else 'SCENARIO'
+        add('native.'+key,'Inherited package/reference geometry',val,si_unit,[sid],
+            'registry.dimensions.'+key,bounds=bounds,basis=basis,cls=cls,
             code='tecooledmct/geometry_registry.py',symbol='value',mesh='Original216-body3D mesh and native gas geometry; V2 uses envelope context only',
             contradiction=r['definition']+'; original source/assumption label '+r['certainty']+' is not composite OEM validation',
             closure='Check source line endpoints and assembly tolerance/actual mount/wire interfaces; preserve original registry bytes')
+        rows[-1]['inherited_provenance']={k:r[k] for k in ('source','certainty','evidence','definition','unit','simulated')}
+        if cls=='DERIVED_SOURCE_CONTOUR':
+            rows[-1]['validation']['source']='Derived from drawing envelope; exact tooling contour is NOT dimensioned'
 
     for key,val,unit,sids,bounds,basis,feature in [
         ('stage_couples',[29,11,4],'1',['RMT-01-D','KRY-01'],None,'UNKNOWN exact allocation; original28/12/4 is a distinct44-couple hypothesis; Kry31/11/4 totals46,not interchangeable','stage_couples_hot_to_cold'),
@@ -162,9 +170,10 @@ def build():
             key=row['parameter_id'].split('_')[-1]
             row['value_SI']={p:[{'temperature_K':pt['temperature_k'],'value_SI':pt['value_si']} for pt in profile['specimens'][p]['curves'][key]['points']] for p in ('P','N')}
             row['range_basis']='Functional source points40–300K; actual matched-grade uncertainty UNKNOWN; do not treat temperature variation as an error band'
-    return dict(schema='physical-evidence-traceability-v1',review_target='e1c431caf5f6dd34e3c6d8d11737aba0ed7ac555',
-        source_catalog='data/physical_geometry_audit_20261102/source_catalog.json',source_registry_is_builder_evidence=True,
-        independent_release='NOT REVIEWED until separate serial audit; builder cannot clear issue2',parameters=rows)
+    return dict(schema='physical-evidence-traceability-v2',review_target='e1c431caf5f6dd34e3c6d8d11737aba0ed7ac555',
+        source_catalog='data/physical_geometry_audit_20261102/source_catalog_v2.json',source_registry_is_builder_evidence=True,
+        supersedes_metadata_only='physical_parameter_registry.json retained at review target8339307; IA-08 fixes no CAD/physics',
+        independent_release='STOP at8339307; this metadata correction is builder-verified, not independently re-reviewed; issue2 OPEN',parameters=rows)
 
 
 if __name__=='__main__':

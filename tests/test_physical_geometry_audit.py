@@ -3,6 +3,7 @@ import copy
 from fractions import Fraction
 import importlib.util
 import json
+import math
 from pathlib import Path
 import tomllib
 import unittest
@@ -77,6 +78,25 @@ class PhysicalAudit(unittest.TestCase):
         self.assertIn('STRICTLY READ-ONLY',role['developer_instructions'])
         manifest=audit.read(audit.BASE/'PR_integration.json');expected=next(r['sha256'] for r in manifest['files'] if r['path']==str(p.relative_to(ROOT)))
         self.assertEqual(audit.sha(p),expected)
+    def test_IA08_native_units_certainty_and_hypothesis_sources(self):
+        rows={p['parameter_id']:p for p in registry.build()['parameters']}
+        angle=rows['native.pin_step']
+        self.assertEqual(angle['units'],'rad');self.assertAlmostEqual(angle['value_SI'],math.pi/5,15)
+        self.assertEqual(angle['inherited_provenance']['unit'],'degree')
+        for name in ('central_radius','ear_radius'):
+            p=rows['native.'+name]
+            self.assertEqual(p['evidence_class'],'DERIVED_SOURCE_CONTOUR')
+            self.assertEqual(p['inherited_provenance']['certainty'],'estimated')
+        native=audit.read(ROOT/registry.NATIVE)['registry']['dimensions']
+        for name,source in native.items():
+            p=rows['native.'+name]
+            self.assertEqual(p['inherited_provenance']['certainty'],source['certainty'])
+            self.assertAlmostEqual(p['value_SI'],source['simulated']*(.001 if source['unit']=='mm' else math.pi/180))
+            if source['source'] in ('hypothesis','inferred_stack'):
+                self.assertEqual([s['id'] for s in p['source_refs']],['HYP-NATIVE'])
+                self.assertEqual(p['evidence_class'],'SCENARIO')
+        self.assertEqual(rows['native.flange_x']['evidence_class'],'DOCUMENTED_EXACT_PRODUCT')
+        self.assertEqual(registry.build(),audit.read(audit.BASE/'physical_parameter_registry_v2.json'))
 
 
 if __name__=='__main__':unittest.main()

@@ -66,12 +66,45 @@ Only the [five reviewed PR files](../data/physical_geometry_audit_20261102/PR_in
 were integrated from `771b757`; no merge/approval or issue closure. Original V1
 triage remains historical and role/skill read-only instructions are unchanged.
 The evolving source index now separates current builder inspection from seed
-claims. Independent physical review is **PENDING**, never inferred from tests.
+claims. Independent physical review was pending at packet freeze; its actual
+result is recorded below, never inferred from tests.
+
+### Independent review completed — physical promotion STOP
+
+The [verbatim A–F review](PHYSICAL_PLAUSIBILITY_INDEPENDENT_REVIEW_20261102.md)
+is a separately invoked model-assisted review of immutable **8339307**, with no
+inherited builder conversation. The exact read-only role used gpt-6.1-sol/xhigh;
+builder writes paused for the entire invocation. The [receipt and guards](../data/physical_geometry_audit_20261102/independent_review_receipt.json)
+record actual observed UTC readings, unchanged HEAD/status,54 packet identities
+and44 cached-file identities. This was explicit read-only operation, not an
+OS-enforced sandbox, human engineering signoff or hardware certification.
+[Exact packet CI passed](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41384429475).
+
+The reviewer independently reconstructed physical contacts and polarity and
+inspected15 actual cached pages across four independent manufacturer families.
+Nominal module circuit, N/P direction, STEP units/bounds and selected external
+pin geometry PASS in those named scopes. Overall **STOP** remains: actual pin1/9
+conductors/detector bonds are absent; foil attachment, mounting/tolerances,
+current/process capability, distributed return heat and material/boundary
+identities are unqualified. It found no nominal module open/short or impossible
+long V1-style bridge. A missing demonstrated joint process is not a geometric
+open or proof of inherent impossibility. PR#1 remains unmerged; issue#2 OPEN.
+
+New **IA-08** found an audit metadata defect, preserved in the reviewed packet:
+`degree` was not normalized to radians, inferred flange radii were overclassified
+as exact manufacturer dimensions, and native analyst choices inherited a wrong
+TEC source association. No CAD pin angle or geometry was wrong. The separately
+versioned [corrected registry](../data/physical_geometry_audit_20261102/physical_parameter_registry_v2.json)
+uses0.6283185307179586rad, retains estimated contour certainty and original
+provenance, and cites an explicit internal hypothesis record. The original
+registry/catalogue/producer/packet remain unchanged. This correction is
+builder-tested, **not independently re-reviewed**; it cannot clear physical STOP.
 
 ## Source evidence and adversarial findings
 
-The [permanent catalogue](../data/physical_geometry_audit_20261102/source_catalog.json)
-has23 records with publisher/product/revision/page/URL, raw-byte hashes where
+The [permanent catalogue](../data/physical_geometry_audit_20261102/source_catalog_v2.json)
+retains the23 reviewed records and adds one explicit internal hypothesis source;
+records have publisher/product/revision/page/URL, raw-byte hashes where
 retrieved, named figure/render hashes, explicit failures/uninspected sources and
 copyright disposition. Raw documents and page images remain ignored local cache;
 source facts/index and reproduction code are versioned. Old cached TEC2019,
@@ -109,7 +142,7 @@ Independent source arithmetic and topology implementation:
 [witnesses](../data/physical_geometry_audit_20261102/registered_witnesses/geometry_witnesses.json),
 [producer](../scripts/physical_geometry_audit_20261102.py),
 [registry generator](../scripts/build_physical_parameter_registry_20261102.py).
-The96-entry [SI evidence registry](../data/physical_geometry_audit_20261102/physical_parameter_registry.json)
+The96-entry [SI evidence registry](../data/physical_geometry_audit_20261102/physical_parameter_registry_v2.json)
 maps every inherited dimensional parameter, all high-impactV2 layer/route/return
 choices,materials/contacts and boundaries to source/code/CAD/mesh/property/
 prediction,domain,range basis,manufacturing/sensitivity gaps and owner/closure.
@@ -159,11 +192,14 @@ may reject any unsupported choice. Preserve all existing fields, failed gates,
 Rev3 and original assumptions. The report is unchanged because no accepted new
 device physics was established. PR#1 and issue#2 remain open.
 
-Freeze this packet and exact source/CAD hashes on a committed clean target,
-then apply the unchanged read-only auditor role **serially** with builder writes
-paused. Record model/identity/scope and verbatim verdict separately; no invocation
-means NOT REVIEWED. Reviewer/hardware-engineer acceptance is distinct from software
-regression, mathematical conservation or source analogy.
+The packet was frozen on8339307 and reviewed **serially** with builder writes
+paused. Its54 hashes continue to verify against that Git target; current mutable
+status documents and the metadata generator have advanced separately. The
+[review packet](../data/physical_geometry_audit_20261102/review_packet.json), original
+registry/catalogue and reviewer report must not be rewritten to hide IA-08.
+Separate model-assisted review is complete and explicitly STOPs promotion;
+hardware/process acceptance remains absent. Software regression, mathematical
+conservation and source analogy cannot supply that acceptance.
 
 Packet verification:38 focused/494 applicable tests PASS, with the same12 runtime
 CAD/mesh/Elmer tests excluded; original archive/master and both legacy demos PASS.
@@ -171,7 +207,22 @@ All protected inputs and V2/old fixture bytes match the safe checkpoint;66 local
 links checked. [Exact commands/logs](../data/physical_geometry_audit_20261102/packet_verification/checks.json)
 are software/integrity evidence only. The initial independent point-extractor
 rejection is retained, with topological vertex selection verified under unchanged
-SI bounds. Separate physical review remains NOT REVIEWED until actually invoked.
+SI bounds. These were the pre-review software checks; post-review checks and
+metadata corrections are recorded separately under `final_verification`.
+
+Post-review verification PASS: **39 focused / 495 applicable tests**, same12
+runtime cases excluded; full archive/master and both legacy demos PASS.
+[Commands/logs](../data/physical_geometry_audit_20261102/final_verification/checks.json)
+and [byte/link guard](../data/physical_geometry_audit_20261102/final_verification/integrity.json)
+retain64 protected inputs,75 initial pending files plus2 STEP files,54 frozen
+review identities,44 cached files and4,940 pre-mission blobs byte-identical
+(four explicit mutable documentation/attribute exceptions);87 local links PASS.
+The first full Git-blob guard incorrectly followed the report symlink; its
+[rejection](../data/physical_geometry_audit_20261102/final_verification/integrity_initial_rejection.json)
+and original producer remain preserved. Correct mode120000 link-byte handling
+passes under the same immutable-content requirement; no PDF or archive changed.
+The38-page master SHA remains882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248.
+Software/integrity PASS does not alter independent physical **STOP** or issue#2.
 
 Reproduce into new directories only (no source/geometry mutation):
 
