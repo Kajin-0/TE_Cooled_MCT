@@ -413,3 +413,31 @@ These software checks verify a reproducible **failed numerical experiment**.
 They do not pass B, authorize C/D or supersede the physical-design review.
 The final plots have no fictitious zero contact-law markers on noncontact cuts.
 Local documentation links and append-only chronology were checked separately.
+
+## Independent review and CI portability receipt
+
+The serial, separate model-assisted read-only
+[review of immutable 962c78a](V3_INTERCONNECT_INDEPENDENT_REVIEW_20261102.md)
+confirms **STOP B and all dependent C/D claims**. It independently inspected both
+meshes/fields, terminal currents, SI conversion and final figures; all 100 packet
+files / one raw cache identity and ten registered inputs matched at start/end.
+Builder writes were paused throughout. The original review is preserved verbatim,
+including four findings: failed bulk cuts; curved-geometry/boundedness limits;
+the exact-commit CI defect; and incomplete pre-control sealing of detailed
+implementation assumptions. It is not manufacturing or performance certification.
+
+[CI 41536865775](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41536865775)
+for 962c78a failed one test (568 passed / 12 skipped): `meshio` was imported by
+the new coordinate-unit check but is not installed by the development-only CI
+environment. The original job evidence is retained in `ci_failure_962c78a.json`.
+The successor changes **only that test** to inspect actual ASCII Gmsh 4.1 node
+blocks with the standard library. All original SI span/size assertions remain;
+there is no skip, dependency addition, source/mesh/field/property/criterion change
+or new physical solve. Its software checks and exact CI are recorded separately;
+the original failed CI and independent verdict remain valid historical records.
+
+The [test-only successor local checks](../data/v3_interconnect_et_20261102/verification_portability/checks.json)
+again pass 113 focused / 569 applicable tests, the same 12 exclusions, archive,
+master, both legacy demonstrations and both protected-blob guards. Its immutable
+publication and exact CI are required separately; a software pass does not change
+the independent numerical STOP or the pre-control provenance limitation.

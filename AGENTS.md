@@ -17,6 +17,14 @@ saved-field cofactor/normal audit confirms the failed cuts without another solve
 Joule heat partition, full TEC resistance, current rating or device temperature
 is qualified. LOW/HIGH material sensitivities are NOT RUN.
 
+The [separate read-only numerical/source review](docs/V3_INTERCONNECT_INDEPENDENT_REVIEW_20261102.md)
+of immutable **962c78a** independently confirms STOP, source/SI scope and the
+distinction between weak conservation and raw flux. It also preserves the exact
+CI failure (optional `meshio` import in a development-only test) and the disclosed
+pre-control sealing limitation. The successor correction is test-only ASCII-MSH
+inspection, not a changed operator, field or gate. Complete operator/source
+freezing must precede every control in any future separately authorized study.
+
 Only verification, documentation, immutable publication and optional serial
 read-only review of this failed checkpoint remain authorized. No further mesh,
 solve, refinement or parameter change to force a pass. A future discretization

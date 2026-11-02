@@ -68,12 +68,24 @@ def test_unit_scale_negative_controls_from_actual_mesh_volume():
     for length_scale in (.001,1000.):assert not .5<ratio*length_scale**3<2
 
 def test_millimetre_mesh_file_and_SI_field_mesh_are_explicitly_distinct():
-    import meshio
     for level in ('coarse', 'fine'):
         directory = BASE / 'B' / (level+'_mesh')
-        cad_mesh = meshio.read(directory/'coupon.msh')
+        # The frozen MSH is ASCII 4.1; inspect its actual node blocks without
+        # depending on the optional FEM extra in the minimal CI environment.
+        text = (directory/'coupon.msh').read_text()
+        assert text.split('$MeshFormat\n', 1)[1].startswith('4.1 0 8\n')
+        tokens = iter(text.split('$Nodes\n', 1)[1].split('$EndNodes', 1)[0].split())
+        blocks, count, first_tag, last_tag = (int(next(tokens)) for _ in range(4))
+        points = []
+        for _ in range(blocks):
+            dimension, entity, parametric, nodes = (int(next(tokens)) for _ in range(4))
+            assert 0 <= dimension <= 3 and parametric == 0
+            for _ in range(nodes):
+                next(tokens)  # Node tags precede this block's coordinates.
+            points.extend([[float(next(tokens)) for _ in range(3)] for _ in range(nodes)])
+        assert next(tokens, None) is None and len(points) == count
         with np.load(directory/'mesh.npz') as field_mesh:
-            cad_span = np.ptp(cad_mesh.points, axis=0)
+            cad_span = np.ptp(np.asarray(points), axis=0)
             si_span = np.ptp(field_mesh['points'], axis=0)
             np.testing.assert_allclose(cad_span*.001, si_span, rtol=1e-12, atol=1e-15)
             assert np.all(si_span < .01) and np.all(si_span > .001)
