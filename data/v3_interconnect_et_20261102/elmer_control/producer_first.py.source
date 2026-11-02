@@ -1,0 +1,92 @@
+"""Actual pinned Elmer StaticCurrentSolver independent uniform3D bar control."""
+import json,hashlib,time,subprocess
+from pathlib import Path
+from collections import defaultdict
+import numpy as np
+import meshio
+from scipy.spatial import cKDTree
+from .v3_et_fem import structured
+
+def run(out):
+    if out.exists():raise ValueError('Preserve control')
+    out.mkdir(parents=True);start=time.monotonic();root=Path(__file__).resolve().parents[1]
+    q=json.loads((root/'data/tec_candidate_29114_v2_20261102/runtime/qualification.json').read_text())
+    hashes={n:hashlib.sha256(Path('/opt/elmer/bin',n).read_bytes()).hexdigest() for n in ('ElmerSolver','ElmerGrid')}
+    if hashes!=q['binary_sha256']:raise ValueError('Pinned binary mismatch')
+    if Path('/opt/elmer/provenance/commit').read_text().strip()!=q['Elmer_commit']:raise ValueError('Elmer sourcecommit mismatch')
+    p,t,r=structured([np.linspace(0,.01,5),np.linspace(0,.001,3),np.linspace(0,.001,3)],lambda i,j,k:0)
+    boundary=defaultdict(list)
+    for e,row in enumerate(t):
+        for j in range(4):boundary[tuple(sorted(np.delete(row,j)))].append(e)
+    faces=[(f,ee[0]) for f,ee in boundary.items() if len(ee)==1];m=out/'mesh';m.mkdir()
+    (m/'mesh.header').write_text(f'{len(p)} {len(t)} {len(faces)}\n2\n504 {len(t)}\n303 {len(faces)}\n')
+    (m/'mesh.nodes').write_text(''.join(f'{i+1} -1 {x:.17g} {y:.17g} {z:.17g}\n' for i,(x,y,z) in enumerate(p)))
+    (m/'mesh.elements').write_text(''.join(f'{i+1} 1 504 '+ ' '.join(str(n+1) for n in row)+'\n' for i,row in enumerate(t)))
+    lines=[]
+    for i,(f,e) in enumerate(faces):
+        port=1 if np.all(p[list(f),0]==0) else 2 if np.all(p[list(f),0]==.01) else 3
+        lines.append(f'{i+1} {port} {e+1} 0 303 '+' '.join(str(n+1) for n in f)+'\n')
+    (m/'mesh.boundary').write_text(''.join(lines))
+    sif='''Header
+ CHECK KEYWORDS Warn
+ Mesh DB "." "mesh"
+End
+Simulation
+ Coordinate System = Cartesian 3D
+ Simulation Type = Steady State
+ Steady State Max Iterations = 1
+ Output Intervals = 1
+End
+Body 1
+ Equation = 1
+ Material = 1
+End
+Equation 1
+ Active Solvers(2) = 1 2
+End
+Solver 1
+ Equation = Stat Current Solver
+ Procedure = "StatCurrentSolve" "StatCurrentSolver"
+ Variable = Potential
+ Variable DOFs = 1
+ Calculate Joule Heating = True
+ Calculate Volume Current = True
+ Linear System Solver = Direct
+ Linear System Direct Method = UMFPACK
+ Steady State Convergence Tolerance = 1e-12
+End
+Solver 2
+ Exec Solver = After All
+ Equation = Result Output
+ Procedure = "ResultOutputSolve" "ResultOutputSolver"
+ Output File Name = bar
+ Vtu Format = True
+End
+Material 1
+ Electric Conductivity = 5.8e7
+End
+Boundary Condition 1
+ Target Boundaries(1) = 1
+ Potential = 1.0
+End
+Boundary Condition 2
+ Target Boundaries(1) = 2
+ Potential = 0.0
+End
+'''
+    (out/'control.sif').write_text(sif)
+    with (out/'Elmer.log').open('w') as f:ret=subprocess.run(['ElmerSolver','control.sif'],cwd=out,stdout=f,stderr=subprocess.STDOUT,timeout=60)
+    if ret.returncode:raise ValueError('Genuine Elmercontrolfailed')
+    fields=list(out.glob('bar*.vtu'))
+    if len(fields)!=1:raise ValueError('Actual Elmer VTUmissing')
+    a=meshio.read(fields[0]);keys=[k for k in a.point_data if k.lower()=='potential']
+    if len(keys)!=1:raise ValueError('Elmerpotentialfieldnotavailable '+str(a.point_data))
+    distance,ix=cKDTree(a.points).query(p);u=np.asarray(a.point_data[keys[0]]).reshape(-1)[ix]
+    if max(distance)>1e-12:raise ValueError('ElmernodeSIidentity')
+    err=float(max(abs(u-(1-p[:,0]/.01))))
+    if err>1e-9:raise ValueError('Elmeruniformbaranalyticfailed')
+    result=dict(status='PASS actualElmer3DStaticCurrent analyticbar',max_affine_potential_error_V=err,expected_R_ohm=.01/(58e6*1e-6),nodes=len(p),tets=len(t),binary_sha256=hashes,Elmer_commit=q['Elmer_commit'],seconds=time.monotonic()-start,scope='Independent analytic3Dcontrol;couponfinitecontactfieldssolvedbyexplicitSciPyP1operator,NOT relabeledasElmerfields')
+    (out/'result.json').write_text(json.dumps(result,indent=2)+'\n');print(result)
+if __name__=='__main__':
+    import argparse
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);a=p.parse_args();run(a.out)

@@ -1,0 +1,147 @@
+"""Extract only the registered V3 net88/lead9 coupon from frozen actual STEP.
+
+CAD authored in millimetres; mesh outputs explicitly converted to SI. No original
+builder is called, no original STEP/source is written, no full-package mesh.
+"""
+import argparse,hashlib,json,time,itertools
+from pathlib import Path
+import numpy as np
+ROOT=Path(__file__).resolve().parents[1]
+SOURCE=ROOT/'data/synthetic_v3_assembly_20261102'
+BASE=ROOT/'data/v3_interconnect_et_20261102'
+PORTS=['C0','C1','C2','C3','PIN9_HEAD','PN87_HOT','HEADER','PIN1_HEAD','DET7','DET8','AMBIENT']
+ACTIVE={'film0':0,'film1':1,'film2':2,'pin_finish':4,'pn87_solder':5}
+EXPECTED={frozenset(p) for p in [('film0','joint4'),('film1','joint5'),('film2','joint6'),('tab88','joint4'),('tab88','joint5'),('tab88','joint6'),('film2','pn87_solder'),('film0','lead_land'),('lead_land','lead9'),('lead9','lead_pin'),('lead_pin','pin_finish')]}
+def read(p):return json.loads(Path(p).read_text())
+def write(p,x):Path(p).write_text(json.dumps(x,indent=2,allow_nan=False)+'\n')
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def groups():
+    g=[dict(name='tab88',material='Cu',sources=['formed_tab88'])]
+    for i in (4,5,6):g.append(dict(name=f'joint{i}',material='BiSn',sources=[f'tab_joint{i}',f'fillet{i}_-1',f'fillet{i}_1']))
+    for i,z in enumerate((.5,1.6,2.7)):g.append(dict(name=f'film{i}',material='laminate',sources=[f'net88_plane{z:.3f}_{m}' for m in ('Ti','TiW','Cu','Ni','Au')]))
+    g +=[dict(name='lead9',material='Cu',sources=['TEC_lead9']),dict(name='lead_land',material='BiSn',sources=['lead9_land_joint']),dict(name='lead_pin',material='InSn',sources=['lead9_pin_joint']),dict(name='pin_finish',material='pin_laminate',sources=['pin9_Ni','pin9_Au']),dict(name='pn87_solder',material='SnSb',sources=['solder87_hot'])]
+    return g
+
+def qualify_faces(gs,faces):
+    if len(gs)!=12 or len({g['name'] for g in gs})!=12:raise ValueError('Registered domain coverage')
+    seen=set();pairs=set();portareas={i:0. for i in ACTIVE.values()}
+    for f in faces:
+        if f['tag'] in seen or f['area_m2']<=0:raise ValueError('Duplicate/zero physical face')
+        seen.add(f['tag']);owners=f['owners']
+        if len(owners)==2:
+            pair=frozenset(gs[i]['name'] for i in owners)
+            if pair not in EXPECTED:raise ValueError('Unregistered physical contact '+str(pair))
+            pairs.add(pair)
+            if f['thermal_port']!=-1 or f['electrical_port']!=-1:raise ValueError('Interface assigned externalport')
+        elif len(owners)==1:
+            if f['thermal_port']>=0:portareas[f['thermal_port']]+=f['area_m2']
+        else:raise ValueError('Unowned/nonmanifold face')
+    if pairs!=EXPECTED or any(v<=0 for v in portareas.values()):raise ValueError('Missing contact/active port')
+    for f in faces:
+        ep=f['electrical_port']
+        if ep>=0 and (len(f['owners'])!=1 or gs[f['owners'][0]]['name']!=('pn87_solder' if ep==0 else 'pin_finish') or f['thermal_port']!=(5 if ep==0 else 4)):raise ValueError('Incorrect terminalidentity/reference')
+    for ep,expected in ((0,.16e-6),(1,np.pi*.38**2*1e-6)):
+        if not np.isclose(sum(f['area_m2'] for f in faces if f['electrical_port']==ep),expected,rtol=1e-7,atol=1e-18):raise ValueError('Missing/full electrodecoverage')
+    return dict(qualified=True,domains=12,physical_interfaces=11,physical_faces=len(faces),port_area_m2={PORTS[k]:v for k,v in portareas.items()},explicit_adiabatic_absent=[p for i,p in enumerate(PORTS) if i not in ACTIVE.values()])
+
+def extract(out):
+    import gmsh
+    if out.exists():raise ValueError('Preserve extraction')
+    out.mkdir(parents=True);start=time.monotonic();source_bytes=Path(__file__).read_bytes();d=read(SOURCE/'source_final/design.json');by={b['name']:b for b in d['bodies']};si=read(SOURCE/'cad_02/si_reader.json');ids={r['name']:r['tag'] for r in si['records']};step=SOURCE/'cad_02/synthetic_v3_mm.step'
+    if sha(step)!=si['STEP_sha256']:raise ValueError('Frozen STEPchanged')
+    gmsh.initialize();gmsh.option.setNumber('General.Terminal',0);gmsh.option.setString('Geometry.OCCTargetUnit','MM');gmsh.option.setNumber('General.NumThreads',4)
+    try:
+        occ=gmsh.model.occ;tags=occ.importShapes(str(step));occ.synchronize()
+        if len(tags)!=824:raise ValueError('Actual824-solid import')
+        g=groups();wanted={s for q in g for s in q['sources']};original=[]
+        from .tec_assembly_v3 import support_planes,tight_bounds
+        planes=support_planes(occ)
+        for n in sorted(wanted):
+            b=by[n];t=ids[n];v=occ.getMass(3,t);bb=tight_bounds(occ,t,planes) if b['shape']=='wire' else occ.getBoundingBox(3,t)
+            if abs(v/b['volume_mm3']-1)>1e-7 or max(abs(a-bb) for a,bb in zip(bb,b['bbox_mm']))>.00021:raise ValueError('Nativeidentity '+n)
+            original.append(dict(name=n,native_STEP_volume=t,volume_m3=v*1e-9,native_faces=[ft for dim,ft in gmsh.model.getBoundary([(3,t)],False,False)]))
+        occ.remove([(2,t) for _,_,t in planes],recursive=True)
+        occ.remove([(3,t) for dim,t in tags if t not in {ids[n] for n in wanted}],recursive=True)
+        for q in g:
+            ent=[(3,ids[n]) for n in q['sources']]
+            result=occ.fuse(ent[:1],ent[1:])[0] if len(ent)>1 else ent
+            if len(result)!=1:raise ValueError('Same-phase/effective-envelope union '+q['name'])
+            q['tag']=result[0][1];expect=sum(by[n]['volume_mm3'] for n in q['sources']);actual=occ.getMass(3,q['tag'])
+            if abs(actual/expect-1)>1e-7:raise ValueError('Collapsedlaminate/solder volumechanged')
+            q['volume_m3']=actual*1e-9;q['bbox_mm']=list(occ.getBoundingBox(3,q['tag']))
+        _,mapping=occ.fragment([(3,q['tag']) for q in g[:1]],[(3,q['tag']) for q in g[1:]])
+        occ.synchronize();owner={}
+        for i,(q,m) in enumerate(zip(g,mapping)):
+            vs=[t for dim,t in m if dim==3]
+            if len(vs)!=1 or vs[0] in owner:raise ValueError('Split/overlap duringconformal partition')
+            q['tag']=vs[0];owner[vs[0]]=i
+            if abs(occ.getMass(3,vs[0])*1e-9/q['volume_m3']-1)>1e-7:raise ValueError('Fragment volume')
+        faces=[]
+        for _,f in gmsh.model.getEntities(2):
+            up,_=gmsh.model.getAdjacencies(2,f);own=sorted(owner[int(t)] for t in up if int(t) in owner)
+            if not own:continue
+            bbox=occ.getBoundingBox(2,f);tp=ep=-1
+            if len(own)==1:
+                q=g[own[0]];bb=occ.getBoundingBox(3,q['tag']);plane=bb[2] if q['name']!='pn87_solder' else bb[5]
+                if q['name'] in ACTIVE and abs(bbox[2]-plane)<3e-7 and abs(bbox[5]-plane)<3e-7:
+                    tp=ACTIVE[q['name']]
+                    if q['name']=='pn87_solder':ep=0
+                    if q['name']=='pin_finish':ep=1
+            faces.append(dict(tag=f,owners=own,area_m2=occ.getMass(2,f)*1e-6,bbox_mm=list(bbox),thermal_port=tp,electrical_port=ep,
+                boundary='finite_thermal_reservoir' if tp>=0 else 'finite_metal_contact' if len(own)==2 else 'insulated'))
+        audit=qualify_faces(g,faces)
+        for ep,expected in ((0,.16e-6),(1,np.pi*.38**2*1e-6)):
+            ar=sum(f['area_m2'] for f in faces if f['electrical_port']==ep)
+            if not np.isclose(ar,expected,rtol=1e-7,atol=1e-18):raise ValueError('Electrode fullcoverage')
+        gmsh.write(str(out/'coupon_mm.brep'))
+        result=dict(status='PASS extraction/nominal domain andport definitions only',source_STEP_sha256=sha(step),source_design_sha256=sha(SOURCE/'source_final/design.json'),native_sources=original,groups=g,faces=faces,audit=audit,ports=PORTS,coordinate_unit='mm inBREP;allmeshNPZcoordinatesconvertedm',BREP_sha256=sha(out/'coupon_mm.brep'),seconds=time.monotonic()-start)
+        write(out/'geometry.json',result);print(audit)
+    except Exception as e:write(out/'failure.json',dict(stage='GateAextraction',error=repr(e),seconds=time.monotonic()-start));raise
+    finally:gmsh.finalize();(out/'producer.py.source').write_bytes(source_bytes)
+
+def mesh(out,geometry,h):
+    import gmsh
+    if out.exists():raise ValueError('Preserve mesh')
+    out.mkdir(parents=True);start=time.monotonic();geo=read(geometry/'geometry.json')
+    gmsh.initialize();gmsh.option.setNumber('General.Terminal',1);gmsh.option.setString('Geometry.OCCTargetUnit','MM');gmsh.option.setNumber('General.NumThreads',4)
+    try:
+        occ=gmsh.model.occ;tags=occ.importShapes(str(geometry/'coupon_mm.brep'));occ.synchronize();available={t for dim,t in tags if dim==3};g=geo['groups'];vols={};cache={t:(occ.getMass(3,t),occ.getBoundingBox(3,t)) for t in available}
+        for i,q in enumerate(g):
+            hit=[t for t in available if abs(cache[t][0]*1e-9/q['volume_m3']-1)<1e-7 and max(abs(a-b) for a,b in zip(cache[t][1],q['bbox_mm']))<.00021]
+            # Native loose BRep boxes are stable undersamekernel roundtrip.
+            if len(hit)!=1:raise ValueError('Fixture identity '+q['name']+' '+str(hit))
+            vols[hit[0]]=i;available.remove(hit[0])
+        registry=[]
+        for _,f in gmsh.model.getEntities(2):
+            up,_=gmsh.model.getAdjacencies(2,f);own=sorted(vols[int(t)] for t in up if int(t) in vols)
+            if not own:continue
+            bb=occ.getBoundingBox(2,f);area=occ.getMass(2,f)*1e-6
+            hit=[q for q in geo['faces'] if q['owners']==own and abs(area/q['area_m2']-1)<1e-7 and max(abs(a-b) for a,b in zip(bb,q['bbox_mm']))<.00021]
+            if len(hit)!=1:raise ValueError('Face reimportidentity')
+            registry.append(dict(hit[0],tag=f))
+        qualify_faces(g,registry)
+        gmsh.option.setNumber('Mesh.MeshSizeMin',.001);gmsh.option.setNumber('Mesh.MeshSizeMax',h);gmsh.option.setNumber('Mesh.MeshSizeFromPoints',0);gmsh.option.setNumber('Mesh.MeshSizeFromCurvature',0);gmsh.option.setNumber('Mesh.MeshSizeExtendFromBoundary',0);gmsh.option.setNumber('Mesh.Algorithm3D',1);gmsh.option.setNumber('Mesh.MinimumCirclePoints',48 if h>.06 else 80);gmsh.option.setNumber('Mesh.ElementOrder',1)
+        gmsh.model.mesh.generate(3)
+        nt,coords,_=gmsh.model.mesh.getNodes();nt=np.asarray(nt,dtype=np.int64);points=np.asarray(coords).reshape(-1,3)*.001;mapper=np.full(int(nt.max())+1,-1,np.int64);mapper[nt]=np.arange(len(nt));cells=[];regions=[]
+        for tag,i in vols.items():
+            kinds,_,arrays=gmsh.model.mesh.getElements(3,tag)
+            if list(kinds)!=[4]:raise ValueError('NonP1tets')
+            tet=mapper[np.asarray(arrays[0],dtype=np.int64).reshape(-1,4)];cells.append(tet);regions.extend([i]*len(tet))
+        cells=np.concatenate(cells);regions=np.asarray(regions)
+        if len(cells)>250000:raise ValueError('250ktethardcap;no solve')
+        used=np.unique(cells);re=np.full(len(points),-1,np.int64);re[used]=np.arange(len(used));points=points[used];cells=re[cells]
+        det=np.linalg.det(points[cells[:,1:]]-points[cells[:,:1]]);neg=det<0;cells[neg,1],cells[neg,2]=cells[neg,2].copy(),cells[neg,1].copy();det=abs(det)
+        if np.any(det<=1e-30):raise ValueError('Nonpositive/degenerate tets')
+        tris=[];faceids=[]
+        for q in registry:
+            kinds,_,arrays=gmsh.model.mesh.getElements(2,q['tag'])
+            if list(kinds)!=[2]:raise ValueError('Unsupported boundary faces')
+            tr=re[mapper[np.asarray(arrays[0],dtype=np.int64).reshape(-1,3)]];tris.append(tr);faceids.extend([q['tag']]*len(tr))
+        tris=np.concatenate(tris);faceids=np.asarray(faceids)
+        gmsh.write(str(out/'coupon.msh'));np.savez_compressed(out/'mesh.npz',points=points,cells=cells,regions=regions,triangles=tris,faceids=faceids)
+        write(out/'registry.json',dict(groups=g,faces=registry,ports=PORTS));write(out/'mesh_audit.json',dict(status='PASS positiveP1mesh;fieldgatespending',nodes=len(points),tets=len(cells),h_mm=h,minimum_volume_m3=float(det.min()/6),CAD_volume_m3=sum(q['volume_m3'] for q in g),mesh_volume_m3=float(det.sum()/6),seconds=time.monotonic()-start,mesh_sha256=sha(out/'mesh.npz')))
+        print('LOCALMESH',len(points),len(cells))
+    except Exception as e:write(out/'failure.json',dict(error=repr(e),seconds=time.monotonic()-start));raise
+    finally:gmsh.finalize()
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('role',choices=['extract','mesh']);p.add_argument('--out',type=Path,required=True);p.add_argument('--geometry',type=Path);p.add_argument('--h',type=float);a=p.parse_args();extract(a.out) if a.role=='extract' else mesh(a.out,a.geometry,a.h)

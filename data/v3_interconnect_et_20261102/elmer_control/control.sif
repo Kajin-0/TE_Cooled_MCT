@@ -1,0 +1,46 @@
+Header
+ CHECK KEYWORDS Warn
+ Mesh DB "." "mesh"
+End
+Simulation
+ Coordinate System = Cartesian 3D
+ Simulation Type = Steady State
+ Steady State Max Iterations = 1
+ Output Intervals = 1
+End
+Body 1
+ Equation = 1
+ Material = 1
+End
+Equation 1
+ Active Solvers(2) = 1 2
+End
+Solver 1
+ Equation = Stat Current Solver
+ Procedure = "StatCurrentSolve" "StatCurrentSolver"
+ Variable = Potential
+ Variable DOFs = 1
+ Calculate Joule Heating = True
+ Calculate Volume Current = True
+ Linear System Solver = Direct
+ Linear System Direct Method = UMFPACK
+ Steady State Convergence Tolerance = 1e-12
+End
+Solver 2
+ Exec Solver = After All
+ Equation = Result Output
+ Procedure = "ResultOutputSolve" "ResultOutputSolver"
+ Output File Name = bar
+ Vtu Format = True
+End
+Material 1
+ Electric Conductivity = 5.8e7
+End
+Boundary Condition 1
+ Target Boundaries(1) = 1
+ Potential = 1.0
+End
+Boundary Condition 2
+ Target Boundaries(1) = 2
+ Potential = 0.0
+End

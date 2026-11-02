@@ -1,0 +1,111 @@
+........................................................................ [ 63%]
+.......................................FF                                [100%]
+=================================== FAILURES ===================================
+_ test_independent_series_bar_contact_formula_and_passive_operator[5000000.0-2e-09] _
+
+coefficient = 5000000.0, contact = 2e-09
+
+    @pytest.mark.parametrize('coefficient,contact', [(5e6, 2e-9), (50., 2e-5)])
+    def test_independent_series_bar_contact_formula_and_passive_operator(coefficient, contact):
+        # Small analytic verification only, not a new physical coupon or phase C.
+        from tecooledmct.v3_et_fem import structured, control_faces, Operator
+        axes = [np.linspace(0, .001, 5), np.linspace(0, .0003, 3), np.linspace(0, .0002, 3)]
+        p, t, r = structured(axes, lambda i, j, k: int(i >= 2))
+        faces, ids, registry = control_faces(p, t, r, 0)
+        op = Operator(p, t, r, faces, ids, dict(groups=[dict(name='left'), dict(name='right')], faces=registry),
+                      np.array([np.eye(3)*coefficient, np.eye(3)*coefficient/2]), contact)
+>       result, *_ = op.electrical()
+
+tests/test_v3_et.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <tecooledmct.v3_et_fem.Operator object at 0x73de3e8982c0>
+
+    def electrical(self):
+        boundary=np.zeros(self.ndof,bool);u=np.zeros(self.ndof);src=[];dst=[]
+        for j,da,f,M in self.boundaries:
+            ep=f['electrical_port']
+            if ep<0:continue
+            boundary[da]=True;u[da]=1. if ep==0 else 0.;(src if ep==0 else dst).extend(da)
+        src=np.unique(src);dst=np.unique(dst)
+        if len(src)==0 or len(dst)==0 or len(np.intersect1d(src,dst)):raise ValueError('Missing/doubleelectrode')
+        free=~boundary;u[free]=splu(self.K[free][:,free].tocsc()).solve(-(self.K@u)[free]);reaction=self.K@u
+        I=float(reaction[src].sum());Iout=-float(reaction[dst].sum())
+        if not I>0:raise ValueError('Passive input conductance')
+        grad=np.einsum('ei,eij->ej',u[self.dofs]-u[self.dofs[:,:1]],self.grad)
+        J=-np.einsum('eij,ej->ei',self.tensor,grad);density=-np.einsum('ei,ei->e',J,grad);bulk=self.volume*density
+        losses=defaultdict(float)
+>       for r,p in zip(self.r,bulk):losses[self.reg['groups'][int(r)]['material']]+=float(p)
+E       KeyError: 'material'
+
+tecooledmct/v3_et_fem.py:94: KeyError
+_ test_independent_series_bar_contact_formula_and_passive_operator[50.0-2e-05] _
+
+coefficient = 50.0, contact = 2e-05
+
+    @pytest.mark.parametrize('coefficient,contact', [(5e6, 2e-9), (50., 2e-5)])
+    def test_independent_series_bar_contact_formula_and_passive_operator(coefficient, contact):
+        # Small analytic verification only, not a new physical coupon or phase C.
+        from tecooledmct.v3_et_fem import structured, control_faces, Operator
+        axes = [np.linspace(0, .001, 5), np.linspace(0, .0003, 3), np.linspace(0, .0002, 3)]
+        p, t, r = structured(axes, lambda i, j, k: int(i >= 2))
+        faces, ids, registry = control_faces(p, t, r, 0)
+        op = Operator(p, t, r, faces, ids, dict(groups=[dict(name='left'), dict(name='right')], faces=registry),
+                      np.array([np.eye(3)*coefficient, np.eye(3)*coefficient/2]), contact)
+>       result, *_ = op.electrical()
+
+tests/test_v3_et.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <tecooledmct.v3_et_fem.Operator object at 0x73de3e52cbf0>
+
+    def electrical(self):
+        boundary=np.zeros(self.ndof,bool);u=np.zeros(self.ndof);src=[];dst=[]
+        for j,da,f,M in self.boundaries:
+            ep=f['electrical_port']
+            if ep<0:continue
+            boundary[da]=True;u[da]=1. if ep==0 else 0.;(src if ep==0 else dst).extend(da)
+        src=np.unique(src);dst=np.unique(dst)
+        if len(src)==0 or len(dst)==0 or len(np.intersect1d(src,dst)):raise ValueError('Missing/doubleelectrode')
+        free=~boundary;u[free]=splu(self.K[free][:,free].tocsc()).solve(-(self.K@u)[free]);reaction=self.K@u
+        I=float(reaction[src].sum());Iout=-float(reaction[dst].sum())
+        if not I>0:raise ValueError('Passive input conductance')
+        grad=np.einsum('ei,eij->ej',u[self.dofs]-u[self.dofs[:,:1]],self.grad)
+        J=-np.einsum('eij,ej->ei',self.tensor,grad);density=-np.einsum('ei,ei->e',J,grad);bulk=self.volume*density
+        losses=defaultdict(float)
+>       for r,p in zip(self.r,bulk):losses[self.reg['groups'][int(r)]['material']]+=float(p)
+E       KeyError: 'material'
+
+tecooledmct/v3_et_fem.py:94: KeyError
+=============================== warnings summary ===============================
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+  /opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+  /opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+  /opt/venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+tests/test_tec_candidate.py::test_sealed_presentation_cannot_be_overwritten
+  /opt/venv/lib/python3.12/site-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_v3_et.py::test_independent_series_bar_contact_formula_and_passive_operator[5000000.0-2e-09]
+FAILED tests/test_v3_et.py::test_independent_series_bar_contact_formula_and_passive_operator[50.0-2e-05]
+2 failed, 111 passed, 14 warnings in 15.23s

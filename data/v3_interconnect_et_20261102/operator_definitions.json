@@ -1,0 +1,99 @@
+{
+  "observed_UTC": "2026-11-02T21:55:23.203144+00:00",
+  "material_constants": {
+    "Cu": [
+      1.724137931034483e-08,
+      385.0
+    ],
+    "Ni": [
+      7e-08,
+      90.0
+    ],
+    "Au": [
+      2.44e-08,
+      317.0
+    ],
+    "Ti": [
+      4.2e-07,
+      22.0
+    ],
+    "TiW": [
+      1e-06,
+      10.0
+    ],
+    "BiSn": [
+      4e-07,
+      20.0
+    ],
+    "InSn": [
+      1.5e-07,
+      30.0
+    ],
+    "SnSb": [
+      1.7e-07,
+      45.0
+    ]
+  },
+  "scenarios": {
+    "LOW": {
+      "film_factor": 1.0,
+      "re": 1e-12,
+      "rt": 1e-08,
+      "plated_re": 0.0,
+      "plated_rt": 1e-09
+    },
+    "NOM": {
+      "film_factor": 2.0,
+      "re": 1e-11,
+      "rt": 1e-07,
+      "plated_re": 1e-14,
+      "plated_rt": 1e-08
+    },
+    "HIGH": {
+      "film_factor": 4.0,
+      "re": 1e-10,
+      "rt": 1e-06,
+      "plated_re": 1e-13,
+      "plated_rt": 1e-07
+    }
+  },
+  "film_stack_m": [
+    [
+      "Ti",
+      7.5e-08
+    ],
+    [
+      "TiW",
+      5e-08
+    ],
+    [
+      "Cu",
+      1.3625e-05
+    ],
+    [
+      "Ni",
+      1e-06
+    ],
+    [
+      "Au",
+      2.5e-07
+    ]
+  ],
+  "pin_stack_m": [
+    [
+      "Ni",
+      2e-06
+    ],
+    [
+      "Au",
+      1.5e-06
+    ]
+  ],
+  "definition_note": "Internalplated interfaceexcess isexplicitlyselected:LOW/NOM/HIGH re0/1e-14/1e-13ohmm2 andrt1e-9/1e-8/1e-7m2K/W perlayerpair;normalLaminate resistanceincludes them. Sourcecoefficientswerewrittenbeforeanalyticcontrols;manifestsealedaftercontrols,beforecandidatefieldsolve. No coefficientschangedfromcontroloutcome.",
+  "source_hashes": {
+    "tecooledmct/v3_et_fem.py": "08f91dc5ac85049034c9ca33bb7943358acbe1b757cad9843c3a713219fd5cca",
+    "tecooledmct/v3_et_geometry.py": "0b1a41496d014b3d0eb3604dcf276132b5ad7474c8c25c7095b5d58ab110cc05",
+    "tecooledmct/v3_et_elmer_control.py": "a1ca55eb121c690824d9e4705ff77c9451ac22d0c59495366fb127e4df85fa70"
+  },
+  "GateB_mesh_rule": "Finestmeshcutandpowergatesplusindependentcoarse/fineRrefinement;reportallcoarsecutswithfailures,nodiscardingworstfinecuts"
+}

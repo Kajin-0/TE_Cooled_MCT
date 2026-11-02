@@ -5,18 +5,28 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
-**Current outcome: synthetic V3 R1 conditionally accepted; receipt publication only.**
-The2026-11-02 assembly/CAD milestone is complete in its stated design scope.
-Read [manufacturing/source/CAD record](docs/SYNTHETIC_V3_ASSEMBLY_CAD_20261102.md)
-and [independent corrective verdict](docs/SYNTHETIC_V3_CORRECTIVE_INDEPENDENT_REVIEW_20261102.md).
-Separate model-assisted read-only review of immutable **0ababcc / exact CI PASS**
-grants **CONDITIONAL PHYSICAL-DESIGN ACCEPTANCE of the synthetic core/header/
-detector assembly under selected R1 manufacturing/inspection requirements**.
-This is not demonstrated supplier capability, hardware release or OEM validation.
-Cap/window retention/sealing,metallurgy/thermal profiles,bond programming,1A,
-cryogenic reliability,detector properties andcooler performance remain unqualified.
-Issue#2 stays OPEN. **No further physics or hardware testing is authorized.**
-Only finish verified receipt/status publication andexact CI,then stop.
+**Current outcome: V3 R1 local conductor Gate B FAIL / STOP (2026-11-02).**
+Read the [registered experiment and results](docs/V3_INTERCONNECT_ELECTROTHERMAL_20261102.md).
+Gate A source/port definitions and layered analytic controls passed their numerical
+scope. Exactly two electrical coupon meshes were run: 10,819 / 28,691 tets.
+The fine-mesh worst raw current-cut mismatch is **85.6255% > 0.1%**; voltage
+boundedness also fails. Resistance refinement (0.3158%) and power closure
+(9.919e-13 relative) pass, but cannot replace raw flux qualification. A separate
+saved-field cofactor/normal audit confirms the failed cuts without another solve.
+**C passive thermal and D electrothermal are NOT RUN.** No thermal conductance,
+Joule heat partition, full TEC resistance, current rating or device temperature
+is qualified. LOW/HIGH material sensitivities are NOT RUN.
+
+Only verification, documentation, immutable publication and optional serial
+read-only review of this failed checkpoint remain authorized. No further mesh,
+solve, refinement or parameter change to force a pass. A future discretization
+experiment requires new user authorization. Preserve all V1/V2/V3 source/STEP,
+the exact 38-page Rev3, old FAIL/STOP and 5,128 baseline identities; issue#2 OPEN.
+The bounded local A→B→C→D authorization granted no automatic further campaign.
+
+Prior V3R1 physical-design outcome remains CONDITIONAL core/header/detector,
+[review](docs/SYNTHETIC_V3_CORRECTIVE_INDEPENDENT_REVIEW_20261102.md),not
+supplier capability,sealed package,1A,detector properties orperformance.
 
 Actual separate V3:824 solids,88 legs/176 full P/N contacts/89 internal nets,
 real formed feet/joints,solderable underside/hot mount,pin1/9 Cu leads and7/8
@@ -267,13 +277,12 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current milestone complete: publish verified review receipt/exact CI and stop.**
-V3 R1 has conditional physical-design acceptance in the named core/header/detector
-scope. Proposed next engineering is supplier process/metrology/bond-program and
-cap/window retention/sealing closure;it needs separate authorization. No Cu PDE,
-fit,sink,gas/radiation orhardware campaign follows automatically. Preserve first
-STOP,all old failures/archives andexact Rev3;do not rerun old fixtures or rebuild
-the report for administrative updates.
+**Current: STOP after failed local V3 electrical Gate B; C/D NOT RUN.**
+Read `docs/V3_INTERCONNECT_ELECTROTHERMAL_20261102.md` and the frozen B fields.
+Finish only scope-appropriate QA/publication/read-only review. No new coupon
+mesh, solve or thermal phase is authorized; stable resistance and weak power
+closure do not qualify the failed raw cuts. A separately authorized future
+discretization test is proposed, not permission. Do not reuse obsolete V1 posts.
 
 **Historical source-gate attempt:**
 Read `docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md` and its independent review of

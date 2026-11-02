@@ -1,0 +1,33 @@
+{
+  "observed_UTC": "2026-11-02T22:00:17Z",
+  "status": "PASS",
+  "gate": "A definitions/analytic validation only",
+  "geometry": {
+    "qualified": true,
+    "domains": 12,
+    "physical_interfaces": 11,
+    "physical_faces": 105,
+    "port_area_m2": {
+      "C0": 6.722500000000003e-07,
+      "C1": 1.200000000000001e-07,
+      "C2": 6.399999999999999e-07,
+      "PIN9_HEAD": 4.536459791783658e-07,
+      "PN87_HOT": 1.6000000000000003e-07
+    },
+    "explicit_adiabatic_absent": [
+      "C3",
+      "HEADER",
+      "PIN1_HEAD",
+      "DET7",
+      "DET8",
+      "AMBIENT"
+    ]
+  },
+  "analytic_max_relative_error": 8.585265831584366e-11,
+  "Elmer_affine_error_V": 5.773159728050814e-15,
+  "source_laws": "Selectedfixed300Kengineeringhypotheses;notmeasuredfilm/jointmaterial;retainedP/Nlawsnotused",
+  "GateB_acceptance": "finebulkrawANDcontactcut0.1%,power0.5%,Rcomparatordifference1%,voltagebounded1e-8;allcoarsecutsretained",
+  "mesh_definition": "Twoindependenth75/45um meshes,circle48/80minimum;each<=250ktets,phase<=900s",
+  "unit_tests": "9passed,negativecoverage/doublecount/terminal/identity",
+  "A_controls_CPU_wall": "extraction72.747s;layercontrols1.097s;Elmer0.19ssolver;allwithin900s"
+}
