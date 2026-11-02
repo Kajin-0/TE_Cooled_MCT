@@ -35,7 +35,8 @@ def test_outer_finish_uncertainty_not_omitted():
     assert [r['lower_bound'],r['upper_bound']]==pytest.approx([3.664,3.944])
 def test_nominal_source_and_step_unchanged():
     root=Path(__file__).resolve().parents[1];b=root/'data/synthetic_v3_assembly_20261102'
-    assert json.loads((b/'source_final/design.json').read_text())==json.loads(json.dumps(design()))
+    reference=json.loads((b/'source_final/design.json').read_text());current=json.loads(json.dumps(design()))
+    assert_cross_runtime_source(reference,current)
     import hashlib
     assert hashlib.sha256((b/'cad_02/synthetic_v3_mm.step').read_bytes()).hexdigest()=='5e46c10fb75713a9dffbc97c44a2b94ca23bee14a93df7f4c0c7c915eb761a73'
 
@@ -43,3 +44,25 @@ def test_nominal_source_and_step_unchanged():
 @pytest.mark.parametrize('stroke',[float('nan'),float('inf'),0,-.3,.301])
 def test_nonfinite_or_unregistered_tool_limits_reject(stroke):
     with pytest.raises(ValueError):matching_plan(NOMINAL,stroke=stroke)
+
+
+def assert_cross_runtime_source(reference,current):
+    # Python3.12 changed float sum rounding. Only derived volume may differ by
+    # at most4ULP;all coordinates,dimensions,roles/topology andsource values stay
+    # exact. Pinned verification separately retains bitwise full-source replay.
+    import copy
+    a=copy.deepcopy(reference);b=copy.deepcopy(current)
+    for aa,bb in zip(a['bodies'],b['bodies']):
+        va=aa.pop('volume_mm3');vb=bb.pop('volume_mm3')
+        assert abs(va-vb)<=4*max(math.ulp(va),math.ulp(vb))
+    assert a==b
+
+def test_cross_runtime_guard_only_admits_roundoff():
+    import copy
+    a=json.loads(json.dumps(design()));b=copy.deepcopy(a)
+    b['bodies'][0]['volume_mm3']=math.nextafter(b['bodies'][0]['volume_mm3'],math.inf)
+    assert_cross_runtime_source(a,b)
+    b['bodies'][0]['boxes_mm'][0][0]+=.000001
+    with pytest.raises(AssertionError):assert_cross_runtime_source(a,b)
+    b=copy.deepcopy(a);b['bodies'][0]['volume_mm3']*=1+1e-10
+    with pytest.raises(AssertionError):assert_cross_runtime_source(a,b)

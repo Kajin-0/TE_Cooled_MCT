@@ -483,3 +483,18 @@ reviewed Git packet/cache guards PASS. See
 [correction checks](../data/synthetic_v3_assembly_20261102/verification_correction_release/checks.json).
 No nominal CAD orphysics change;original STOP remains attached to07fe3cb.
 Corrected physical-design judgment awaits frozen serial independent re-review.
+
+CI on0830fd7 failed the added exact JSON replay underPython3.11:one derived
+volume was0.0333561500823462 versus the archived3.12 value
+0.03335615008234621 (2ULP);allotherfields identical.
+[Failure receipt](../data/synthetic_v3_assembly_20261102/CI_0830fd7_failure.json)
+andjobexcerpt preserve the failure. The cross-runtime test now admits≤4ULP
+only forderivedvolume metadata,withnegative controls;coordinates/dimensions/
+roles remain exact. The pinned full-source bitwise guard andexact STEP/data
+hashes remain unchanged,no model/results/gate changed andno independent
+re-review launched onthefailedCIcheckpoint.
+
+Portability follow-up:96 focused/552 applicable tests PASS,same12 excluded;
+archive/master,both legacy demos andpinned bitwise source replay PASS.
+The originalfailedCIandindependentreviewremain visible;newexact CIis required
+before re-review. No geometry/material/result was altered to change an outcome.

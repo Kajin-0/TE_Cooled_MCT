@@ -34,8 +34,11 @@ is docs/SYNTHETIC_V3_INDEPENDENT_REVIEW_20261102.md. Current authorized correcti
 uses measured-land off-device forming,explicit heel idealization andouterfinish
 uncertainty;nominal824-solid STEP is unchanged. Read tec_assembly_v3_fit.py and
 drawing_requirements_r1.json;freeze corrected tests/exact CI before serial
-read-only re-review. Corrective95 focused/551 applicable tests (same12 exclusions),
-archive/master/legacy and5128 baseline blobs PASS. No physical/Cu/current/seal/1A
+read-only re-review. Corrective95/551 localchecks passed but0830fd7 CI failed only a2ULP derived-
+volume JSON equality underPython3.11. Test-only cross-runtime guard correction
+keeps all coordinates exact andpinned full-source bitwise replay unchanged;
+96 focused/552 applicable tests (same12 exclusions),archive/master/legacy and
+5128 baseline blobs nowPASS. Require newexactCIbefore re-review. No physical/Cu/current/seal/1A
 acceptance ornew science.
 See new manufacturing record/source catalogue/824-component registry,not old V3
 source-only drawings. Earlier CAD bbox failure and query-timeout stops preserved.

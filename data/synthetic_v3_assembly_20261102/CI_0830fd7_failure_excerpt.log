@@ -1,0 +1,28 @@
+2026-11-02T16:05:47.9328564Z ____________________ test_nominal_source_and_step_unchanged ____________________
+2026-11-02T16:05:47.9329202Z 
+2026-11-02T16:05:47.9329531Z     def test_nominal_source_and_step_unchanged():
+2026-11-02T16:05:47.9330421Z         root=Path(__file__).resolve().parents[1];b=root/'data/synthetic_v3_assembly_20261102'
+2026-11-02T16:05:47.9331480Z >       assert json.loads((b/'source_final/design.json').read_text())==json.loads(json.dumps(design()))
+2026-11-02T16:05:47.9332550Z E       AssertionError: assert {'id': 'synth....}, ...], ...} == {'id': 'synth....}, ...], ...}
+2026-11-02T16:05:47.9333575Z E         
+2026-11-02T16:05:47.9334168Z E         Omitting 12 identical items, use -vv to show
+2026-11-02T16:05:47.9334814Z E         Differing items:
+2026-11-02T16:05:47.9337025Z E         {'bodies': [{'name': 'ceramic0', 'material': 'Al2O3', 'shape': 'boxes', 'group': None, ...}, {'name': 'ceramic1', 'mat...: 'boxes', 'group': 'LEG0', ...}, {'name': 'solder0_hot', 'material': 'SnSb', 'shape': 'boxes', 'group': 0, ...}, ...]} != {'bodies': [{'name': 'ceramic0', 'material': 'Al2O3', 'shape': 'boxes', 'group': None, ...}, {'name': 'ceramic1', 'mat...: 'boxes', 'group': 'LEG0', ...}, {'name': 'solder0_hot', 'material': 'SnSb', 'shape': 'boxes', 'group': 0, ...}, ...]}
+2026-11-02T16:05:47.9339426Z E         
+2026-11-02T16:05:47.9339999Z E         Full diff: (-: missing in left side, +: extra in left side)
+2026-11-02T16:05:48.4403524Z E                           3.075,
+2026-11-02T16:05:48.4403627Z E                           4.349249999999999,
+2026-11-02T16:05:48.4403710Z E                       ],
+2026-11-02T16:05:48.4403847Z E         -             'volume_mm3': 0.03335615008234621,
+2026-11-02T16:05:48.4404091Z E         ?                                             -
+2026-11-02T16:05:48.4404212Z E         +             'volume_mm3': 0.0333561500823462,
+2026-11-02T16:05:48.4404310Z E                   },
+2026-11-02T16:05:48.4403710Z E                       ],
+2026-11-02T16:05:48.4403847Z E         -             'volume_mm3': 0.03335615008234621,
+2026-11-02T16:05:48.4404091Z E         ?                                             -
+2026-11-02T16:05:48.4404212Z E         +             'volume_mm3': 0.0333561500823462,
+2026-11-02T16:05:48.4404310Z E                   },
+2026-11-02T16:05:48.4404397Z E                   {
+2026-11-02T16:05:48.4404520Z E                       'name': 'tab_joint0',
+2026-11-02T16:05:49.2088376Z 1 failed, 550 passed, 12 skipped, 13 subtests passed in 53.72s
+2026-11-02T16:05:49.2101360Z ##[error]Process completed with exit code 1.

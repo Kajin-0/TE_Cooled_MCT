@@ -270,3 +270,11 @@ not release certification; corrections and later outcomes must be appended.
 ## 2026-11-02T16:03:33Z — PASS / PENDING — Measured-land V3 correction verified for freeze
 
 **Observed UTC QA event**;[original07fe3cb STOP](SYNTHETIC_V3_INDEPENDENT_REVIEW_20261102.md) preserved:128 land corners/384 continuous source tab paths and16 gap-error corners PASS with15–25um joints,18um full measured-stroke reserve andno forcefit;outer finishes give3.664–3.944mm,local heels explicitly bounded idealizations.95 focused/551 applicable tests PASS (same12 exclusions),archive/master/both legacy and5128 original blobs PASS;nominal824-solid STEP and38-page Rev3 unchanged,next authorized step freeze/push/exact CI thenserial independent re-review only,issue#2 OPEN.
+
+## 2026-11-02T16:09:09Z — FAIL — Corrective checkpoint CI catches cross-Python replay equality
+
+**Observed UTC CI diagnosis**;[0830fd7 CI](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41477736297) has1 failed/550 passed/12 skipped:strict fullJSON replay differs only inone derivedvolume by2ULP underPython3.11 vs pinned3.12. Archived fields/geometry/STEP/results remain unchanged;bounded test-only portability correction keeps all coordinates/roles exact,derivedvolume≤4ULP,andpinned bitwise guard intact;independent re-review has NOT resumed andno physics runs.
+
+## 2026-11-02T16:12:27Z — PASS / PENDING — Test-only replay portability checkpoint verified
+
+**Observed UTC local QA**;[0830fd7 CI failure](../data/synthetic_v3_assembly_20261102/CI_0830fd7_failure.json) retained:96 focused/552 applicable tests PASS,same12 exclusions,archive/master/both legacy and5128 baseline blobs PASS. Onlythecross-Python derived-volume testchanges;all nominal geometry,STEP,source inputs,physical matching requirements,old failures and38-page Rev3 unchanged,next authorizedstep push/testexact CIthenserialindependent re-review,not newscience.
