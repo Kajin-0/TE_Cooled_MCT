@@ -1,0 +1,148 @@
+{
+  "dimensions_mm": {
+    "leg": [
+      0.4,
+      0.4,
+      0.5
+    ],
+    "ceramic_widths": [
+      6.4,
+      5.2,
+      3.8,
+      2.4
+    ],
+    "ceramic_t": 0.5,
+    "pitch": 0.58,
+    "pad_width": 0.5,
+    "tab_width": 0.3,
+    "tab_t": 0.03,
+    "tab_Rneutral": 0.075,
+    "tab_Rinner": 0.06,
+    "tab_joint": [
+      0.3,
+      0.2,
+      0.02
+    ],
+    "land": [
+      0.4,
+      0.3
+    ],
+    "finished_mount_t": 0.08,
+    "die": [
+      1,
+      1,
+      0.2
+    ],
+    "carrier": [
+      1.6,
+      1.6,
+      0.15
+    ],
+    "epoxy_t": 0.02,
+    "Cu_wire_d": 0.2,
+    "Au_wire_d": 0.018,
+    "pin_d": 0.76,
+    "PCD": 10.8
+  },
+  "independent_absolute_limits_mm": {
+    "ceramic_t": 0.005,
+    "leg_t": 0.005,
+    "SnSb_t": 0.003,
+    "metal_stack_total": 0.001,
+    "leg_pattern_registration": 0.015,
+    "pattern_location": 0.005,
+    "pattern_outline": 0.005,
+    "leg_width": 0.005,
+    "tab_width": 0.01,
+    "tab_t": 0.003,
+    "tab_placement": 0.01,
+    "bend_radius": 0.005,
+    "tab_joint_t": 0.005,
+    "fillet_width_min": 0.005,
+    "fillet_width_max": 0.015,
+    "foot_position": 0.01,
+    "mount_t": 0.02,
+    "finished_mount_flatness": 0.01,
+    "carrier_t": 0.01,
+    "die_t": 0.01,
+    "epoxy_t": 0.005,
+    "bond_loop_envelope": 0.15
+  },
+  "layer_limits_um": {
+    "Ti": [
+      0.05,
+      0.1
+    ],
+    "TiW": [
+      0.03,
+      0.07
+    ],
+    "Cu": [
+      12.9,
+      14.35
+    ],
+    "Ni": [
+      0.85,
+      1.15
+    ],
+    "Au": [
+      0.2,
+      0.3
+    ],
+    "total_internal_stack": [
+      14,
+      16
+    ],
+    "outer_stack": [
+      1.5,
+      2.5
+    ]
+  },
+  "tooling": {
+    "thermode_footprint_mm": [
+      0.35,
+      0.25
+    ],
+    "normal_access": "bridge land outside upper ceramic;join before cap and detector;no solder through ceramic",
+    "bond_tool": "special Au wedge tool;75C workstage;flat Ni/Au pins"
+  },
+  "classification": "Selected inspectable supplier drawing requirements,NOT measured capability;deterministic sums,no RSS",
+  "sources": {
+    "sourced_external_height_mm": [
+      3.65,
+      3.95
+    ],
+    "sourced_flatness_max_um": 30,
+    "sourced_parallelism_max_um": 50,
+    "selected_finished_flatness_max_um": 10
+  },
+  "process_C": {
+    "core_SnSb_melt_about": 230,
+    "complete_TEC_conservative_limit": 220,
+    "bridge_SnBi_melt": 138,
+    "bridge_peak_selected": [
+      155,
+      165
+    ],
+    "bridge_dwell_s_max": 45,
+    "global_TEC_selected_max": 180,
+    "mount_InSn_melt": 117,
+    "mount_peak_selected": [
+      125,
+      132
+    ],
+    "mount_dwell_s_max": 60,
+    "epoxy_stage_selected": 79.4,
+    "epoxy_stage_hours": 7,
+    "Au_bond_workstage_selected": 75
+  },
+  "open_risks": [
+    "1A current rating NOT QUALIFIED",
+    "Au dissolution/intermetallics,Ni adhesion andfoil fatigue needcoupon",
+    "No hermetic cap/window assembly process qualified;cap/window mating inherited as ideal supplied component",
+    "Detector composition,bias andcryogenic contact resistance UNKNOWN",
+    "Polyimide candidate outgassing/adhesion not qualified",
+    "P/N measured40-300K distinct specimens;300-390K continuation assumed;no new law or field",
+    "Glass/header thermal seal capability belongs tosupplier;1.3mm glassOD analyst assumption retained"
+  ]
+}

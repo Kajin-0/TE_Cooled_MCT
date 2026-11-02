@@ -1,0 +1,10 @@
+{
+  "observed_UTC": "2026-11-02T15:11:47.284670+00:00",
+  "findings": [
+    "Source contact extractor initially missed small rectangular bondfeet inside circular pin caps;corrected exact shape-containment cases andnegative tests.",
+    "External finish setback originally used0.20mm instead of actual(6.4\u22126.1)/2=0.15mm;corrected worst case0.13mm still exceeds0.10mm.",
+    "Source replay first compared Python tuples to savedJSONlists;failed guard preserved,comparison now roundtripsJSONbefore equality.No geometry change.",
+    "Wire Frenet sweep firstfailedtightbbox;exactcylinder/torusrepresentation anddistance-to-support-plane extrema tested.No acceptance relaxation.",
+    "Two contactaudit timeouts retained. Third uses exact trimmed-face membership;fixed immutable cache;no physicalgeometry changed."
+  ]
+}

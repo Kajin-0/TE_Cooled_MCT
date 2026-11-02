@@ -242,3 +242,19 @@ not release certification; corrections and later outcomes must be appended.
 ## 2026-11-02T07:51:34Z — PASS / STOP — V3 source-gate attempt closed; independent review and exact CI published
 
 **Observed UTC CI-completion check**; [cd52391](https://github.com/Kajin-0/TE_Cooled_MCT/commit/cd523914aedba7b5082c15aec59bb9e141b72c73), [exact CI PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41408744207) and [source/review record](V3_ASSEMBLY_SOURCE_GATE_20261102.md): verified evidence/constraints and independent STOP are published; no complete V3 assembly/STEP exists, both process architectures remain CONDITIONAL, and IA-08 independently passes its metadata scope. All original V1/V2/source/fields/38-page Rev3 and failed gates remain intact, issue#2 OPEN; only this receipt's exact CI remains, with no further engineering or physics automatically authorized and one dimensioned process/joint/mount/detector/tolerance closure package proposed.
+
+## 2026-11-02T14:12:46Z — PENDING — Synthetic V3 assembly design/CAD newly authorized
+
+**Observed UTC start**; clean main5fcd519: new direct user authorization permits selecting inspectable synthetic dimensions/process requirements and implementing separate architecture-B formed-tab complete-package V3 CAD, superseding the former source-only STOP prospectively without erasing it. Preserve all V1/V2/fields/38-page Rev3 and numerical failures; next authorized step preregister process/tolerance/contact/source/CAD gates, then build/test/export/import and freeze for fresh serial read-only audit, with no electrical/thermal/PDE/fit/sink/gas runs and no manufactured/OEM/current-rating claim.
+
+## 2026-11-02T15:06:21Z — PASS / STOP — V3 STEP/SI pass; contact audit resource stop retained
+
+**Observed UTC gate**; baseline5fcd519, [V3 build](SYNTHETIC_V3_ASSEMBLY_CAD_20261102.md):824-solid fresh-mm export and separate SI import PASS (maxrelative volume1.141e−11,bbox1.000e−7m),88-leg/176-contact source graph and selected interval requirements PASS; original first wire-bbox failure and240s repeated-query audit timeout retained. Imported contact/exclusivity remains PENDING under one cached-query correction with unchanged limits; no physics or original archive/PDF mutation, independent physical gate NOT REVIEWED and issue#2 OPEN.
+
+## 2026-11-02T15:23:56Z — STOP / CORRECTED — Bridge alloy prose order caught before release
+
+**Observed UTC source gate**; baseline5fcd519,[V3 record](SYNTHETIC_V3_ASSEMBLY_CAD_20261102.md):RMT Table2 gives Bi57Sn43,not the reversed Sn57Bi43 draft prose;registration remains intact and explicit material dictionary now resolves the opaque CAD tag to57Bi/43Sn. No physical solver used that tag and no STEP/source geometry/old result changes;138°C is a published nominal melting datum,not lot-qualified DSC,so process/current/reliability acceptance stays pending.
+
+## 2026-11-02T15:26:59Z — PASS / PENDING — V3 builder source/CAD checkpoint verified
+
+**Observed UTC QA completion**; baseline5fcd519,[synthetic V3 specification](SYNTHETIC_V3_ASSEMBLY_CAD_20261102.md):72 focused/528 applicable tests PASS (same12 runtime exclusions),archive/master andboth legacy demos PASS,81 protected inputs/5128 baseline blobs remain exact;824-solid SI/contact/exclusivity andselected interval gates PASS,all three drawings visually inspected. New source/BOM/process/tolerance/negative tests include the acknowledged alloy-order correction;original STEP/fields/failures/38-page Rev3 unchanged,physical acceptance PENDING fresh serial audit after immutable commit/exact CI andissue#2 OPEN,no physics authorized.

@@ -5,26 +5,35 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
-**Current outcome: V3 assembly source gate STOP; CAD NOT RUN (2026-11-02).**
-Read [V3 source/process gate](docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md) first.
-The new user order prospectively permits separate assembly engineering, but
-the registered process gate has **STOPPED before CAD**: a qualified formed-foot
-joint/process, actual underside mounting finish/bondline, detector pad/bond
-stack and independent component tolerances are missing. New primary sources
-support conditional architecture/process families, not these unprovided details.
-There is **no V3 CAD/STEP/SI result**;21 interface requirements and source-only
-constraints supplement the unchanged corrected96-record registry. The exact
-pinned image is intact; do not blame runtime or relaunch a build. Current task
-has completed verification and exact checkpoint CI at **b824212**. The separate
-[read-only review](docs/V3_ASSEMBLY_INDEPENDENT_REVIEW_20261102.md) confirms STOP
-for the present assembly specification, CONDITIONAL constructibility of both
-architectures, and PASS of the IA-08 metadata correction. V3 geometry review is
-NOT RUN because no V3 geometry exists. Complete source-gate/review checkpoint
-**cd52391 / exact CI PASS** is published; receipt-only updates preserve this
-result. No further design/physics campaign is authorized.
-No new Cu/FEM/fit/sink/gas/radiation work; issue#2 OPEN and exact38-page Rev3 intact.
+**Current authorized milestone: synthetic V3 assembly engineering/CAD (2026-11-02).**
+Read [registered build](docs/SYNTHETIC_V3_ASSEMBLY_CAD_20261102.md). The new direct
+user instruction supersedes the former source-only gate prospectively: select
+rationalized, inspectable synthetic dimensions and process requirements and
+BUILD separate architecture-B formed-tab full-package V3 source/STEP. Exact OEM
+secret dimensions or prior supplier fabrication are not required for CONDITIONAL
+prototype feasibility. Distinguish source fact, process analogy, selected drawing
+requirement and unproved capability; unknown1A/thermal/performance qualification
+must not be relabeled geometry failure. Preserve all historical STOPs and original
+V1/V2 source/STEP/fields/exact38-page Rev3. No new PDE/Cu electrothermal/fit/sink/
+gas work. Source/CAD/interval/contact/unit tests precede publication and exact CI;
+then a FRESH separate read-only auditor with no inherited builder reasoning,
+serially with builder writes paused. Issue#2 remains OPEN pending applicable
+independent physical-design closure. Do not stop solely because a nominal
+synthetic process dimension is selected rather than measured OEM data.
 
-**Prior outcome: independently reviewed V2 physical-geometry STOP.**
+**Current builder evidence:**824 separate solids,88 legs/176 P/N contacts/89 internal nets,
+actual hot mount and pin1/9 Cu leads,separate photoconductor/Au bonds to7/8;5/6 vacant.
+Fresh mm author and separate SI reader PASS (maxrelative volume1.141e−11,
+bbox1.000e−7m);923 imported contact witnesses,58 Boolean overlap checks and
+1250 conservative exclusions PASS. The selected manufacturing/interval requirements
+are not demonstrated capability; cap/window seal,1A,current/thermal/reliability
+remain unqualified. 72 focused/528 applicable tests (same12 runtime exclusions),full archive/master/
+both legacy andall5128 protected baseline blobs PASS. Physical-design verdict
+PENDING independent immutable review;commit/push/exact CI before auditor.
+See new manufacturing record/source catalogue/824-component registry,not old V3
+source-only drawings. Earlier CAD bbox failure and query-timeout stops preserved.
+
+**Historical prior outcome: independently reviewed V2 physical-geometry STOP.**
 Read [current audit/status](docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md),
 [verbatim independent review](docs/PHYSICAL_PLAUSIBILITY_INDEPENDENT_REVIEW_20261102.md),
 then [V2 prototype](docs/COMPACT_TEC_V2_20261102.md). Separate read-only model-assisted
@@ -41,9 +50,9 @@ source, normalizes degrees to radians and retains inferred-contour certainty.
 At that prior checkpoint the correction was builder-verified; the b824212
 source-gate review now independently closes IA-08's metadata scope. No CAD/law/
 field/PDF bytes changed. Preserve every old STOP/FAIL and exact38-page Rev3.
-Next proposed closure is a dimensioned process-backed bridge/return/pin-wire/
-mount assembly; its implementation and any coupon need separate authorization
-and physical acceptance. Never run obsolete-post fixtures.
+At that historical checkpoint a dimensioned process-backed assembly was proposed;
+the new current order above authorizes its implementation only. A coupon/new
+physical simulation still needs separate authorization. Never run obsolete-post fixtures.
 Complete review/metadata checkpoint **dc5234a / exact CI PASS** is published;
 the audit is complete with physical STOP. Subsequent receipt-only commits do
 not grant fabrication, current, package or scientific acceptance.
@@ -250,21 +259,21 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current V3 assembly attempt STOPPED before CAD at its source/process gate.**
-Follow `docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md`, registration and actual
-constraints under `data/tec_assembly_v3_20261102`. Two conditional architectures
-are documented without invented joint/bend/tolerance values; mount solder family
-In52/Sn48/117C is source-backed but actual interfaces/reflow/finished thickness
-are not. V2's underside is bare ceramic and detector is an uncontacted MCT block;
-adding a solder cuboid or bond wire would not close either interface.
-Source-gate QA/serial independent review of b824212 is complete and published
-at cd52391 with exact CI PASS, STOP for the assembly specification and CONDITIONAL
-architecture families. Do not infer a geometry rejection from unknown1A
-rating or demand exact OEM internals. No new dimensioned assembly is accepted.
-No V3 STEP, complete package graph, tolerance closure or physical acceptance is
-claimed. A supplier/process cross-section, mount and die contact specification
-with independent tolerances is the next proposed closure package, not automatic
-permission to start another campaign. Preserve source-only diagrams as V2 views.
+**Current: execute the registered synthetic V3 assembly/CAD work.**
+Architecture B, finite formed feet/joints, enlarged tolerant P/N pads, solderable
+underside and real mount, pin1/9 leads and a defined photoconductive detector
+with7/8 bonds; no thermistor. Select and audit requirements and actual CAD,
+worst-case interval contacts/isolation/access, fresh mm writer/SI reader and
+independent scale controls. Freeze verified source/STEP and CI before a fresh
+serial read-only audit. No physics follows automatically. Prior source-gate
+STOPs below retain their historical scope and are not a ban on this new work.
+
+**Historical source-gate attempt:**
+Read `docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md` and its independent review of
+b824212 for the unspecified interfaces that the newly authorized V3 must close.
+No V3 CAD existed at that checkpoint; do not mistake its two V2 projections for
+new geometry. IA-08 metadata was independently closed; physical construction
+and all old numerical failures remain separate.
 
 **Prior independent physical promotion STOP; no science authorized by it.** Follow
 `docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md` and the independent review of
