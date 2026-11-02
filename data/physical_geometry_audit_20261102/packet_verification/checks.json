@@ -1,0 +1,96 @@
+[
+  {
+    "name": "focused",
+    "argv": [
+      "./fem/run.sh",
+      "pytest",
+      "-q",
+      "tests/test_tec_candidate_v2.py",
+      "tests/test_gated_cu_source_audit.py",
+      "tests/test_tec_candidate.py",
+      "tests/test_physical_geometry_audit.py"
+    ],
+    "observed_end_UTC": "2026-11-02T03:37:48.398013+00:00",
+    "seconds": 5.983737037982792,
+    "exit_code": 0
+  },
+  {
+    "name": "applicable",
+    "argv": [
+      "./fem/run.sh",
+      "env",
+      "TE_FEM_SMOKE=1",
+      "pytest",
+      "-q",
+      "--ignore=outputs",
+      "--deselect=tests/test_corrected_enclosure.py::test_gmsh_geometry_and_interface_area_audit",
+      "--deselect=tests/test_fem_g1.py::test_real_elmer_coupled_smoke",
+      "--deselect=tests/test_fem_g2a.py::test_real_four_couple_solver_smoke",
+      "--deselect=tests/test_fem_g2b_connected.py::test_actual_two_terminal_88_leg_mesh",
+      "--deselect=tests/test_fem_g2b_geometry.py::test_real_88_leg_mesh_feasibility",
+      "--deselect=tests/test_fem_g2b_physics.py::test_actual_two_terminal_full_stack_smoke",
+      "--deselect=tests/test_fem_g2c.py::test_real_local_temperature_adapter_and_runtime_guard",
+      "--deselect=tests/test_fem_g3b.py::test_genuine_elmer_compiled_exchange_does_not_stagnate_at_zero_initial_flux",
+      "--deselect=tests/test_flux_presolder.py::test_genuine_three_dimensional_layered_elmer_coupon",
+      "--deselect=tests/test_full_presolder.py::test_genuine_oblique_elmer_and_independent_quadratic_reference",
+      "--deselect=tests/test_geometry_rebaseline.py::test_independent_cad_and_actual_conformal_header_mesh"
+    ],
+    "observed_end_UTC": "2026-11-02T03:38:41.971002+00:00",
+    "seconds": 53.57260579499416,
+    "exit_code": 0
+  },
+  {
+    "name": "archive",
+    "argv": [
+      "./fem/run.sh",
+      "python",
+      "fem/archive_bath_spatial_device.py",
+      "--verify"
+    ],
+    "observed_end_UTC": "2026-11-02T03:38:59.794152+00:00",
+    "seconds": 17.822701273020357,
+    "exit_code": 0
+  },
+  {
+    "name": "master",
+    "argv": [
+      "python3",
+      "-B",
+      "-m",
+      "reports.master.validate",
+      "--current"
+    ],
+    "observed_end_UTC": "2026-11-02T03:39:00.666268+00:00",
+    "seconds": 0.8715463648550212,
+    "exit_code": 0
+  },
+  {
+    "name": "legacy_cli",
+    "argv": [
+      "./fem/run.sh",
+      "python",
+      "-m",
+      "tecooledmct.cli",
+      "--quick",
+      "--out",
+      "outputs/physical-audit-packet-20261102/legacy-cli"
+    ],
+    "observed_end_UTC": "2026-11-02T03:39:03.919979+00:00",
+    "seconds": 3.2532468461431563,
+    "exit_code": 0
+  },
+  {
+    "name": "legacy_geometry",
+    "argv": [
+      "./fem/run.sh",
+      "python",
+      "-m",
+      "tecooledmct.geometry_demo",
+      "--out",
+      "outputs/physical-audit-packet-20261102/legacy-geometry"
+    ],
+    "observed_end_UTC": "2026-11-02T03:39:08.851368+00:00",
+    "seconds": 4.931021127849817,
+    "exit_code": 0
+  }
+]

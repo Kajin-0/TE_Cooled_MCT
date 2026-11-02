@@ -30,7 +30,7 @@ milestone instructions have been relocated to historical context.
 
 | Question | Read / run |
 | --- | --- |
-| What blocks geometry promotion and further physics now? | [Physical-source audit](docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md); independent review PENDING, [issue#2 OPEN](https://github.com/Kajin-0/TE_Cooled_MCT/issues/2). V2 CAD PASS cannot establish physical acceptance |
+| What blocks geometry promotion and further physics now? | [Physical-source audit](docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md):23-source/96-parameter registry and four manufacturer figure families; pin leads, foil joint, tolerances and thermal return remain STOPs. Independent review PENDING, [issue#2 OPEN](https://github.com/Kajin-0/TE_Cooled_MCT/issues/2); safe checkpoint e1c431c has CI PASS |
 | How is the single master built and its historical evidence preserved? | [Internal report build/integrity guide](docs/MASTER_REPORT_REPRODUCIBILITY.md) |
 | What does the current package model solve? | [Integrated model guide](docs/INTEGRATED_REFERENCE_THERMAL_20261030.md) |
 | Which P/N laws and transport approximations are available? | [Transport and enclosure guide](docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md) |

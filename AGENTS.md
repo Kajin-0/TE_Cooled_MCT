@@ -9,9 +9,11 @@ Their numerical evidence, original errors and acceptance criteria remain intact.
 Read [audit registration/status](docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md),
 then [V2 prototype](docs/COMPACT_TEC_V2_20261102.md). V2 source/359-solid STEP/SI
 gates PASS; physical design is **NOT REVIEWED**, issue#2 OPEN. No Cu FEM, fitting,
-sink or other physical campaign. First preserve/publish the verified V2 plus
-unexecuted Cu STOP drafts and exact CI before reviewed source-only integration
-of PR#1. Builder cannot self-certify. A separately invoked read-only auditor may
+sink or other physical campaign. Safe checkpoint **e1c431c / exact CI PASS**
+preserves V2 and unexecuted Cu STOP drafts; the five reviewed PR#1 files are
+integrated as sources without merge/approval. The23-source/96-parameter packet
+and independent graph/SI/lap/thermal-path witnesses identify physical STOPs;
+freeze it before the separate review. Builder cannot self-certify. A read-only auditor may
 review only an immutable committed checkpoint, serially with builder writes
 paused and no second worktree; otherwise record NOT REVIEWED. Preserve every
 old STOP/FAIL/field and the exact38-page Rev3. Never run obsolete-post fixtures.
@@ -219,12 +221,14 @@ inspect every page of a rebuilt master before publication.
 ## Ordered next science milestones
 
 **Highest priority: physical-source/evidence audit, not new physics.** Follow
-`docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md`; first make the safe committed
-V2/STOP-draft checkpoint and verify exact CI, then review/integrate only PR#1's
-five audit-source files. Inspect at least three independent example families,
-build complete source-to-CAD/property/prediction registry and freeze the reviewer
-packet. Builder cannot clear issue#2 or self-certify an independent gate; retain
-NOT REVIEWED/STOP until the separate read-only review. No new CAD/FEM or fits.
+`docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md`; safe V2/STOP-draft checkpoint
+e1c431c and its exact CI PASS are complete. Only five reviewed PR#1 source files
+were integrated; no merge. Four independent manufacturer families have named
+visual inspections; the23-source/96-parameter registry preserves UNKNOWN ranges.
+Critical builder findings: no actual pin1/9 leads, no resolved100um foil-foot
+lap/process, unqualified three-ceramic return, unknown tolerance/current rating.
+Freeze/review the packet serially before interpreting further physics. Builder
+cannot clear issue#2 or self-certify; no new CAD/FEM, material fit or new campaign.
 
 **Prior compact v2 source/CAD prototype gates PASS (2026-11-02); STOP before
 further physics or qualification:**

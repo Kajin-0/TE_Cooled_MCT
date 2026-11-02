@@ -1,0 +1,112 @@
+# TEC geometry reference library and evidence-to-CAD review plan — 2026-11-02
+
+**Builder follow-up after safe checkpoint `e1c431c`:** the seed below is retained
+from PR#1 at `771b757`; its earlier live/uncommitted observations and inspection
+claims are historical, not a V2 signoff. Current [23-source catalogue](../data/physical_geometry_audit_20261102/source_catalog.json),
+[96-parameter traceability registry](../data/physical_geometry_audit_20261102/physical_parameter_registry.json)
+and [actual qualification record](PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md)
+govern the present audit. TEC2019 pp1/2/4, Kryotherm printed22/24, the served
+Laird/Tark pp1/2 and official Coherent/Marlow2022 pp1–3 were visually inspected;
+these provide four independent manufacturer families. RMT/Ferrotec are grouped,
+not counted twice. Failed retrievals, cached-byte reuse and unreviewed literature
+are explicit; raw copyrighted PDFs/renders remain ignored, factual hashes/index
+are permanent. Stage2–4 below are proposals, **not permission for CAD/physics**.
+
+New source distinctions: the live RMT PDF is2019 `/Z2`, H3.8mm/AlN default,
+while its web listing gives3.75mm; the Laird URL currently serves Tark branding
+with44mm base andBiSn138°C; Marlow RevK retrieval failed, so official Coherent
+2022 SP2402 is a separately identified source, not silently substituted RevK.
+The Au100µm design rule does not qualify Cu edge wrapping; the v2 declared100µm
+film land is not a resolved100µm foil-foot/solder lap. Physical gate remains STOP
+in builder findings and pending separate independent review; issue#2 stays OPEN.
+
+**Internal, versioned research index.** Scope: synthetic three-stage 44-couple TEC, separately constrained by a selected TEC Microsystems 3MC04-044-05 2019 data sheet, analogous RMT/Kryotherm/Laird/Marlow/Ferrotec hardware and VIGO 3TE nine-pin package. Reviewed sources below do **not** establish that the housing and TEC are the same commercial assembly. See the root AGENTS.md and [independent review protocol](PHYSICAL_PLAUSIBILITY_AUDIT_PROTOCOL.md). This file does not change CAD, promote physical qualification, or authorize the active VPS `sim:0.0` builder to run further simulation.
+
+This is a **traceable reference suite**, not a count-based vote. Product-specific drawing dimensions outrank different-family analogs; original diagrams must be viewed rather than trusting extracted text, with citations to exact figure/page. Manufacturer illustration is evidence of *architecture*, never a ruler. Distinguish published performance conditions, nominal dimensions and manufacturing-process minima. Multiple sources from a single supplier are **one supplier family** for claims of independent corroboration.
+
+## A. Source library — current status and precise use
+
+| ID | Source (original/URL and inspected location) | Evidence available; appropriate use | Scope / caution |
+| --- | --- | --- | --- |
+| TEC-01 | [TEC Microsystems 3MC04-044-05 datasheet, 2019, pp. 1, 2, 4](https://www.tec-microsystems.com/Download/Datasheets/Thermoelectric%20Coolers/MC04%20Series/3MC04-044-05_Datasheet_2019.pdf) | **Direct selected model**: p.1 bottom ceramic 6.4±0.1 mm, cold ceramic 2.4±0.1 mm, height 3.8±0.15 mm, terminal wire diameter 0.2 mm; Al2O3, Sn-Sb solder (stated melting temperature 230°C), Au exterior plated surfaces, hot-extruded Bi-Te. p.2 plotted I/V/load lift for 27°C vacuum and 50/75/85°C dry N2, with hot surface maintained at ambient. p.4 explicitly labels **interstage connectors**, metallization junctions and four ceramic plates in **MC04 series overview illustration**. PDF drawing and overview pages visually checked. | **p.4 is an illustrative family cutaway, not a fully dimensioned netlist, conductor section, metal thickness, ceramic intermediate widths, contact footprints or an exact 29/11/4 layout.** Performance ACR is not automatic DC R. |
+| PKG-01 | [VIGO ZTM-TO66-Z030 Rev.9, 2024, p.1](https://vigophotonics.com/app/uploads/2024/07/3TE-TO669p-wW-PVI_PCI-detector-technical-drawing.pdf) | **Direct package family drawing** visually inspected: nine 0.76 mm pin shafts on 10.8 mm PCD, C arrangement; TEC pins 1(+)/9(-), detector 7/8, thermistor 5/6, pins 2/3/4 unused; 31.5±0.2 by 17.5±0.2 mm two-ear flange, 24.4±0.2 mm hole pitch; Kovar header, steel case/cap, window choices. | Drawing is **bottom view** for pin assignment: explicit handedness conversion required; it does **not** identify TEC-01 as an installed component or reveal the manufacturer's internal TEC. |
+| TEC-02 | [TEC Microsystems general TEC construction guide](https://www.tec-microsystems.com/faq/thermoelectic-coolers-intro.html), sections ELECTRIC CONDUCTORS, SOLDERS, CERAMIC PLATES | Manufacturer says miniature TEC conductors are often deposited copper-containing multilayer thin films on ceramic; large high-power modules can use Cu tabs. Regular BiTe post / solder / ceramic construction; multistage pyramidal assemblies. | **Same supplier family** as TEC-01; qualitative method, not process certification of the V2 `15 µm` Cu edge film or `30 µm` free foil. |
+| TEC-03 | [TEC Microsystems custom Au/ceramic pattern process](https://www.tec-microsystems.com/services/customized-au-patterns.html), SIMPLE DESIGN RULES and VIAS, service page | Vendor supplies an explicit **3 × 100 µm** Au-pattern rule: min edge setback, plated width and inter-pattern gap each 100 µm; Al2O3/AlN, two-sided metal patterning and ceramic vias available. Supports considering compact substrate-backed traces instead of arbitrary unsupported posts. | Au **surface pattern** design rules are not verified internal Cu current-path rules, current ratings, foil bend requirements, sidewall metal layer adhesion, or production process for this TEC. V2 `0.11mm` pullback/`0.14mm` clearance and `0.2mm` trace width clear only an **analogy screen**. |
+| RMT-01 | [Ferrotec-RMT 3MC04 series product table](https://www.rmt-tec.com/products/thermoelectric-modules/multistage-modules/three-stage-modules/series-3mc04/), current product listing | **Independent nominal analog**: 3MC04-044-05 listed with **0.4 × 0.4 mm** P/N element section, 44 total couples, 2.4/6.4 mm top/bottom width, 3.75 mm height, ΔTmax 117 K, Qmax 0.61 W, Imax 1.14 A, Umax 3.6 V, ACR 2.74 Ω, **300 K vacuum**. Other -08/-10/-12 versions provide useful height/cooling/current trends. | Different generation/vendor/specimen from TEC-01 despite matching family name. Does **not** disclose precise 29/11/4 ordering, copper cross sections, exact stage spacing or manufacturing joining. Do not fit both vendor curves as one specimen. |
+| RMT-02 | [Ferrotec-RMT 3MC06 family](https://www.rmt-tec.com/products/thermoelectric-modules/multistage-modules/three-stage-modules/series-3mc06/) | 0.6 × 0.6 mm P/N element section and several 3-stage footprints/currents give a second **size regime within the same RMT supplier family** to compare manufacturable layouts. | Not independent of RMT-01; differences are expected and not tolerances on TEC-01. |
+| KRY-01 | [Kryotherm multistage datasheet distributed by AMS, printed pp. 21–24](https://shop.amstechnologies.com/media/d7/44/1a/1720719247/Multistage-Thermoelectric-Coolers-Kryotherm-Datasheet.pdf?ts=1734638881), photos and 3-stage diagrams p.22; nomenclature p.24 | **Independent manufacturer physical precedent** with actual exposed small multistage connectors, several substrate layouts and staged connections. Explicit stage allocation in model name: `TB-3-(31-11-4)-1.5`, `TB-3-(59-17-4)-1.5`; `N1,N2,N3` are hot→cold couple counts. Printed p.24 also gives finish, flatness and connector options. All 4 supplied PDF pages visually inspected. | Confirms that **31/11/4 is a manufactured published topology**, **not** that the TEC-01 or V2 has 29/11/4. Contact strips in photo are visible, but unscaled thickness/width cannot be measured. Distinguish outer Au/Ni plating from inner-stage current path. |
+| LAI-01 | [Laird/Tark MS3-119-20-15-11-W8 datasheet](https://www.lairdthermal.com/datasheets/datasheet-MS3-119-20-15-11-W8.pdf), p.1 indexed text and thermal curves | Independent three-stage **large-module benchmark**: Qcmax 14 W at ΔT=0; maximum ΔT 106°C at Qc=0. Explicitly states hot-side lead attachment creates passive heat loss and is less consequential on heatsink side. | Search-indexed PDF text inspected, **PDF image screenshot unavailable** in this review: mechanical figure dimensions and connector specifics NOT VERIFIED. Large module should not be used as a direct physical ruler for 6.4 mm device. |
+| LAI-02 | [Laird Thermoelectric Handbook (2025 distribution), PDF p.9 printed](https://www.mouser.com/pdfDocs/Thermoelectric-Handbook-2025-4.pdf) | Multistage ΔT/COP comparisons and methodology. Supplier notes many ceramic patterns and distinguishes Qcmax and ΔTmax; visually inspected printed p.9 graphs. | **Modeling/design-selection context**, not evidence for microscale interstage foil thickness or exact wiring. Same supplier family as LAI-01. |
+| MAR-01 | [II-VI/Marlow SP2402 technical datasheet, Rev K, pp.1–2](https://www.infinite-electronic.kr/datasheet/24-SP2402-01AB.pdf), p.1 image/table | **Independent manufacturer** visually inspected photo, 3-stage hardware and nominal nitrogen performance: at 27°C, ΔTmax 109°C, Qmax 8.7 W, Imax 5.3 A, Vmax 8.9 V, ACR 1.54 Ω; Al2O3/BeO construction and pre-tinned finish options. | Product significantly larger than V2 and specified **nitrogen**; source not proof of a microscale 30 µm foil. Distributor mirror of manufacturer's original datasheet; do not mislabel web host as manufacturer. |
+| FER-01 | [Ferrotec Japan multistage product catalogue](https://product.ferrotec.co.jp/en/product/electronic_device/thermo/multi_stage/), 3-stage table | **Independent catalog construction/size family**; examples include 2030/099/043MN (three stage, 4.3 A, 8.1 V, ΔTmax 117°C, Qcmax 6.1 W) with published three-stage tier footprints 8.6×13.0, 12.7×19.4, 21.7×28.3 mm and total thickness 10.4 mm. | Larger than miniature target; stage patterns are analogs, not MC04 netlist dimensions. Some Ferrotec corporate linkage with RMT: **do not count FER-01 as independent of RMT for supplier-independent vote without ownership review**. |
+| FER-02 | [Ferrotec thermoelectric module reliability guide, section 10](https://thermal.ferrotec.com/technology/thermoelectric-reference-guide/thermalref10/) | Vendor reliability evidence explicitly flags weak shear vs compressive loading, CTE mismatch, solder fatigue/contact resistance, mounting-induced failures and thermal cycling. | General reliability requirements; **does not certify** a short foil's fatigue/bend/film adhesion or permit a chosen current density. |
+| RES-01 | [Zhang et al., Chinese Physics Letters 42(5) 056304 (2025)](https://www.cpsjournals.cn/en/article/doi/10.1088/0256-307X/42/5/056304), DOI [10.1088/0256-307X/42/5/056304](https://doi.org/10.1088/0256-307X/42/5/056304) | Same-specimen low-T measurement of S, σ and k across 10–300 K, with error analysis. This is relevant to the repository's actual digitized 40–300 K subset. | **Research specimens not a certified commercial TEC grade.** No direct 300–390 K measurements. The digitization or assumed continuation does not inherit specimen measurement uncertainty. |
+| RES-02 | [Jeong and Smith, Cryogenics 34, 929–933 (1994)](https://doi.org/10.1016/0011-2275(94)90078-7), abstract | Published optimal staging / entropy-generation rationale for cascade cooler size distribution. | Abstract metadata reviewed, **full paper/geometry drawings not inspected**, model principle not manufacturer-specific count assignment. |
+| RES-03 | [Parameter analysis and optimal design for two-stage thermoelectric cooler, Applied Energy 154, 1–12 (2015)](https://doi.org/10.1016/j.apenergy.2015.04.104), abstract | Discusses sensitivity to stage-leg geometry and applied current in multiphysics model. | Two-stage analytical precedent, **abstract only**, not 3-stage internal wiring or validated tiny-film process. |
+| RES-04 | [Finite element analysis of multistage Bi2Te3 cooler, Next Energy 13, 100839 (Oct. 2026)](https://doi.org/10.1016/j.nxener.2026.100839), abstract | Recent two-stage commercially referenced 3D electrothermal FEM example with conditional matched datasheet comparisons and mesh study. | **Abstract only**, not full geometry extracted/independently rerun; two-stage and other model identity. Numerical benchmark not proof of V2 hardware. |
+
+**Additional unverified leads:** historical RMT 2008 N=4+11+29 + h=0.5 mm source already cited in the current candidate record, but the entire exact drawing is **not** independently verified here; patent US4687879A has proposed ceramic face/edge connections, but full patent figures were not independently retrieved in this review. These remain research targets, **not direct justification of V2 physical dimensions**. Some supplier source URLs are mirrored distributors, noted above. The corpus should retain raw source bytes/hashes only when actually acquired; links alone are not local archives.
+
+## B. Current V2 assumption comparison: prototype is NOT automatically source-verified
+
+As observed read-only in the live, **uncommitted** VPS files `docs/COMPACT_TEC_V2_20261102.md` and `tecooledmct/tec_candidate_v2.py` (2026-11-02 UTC; subject to further modification by builder):
+
+| V2 assumption or calculation | Source coverage | Present decision |
+| --- | --- | --- |
+| Three-stage 44-couple device; 6.4/2.4 mm plates, 3.8 mm height | TEC-01 **direct selected-model** (44 couples, external plates/height); KRY-01/RMT-01 corroborate plausibility | **Documented external only**; does not specify hidden intermediate dimensions or wiring. |
+| 29/11/4 couple distribution; four plate sizes 6.4/5.2/3.8/2.4 mm | Historical RMT2008 count multiset; KRY-01 demonstrates similar 31/11/4 concept; exact intermediate widths not provided by TEC-01 | **INFERRED**; multiple alternate ratios and widths remain necessary until photo/X-ray/manufacturer evidence. |
+| 0.4×0.4×0.5 mm legs; 0.58 mm pitch | RMT-01 gives **0.4×0.4 mm** section for a current RMT variant; historical height detail not fully confirmed in this review | Leg height, pitch and stage placement **INFERRED**; no exact per-product tolerances. |
+| 15 µm Cu on face/edge; 35 µm SnSb; 0.2 mm-wide ×30 µm-thick foil gaps | TEC-02 supports Cu-containing thin films, TEC-01 SnSb identity, TEC-03 a separate **Au plating pattern rule**, KRY-01/TEC-01 qualitatively show stage connectors | **HARD PHYSICAL REVIEW PENDING**: no cited source proves actual 15/30 µm metallurgical stack, sidewall continuity/current rating, 35 µm solder, unsupported 0.6 mm foil, process compatibility or reliability. |
+| Four foil gap crossings of 0.6 mm each; 0.5 mm edge wraps | V2 design code (not independently measured); source photos imply local connections exist but no matching dimensions | Conditional feasibility, not source-qualified. Verify full return net 88 and thermal contacts to intermediate ceramic. |
+| 0.11 mm min pad setback, 0.14 mm min unrelated Cu separation and 0.2 mm trace width | TEC-03 external Au-pattern guideline is ≥0.10 mm for each | **Only analog-pattern geometric screen PASS**, not internal conductor process clearance/reliability and not independent process signoff. |
+| 0.05 mm underside header clearance, hypothetical 1.3 mm glass feedthrough, omitted external terminal wires | VIGO drawing supports pin location and shaft Ø0.76 mm, not the specific gap, glass diameters, joints or wire routes | **UNKNOWN**: assembly interfaces require explicit tolerance chain and actual hot-pin1/9 connections before complete package acceptance. |
+| Current/thermal consequences of the new routing | See first-principles bounds below | **NOT QUALIFIED**: v2 reports no copper coupled FEM, contact/Joule partition, thermal shunts or grade matched curves. No physical device claim. |
+
+### Straight-segment SI screen (not a 3D result or safe rating)
+
+Use only as an **independent order-of-magnitude alarm**, with a **hypothetical** constant copper resistivity `rho=1.72e-8 ohm*m` and `k=400 W/(m*K)` at approximately room temperature. Real thin-film Cu may differ substantially from bulk and may have high contact/constriction resistance. For V2 nominal `I=1 A`:
+
+- Foil gap: `A=0.20 mm*0.030 mm = 6.0e-9 m2`, `L=0.60 mm`: `J_avg=1.667e8 A/m2`, `R≈1.72 mΩ`, `I²R≈1.72 mW`, `G≈0.004 W/K`.
+- Adjacent ceramic-edge film: `A=0.20 mm*0.015 mm=3.0e-9 m2`, `L=0.50 mm`: `J_avg=3.333e8 A/m2`, `R≈2.87 mΩ`, `I²R≈2.87 mW`, `G≈0.0024 W/K`.
+- A gap-plus-wrap **ideal series branch** has `R≈4.59 mΩ`, `G≈0.0015 W/K` absent overlap, metal interfaces, spreading and 3D shortcuts; across an **assumed** 30 K segment drop it would carry ~45 mW of passive conductive heat. Four such steps would contribute ~18.3 mW at 1 A **only if each carries full series current and these ideal segments are present as assumed**, before other metallization/joints.
+- This is **not** a measured `J_max` allowance, device `Q_c` loss, exact thermal delta or model-corrected T. The **core tradeoff** is essential: larger/shorter metal can reduce Joule power while increasing thermal bypass.
+
+The new V2's geometric and SI-reader PASS is encouraging, especially after prior 1000× errors, but **neither proves film adhesion, fatigue, 1-A operation, solder process nor qualified net-88 heat paths**.
+
+## C. Geometry-first next actions and release acceptance
+
+### Stage 0 — current Codex finishes its protected checkpoint
+
+Observe `sim:0.0` read-only. Let builder finish its active source/CAD tests and record hashes, original STOP/FAILs, exact commit and CI. Do **not** merge the separate reviewer PR while builder has uncommitted changes or send a competing agent into its worktree. All new review is on a fixed immutable code/data snapshot.
+
+### Stage 1 — source acquisition and parameter ledger (no physics)
+
+For **every** CAD quantity, create machine-readable register with: `parameter_id`, `component`, `value_SI`, `range_SI`, `units`, `source_id/page/figure`, `product`, `specimen`, `source_scope`, `exact/analog/inferred/scenario/unknown`, `geometry/code path`, `sensitivity`, `closure_test`, `review_status`.
+
+Seek actual *manufacturing details* not just thermoelectric performance plots: 3-stage connector photographs/cross sections; ceramic metallization materials and layer thickness; stage foil/tab widths, bend radii and solder joints; complete 2-terminal wiring map; material grade S/rho/k; TEC-to-header attachment; external lead pin1/9 routes; 3-stage plate thickness/pitch and solder/contact tolerances. Request supplier dimensions or X-ray/cross-section when published primary documentation is insufficient.
+
+### Stage 2 — design-space geometry, not single arbitrary V2
+
+Keep current V2 as **one explicit hypothesis**. Develop 2–3 additional *documented manufacturable* interstage topology options (e.g., supplier-style short tab connections and processed two-sided metallization with demonstrated joins), plus discrete plausible intermediate plate/leg-count variants. Every option must maintain 88 P/N legs, true hot terminal identity and physically explicit net58/net80/net88 connections, and must not short other 89 electrical nodes. **Do not manufacture unreferenced 1-A-rated foil/process values by assumption.**
+
+### Stage 3 — independent release gate before new physical simulation
+
+Reviewer examines the exact full CAD/STEP and source matrix, with dimension/tolerance, actual faces, true electrical connectivity, leads, material/sample domains, beam/current/thermal paths, package/assembly fits, manufacturing access and contact reliability. Require 3 independent physical exemplar families where available. All unknown high-impact quantities have testable low/nominal/high alternatives. Require rejection controls against wrong pin, mirror, SI, material, missing gap support, shorts, dimensional overflow and thermal return bypass.
+
+**STOP** if a high-impact architecture's manufacturability cannot be defended or thermal/electrical return is physically incomplete. **CONDITIONAL** allows bounded explicitly hypothetical synthetic geometry, not an OEM-identified part. Only once Stage 3 passes should a bounded Cu electrical/thermal operator (Stage 4) and updated coupled-device scenarios be authorized. A genuine empirical OEM/device validation claim requires matched measured device evidence.
+
+### Stage 4 — qualify only what source-constrained geometry allows
+
+Before large coupled 3D: on V2 or accepted alternative, solve electrical `R,I,J,IV,P_J` and 3D port-resolved thermal conductance to **each ceramic** and ambient; include joint uncertainty and Joule destination explicitly; check source-domain and discrete alternatives. Then compare currents/loads against **same-product, same-condition** manufacturer curves, retaining failure records. Recheck originally failed bath/cold/gas/side-port release gates separately. Only propagate physically credible inputs into the canonical device outputs.
+
+## D. Non-negotiable gating language
+
+- Never infer geometry merely by fitting Qmax, DeltaTmax, V(I), or a visually nice STEP.
+- Never silently translate **plated exterior Au** thickness into internal **Cu trace** thickness.
+- Never substitute a hot-side terminal pad for its physical wire to VIGO pin 1 or 9.
+- Never count a source figure twice as two independent manufacturers or use Kryotherm's 31/11/4 as measured TEC-01 29/11/4.
+- Never accept only a single arbitrary thin film, foil, joint, contact, gas, ceramic or heat-sink number at physical baseline level if it materially affects conclusions.
+- Never clear a 1% raw gas or bath gate with reconstructed reactions; a green test suite proves software invariants, not physical assembly.
+- Record what remains UNKNOWN: no source available is an evidence gap, **not permission to invent precision**.
+
+*Next review packet must cite the frozen post-Codex V2 commit, rather than using this live uncommitted reading as a full audit.*
