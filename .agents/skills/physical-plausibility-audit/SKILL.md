@@ -5,7 +5,7 @@ description: Independent evidence-backed physical audit of TE_Cooled_MCT geometr
 
 # Independent physical plausibility audit
 
-This is a **read-only, adversarial engineering review**, not another simulation campaign. Follow the current root AGENTS.md and docs/PHYSICAL_PLAUSIBILITY_AUDIT_PROTOCOL.md. The dedicated custom Codex role is .codex/agents/physical-plausibility-auditor.toml.
+This is a **read-only, adversarial engineering review**, not another simulation campaign. Follow the current root AGENTS.md and docs/PHYSICAL_PLAUSIBILITY_AUDIT_PROTOCOL.md and docs/TEC_GEOMETRY_EVIDENCE_LIBRARY_20261102.md. Re-check original source figures and dates; the library is an evolving index rather than a substitute for independent inspection. The dedicated custom Codex role is .codex/agents/physical-plausibility-auditor.toml.
 
 1. Freeze the exact **review target**: commit, files, CAD instance, physical assumptions and claims. Read the root contract, chronology, current geometry specification and relevant code. Never assume earlier findings apply unchanged to a new design.
 2. Independently consult original manufacturer diagrams and real-world assemblies, inspect the figures, then try to *disprove* the inferred construction using at least three relevant physically distinct examples when available. Record which sources are product-specific and which are analogs.
