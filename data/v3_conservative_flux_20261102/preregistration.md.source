@@ -1,0 +1,142 @@
+# Local V3 electrical conservative-discretization experiment
+
+Baseline: clean main `5317bf1061c0bd34fe24dfcb6fca2f1ffb947e07`.
+This is a separate internal numerical study, not a change to the source-informed
+physical candidate, an OEM validation or a public report. Thermal C and coupled
+D remain NOT RUN / NOT AUTHORIZED regardless of this experiment's outcome.
+
+## Prospective registration (before every new numerical control)
+
+The new authorization permits only saved-field reproduction, electrical method
+controls, at most two better numerical meshes of the unchanged coupon, and
+conditional electrical comparison. Stop at the first failed gate; no retries,
+coefficient fitting, physical geometry changes or downstream physics.
+All original P1 failures remain exact, including 85.6255% raw mismatch, voltage
+undershoot and geometric deficits. Source/STEP/fields/38-page Rev3 are immutable.
+Issue #2 remains OPEN. Prior independent reviews remain valid historical evidence.
+
+### Complete input and implementation seal
+
+Before controls, `registration.json` records actual UTC, the complete operator,
+control/mesh/driver/test source hashes and byte snapshots, this preregistration,
+the original geometry/105-face/port registry, frozen material/contact definitions,
+both old meshes/fields/results and their independent saved-field reproduction.
+`sealed()` checks all hashes before every numerical phase. No code or coefficient
+amendment is allowed silently: an error ends this attempt with its actual failure.
+Only a future explicitly registered successor could correct a numerical defect.
+
+Pinned `tecooledmct-fem:26.2.1`, image
+`sha256:a0b22cf70bbecaea2cbc8e1cf40aaef1bd620c187b73e251aee37a4fb9d28688`,
+must match its existing qualified Elmer binary hashes. No installation/substitute.
+Each phase uses <=4 CPUs / 8 GiB and a hard 900 s subprocess timeout; no thermal
+operator, new P/N solve, full package, gas, fitting or sink calculation. At most
+250,000 tets may be accepted/exported/solved per new mesh. A generated over-cap
+mesh is a recorded budget failure and stops without a physical solution.
+
+### Unchanged physical model and exact ports
+
+The source 824-solid STEP is unchanged. The extracted 31 inputs / 12 bulk domains /
+11 material interfaces / 105 physical faces remain the exact coupon BREP.
+The positive 1 V internal terminal is SnSb87/P87; pin9 Ni/omitted-shaft cut is
+0 V. Other exterior electrical faces are insulated. It is net88/lead9 only,
+not pin1, all 89 nets, P/N resistance or full TEC terminal resistance.
+All retained physical material/contact coefficients come verbatim from the prior
+NOM definition: finite solder/metal r_e''=1e-11 Ωm², Ti/TiW/Cu/Ni/Au 15 µm
+anisotropic laminate with 75/50 nm adhesion/barrier layers and 1e-14 Ωm² internal
+plated excess per pair; pin Ni/Au is its original 3.5 µm equivalent. No real
+thermal input is changed or used to compute a thermal result. Material laws are
+the original selected constant-300 K hypotheses, not measured plated transport.
+
+### Three electrical representations
+
+1. **Raw CG P1:** original finite-contact operator, separate regional voltage
+   traces, original element gradients. Preserve its actual raw cuts and original
+   <=0.1% cut / -1e-8 V boundedness requirements; no recovery can pass that gate.
+2. **Equilibrated RT0-compatible recovery:** one globally oriented integrated
+   normal current F_f [A] per triangular face; local basis
+   phi_i(x)=(x-v_i)/(3 volume). Shared faces give normal continuity. Minimize the
+   resistivity-weighted distance to the raw P1 current and the finite-contact
+   voltage-jump distance, subject to each tetrahedron's signed face sum=0,
+   insulated boundary flux=0 and, for two-terminal cases, the **P1 weak input
+   current fixed as a constraint**. This is not independent terminal-current proof.
+   The recovered field must separately match analytical flux and irreversible loss.
+3. **Direct mixed RT0/P0:** independently solve for F and cell-mean V, driven
+   by specified terminal potentials rather than P1 current. With D the signed
+   cell/face incidence and M the bulk resistivity plus contact matrix:
+   M F - D^T V = -b, D F=0. Contact diagonal is r_e''/A_f [Ω]. No CG solution or
+   current enters this solve. This is an independent discretization relative to
+   CG, but shares RT0 basis/mass implementation with recovery, not independent
+   software certification. Analytical quadrature checks remain necessary.
+
+The local mass integrates phi_i^T rho phi_j exactly from tetrahedral moments.
+A separate four-point degree-two volume quadrature evaluates actual bulk loss;
+contact loss is Σr_e'' F²/A. Contact traces are reconstructed from local mixed
+constitutive equations. Current is positive INTO the coupon at the positive
+terminal; globally stored boundary F is outward, so I=-ΣF_source. All field values
+and geometry arrays are SI except explicitly millimetre BREP/MSH files.
+
+Method definitions were checked against the primary
+[DOLFINx mixed-Poisson formulation](https://docs.fenicsproject.org/dolfinx/main/python/demos/demo_mixed-poisson.html)
+and [DefElement RT definition](https://defelement.org/elements/raviart-thomas.html),
+retrieved 2026-11-02. No DOLFINx/Basix package or alternative runtime is used.
+Our affine tetrahedral basis and finite-contact extension are implemented here.
+
+### Preregistered controls and accuracy gates
+
+Seven uniform controls each use independent structured n=2 and n=4 subdivisions:
+Cu bar; Cu/BiSn series and parallel; effective laminate normal and sheet;
+explicit five-layer normal and sheet with n subdivisions through each layer.
+Use the original property numbers and NOM interface parameters; no fitted values.
+Independent exact series/parallel formulas determine R, J, and normal-interface
+voltage jump. Each raw P1/recovered/mixed relative R and flux L2 error <=1e-7;
+IV versus independently quadrature-integrated loss <=1e-7. Mixed contact-law
+defect <=1e-7 V and analytic jump error <=1e-7 where nonzero. Cell balance <=1e-9
+of maximum face current. Mixed cell potentials stay within [0,1] +/-1e-8.
+
+One nonuniform **3D manufactured harmonic control** uses a 1 mm cube at n=4/8:
+V=x/L+0.2[(y/L)²-(z/L)²], constant original Cu conductivity. All walls have
+this specified smooth Dirichlet value; it is not the coupon's two-terminal BC.
+Compare the actual three-component analytical J at degree-two quadrature points,
+not a conservation surrogate. Finest flux L2 error <=5% and coarse/fine error
+ratio >=1.5 for all three methods. Mixed cell potential must lie within the
+actual prescribed range [-0.2,1.2] +/-1e-8. This benchmark's distinct physical
+boundary range does not relax the coupon's original [0,1] bound.
+Recovery uses interpolated CG wall data here; direct mixed uses exact quadratic
+face means. Their related RT0 spaces must not be described as independent proof
+solely because conservation agrees. No universal accuracy follows from these tests.
+
+Negative controls reject zero/negative/nonfinite contact resistance, negative
+conductivity and missing terminals. Existing source ownership, duplicate/missing
+faces, pin cuts and 1e3/1e-3 unit negative controls remain regression requirements.
+Every case result is saved before checking its gate; first failure STOPS geometry.
+
+### Conditional geometry and actual coupon comparison
+
+Only after all method controls PASS: two separately generated meshes of the
+unchanged BREP, h_max=35/25 µm, curvature sampling64/80 and minimum circle
+points128/160. No CAD rescaling, source merging, new contact or different layer.
+Positive tets, exact face/port ownership and source/bbox identities must pass.
+Each mesh must satisfy total volume error <=0.25% and **every** retained domain
+<=0.5%; the stricter all-domain interpretation avoids dropping a small joint.
+MSH stays mm and NPZ becomes m explicitly. Any fidelity/cap/time failure stops
+before that mesh's electrical solve. No adaptive geometry or unbounded retries.
+
+For an eligible mesh, compute original raw P1, recovery and direct mixed on the
+same physical coefficients/BCs. Retain all 11 interfaces, both terminals, three
+original interior planes and dead-end C1; zero-current branches use the original
+drive-current floor. Conservative cut/terminal mismatch <=0.1%, cell balance
+<=1e-9, IV versus bulk/contact loss <=0.5%; mixed V stays [0,1] +/-1e-8.
+The **strict combined release also retains the raw P1 cut/boundedness gate**;
+alternative conservation cannot replace it. A raw or alternative failure stops
+the attempt; remaining level/refinement is NOT RUN, not extrapolated.
+Across two eligible passing levels, alternative terminal R changes <=1% and
+every interface loss at 0.4 A changes <=2%, denominator floor1e-7 W. Report all
+interfaces, including minor and dead-end entries. No near-zero cherry-picking.
+I=0/0.1/0.4 A and 1 A STRESS are exact linear scalings, not a current rating.
+No thermal partition or full-device resistance/temperature is inferred.
+
+## Execution result
+
+PENDING. Source sealing must precede the first new control. Original saved-field
+reproduction is separate and uses no new solve. Failures, rejected meshes and
+NOT RUN branches will be retained, not repaired into this preregistration.

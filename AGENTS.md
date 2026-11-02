@@ -5,7 +5,19 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
-**Current outcome: V3 R1 local conductor Gate B FAIL / STOP (2026-11-02).**
+**Current outcome: conservative electrical study STOP at first coupon.**
+Read [the registered attempt](docs/V3_CONSERVATIVE_FLUX_20261102.md), baseline5317bf1.
+All16 control cases PASS; the first207,396-tet mesh meets the frozen volume gates
+(0.084875% total,0.118348% lead9). A coupon output-label KeyError lost the direct
+mixed flux export. Retained P1 raw cuts81.2417% and voltage undershoot FAIL;
+recovered current closes but IV/loss error0.769154% FAILS0.5%. No qualification.
+132 source/input identities were sealed before the first new control; preserve
+the complete failed producer and mislabelled artifacts, never repair them in place.
+L2 mesh, thermal C/D and all other physics NOT RUN. Only existing-field audit,
+verification/publication and serial read-only review of a frozen checkpoint remain
+authorized. No source fix, retry, further mesh/solve or performance claim now.
+
+**Historical outcome: V3 R1 local conductor Gate B FAIL / STOP (2026-11-02).**
 Read the [registered experiment and results](docs/V3_INTERCONNECT_ELECTROTHERMAL_20261102.md).
 Gate A source/port definitions and layered analytic controls passed their numerical
 scope. Exactly two electrical coupon meshes were run: 10,819 / 28,691 tets.
@@ -31,7 +43,7 @@ at B STOP; only final receipt publication/exact CI remains, then halt.
 Complete operator/source freezing must precede every control in a future
 separately authorized study. No new experiment is granted by this receipt.
 
-Only verification, documentation, immutable publication and optional serial
+At that historical checkpoint only verification, documentation, publication and serial
 read-only review of this failed checkpoint remain authorized. No further mesh,
 solve, refinement or parameter change to force a pass. A future discretization
 experiment requires new user authorization. Preserve all V1/V2/V3 source/STEP,
@@ -291,12 +303,11 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current: STOP after failed local V3 electrical Gate B; C/D NOT RUN.**
-Read `docs/V3_INTERCONNECT_ELECTROTHERMAL_20261102.md` and the frozen B fields.
-Finish only scope-appropriate QA/publication/read-only review. No new coupon
-mesh, solve or thermal phase is authorized; stable resistance and weak power
-closure do not qualify the failed raw cuts. A separately authorized future
-discretization test is proposed, not permission. Do not reuse obsolete V1 posts.
+**Current: STOP; publish verified subset of the conservative electrical attempt.**
+Read `docs/V3_CONSERVATIVE_FLUX_20261102.md` and its frozen sources/results.
+The first coupon failed numerically and its writer lost a mixed export; do not
+relaunch or edit the sealed producer. Controls/geometry PASS are distinct from
+unqualified current/loss accuracy. No L2, C/D or follow-on campaign is authorized.
 
 **Historical source-gate attempt:**
 Read `docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md` and its independent review of

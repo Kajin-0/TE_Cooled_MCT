@@ -1,0 +1,64 @@
+[
+  {
+    "role": "controls",
+    "argv": [
+      "./fem/run.sh",
+      "env",
+      "OPENBLAS_NUM_THREADS=1",
+      "OMP_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1",
+      "timeout",
+      "900",
+      "python",
+      "-B",
+      "-m",
+      "tecooledmct.v3_flux_study",
+      "controls",
+      "--out",
+      "data/v3_conservative_flux_20261102/controls"
+    ],
+    "exit_code": 0,
+    "seconds": 2.9247577500063926,
+    "observed_UTC": "2026-11-02T23:32:50.231016+00:00",
+    "gate": {
+      "status": "PASS",
+      "harmonic_error_reduction": {
+        "P1_raw": 1.999999999999999,
+        "recovered": 1.9794375007503768,
+        "mixed": 1.9357618405232724
+      },
+      "seconds": 2.0391540171112865,
+      "geometry": "ELIGIBLE only if PASS",
+      "coupon": "NOT RUN",
+      "C": "NOT RUN",
+      "D": "NOT RUN"
+    }
+  },
+  {
+    "role": "geometry",
+    "argv": [
+      "./fem/run.sh",
+      "env",
+      "OPENBLAS_NUM_THREADS=1",
+      "OMP_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1",
+      "timeout",
+      "900",
+      "python",
+      "-B",
+      "-m",
+      "tecooledmct.v3_flux_study",
+      "geometry",
+      "--out",
+      "data/v3_conservative_flux_20261102/geometry"
+    ],
+    "exit_code": 1,
+    "seconds": 155.13784623914398,
+    "observed_UTC": "2026-11-02T23:35:25.369557+00:00",
+    "gate": {
+      "status": "STOP",
+      "reason": "Phase exited without gate",
+      "exit_code": 1
+    }
+  }
+]

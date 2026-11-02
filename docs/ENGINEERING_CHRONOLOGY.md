@@ -314,3 +314,15 @@ not release certification; corrections and later outcomes must be appended.
 ## 2026-11-02T22:43:50Z — PASS / STOP — Exact successor CI and independent receipt complete
 
 **Observed UTC CI completion**; [f85638b](https://github.com/Kajin-0/TE_Cooled_MCT/commit/f85638b26fea07ee3618e884c8ac877d9b81e723) has [exact CI PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41538628451); the [serial read-only supplement](../data/v3_interconnect_et_20261102/independent_portability_supplement.md) confirms faithful original verdict, retained test assertions, 94 nonmutable packet / one cache / ten input identities and unchanged clean target. B FAIL / C,D NOT RUN and the pre-control sealing caveat remain; STEP/fields/exact 38-page Rev3 and every old failure unchanged, issue#2 OPEN; finish only this receipt's exact CI/clean-main handoff, then STOP with no further science authorized.
+
+## 2026-11-02T23:16:57Z — PENDING — Bounded conservative electrical discretization authorized
+
+**Observed UTC task begin**; clean main [5317bf1](https://github.com/Kajin-0/TE_Cooled_MCT/commit/5317bf1061c0bd34fe24dfcb6fca2f1ffb947e07), existing sim:0.0: new user permission allows only a separately registered local electrical method/control/geometry study, beginning with saved-field reproduction and complete pre-control source/input sealing. Original STEP/coupon/materials/contacts/ports/fields, raw P1 failures and 38-page Rev3 remain immutable; C/D and all package physics NOT RUN, issue#2 OPEN, hard numerical/geometry gates and resource stops apply.
+
+## 2026-11-02T23:36:33Z — PASS / FAIL / STOP — Methods and first mesh pass; coupon attempt stops
+
+**Observed UTC result inspection**; [registered experiment](V3_CONSERVATIVE_FLUX_20261102.md), source5317bf1: complete132-file seal preceded new controls, all16 electrical control cases PASS in2.925s; first207,396-tet mesh PASS (total volume deficit0.084875%, lead9 0.118348%). The155.138s coupon phase STOPPED on a producer output-label KeyError that lost the direct-mixed flux export; retained raw P1 error81.2417% and undershoot FAIL, recovered-current IV/loss error0.769154% FAILS0.5% despite cut closure—preserve source/outputs, L2 and all downstream physics NOT RUN; only saved-field audit/QA/publication and independent read-only review remain, no retries or gate relaxation.
+
+## 2026-11-02T23:45:27Z — PASS / STOP — Preserved partial numerical result ready for immutable review
+
+**Observed UTC QA completion**; [saved-array audit](../data/v3_conservative_flux_20261102/saved_audit.json) independently reproduces the retained recovered field and failed0.769154% loss test, without a solve; it does not reconstruct the missing mixed export. [Release checks](../data/v3_conservative_flux_20261102/verification_release/checks.json):120 focused /576 applicable PASS (same12 exclusions), archive/master/both legacy, all132 seals, 5,128 original /5,401 current baseline identities PASS; both plots inspected, oldSTEP/fields/Rev3 exact, next only commit/CI and serial independent read-only audit of this STOP, no new science.
