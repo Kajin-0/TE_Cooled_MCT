@@ -222,8 +222,31 @@ the initial blank-line recovery rejection. [Commands/logs](../data/tec_assembly_
 [integrity](../data/tec_assembly_v3_20261102/verification/integrity.json) and
 [reproduction](../data/tec_assembly_v3_20261102/verification/reproduction.json)
 are software/provenance evidence, not assembly acceptance.
-Independent review is PENDING an immutable committed **source-gate** checkpoint;
-it cannot review nonexistent V3 geometry. Issue#2 stays OPEN.
+Independent review of immutable **b824212** is complete: [verbatim A–F report](V3_ASSEMBLY_INDEPENDENT_REVIEW_20261102.md),
+[invocation/guard receipt](../data/tec_assembly_v3_20261102/independent_review_receipt.json)
+and [exact checkpoint CI PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41407201844).
+The reused separate read-only role retained its earlier independent V2-review
+history; no current builder conversation was inherited. Builder writes paused,
+and45 packet/23 cached identities and clean HEAD/status matched before/after.
+This is model-assisted review, not OS-enforced isolation or hardware certification.
+
+The reviewer confirms **STOP the present complete-assembly specification**,
+while retaining **CONDITIONAL constructibility** of both architectures; exact
+OEM reconstruction is unnecessary. It found no new arithmetic/unit defect and
+independently closed **IA-08 in metadata-only scope**. V3 contact graph, access,
+collisions, STEP/SI and tolerance acceptance remain **NOT RUN**. Lack of a1A
+qualification alone does not prove a geometry defect, nor does4.07mm nominal
+headroom prove a collision. These distinctions govern continuation.
+
+The review additionally records TEC2019's inconsistent225°C p1 /220°C p4
+short-process limits. Neither SnSb's≈230°C melting point nor another supplier's
+operating/process limits defines a permissible selected assembly reflow profile.
+No actual bridge alloy/process was selected, so the same117°C remelt warning
+remains conditional, not proof of an impossible chosen process. An adhesive
+mount could be another future hypothesis with its own vacuum/temperature/mechanical
+evidence; bare alumina prevents the currently proposed solder interface, not
+every conceivable mounting method. No geometry correction or new study followed.
+Issue#2 stays OPEN; source-gate STOP is not V3 CAD acceptance.
 Preserve the original bath1%/cold5%, native gas32.6274%, side-port7.277% and
 V1 loaded25.111K failures. The sole38-page Rev3 is unchanged: a stopped assembly
 specification supplies no new accepted device result for the public report.

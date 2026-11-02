@@ -15,8 +15,12 @@ support conditional architecture/process families, not these unprovided details.
 There is **no V3 CAD/STEP/SI result**;21 interface requirements and source-only
 constraints supplement the unchanged corrected96-record registry. The exact
 pinned image is intact; do not blame runtime or relaunch a build. Current task
-may only finish verification, immutable source-gate checkpoint/CI and one serial
-read-only review (explicitly no nonexistent V3 geometry acceptance).
+has completed verification and exact checkpoint CI at **b824212**. The separate
+[read-only review](docs/V3_ASSEMBLY_INDEPENDENT_REVIEW_20261102.md) confirms STOP
+for the present assembly specification, CONDITIONAL constructibility of both
+architectures, and PASS of the IA-08 metadata correction. V3 geometry review is
+NOT RUN because no V3 geometry exists. Only review-receipt/status publication
+and exact final CI remain; no further design/physics campaign is authorized.
 No new Cu/FEM/fit/sink/gas/radiation work; issue#2 OPEN and exact38-page Rev3 intact.
 
 **Prior outcome: independently reviewed V2 physical-geometry STOP.**
@@ -33,7 +37,8 @@ Cu drafts are committed, not pending. Only five reviewed PR#1 source files were
 integrated without merge/approval. The 23-source/96-parameter review packet is
 preserved; a versioned IA-08 metadata correction adds one internal hypothesis
 source, normalizes degrees to radians and retains inferred-contour certainty.
-That correction is builder-verified, not independently re-reviewed. No CAD/law/
+At that prior checkpoint the correction was builder-verified; the b824212
+source-gate review now independently closes IA-08's metadata scope. No CAD/law/
 field/PDF bytes changed. Preserve every old STOP/FAIL and exact38-page Rev3.
 Next proposed closure is a dimensioned process-backed bridge/return/pin-wire/
 mount assembly; its implementation and any coupon need separate authorization
@@ -251,7 +256,10 @@ are documented without invented joint/bend/tolerance values; mount solder family
 In52/Sn48/117C is source-backed but actual interfaces/reflow/finished thickness
 are not. V2's underside is bare ceramic and detector is an uncontacted MCT block;
 adding a solder cuboid or bond wire would not close either interface.
-Finish scoped QA and serial independent source-gate review/publication only.
+Source-gate QA/serial independent review complete at b824212, with STOP for the
+assembly specification and CONDITIONAL architecture families. Publish receipt
+and verify final exact CI only; do not infer a geometry rejection from unknown1A
+rating or demand exact OEM internals. No new dimensioned assembly is accepted.
 No V3 STEP, complete package graph, tolerance closure or physical acceptance is
 claimed. A supplier/process cross-section, mount and die contact specification
 with independent tolerances is the next proposed closure package, not automatic
