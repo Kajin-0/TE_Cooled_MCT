@@ -21,9 +21,15 @@ The [separate read-only numerical/source review](docs/V3_INTERCONNECT_INDEPENDEN
 of immutable **962c78a** independently confirms STOP, source/SI scope and the
 distinction between weak conservation and raw flux. It also preserves the exact
 CI failure (optional `meshio` import in a development-only test) and the disclosed
-pre-control sealing limitation. The successor correction is test-only ASCII-MSH
-inspection, not a changed operator, field or gate. Complete operator/source
-freezing must precede every control in any future separately authorized study.
+pre-control sealing limitation. The independently inspected test-only ASCII-MSH
+successor **f85638b has exact CI PASS**; its
+[serial supplement](data/v3_interconnect_et_20261102/independent_portability_supplement.md)
+confirms unchanged physics/fields/gates and faithful verbatim preservation.
+113 focused / 569 applicable checks (same 12 exclusions), archive/master,
+both legacy and both frozen-blob guards PASS. The bounded experiment is complete
+at B STOP; only final receipt publication/exact CI remains, then halt.
+Complete operator/source freezing must precede every control in a future
+separately authorized study. No new experiment is granted by this receipt.
 
 Only verification, documentation, immutable publication and optional serial
 read-only review of this failed checkpoint remain authorized. No further mesh,

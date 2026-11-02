@@ -441,3 +441,13 @@ again pass 113 focused / 569 applicable tests, the same 12 exclusions, archive,
 master, both legacy demonstrations and both protected-blob guards. Its immutable
 publication and exact CI are required separately; a software pass does not change
 the independent numerical STOP or the pre-control provenance limitation.
+
+The [separate successor supplement](../data/v3_interconnect_et_20261102/independent_portability_supplement.md)
+confirms faithful verbatim review preservation, all 94 nonmutable packet artifacts
+and unchanged physics, and closes V3ET-03 at source level. It records CI as pending
+at its own observation time; subsequently
+[exact f85638b CI passed](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41538628451),
+observed 2026-11-02T22:43:50Z and retained in the evidence directory. V3ET-01/02
+and the V3ET-04 pre-control sealing limitation remain unchanged. This concludes
+the bounded experiment at its registered STOP, not a qualified interconnect.
+No C/D or follow-on experiment follows from the software or review receipt.
