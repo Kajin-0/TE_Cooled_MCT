@@ -278,3 +278,11 @@ not release certification; corrections and later outcomes must be appended.
 ## 2026-11-02T16:12:27Z — PASS / PENDING — Test-only replay portability checkpoint verified
 
 **Observed UTC local QA**;[0830fd7 CI failure](../data/synthetic_v3_assembly_20261102/CI_0830fd7_failure.json) retained:96 focused/552 applicable tests PASS,same12 exclusions,archive/master/both legacy and5128 baseline blobs PASS. Onlythecross-Python derived-volume testchanges;all nominal geometry,STEP,source inputs,physical matching requirements,old failures and38-page Rev3 unchanged,next authorizedstep push/testexact CIthenserialindependent re-review,not newscience.
+
+## 2026-11-02T16:22:35Z — CONDITIONAL / PASS — Independent R1 design review complete; publication only
+
+**Observed UTC post-review event**;[0ababcc](https://github.com/Kajin-0/TE_Cooled_MCT/commit/0ababcc5949b6f5d23076729a9aa255be9c6ca05),[exact CI PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41479217048) and[verbatim supplement](SYNTHETIC_V3_CORRECTIVE_INDEPENDENT_REVIEW_20261102.md):independent CONDITIONAL physical-design acceptance ofcore/header/detector under R1;SV3-01..03 close inselected requirement/idealization/arithmetic scopes,not supplier capability. Builder writes paused16:15:48–16:20:09Z;148packet/32cache hashes andcleanHEAD matchbefore/after,all oldFAIL/STOP/Rev3 intact,issue#2 OPEN;metallurgy/bondprocess/capwindowsealedrelease/1A/performance unqualified,no further science/hardware authorized.
+
+## 2026-11-02T16:25:16Z — PASS / CONDITIONAL — Final V3 review receipt QA; no next campaign
+
+**Observed UTC final local QA**;[independently reviewed0ababcc](https://github.com/Kajin-0/TE_Cooled_MCT/commit/0ababcc5949b6f5d23076729a9aa255be9c6ca05) has[exact CI PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41479217048);[receipt guards](../data/synthetic_v3_assembly_20261102/final_receipt/contracts.json) preserve148 reviewedGit/32cache identities,both verbatim verdicts,81 inputs/5128 baseline blobs,source replay/master and84 currentlocal links. Core/header/detector design isCONDITIONAL underR1;source/STEP/38-pagePDF/old failures unchanged,issue#2 OPEN,capwindowsealedrelease/metallurgy/bondcapability/1A/performance unqualified;onlythisreceiptpublication/exactCIremains,no scienceorhardwareautomaticallyauthorized.

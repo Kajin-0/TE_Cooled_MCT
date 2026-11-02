@@ -81,7 +81,8 @@ No PDE, Cu electrothermal qualification, transport fit, sink or gas study.
 
 Actual separate824-solid STEP/source built; nominal source/contact/SI/exclusivity checks PASS.
 First independent physical-design review STOPs complete vertical tolerance closure;
-nominal architecture is CONDITIONAL. Measured-land correction is awaiting re-review; no physical/current/performance qualification.
+nominal architecture is CONDITIONAL. A subsequent independent R1 re-review grants
+conditional physical-design acceptance of core/header/detector under selected requirements; no physical/current/performance qualification.
 
 ## Material-name correction before release
 
@@ -345,7 +346,7 @@ Do not relaunch CAD to acquire a prettier result or infer numerical mesh accurac
 | Fresh STEP / independent SI dimensions/volume |PASS824 bodies|
 | Imported contact / curved exclusivity |PASS923 witnesses,58 Boolean checks|
 | Selected interval/contact/access limits |PASS;not statistical uncertainty or supplier certification|
-| Independent physical-design acceptance |Original STOP preserved;measured-land correction pending serial immutable re-review|
+| Independent physical-design acceptance |R1 CONDITIONAL core/header/detector;original STOP preserved,sealed package NOT QUALIFIED|
 | Cap/window assembly process / hermeticity |UNKNOWN/NOT QUALIFIED;inherited ideal mating components|
 |1A current / Cu electrothermal / solder fatigue |NOT RUN / NOT QUALIFIED|
 | Commercial P/N grade / OEM performance |NOT QUALIFIED;research analog unchanged|
@@ -498,3 +499,25 @@ Portability follow-up:96 focused/552 applicable tests PASS,same12 excluded;
 archive/master,both legacy demos andpinned bitwise source replay PASS.
 The originalfailedCIandindependentreviewremain visible;newexact CIis required
 before re-review. No geometry/material/result was altered to change an outcome.
+
+## Final independent disposition
+
+The [serial corrective review](SYNTHETIC_V3_CORRECTIVE_INDEPENDENT_REVIEW_20261102.md)
+of immutable **0ababcc** independently grants **CONDITIONAL PHYSICAL-DESIGN
+ACCEPTANCE of the synthetic core/header/detector assembly under R1 selected
+manufacturing/inspection requirements**. It closes SV3-01..03 in the stated
+specification/representation/arithmetic scopes andindependently reconstructs384
+paths over measured±141um corners. It does not certify actual metrology/forming
+capability or the literal local heel shape. The original07fe3cb STOP,failed fixed
+steps and0830fd7 CI failure remain intact.
+
+Exact0ababcc CI passed;148 packet/32 cache hashes andcleanHEAD/status match
+before/after review. Nominal824-solid STEP,all protected fields/failures and
+38-page Rev3 retain exact bytes. No new physical solve or hardware test ran.
+
+SV3-04 solder profiles/metallurgy,actual bond program/tool envelope/heel/pull,
+cap/window retention andseals,1A,cryogenic reliability,detector properties and
+cooler performance remain **unqualified**. This is not complete sealed-package
+manufacturing release. Issue#2 remains OPEN. The only remaining authorized action
+is receipt/status publication andexact CI;future process closure or physics needs
+separate user authorization. No further campaign starts automatically.

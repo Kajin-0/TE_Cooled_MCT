@@ -5,43 +5,41 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
-**Current authorized milestone: synthetic V3 assembly engineering/CAD (2026-11-02).**
-Read [registered build](docs/SYNTHETIC_V3_ASSEMBLY_CAD_20261102.md). The new direct
-user instruction supersedes the former source-only gate prospectively: select
-rationalized, inspectable synthetic dimensions and process requirements and
-BUILD separate architecture-B formed-tab full-package V3 source/STEP. Exact OEM
-secret dimensions or prior supplier fabrication are not required for CONDITIONAL
-prototype feasibility. Distinguish source fact, process analogy, selected drawing
-requirement and unproved capability; unknown1A/thermal/performance qualification
-must not be relabeled geometry failure. Preserve all historical STOPs and original
-V1/V2 source/STEP/fields/exact38-page Rev3. No new PDE/Cu electrothermal/fit/sink/
-gas work. Source/CAD/interval/contact/unit tests precede publication and exact CI;
-then a FRESH separate read-only auditor with no inherited builder reasoning,
-serially with builder writes paused. Issue#2 remains OPEN pending applicable
-independent physical-design closure. Do not stop solely because a nominal
-synthetic process dimension is selected rather than measured OEM data.
+**Current outcome: synthetic V3 R1 conditionally accepted; receipt publication only.**
+The2026-11-02 assembly/CAD milestone is complete in its stated design scope.
+Read [manufacturing/source/CAD record](docs/SYNTHETIC_V3_ASSEMBLY_CAD_20261102.md)
+and [independent corrective verdict](docs/SYNTHETIC_V3_CORRECTIVE_INDEPENDENT_REVIEW_20261102.md).
+Separate model-assisted read-only review of immutable **0ababcc / exact CI PASS**
+grants **CONDITIONAL PHYSICAL-DESIGN ACCEPTANCE of the synthetic core/header/
+detector assembly under selected R1 manufacturing/inspection requirements**.
+This is not demonstrated supplier capability, hardware release or OEM validation.
+Cap/window retention/sealing,metallurgy/thermal profiles,bond programming,1A,
+cryogenic reliability,detector properties andcooler performance remain unqualified.
+Issue#2 stays OPEN. **No further physics or hardware testing is authorized.**
+Only finish verified receipt/status publication andexact CI,then stop.
 
-**Current builder evidence:**824 separate solids,88 legs/176 P/N contacts/89 internal nets,
-actual hot mount and pin1/9 Cu leads,separate photoconductor/Au bonds to7/8;5/6 vacant.
-Fresh mm author and separate SI reader PASS (maxrelative volume1.141e−11,
-bbox1.000e−7m);923 imported contact witnesses,58 Boolean overlap checks and
-1250 conservative exclusions PASS. The selected manufacturing/interval requirements
-are not demonstrated capability; cap/window seal,1A,current/thermal/reliability
-remain unqualified. Original builder72 focused/528 applicable tests andarchive/master/legacy PASS.
-Independent review of07fe3cb STOPs worst-case vertical fit (18/36um versus10um
-joint differential),retaining CONDITIONAL nominal architecture;verbatim review
-is docs/SYNTHETIC_V3_INDEPENDENT_REVIEW_20261102.md. Current authorized correction
-uses measured-land off-device forming,explicit heel idealization andouterfinish
-uncertainty;nominal824-solid STEP is unchanged. Read tec_assembly_v3_fit.py and
-drawing_requirements_r1.json;freeze corrected tests/exact CI before serial
-read-only re-review. Corrective95/551 localchecks passed but0830fd7 CI failed only a2ULP derived-
-volume JSON equality underPython3.11. Test-only cross-runtime guard correction
-keeps all coordinates exact andpinned full-source bitwise replay unchanged;
-96 focused/552 applicable tests (same12 exclusions),archive/master/legacy and
-5128 baseline blobs nowPASS. Require newexactCIbefore re-review. No physical/Cu/current/seal/1A
-acceptance ornew science.
-See new manufacturing record/source catalogue/824-component registry,not old V3
-source-only drawings. Earlier CAD bbox failure and query-timeout stops preserved.
+Actual separate V3:824 solids,88 legs/176 full P/N contacts/89 internal nets,
+real formed feet/joints,solderable underside/hot mount,pin1/9 Cu leads and7/8
+photoconductor bonds;5/6 vacant. Fresh mm author/separate SI reader PASS
+(maxrelative volume1.141e−11,bbox1.000e−7m);923 imported contact witnesses,
+58 Boolean checks and1250 conservative exclusions PASS. Nominal STEP and
+all V1/V2/fields/exact38-page Rev3 remain unchanged by the R1 correction.
+
+The [first independent STOP](docs/SYNTHETIC_V3_INDEPENDENT_REVIEW_20261102.md)
+on07fe3cb remains correct:fixed tabs could not accommodate18/36um rise errors
+with10um joint differential. R1 measures finished lands andcustom-forms tabs
+OFF-device,with postrelease inspection/no forcefit:128 corners/384 continuous
+paths,15–25um joints,18um measured-stroke reserve. Corrected height3.664–3.944mm;
+heel/neck is an explicit bounded CAD idealization,not a literal wedge program.
+Read `tec_assembly_v3_fit.py`,R1 requirements andregistry overlay before changes.
+
+96 focused/552 applicable tests PASS (same12 runtime exclusions),full archive/
+master/both legacy and5128 baseline blobs PASS. The0830fd7 CI failure is preserved:
+one2ULP derived-volume equality underPython3.11;test-only portability fix keeps
+coordinates exact,pinned full-source replay bitwise andSTEP hashes unchanged.
+0ababcc exact CI PASS and148 packet/32 cache identities matched before/after
+serial re-review;both original verdicts are preserved verbatim. Selected dimensions
+are inspectable drawing requirements,not measured OEM values or current ratings.
 
 **Historical prior outcome: independently reviewed V2 physical-geometry STOP.**
 Read [current audit/status](docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md),
@@ -269,14 +267,13 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current: execute the registered synthetic V3 assembly/CAD work.**
-Architecture B, finite formed feet/joints, enlarged tolerant P/N pads, solderable
-underside and real mount, pin1/9 leads and a defined photoconductive detector
-with7/8 bonds; no thermistor. Select and audit requirements and actual CAD,
-worst-case interval contacts/isolation/access, fresh mm writer/SI reader and
-independent scale controls. Freeze verified source/STEP and CI before a fresh
-serial read-only audit. No physics follows automatically. Prior source-gate
-STOPs below retain their historical scope and are not a ban on this new work.
+**Current milestone complete: publish verified review receipt/exact CI and stop.**
+V3 R1 has conditional physical-design acceptance in the named core/header/detector
+scope. Proposed next engineering is supplier process/metrology/bond-program and
+cap/window retention/sealing closure;it needs separate authorization. No Cu PDE,
+fit,sink,gas/radiation orhardware campaign follows automatically. Preserve first
+STOP,all old failures/archives andexact Rev3;do not rerun old fixtures or rebuild
+the report for administrative updates.
 
 **Historical source-gate attempt:**
 Read `docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md` and its independent review of
