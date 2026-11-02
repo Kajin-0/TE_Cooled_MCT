@@ -223,6 +223,10 @@ and original producer remain preserved. Correct mode120000 link-byte handling
 passes under the same immutable-content requirement; no PDF or archive changed.
 The38-page master SHA remains882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248.
 Software/integrity PASS does not alter independent physical **STOP** or issue#2.
+The complete review/IA-08 checkpoint [dc5234a](https://github.com/Kajin-0/TE_Cooled_MCT/commit/dc5234a0d93f553f0b2fc69b191bb99de4ccfa85)
+is published with [exact-commit CI PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41401028804).
+Only this publication receipt/chronology follow it; no subsequent scientific
+experiment is authorized or executed.
 
 Reproduce into new directories only (no source/geometry mutation):
 

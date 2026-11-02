@@ -24,6 +24,9 @@ field/PDF bytes changed. Preserve every old STOP/FAIL and exact38-page Rev3.
 Next proposed closure is a dimensioned process-backed bridge/return/pin-wire/
 mount assembly; its implementation and any coupon need separate authorization
 and physical acceptance. Never run obsolete-post fixtures.
+Complete review/metadata checkpoint **dc5234a / exact CI PASS** is published;
+the audit is complete with physical STOP. Subsequent receipt-only commits do
+not grant fabrication, current, package or scientific acceptance.
 
 ## Cold-start protocol — no prior chat context required
 
