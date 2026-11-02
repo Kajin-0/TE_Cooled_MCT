@@ -5,7 +5,21 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
-**Current outcome: independently reviewed physical-geometry STOP (2026-11-02).**
+**Current authorized scope: narrow V3 physical assembly (2026-11-02).**
+Read [V3 source/process gate](docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md) first.
+The new user order prospectively permits separate assembly engineering, but
+the registered process gate has **STOPPED before CAD**: a qualified formed-foot
+joint/process, actual underside mounting finish/bondline, detector pad/bond
+stack and independent component tolerances are missing. New primary sources
+support conditional architecture/process families, not these unprovided details.
+There is **no V3 CAD/STEP/SI result**;21 interface requirements and source-only
+constraints supplement the unchanged corrected96-record registry. The exact
+pinned image is intact; do not blame runtime or relaunch a build. Current task
+may only finish verification, immutable source-gate checkpoint/CI and one serial
+read-only review (explicitly no nonexistent V3 geometry acceptance).
+No new Cu/FEM/fit/sink/gas/radiation work; issue#2 OPEN and exact38-page Rev3 intact.
+
+**Prior outcome: independently reviewed V2 physical-geometry STOP.**
 Read [current audit/status](docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md),
 [verbatim independent review](docs/PHYSICAL_PLAUSIBILITY_INDEPENDENT_REVIEW_20261102.md),
 then [V2 prototype](docs/COMPACT_TEC_V2_20261102.md). Separate read-only model-assisted
@@ -230,7 +244,20 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Physical promotion STOP; no next science automatically authorized.** Follow
+**Current V3 assembly attempt STOPPED before CAD at its source/process gate.**
+Follow `docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md`, registration and actual
+constraints under `data/tec_assembly_v3_20261102`. Two conditional architectures
+are documented without invented joint/bend/tolerance values; mount solder family
+In52/Sn48/117C is source-backed but actual interfaces/reflow/finished thickness
+are not. V2's underside is bare ceramic and detector is an uncontacted MCT block;
+adding a solder cuboid or bond wire would not close either interface.
+Finish scoped QA and serial independent source-gate review/publication only.
+No V3 STEP, complete package graph, tolerance closure or physical acceptance is
+claimed. A supplier/process cross-section, mount and die contact specification
+with independent tolerances is the next proposed closure package, not automatic
+permission to start another campaign. Preserve source-only diagrams as V2 views.
+
+**Prior independent physical promotion STOP; no science authorized by it.** Follow
 `docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md` and the independent review of
 8339307. Four independent manufacturer figure families and nominal CAD/circuit
 PASS do not establish fabrication/current/thermal/package acceptance. The

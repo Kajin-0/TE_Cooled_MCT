@@ -30,6 +30,7 @@ milestone instructions have been relocated to historical context.
 
 | Question | Read / run |
 | --- | --- |
+| Did the narrow V3 assembly close the physical interfaces? | [Registered V3 source/process gate](docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md): **STOP before CAD**, despite intact pinned runtime. Fresh process-family sources and21 interface requirements expose missing formed-foot joint, underside finish/mount, die contact stack and tolerances; no V3 STEP or physics exists. Original V2 stays frozen; independent source-gate review pending |
 | What blocks geometry promotion and further physics now? | [Physical-source audit](docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md) and [separate independent review](docs/PHYSICAL_PLAUSIBILITY_INDEPENDENT_REVIEW_20261102.md): **STOP physical promotion**, despite nominal circuit/STEP PASS. Missing package leads, foil joint/process, mounting/tolerances, current rating and thermal allocation remain unqualified. Four manufacturer figure families,96 parameter records; versioned metadata correction preserves original23-source packet and adds an internal hypothesis source. [Issue#2 remains OPEN](https://github.com/Kajin-0/TE_Cooled_MCT/issues/2); safe and packet checkpoints have exact CI PASS |
 | How is the single master built and its historical evidence preserved? | [Internal report build/integrity guide](docs/MASTER_REPORT_REPRODUCIBILITY.md) |
 | What does the current package model solve? | [Integrated model guide](docs/INTEGRATED_REFERENCE_THERMAL_20261030.md) |

@@ -1,0 +1,501 @@
+{
+  "original_96_record_registry": "data/physical_geometry_audit_20261102/physical_parameter_registry_v2.json",
+  "original_registry_sha256": "247dd56444d7593007220eb4c27d8f07bf62640b620937c778ee39fdacc29d21",
+  "new_interface_parameters": [
+    {
+      "parameter_id": "v3.bridge.metallization_stack",
+      "value_SI": "Ti/TiW/Cu/Ni/Au",
+      "units": "process",
+      "range_SI": null,
+      "evidence_class": "INFERRED_TESTABLE",
+      "source_ids": [
+        "ASM-01",
+        "ASM-02"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.Cu_face_edge_film",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Conditional process family; specific Al2O3 layers/sidewall coverage not qualified",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.bridge.foot_length",
+      "value_SI": null,
+      "units": "m",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "TEC-01",
+        "KRY-01"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.actual_foil_inward_foot",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Real formed foot required; no independently documented minimum lap for this30umCu/15umfilm system",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.bridge.bend_radius",
+      "value_SI": null,
+      "units": "m",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "KRY-01",
+        "ASM-07"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.foil_thickness",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Foil temper/bend/fatigue limits unknown",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.bridge.joint_thickness",
+      "value_SI": null,
+      "units": "m",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "ASM-02",
+        "ASM-04"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.foil_joint_process",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Solder/interlayer collapse/wetting and final contact area unknown",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.mount.solder_composition",
+      "value_SI": [
+        0.52,
+        0.48
+      ],
+      "units": "fraction",
+      "range_SI": null,
+      "evidence_class": "DOCUMENTED_FAMILY",
+      "source_ids": [
+        "ASM-04"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.header_mount_joint",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "In/Sn percentages fromRMT Table2; source does not state percentage basis; no VIGO joint qualification",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.mount.solder_melting_point",
+      "value_SI": 390.15,
+      "units": "K",
+      "range_SI": null,
+      "evidence_class": "DOCUMENTED_FAMILY",
+      "source_ids": [
+        "ASM-04"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.header_mount_joint",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "117C stated melting point; actual reflow peak/dwell/cryocycle unknown",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.bridge.reflow_peak",
+      "value_SI": null,
+      "units": "K",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "ASM-02",
+        "TEC-01",
+        "ASM-04"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.foil_joint_process",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Operating-temperature and transient-reflow ratings are different; no compatible full process specified",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.mount.finished_bondline",
+      "value_SI": null,
+      "units": "m",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "ASM-03",
+        "ASM-04"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.header_gap",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Original50um gap is not a qualified finished solder thickness",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.mount.underside_finish",
+      "value_SI": null,
+      "units": "process",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "ASM-01",
+        "ASM-03"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.header_mount_joint",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "V2 bottom face is bare Al2O3; solder mounting requires additional defined metallization",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.mount.header_finish",
+      "value_SI": null,
+      "units": "process",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "PKG-01",
+        "ASM-04"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "native.header_thickness",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Gold-plated Kovar known; exact barrier/thickness/wetting not supplied",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.lead.diameter",
+      "value_SI": 0.0002,
+      "units": "m",
+      "range_SI": null,
+      "evidence_class": "DOCUMENTED_FAMILY",
+      "source_ids": [
+        "TEC-01"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "native.lead_diameter",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Documented bare AWG32 nominal; not installed route,temper or qualified current",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.lead.pin1_to_net0",
+      "value_SI": null,
+      "units": "geometry",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "PKG-01",
+        "ASM-03"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.physical_pin1_9_connections",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Endpoints determined; no installed wire/joint/access or worst-case isolation witness",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.lead.net88_to_pin9",
+      "value_SI": null,
+      "units": "geometry",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "PKG-01",
+        "ASM-03"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.physical_pin1_9_connections",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Endpoints determined; no installed wire/joint/access or worst-case isolation witness",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.detector.pad_stack",
+      "value_SI": null,
+      "units": "process",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "PKG-01",
+        "ASM-05"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.detector_bonds",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "No actual die contact/pad locations/metallurgy; bulk MCT block is not a bond pad",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.detector.bonds7_8",
+      "value_SI": null,
+      "units": "geometry",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "PKG-01",
+        "ASM-05"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.detector_bonds",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Do not draw an Au bond to an unidentified contact",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.thermistor.population",
+      "value_SI": false,
+      "units": "1",
+      "range_SI": null,
+      "evidence_class": "SCENARIO",
+      "source_ids": [
+        "ASM-05",
+        "PKG-01"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.detector_bonds",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Explicitly unpopulated pins5/6; NOT DEVICE-COMPLETE",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.tolerance.layers",
+      "value_SI": null,
+      "units": "m",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "TEC-01"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.stack_height",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "4u_c+3u_l+6u_m+6u_s<=150um; individual bounds unknown",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.tolerance.registration",
+      "value_SI": null,
+      "units": "m",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "TEC-01",
+        "TEC-03"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.full_pad_registration_budget",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "20um total nominal per-axis margin,not supplier placement tolerance",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.lead.allowable_current",
+      "value_SI": null,
+      "units": "A",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "ASM-07",
+        "TEC-01"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.foil_track_width",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "No1A film/foil/current-crowding/reliability qualification",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.assembly.fixture_and_access",
+      "value_SI": null,
+      "units": "process",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "ASM-03",
+        "ASM-04"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.foil_joint_process",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Tool/fixture envelope,joining access and protection of earlier joints unestablished",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    },
+    {
+      "parameter_id": "v3.cap.worst_case_headroom",
+      "value_SI": null,
+      "units": "m",
+      "range_SI": null,
+      "evidence_class": "UNKNOWN",
+      "source_ids": [
+        "PKG-01"
+      ],
+      "source_catalog": "data/tec_assembly_v3_20261102/source_catalog.json",
+      "inherited_parameter_id": "v2.header_gap",
+      "implementation": "scripts/v3_assembly_source_gate_20261102.py",
+      "CAD": "NOT AUTHORED; source/process STOP",
+      "mesh_property_prediction": "NOT RUN; no new geometry/mesh/physics",
+      "domain": "Synthetic proposed assembly; not a VIGO+TEC Microsystems OEM composite",
+      "gap": "Mount/die/attach/roof tolerance intervals incomplete; nominal4.07mm is not worst case",
+      "closure_owner": "Process supplier/assembly engineer and independent physical reviewer",
+      "closure_test": "Dimensioned cross-section,process and worst-case tolerance/interface witness; see technical record",
+      "priority": "P0",
+      "physical_status": "STOP specific implementation; family process can remain CONDITIONAL"
+    }
+  ],
+  "V3_STEP": "NOT RUN",
+  "alternatives": [
+    {
+      "id": "A",
+      "architecture": "Separately patterned ceramic face/edge metallization with real formed Cu feet and qualified solder joints",
+      "preferred": "Conditional first supplier/process request; compact topology analogous toV2",
+      "source_ids": [
+        "ASM-01",
+        "ASM-02",
+        "TEC-01"
+      ],
+      "critical_unknowns": [
+        "layer stack/side coverage",
+        "foil temper,foot/radius andland/joint limits",
+        "thermal sequence and current/cycle limits"
+      ],
+      "status": "CONDITIONAL architecture;STOP CAD specification"
+    },
+    {
+      "id": "B",
+      "architecture": "Short formed tab between separate face pads; avoid sidewall-film dependence",
+      "source_ids": [
+        "KRY-01",
+        "TEC-01",
+        "ASM-09"
+      ],
+      "critical_unknowns": [
+        "Cu tab size,bend/foot/tool envelope",
+        "support/attachment and fullreturn route",
+        "matching bond process;TWI AlSi example notCuTEC qualification"
+      ],
+      "status": "CONDITIONAL alternative;STOP CAD specification"
+    }
+  ]
+}

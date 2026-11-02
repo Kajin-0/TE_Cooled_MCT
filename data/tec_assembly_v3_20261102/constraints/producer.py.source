@@ -1,0 +1,129 @@
+"""Source-only assembly constraints; no CAD, mesh, transport or PDE imports.
+
+The output describes the preserved V2 and missing V3 prerequisites. It never
+creates or qualifies a V3 assembly from incomplete manufacturing evidence.
+"""
+import argparse
+import hashlib
+import json
+import math
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+BASE = ROOT / 'data/tec_assembly_v3_20261102'
+V2 = ROOT / 'data/tec_candidate_29114_v2_20261102/source_final/design.json'
+NATIVE = ROOT / 'fem/results/geometry_complete_checkpoint_20261030/manifest.json'
+
+
+def read(path):
+    return json.loads(Path(path).read_text())
+
+
+def finite_nonnegative(value):
+    if not math.isfinite(value) or value < 0:
+        raise ValueError('Finite nonnegative physical bound required')
+    return value
+
+
+def worst_clearance(nominal, independent_losses):
+    finite_nonnegative(nominal)
+    for loss in independent_losses:
+        if loss is not None:
+            finite_nonnegative(loss)
+    if any(loss is None for loss in independent_losses):
+        return None
+    return nominal - math.fsum(independent_losses)
+
+
+def thickness_bound(ceramic, leg, metal, solder):
+    terms = (ceramic, leg, metal, solder)
+    for term in terms:
+        if term is not None:
+            finite_nonnegative(term)
+    if any(term is None for term in terms):
+        return None
+    return math.fsum(n * u for n, u in zip((4, 3, 6, 6), terms))
+
+
+def pins_si(registry):
+    rows = {r['parameter_id']: r for r in registry['parameters']}
+    angle = rows['native.pin_step']
+    if angle['units'] != 'rad' or not math.isclose(angle['value_SI'], math.pi / 5, abs_tol=1e-15):
+        raise ValueError('IA-08 SI angular identity')
+    for key in ('central_radius', 'ear_radius'):
+        if rows['native.' + key]['evidence_class'] != 'DERIVED_SOURCE_CONTOUR':
+            raise ValueError('Inferred contour promoted to exact')
+    if [s['id'] for s in rows['native.glass_od']['source_refs']] != ['HYP-NATIVE']:
+        raise ValueError('Analyst seal attributed to manufacturer')
+    radius = rows['native.pin_pcd']['value_SI'] / 2
+    return {n: [-radius * math.cos(-n * angle['value_SI']),
+                radius * math.sin(-n * angle['value_SI'])] for n in range(1, 10)}
+
+
+def analyse():
+    d, native = read(V2), read(NATIVE)
+    registry = read(ROOT / 'data/physical_geometry_audit_20261102/physical_parameter_registry_v2.json')
+    rows = {r['parameter_id']: r for r in registry['parameters']}
+    pins = pins_si(registry)
+    for body in native['bodies']:
+        if body['kind'] == 'pin':
+            if math.dist(body['center_xy_m'], pins[body['pin_number']]) > 1e-14:
+                raise ValueError('Native pin handedness mismatch')
+    cu = [b for b in d['bodies'] if b['kind'] == 'Cu']
+    bottom_metal = any(abs(box[2]) < 1e-12 for body in cu for box in body['boxes_mm'])
+    # Only the existing 0.44mm pad / 0.4mm leg nominal geometry is evaluated.
+    pad = rows['v2.PN_pad_width']['value_SI']
+    leg = rows['v2.leg_section']['value_SI'][0]
+    nominal_margin = (pad - leg) / 2
+    terminals = {t['node']: [v * .001 for v in t['center_mm']] for t in d['terminals']}
+    endpoints = []
+    for node, pin in ((0, 1), (88, 9)):
+        endpoints.append(dict(net=node, pin=pin, top_view_pin_xy_m=pins[pin],
+            module_land_xy_m=terminals[node][:2],
+            planar_endpoint_separation_m=math.dist(terminals[node][:2], pins[pin]),
+            wire_solid='ABSENT; separation is not installed wire length'))
+    return dict(scope='Preserved V2 source constraints; V3 geometry NOT RUN',
+        overall='STOP before V3 CAD: source/process and complete-interface gates unresolved',
+        original_module=dict(legs=len(d['legs']),Cu_nets=len(cu),source_contacts=176,
+            new_contact_graph='NOT RUN; original independently reviewed353-node/352-edge graph unchanged'),
+        IA08='PASS SI radians / estimated contour / analyst seal source independently rechecked',
+        nominal_pad_margin_m=nominal_margin,
+        pad_stress_controls=[dict(relative_offset_m=u,remaining_margin_m=worst_clearance(nominal_margin,[u]),
+             evidence='Conditional geometric stress, not a manufacturing tolerance') for u in (10e-6,20e-6,25e-6)],
+        worst_case_pad_margin_m=worst_clearance(nominal_margin,[None,None,None]),
+        stack_nominal_m=4*.0005+3*.0005+6*15e-6+6*35e-6,
+        stack_error_bound_m=thickness_bound(None,None,None,None),
+        stack_requirement='4u_c+3u_l+6u_m+6u_s<=150um; constituent bounds UNKNOWN',
+        analogy_only=dict(Au_face_edge_rule_m=100e-6,
+            P_N_pad_edge_error_budget_m=rows['v2.pad_pullback']['value_SI']-100e-6,
+            per_net_equal_edge_error_budget_m=(rows['v2.unrelated_Cu_gap']['value_SI']-100e-6)/2,
+            validity='External Au face rule is not a Cu edge-wrap process specification'),
+        hot_mount=dict(V2_bottom_metallized=bottom_metal,original_nominal_gap_m=50e-6,
+            mounting_solid='ABSENT',finished_bondline_interval_m=None,
+            source_prerequisite='Coherent pp13-14: solder attachment needs metallized ceramic'),
+        pin_endpoints=endpoints,pin_diameter_m=.00076,PCD_m=.0108,
+        illustrative_3quarter_turn_wire_arc_m=1.5*math.pi*(.00076+.0002)/2,
+        arc_scope='Coherent header-post convention applied conditionally to stated diameters; no CAD route, wetting or clearance acceptance',
+        cap_nominal_roof_clearance_m=.00965-(.00155+.00403),
+        cap_worst_case_roof_clearance_m=None,
+        detector=dict(source_kind='Bare hypothetical MCT block + attach only',
+            actual_pad_stack=None,bonds_7_8='ABSENT; V3 cannot invent a bond to bare MCT'),
+        thermistor='UNPOPULATED pins5/6; NOT DEVICE-COMPLETE',
+        V3_STEP='NOT RUN',SI_import='NOT RUN',new_meshes=0,new_PDEs=0)
+
+
+def main(out):
+    if out.exists():
+        raise ValueError('New output required; preserve previous evidence')
+    out.mkdir(parents=True)
+    result = analyse()
+    (out / 'constraints.json').write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')
+    (out / 'producer.json').write_text(json.dumps(dict(
+        source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        V2_sha256=hashlib.sha256(V2.read_bytes()).hexdigest()),indent=2)+'\n')
+    print(json.dumps(result,indent=2))
+
+
+if __name__ == '__main__':
+    parser=argparse.ArgumentParser();parser.add_argument('--out',type=Path,required=True)
+    main(parser.parse_args().out)
