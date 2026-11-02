@@ -5,7 +5,7 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
-**Current authorized scope: narrow V3 physical assembly (2026-11-02).**
+**Current outcome: V3 assembly source gate STOP; CAD NOT RUN (2026-11-02).**
 Read [V3 source/process gate](docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md) first.
 The new user order prospectively permits separate assembly engineering, but
 the registered process gate has **STOPPED before CAD**: a qualified formed-foot
@@ -19,8 +19,9 @@ has completed verification and exact checkpoint CI at **b824212**. The separate
 [read-only review](docs/V3_ASSEMBLY_INDEPENDENT_REVIEW_20261102.md) confirms STOP
 for the present assembly specification, CONDITIONAL constructibility of both
 architectures, and PASS of the IA-08 metadata correction. V3 geometry review is
-NOT RUN because no V3 geometry exists. Only review-receipt/status publication
-and exact final CI remain; no further design/physics campaign is authorized.
+NOT RUN because no V3 geometry exists. Complete source-gate/review checkpoint
+**cd52391 / exact CI PASS** is published; receipt-only updates preserve this
+result. No further design/physics campaign is authorized.
 No new Cu/FEM/fit/sink/gas/radiation work; issue#2 OPEN and exact38-page Rev3 intact.
 
 **Prior outcome: independently reviewed V2 physical-geometry STOP.**
@@ -256,9 +257,9 @@ are documented without invented joint/bend/tolerance values; mount solder family
 In52/Sn48/117C is source-backed but actual interfaces/reflow/finished thickness
 are not. V2's underside is bare ceramic and detector is an uncontacted MCT block;
 adding a solder cuboid or bond wire would not close either interface.
-Source-gate QA/serial independent review complete at b824212, with STOP for the
-assembly specification and CONDITIONAL architecture families. Publish receipt
-and verify final exact CI only; do not infer a geometry rejection from unknown1A
+Source-gate QA/serial independent review of b824212 is complete and published
+at cd52391 with exact CI PASS, STOP for the assembly specification and CONDITIONAL
+architecture families. Do not infer a geometry rejection from unknown1A
 rating or demand exact OEM internals. No new dimensioned assembly is accepted.
 No V3 STEP, complete package graph, tolerance closure or physical acceptance is
 claimed. A supplier/process cross-section, mount and die contact specification

@@ -247,6 +247,10 @@ mount could be another future hypothesis with its own vacuum/temperature/mechani
 evidence; bare alumina prevents the currently proposed solder interface, not
 every conceivable mounting method. No geometry correction or new study followed.
 Issue#2 stays OPEN; source-gate STOP is not V3 CAD acceptance.
+The complete source/review checkpoint [cd52391](https://github.com/Kajin-0/TE_Cooled_MCT/commit/cd523914aedba7b5082c15aec59bb9e141b72c73)
+is published with [exact CI PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41408744207).
+Only this closure receipt follows; no complete V3 assembly was delivered and
+no subsequent CAD or scientific campaign is authorized.
 Preserve the original bath1%/cold5%, native gas32.6274%, side-port7.277% and
 V1 loaded25.111K failures. The sole38-page Rev3 is unchanged: a stopped assembly
 specification supplies no new accepted device result for the public report.
