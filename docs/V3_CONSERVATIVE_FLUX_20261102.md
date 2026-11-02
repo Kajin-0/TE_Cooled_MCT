@@ -307,3 +307,31 @@ attributes are mutable exceptions. Both new quantitative figures were visually
 inspected. No PDF rebuild or additional numerical experiment occurred.
 These checks validate preservation and reporting of a **stopped experimental
 prototype**; they do not certify its writer or grant electrical qualification.
+
+## Independent numerical audit and retained mixed-potential failure
+
+The separate serial [read-only audit of b2be519](../data/v3_conservative_flux_20261102/independent_review.md)
+confirms **STOP**, all65 packet /132 pre-control identities and independent
+geometry/face coverage. Builder writes were paused; the review is preserved
+verbatim. [Exact b2be519 CI passed](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41548045677).
+The reviewer independently integrated the recovered loss using tetrahedral
+moments instead of the producer's four-point quadrature and reproduced0.769154%.
+
+**Additional retained failure CF-03:** `lead9_cell_V` was written by the first
+(mixed) iteration. The later recovery has no pressure array and therefore did
+not overwrite it. Its207,396 cell means have minimum **−2.652280858e-5 V** and
+maximum0.999982465557 V. The minimum independently fails the frozen−1e-8 V
+bound. This does not restore the missing mixed flux or qualify its current/loss;
+it is an independently observable mixed-potential failure. Fixing the output
+namespace alone cannot qualify this coupon. No clipping or threshold change.
+The receipt adds a saved-array regression assertion; no numerical producer,
+operator, input, mesh or field changes.
+
+The reviewer also records a verification limit: **control fields were not
+archived**, only case summaries/gates and sealed reproducible source. Source
+formula and summary arithmetic checks passed, but independent field-level L2
+recomputation was NOT RUN. The initial reported control execution remains valid
+producer evidence, not fully independent saved-field validation. A future
+separately authorized producer should retain those control fields and distinct
+method output schemas before any new qualification attempt. None was rerun here.
+CF-01/02/03 remain open, L2 and C/D remain NOT RUN, and issue#2 remains OPEN.

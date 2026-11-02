@@ -11,6 +11,13 @@ All16 control cases PASS; the first207,396-tet mesh meets the frozen volume gate
 (0.084875% total,0.118348% lead9). A coupon output-label KeyError lost the direct
 mixed flux export. Retained P1 raw cuts81.2417% and voltage undershoot FAIL;
 recovered current closes but IV/loss error0.769154% FAILS0.5%. No qualification.
+Separate [read-only numerical review](data/v3_conservative_flux_20261102/independent_review.md)
+of immutable b2be519 / exact CI PASS confirms STOP and additionally finds the
+surviving mixed cell minimum −2.65228e-5 V fails the registered −1e-8 V floor.
+Control fields were not archived: their saved summaries/formulas, not independent
+field-level L2 recomputation, were reviewed. Do not present a writer-only fix as
+sufficient qualification. 120 focused /576 applicable checks and all protected
+hashes pass; preserve the original review and final receipt separately.
 132 source/input identities were sealed before the first new control; preserve
 the complete failed producer and mislabelled artifacts, never repair them in place.
 L2 mesh, thermal C/D and all other physics NOT RUN. Only existing-field audit,
