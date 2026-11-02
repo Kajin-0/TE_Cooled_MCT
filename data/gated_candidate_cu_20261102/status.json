@@ -1,0 +1,72 @@
+{
+  "observed_UTC": "2026-11-02T01:19:30.958830+00:00",
+  "stage_A": "STOP environment; physical fixture NOT RUN",
+  "stage_B": "NOT RUN; A unmet",
+  "stage_C": "NOT RUN; B unmet",
+  "actual_CAD_imports": 0,
+  "actual_meshes": 0,
+  "actual_new_reduced_cases": 0,
+  "pinned_image": "tecooledmct-fem:26.2.1 unavailable",
+  "cache_restore": "One cache-only attempt aborted before package installation; no fallback runtime",
+  "checks": [
+    {
+      "name": "master",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "reports.master.validate",
+        "--current"
+      ],
+      "exit_code": 0,
+      "seconds": 7.252529927995056,
+      "log": "verification/master.log"
+    },
+    {
+      "name": "archive_semantic",
+      "argv": [
+        "python3",
+        "-B",
+        "fem/archive_bath_spatial_device.py",
+        "--verify"
+      ],
+      "exit_code": 1,
+      "seconds": 0.06001710589043796,
+      "log": "verification/archive_semantic.log"
+    },
+    {
+      "name": "stdlib_source_tests",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_gated_cu_source_audit.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.06411053310148418,
+      "log": "verification/stdlib_source_tests.log"
+    }
+  ],
+  "baseline_blob_guard": {
+    "baseline": "7d7e9be162a334ee252c4214e7751f903c99b562",
+    "scope": "All baseline Git blobs except three mutable continuation documents; integrity, not semantic/numerical rerun",
+    "verified_files": 4941,
+    "verified_bytes": 2896428811,
+    "mismatches": []
+  },
+  "syntax_checked": [
+    "tecooledmct/candidate_cu_fem.py",
+    "tecooledmct/candidate_cu_fixture.py",
+    "fem/gated_cu_source_audit.py",
+    "tests/test_gated_cu_source_audit.py"
+  ],
+  "full_applicable_regression": "NOT RUN: pinned runtime missing",
+  "legacy_demos": "NOT RUN: pinned runtime missing",
+  "publication": "NOT RUN: unexecuted fixture implementation remains uncommitted"
+}

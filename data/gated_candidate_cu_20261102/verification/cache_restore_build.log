@@ -1,0 +1,24 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.10kB 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04@sha256:78d4744ead1f5b19b04d0df558ab182a5300903900755e515b2ca4d10eb2044d
+#2 DONE 0.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 64B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/ubuntu:24.04@sha256:78d4744ead1f5b19b04d0df558ab182a5300903900755e515b2ca4d10eb2044d
+#4 resolve docker.io/library/ubuntu:24.04@sha256:78d4744ead1f5b19b04d0df558ab182a5300903900755e515b2ca4d10eb2044d 0.0s done
+#4 CACHED
+
+#5 [2/6] RUN apt-get update && apt-get install -y --no-install-recommends     build-essential cmake gfortran libblas-dev liblapack-dev libglu1-mesa     python3-venv ca-certificates curl git     && dpkg-query -W > /opt/apt-packages.lock && rm -rf /var/lib/apt/lists/*
+#5 0.450 Ign:1 http://archive.ubuntu.com/ubuntu noble InRelease
+#5 0.450 Ign:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+#5 0.450 Ign:3 http://security.ubuntu.com/ubuntu noble-security InRelease
+#5 0.451 Ign:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+#5 CANCELED
+got 3 SIGTERM/SIGINTs, forcefully exiting

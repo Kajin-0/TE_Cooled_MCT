@@ -1,0 +1,78 @@
+{
+  "pull_request": {
+    "url": "https://github.com/Kajin-0/TE_Cooled_MCT/pull/1",
+    "number": 1,
+    "state": "open",
+    "merged": false,
+    "mergeable": true,
+    "draft": true,
+    "body": "## Why this exists\n\nTwo preventable baseline-level failure classes have already been recorded: unsupported interstage copper architecture and incorrect hardware scale/pinout. Geometry/PDE PASS states have not been sufficient physical-source gates. An **independent engineering reviewer** must attempt to falsify the baseline **before** additional simulation or release claims.\n\n## Contents\n\n- `.codex/agents/physical-plausibility-auditor.toml`: dedicated GPT-6.1 Sol xhigh, strictly read-only physical-design reviewer role.\n- `.agents/skills/physical-plausibility-audit/SKILL.md`: repository-discoverable invocation protocol.\n- `docs/PHYSICAL_PLAUSIBILITY_AUDIT_PROTOCOL.md`: evidence hierarchy, source specificity, constructability, quantitative screens, release verdicts, full subsystem matrix.\n- `docs/PHYSICAL_PLAUSIBILITY_BASELINE_TRIAGE_20261102.md`: scoped initial STOP findings anchored to current main, with clear unreviewed work and independent datasheet pointers.\n\n## Immediate result\n\nExisting 29/11/4 candidate is **STOP** for physical qualification (unsupported historical copper routing; full manufacturer alignment already failed). The active proposed v2 connector is **NOT REVIEWED**, not pre-approved.\n\n## Safety / integration\n\nThis branch touches NO current source, numerical parameters, CAD, tests, report, historical archives, AGENTS.md, README or chronology. No solver ran and no existing VPS agent was interrupted. The main working tree has active uncommitted v2 connector work in the established `sim:0.0` session, so **leave this draft unmerged until that builder reaches a safe committed checkpoint**. A separate serial read-only audit of that completed v2 design is required. The protocol does not claim branch-protection automation or empirical validation.\n\n## Reviewer acceptance criteria\n\nCheck the source citations and inspection claims, verify role parses and is discoverable by local Codex, ensure serial-only invocation, and apply its first review to the completed v2 geometry. Never infer that a green test suite establishes physical buildability.\n\n## Geometry evidence library (2026-11-02)\n\nThe PR also adds a [source-verified TEC geometry reference suite](https://github.com/Kajin-0/TE_Cooled_MCT/blob/audit/independent-physical-plausibility-review/docs/TEC_GEOMETRY_EVIDENCE_LIBRARY_20261102.md) with 16 indexed source entries from multiple suppliers, original diagram-page references, evidence classes, explicit V2 assumption gaps, first-principles SI conductor/heat-shunt screens and a geometry-first release sequence. The research does NOT certify the live uncommitted V2. Tracking work: [blocking issue #2](https://github.com/Kajin-0/TE_Cooled_MCT/issues/2).",
+    "title": "Add independent physical-plausibility auditor for TEC geometry and model assumptions",
+    "base": "main",
+    "base_sha": "7d7e9be162a334ee252c4214e7751f903c99b562",
+    "head": "audit/independent-physical-plausibility-review",
+    "head_sha": "771b7579e883e125cb5e129a42bd0ef9bffa97e3",
+    "head_repo_id": 1437267540,
+    "head_repo_full_name": "Kajin-0/TE_Cooled_MCT",
+    "merge_commit_sha": "0bcedcf74eaf78b5cc9cd704cef6d505f6a36225",
+    "user": {
+      "login": "Kajin-0",
+      "name": "Kajin-0",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/28634576?v=4",
+      "id": 28634576
+    },
+    "requested_reviewers": null,
+    "requested_team_reviewers": null,
+    "comments": [],
+    "created_at": "2026-11-02T02:23:13Z",
+    "updated_at": "2026-11-02T02:42:21Z",
+    "closed_at": null,
+    "merged_at": null,
+    "commits": 7,
+    "changed_files": 5,
+    "additions": 228,
+    "deletions": 0,
+    "display_url": "https://github.com/Kajin-0/TE_Cooled_MCT/pull/1",
+    "display_title": "Add independent physical-plausibility auditor for TEC geometry and model assumptions"
+  },
+  "issue": {
+    "issue": {
+      "url": "https://github.com/Kajin-0/TE_Cooled_MCT/issues/2",
+      "title": "BLOCKING: physically qualify compact V2 TEC geometry and interstage connectors before further physics",
+      "issue_number": 2,
+      "body": "## Status and operating constraint\n\n**BLOCKED FOR PHYSICAL-QUALIFICATION CLAIMS**; source/CAD pass alone does not justify a device-baseline release.\n\nThe working `sim:0.0` session currently owns the active uncommitted compact V2 implementation. Do not interrupt it or run a second agent in its worktree. Preserve the V1 failed design and historical files, old numerical STOP/FAILs and canonical Rev3. Review this work only when the builder reaches a stable, committed and verified checkpoint.\n\nReference research: [geometry evidence library (audit branch)](https://github.com/Kajin-0/TE_Cooled_MCT/blob/audit/independent-physical-plausibility-review/docs/TEC_GEOMETRY_EVIDENCE_LIBRARY_20261102.md).\n\nIndependent auditor: [draft PR #1](https://github.com/Kajin-0/TE_Cooled_MCT/pull/1).\n\n## Geometry-acceptance deliverables\n\n- [ ] Builder freezes committed V2 source, STEP, design manifest, verification, exact runtime and CI. No physical claim before independent review.\n- [ ] Source-by-parameter registry: values, SI units, tol/ranges, exact source/figure, product/specimen identity, code path, evidence class, consequences. Distinguish VIGO package / TEC Microsystems 2019 / RMT modern family.\n- [ ] Inspected original drawing/photos from **at least three distinct physical construction exemplars** (where available) with disconfirming examples; do not count three TEC Microsystems pages as independent manufacturers. Include the exact TEC Microsystems MC04 family connectors (2019 datasheet p4), Kryotherm three-stage photos and circuit examples (p22), separate RMT product data, Laird and Marlow comparisons.\n- [ ] Account for all 88 legs, 176 P/N contacts, 89 copper nets, four ceramics, the **full two-terminal current circuit**, nets 58/80 stage jumps and net 88's return across both stage levels. Include true pin 1/9 geometry rather than assume terminal pads are pins.\n- [ ] Challenge 15 µm Cu film, 30 µm × 0.2 mm short foil, 35 µm SnSb, 0.5 mm vertical edge film, 0.6 mm unsupported section, 0.10 mm laps; document actual material/joining/barrier/adhesion process, Cu thin-film vs bulk properties, 1 A current and cyclic reliability. An illustrative manufacturer drawing does not specify these cross-sections.\n- [ ] Dimension/tolerance chain for 6.4/5.2/3.8/2.4 mm plate widths and thicknesses, 29/11/4 couple allocation, pellet pitch, 3.8 mm full stack, package cap/pins/window/header, clearance under worst-case assembly tolerance. Independent STEP/mesh SI checks (1,000x unit regression).\n- [ ] Quantify conditional R, J, I²R and thermal conductance of each bridge, contact power/spreading and multi-ceramic return shunts; use scenarios for UNKNOWN interface/process values. Do not call average J a rated allowable J.\n- [ ] Reviewer delivers independent PASS/CONDITIONAL/STOP per subsystem with source URLs and figure/page, quantitative witnesses, unreviewed paths, specific closure tests; review must be read-only and **not self-certified by builder**.\n- [ ] Only after physical conditional PASS, preregister bounded v2-specific Cu electrical/thermal FEM; do not resume rejected old-post geometry fixtures. Later 3D package gas/bath and vendor performance gates remain independent and must not be waived.\n\n## Hard STOP rules\n\nA missing physical support/joint for a necessary current path; unverified conductive return through multiple ceramic temperatures; wrong source/model/view/pin/scale; unsupported material validity presented as measured; CAD-only PASS called manufacturability; or a high-impact arbitrarily chosen single geometry value without sources/bounds.\n\n**Issue closure is NOT achieved by green tests or a geometry preview.** Close only with an independently reviewed actual post-builder checkpoint, explicitly documenting which claims have become physically plausible and what still requires direct supplier/process evidence. A synthetic hypothesis can be conditionally accepted without exact OEM identity when constructible and bounded.",
+      "state": "open",
+      "user": {
+        "login": "Kajin-0",
+        "name": "Kajin-0",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/28634576?v=4",
+        "id": 28634576
+      },
+      "assignees": null,
+      "labels": null,
+      "milestone": null,
+      "state_reason": null,
+      "comments": 0,
+      "created_at": "2026-11-02T02:42:01Z",
+      "updated_at": "2026-11-02T02:42:01Z",
+      "closed_at": null,
+      "display_url": "https://github.com/Kajin-0/TE_Cooled_MCT/issues/2",
+      "display_title": "BLOCKING: physically qualify compact V2 TEC geometry and interstage connectors before further physics"
+    },
+    "url": "https://github.com/Kajin-0/TE_Cooled_MCT/issues/2",
+    "title": "BLOCKING: physically qualify compact V2 TEC geometry and interstage connectors before further physics",
+    "display_url": "https://github.com/Kajin-0/TE_Cooled_MCT/issues/2",
+    "display_title": "BLOCKING: physically qualify compact V2 TEC geometry and interstage connectors before further physics"
+  },
+  "changed_files": {
+    "filenames": [
+      ".agents/skills/physical-plausibility-audit/SKILL.md",
+      ".codex/agents/physical-plausibility-auditor.toml",
+      "docs/PHYSICAL_PLAUSIBILITY_AUDIT_PROTOCOL.md",
+      "docs/PHYSICAL_PLAUSIBILITY_BASELINE_TRIAGE_20261102.md",
+      "docs/TEC_GEOMETRY_EVIDENCE_LIBRARY_20261102.md"
+    ]
+  }
+}

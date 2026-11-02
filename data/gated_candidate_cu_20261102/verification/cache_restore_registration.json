@@ -1,0 +1,21 @@
+{
+  "observed_begin_UTC": "2026-11-02T01:10:03.211886+00:00",
+  "purpose": "Restore exact existing cached runtime only; abort uncached dependency execution",
+  "command_argv": [
+    "docker",
+    "buildx",
+    "build",
+    "--network=none",
+    "--pull=false",
+    "--load",
+    "--progress=plain",
+    "--tag",
+    "tecooledmct-fem:26.2.1",
+    "--file",
+    "outputs/gated-cu-runtime-cache-20261102/context/fem/Dockerfile",
+    "outputs/gated-cu-runtime-cache-20261102/context"
+  ],
+  "maximum_seconds": 120.0,
+  "Dockerfile_sha256": "1dd10a8f2684011a5c8fde55f4debe510d628d2a68e5e5e4b8cdad9c6975795c",
+  "prior_image_missing": true
+}

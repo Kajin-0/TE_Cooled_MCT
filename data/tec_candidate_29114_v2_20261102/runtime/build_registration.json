@@ -1,0 +1,32 @@
+{
+  "observed_UTC": "2026-11-02T02:19:47.833721+00:00",
+  "argv": [
+    "docker",
+    "build",
+    "--network=default",
+    "--pull=false",
+    "--cpu-period=100000",
+    "--cpu-quota=400000",
+    "--memory=8g",
+    "--memory-swap=8g",
+    "--force-rm",
+    "--tag",
+    "tecooledmct-fem:26.2.1",
+    "--iidfile",
+    "/home/User/TE_Cooled_MCT/data/tec_candidate_29114_v2_20261102/runtime/image_id.txt",
+    "--file",
+    "/home/User/TE_Cooled_MCT/outputs/compact-v2-runtime-restore-20261102/context/fem/Dockerfile",
+    "/home/User/TE_Cooled_MCT/outputs/compact-v2-runtime-restore-20261102/context"
+  ],
+  "Dockerfile_sha256": "1dd10a8f2684011a5c8fde55f4debe510d628d2a68e5e5e4b8cdad9c6975795c",
+  "base": "ubuntu:24.04@sha256:78d4744ead1f5b19b04d0df558ab182a5300903900755e515b2ca4d10eb2044d",
+  "Elmer_commit": "a19504ac53ec222e3355e182b08f2ff280c2203a",
+  "network": "default during this one build only; runtime offline",
+  "attempt": 1,
+  "maximum_seconds": 1200,
+  "memory_bytes": 8589934592,
+  "CPU_quota": 4,
+  "initial_free_bytes": 66836914176,
+  "maximum_disk_growth_bytes": 16106127360,
+  "minimum_free_bytes": 32212254720
+}

@@ -1,9 +1,20 @@
 # CURRENT PROJECT CONTRACT
 
-This is the authoritative continuation contract, updated 2026-11-01. Historical
+This is the authoritative continuation contract, updated 2026-11-02. Historical
 work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
+
+**Current priority: independent physical-geometry qualification (2026-11-02).**
+Read [audit registration/status](docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md),
+then [V2 prototype](docs/COMPACT_TEC_V2_20261102.md). V2 source/359-solid STEP/SI
+gates PASS; physical design is **NOT REVIEWED**, issue#2 OPEN. No Cu FEM, fitting,
+sink or other physical campaign. First preserve/publish the verified V2 plus
+unexecuted Cu STOP drafts and exact CI before reviewed source-only integration
+of PR#1. Builder cannot self-certify. A separately invoked read-only auditor may
+review only an immutable committed checkpoint, serially with builder writes
+paused and no second worktree; otherwise record NOT REVIEWED. Preserve every
+old STOP/FAIL/field and the exact38-page Rev3. Never run obsolete-post fixtures.
 
 ## Cold-start protocol — no prior chat context required
 
@@ -73,6 +84,9 @@ OEM reverse engineering, proprietary curve fitting and OEM calibration are
 All edits, simulations, tests, commits and pushes belong to the **existing VPS
 sim:0.0 Codex session**, working ONLY in `/home/User/TE_Cooled_MCT`. Do not spawn
 competing agents, another Codex/tmux session or external implementation work.
+The explicit2026-11-02 user order permits one **serial read-only independent
+auditor** on an immutable committed target, with builder writes paused; it does
+not permit another editing agent or worktree. Preserve that role's restrictions.
 Do not touch, invoke or integrate LSDDTS or another repository. Use the existing
 pinned environment within **4 CPUs / 12 GiB**; prioritize bounded reduced studies.
 No new million-tet campaign merely to advance an exploratory scenario.
@@ -130,6 +144,7 @@ inspect every page of a rebuilt master before publication.
 | `finite_sink_study.py` | Separate registered sink/current study on unchanged geometry/laws, wires ON, exchange OFF; 203/288 grid cases admitted, 85 retained failures; six actually solved nominal 200 K crossings | At 10 K/W, target input 0.622176 W vs ideal 0.548425 W (+13.4478%); hot 305.826317 K requires assumed continuation; Qsink differs from IV through explicit lead paths; no actual-device feasibility or global optimum |
 | `physical_input_qualification.py`, `physical_input_evidence.py` | Registered local evidence-priority audit: 102/102 admitted calls in 44.531 s; 11 actual 200 K targets at 2 K/W; independent derivatives/balances and cached primary-source audit | Fixed-geometry conditional target-power elasticities S −2.490, k +2.214, rho +1.245; not physical uncertainty or separate grade/geometry identification. Gas/nonlocal/contact power sensitivities NOT RUN; current Rev3 unchanged |
 | `tec_candidate_geometry.py`, `tec_candidate_study.py` | **Separate candidate**: source-inspired29/11/4,.5mm; one361-solid STEP/independent SI gate PASS;155 reduced calls150 admitted/5 rejected, two-factor calibration explicitly user-authorized here only | Full curve alignment **FAIL**: no-fit18/20, selected20/20 but25.111K maximum lift error>15K. Geometric PASS is not qualified1A operation: omitted Cu/contact/spreading remains; original reference unchanged; Rev3 unchanged |
+| `tec_candidate_v2.py` | **Separate compact v2 prototype**, source-only physical contact/circuit/clearance gates; 359 bodies, 88 legs/176 P/N contacts, 89 metal nets, two hot lands; short foil gap plus ceramic-supported edge film | CAD/SI status in current v2 record; no Cu FEM/transport result, manufacturing/current rating or package pin-wire qualification; all v1 drafts/results preserved |
 | Corrected enclosure / exchange | Source-aligned candidate STEP/mesh and native-face audit; **preliminary filled stepped-core** diffuse-gray radiation and gas chord network (14 surfaces / 8 effective nodes) | Integrated native gas diffusion, full native visibility, optical transmission and coupled solids/cavity fields remain absent; standalone stopped gas control below |
 | `nonlocal_solid_network.py` diagnostic | Opt-in geometry-derived local Cu/alumina multiport plus unchanged affine P/N stages; actual interfaces, nonlocal return and P174 side contact | Isothermal ceramic/pad closure is unqualified; not full-device FEM; 7.277% side-port sensitivity exceeds registered 5% screen |
 | `passive_plate_audit.py` | Source-only audit of four plates, original Cu pads and routes/supports; 104 bodies | Seven-port follow-up **STOPPED before grid/solves**: two unmapped cuts and incompatible P174 side/hot-foot trace on a 0.220 mm edge; no spreading attribution |
@@ -203,7 +218,43 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current separate candidate reaches scientific STOP (2026-11-01):** read
+**Highest priority: physical-source/evidence audit, not new physics.** Follow
+`docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md`; first make the safe committed
+V2/STOP-draft checkpoint and verify exact CI, then review/integrate only PR#1's
+five audit-source files. Inspect at least three independent example families,
+build complete source-to-CAD/property/prediction registry and freeze the reviewer
+packet. Builder cannot clear issue#2 or self-certify an independent gate; retain
+NOT REVIEWED/STOP until the separate read-only review. No new CAD/FEM or fits.
+
+**Prior compact v2 source/CAD prototype gates PASS (2026-11-02); STOP before
+further physics or qualification:**
+read `docs/COMPACT_TEC_V2_20261102.md` and its registration/data under
+`data/tec_candidate_29114_v2_20261102`, then the earlier source-referenced
+connector review. The user selected implementation of a patterned-metal/short-foil
+architecture; no choice question remains. Original v1 nodes58/80/88 long loops/
+posts are suspended as unsupported construction; .296705873ohm applies only to
+that rejected routing, not the replacement. Preserve `docs/GATED_CANDIDATE_CU_20261102.md`,
+all old source/STEP/registration/results and unexecuted draft code unchanged;
+its former resume command is **not an instruction to execute**.
+
+New source-only v2 gates cover 176 full P/N contacts and the physical contact
+graph, four0.6mm foil gaps with0.5mm ceramic-edge support, explicit1.1mm joins
+and2.2mm return, insulation and package envelope. Thin-film/foil/solder sizes are
+engineering assumptions; current density and heat shunts remain unqualified.
+The one unchanged-Dockerfile build succeeded in488.056s; pinned base/direct
+versions/Elmer source checked, new image identity and actual package inventories
+recorded rather than old dependency-byte equivalence claimed. One fresh-mm
+STEP export and separate SI import PASS:359 solids, maxrelative volume error
+2.043e-14.13 v2/29 focused and485 applicable opt-in tests PASS; same12 runtime
+cases deselected, original archive/master and both legacy demos PASS. Do not
+relaunch the completed build/export. No substitute/host install, Cu FEM, fit or
+sink work occurred. The prior runtime STOP/cache-only failure is historical.
+Prototype success must never trigger the old fixture or B/C. Preserve the exact
+38-page master, old failed gates and all drafts, left uncommitted; no new CI.
+A future architecture-accepted Stage A needs independent fabrication/contact
+bounds and a new v2-specific registration, not old post cuts/heat allocations.
+
+Prior separate candidate scientific STOP (2026-11-01): read
 `docs/SOURCE_CONSTRAINED_TEC_CANDIDATE_20261101.md` and its frozen registration.
 One361-solid candidate STEP passes footprint/circuit/envelope/SI gates; historical
 RMT stage ordering remains inferred, not proven TEC2019 construction. The one
