@@ -107,7 +107,7 @@ def tolerances():
         ('Au_wire_wedge_contact_margin',(.035-.018)/2-(.003+.0025),.0025,'mm;bond-centering/foot-outline limits'),
         ('Au_bond_pair_separation',.70-2*.150-.018,.100,'mm;conservative independent route envelopes')]
     results=[dict(check=n,lower_bound=v,requirement=limit,units_and_basis=why,status='PASS' if v>=limit-1e-10 else 'FAIL') for n,v,limit,why in rows]
-    stack=4*.005+3*.005+6*.001+6*.003+.030+.050
+    stack=4*.005+3*.005+6*.001+6*.003+.030+.050+2*.0005
     results.append(dict(check='metallized_TEC_height',lower_bound=3.8+.004-stack,upper_bound=3.8+.004+stack,allowed=[3.65,3.95],status='PASS' if stack+.004<=.15 else 'FAIL'))
     # Mount/header and die/carrier/epoxy/metal tolerances are independent, summed.
     maxdet=1.5+.020+.00225+.0005+.080+.020+.002+.0005+3.8+stack+.002+.0005+.020+.005+.150+.010+.020+.005+.200+.010+.00265+.0005

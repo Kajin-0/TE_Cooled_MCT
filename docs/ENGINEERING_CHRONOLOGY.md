@@ -258,3 +258,15 @@ not release certification; corrections and later outcomes must be appended.
 ## 2026-11-02T15:26:59Z — PASS / PENDING — V3 builder source/CAD checkpoint verified
 
 **Observed UTC QA completion**; baseline5fcd519,[synthetic V3 specification](SYNTHETIC_V3_ASSEMBLY_CAD_20261102.md):72 focused/528 applicable tests PASS (same12 runtime exclusions),archive/master andboth legacy demos PASS,81 protected inputs/5128 baseline blobs remain exact;824-solid SI/contact/exclusivity andselected interval gates PASS,all three drawings visually inspected. New source/BOM/process/tolerance/negative tests include the acknowledged alloy-order correction;original STEP/fields/failures/38-page Rev3 unchanged,physical acceptance PENDING fresh serial audit after immutable commit/exact CI andissue#2 OPEN,no physics authorized.
+
+## 2026-11-02T15:51:33Z — STOP / CONDITIONAL — Independent V3 review returned
+
+**Observed UTC receipt publication**;[07fe3cb](https://github.com/Kajin-0/TE_Cooled_MCT/commit/07fe3cb8b2f0dff1a796590e5c97803404a54a7c),[exact CI PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41471836152) and[verbatim fresh read-only review](SYNTHETIC_V3_INDEPENDENT_REVIEW_20261102.md):nominal architecture conditionally constructible,but18um adjacent/36um accumulated rise errors exceed10um differential joint accommodation;outer finish also adds1um omitted uncertainty,withheel/loop representation conditional. All106 packet/32 cache hashes andcleanHEAD agree before/after;builder writes paused15:30:21–15:50:31Z,no old archive/Rev3 changes,issue#2 OPEN;new user-authorized corrective frozen checkpoint/re-review only,no physics.
+
+## 2026-11-02T15:53:24Z — PENDING — Bounded V3 drawing-closure correction registered
+
+**Observed UTC preregistration**;[first independent STOP](SYNTHETIC_V3_INDEPENDENT_REVIEW_20261102.md) retained:register128 seven-land corners andnegative controls for off-device measured-land custom forming,unchanged15–25um joint limits;include omitted outer-finish1um andexplicit local heel idealization envelope. New source-only correction/test andimmutable re-review are authorized under current work order;nominal824-solid STEP/original archives/Rev3 remain unchanged,no elastic-force assumption or new physics.
+
+## 2026-11-02T16:03:33Z — PASS / PENDING — Measured-land V3 correction verified for freeze
+
+**Observed UTC QA event**;[original07fe3cb STOP](SYNTHETIC_V3_INDEPENDENT_REVIEW_20261102.md) preserved:128 land corners/384 continuous source tab paths and16 gap-error corners PASS with15–25um joints,18um full measured-stroke reserve andno forcefit;outer finishes give3.664–3.944mm,local heels explicitly bounded idealizations.95 focused/551 applicable tests PASS (same12 exclusions),archive/master/both legacy and5128 original blobs PASS;nominal824-solid STEP and38-page Rev3 unchanged,next authorized step freeze/push/exact CI thenserial independent re-review only,issue#2 OPEN.

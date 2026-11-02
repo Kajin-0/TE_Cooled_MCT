@@ -27,9 +27,16 @@ Fresh mm author and separate SI reader PASS (maxrelative volume1.141e−11,
 bbox1.000e−7m);923 imported contact witnesses,58 Boolean overlap checks and
 1250 conservative exclusions PASS. The selected manufacturing/interval requirements
 are not demonstrated capability; cap/window seal,1A,current/thermal/reliability
-remain unqualified. 72 focused/528 applicable tests (same12 runtime exclusions),full archive/master/
-both legacy andall5128 protected baseline blobs PASS. Physical-design verdict
-PENDING independent immutable review;commit/push/exact CI before auditor.
+remain unqualified. Original builder72 focused/528 applicable tests andarchive/master/legacy PASS.
+Independent review of07fe3cb STOPs worst-case vertical fit (18/36um versus10um
+joint differential),retaining CONDITIONAL nominal architecture;verbatim review
+is docs/SYNTHETIC_V3_INDEPENDENT_REVIEW_20261102.md. Current authorized correction
+uses measured-land off-device forming,explicit heel idealization andouterfinish
+uncertainty;nominal824-solid STEP is unchanged. Read tec_assembly_v3_fit.py and
+drawing_requirements_r1.json;freeze corrected tests/exact CI before serial
+read-only re-review. Corrective95 focused/551 applicable tests (same12 exclusions),
+archive/master/legacy and5128 baseline blobs PASS. No physical/Cu/current/seal/1A
+acceptance ornew science.
 See new manufacturing record/source catalogue/824-component registry,not old V3
 source-only drawings. Earlier CAD bbox failure and query-timeout stops preserved.
 

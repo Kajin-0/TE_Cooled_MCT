@@ -1,0 +1,111 @@
+[
+  {
+    "name": "focused",
+    "argv": [
+      "./fem/run.sh",
+      "pytest",
+      "-q",
+      "tests/test_tec_candidate_v2.py",
+      "tests/test_gated_cu_source_audit.py",
+      "tests/test_tec_candidate.py",
+      "tests/test_physical_geometry_audit.py",
+      "tests/test_v3_assembly_source_gate.py",
+      "tests/test_synthetic_v3_assembly.py",
+      "tests/test_synthetic_v3_fit.py"
+    ],
+    "observed_end_UTC": "2026-11-02T15:56:18.665304+00:00",
+    "seconds": 14.416103124152869,
+    "exit_code": 0
+  },
+  {
+    "name": "applicable",
+    "argv": [
+      "./fem/run.sh",
+      "env",
+      "TE_FEM_SMOKE=1",
+      "pytest",
+      "-q",
+      "--ignore=outputs",
+      "--deselect=tests/test_corrected_enclosure.py::test_gmsh_geometry_and_interface_area_audit",
+      "--deselect=tests/test_fem_g1.py::test_real_elmer_coupled_smoke",
+      "--deselect=tests/test_fem_g2a.py::test_real_four_couple_solver_smoke",
+      "--deselect=tests/test_fem_g2b_connected.py::test_actual_two_terminal_88_leg_mesh",
+      "--deselect=tests/test_fem_g2b_geometry.py::test_real_88_leg_mesh_feasibility",
+      "--deselect=tests/test_fem_g2b_physics.py::test_actual_two_terminal_full_stack_smoke",
+      "--deselect=tests/test_fem_g2c.py::test_real_local_temperature_adapter_and_runtime_guard",
+      "--deselect=tests/test_fem_g3b.py::test_genuine_elmer_compiled_exchange_does_not_stagnate_at_zero_initial_flux",
+      "--deselect=tests/test_flux_presolder.py::test_genuine_three_dimensional_layered_elmer_coupon",
+      "--deselect=tests/test_full_presolder.py::test_genuine_oblique_elmer_and_independent_quadratic_reference",
+      "--deselect=tests/test_geometry_rebaseline.py::test_independent_cad_and_actual_conformal_header_mesh"
+    ],
+    "observed_end_UTC": "2026-11-02T15:57:20.750381+00:00",
+    "seconds": 62.08462789002806,
+    "exit_code": 0
+  },
+  {
+    "name": "archive",
+    "argv": [
+      "./fem/run.sh",
+      "python",
+      "fem/archive_bath_spatial_device.py",
+      "--verify"
+    ],
+    "observed_end_UTC": "2026-11-02T15:57:39.480697+00:00",
+    "seconds": 18.729871072107926,
+    "exit_code": 0
+  },
+  {
+    "name": "master",
+    "argv": [
+      "python3",
+      "-B",
+      "-m",
+      "reports.master.validate",
+      "--current"
+    ],
+    "observed_end_UTC": "2026-11-02T15:57:40.299722+00:00",
+    "seconds": 0.8185265220236033,
+    "exit_code": 0
+  },
+  {
+    "name": "legacy_cli",
+    "argv": [
+      "./fem/run.sh",
+      "python",
+      "-m",
+      "tecooledmct.cli",
+      "--quick",
+      "--out",
+      "outputs/synthetic-v3-cad-20261102/legacy-cli"
+    ],
+    "observed_end_UTC": "2026-11-02T15:57:43.023506+00:00",
+    "seconds": 2.723343323916197,
+    "exit_code": 0
+  },
+  {
+    "name": "legacy_geometry",
+    "argv": [
+      "./fem/run.sh",
+      "python",
+      "-m",
+      "tecooledmct.geometry_demo",
+      "--out",
+      "outputs/synthetic-v3-cad-20261102/legacy-geometry"
+    ],
+    "observed_end_UTC": "2026-11-02T15:57:48.156663+00:00",
+    "seconds": 5.132732952013612,
+    "exit_code": 0
+  },
+  {
+    "name": "integrity",
+    "argv": [
+      "./fem/run.sh",
+      "python",
+      "-B",
+      "scripts/verify_synthetic_v3_checkpoint.py"
+    ],
+    "observed_end_UTC": "2026-11-02T15:57:52.486708+00:00",
+    "seconds": 4.32942930306308,
+    "exit_code": 0
+  }
+]

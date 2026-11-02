@@ -3,7 +3,7 @@ import datetime,json,subprocess,time,sys
 from pathlib import Path
 B=Path('data/synthetic_v3_assembly_20261102');O=Path(sys.argv[1]) if len(sys.argv)>1 else B/'verification'
 O.mkdir(exist_ok=False);checks=json.loads(Path('data/tec_assembly_v3_20261102/verification/checks.json').read_text());records=[]
-checks[0]['argv'].append('tests/test_synthetic_v3_assembly.py')
+checks[0]['argv'].extend(['tests/test_synthetic_v3_assembly.py','tests/test_synthetic_v3_fit.py'])
 checks.append(dict(name='integrity',argv=['./fem/run.sh','python','-B','scripts/verify_synthetic_v3_checkpoint.py']))
 for c in checks:
     cmd=[a.replace('outputs/v3-assembly-source-gate-20261102','outputs/synthetic-v3-cad-20261102') for a in c['argv']]

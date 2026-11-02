@@ -80,7 +80,8 @@ No PDE, Cu electrothermal qualification, transport fit, sink or gas study.
 ## Results / recovery
 
 Actual separate824-solid STEP/source built; nominal source/contact/SI/exclusivity checks PASS.
-Selected process/physical-design acceptance remains PENDING independent review; no physical/current/performance qualification.
+First independent physical-design review STOPs complete vertical tolerance closure;
+nominal architecture is CONDITIONAL. Measured-land correction is awaiting re-review; no physical/current/performance qualification.
 
 ## Material-name correction before release
 
@@ -225,7 +226,7 @@ qualified seal. Those subsystem limitations remain visible to the independent re
 | Procure presealed9-pin Kovar header and separate cap/window candidate | Verify drawing view,diameters/pitch,flat Ni/Au terminals; seal identity/certificate needed; no borrowed vendor assembly identity |
 | Fabricate four patterned ceramics and underside/cold finishes | Measure each layer and total; adhesion/barrier/wetting coupon; unlike-net isolation; reject pinholes or failed source/selected limits |
 | Fabricate/contact/passivate p-type detector separately | Verify two top pads,backside isolation,ohmic I–V/noise and bond pull coupon; no package high-temperature diffusion |
-| Reflow P/N core with SnSb in alignment fixture | 88 legs,29/11/4,176 full joints; register≤15um; inspect/X-ray;3.804±0.139mm conservative metallized envelope (including30um flatness+50um parallelism);outer flatness≤30um/parallelism≤50um |
+| Reflow P/N core with SnSb in alignment fixture | 88 legs,29/11/4,176 full joints; register≤15um; inspect/X-ray;3.804±0.140mm conservative metallized envelope (including30um flatness+50um parallelism);outer flatness≤30um/parallelism≤50um |
 | Form/inspect three Cu tabs; place seven BiSn foot joints | Check0.050mm minimum inner bend,actual feet,fillets,clearances,fixture support,thermal profile; no sidewall conductor assumption |
 | Attach module-side Cu leads and shielded header mount | Verify both true hot terminals,InSn mount60–100um,no bare-ceramic solder,profile andcooling fixture; no electrically conductive attach across an isolator |
 | Join pin-side lead ends locally and clean | Pin1/9 continuity,all unused pins isolated,no solder splash; protect earlier solder joints anddie location |
@@ -288,7 +289,7 @@ metal graph edges. No measured contact resistance is assigned.
 | Side-fillet containment |15um|≥10um|
 | Exterior finish setback |130um|≥100um;corrected from erroneous trial180um|
 | Thermode-to-riser clearance |60um|≥50um for selected0.35×0.25mm tool|
-| Finished metallized module height |3.665–3.943mm|inside3.65–3.95mm;component±59um plus independent source30um flatness+50um parallelism;7um upper reserve|
+| Finished metallized module height |3.664–3.944mm|inside3.65–3.95mm;component±59um plus source30um flatness+50um parallelism andtwo±0.5um outerfinishes;6um upper reserve|
 | Hot mount bondline |60–100um|positive solid joint;flatness/collapse included|
 | Detector / Au-loop to roof |3.570 /3.251mm|each≥0.5mm;not optical performance|
 | Cap radial routing envelope |1.410mm|≥0.5mm under selected placement bounds|
@@ -296,7 +297,7 @@ metal graph edges. No measured contact resistance is assigned.
 | Au foot inside detector pad |47.5um reserve|≥25um|
 
 These deliberately conservative sums may double-count form errors; they do not
-invent a supplier tolerance distribution. The7um module-height reserve is a tight
+invent a supplier tolerance distribution. The corrected6um module-height reserve is a tight
 selected drawing condition and must be verified on actual assemblies. Reject
 parts at the full generic supplier tolerance if they violate this selected stack;
 do not silently consume the same tolerance twice or waive clearance gates.
@@ -344,7 +345,7 @@ Do not relaunch CAD to acquire a prettier result or infer numerical mesh accurac
 | Fresh STEP / independent SI dimensions/volume |PASS824 bodies|
 | Imported contact / curved exclusivity |PASS923 witnesses,58 Boolean checks|
 | Selected interval/contact/access limits |PASS;not statistical uncertainty or supplier certification|
-| Independent physical-design acceptance |PENDING immutable separate review|
+| Independent physical-design acceptance |Original STOP preserved;measured-land correction pending serial immutable re-review|
 | Cap/window assembly process / hermeticity |UNKNOWN/NOT QUALIFIED;inherited ideal mating components|
 |1A current / Cu electrothermal / solder fatigue |NOT RUN / NOT QUALIFIED|
 | Commercial P/N grade / OEM performance |NOT QUALIFIED;research analog unchanged|
@@ -369,3 +370,116 @@ report tab neutral lengths1.960619,1.970619,3.706239mm andR/ρ coefficients
 217846.605,218957.717,411804.322m⁻¹;meanJ at1A is1.111e8A/m².
 These exclude contacts/film/current crowding andcannot predict a multiport
 net88 heat partition or actual cooler load. No physics model consumes them.
+
+## Corrective preregistration after independent SV3-01..04
+
+The first independent review of07fe3cb is preserved verbatim and **STOPs complete
+worst-case closure**, while conditionally accepting nominal constructibility.
+This correction is authorized by the user's explicit corrective-checkpoint clause.
+It does not redefine the original failed gate or alter824-solid nominal geometry.
+
+Before new checks: replace the unspecified fixed-step fit by **measure finished
+lands, custom-form off-device, inspect after release, then join**. Use one measured
+height for each of the seven actual lands, relative to the local module datum.
+Conservatively enclose each true land-coordinate error by±0.140mm (the complete
+component/form/outer-finish budget, much broader than each local prefix).
+Measurement uncertainty≤1um permits measured errors≤0.141mm; independently
+adjust each formed step by≤0.300mm. These are selected tooling/inspection
+requirements, not a measured supplier capability or new allowed core dimensions.
+The nominal STEP and retained legs remain unchanged. Input states still must
+meet the original module3.65–3.95mm envelope and constituent limits.
+
+Do **not** bend/pull the installed core into shape. A three-level adjustable jig
+sets the mating surfaces of the actual foil feet to each measured finished-land
+plane plus20um, accounting for measured foil thickness. Inspect after release.
+Independent gap-error limits are: land metrology1um, post-release forming/matching
+1um, relative foot/land profile plus parallelism2um across the full joint, and
+joining/cooling movement1um. Their deterministic sum is5um, preserving15–25um
+finished joints. The2um profile requirement includes angular mismatch, not an
+extra hidden tolerance;0.3mm width implies≤6.667mrad relative tilt if all of that
+budget is used by tilt. Reject rather than force a foot or spend the budget twice.
+Clamping≤10mN per foot is a selected load limit with temporary land/ceramic support
+in the jig; it is not a P/N strength rating. No on-core plastic forming is allowed.
+Require calibrated stage/profilometer and post-release height/parallelism records,
+then edge gap inspection and representative cross-sections after joining.
+
+Preregister128 independent seven-land corner cases plus analytic error-sum and
+negative controls: original18/36um fixed-step counterexample must still FAIL;
+matched geometry must retain positive radii/straight lengths,all seven15–25um
+gaps and tool stroke. Include out-of-range land/fixture/profile/force cases.
+Budget≤120s,stdlib/source arithmetic only,no new CAD import/export,mesh orPDE.
+Both outer-finish±0.5um limits must enter height:3.804±0.140mm,6um upper reserve.
+No nominal solid or original source/STEP byte may change.
+
+SV3-02: explicitly treat each foot/top-centre cylinder join as a **local CAD heel
+idealization**, not a literal wedge-tool trajectory. Bound the actual continuous
+heel/neck inside a0.10×0.10×0.10mm local box centred on the foot inxy and extending
+upward from its bond plane. The specified0.060mm foot long axis isx; each actual
+heel exits along that axis and transitions continuously within this box into the
+nominal round loop. This defines an inspectable acceptance envelope, not an
+unexecuted micromechanical shape. Both detector and flat-pin land/tool clearances
+must enclose the box under the selected±15um local placement allowance.
+Keep the existing±0.150mm remote loop envelope and0.5mm roof reserve; bound
+actual loop length≤10.5mm and no self/cross-wire contact. Reject a bond program
+that cannot meet those limits; supplier tool selection,heel microscopy andpull
+coupons remain CONDITIONAL,not a claim of achieved loop capability. NIST's
+printed100–101 and the reviewer's original DeWeyl guidance are process analogs.
+The long4.14mm drop is intentionally disclosed,not a demonstrated bond program.
+
+SV3-04 stays unqualified: initial pin Au/solder volume ratio7.5% and land ratio
+1.25% are pre-join inventories,not post-reflow layers or a universal brittleness
+limit. Lot DSC,finish consumption,Ni integrity,voiding andthermal-profile coupons
+are mandatory process conditions. No new resistance,heat orcooler prediction.
+Freeze correction/test/provenance after checks andexact CI,then one serial
+independent re-review of the new immutable commit; no dependent physics.
+
+### Corrective source-only results
+
+[Registered matching checks](../data/synthetic_v3_assembly_20261102/correction_release/matching_checks.json)
+evaluate128 true-land corners and384 continuous formed-tab paths;16 independent
+joint-gap error corners keep15–25um. The original fixed18/36um counterexamples
+still fail. The conservative measured-coordinate enclosure leaves18um forming
+stroke reserve and≥0.658mm straight riser after maximum bend allowances.
+The128 actual-coordinate corners leave20um stroke reserve; the analytic extra
+measurement enclosure reduces that to18um. These are fixture-coverage cases,
+**not new admitted devices** outside the retained core dimensions.
+
+The enlarged forming range requires custom off-device step geometry per measured
+unit,not a single fixed tab pulled to fit. Final local foot profile/parallelism
+must satisfy2um over the joint and total placement/gap error≤5um. Process and
+metrology capability remain selected requirements to demonstrate. No claim of
+qualified thermal strain/current or arbitrary on-core adjustment is made.
+
+[Registry overlay](../data/synthetic_v3_assembly_20261102/correction_r1_final/registry_overlay.json)
+versions the forming/heel requirements without overwriting the824-component
+base registry,original drawing requirements or STEP. The separate heel box has
+35um minimum pad-containment reserve at the detector and288um at the pins,
+including15um local placement. The 9.679mm nominal loops/4.14mm drops remain
+idealized fabrication envelopes requiring a supplier bond program andpull/heel
+inspection; no literal vertical butt-weld is specified as the manufacturing method.
+
+![Fixed failed joint versus measured-land forming requirement](../data/synthetic_v3_assembly_20261102/correction_r1_final/matched_joint_detail_reviewed.svg)
+
+This explicitly acknowledges the first independent STOP andcorrects its scope;
+only a new immutable independent re-review can accept the corrected physical
+specification conditionally. Cap/window retention/sealing,metallurgy/DSC,1A,
+cryogenic fatigue,detector properties andall original numerical gates remain
+unqualified irrespective of the source arithmetic.
+
+The2um profile budget has a defined suballocation:finished-land normal and
+released-foot normal each≤2mrad relative to the assembly datum,combined
+nonplanarity≤0.5um. Across the maximum0.305×0.205mm joint diagonal,
+4mrad×0.36749mm+0.5um=1.970um<2um. These stricter local incoming limits
+do not claim that every part admitted by the generic30/50um source specification
+is usable. Reject out-of-limit local surfaces. Cut each foil blank to its
+measured-profile neutral length±5um BEFORE forming;do not stretch a fixed
+nominal tab or impose it on the assembled core. The128 coverage cases generate
+384 explicit continuous line/arc tab profiles with variable straight lengths;
+only the nominal profile is the frozen STEP.
+
+Corrective release QA: **95 focused/551 applicable tests PASS**,same12 runtime
+exclusions;full archive/master,both legacy demos,baseline5128 blobs andoriginal
+reviewed Git packet/cache guards PASS. See
+[correction checks](../data/synthetic_v3_assembly_20261102/verification_correction_release/checks.json).
+No nominal CAD orphysics change;original STOP remains attached to07fe3cb.
+Corrected physical-design judgment awaits frozen serial independent re-review.

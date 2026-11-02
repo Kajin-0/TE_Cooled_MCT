@@ -1,0 +1,97 @@
+"""Source-only measured-land forming/heel-envelope requirements, no physical solve.
+
+The original fixed-tab tolerance failure remains a failure. Production requires
+custom off-device forming to inspected lands; no force fit or claimed capability.
+Nominal CAD never changes. All coordinates and absolute limits below are mm.
+"""
+from __future__ import annotations
+import itertools,json,math
+from pathlib import Path
+NOMINAL=(.515,1.615,1.615,2.715,.515,1.615,2.715)
+PAIRS=((0,1),(2,3),(4,5),(5,6),(4,6))
+ERRORS=dict(land_measurement=.001,post_release_match=.001,relative_profile_parallelism=.002,joining_movement=.001)
+
+def fixed_tab_fits(rise_error,joint_min=.015,joint_max=.025):
+    return math.isfinite(rise_error) and abs(rise_error)<=joint_max-joint_min+1e-12
+
+def matching_plan(measured,*,stroke=.300,errors=None,clamp_force_N=.010):
+    if len(measured)!=7 or any(not math.isfinite(v) for v in measured):raise ValueError('Seven finite measured lands required')
+    if any(abs(a-b)>.141+1e-12 for a,b in zip(measured,NOMINAL)):raise ValueError('Measured land outside selected enclosure')
+    if not .0<=clamp_force_N<=.010:raise ValueError('No force fit;selected clamp load exceeded')
+    if not math.isfinite(stroke) or not 0<stroke<=.300:raise ValueError('Invalid registered fixturestroke')
+    e=ERRORS if errors is None else errors
+    if set(e)!=set(ERRORS) or any(not math.isfinite(v) or v<0 or v>ERRORS[k]+1e-12 for k,v in e.items()):raise ValueError('Inspection/error allocation exceeded')
+    uncertainty=sum(e.values());gaps=[.020-uncertainty,.020+uncertainty]
+    if gaps[0]<.015-1e-12 or gaps[1]>.025+1e-12:raise ValueError('Finished gap outside15–25um')
+    # Measurement-target matching occurs before soldering, after release from
+    # the adjustable forming jig. It cancels component rise errors geometrically.
+    steps=[]
+    for a,b in PAIRS:
+        rise=measured[b]-measured[a];target=NOMINAL[b]-NOMINAL[a];adjust=rise-target
+        if abs(adjust)>stroke+1e-12:raise ValueError('Forming stroke insufficient')
+        if rise<=2*.080+.030:raise ValueError('No straight section/bend clearance')
+        steps.append(dict(feet=[a,b],measured_rise_mm=rise,adjustment_mm=adjust,stroke_reserve_mm=stroke-abs(adjust),minimum_straight_mm=rise-2*.080))
+    return dict(foot_mating_planes_mm=[v+.020 for v in measured],finished_joint_interval_mm=gaps,steps=steps,
+        load_requirement='<=10mN with temporary direct land/ceramic support;no on-core forming',capability='Supplier demonstration pending')
+
+def matched_paths(design,plan):
+    """Real orthogonal tab paths for the individually matched mating planes.
+
+    X/Y footprint and width/radius are retained. Only straight riser lengths
+    change off-device;this creates no imaginary conducting ceramic or contact.
+    """
+    from tecooledmct.tec_assembly_v3 import fillet
+    groups={58:[0,1],80:[2,3],88:[4,5,6]};out=[];offset=design['core_offset_mm']
+    for b in design['bodies']:
+        if b['shape']!='tab':continue
+        ids=groups[b['group']];points=[]
+        for y,z in b['points']:
+            i=min(ids,key=lambda k:abs(offset+NOMINAL[k]+.020+.015-z))
+            if abs(offset+NOMINAL[i]+.020+.015-z)>1e-10:raise ValueError('Unassigned tab level')
+            points.append([y,offset+plan['foot_mating_planes_mm'][i]+.015])
+        parts=fillet(points,.075)
+        out.append(dict(net=b['group'],x_mm=b['x'],points_yz_mm=points,parts=parts,width_mm=b['width'],thickness_mm=b['thickness'],blank_neutral_length_mm=sum(p['length'] for p in parts),blank_cut_tolerance_mm=.005))
+    return out
+
+def heel_envelopes(design):
+    by={b['name']:b for b in design['bodies']};out=[]
+    for pin in (7,8):
+        for name,padname in ((f'det{pin}_wedge_foot',f'det{pin}_Au'),(f'pin{pin}_wedge_foot',f'pin{pin}_Au')):
+            q=by[name]['boxes_mm'][0];x=q[0]+q[3]/2;y=q[1]+q[4]/2;pad=by[padname];half=.050+.015
+            if pad['shape']=='boxes':
+                p=pad['boxes_mm'][0];reserve=min(x-half-p[0],p[0]+p[3]-x-half,y-half-p[1],p[1]+p[4]-y-half)
+            else:reserve=pad['radius']-math.sqrt(2)*half
+            if reserve<0:raise ValueError('Heel envelope exceedsbond land')
+            out.append(dict(foot=name,xy_half_extent_with_placement_mm=half,land_containment_reserve_mm=reserve,local_height_mm=.100,
+                scope='Bounded continuous heel/neck CAD idealization;not resolved shape orprovedbond program',direction='x long axis;transition to nominal roundloop withinlocalbox'))
+    return out
+
+def sweep(design):
+    min_res=math.inf;min_straight=math.inf;low=math.inf;high=-math.inf
+    for signs in itertools.product((-1,1),repeat=7):
+        m=[n+s*.140 for n,s in zip(NOMINAL,signs)];p=matching_plan(m)
+        paths=matched_paths(design,p)
+        if len(paths)!=3:raise ValueError('Three continuous formed tabs required')
+        min_res=min(min_res,min(q['stroke_reserve_mm'] for q in p['steps']))
+        min_straight=min(min_straight,min(q['minimum_straight_mm'] for q in p['steps']))
+        low=min(low,p['finished_joint_interval_mm'][0]);high=max(high,p['finished_joint_interval_mm'][1])
+    # Separate closed analytic enclosure includes the extra1um measurement on
+    # each of two lands,without pretending128 true-coordinate corners include it.
+    worst_measured_differential=2*.141
+    for signs in itertools.product((-1,1),repeat=4):
+        val=.020+sum(s*v for s,v in zip(signs,ERRORS.values()))
+        if not .015-1e-12<=val<=.025+1e-12:raise ValueError('Error corner')
+    if fixed_tab_fits(.018) or fixed_tab_fits(.036):raise ValueError('Original failedcounterexample incorrectly accepted')
+    h=heel_envelopes(design)
+    return dict(status='PASS selected measured-land matching arithmetic;independent review pending',true_land_corners=128,formed_continuous_paths=384,gap_error_corners=16,
+        original_fixed18um='FAIL retained',original_fixed36um='FAIL retained',finished_joint_interval_mm=[low,high],
+        corner_stroke_reserve_mm=min_res,full_measured_enclosure_stroke_reserve_mm=.300-worst_measured_differential,
+        minimum_straight_mm=min_straight,heel_envelopes=h,
+        limitations='No force/compliance/supplier capability inferred;requires calibrated finished-land metrology,off-devicecustomforming,postreleaseinspection,andcoupon-qualified joining')
+
+if __name__=='__main__':
+    import argparse
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);a=p.parse_args();a.out.mkdir(exist_ok=False)
+    b=Path(__file__).resolve().parents[1]/'data/synthetic_v3_assembly_20261102'
+    d=json.loads((b/'source_final/design.json').read_text());r=sweep(d)
+    (a.out/'matching_checks.json').write_text(json.dumps(r,indent=2)+'\n');(a.out/'producer.py.source').write_bytes(Path(__file__).read_bytes());print(r)
