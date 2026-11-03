@@ -277,8 +277,11 @@ including the R2 mesh cache. All original R2/R3 data/producers,824-solid STEP,
 38-page Rev3, fields and numerical FAIL/STOP gates are byte-identical. The new
 MSH archives independently round-trip to the saved/read-back SHA identities.
 Exact commands, times and logs are in `verification_01`; final artifact/source
-hashes are sealed separately. Publication and exact-commit CI remain PENDING
-until actually observed; software PASS does not qualify a global mesh or physics.
+hashes are sealed separately. Study
+[2c47550](https://github.com/Kajin-0/TE_Cooled_MCT/commit/2c475509d6e0bd8fabcd784b48c88704ae0baaa6)
+is published with[exact-commit CI PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41662900682).
+Receipt-only successors require their own exact CI before handoff; software PASS
+does not qualify a global mesh or physics.
 
 ### Prospective single corrective replay — 2026-11-03T14:52:05Z
 

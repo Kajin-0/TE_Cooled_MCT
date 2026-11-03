@@ -15,8 +15,9 @@ than the same14 accepted R2 ancestors. Callback bond timed out180s; native/all
 and selective bonds failed4.117/4.142% area gates. No false success or global
 speedup: only54/2440 faces benchmarked; the complete600s causal budget is unknown.
 715 applicable/11 runtime skips,58 focused,archive/master/both legacy and5636
-baseline/93 input/85 preexisting trial-file guards PASS. Publication/exact CI only,
-then halt. Frozen prospective hybrid plan is NOT EXECUTED; one future bounded
+baseline/93 input/85 preexisting trial-file guards PASS. Study2c47550 is pushed,
+exact CI41662900682 PASS; any receipt-only successor also needs exact CI before
+handoff. No further experiment. Frozen prospective hybrid plan is NOT EXECUTED; one future bounded
 global surface-only trial is PROPOSED and requires new authorization. No Boolean,
 global surface/tet mesh,PDE,physical redesign or electrical forensics now.
 All430 domains/824 sources/378 contacts,jacket exclusion,pin heterogeneity,laws
@@ -402,7 +403,7 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current: R3.1 LOCAL benchmark complete; publication/exact CI only.**
+**Current: R3.1 LOCAL benchmark complete and published; no further experiment.**
 Read the R3.1 note and preserved R3 source/STOP. Native local sizing and exact
 source-boundary UV directional meshing are measured, not global qualification.
 A single future global surface-only hybrid trial is PROPOSED, not authorized;
