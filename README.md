@@ -27,6 +27,14 @@ the same14 accepted R2 ancestors used1,036,146 triangles (38.26× more). Failed
 callback/native/directional attempts remain visible. This is local source/mesh
 verification, not a new global surface, volume mesh, PDE or device result.
 
+**Latest integration trial:** [R3.2 single global surface attempt](docs/V3_R32_GLOBAL_SURFACE_20261103.md)
+STOPPED after native2D returned, in5.726s/~227MiB. A tag-sensitive guard ran
+before serialization and left no MSH: global triangle count, all2,440 mesh-area
+checks and quality/topology remain unmeasured. The failure is an implementation
+and evidence-retention error, with renumbering only a plausible mechanism.
+No second attempt, tetrahedral mesh or PDE was run; R2 remains the last accepted
+complete surface-fidelity result.
+
 **Physics limitations:** All new R3 material/interface constitutive coefficients
 remain UNSET. The separate local V3 electrical Gate B remains STOP
 (raw P1 current-cut error **81.241662%**; recovered loss discrepancy
@@ -34,10 +42,11 @@ remain UNSET. The separate local V3 electrical Gate B remains STOP
 200 K scenarios **are not V3 R3 device predictions**. Rev3 is a preserved
 38-page historical/conditional engineering assessment, not V3 validation.
 
-**Next proposed step:** one separately authorized, bounded global **surface-only**
-trial of the frozen native/directional hybrid, with strict2440-face area and
-ownership gates. R3.1 execution is complete; this next trial is NOT RUN and is
-not automatically authorized. Do not restart electrical forensics or retune geometry.
+**Next proposed step:** a separately authorized, serialization-first and
+renumber-aware **surface-only** replay of the frozen hybrid, retaining every
+candidate before checks and all2,440 strict face-area/ownership gates. R3.2 has
+consumed its single attempt; no retry is authorized. Do not restart electrical
+forensics or retune geometry.
 
 **First read:** [Dated status and reviewer guide](docs/V3_CURRENT_STATUS_20261103.md)
 → [R3 report](docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md)

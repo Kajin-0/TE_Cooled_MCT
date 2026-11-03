@@ -422,3 +422,15 @@ Against b009f36, [R3.1 measured benchmark](V3_R31_LOCAL_MESH_BENCHMARK_20261103.
 ## 2026-11-03T15:24:44Z — PASS PUBLICATION / GLOBAL NOT RUN — R3.1 exact CI
 
 Observed source/evidence [2c475509d6e0bd8fabcd784b48c88704ae0baaa6](https://github.com/Kajin-0/TE_Cooled_MCT/commit/2c475509d6e0bd8fabcd784b48c88704ae0baaa6) pushed with [exact-commit CI41662900682 PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41662900682), including Python3.11 tests and both legacy checks. This receipt changes no numerical data/algorithm/CAD/field/PDF; the local result is qualified only at its stated source-area/topology gates, global600s causal closure/mesh/PDE remain unresolved or NOT RUN, issue#2 OPEN, and no new experiment authorized; final handoff must verify the receipt-only successor's exact CI.
+
+## 2026-11-03T18:08:20.398767Z — PENDING — Authorized ONE R3.2 global surface-only hybrid trial
+
+Verified clean tracked main efd853cbd33a85acba5012b0b70521389ea31e0b, full R3.1 hash seal, all2440 prospective face mappings and exact ten directional IDs in existing sim:0.0; snapshotted 207 protected inputs and 95 existing untracked/previous-ledger files. New authorization is one globally scheduled <=600s/4CPU/8GiB/800000-triangle surface worker, no retry, Boolean, tet or PDE; complete source/method/gates will be sealed before execution, original CAD/fields/Rev3/failed gates and issue#2 preserved.
+
+## 2026-11-03T18:35:26.607314Z — STOP — R3.2 one global worker, premature identity guard
+
+Frozen single worker ended in5.726s/16.828CPU-s (226.902MiB child peak;227.281MiB observed), after native2D returned but before serialization: tag-sensitive seed hash rejected a change, leaving no native MSH or all2440 area/quality/topology checks. Pinned Mesh.Renumber defaults1 and no directional faces were logged as natively remeshed, consistent with renumbering but not proof of unchanged generated geometry; source input checks PASS, operator/receipts preserved, no second global worker/tet/PDE, only failure audit/QA/publication remain.
+
+## 2026-11-03T21:33:51.045985Z — PASS SOFTWARE/INTEGRITY / GLOBAL SURFACE STOP — R3.2 sealed evidence
+
+Against efd853c, [the R3.2 failure record](V3_R32_GLOBAL_SURFACE_20261103.md) preserves exactly one5.726s worker and the premature tag-sensitive guard; no MSH/global triangle count or all2440 mesh qualification checks survived, no retry/tet/PDE.18 focused and733 applicable tests (11 runtime skips), archive/master/both legacy,5763 baseline blobs/207 protected inputs/95 preserved trial identities and96 local links PASS; issue#2 observed OPEN, exact38-page Rev3/CAD/old failures unchanged, only scoped publication and exact CI remain authorized.

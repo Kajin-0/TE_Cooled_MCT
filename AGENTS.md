@@ -5,7 +5,24 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
-**Current R3.1 outcome: LOCAL mesh benchmark PASS; GLOBAL NOT RUN (2026-11-03).**
+**Current R3.2 outcome: GLOBAL SURFACE TRIAL STOP; NO MESH SAVED.**
+Read [the measured failure record](docs/V3_R32_GLOBAL_SURFACE_20261103.md),
+baseline efd853c, existing sim:0.0, one builder. Exactly ONE worker ended in
+5.726s/16.828CPU-s/~227MiB after native2D returned: a tag-sensitive directional
+seed guard raised BEFORE serialization. Renumbering is a plausible mechanism,
+not proven from retained after-fill data. There is NO actual MSH or measured
+global triangle count; all2440 mesh areas/2422 ancestors, quality, normals,
+seams/skins/intersections/readback remain NOT MEASURED. Exact ten directional
+seed faces were2385–2389 and2397–2401; source430/824/378 identities remain intact.
+733 applicable tests/11 runtime skips,18 focused,archive/master/both legacy and
+5763 baseline blobs/207 protected inputs/95 preserved trial-file guards PASS.
+Only failure documentation/publication/exact CI remain authorized; do NOT rerun
+or repair the sealed worker. A serialization-first, renumber-aware surface-only
+replay is PROPOSED and requires fresh authorization. No Boolean, geometry/law
+change, tet or PDE. Preserve old trials/cache/fields, exact38-page Rev3 and all
+failed gates; issue#2 OPEN. Software/integrity PASS does not qualify a mesh.
+
+**Prior R3.1 outcome: LOCAL mesh benchmark PASS; GLOBAL NOT RUN at that checkpoint.**
 Read [R3.1 measured methods/results](docs/V3_R31_LOCAL_MESH_BENCHMARK_20261103.md),
 baseline b009f36; existing sim:0.0, one execution agent only.54 native faces,
 12 actual local workers:8 PASS/4 FAIL or STOP, one permitted correction; original
