@@ -5,6 +5,18 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**2026-11-03 no-solve successor (NEWEST):** The separate diagnostic
+[forensics record](docs/V3_FLUX_NO_SOLVE_FORENSICS_20261103.md) and
+[retained-field evidence](data/v3_flux_forensics_20261103/saved_diagnostics.json)
+report the pin_finish mixed-potential minimum and recovered bulk/contact loss
+breakdown without any new PDE or mesh. A new independent archive-writer module
+requires separate p1/recovered_rt0/mixed_rt0 method paths and rejects collisions;
+the original sealed producer and lost mixed flux remain untouched. Infrastructure
+verification is not electrical qualification. The new independent model review
+has **NOT RUN** while the Codex session is usage-limited; Gate B remains STOP,
+thermal C/D NOT RUN and issue#2 OPEN. New numerical calculations require a
+separate authorization after prospective method-specific review.
+
 **Current outcome: conservative electrical study STOP at first coupon.**
 Read [the registered attempt](docs/V3_CONSERVATIVE_FLUX_20261102.md), baseline5317bf1.
 All16 control cases PASS; the first207,396-tet mesh meets the frozen volume gates

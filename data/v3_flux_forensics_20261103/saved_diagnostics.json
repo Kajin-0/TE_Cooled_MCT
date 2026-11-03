@@ -1,0 +1,191 @@
+{
+  "scope": "NO SOLVE: retained recovered RT0 flux plus separately surviving mixed cell means",
+  "observed_UTC": "2026-11-03T02:34:26.118143+00:00",
+  "source_sha256": {
+    "data/v3_conservative_flux_20261102/geometry/L1/mesh.npz": "02be0e7747d54e973885d6ae1b28c4ae5c742f6c246624cc2273858cd0b4ac5e",
+    "data/v3_conservative_flux_20261102/geometry/L1_field/fields.npz": "65087c331fd575677346504840b801219435b737bba88169c4160cea4dd8a357",
+    "data/v3_conservative_flux_20261102/geometry/L1/registry.json": "12e4179cfba36f8e3fc529de7cef2f66cfd799799c83137d3feed09691b1876b",
+    "data/v3_interconnect_et_20261102/operator_definitions.json": "83bf8b385060112469c37203223b221145c60b0ba123226f781695ad05e7387d",
+    "data/v3_conservative_flux_20261102/geometry/L1_field/alternative.json": "53860d30a4efbe573497ffff1cb23412cc66ad0be58b0fabef2aee5f71d94c4d",
+    "data/v3_conservative_flux_20261102/registration.json": "8ab638ed2df1a85ceea15ccaf639f14f71fc4401eb877d5cfa4f76e447d50871"
+  },
+  "actual_methods_retained": {
+    "raw_P1": true,
+    "recovered_RT0_flux_as_lead9": true,
+    "direct_mixed_RT0_flux": false,
+    "mixed_cell_potential_only": true
+  },
+  "mixed_voltage_min": {
+    "V": -2.652280857949769e-05,
+    "tetra_index": 203784,
+    "region": "pin_finish",
+    "centroid_m": [
+      -0.004165103484932671,
+      0.003198906438908821,
+      0.002002625
+    ],
+    "volume_m3": 4.868105789360163e-17,
+    "aspect_maxedge_over_inradius": 13.664757376236388,
+    "adjacent_tetra_indices": [
+      203689,
+      204153,
+      204531
+    ],
+    "adjacent_material_regions": [
+      "pin_finish"
+    ],
+    "nearest_external_triangle_centroid": {
+      "nearest_surface_triangle_centroid_distance_m": 2.4983541584164764e-06,
+      "nearest_surface_centroid_m": [
+        -0.004167443180304237,
+        0.0031988620084108296,
+        0.0020035
+      ],
+      "note": "Centroid-distance proxy, NOT shortest true geometric distance"
+    },
+    "cells_below_registered_floor": 501,
+    "cells_above_registered_ceiling": 0
+  },
+  "quality_aspect": {
+    "all_tets_maxedge_over_inradius_p50": 9.390439012825905,
+    "p99": 22.098040726039944,
+    "max": 162.03165691517037,
+    "mixed_min_tet_percentile": 0.9306929738278462
+  },
+  "recovered_loss": {
+    "input_I_at_1V_A": 34.005243342578,
+    "bulk_W": 32.13642611005565,
+    "contact_W": 2.130369796691751,
+    "sum_W": 34.266795906747404,
+    "diss_minus_IV_W": 0.2615525641694063,
+    "relative_discrepancy": 0.007691536317927656,
+    "by_material_domain": {
+      "tab88": {
+        "bulk_W": 7.3519460612270136,
+        "cell_count": 29876,
+        "volume_m3": 3.335139628399867e-11
+      },
+      "joint4": {
+        "bulk_W": 0.19498903090280084,
+        "cell_count": 492,
+        "volume_m3": 1.2600000000000015e-12
+      },
+      "joint5": {
+        "bulk_W": 0.007948634835550068,
+        "cell_count": 489,
+        "volume_m3": 1.2600000000000007e-12
+      },
+      "joint6": {
+        "bulk_W": 0.16874473581237664,
+        "cell_count": 501,
+        "volume_m3": 1.2600000000000015e-12
+      },
+      "film0": {
+        "bulk_W": 10.872899390012705,
+        "cell_count": 5102,
+        "volume_m3": 1.0083749999999876e-11
+      },
+      "film1": {
+        "bulk_W": 0.0037924315287138624,
+        "cell_count": 925,
+        "volume_m3": 1.8000000000000327e-12
+      },
+      "film2": {
+        "bulk_W": 9.790356164057748,
+        "cell_count": 4448,
+        "volume_m3": 9.600000000000166e-12
+      },
+      "lead9": {
+        "bulk_W": 3.1387734708587796,
+        "cell_count": 156549,
+        "volume_m3": 1.5579192917603128e-10
+      },
+      "lead_land": {
+        "bulk_W": 0.36341818192508507,
+        "cell_count": 1901,
+        "volume_m3": 1.607807125007316e-12
+      },
+      "lead_pin": {
+        "bulk_W": 0.14485852451242315,
+        "cell_count": 2157,
+        "volume_m3": 2.5122120860444427e-12
+      },
+      "pin_finish": {
+        "bulk_W": 0.0034142515605904257,
+        "cell_count": 3740,
+        "volume_m3": 1.5871233667249463e-12
+      },
+      "pn87_solder": {
+        "bulk_W": 0.09528523282186917,
+        "cell_count": 1216,
+        "volume_m3": 5.600000000000049e-12
+      }
+    },
+    "by_finite_contact": {
+      "film2 \u2194 pn87_solder": {
+        "loss_W": 0.16526183031503616,
+        "area_m2": 1.6000000000000006e-07,
+        "face_count": 324
+      },
+      "tab88 \u2194 joint4": {
+        "loss_W": 0.21685390686617292,
+        "area_m2": 6.399999999999991e-08,
+        "face_count": 152
+      },
+      "tab88 \u2194 joint5": {
+        "loss_W": 0.007642484505877629,
+        "area_m2": 6.39999999999998e-08,
+        "face_count": 152
+      },
+      "tab88 \u2194 joint6": {
+        "loss_W": 0.18906838504806098,
+        "area_m2": 6.399999999999985e-08,
+        "face_count": 156
+      },
+      "lead9 \u2194 lead_land": {
+        "loss_W": 0.38586101484992563,
+        "area_m2": 3.140331156954753e-08,
+        "face_count": 276
+      },
+      "film0 \u2194 lead_land": {
+        "loss_W": 0.20020666858871214,
+        "area_m2": 8.039247761804174e-08,
+        "face_count": 364
+      },
+      "lead9 \u2194 lead_pin": {
+        "loss_W": 0.3718303429067935,
+        "area_m2": 3.1403311569547505e-08,
+        "face_count": 274
+      },
+      "lead_pin \u2194 pin_finish": {
+        "loss_W": 0.17350690719999534,
+        "area_m2": 1.2561324627819018e-07,
+        "face_count": 444
+      },
+      "joint4 \u2194 film0": {
+        "loss_W": 0.22132342964820523,
+        "area_m2": 6.399999999999991e-08,
+        "face_count": 142
+      },
+      "joint5 \u2194 film1": {
+        "loss_W": 0.004507852034170917,
+        "area_m2": 6.399999999999988e-08,
+        "face_count": 142
+      },
+      "joint6 \u2194 film2": {
+        "loss_W": 0.1943069747288013,
+        "area_m2": 6.399999999999998e-08,
+        "face_count": 142
+      }
+    },
+    "recovered_J_centroid_reconstruction_relative": 5.904294781587545e-15,
+    "comparison_warning": "Recovered field constrained to P1 current. Nonzero recovered dissipation minus P1 IV is NOT alone proof of incorrect mixed solution or constitutive law."
+  },
+  "limitations": [
+    "No new PDE or mesh; all outputs are derivatives of saved incomplete experiment",
+    "Missing mixed flux cannot be recovered as an observed method field",
+    "No original control fields were archived; cannot independently recompute control L2 norms",
+    "Cell-mean mixed voltage need not obey CG maximum principle without additional monotonicity theory",
+    "No thermal-port distribution, physical device resistance, current rating, or performance"
+  ]
+}
