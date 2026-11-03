@@ -5,6 +5,18 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**2026-11-03 archive-integrity hardening (NEWEST):** A separate prospective
+[scientific-field archive contract](docs/V3_FLUX_ARCHIVE_INTEGRITY_20261103.md)
+checks actual typed array shapes/units/identities, mesh face incidence, RT0
+cell balances and reconstructed J from saved face currents, shared execution
+lineage, independent arithmetic replay of archived analytical L2 errors, and
+fail-closed incomplete/tampered archives. Synthetic-fixture tests are software
+controls, NOT actual original solver-field proof. No old field is reconstructed,
+no new PDE or mesh. A genuinely independent read-only model review remains
+**NOT RUN** because sim:0.0 quota is exhausted. Gate B remains STOP, C/D NOT RUN;
+issue#2 OPEN, Rev3 unchanged. Before new numerical qualification, require an
+independent immutable review plus separately authorized source/solver work.
+
 **2026-11-03 no-solve successor (NEWEST):** The separate diagnostic
 [forensics record](docs/V3_FLUX_NO_SOLVE_FORENSICS_20261103.md) and
 [retained-field evidence](data/v3_flux_forensics_20261103/saved_diagnostics.json)
