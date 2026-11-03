@@ -229,8 +229,11 @@ between the two figure versions. The canonical Rev3 SHA remains
 `882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248`;
 physical R1 STEP SHA remains
 `5e46c10fb75713a9dffbc97c44a2b94ca23bee14a93df7f4c0c7c915eb761a73`.
-Final source/artifact hashes are sealed in `release_manifest.json`. Publication
-and exact-commit CI are reported separately; no pending CI is described as PASS.
+Final source/artifact hashes are sealed in `release_manifest.json`. Source/evidence
+commit[062d643](https://github.com/Kajin-0/TE_Cooled_MCT/commit/062d6439365398a5d880796d23f76bfefe7e4a14)
+is published with[exact-commit CI PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41602077530).
+Receipt-only successors require their own exact CI before handoff; this does not
+qualify a new surface/volume mesh or change any numerical/physical STOP.
 
 ### Prospective CAD bookkeeping correction, 2026-11-03T07:30:17Z
 

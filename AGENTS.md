@@ -15,8 +15,9 @@ face lineage; no further CAD retry. The first adaptive surface attempt STOPPED
 at600.073s (864.31CPU-s,504.809MiB observed peak RSS) without a completed mesh.
 No triangle-reduction/area/3D qualification; full3D and its alternative NOT RUN.
 Local QA PASS:687 applicable tests/11 runtime skips,44 focused, archive/master,
-both legacy and5548 baseline/84 prior trial-file byte guards. Remaining work is
-publication/exact CI only, then halt. A native
+both legacy and5548 baseline/84 prior trial-file byte guards. Source/evidence
+commit062d643 is pushed with exact CI PASS (run41602077530). Any receipt-only
+successor must also pass exact CI before handoff; no further experiment. A native
 size-field/periodic-face performance correction is PROPOSED, not authorized here.
 Preserve accepted R2, physical824-solid STEP, exact38-page Rev3, all84 preexisting
 untracked trial-file identities and every prior FAIL/STOP; issue#2 OPEN.
@@ -384,7 +385,7 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current: R3 experiment closed at source-PASS/global-mesh-STOP; publication only.**
+**Current: R3 experiment closed at source-PASS/global-mesh-STOP.**
 Read `docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md` and its frozen release manifest.
 No further Boolean, surface retry, full3D attempt or PDE under this checkpoint.
 One proposed future task is a small instrumented periodic-wire sizing/lineage

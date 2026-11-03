@@ -402,3 +402,7 @@ Independent fresh-import audit PASS430 domains/2440 faces,824 sources/378 contac
 ## 2026-11-03T08:14:47Z — PASS QA / GLOBAL MESH STOP / PENDING PUBLICATION — R3 bounded checkpoint
 
 Against source4955177, frozen [R3 source/stop evidence](V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md) passes44 focused and687 full applicable tests (11 runtime skips), full archive/master, both legacy and5548 immutable baseline blob/23 input/84 preexisting trial byte checks; final actual-CAD figures visually reviewed, source/artifact hashes sealed. No new qualified surface/tet mesh or PDE; source migration alone PASS, exact physical STEP/38-page Rev3 and all prior failures unchanged, issue#2 verified OPEN; only scoped commit/push and exact CI remain, no follow-on experiment.
+
+## 2026-11-03T08:20:11Z — PASS PUBLICATION / GLOBAL MESH STOP — R3 exact-commit CI
+
+Observed [062d6439365398a5d880796d23f76bfefe7e4a14](https://github.com/Kajin-0/TE_Cooled_MCT/commit/062d6439365398a5d880796d23f76bfefe7e4a14) pushed to main with [exact-commit CI41602077530 PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41602077530), including Python3.11 tests and both legacy checks. Scientific status remains430-domain source migration PASS / surface600s STOP / global3D and PDE NOT RUN; no source/field/STEP/PDF changes for this receipt, original trial directories/cache preserved, issue#2 OPEN and no follow-on experiment authorized; final handoff also checks exact CI of the receipt-only successor.
