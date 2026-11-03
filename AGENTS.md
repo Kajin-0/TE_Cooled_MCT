@@ -5,6 +5,22 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**2026-11-03 authorized derived-geometry milestone (CURRENT, GEOMETRY ONLY):**
+A separate **uncommitted** analysis geometry in
+`data/v3_derived_multiphysics_20261103` and its linked
+`docs/V3_DERIVED_MULTIPHYSICS_GEOMETRY_20261103.md` provides actual native
+OCC BREP derivatives (437 physical analytical domains +1 connected cavity gas),
+438 conformal volumes and 2,456 fully classified faces (1,848 gas-solid,
+565 solid-solid, 43 exterior), all 378 declared finite contacts, preserved
+physical source names/ports and two bounded 3D meshability fixtures.
+The 98 composite material domains now use explicit COMPOSITE_MULTILAYER
+classification with source constituent layers and a required future constitutive
+law; they MUST NOT silently inherit bulk Cu/Au/Ni properties.
+Final full-suite QA, immutable publication and exact-commit CI remain required
+before release; no full multiphysics mesh, material equivalence, PDE, TEC
+performance or seal certification is claimed. Source V3 R1 STEP, Rev3, Gate B
+STOP and issue #2 remain unchanged. Preserve untracked historical trials.
+
 **2026-11-03 geometry-readiness consolidation (NEWEST):** V3 R1 physical STEP
 remains the immutable 824-solid reference. A separate source-to-STEP
 [geometry-readiness report](docs/V3_MULTIPHYSICS_GEOMETRY_READINESS_20261103.md)
