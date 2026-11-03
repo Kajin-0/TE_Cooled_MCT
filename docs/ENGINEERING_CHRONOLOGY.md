@@ -434,3 +434,7 @@ Frozen single worker ended in5.726s/16.828CPU-s (226.902MiB child peak;227.281Mi
 ## 2026-11-03T21:33:51.045985Z — PASS SOFTWARE/INTEGRITY / GLOBAL SURFACE STOP — R3.2 sealed evidence
 
 Against efd853c, [the R3.2 failure record](V3_R32_GLOBAL_SURFACE_20261103.md) preserves exactly one5.726s worker and the premature tag-sensitive guard; no MSH/global triangle count or all2440 mesh qualification checks survived, no retry/tet/PDE.18 focused and733 applicable tests (11 runtime skips), archive/master/both legacy,5763 baseline blobs/207 protected inputs/95 preserved trial identities and96 local links PASS; issue#2 observed OPEN, exact38-page Rev3/CAD/old failures unchanged, only scoped publication and exact CI remain authorized.
+
+## 2026-11-03T21:37:13.856483Z — PASS PUBLICATION / GLOBAL SURFACE STOP — R3.2 exact CI
+
+Observed source/evidence [12faf57698ff57e796f171b66a66e1ddd56ccddd](https://github.com/Kajin-0/TE_Cooled_MCT/commit/12faf57698ff57e796f171b66a66e1ddd56ccddd) pushed with [exact-commit CI41722977176 PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41722977176), including Python3.11 tests and both legacy demos. This receipt changes no producer, numerical evidence, CAD, mesh, field or PDF; scientific STOP/no MSH/all2440 mesh gates unmeasured remain, issue#2 OPEN and no further experiment authorized; verify the receipt-only successor exact CI for final handoff.

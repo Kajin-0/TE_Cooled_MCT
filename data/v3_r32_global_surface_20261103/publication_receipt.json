@@ -1,0 +1,65 @@
+{
+  "status": "PASS PUBLICATION/CI; GLOBAL SURFACE STOP",
+  "observed_UTC": "2026-11-03 21:37:13 UTC",
+  "source_commit": "12faf57698ff57e796f171b66a66e1ddd56ccddd",
+  "workflow_run": 41722977176,
+  "url": "https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41722977176",
+  "workflow_status": "completed",
+  "workflow_conclusion": "success",
+  "jobs": [
+    {
+      "id": 126220290085,
+      "name": "test",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python -m pip install -e '.[dev]'",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run pytest -q",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python -m tecooledmct.cli --quick --out outputs/ci-demo",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run python -m tecooledmct.geometry_demo --out outputs/ci-pellet",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "mesh_qualified": false,
+  "mesh_preserved": false,
+  "actual_global_triangle_count": null,
+  "tet_RUN": false,
+  "PDE_RUN": false,
+  "no_second_attempt": true,
+  "receipt_only_successor_must_pass_exact_CI_before_handoff": true
+}

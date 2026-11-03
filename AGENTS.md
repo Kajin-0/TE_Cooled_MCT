@@ -16,7 +16,8 @@ seams/skins/intersections/readback remain NOT MEASURED. Exact ten directional
 seed faces were2385–2389 and2397–2401; source430/824/378 identities remain intact.
 733 applicable tests/11 runtime skips,18 focused,archive/master/both legacy and
 5763 baseline blobs/207 protected inputs/95 preserved trial-file guards PASS.
-Only failure documentation/publication/exact CI remain authorized; do NOT rerun
+Evidence commit12faf57 is pushed; exact CI41722977176 PASS. Any receipt-only
+successor also needs exact CI before handoff. No further experiment; do NOT rerun
 or repair the sealed worker. A serialization-first, renumber-aware surface-only
 replay is PROPOSED and requires fresh authorization. No Boolean, geometry/law
 change, tet or PDE. Preserve old trials/cache/fields, exact38-page Rev3 and all
