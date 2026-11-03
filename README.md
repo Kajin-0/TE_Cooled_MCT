@@ -1,5 +1,43 @@
 # TE_Cooled_MCT
 
+## Current project status — November 3, 2026
+
+**Physical reference:** Frozen V3 R1, an 824-solid synthetic TEC-cooled HgCdTe
+assembly with *conditional physical-design acceptance*—not manufactured or
+OEM validated. The older V2 geometry STOP is historical, not the current verdict.
+
+**Current computational geometry:** R3 source migration, published in
+[the R3 engineering record](docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md),
+preserves 824/824 source bodies, 378/378 declared finite-contact witnesses,
+430 conformal domains and 2,440 registered faces. R3 restores the two physical
+polyimide jackets, explicitly separates six full and four partial jacket
+regions, and excludes **0.077162028 mm³** of displaced polymer from cavity gas.
+The *R3 global surface mesh STOPPED* at 600.073 s with no completed mesh;
+there is **no qualified global tetrahedral mesh** and no R3 PDE result.
+
+**Last accepted complete surface-fidelity result:** R2, 428 domains / 2,422
+faces, with 1,416,664 triangles passing the 1% per-face CAD-area criterion.
+That high-density 2D surface mesh is not an accepted 3D volume discretization.
+See [R2 evidence](docs/V3_ANALYSIS_R2_GEOMETRY_AND_MESHABILITY_20261103.md).
+
+**Physics limitations:** All new R3 material/interface constitutive coefficients
+remain UNSET. The separate local V3 electrical Gate B remains STOP
+(raw P1 current-cut error **81.241662%**; recovered loss discrepancy
+**0.769154%**); thermal Gates C/D are NOT RUN. The reduced-model 186 K and
+200 K scenarios **are not V3 R3 device predictions**. Rev3 is a preserved
+38-page historical/conditional engineering assessment, not V3 validation.
+
+**Immediate priority:** one separately authorized, bounded assessment of
+periodic-wire face sizing/performance on the frozen R3 geometry before
+another global meshing attempt. Do not restart electrical forensics or
+retune physical geometry merely to make a mesh or numerical gate pass.
+
+**First read:** [Dated status and reviewer guide](docs/V3_CURRENT_STATUS_20261103.md)
+→ [R3 report](docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md)
+→ [authoritative project contract](AGENTS.md).
+Historical results remain searchable below and must not be promoted to the
+current state.
+
 **[Master Engineering Report — Revision 3](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf)**
 
 This single, continuously maintained standalone report is the current externally
@@ -32,12 +70,12 @@ milestone instructions have been relocated to historical context.
 | --- | --- |
 | What did the bounded R3 global-mesh attempt establish? | [R3 source-conservative geometry/mesh record](docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md):430 domains/2440 faces,824 source/378 contact identities, exact6 full/4 partial jacket regions and0.077162028mm³ gas displacement independently audited. Meridian optimization STOPPED on source-face lineage; one adaptive surface attempt STOPPED at600s without a completed mesh. No3–5x reduction, new surface accuracy or global3D qualification claimed; PDE NOT RUN, all laws UNSET. Accepted R2/physical STEP/Rev3 unchanged. |
 | Has the V3 global-meshing obstruction improved? | [R2 analysis-only thin-feature reduction](docs/V3_ANALYSIS_R2_GEOMETRY_AND_MESHABILITY_20261103.md):428 conformal domains/2422 faces, original824 sources/378 contacts preserved, connected gas, one fully CAD-area-accurate 2D global surface mesh (1.417M triangles,0 face fails at1%), and real local lead/pin 3D mesh38,496 tets. Whole-device 3D tetra mesh and physical shell/film laws still NOT QUALIFIED; physical V3 R1 unchanged. |
-| Is the global V3 mesh usable in a multiphysics solver? | [Bounded full-model meshability gate](docs/V3_GLOBAL_MESHABILITY_AND_LAW_GATE_20261103.md): all438 volume/2456 boundary labels mapped, but2D candidate FAILS174 face-area gates and two3D attempts STOP on TEC lead/insulation face2395 overlapping facets. No global3D mesh or PDE qualified; all domain/interface law values remain UNSET. |
-| Is an actual V3 computational geometry available? | [Derived V3 analysis geometry](docs/V3_DERIVED_MULTIPHYSICS_GEOMETRY_20261103.md): immutable original824-solid physical STEP →437 condensed analysis solids+connected native gas;438 conformal volumes/2,456 owned faces,378/378 original contact witnesses, local 12,113/341-tet mesh fixtures. Geometry-only acceptance; composite constitutive laws, global mesh and all physics NOT QUALIFIED. |
+| Why did the earlier (pre-R2) global V3 mesh fail? | [Historical bounded full-model meshability gate](docs/V3_GLOBAL_MESHABILITY_AND_LAW_GATE_20261103.md): all438 volume/2456 boundary labels mapped, but2D candidate FAILS174 face-area gates and two3D attempts STOP on TEC lead/insulation face2395 overlapping facets. No global3D mesh or PDE qualified; all domain/interface law values remain UNSET. |
+| How was the pre-R2 analysis geometry first derived? | [Historical derived V3 analysis geometry](docs/V3_DERIVED_MULTIPHYSICS_GEOMETRY_20261103.md): immutable original824-solid physical STEP →437 condensed analysis solids+connected native gas;438 conformal volumes/2,456 owned faces,378/378 original contact witnesses, local 12,113/341-tet mesh fixtures. Geometry-only acceptance; composite constitutive laws, global mesh and all physics NOT QUALIFIED. |
 | Did conservative electrical discretization qualify V3? | [Separate registered RT0 study](docs/V3_CONSERVATIVE_FLUX_20261102.md): all16 analytic controls PASS; one207,396-tet mesh meets volume gates. [Independent review](data/v3_conservative_flux_20261102/independent_review.md) confirms **STOP**: raw P1 cuts81.24%, recovered IV/loss0.769% and surviving mixed potential bound FAIL; output-label defect lost direct-mixed flux export. No L2, C/D or physical qualification; old fields/STEP/Rev3 unchanged |
 | What did the local V3 conductor characterization establish? | [Registered interconnect experiment](docs/V3_INTERCONNECT_ELECTROTHERMAL_20261102.md) and [independent STOP review](docs/V3_INTERCONNECT_INDEPENDENT_REVIEW_20261102.md): source/port definitions and layered controls pass their numerical scope; two actual electrical meshes **FAIL** the raw-cut gate (85.6255% vs 0.1%). Stable resistance and weak power closure do not qualify current distribution. Passive thermal C and coupled D **NOT RUN**; no full TEC resistance, heat partition, current rating or new device temperature. Original STEP/38-page Rev3 unchanged |
 | Why did the earlier source-only V3 attempt stop? | [Registered V3 source/process gate](docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md) and [independent review](docs/V3_ASSEMBLY_INDEPENDENT_REVIEW_20261102.md): **STOP the present assembly specification**, two architectures remain CONDITIONAL. Process-family sources and21 interface requirements expose missing joint, underside mount, die contacts and tolerances; no V3 STEP or physics existed at that historical checkpoint; the later V3 is below. IA-08 metadata independently passes; original V2/Rev3 stay frozen and issue#2 OPEN |
-| What is the latest physical assembly/CAD work? | [Synthetic V3 manufacturing/CAD](docs/SYNTHETIC_V3_ASSEMBLY_CAD_20261102.md):824 solids,real mount/formed joints,pin1/9 leads and7/8 photoconductor bonds; independent [R1 verdict](docs/SYNTHETIC_V3_CORRECTIVE_INDEPENDENT_REVIEW_20261102.md) grants **CONDITIONAL physical-design acceptance of core/header/detector** under measured-land forming/inspection requirements. Manufacturing capability,cap/window sealing,1A andperformance remain unqualified;issue#2 OPEN. The later local electrical experiment above stopped at its numerical gate |
+| What is the frozen V3 physical design? | [Synthetic V3 manufacturing/CAD](docs/SYNTHETIC_V3_ASSEMBLY_CAD_20261102.md):824 solids,real mount/formed joints,pin1/9 leads and7/8 photoconductor bonds; independent [R1 verdict](docs/SYNTHETIC_V3_CORRECTIVE_INDEPENDENT_REVIEW_20261102.md) grants **CONDITIONAL physical-design acceptance of core/header/detector** under measured-land forming/inspection requirements. Manufacturing capability,cap/window sealing,1A andperformance remain unqualified;issue#2 OPEN. The later local electrical experiment above stopped at its numerical gate |
 | Which historical V2 physical audit must be preserved? | [Physical-source audit](docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md) and [separate independent review](docs/PHYSICAL_PLAUSIBILITY_INDEPENDENT_REVIEW_20261102.md): **V2 STOP**, despite nominal circuit/STEP PASS. At that checkpoint missing package leads, foil joint/process, mounting/tolerances, current rating and thermal allocation remain unqualified. Four manufacturer figure families,96 parameter records; versioned metadata correction preserves original23-source packet and adds an internal hypothesis source. [Issue#2 remains OPEN](https://github.com/Kajin-0/TE_Cooled_MCT/issues/2); safe and packet checkpoints have exact CI PASS |
 | How is the single master built and its historical evidence preserved? | [Internal report build/integrity guide](docs/MASTER_REPORT_REPRODUCIBILITY.md) |
 | What does the current package model solve? | [Integrated model guide](docs/INTEGRATED_REFERENCE_THERMAL_20261030.md) |
