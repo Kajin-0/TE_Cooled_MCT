@@ -5,6 +5,19 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**2026-11-03 geometry-readiness consolidation (NEWEST):** V3 R1 physical STEP
+remains the immutable 824-solid reference. A separate source-to-STEP
+[geometry-readiness report](docs/V3_MULTIPHYSICS_GEOMETRY_READINESS_20261103.md)
+and [machine-readable domain/port registry](data/v3_geometry_readiness_20261103/domain_interface_registry.json)
+map all 824 original bodies, 378 declared source contact witnesses, candidate
+physics roles, 13 declared thermal/source ports, and thin-layer/curve strategies.
+This is analysis PREPARATION, NOT validated analysis geometry: no native gas
+void, unambiguous STEP-face/port mapping, parametric CAD rebuild or new mesh/PDE.
+Height upper reserve6um and nominal tab-strain proxy20% remain physical risk
+screens, not geometry defects proven or resolved. The original geometry and
+canonical Rev3 stay frozen; Gate B electrical STOP, thermal C/D NOT RUN and
+issue#2 OPEN. Do not launch another electrical mesh campaign from this packet.
+
 **2026-11-03 archive-integrity hardening (NEWEST):** A separate prospective
 [scientific-field archive contract](docs/V3_FLUX_ARCHIVE_INTEGRITY_20261103.md)
 checks actual typed array shapes/units/identities, mesh face incidence, RT0
