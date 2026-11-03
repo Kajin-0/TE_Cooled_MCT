@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/work/scripts/v3_analysis_r3_geometry.py", line 160, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);build(p.parse_args().out)
+                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/scripts/v3_analysis_r3_geometry.py", line 104, in build
+    if abs(sum(oc.getMass(2,t) for t in children)/target-1)>1e-6:raise ValueError('Initial source-face area drift '+f)
+                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Initial source-face area drift 2222

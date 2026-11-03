@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/work/scripts/v3_analysis_r3_saved_completion.py", line 134, in <module>
+    a=p.parse_args();complete(a.source,a.out)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/scripts/v3_analysis_r3_saved_completion.py", line 113, in complete
+    for f,q in current.items():descendants[f]=bind_faces(q,after,f in cutparents)
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/scripts/v3_analysis_r3_saved_completion.py", line 17, in bind_faces
+    if same or not allow_pair:raise ValueError('Ambiguous exact source face '+str(same))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Ambiguous exact source face []

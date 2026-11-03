@@ -1,0 +1,77 @@
+# R3 source-conservative global mesh experiment
+
+Baseline4955177acb6eea8bbf8a9e03d2065a8ab8dbc003; existing sim:0.0 only.
+This separate R3 computational geometry/mesh does not replace physical R1,
+accepted R2, any historical field or the canonical38-page Rev3. No PDE, material
+fit, electrical-discretization forensics or performance prediction is authorized.
+All laws remain UNSET; issue#2 remains OPEN.
+
+## Preregistered design, gates and bounds
+
+The exact two original15µm polyimide jacket solids are restored from the frozen
+R1 computational BREP, without fitting or rescaling. This deliberately migrates
+R2's428 domains to **430**: it resolves the gas/shell ambiguity with explicit
+dielectric volume, rather than placing a shell in parallel with fictitious gas.
+The native gas must shrink by exactly the original jacket sum0.077162028mm³
+(absolute CAD tolerance1e-7mm³). No independent shell heat path may also be added.
+Four effective pin caps retain the original explicit axial Kovar/Ni/Au regions,
+with no homogeneous Kovar fallback. No new material coefficients are assigned.
+
+CAD phase: one source-jacket restoration/native gas CSG, plus boundary-only
+meridian imprints on periodic wire surfaces. Imprints partition surface
+parametrizations for directional structured meshing; they must not split,
+reshape, merge or change a physical source volume. Complete Boolean lineage maps
+all2422 R2 face identities and original jacket faces to R3 descendants. Source
+areas and378 finite-contact CAD witnesses must agree within1e-6 relative.
+All824 physical source mappings,88 legs,89 internal net identities, insulation,
+terminal uniqueness and electrical graph must survive. CAD/reimport has a600s
+wall limit per subprocess,4CPU/8GiB; any failed physical/source invariant stops.
+
+The ten original jacket inner-contact regions remain **six FULL and four PARTIAL
+relative to R2 faces**. Every region must have actual R3 CAD subfaces with exact
+covered and bare complements; no whole-face area weighting. A new independent
+fresh-import audit must verify shell ownership, source area, gas exclusion,
+378 contacts, zero cross-net shorts, every TEC leg essential to the series path,
+and detector isolation before meshing. The physical STEP and R2 stay immutable.
+
+Surface phase: curvature and measured face-area feedback, with shared-edge
+constraints. Read the accepted R2 dense mesh as a quantitative benchmark and
+derive complete per-face triangle-area/size data; all reference faces must still
+pass1%. Curvature-sampled arc lengths define shared edge subdivision counts.
+Opposite edges of eligible curved quadrilateral faces share counts; periodic
+wire half-skins use transfinite directional grids, avoiding global isotropic
+over-refinement along long straight wires. Other faces use local isotropic
+sizes from curvature and measured area error. Up to **three** recorded 2D
+candidates, each<=600s, refine only failed faces/incident edges toward0.4% error.
+Strict acceptance: every R3 face AND every aggregated original R2 face <1%
+CAD area error, positive triangles, complete physical groups and closed volume
+skins. Target3–5x reduction from1,416,664 triangles is an efficiency target,
+not a waived fidelity gate. Planning cap800,000 accepted surface triangles;
+an over-budget or repeatedly failed candidate blocks global3D.
+
+Only if source/shell/gas and surface gates pass: **one** full global3D tetrahedral
+attempt, Delaunay algorithm1, <=900s/4CPU/8GiB and at most3,000,000 accepted tets
+(target<=2million). If the mesher itself fails, at most one targeted HXT algorithm10
+alternative on the same qualified boundary mesh, <=600s and the same caps; do
+not relaunch merely to tune density. Any source/physical ambiguity is STOP,
+not a mesher-retry condition. No PDE follows a successful mesh.
+
+Independently verify all430 domain volumes, including tiny joints, within1%
+of exact CAD; positive Jacobians, finite positive shape quality, full quality
+distribution, exact shared tetra-face incidence and material/port ownership,
+unique terminals and one connected gas. Preserve all attempted meshes/logs.
+MSH/BREP coordinates are millimetres; standalone audit arrays/visual labels
+explicitly convert to metres where SI is claimed. Unit negative controls reject
+1e3/1e-3 length factors and their1e9/1e-9 volume effects. Runtime, CPU time and
+peak process RSS are measured separately for each phase. No solver readiness,
+manufacturability, hermeticity or OEM claim follows from geometric gates.
+
+All preexisting untracked trial files were hashed before edits; never remove or
+overwrite them. Phase source and protected-input hashes are sealed before each
+new geometry/mesh stage. Verification uses focused/no-PDE regression, archive,
+master, legacy demonstrations and exact-commit CI, with accepted R2 hashes checked.
+The master PDF is not modified for an unqualified meshing experiment.
+
+## Results
+
+PENDING. Every actual PASS/FAIL/STOP and unexecuted branch will be recorded.

@@ -1,15 +1,32 @@
 # CURRENT PROJECT CONTRACT
 
-This is the authoritative continuation contract, updated 2026-11-02. Historical
+This is the authoritative continuation contract, updated 2026-11-03. Historical
 work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
-**2026-11-03 separate R2 analysis-only geometry (CURRENT):** [R2 derived geometry and meshability release](docs/V3_ANALYSIS_R2_GEOMETRY_AND_MESHABILITY_20261103.md) transforms only separately versioned *computational* solids from baseline5c16da8. Two original 15um annular TEC-lead polyimide jacket volumes become explicit dielectric shell/interface requirements; four 2um Ni+1.5um Au pin-tip finishes become exact source-volume-preserving piecewise-axial effective cap regions, NOT bulk Kovar. The R2 model has428 conformal 3D domains/2422 uniquely owned faces and native one-connected gas (1231.707223196mm³), all824 original source bodies/378 finite contact witnesses mapped with zero area/short errors. Ten inner lead/jacket faces map to 6 full and4 *PARTIAL* shell subfaces; boundary quadrature on partial areas is **NOT QUALIFIED**. A curvature-controlled global 2D mesh has1,416,664 triangles/701,952 nodes, and0/2422 face CAD-area mismatches above1% (max0.509281%); coarse95k/edge185k alternatives FAILED the gate (113/46 faces). A genuine 4-domain local lead/joint/pin 3D mesh has38,496 tets /13,963 nodes and0.321–0.537% source-volume errors. **No qualified whole-device tetrahedral mesh; no PDE or material law fitted**, no electrical STOP reopened. Physical R1 STEP, prior global failures, Rev3 and issue#2 remain untouched. Mandatory next priority: adaptive, face-targeted curvature meshing with achievable global 3D density, and partial dielectric shell operators, preserving all accepted source/contact/insulation gates.
+**Current R3 outcome: SOURCE MIGRATION PASS; GLOBAL MESH STOP (2026-11-03).**
+Read [R3 registration/results](docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md),
+baseline4955177, existing sim:0.0 only. Saved unimprinted R3 has430 conformal
+domains/2440 owned faces, all824 sources/378 contacts, exact6 full/4 partial
+jacket regions and0.077162028mm³ polymer excluded from gas; heterogeneous
+pin-cap laws remain explicit and UNSET. One meridian imprint STOPPED on unresolved
+face lineage; no further CAD retry. The first adaptive surface attempt STOPPED
+at600.073s (864.31CPU-s,504.809MiB observed peak RSS) without a completed mesh.
+No triangle-reduction/area/3D qualification; full3D and its alternative NOT RUN.
+Local QA PASS:687 applicable tests/11 runtime skips,44 focused, archive/master,
+both legacy and5548 baseline/84 prior trial-file byte guards. Remaining work is
+publication/exact CI only, then halt. A native
+size-field/periodic-face performance correction is PROPOSED, not authorized here.
+Preserve accepted R2, physical824-solid STEP, exact38-page Rev3, all84 preexisting
+untracked trial-file identities and every prior FAIL/STOP; issue#2 OPEN.
+No PDE, fit, performance, physical redesign or electrical forensics. One builder.
 
-**2026-11-03 global V3 meshability STOP (NEWEST):** [Bounded global mesh gate](docs/V3_GLOBAL_MESHABILITY_AND_LAW_GATE_20261103.md) on frozen9468b36 registered438 volume /2456 face groups and produced one complete2D candidate (49863triangles/23301nodes), but independent CAD face-area verification FAILS:174/2456 faces >1% area discrepancy, max336.505% relative. Two limited global3D attempts both STOP on overlapping face2395 TEC_lead1/lead1_insulation; 0.01° facet tolerance did not fix even identical boundary triangles. No valid global3D tetra mesh or physics. [Explicit law requirements](data/v3_global_mesh_gate_20261103/physics_law_requirements.json) cover every domain, with all coefficients UNSET, solver_ready=false; no homogeneous bulk Cu/Au/Ni fallback for the98 composites. Physical STEP, Rev3, historical failed gates remain unchanged, issue#2 OPEN. Preserve all original failed attempts; NO additional numerical-forensics or meshing retries without a bounded new geometric representation task.
+**2026-11-03 prior accepted R2 analysis-only geometry (HISTORICAL):** [R2 derived geometry and meshability release](docs/V3_ANALYSIS_R2_GEOMETRY_AND_MESHABILITY_20261103.md) transforms only separately versioned *computational* solids from baseline5c16da8. Two original 15um annular TEC-lead polyimide jacket volumes become explicit dielectric shell/interface requirements; four 2um Ni+1.5um Au pin-tip finishes become exact source-volume-preserving piecewise-axial effective cap regions, NOT bulk Kovar. The R2 model has428 conformal 3D domains/2422 uniquely owned faces and native one-connected gas (1231.707223196mm³), all824 original source bodies/378 finite contact witnesses mapped with zero area/short errors. Ten inner lead/jacket faces map to 6 full and4 *PARTIAL* shell subfaces; boundary quadrature on partial areas is **NOT QUALIFIED**. A curvature-controlled global 2D mesh has1,416,664 triangles/701,952 nodes, and0/2422 face CAD-area mismatches above1% (max0.509281%); coarse95k/edge185k alternatives FAILED the gate (113/46 faces). A genuine 4-domain local lead/joint/pin 3D mesh has38,496 tets /13,963 nodes and0.321–0.537% source-volume errors. **No qualified whole-device tetrahedral mesh; no PDE or material law fitted**, no electrical STOP reopened. Physical R1 STEP, prior global failures, Rev3 and issue#2 remain untouched. Mandatory next priority: adaptive, face-targeted curvature meshing with achievable global 3D density, and partial dielectric shell operators, preserving all accepted source/contact/insulation gates.
 
-**2026-11-03 authorized derived-geometry milestone (CURRENT, GEOMETRY ONLY):**
+**2026-11-03 prior global V3 meshability STOP (HISTORICAL):** [Bounded global mesh gate](docs/V3_GLOBAL_MESHABILITY_AND_LAW_GATE_20261103.md) on frozen9468b36 registered438 volume /2456 face groups and produced one complete2D candidate (49863triangles/23301nodes), but independent CAD face-area verification FAILS:174/2456 faces >1% area discrepancy, max336.505% relative. Two limited global3D attempts both STOP on overlapping face2395 TEC_lead1/lead1_insulation; 0.01° facet tolerance did not fix even identical boundary triangles. No valid global3D tetra mesh or physics. [Explicit law requirements](data/v3_global_mesh_gate_20261103/physics_law_requirements.json) cover every domain, with all coefficients UNSET, solver_ready=false; no homogeneous bulk Cu/Au/Ni fallback for the98 composites. Physical STEP, Rev3, historical failed gates remain unchanged, issue#2 OPEN. Preserve all original failed attempts; NO additional numerical-forensics or meshing retries without a bounded new geometric representation task.
+
+**2026-11-03 prior derived-geometry milestone (HISTORICAL, GEOMETRY ONLY):**
 A separate **uncommitted** analysis geometry in
 `data/v3_derived_multiphysics_20261103` and its linked
 `docs/V3_DERIVED_MULTIPHYSICS_GEOMETRY_20261103.md` provides actual native
@@ -367,11 +384,12 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current: STOP; publish verified subset of the conservative electrical attempt.**
-Read `docs/V3_CONSERVATIVE_FLUX_20261102.md` and its frozen sources/results.
-The first coupon failed numerically and its writer lost a mixed export; do not
-relaunch or edit the sealed producer. Controls/geometry PASS are distinct from
-unqualified current/loss accuracy. No L2, C/D or follow-on campaign is authorized.
+**Current: R3 experiment closed at source-PASS/global-mesh-STOP; publication only.**
+Read `docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md` and its frozen release manifest.
+No further Boolean, surface retry, full3D attempt or PDE under this checkpoint.
+One proposed future task is a small instrumented periodic-wire sizing/lineage
+benchmark on unchanged saved geometry, requiring separate user authorization.
+All previous electrical, gas and coupled-thermal STOPs remain constraints.
 
 **Historical source-gate attempt:**
 Read `docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md` and its independent review of

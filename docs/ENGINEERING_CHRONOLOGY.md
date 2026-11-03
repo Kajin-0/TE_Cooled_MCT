@@ -382,3 +382,23 @@ At clean source5c16da8, separately derived R2 OCC BREP with427 retained material
 ## 2026-11-03T06:33:51Z — PASS / CONDITIONAL — R2 analysis-only geometry QA before publication
 
 Full pinned no-PDE regression **656 passed/11 skipped** (14 third-party warning messages), focused **14 R2 release/negative tests PASS** after addition of one last gas-displacement falsification test, canonical Rev3 validator True and historical archive guard PASS. 428-domain/2422-face R2 CAD and all824 source/378 contact mappings accepted, global2D 1416664 triangles/701952 nodes meets all CAD area gates, local Cu lead/pin/joints 3D38496 tets meets stated1% volume checks. Exact material/operator laws UNSET; four partial dielectric-shell boundary areas and the 0.077162028mm³ gas/polymer displacement strictly block solver readiness; globally conformal volume meshing NOT RUN. Frozen V3 R1 STEP exact SHA256 5e46c10f…, 38-page Rev3 882209b0… and Gate B STOP unchanged; issue#2 OPEN. R2 publication and exact-commit CI remain PENDING at this observation; preserve prior trial failures.
+
+## 2026-11-03T06:52:18Z — PENDING — Separately versioned R3 global mesh authorized
+
+**Observed UTC task begin**; verified main4955177acb6eea8bbf8a9e03d2065a8ab8dbc003 in existing sim:0.0. New geometry-only order permits targeted adaptive surface sizing, exact source-jacket/gas exclusion and conditional bounded global tetrahedral generation; preserve R2, physical STEP/Rev3, every old failure and all existing untracked trials (84 files /185,518,781 bytes snapshotted before edits), no PDE or electrical-forensics work, issue#2 OPEN.
+
+## 2026-11-03T07:30:17Z — FAIL / PENDING — R3 CAD lineage STOP, one bounded bookkeeping correction
+
+**Observed UTC diagnosis**; first R3 CAD run STOPPED after25.445s/764.547MiB on area lineage2222; original source/receipt preserved and no mesh attempted. Fresh R2 import verifies unchanged header face2222 area12.0395664710mm²/owner386; prospectively registered one source-identical correction binds standalone OCC provenance only to unique actual-owned CAD fingerprints, retains strict1e-6 source/contact gates and600s/8GiB caps, no physical or R2 changes.
+
+## 2026-11-03T07:47:34Z — STOP / PENDING — R3 meridian provenance, saved geometry audit
+
+The single planned meridian imprint STOPPED on an unresolved face identity (18.038s/621.449MiB); both gas-CSG producer failures and the imprint failure remain preserved. No more Booleans/imprints: only read-only provenance extraction and independent fresh-import audit of the already saved unimprinted430-domain BREP, then the registered bounded surface phase if every source/shell/gas gate passes; all original inputs/Rev3 and issue#2 unchanged.
+
+## 2026-11-03T07:59:28Z — PASS / STOP / NOT RUN — R3 source migration and surface budget
+
+Independent fresh-import audit PASS430 domains/2440 faces,824 sources/378 contact witnesses,6 full/4 actual partial jacket regions,0.077162028mm³ excluded gas and heterogeneous pin requirements; the initial audit's reversed rejection comparison was preserved and a separately sealed corrected audit passed positive/negative controls. One adaptive surface attempt was terminated at600.073s (864.31CPU-s/504.809MiB observed VmHWM), with no completed MSH, triangle count or area qualification; remaining surface candidates, global3D/alternative and PDE NOT RUN. Physical STEP, R2, exact38-page Rev3 and old failed gates unchanged; only verification/publication remains authorized, issue#2 OPEN.
+
+## 2026-11-03T08:14:47Z — PASS QA / GLOBAL MESH STOP / PENDING PUBLICATION — R3 bounded checkpoint
+
+Against source4955177, frozen [R3 source/stop evidence](V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md) passes44 focused and687 full applicable tests (11 runtime skips), full archive/master, both legacy and5548 immutable baseline blob/23 input/84 preexisting trial byte checks; final actual-CAD figures visually reviewed, source/artifact hashes sealed. No new qualified surface/tet mesh or PDE; source migration alone PASS, exact physical STEP/38-page Rev3 and all prior failures unchanged, issue#2 verified OPEN; only scoped commit/push and exact CI remain, no follow-on experiment.

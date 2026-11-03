@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/work/scripts/v3_analysis_r3_audit.py", line 160, in <module>
+    a=p.parse_args();audit(a.geometry,a.out)
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/scripts/v3_analysis_r3_audit.py", line 141, in audit
+    if abs(receipt['R2_gas_volume_mm3']-gas-poly)>1e-7 or abs(poly-.077162028)<1e-7:raise ValueError('Gas displacement double counted')
+                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Gas displacement double counted
