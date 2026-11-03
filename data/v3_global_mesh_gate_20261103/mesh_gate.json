@@ -1,0 +1,157 @@
+{
+  "status": "STOP GLOBAL MESH; 2D coverage PASS, area fidelity FAIL, 3D not generated",
+  "input_commit": "9468b365bda52b5d9d2ac4e6b82d2f28a610c9bd",
+  "protected_original_step_sha256": "5e46c10fb75713a9dffbc97c44a2b94ca23bee14a93df7f4c0c7c915eb761a73",
+  "protected_master_sha256": "882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248",
+  "input_conformal_brep_sha256": "830fd2e3ce8307b07afcfe3eb517a2b7fb7a42a1e4674616a06697ba98df5974",
+  "input_face_registry_sha256": "6e7b13d05eaafb5b10740ae8f296111224885a2d53917f84a7ef04d5b05d6965",
+  "saved_surface_mesh_sha256": "a55cb4ff30dc7cfd19cee17e8a17d0026d1d171ad882a599c3a8247801a92e11",
+  "saved_surface_mesh_qualified": false,
+  "surface_coverage": {
+    "physical_volume_groups": 438,
+    "physical_face_groups": 2456,
+    "face_groups_with_triangles": 2456,
+    "triangles": 49863,
+    "area_gate_relative": 0.01,
+    "face_area_failed_count": 174,
+    "max_abs_relative_area_error": 3.3650506655415304,
+    "by_class": {
+      "EXTERIOR": {
+        "faces": 43,
+        "fail": 27
+      },
+      "GAS_SOLID": {
+        "faces": 1848,
+        "fail": 99
+      },
+      "SOLID_SOLID": {
+        "faces": 565,
+        "fail": 48
+      }
+    }
+  },
+  "volume_mesh_status": "STOP, overlapping facets, 0 fully generated volume meshes",
+  "problem_face_2395": {
+    "face_tag": 2395,
+    "owners": [
+      {
+        "volume_tag": 425,
+        "source_name": "TEC_lead1",
+        "signed_outward": 1
+      },
+      {
+        "volume_tag": 433,
+        "source_name": "lead1_insulation",
+        "signed_outward": -1
+      }
+    ],
+    "area_m2": 1.1739592069821692e-06,
+    "center_m": [
+      -0.0031993458848130277,
+      -0.0029870201811893226,
+      0.00272
+    ],
+    "bbox_m": [
+      -0.004137622098352354,
+      -0.0032333033615086614,
+      0.0026199999000000003,
+      -0.0022610696712737,
+      -0.002740737000869997,
+      0.0028200001
+    ],
+    "interface_class": "SOLID_SOLID",
+    "thermal_condition": "FINITE_CONTACT_OR_CONTINUOUS_INTERFACE_UNQUALIFIED",
+    "electrical_condition": "INTERFACE_LAW_REQUIRED_OR_ELECTRICALLY_INSULATED",
+    "radiation_condition": "NONE",
+    "optical_condition": "NONE",
+    "port_id": "INTERNAL",
+    "ceramic_stage_ports": [],
+    "electrical_material_category": "DIELECTRIC_INSULATED",
+    "structural_condition": "BONDED_OR_COMPLIANT_INTERFACE_NOT_MECHANICALLY_QUALIFIED",
+    "thermoelectric_interface": "NONE",
+    "source_cad": "frozen V3 R1 physical STEP or explicit synthetic gas closure",
+    "magnetic_condition": "NOT_SPECIFIED",
+    "material_law_status": "NOT QUALIFIED"
+  },
+  "attempts": [
+    {
+      "origin_dir": "data/v3_global_mesh_pilot_20261103_attempt02",
+      "surface_mesh_candidate_sha256": "a55cb4ff30dc7cfd19cee17e8a17d0026d1d171ad882a599c3a8247801a92e11",
+      "volume_requested": false,
+      "status": "PASS GLOBAL SURFACE ONLY; 3D VOLUME MESH NOT RUN",
+      "volume_error": null,
+      "overlap_tolerance_degrees": 0.1,
+      "surface_triangles": 49863,
+      "mesh_nodes": 23301,
+      "relevant_gmsh_messages": [
+        "Info: 24 triangles are equivalent",
+        "Info: 2 triangles are equivalent",
+        "Info: 2 triangles are equivalent",
+        "Info: 22 triangles are equivalent",
+        "Info: 12 triangles are equivalent",
+        "Info: 2 triangles are equivalent",
+        "Info: 22 triangles are equivalent",
+        "Info: 2 triangles are equivalent",
+        "Info: 12 triangles are equivalent",
+        "Info: 10 triangles are equivalent",
+        "Info: 24 triangles are equivalent"
+      ]
+    },
+    {
+      "origin_dir": "data/v3_global_volume_pilot_20261103_attempt01",
+      "surface_mesh_candidate_sha256": "970a59089a1fc0e3636b50304079255d0b55547b21222d083aed7108dcc56e77",
+      "volume_requested": true,
+      "status": "STOP GLOBAL SURFACE MESH",
+      "volume_error": "Exception('Invalid boundary mesh (overlapping facets) on surface 2395 surface 2395')",
+      "overlap_tolerance_degrees": 0.1,
+      "surface_triangles": 49845,
+      "mesh_nodes": 23292,
+      "relevant_gmsh_messages": [
+        "Info: 22 triangles are equivalent",
+        "Info: 12 triangles are equivalent",
+        "Info: 2 triangles are equivalent",
+        "Info: 22 triangles are equivalent",
+        "Info: 2 triangles are equivalent",
+        "Info: 12 triangles are equivalent",
+        "Info: 10 triangles are equivalent",
+        "Info: 24 triangles are equivalent",
+        "Info: Found two nearly self-intersecting facets (dihedral angle  4.99183E-04).",
+        "Info:   1st: [7061, 16831, 16832] #2395",
+        "Info:   2nd: [7061, 16831, 16838] #2395",
+        "Info: The dihedral angle between them is 0.0286011 degree.",
+        "Info: Hint: You may use Mesh.AngleToleranceFacetOverlap to decrease the dihedral angle tolerance 0.1 (degree)",
+        "Error: Invalid boundary mesh (overlapping facets) on surface 2395 surface 2395"
+      ]
+    },
+    {
+      "origin_dir": "data/v3_global_volume_pilot_20261103_attempt02",
+      "surface_mesh_candidate_sha256": "6870d44cbb542bae261c6b9099c3ce88ade23a782fac671e42b5494cd27f00d3",
+      "volume_requested": true,
+      "status": "STOP GLOBAL SURFACE MESH",
+      "volume_error": "Exception('Invalid boundary mesh (overlapping facets) on surface 2395 surface 2395')",
+      "overlap_tolerance_degrees": 0.01,
+      "surface_triangles": 49859,
+      "mesh_nodes": 23299,
+      "relevant_gmsh_messages": [
+        "Info: 2 triangles are equivalent",
+        "Info: 2 triangles are equivalent",
+        "Info: 22 triangles are equivalent",
+        "Info: 12 triangles are equivalent",
+        "Info: 2 triangles are equivalent",
+        "Info: 22 triangles are equivalent",
+        "Info: 2 triangles are equivalent",
+        "Info: 12 triangles are equivalent",
+        "Info: 10 triangles are equivalent",
+        "Info: 24 triangles are equivalent",
+        "Info:   1st: [16831, 7060, 16847] #2395",
+        "Info:   2nd: [16831, 7060, 16847] #2395",
+        "Error: Invalid boundary mesh (overlapping facets) on surface 2395 surface 2395"
+      ]
+    }
+  ],
+  "no_pde": true,
+  "no_material_fit": true,
+  "source_physical_redesign": false,
+  "physics_contract_status": "all law values explicitly UNSET and solver_ready=false",
+  "verdict": "Only CAD and bounded local 3D geometry established; global full-mesh qualification blocked"
+}

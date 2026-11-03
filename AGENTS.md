@@ -5,6 +5,8 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**2026-11-03 global V3 meshability STOP (NEWEST):** [Bounded global mesh gate](docs/V3_GLOBAL_MESHABILITY_AND_LAW_GATE_20261103.md) on frozen9468b36 registered438 volume /2456 face groups and produced one complete2D candidate (49863triangles/23301nodes), but independent CAD face-area verification FAILS:174/2456 faces >1% area discrepancy, max336.505% relative. Two limited global3D attempts both STOP on overlapping face2395 TEC_lead1/lead1_insulation; 0.01° facet tolerance did not fix even identical boundary triangles. No valid global3D tetra mesh or physics. [Explicit law requirements](data/v3_global_mesh_gate_20261103/physics_law_requirements.json) cover every domain, with all coefficients UNSET, solver_ready=false; no homogeneous bulk Cu/Au/Ni fallback for the98 composites. Physical STEP, Rev3, historical failed gates remain unchanged, issue#2 OPEN. Preserve all original failed attempts; NO additional numerical-forensics or meshing retries without a bounded new geometric representation task.
+
 **2026-11-03 authorized derived-geometry milestone (CURRENT, GEOMETRY ONLY):**
 A separate **uncommitted** analysis geometry in
 `data/v3_derived_multiphysics_20261103` and its linked

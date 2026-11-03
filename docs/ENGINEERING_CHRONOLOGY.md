@@ -358,3 +358,15 @@ At immutable baseline3875e1b, independently reopened the extant uncommitted anal
 ## 2026-11-03T05:39:15Z — PASS / PENDING CI — Derived V3 geometry local release checks
 
 Frozen 3875e1b source, actual 438-domain conformal BREP/2456 conformal interfaces, gas connectivity and local TEC/gas meshes have passed 627 applicable no-solve regression tests / 11 skipped, 16 new focused geometry tests, protected input/output hash checks, archived evidence guard, master validator and both legacy demos. Added a fail-closed composite material classification and a 1e-6 relative source-contact area gate, including negative tests; no new numerical result or model re-fit. Original STEP/Rev3 byte identities remain unchanged; electrical Gate B STOP and issue#2 OPEN. Publication and exact-commit CI are still PENDING at this observation.
+
+## 2026-11-03T05:47:06Z — PENDING — Bounded V3 complete-surface mesh and physics-contract milestone
+
+User authorized continuing after exact-commit 9468b36 CI PASS (run41585244468). New geometry-only scope: one whole-model conformal surface mesh attempt under a hard process cap, a complete physical-group/constitutive-status export, independent topological checks and truthful STOP if mesh generation fails; no PDE, parameter fit, 3D mesh convergence or physical redesign. Original824-solid STEP, canonical38-page Rev3, all numerical failures and existing untracked attempts are immutable; issue#2 remains open.
+
+## 2026-11-03T05:55:07Z — PASS / FAIL / STOP — V3 global mesh preflight and law requirements
+
+On clean9468b36, one global surface pilot generated49863 triangles/23301 nodes with all438/2456 physical volume/face groups and no absent faces; independent saved-MSH CAD-area gate FAILS174/2456 faces at1% (worst+336.505% pin Au/gas, detector bond undercoverage ~95%). First global3D attempt STOP overlapping facets face2395 (TEC_lead1/lead1_insulation, 0.0286011°); one 0.01° tolerance trial also STOP on identical triangles at that face. All attempts preserved; no third mesh/refinement/physics. A new source/face-traceable 438-domain/2456-interface law requirements register explicitly UNSET coefficients and blocks solver fallback; local negative tests pass. No physical V3 R1 STEP or38-page Rev3 changes; historical electrical Gate B STOP and issue#2 OPEN. Publication/CI PENDING at this observation.
+
+## 2026-11-03T05:56:53Z — PASS / STOP / PENDING CI — V3 global mesh gate archive verified
+
+Full pinned no-solve regression **643 passed/11 skipped** (14 dependency warnings), focused15 new geometry/requirements/gate tests PASS, master validator True and archive verification PASS. Saved unqualified 49863-triangle MSH, per-face2456/174 area-fail audit, exact source/mesh SHA and two STOPPED 3D diagnostics retained; new contract has438 domain requirements and all 2456 face classes with explicit UNSET physical coefficients. Frozen original V3 STEP/Rev3 not edited; electrical Gate B STOP, thermal C/D NOT RUN, issue#2 OPEN. Only publish this fail-closed geometry checkpoint and verify exact CI; do not launch a third mesh or PDE solve.
