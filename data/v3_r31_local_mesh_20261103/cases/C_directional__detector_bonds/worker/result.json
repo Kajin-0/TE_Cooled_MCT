@@ -1,0 +1,73 @@
+{
+  "status": "STOP LOCAL FIXTURE",
+  "strategy": "C_directional",
+  "fixture": "detector_bonds",
+  "source_identity_PASS": true,
+  "global_mesh_RUN": false,
+  "PDE_RUN": false,
+  "solver_ready": false,
+  "sizing": {
+    "constrained_curves": 30,
+    "periodic_faces": 10,
+    "callback": false
+  },
+  "error": "ValueError('STOP C nonunique native-boundary node match face2385 maxdistance=0.0005586022382028892')",
+  "phases": {
+    "import_source_visibility": {
+      "wall_seconds": 0.40469713788479567,
+      "CPU_seconds": 0.40456591599999997
+    },
+    "setup_sizing": {
+      "wall_seconds": 0.0007000530604273081,
+      "CPU_seconds": 0.0007009099999999435
+    },
+    "native_1D_meshing": {
+      "wall_seconds": 0.056243933038786054,
+      "CPU_seconds": 0.10574129899999996
+    },
+    "source_parametric_grid": {
+      "wall_seconds": 0.007314528105780482,
+      "CPU_seconds": 0.007324247999999978
+    }
+  },
+  "API_profile": {
+    "sizing.setTransfiniteCurve": {
+      "calls": 30,
+      "seconds": 9.73802525550127e-05
+    },
+    "sizing.add": {
+      "calls": 11,
+      "seconds": 6.357114762067795e-05
+    },
+    "sizing.setString": {
+      "calls": 5,
+      "seconds": 3.682984970510006e-05
+    },
+    "sizing.setNumber": {
+      "calls": 10,
+      "seconds": 2.274010330438614e-05
+    },
+    "sizing.setNumbers": {
+      "calls": 6,
+      "seconds": 7.813121192157269e-05
+    },
+    "sizing.setAsBackgroundMesh": {
+      "calls": 1,
+      "seconds": 7.950002327561378e-06
+    },
+    "parametrization.getValue": {
+      "calls": 1,
+      "seconds": 0.00012337090447545052
+    }
+  },
+  "callback": {
+    "calls": 0,
+    "body_seconds": 0.0,
+    "by_dimension": {},
+    "by_face": {}
+  },
+  "wall_seconds": 0.5108200500253588,
+  "CPU_seconds": 0.918044229,
+  "peak_RSS_MiB": 137.03125,
+  "observed_UTC": "2026-11-03T14:49:07.551047+00:00"
+}

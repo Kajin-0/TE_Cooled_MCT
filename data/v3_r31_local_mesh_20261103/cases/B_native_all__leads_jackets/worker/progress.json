@@ -1,0 +1,70 @@
+{
+  "status": "RUNNING",
+  "phase": "independent_area_topology_validation",
+  "observed_UTC": "2026-11-03T14:47:08.015056+00:00",
+  "seconds": 1.4651769849006087,
+  "CPU_seconds": 3.146159892,
+  "phases": {
+    "import_source_visibility": {
+      "wall_seconds": 0.39166417601518333,
+      "CPU_seconds": 0.39158426900000004
+    },
+    "setup_sizing": {
+      "wall_seconds": 0.017217878019437194,
+      "CPU_seconds": 0.015283835000000079
+    },
+    "native_1D_meshing": {
+      "wall_seconds": 0.04598181298933923,
+      "CPU_seconds": 0.08829573300000004
+    },
+    "native_2D_meshing": {
+      "wall_seconds": 0.5682971279602498,
+      "CPU_seconds": 1.745746515
+    },
+    "write_native_MSH": {
+      "wall_seconds": 0.07000332907773554,
+      "CPU_seconds": 0.07924266500000021
+    },
+    "independent_area_topology_validation": {
+      "wall_seconds": 0.3235965680796653,
+      "CPU_seconds": 0.32354776099999993
+    }
+  },
+  "callback": {
+    "calls": 0,
+    "body_seconds": 0.0,
+    "by_dimension": {},
+    "by_face": {}
+  },
+  "api": {
+    "sizing.setTransfiniteCurve": {
+      "calls": 4521,
+      "seconds": 0.008768453728407621
+    },
+    "sizing.setTransfiniteSurface": {
+      "calls": 20,
+      "seconds": 0.0001653714571148157
+    },
+    "sizing.add": {
+      "calls": 13,
+      "seconds": 0.0009499858133494854
+    },
+    "sizing.setString": {
+      "calls": 6,
+      "seconds": 0.001417004270479083
+    },
+    "sizing.setNumber": {
+      "calls": 12,
+      "seconds": 4.341220483183861e-05
+    },
+    "sizing.setNumbers": {
+      "calls": 7,
+      "seconds": 0.00028586783446371555
+    },
+    "sizing.setAsBackgroundMesh": {
+      "calls": 1,
+      "seconds": 1.4950986951589584e-05
+    }
+  },
+  "peak_RSS_MiB": 169.765625
+}

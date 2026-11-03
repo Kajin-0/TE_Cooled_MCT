@@ -1,0 +1,1587 @@
+{
+  "status": "MEASURED LOCAL EVIDENCE ONLY; GLOBAL NOT RUN",
+  "cases": {
+    "A_callback_all__detector_bonds": {
+      "id": "A_callback_all__detector_bonds",
+      "strategy": "A_callback_all",
+      "fixture": "detector_bonds",
+      "status": "STOP180s",
+      "exit_code": -9,
+      "hard_budget_seconds": 180,
+      "timeout": true,
+      "wall_seconds": 180.04947599582374,
+      "CPU_seconds": 253.499247,
+      "maximum_child_RSS_MiB": 446.11328125,
+      "sampled_peak_RSS_MiB": 446.53515625,
+      "observed_start_UTC": "2026-11-03T14:44:02.918971+00:00",
+      "observed_end_UTC": "2026-11-03T14:47:02.968442+00:00",
+      "process_bound": "one worker in4CPU/8GiB offline pinned container",
+      "worker_source": "b26347e12dd883602d0fc54c42f7c0acdfab0a660e372582eab58489752ca2a0",
+      "no_global_mesh": true,
+      "no_PDE": true,
+      "worker_status": "STOP180s; censored",
+      "callback": {
+        "calls": 6471592,
+        "body_seconds": 6.293295073322952,
+        "by_dimension": {
+          "0": 92,
+          "1": 2716,
+          "2": 6468784
+        },
+        "by_face": {
+          "2349": 1,
+          "2385": 834990,
+          "2384": 1,
+          "2343": 1,
+          "2386": 4114,
+          "2388": 4040,
+          "2387": 1483903,
+          "2389": 1958333,
+          "2396": 1,
+          "2397": 849763,
+          "2398": 4055,
+          "2399": 992687,
+          "2400": 3896,
+          "2401": 332999
+        }
+      },
+      "phases": {
+        "import_source_visibility": {
+          "wall_seconds": 0.40273745101876557,
+          "CPU_seconds": 0.40266129500000003
+        },
+        "setup_sizing": {
+          "wall_seconds": 0.4930218099616468,
+          "CPU_seconds": 0.49292924000000005
+        },
+        "native_1D_meshing": {
+          "wall_seconds": 0.04645530413836241,
+          "CPU_seconds": 0.09700347899999984
+        }
+      }
+    },
+    "A_callback_all__leads_jackets": {
+      "id": "A_callback_all__leads_jackets",
+      "strategy": "A_callback_all",
+      "fixture": "leads_jackets",
+      "status": "COMPLETED WORKER; SEE GATES",
+      "exit_code": 0,
+      "hard_budget_seconds": 180,
+      "timeout": false,
+      "wall_seconds": 5.070699257077649,
+      "CPU_seconds": 7.137657,
+      "maximum_child_RSS_MiB": 170.421875,
+      "sampled_peak_RSS_MiB": 171.0859375,
+      "observed_start_UTC": "2026-11-03T14:43:57.229511+00:00",
+      "observed_end_UTC": "2026-11-03T14:44:02.300206+00:00",
+      "process_bound": "one worker in4CPU/8GiB offline pinned container",
+      "worker_source": "b26347e12dd883602d0fc54c42f7c0acdfab0a660e372582eab58489752ca2a0",
+      "no_global_mesh": true,
+      "no_PDE": true,
+      "worker_status": "PASS LOCAL SURFACE ONLY",
+      "phases": {
+        "import_source_visibility": {
+          "wall_seconds": 0.40008885017596185,
+          "CPU_seconds": 0.3992286380000001
+        },
+        "setup_sizing": {
+          "wall_seconds": 0.5039038639515638,
+          "CPU_seconds": 0.503244517
+        },
+        "native_1D_meshing": {
+          "wall_seconds": 0.047576919198036194,
+          "CPU_seconds": 0.07980541099999994
+        },
+        "native_2D_meshing": {
+          "wall_seconds": 1.9596353489905596,
+          "CPU_seconds": 4.2187047799999995
+        },
+        "write_native_MSH": {
+          "wall_seconds": 0.26028107409365475,
+          "CPU_seconds": 0.2572810109999999
+        },
+        "independent_area_topology_validation": {
+          "wall_seconds": 0.5129983481019735,
+          "CPU_seconds": 0.5043694829999996
+        }
+      },
+      "triangles": 56202,
+      "nodes": 30704,
+      "max_area_error": 0.0027381628581589768,
+      "worker_wall_seconds": 3.736987094860524,
+      "callback": {
+        "calls": 31096,
+        "body_seconds": 0.05377198616042733,
+        "by_dimension": {
+          "0": 140,
+          "1": 3362,
+          "2": 27594
+        },
+        "by_face": {
+          "2352": 4,
+          "2355": 4,
+          "2358": 308,
+          "2357": 392,
+          "2360": 3292,
+          "2359": 731,
+          "2361": 727,
+          "2362": 480,
+          "2363": 386,
+          "2366": 4,
+          "2369": 4,
+          "2371": 391,
+          "2372": 312,
+          "2373": 740,
+          "2374": 5930,
+          "2375": 731,
+          "2376": 479,
+          "2377": 395,
+          "2427": 270,
+          "2428": 49,
+          "2429": 654,
+          "2430": 2854,
+          "2431": 652,
+          "2432": 415,
+          "2433": 49,
+          "2434": 278,
+          "2435": 49,
+          "2436": 651,
+          "2437": 5243,
+          "2438": 654,
+          "2439": 417,
+          "2440": 49
+        }
+      },
+      "API_profile": {
+        "parametrization.getParametrizationBounds": {
+          "calls": 6961,
+          "seconds": 0.07541091949678957
+        },
+        "parametrization.getPrincipalCurvatures": {
+          "calls": 2301,
+          "seconds": 0.053903087275102735
+        },
+        "parametrization.getCurvature": {
+          "calls": 4521,
+          "seconds": 0.05995296826586127
+        },
+        "sizing.setTransfiniteCurve": {
+          "calls": 4521,
+          "seconds": 0.00694254832342267
+        },
+        "sizing.setTransfiniteSurface": {
+          "calls": 20,
+          "seconds": 0.00019692652858793736
+        }
+      },
+      "error": null
+    },
+    "A_callback_all__pin_planes_contacts": {
+      "id": "A_callback_all__pin_planes_contacts",
+      "strategy": "A_callback_all",
+      "fixture": "pin_planes_contacts",
+      "status": "COMPLETED WORKER; SEE GATES",
+      "exit_code": 0,
+      "hard_budget_seconds": 180,
+      "timeout": false,
+      "wall_seconds": 2.269110830966383,
+      "CPU_seconds": 2.55911,
+      "maximum_child_RSS_MiB": 154.30078125,
+      "sampled_peak_RSS_MiB": 154.6328125,
+      "observed_start_UTC": "2026-11-03T14:47:03.383119+00:00",
+      "observed_end_UTC": "2026-11-03T14:47:05.652229+00:00",
+      "process_bound": "one worker in4CPU/8GiB offline pinned container",
+      "worker_source": "b26347e12dd883602d0fc54c42f7c0acdfab0a660e372582eab58489752ca2a0",
+      "no_global_mesh": true,
+      "no_PDE": true,
+      "worker_status": "PASS LOCAL SURFACE ONLY",
+      "phases": {
+        "import_source_visibility": {
+          "wall_seconds": 0.3922693401109427,
+          "CPU_seconds": 0.39220978000000006
+        },
+        "setup_sizing": {
+          "wall_seconds": 0.4845625360030681,
+          "CPU_seconds": 0.48449481000000005
+        },
+        "native_1D_meshing": {
+          "wall_seconds": 0.05301071098074317,
+          "CPU_seconds": 0.12361840300000004
+        },
+        "native_2D_meshing": {
+          "wall_seconds": 0.5128782191313803,
+          "CPU_seconds": 0.732059327
+        },
+        "write_native_MSH": {
+          "wall_seconds": 0.07017129007726908,
+          "CPU_seconds": 0.08247430300000014
+        },
+        "independent_area_topology_validation": {
+          "wall_seconds": 0.10357646201737225,
+          "CPU_seconds": 0.10356211900000023
+        }
+      },
+      "triangles": 14800,
+      "nodes": 10239,
+      "max_area_error": 0.002738162858120563,
+      "worker_wall_seconds": 1.665342960972339,
+      "callback": {
+        "calls": 8651,
+        "body_seconds": 0.009032178670167923,
+        "by_dimension": {
+          "0": 193,
+          "1": 825,
+          "2": 7633
+        },
+        "by_face": {
+          "140": 4,
+          "1830": 1,
+          "113": 69,
+          "2411": 278,
+          "2248": 751,
+          "7": 563,
+          "2412": 5953,
+          "2414": 14
+        }
+      },
+      "API_profile": {
+        "parametrization.getParametrizationBounds": {
+          "calls": 6961,
+          "seconds": 0.07296830648556352
+        },
+        "parametrization.getPrincipalCurvatures": {
+          "calls": 2301,
+          "seconds": 0.04974918020889163
+        },
+        "parametrization.getCurvature": {
+          "calls": 4521,
+          "seconds": 0.057912105694413185
+        },
+        "sizing.setTransfiniteCurve": {
+          "calls": 4521,
+          "seconds": 0.008319396525621414
+        },
+        "sizing.setTransfiniteSurface": {
+          "calls": 20,
+          "seconds": 0.0002786798868328333
+        }
+      },
+      "error": null
+    },
+    "B_native_all__detector_bonds": {
+      "id": "B_native_all__detector_bonds",
+      "strategy": "B_native_all",
+      "fixture": "detector_bonds",
+      "status": "COMPLETED WORKER; SEE GATES",
+      "exit_code": 2,
+      "hard_budget_seconds": 180,
+      "timeout": false,
+      "wall_seconds": 90.95784387807362,
+      "CPU_seconds": 295.315779,
+      "maximum_child_RSS_MiB": 833.41796875,
+      "sampled_peak_RSS_MiB": 833.64453125,
+      "observed_start_UTC": "2026-11-03T14:47:08.569962+00:00",
+      "observed_end_UTC": "2026-11-03T14:48:39.527806+00:00",
+      "process_bound": "one worker in4CPU/8GiB offline pinned container",
+      "worker_source": "b26347e12dd883602d0fc54c42f7c0acdfab0a660e372582eab58489752ca2a0",
+      "no_global_mesh": true,
+      "no_PDE": true,
+      "worker_status": "STOP LOCAL FIXTURE",
+      "phases": {
+        "import_source_visibility": {
+          "wall_seconds": 0.4607479809783399,
+          "CPU_seconds": 0.46063791
+        },
+        "setup_sizing": {
+          "wall_seconds": 0.01301503088325262,
+          "CPU_seconds": 0.01301782600000001
+        },
+        "native_1D_meshing": {
+          "wall_seconds": 0.04680029698647559,
+          "CPU_seconds": 0.09487955300000006
+        },
+        "native_2D_meshing": {
+          "wall_seconds": 84.01564555102959,
+          "CPU_seconds": 288.33947018199996
+        },
+        "write_native_MSH": {
+          "wall_seconds": 0.3535094349645078,
+          "CPU_seconds": 0.353484710000032
+        },
+        "independent_area_topology_validation": {
+          "wall_seconds": 5.264934818958864,
+          "CPU_seconds": 5.260350137999978
+        }
+      },
+      "triangles": 878776,
+      "nodes": 442113,
+      "max_area_error": 0.04117189968491641,
+      "worker_wall_seconds": 90.20060975803062,
+      "callback": {
+        "calls": 0,
+        "body_seconds": 0.0,
+        "by_dimension": {},
+        "by_face": {}
+      },
+      "API_profile": {
+        "sizing.setTransfiniteCurve": {
+          "calls": 4521,
+          "seconds": 0.007517054444178939
+        },
+        "sizing.setTransfiniteSurface": {
+          "calls": 20,
+          "seconds": 0.00015344959683716297
+        },
+        "sizing.add": {
+          "calls": 11,
+          "seconds": 6.4425403252244e-05
+        },
+        "sizing.setString": {
+          "calls": 5,
+          "seconds": 2.618972212076187e-05
+        },
+        "sizing.setNumber": {
+          "calls": 10,
+          "seconds": 2.900976687669754e-05
+        },
+        "sizing.setNumbers": {
+          "calls": 6,
+          "seconds": 8.222111500799656e-05
+        },
+        "sizing.setAsBackgroundMesh": {
+          "calls": 1,
+          "seconds": 7.049180567264557e-06
+        }
+      },
+      "error": "ValueError('strict1% per-face gate')"
+    },
+    "B_native_all__leads_jackets": {
+      "id": "B_native_all__leads_jackets",
+      "strategy": "B_native_all",
+      "fixture": "leads_jackets",
+      "status": "COMPLETED WORKER; SEE GATES",
+      "exit_code": 0,
+      "hard_budget_seconds": 180,
+      "timeout": false,
+      "wall_seconds": 2.068929404951632,
+      "CPU_seconds": 3.2456110000000002,
+      "maximum_child_RSS_MiB": 169.765625,
+      "sampled_peak_RSS_MiB": 170.08203125,
+      "observed_start_UTC": "2026-11-03T14:47:06.095450+00:00",
+      "observed_end_UTC": "2026-11-03T14:47:08.164379+00:00",
+      "process_bound": "one worker in4CPU/8GiB offline pinned container",
+      "worker_source": "b26347e12dd883602d0fc54c42f7c0acdfab0a660e372582eab58489752ca2a0",
+      "no_global_mesh": true,
+      "no_PDE": true,
+      "worker_status": "PASS LOCAL SURFACE ONLY",
+      "phases": {
+        "import_source_visibility": {
+          "wall_seconds": 0.39166417601518333,
+          "CPU_seconds": 0.39158426900000004
+        },
+        "setup_sizing": {
+          "wall_seconds": 0.017217878019437194,
+          "CPU_seconds": 0.015283835000000079
+        },
+        "native_1D_meshing": {
+          "wall_seconds": 0.04598181298933923,
+          "CPU_seconds": 0.08829573300000004
+        },
+        "native_2D_meshing": {
+          "wall_seconds": 0.5682971279602498,
+          "CPU_seconds": 1.745746515
+        },
+        "write_native_MSH": {
+          "wall_seconds": 0.07000332907773554,
+          "CPU_seconds": 0.07924266500000021
+        },
+        "independent_area_topology_validation": {
+          "wall_seconds": 0.3235965680796653,
+          "CPU_seconds": 0.32354776099999993
+        }
+      },
+      "triangles": 56208,
+      "nodes": 30707,
+      "max_area_error": 0.0027381628581589768,
+      "worker_wall_seconds": 1.4657969160471112,
+      "callback": {
+        "calls": 0,
+        "body_seconds": 0.0,
+        "by_dimension": {},
+        "by_face": {}
+      },
+      "API_profile": {
+        "sizing.setTransfiniteCurve": {
+          "calls": 4521,
+          "seconds": 0.008768453728407621
+        },
+        "sizing.setTransfiniteSurface": {
+          "calls": 20,
+          "seconds": 0.0001653714571148157
+        },
+        "sizing.add": {
+          "calls": 13,
+          "seconds": 0.0009499858133494854
+        },
+        "sizing.setString": {
+          "calls": 6,
+          "seconds": 0.001417004270479083
+        },
+        "sizing.setNumber": {
+          "calls": 12,
+          "seconds": 4.341220483183861e-05
+        },
+        "sizing.setNumbers": {
+          "calls": 7,
+          "seconds": 0.00028586783446371555
+        },
+        "sizing.setAsBackgroundMesh": {
+          "calls": 1,
+          "seconds": 1.4950986951589584e-05
+        }
+      },
+      "error": null
+    },
+    "B_native_all__pin_planes_contacts": {
+      "id": "B_native_all__pin_planes_contacts",
+      "strategy": "B_native_all",
+      "fixture": "pin_planes_contacts",
+      "status": "COMPLETED WORKER; SEE GATES",
+      "exit_code": 0,
+      "hard_budget_seconds": 180,
+      "timeout": false,
+      "wall_seconds": 1.6654722918756306,
+      "CPU_seconds": 1.868601,
+      "maximum_child_RSS_MiB": 153.67578125,
+      "sampled_peak_RSS_MiB": 153.67578125,
+      "observed_start_UTC": "2026-11-03T14:48:39.976912+00:00",
+      "observed_end_UTC": "2026-11-03T14:48:41.642384+00:00",
+      "process_bound": "one worker in4CPU/8GiB offline pinned container",
+      "worker_source": "b26347e12dd883602d0fc54c42f7c0acdfab0a660e372582eab58489752ca2a0",
+      "no_global_mesh": true,
+      "no_PDE": true,
+      "worker_status": "PASS LOCAL SURFACE ONLY",
+      "phases": {
+        "import_source_visibility": {
+          "wall_seconds": 0.42828319291584194,
+          "CPU_seconds": 0.428186728
+        },
+        "setup_sizing": {
+          "wall_seconds": 0.01251136907376349,
+          "CPU_seconds": 0.012514506000000036
+        },
+        "native_1D_meshing": {
+          "wall_seconds": 0.05390477483160794,
+          "CPU_seconds": 0.12462493000000008
+        },
+        "native_2D_meshing": {
+          "wall_seconds": 0.32350018597207963,
+          "CPU_seconds": 0.473958643
+        },
+        "write_native_MSH": {
+          "wall_seconds": 0.058391442988067865,
+          "CPU_seconds": 0.07195337899999998
+        },
+        "independent_area_topology_validation": {
+          "wall_seconds": 0.12457114597782493,
+          "CPU_seconds": 0.12456043100000014
+        }
+      },
+      "triangles": 14794,
+      "nodes": 10236,
+      "max_area_error": 0.002738162858120563,
+      "worker_wall_seconds": 1.0546571321319789,
+      "callback": {
+        "calls": 0,
+        "body_seconds": 0.0,
+        "by_dimension": {},
+        "by_face": {}
+      },
+      "API_profile": {
+        "sizing.setTransfiniteCurve": {
+          "calls": 4521,
+          "seconds": 0.007451434852555394
+        },
+        "sizing.setTransfiniteSurface": {
+          "calls": 20,
+          "seconds": 0.00012117205187678337
+        },
+        "sizing.add": {
+          "calls": 5,
+          "seconds": 3.711017780005932e-05
+        },
+        "sizing.setString": {
+          "calls": 2,
+          "seconds": 1.3320939615368843e-05
+        },
+        "sizing.setNumber": {
+          "calls": 4,
+          "seconds": 1.160893589258194e-05
+        },
+        "sizing.setNumbers": {
+          "calls": 3,
+          "seconds": 3.3081043511629105e-05
+        },
+        "sizing.setAsBackgroundMesh": {
+          "calls": 1,
+          "seconds": 5.24008646607399e-06
+        }
+      },
+      "error": null
+    },
+    "B_native_selective__detector_bonds": {
+      "id": "B_native_selective__detector_bonds",
+      "strategy": "B_native_selective",
+      "fixture": "detector_bonds",
+      "status": "COMPLETED WORKER; SEE GATES",
+      "exit_code": 2,
+      "hard_budget_seconds": 180,
+      "timeout": false,
+      "wall_seconds": 17.786804229021072,
+      "CPU_seconds": 41.76525,
+      "maximum_child_RSS_MiB": 834.984375,
+      "sampled_peak_RSS_MiB": 835.109375,
+      "observed_start_UTC": "2026-11-03T14:48:44.669895+00:00",
+      "observed_end_UTC": "2026-11-03T14:49:02.456701+00:00",
+      "process_bound": "one worker in4CPU/8GiB offline pinned container",
+      "worker_source": "b26347e12dd883602d0fc54c42f7c0acdfab0a660e372582eab58489752ca2a0",
+      "no_global_mesh": true,
+      "no_PDE": true,
+      "worker_status": "STOP LOCAL FIXTURE",
+      "phases": {
+        "import_source_visibility": {
+          "wall_seconds": 0.4092730169650167,
+          "CPU_seconds": 0.40916668300000003
+        },
+        "setup_sizing": {
+          "wall_seconds": 0.0004742711316794157,
+          "CPU_seconds": 0.0004745500000000735
+        },
+        "native_1D_meshing": {
+          "wall_seconds": 0.052386857103556395,
+          "CPU_seconds": 0.10593144900000007
+        },
+        "native_2D_meshing": {
+          "wall_seconds": 10.327157013118267,
+          "CPU_seconds": 34.270416093
+        },
+        "write_native_MSH": {
+          "wall_seconds": 0.3689708060119301,
+          "CPU_seconds": 0.3689493759999962
+        },
+        "independent_area_topology_validation": {
+          "wall_seconds": 5.686443855985999,
+          "CPU_seconds": 5.6848493260000055
+        }
+      },
+      "triangles": 771330,
+      "nodes": 388390,
+      "max_area_error": 0.04142453446307892,
+      "worker_wall_seconds": 16.890600206097588,
+      "callback": {
+        "calls": 0,
+        "body_seconds": 0.0,
+        "by_dimension": {},
+        "by_face": {}
+      },
+      "API_profile": {
+        "sizing.setTransfiniteCurve": {
+          "calls": 24,
+          "seconds": 7.872073911130428e-05
+        },
+        "sizing.add": {
+          "calls": 11,
+          "seconds": 6.258976645767689e-05
+        },
+        "sizing.setString": {
+          "calls": 5,
+          "seconds": 1.9639963284134865e-05
+        },
+        "sizing.setNumber": {
+          "calls": 10,
+          "seconds": 4.119286313652992e-05
+        },
+        "sizing.setNumbers": {
+          "calls": 6,
+          "seconds": 8.08758195489645e-05
+        },
+        "sizing.setAsBackgroundMesh": {
+          "calls": 1,
+          "seconds": 6.821006536483765e-06
+        }
+      },
+      "error": "ValueError('strict1% per-face gate')"
+    },
+    "B_native_selective__leads_jackets": {
+      "id": "B_native_selective__leads_jackets",
+      "strategy": "B_native_selective",
+      "fixture": "leads_jackets",
+      "status": "COMPLETED WORKER; SEE GATES",
+      "exit_code": 0,
+      "hard_budget_seconds": 180,
+      "timeout": false,
+      "wall_seconds": 2.169944357126951,
+      "CPU_seconds": 3.378808,
+      "maximum_child_RSS_MiB": 173.9921875,
+      "sampled_peak_RSS_MiB": 174.4609375,
+      "observed_start_UTC": "2026-11-03T14:48:42.054146+00:00",
+      "observed_end_UTC": "2026-11-03T14:48:44.224089+00:00",
+      "process_bound": "one worker in4CPU/8GiB offline pinned container",
+      "worker_source": "b26347e12dd883602d0fc54c42f7c0acdfab0a660e372582eab58489752ca2a0",
+      "no_global_mesh": true,
+      "no_PDE": true,
+      "worker_status": "PASS LOCAL SURFACE ONLY",
+      "phases": {
+        "import_source_visibility": {
+          "wall_seconds": 0.40125199500471354,
+          "CPU_seconds": 0.401088937
+        },
+        "setup_sizing": {
+          "wall_seconds": 0.0007177519146353006,
+          "CPU_seconds": 0.0007176989999999606
+        },
+        "native_1D_meshing": {
+          "wall_seconds": 0.04249705886468291,
+          "CPU_seconds": 0.08266951499999997
+        },
+        "native_2D_meshing": {
+          "wall_seconds": 0.648336187005043,
+          "CPU_seconds": 1.8236404599999998
+        },
+        "write_native_MSH": {
+          "wall_seconds": 0.10224060690961778,
+          "CPU_seconds": 0.1022279479999999
+        },
+        "independent_area_topology_validation": {
+          "wall_seconds": 0.3528524918947369,
+          "CPU_seconds": 0.3528078220000004
+        }
+      },
+      "triangles": 59838,
+      "nodes": 32522,
+      "max_area_error": 0.0027381628581589768,
+      "worker_wall_seconds": 1.5951718820724636,
+      "callback": {
+        "calls": 0,
+        "body_seconds": 0.0,
+        "by_dimension": {},
+        "by_face": {}
+      },
+      "API_profile": {
+        "sizing.setTransfiniteCurve": {
+          "calls": 52,
+          "seconds": 0.0001831452827900648
+        },
+        "sizing.add": {
+          "calls": 13,
+          "seconds": 7.269158959388733e-05
+        },
+        "sizing.setString": {
+          "calls": 6,
+          "seconds": 2.1331943571567535e-05
+        },
+        "sizing.setNumber": {
+          "calls": 12,
+          "seconds": 2.427678555250168e-05
+        },
+        "sizing.setNumbers": {
+          "calls": 7,
+          "seconds": 0.00010030204430222511
+        },
+        "sizing.setAsBackgroundMesh": {
+          "calls": 1,
+          "seconds": 5.650101229548454e-06
+        }
+      },
+      "error": null
+    },
+    "B_native_selective__pin_planes_contacts": {
+      "id": "B_native_selective__pin_planes_contacts",
+      "strategy": "B_native_selective",
+      "fixture": "pin_planes_contacts",
+      "status": "COMPLETED WORKER; SEE GATES",
+      "exit_code": 0,
+      "hard_budget_seconds": 180,
+      "timeout": false,
+      "wall_seconds": 1.7154853390529752,
+      "CPU_seconds": 1.958632,
+      "maximum_child_RSS_MiB": 156.2734375,
+      "sampled_peak_RSS_MiB": 156.2734375,
+      "observed_start_UTC": "2026-11-03T14:49:02.954334+00:00",
+      "observed_end_UTC": "2026-11-03T14:49:04.669816+00:00",
+      "process_bound": "one worker in4CPU/8GiB offline pinned container",
+      "worker_source": "b26347e12dd883602d0fc54c42f7c0acdfab0a660e372582eab58489752ca2a0",
+      "no_global_mesh": true,
+      "no_PDE": true,
+      "worker_status": "PASS LOCAL SURFACE ONLY",
+      "phases": {
+        "import_source_visibility": {
+          "wall_seconds": 0.43148610508069396,
+          "CPU_seconds": 0.431392186
+        },
+        "setup_sizing": {
+          "wall_seconds": 0.0003818920813500881,
+          "CPU_seconds": 0.0003822500000000284
+        },
+        "native_1D_meshing": {
+          "wall_seconds": 0.06092800199985504,
+          "CPU_seconds": 0.17361422799999993
+        },
+        "native_2D_meshing": {
+          "wall_seconds": 0.3562096159439534,
+          "CPU_seconds": 0.5211565
+        },
+        "write_native_MSH": {
+          "wall_seconds": 0.08316451986320317,
+          "CPU_seconds": 0.09100149199999996
+        },
+        "independent_area_topology_validation": {
+          "wall_seconds": 0.13768796692602336,
+          "CPU_seconds": 0.1375928259999999
+        }
+      },
+      "triangles": 16038,
+      "nodes": 10867,
+      "max_area_error": 0.002738162858120563,
+      "worker_wall_seconds": 1.1156287640333176,
+      "callback": {
+        "calls": 0,
+        "body_seconds": 0.0,
+        "by_dimension": {},
+        "by_face": {}
+      },
+      "API_profile": {
+        "sizing.setTransfiniteCurve": {
+          "calls": 4,
+          "seconds": 4.584016278386116e-05
+        },
+        "sizing.add": {
+          "calls": 5,
+          "seconds": 4.9631111323833466e-05
+        },
+        "sizing.setString": {
+          "calls": 2,
+          "seconds": 1.5520025044679642e-05
+        },
+        "sizing.setNumber": {
+          "calls": 4,
+          "seconds": 1.4930032193660736e-05
+        },
+        "sizing.setNumbers": {
+          "calls": 3,
+          "seconds": 6.758002564311028e-05
+        },
+        "sizing.setAsBackgroundMesh": {
+          "calls": 1,
+          "seconds": 7.640104740858078e-06
+        }
+      },
+      "error": null
+    },
+    "C_directional__detector_bonds": {
+      "id": "C_directional__detector_bonds",
+      "strategy": "C_directional",
+      "fixture": "detector_bonds",
+      "status": "COMPLETED WORKER; SEE GATES",
+      "exit_code": 2,
+      "hard_budget_seconds": 180,
+      "timeout": false,
+      "wall_seconds": 1.009830875089392,
+      "CPU_seconds": 1.014232,
+      "maximum_child_RSS_MiB": 138.51171875,
+      "sampled_peak_RSS_MiB": 137.6796875,
+      "observed_start_UTC": "2026-11-03T14:49:06.680113+00:00",
+      "observed_end_UTC": "2026-11-03T14:49:07.689943+00:00",
+      "process_bound": "one worker in4CPU/8GiB offline pinned container",
+      "worker_source": "b26347e12dd883602d0fc54c42f7c0acdfab0a660e372582eab58489752ca2a0",
+      "no_global_mesh": true,
+      "no_PDE": true,
+      "worker_status": "STOP LOCAL FIXTURE",
+      "phases": {
+        "import_source_visibility": {
+          "wall_seconds": 0.40469713788479567,
+          "CPU_seconds": 0.40456591599999997
+        },
+        "setup_sizing": {
+          "wall_seconds": 0.0007000530604273081,
+          "CPU_seconds": 0.0007009099999999435
+        },
+        "native_1D_meshing": {
+          "wall_seconds": 0.056243933038786054,
+          "CPU_seconds": 0.10574129899999996
+        },
+        "source_parametric_grid": {
+          "wall_seconds": 0.007314528105780482,
+          "CPU_seconds": 0.007324247999999978
+        }
+      },
+      "triangles": null,
+      "nodes": null,
+      "max_area_error": null,
+      "worker_wall_seconds": 0.5108200500253588,
+      "callback": {
+        "calls": 0,
+        "body_seconds": 0.0,
+        "by_dimension": {},
+        "by_face": {}
+      },
+      "API_profile": {
+        "sizing.setTransfiniteCurve": {
+          "calls": 30,
+          "seconds": 9.73802525550127e-05
+        },
+        "sizing.add": {
+          "calls": 11,
+          "seconds": 6.357114762067795e-05
+        },
+        "sizing.setString": {
+          "calls": 5,
+          "seconds": 3.682984970510006e-05
+        },
+        "sizing.setNumber": {
+          "calls": 10,
+          "seconds": 2.274010330438614e-05
+        },
+        "sizing.setNumbers": {
+          "calls": 6,
+          "seconds": 7.813121192157269e-05
+        },
+        "sizing.setAsBackgroundMesh": {
+          "calls": 1,
+          "seconds": 7.950002327561378e-06
+        },
+        "parametrization.getValue": {
+          "calls": 1,
+          "seconds": 0.00012337090447545052
+        }
+      },
+      "error": "ValueError('STOP C nonunique native-boundary node match face2385 maxdistance=0.0005586022382028892')"
+    },
+    "C_directional__pin_planes_contacts": {
+      "id": "C_directional__pin_planes_contacts",
+      "strategy": "C_directional",
+      "fixture": "pin_planes_contacts",
+      "status": "COMPLETED WORKER; SEE GATES",
+      "exit_code": 0,
+      "hard_budget_seconds": 180,
+      "timeout": false,
+      "wall_seconds": 1.2135935050901026,
+      "CPU_seconds": 1.3447529999999999,
+      "maximum_child_RSS_MiB": 143.359375,
+      "sampled_peak_RSS_MiB": 142.87890625,
+      "observed_start_UTC": "2026-11-03T14:49:05.088357+00:00",
+      "observed_end_UTC": "2026-11-03T14:49:06.301945+00:00",
+      "process_bound": "one worker in4CPU/8GiB offline pinned container",
+      "worker_source": "b26347e12dd883602d0fc54c42f7c0acdfab0a660e372582eab58489752ca2a0",
+      "no_global_mesh": true,
+      "no_PDE": true,
+      "worker_status": "PASS LOCAL SURFACE ONLY",
+      "phases": {
+        "import_source_visibility": {
+          "wall_seconds": 0.4090524259954691,
+          "CPU_seconds": 0.40899909399999995
+        },
+        "setup_sizing": {
+          "wall_seconds": 0.0010617850348353386,
+          "CPU_seconds": 0.0010620890000000438
+        },
+        "native_1D_meshing": {
+          "wall_seconds": 0.04891144507564604,
+          "CPU_seconds": 0.110809355
+        },
+        "source_parametric_grid": {
+          "wall_seconds": 0.018522002967074513,
+          "CPU_seconds": 0.014160406999999986
+        },
+        "native_2D_meshing": {
+          "wall_seconds": 0.03461513691581786,
+          "CPU_seconds": 0.09543084800000001
+        },
+        "write_native_MSH": {
+          "wall_seconds": 0.06038158992305398,
+          "CPU_seconds": 0.07791823599999992
+        },
+        "independent_area_topology_validation": {
+          "wall_seconds": 0.07874607294797897,
+          "CPU_seconds": 0.078729206
+        }
+      },
+      "triangles": 6111,
+      "nodes": 5894,
+      "max_area_error": 0.00285334265036552,
+      "worker_wall_seconds": 0.7070833020843565,
+      "callback": {
+        "calls": 0,
+        "body_seconds": 0.0,
+        "by_dimension": {},
+        "by_face": {}
+      },
+      "API_profile": {
+        "sizing.setTransfiniteCurve": {
+          "calls": 187,
+          "seconds": 0.00034880940802395344
+        },
+        "sizing.add": {
+          "calls": 5,
+          "seconds": 5.613220855593681e-05
+        },
+        "sizing.setString": {
+          "calls": 2,
+          "seconds": 1.5431083738803864e-05
+        },
+        "sizing.setNumber": {
+          "calls": 4,
+          "seconds": 1.2457836419343948e-05
+        },
+        "sizing.setNumbers": {
+          "calls": 3,
+          "seconds": 5.019991658627987e-05
+        },
+        "sizing.setAsBackgroundMesh": {
+          "calls": 1,
+          "seconds": 5.200039595365524e-06
+        },
+        "parametrization.getValue": {
+          "calls": 3,
+          "seconds": 0.0004937518388032913
+        }
+      },
+      "error": null
+    },
+    "C_directional_corrected__detector_bonds": {
+      "id": "C_directional_corrected__detector_bonds",
+      "strategy": "C_directional",
+      "fixture": "detector_bonds",
+      "status": "COMPLETED WORKER; SEE GATES",
+      "exit_code": 0,
+      "hard_budget_seconds": 180,
+      "timeout": false,
+      "wall_seconds": 1.4631745850201696,
+      "CPU_seconds": 1.521764,
+      "maximum_child_RSS_MiB": 149.15234375,
+      "sampled_peak_RSS_MiB": 148.578125,
+      "observed_start_UTC": "2026-11-03T14:54:29.924302+00:00",
+      "observed_end_UTC": "2026-11-03T14:54:31.387473+00:00",
+      "process_bound": "one worker in4CPU/8GiB offline pinned container",
+      "worker_source": "9f626257426020221015a4fb5c06d5ef64223eb1283d5b79683be891f9b301b9",
+      "no_global_mesh": true,
+      "no_PDE": true,
+      "worker_status": "PASS LOCAL SURFACE ONLY",
+      "phases": {
+        "import_source_visibility": {
+          "wall_seconds": 0.3824871501419693,
+          "CPU_seconds": 0.38241917200000003
+        },
+        "setup_sizing": {
+          "wall_seconds": 0.0005928829777985811,
+          "CPU_seconds": 0.0005929599999999757
+        },
+        "native_1D_meshing": {
+          "wall_seconds": 0.040079759899526834,
+          "CPU_seconds": 0.08038342600000004
+        },
+        "source_parametric_grid": {
+          "wall_seconds": 0.1708178580738604,
+          "CPU_seconds": 0.16346474899999996
+        },
+        "native_2D_meshing": {
+          "wall_seconds": 0.022747599985450506,
+          "CPU_seconds": 0.07371254000000005
+        },
+        "write_native_MSH": {
+          "wall_seconds": 0.06270688911899924,
+          "CPU_seconds": 0.07265124600000017
+        },
+        "independent_area_topology_validation": {
+          "wall_seconds": 0.1660629289690405,
+          "CPU_seconds": 0.16604159899999993
+        }
+      },
+      "triangles": 27080,
+      "nodes": 16265,
+      "max_area_error": 0.0028533426503675186,
+      "worker_wall_seconds": 0.9008424719795585,
+      "callback": {
+        "calls": 0,
+        "body_seconds": 0.0,
+        "by_dimension": {},
+        "by_face": {}
+      },
+      "API_profile": {
+        "sizing.setTransfiniteCurve": {
+          "calls": 30,
+          "seconds": 8.419272489845753e-05
+        },
+        "sizing.add": {
+          "calls": 11,
+          "seconds": 5.4098665714263916e-05
+        },
+        "sizing.setString": {
+          "calls": 5,
+          "seconds": 1.6398960724473e-05
+        },
+        "sizing.setNumber": {
+          "calls": 10,
+          "seconds": 1.8769409507513046e-05
+        },
+        "sizing.setNumbers": {
+          "calls": 6,
+          "seconds": 5.972897633910179e-05
+        },
+        "sizing.setAsBackgroundMesh": {
+          "calls": 1,
+          "seconds": 4.81889583170414e-06
+        },
+        "parametrization.getParametrization": {
+          "calls": 10,
+          "seconds": 0.0013333531096577644
+        },
+        "parametrization.getValue": {
+          "calls": 20,
+          "seconds": 0.0014089748729020357
+        }
+      },
+      "error": null
+    }
+  },
+  "comparisons": {
+    "leads_jackets": {
+      "A_to_native_all_end_to_end_ratio": 2.4508807525968694,
+      "A_ratio_type": "MEASURED LOCAL",
+      "native_all_to_selective_end_to_end_ratio": 0.9534481371176425,
+      "native_all_accepted": true,
+      "native_selective_accepted": true,
+      "not_a_global_speedup": true
+    },
+    "detector_bonds": {
+      "A_to_native_all_end_to_end_ratio": 1.9794826737227291,
+      "A_ratio_type": "LOWER BOUND censored A",
+      "native_all_to_selective_end_to_end_ratio": 5.113782257167152,
+      "native_all_accepted": false,
+      "native_selective_accepted": false,
+      "not_a_global_speedup": true,
+      "censored_A_to_corrected_C_end_to_end_lower_bound": 123.02017943916017,
+      "rejected_native_all_to_C_triangle_ratio": 32.451107828655836,
+      "rejected_native_selective_to_C_triangle_ratio": 28.483382570162483
+    },
+    "pin_planes_contacts": {
+      "A_to_native_all_end_to_end_ratio": 1.3624428590228563,
+      "A_ratio_type": "MEASURED LOCAL",
+      "native_all_to_selective_end_to_end_ratio": 0.9708461238118455,
+      "native_all_accepted": true,
+      "native_selective_accepted": true,
+      "not_a_global_speedup": true
+    }
+  },
+  "boundary_size_mismatch": [
+    {
+      "face": 2343,
+      "curve": 4357,
+      "type": "Circle",
+      "length_mm": 0.056548667764616305,
+      "original_segments": 49,
+      "face_target_h_mm": 0.3,
+      "average_segment_mm": 0.0011540544441758429,
+      "segment_to_face_h": 0.0038468481472528097
+    },
+    {
+      "face": 2349,
+      "curve": 4366,
+      "type": "Circle",
+      "length_mm": 0.056548667764616305,
+      "original_segments": 49,
+      "face_target_h_mm": 0.3,
+      "average_segment_mm": 0.0011540544441758429,
+      "segment_to_face_h": 0.0038468481472528097
+    },
+    {
+      "face": 2384,
+      "curve": 4427,
+      "type": "Circle",
+      "length_mm": 0.056548667764616305,
+      "original_segments": 49,
+      "face_target_h_mm": 0.3,
+      "average_segment_mm": 0.0011540544441758429,
+      "segment_to_face_h": 0.0038468481472528097
+    },
+    {
+      "face": 2385,
+      "curve": 4428,
+      "type": "Line",
+      "length_mm": 0.2151,
+      "original_segments": 3,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0717,
+      "segment_to_face_h": 39.833333333333336
+    },
+    {
+      "face": 2385,
+      "curve": 4429,
+      "type": "Circle",
+      "length_mm": 0.01639922347056861,
+      "original_segments": 14,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.001171373105040615,
+      "segment_to_face_h": 0.650762836133675
+    },
+    {
+      "face": 2385,
+      "curve": 4430,
+      "type": "Circle",
+      "length_mm": 0.040149444294047695,
+      "original_segments": 35,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0011471269798299343,
+      "segment_to_face_h": 0.6372927665721857
+    },
+    {
+      "face": 2385,
+      "curve": 4357,
+      "type": "Circle",
+      "length_mm": 0.056548667764616305,
+      "original_segments": 49,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0011540544441758429,
+      "segment_to_face_h": 0.6411413578754683
+    },
+    {
+      "face": 2386,
+      "curve": 4431,
+      "type": "Circle",
+      "length_mm": 0.0141371669411541,
+      "original_segments": 13,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.001087474380088777,
+      "segment_to_face_h": 0.6041524333826539
+    },
+    {
+      "face": 2386,
+      "curve": 4432,
+      "type": "Circle",
+      "length_mm": 0.24975661596038912,
+      "original_segments": 13,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.019212047381568394,
+      "segment_to_face_h": 10.673359656426886
+    },
+    {
+      "face": 2386,
+      "curve": 4429,
+      "type": "Circle",
+      "length_mm": 0.01639922347056861,
+      "original_segments": 14,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.001171373105040615,
+      "segment_to_face_h": 0.650762836133675
+    },
+    {
+      "face": 2386,
+      "curve": 4430,
+      "type": "Circle",
+      "length_mm": 0.040149444294047695,
+      "original_segments": 35,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0011471269798299343,
+      "segment_to_face_h": 0.6372927665721857
+    },
+    {
+      "face": 2386,
+      "curve": 4433,
+      "type": "Circle",
+      "length_mm": 0.042411500823462206,
+      "original_segments": 37,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0011462567790124921,
+      "segment_to_face_h": 0.6368093216736067
+    },
+    {
+      "face": 2387,
+      "curve": 4434,
+      "type": "Line",
+      "length_mm": 5.00230287339967,
+      "original_segments": 63,
+      "face_target_h_mm": 0.0017999999999999997,
+      "average_segment_mm": 0.07940163291110587,
+      "segment_to_face_h": 44.11201828394771
+    },
+    {
+      "face": 2387,
+      "curve": 4435,
+      "type": "Circle",
+      "length_mm": 0.0141371669411541,
+      "original_segments": 13,
+      "face_target_h_mm": 0.0017999999999999997,
+      "average_segment_mm": 0.001087474380088777,
+      "segment_to_face_h": 0.604152433382654
+    },
+    {
+      "face": 2387,
+      "curve": 4436,
+      "type": "Circle",
+      "length_mm": 0.042411500823462206,
+      "original_segments": 37,
+      "face_target_h_mm": 0.0017999999999999997,
+      "average_segment_mm": 0.0011462567790124921,
+      "segment_to_face_h": 0.6368093216736068
+    },
+    {
+      "face": 2387,
+      "curve": 4433,
+      "type": "Circle",
+      "length_mm": 0.042411500823462206,
+      "original_segments": 37,
+      "face_target_h_mm": 0.0017999999999999997,
+      "average_segment_mm": 0.0011462567790124921,
+      "segment_to_face_h": 0.6368093216736068
+    },
+    {
+      "face": 2387,
+      "curve": 4431,
+      "type": "Circle",
+      "length_mm": 0.0141371669411541,
+      "original_segments": 13,
+      "face_target_h_mm": 0.0017999999999999997,
+      "average_segment_mm": 0.001087474380088777,
+      "segment_to_face_h": 0.604152433382654
+    },
+    {
+      "face": 2388,
+      "curve": 4437,
+      "type": "Circle",
+      "length_mm": 0.040149444294263696,
+      "original_segments": 35,
+      "face_target_h_mm": 0.0017999999999999995,
+      "average_segment_mm": 0.0011471269798361055,
+      "segment_to_face_h": 0.6372927665756144
+    },
+    {
+      "face": 2388,
+      "curve": 4438,
+      "type": "Circle",
+      "length_mm": 0.24975661596038912,
+      "original_segments": 13,
+      "face_target_h_mm": 0.0017999999999999995,
+      "average_segment_mm": 0.019212047381568394,
+      "segment_to_face_h": 10.67335965642689
+    },
+    {
+      "face": 2388,
+      "curve": 4435,
+      "type": "Circle",
+      "length_mm": 0.0141371669411541,
+      "original_segments": 13,
+      "face_target_h_mm": 0.0017999999999999995,
+      "average_segment_mm": 0.001087474380088777,
+      "segment_to_face_h": 0.6041524333826541
+    },
+    {
+      "face": 2388,
+      "curve": 4436,
+      "type": "Circle",
+      "length_mm": 0.042411500823462206,
+      "original_segments": 37,
+      "face_target_h_mm": 0.0017999999999999995,
+      "average_segment_mm": 0.0011462567790124921,
+      "segment_to_face_h": 0.6368093216736069
+    },
+    {
+      "face": 2388,
+      "curve": 4439,
+      "type": "Circle",
+      "length_mm": 0.01639922347035261,
+      "original_segments": 14,
+      "face_target_h_mm": 0.0017999999999999995,
+      "average_segment_mm": 0.0011713731050251863,
+      "segment_to_face_h": 0.6507628361251037
+    },
+    {
+      "face": 2389,
+      "curve": 4440,
+      "type": "Line",
+      "length_mm": 3.9905,
+      "original_segments": 50,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.07980999999999999,
+      "segment_to_face_h": 44.33888888888889
+    },
+    {
+      "face": 2389,
+      "curve": 4427,
+      "type": "Circle",
+      "length_mm": 0.056548667764616305,
+      "original_segments": 49,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0011540544441758429,
+      "segment_to_face_h": 0.6411413578754683
+    },
+    {
+      "face": 2389,
+      "curve": 4439,
+      "type": "Circle",
+      "length_mm": 0.01639922347035261,
+      "original_segments": 14,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0011713731050251863,
+      "segment_to_face_h": 0.6507628361251035
+    },
+    {
+      "face": 2389,
+      "curve": 4437,
+      "type": "Circle",
+      "length_mm": 0.040149444294263696,
+      "original_segments": 35,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0011471269798361055,
+      "segment_to_face_h": 0.6372927665756142
+    },
+    {
+      "face": 2396,
+      "curve": 4453,
+      "type": "Circle",
+      "length_mm": 0.056548667764616305,
+      "original_segments": 49,
+      "face_target_h_mm": 0.3,
+      "average_segment_mm": 0.0011540544441758429,
+      "segment_to_face_h": 0.0038468481472528097
+    },
+    {
+      "face": 2397,
+      "curve": 4454,
+      "type": "Line",
+      "length_mm": 0.2151,
+      "original_segments": 3,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0717,
+      "segment_to_face_h": 39.833333333333336
+    },
+    {
+      "face": 2397,
+      "curve": 4455,
+      "type": "Circle",
+      "length_mm": 0.011875110411739585,
+      "original_segments": 11,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0010795554919763258,
+      "segment_to_face_h": 0.5997530510979588
+    },
+    {
+      "face": 2397,
+      "curve": 4456,
+      "type": "Circle",
+      "length_mm": 0.04467355735287672,
+      "original_segments": 38,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.001175619930338861,
+      "segment_to_face_h": 0.6531221835215895
+    },
+    {
+      "face": 2397,
+      "curve": 4366,
+      "type": "Circle",
+      "length_mm": 0.056548667764616305,
+      "original_segments": 49,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0011540544441758429,
+      "segment_to_face_h": 0.6411413578754683
+    },
+    {
+      "face": 2398,
+      "curve": 4457,
+      "type": "Circle",
+      "length_mm": 0.0141371669411541,
+      "original_segments": 13,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.001087474380088777,
+      "segment_to_face_h": 0.6041524333826539
+    },
+    {
+      "face": 2398,
+      "curve": 4458,
+      "type": "Circle",
+      "length_mm": 0.24975661596038912,
+      "original_segments": 13,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.019212047381568394,
+      "segment_to_face_h": 10.673359656426886
+    },
+    {
+      "face": 2398,
+      "curve": 4455,
+      "type": "Circle",
+      "length_mm": 0.011875110411739585,
+      "original_segments": 11,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0010795554919763258,
+      "segment_to_face_h": 0.5997530510979588
+    },
+    {
+      "face": 2398,
+      "curve": 4456,
+      "type": "Circle",
+      "length_mm": 0.04467355735287672,
+      "original_segments": 38,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.001175619930338861,
+      "segment_to_face_h": 0.6531221835215895
+    },
+    {
+      "face": 2398,
+      "curve": 4459,
+      "type": "Circle",
+      "length_mm": 0.042411500823462206,
+      "original_segments": 37,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0011462567790124921,
+      "segment_to_face_h": 0.6368093216736067
+    },
+    {
+      "face": 2399,
+      "curve": 4460,
+      "type": "Line",
+      "length_mm": 5.00230287339942,
+      "original_segments": 63,
+      "face_target_h_mm": 0.0017999999999999997,
+      "average_segment_mm": 0.0794016329111019,
+      "segment_to_face_h": 44.11201828394551
+    },
+    {
+      "face": 2399,
+      "curve": 4461,
+      "type": "Circle",
+      "length_mm": 0.0141371669411541,
+      "original_segments": 13,
+      "face_target_h_mm": 0.0017999999999999997,
+      "average_segment_mm": 0.001087474380088777,
+      "segment_to_face_h": 0.604152433382654
+    },
+    {
+      "face": 2399,
+      "curve": 4462,
+      "type": "Circle",
+      "length_mm": 0.042411500823462206,
+      "original_segments": 37,
+      "face_target_h_mm": 0.0017999999999999997,
+      "average_segment_mm": 0.0011462567790124921,
+      "segment_to_face_h": 0.6368093216736068
+    },
+    {
+      "face": 2399,
+      "curve": 4459,
+      "type": "Circle",
+      "length_mm": 0.042411500823462206,
+      "original_segments": 37,
+      "face_target_h_mm": 0.0017999999999999997,
+      "average_segment_mm": 0.0011462567790124921,
+      "segment_to_face_h": 0.6368093216736068
+    },
+    {
+      "face": 2399,
+      "curve": 4457,
+      "type": "Circle",
+      "length_mm": 0.0141371669411541,
+      "original_segments": 13,
+      "face_target_h_mm": 0.0017999999999999997,
+      "average_segment_mm": 0.001087474380088777,
+      "segment_to_face_h": 0.604152433382654
+    },
+    {
+      "face": 2400,
+      "curve": 4463,
+      "type": "Circle",
+      "length_mm": 0.04467355735266081,
+      "original_segments": 38,
+      "face_target_h_mm": 0.0017999999999999993,
+      "average_segment_mm": 0.0011756199303331793,
+      "segment_to_face_h": 0.6531221835184332
+    },
+    {
+      "face": 2400,
+      "curve": 4464,
+      "type": "Circle",
+      "length_mm": 0.24975661596038912,
+      "original_segments": 13,
+      "face_target_h_mm": 0.0017999999999999993,
+      "average_segment_mm": 0.019212047381568394,
+      "segment_to_face_h": 10.67335965642689
+    },
+    {
+      "face": 2400,
+      "curve": 4461,
+      "type": "Circle",
+      "length_mm": 0.0141371669411541,
+      "original_segments": 13,
+      "face_target_h_mm": 0.0017999999999999993,
+      "average_segment_mm": 0.001087474380088777,
+      "segment_to_face_h": 0.6041524333826541
+    },
+    {
+      "face": 2400,
+      "curve": 4462,
+      "type": "Circle",
+      "length_mm": 0.042411500823462206,
+      "original_segments": 37,
+      "face_target_h_mm": 0.0017999999999999993,
+      "average_segment_mm": 0.0011462567790124921,
+      "segment_to_face_h": 0.6368093216736069
+    },
+    {
+      "face": 2400,
+      "curve": 4465,
+      "type": "Circle",
+      "length_mm": 0.011875110411955499,
+      "original_segments": 11,
+      "face_target_h_mm": 0.0017999999999999993,
+      "average_segment_mm": 0.0010795554919959544,
+      "segment_to_face_h": 0.5997530511088638
+    },
+    {
+      "face": 2401,
+      "curve": 4466,
+      "type": "Line",
+      "length_mm": 3.9905,
+      "original_segments": 50,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.07980999999999999,
+      "segment_to_face_h": 44.33888888888889
+    },
+    {
+      "face": 2401,
+      "curve": 4453,
+      "type": "Circle",
+      "length_mm": 0.056548667764616305,
+      "original_segments": 49,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0011540544441758429,
+      "segment_to_face_h": 0.6411413578754683
+    },
+    {
+      "face": 2401,
+      "curve": 4465,
+      "type": "Circle",
+      "length_mm": 0.011875110411955499,
+      "original_segments": 11,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0010795554919959544,
+      "segment_to_face_h": 0.5997530511088636
+    },
+    {
+      "face": 2401,
+      "curve": 4463,
+      "type": "Circle",
+      "length_mm": 0.04467355735266081,
+      "original_segments": 38,
+      "face_target_h_mm": 0.0018,
+      "average_segment_mm": 0.0011756199303331793,
+      "segment_to_face_h": 0.653122183518433
+    }
+  ],
+  "accepted_cases": 8,
+  "rejected_or_censored_cases": 4,
+  "C_leads_jackets": "NOT RUN after original C STOP; not replayed",
+  "no_global_mesh": true,
+  "no_PDE": true,
+  "original_source_bodies": 824,
+  "original_contacts": 378,
+  "actual_local_face_coverage": 54,
+  "no_global_speedup_prediction": true
+}

@@ -406,3 +406,15 @@ Against source4955177, frozen [R3 source/stop evidence](V3_ANALYSIS_R3_GLOBAL_ME
 ## 2026-11-03T08:20:11Z — PASS PUBLICATION / GLOBAL MESH STOP — R3 exact-commit CI
 
 Observed [062d6439365398a5d880796d23f76bfefe7e4a14](https://github.com/Kajin-0/TE_Cooled_MCT/commit/062d6439365398a5d880796d23f76bfefe7e4a14) pushed to main with [exact-commit CI41602077530 PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41602077530), including Python3.11 tests and both legacy checks. Scientific status remains430-domain source migration PASS / surface600s STOP / global3D and PDE NOT RUN; no source/field/STEP/PDF changes for this receipt, original trial directories/cache preserved, issue#2 OPEN and no follow-on experiment authorized; final handoff also checks exact CI of the receipt-only successor.
+
+## 2026-11-03T14:26:05.358995Z — PENDING — Authorized R3.1 local periodic-surface benchmark
+
+Verified clean tracked main b009f36ba8ba4f90de5e19e1aadb93327e8b4f6e and exact R3 source/artifact hashes in existing sim:0.0; preserved 85 untracked files including the R2 decompression cache. New scope is local source-face sizing/profiling only (A callback/all-edges, B native/selective, C directional where topology permits), <=180s per run/4CPU/8GiB, no Booleans, global mesh, PDE, physical redesign or changes to Rev3/old gates; preregistration and exact lineage precede meshing.
+
+## 2026-11-03T14:52:05Z — FAIL / STOP / PENDING — R3.1 bond controls and one corrective replay
+
+Callback bond fixture timed out180s; both native variants completed but failed elbow area (<−3% versus1% gate), while lead/jacket and pin/contact fixtures passed. C pin fixture passed; C bond fixture stopped on a proven uniform-angular-grid/source-partition mismatch (face2385, native split4.461049366rad), with C leads NOT RUN; prospectively sealed one corrective replay retains exact native boundary node IDs/UV and triangulates directional interior points, no CAD/physics/size/threshold change and no further retry.
+
+## 2026-11-03T15:14:45Z — PASS LOCAL / GLOBAL NOT RUN / PENDING PUBLICATION — R3.1 completed
+
+Against b009f36, [R3.1 measured benchmark](V3_R31_LOCAL_MESH_BENCHMARK_20261103.md) completed12 local workers (8 PASS/4 FAIL or STOP), one correction only: all14 corrected bond faces pass with27,080 triangles/13,544 used surface nodes,1.463s,maxarea0.285334%,38.26x fewer triangles than the same accepted R2 ancestors; all54 selected source faces have accepted local method evidence, original C leads remains NOT RUN. Independent saved-MSH arithmetic reproduces successes/failures;58 focused/715 applicable tests (11 runtime skips),archive/master/both legacy,5636 baseline blobs/93 protected inputs/85 original untracked-file guards PASS, original CAD/fields/Rev3 and issue#2 unchanged; no global mesh/PDE, prospective hybrid only, scoped publication/exact CI remains.

@@ -1,0 +1,97 @@
+{
+  "status": "PREREGISTERED BEFORE FIRST MESH",
+  "observed_UTC": "2026-11-03T14:43:56.771565+00:00",
+  "baseline": "b009f36ba8ba4f90de5e19e1aadb93327e8b4f6e",
+  "sources_sha256": {
+    "scripts/v3_r31_campaign.py": "5b6f164e79f71df3f006aaab21ed2f907bb7a36a490177d48654407722838efb",
+    "scripts/v3_r31_case_runner.py": "0371fefc9af8c25bb5375cc41b66a912511a5b65c9669c742aa7633abd2c113b",
+    "scripts/v3_r31_inventory.py": "94f7f989577d0599aaca63a1652695bb154267cfed22e2d4a7099118b7149374",
+    "scripts/v3_r31_worker.py": "b26347e12dd883602d0fc54c42f7c0acdfab0a660e372582eab58489752ca2a0",
+    "tecooledmct/v3_r31_mesh_integrity.py": "a6fadfc5aafaeb8739d9c696dfd5afbf838e5bda027fabd9091e9bc434bf3987"
+  },
+  "inputs_sha256": {
+    "data/v3_analysis_r3_20261103/geometry_restored/R3_conformal_mm.brep": "ebac7dd31fbf01e765c712ce76571238f2b6436af847cb9f9ce0f2d623feb926",
+    "data/v3_analysis_r3_20261103/audit_v2/registry.json": "7173baede2388fcadb18c3979109d43f38f6addfefd4804ed748ab5fe5b89429",
+    "data/v3_analysis_r3_20261103/surface/surface_0/size_plan.json": "70726504eb8ea59c9e1d16cbf0a58a2791eb7a53fecb574704586143a56bcec7",
+    "data/v3_analysis_r3_20261103/reference_replay/reference.json": "10fb6e801bf6a638e391888f1ca23ccd4324518a2d1e998d8a885a6548202063",
+    "scripts/v3_analysis_r3_surface.py": "18237354437eedaceab4a0e04026bcf73f7758d220a6ebd69655302b50378a63",
+    "scripts/v3_analysis_r3_geometry.py": "a6e02f45948c299184fc3fdb99696a0d207f966901dbfa53826eab8b227875ac",
+    "data/v3_r31_local_mesh_20261103/inventory.json": "c97a86def3c15af806c668d8221429e4c1ff74dd4f0f4a2c4efa89c12db6681a"
+  },
+  "cases": [
+    {
+      "id": "A_callback_all__leads_jackets",
+      "strategy": "A_callback_all",
+      "fixture": "leads_jackets"
+    },
+    {
+      "id": "A_callback_all__detector_bonds",
+      "strategy": "A_callback_all",
+      "fixture": "detector_bonds"
+    },
+    {
+      "id": "A_callback_all__pin_planes_contacts",
+      "strategy": "A_callback_all",
+      "fixture": "pin_planes_contacts"
+    },
+    {
+      "id": "B_native_all__leads_jackets",
+      "strategy": "B_native_all",
+      "fixture": "leads_jackets"
+    },
+    {
+      "id": "B_native_all__detector_bonds",
+      "strategy": "B_native_all",
+      "fixture": "detector_bonds"
+    },
+    {
+      "id": "B_native_all__pin_planes_contacts",
+      "strategy": "B_native_all",
+      "fixture": "pin_planes_contacts"
+    },
+    {
+      "id": "B_native_selective__leads_jackets",
+      "strategy": "B_native_selective",
+      "fixture": "leads_jackets"
+    },
+    {
+      "id": "B_native_selective__detector_bonds",
+      "strategy": "B_native_selective",
+      "fixture": "detector_bonds"
+    },
+    {
+      "id": "B_native_selective__pin_planes_contacts",
+      "strategy": "B_native_selective",
+      "fixture": "pin_planes_contacts"
+    },
+    {
+      "id": "C_directional__pin_planes_contacts",
+      "strategy": "C_directional",
+      "fixture": "pin_planes_contacts"
+    },
+    {
+      "id": "C_directional__detector_bonds",
+      "strategy": "C_directional",
+      "fixture": "detector_bonds"
+    },
+    {
+      "id": "C_directional__leads_jackets",
+      "strategy": "C_directional",
+      "fixture": "leads_jackets"
+    }
+  ],
+  "seconds_per_case": 180,
+  "CPUs": 4,
+  "memory_GiB": 8,
+  "max_targeted_replays": 1,
+  "area_relative_gate": 0.01,
+  "boundary_match_mm": 1e-08,
+  "periodic_circumferential_segments": 48,
+  "wire_axial_max_mm": 0.08,
+  "pin_axial_max_mm": 0.3,
+  "No_Global_Surface": true,
+  "No_Global_Volume": true,
+  "No_PDE": true,
+  "no_OCC_operations": true,
+  "method_doc_sha256": "0c037ecf6278c13cf6528c5eb57de0085ab5db3cc28c20be02bb67d17a3a988d"
+}

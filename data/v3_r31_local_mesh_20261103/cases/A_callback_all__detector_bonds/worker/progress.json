@@ -1,0 +1,69 @@
+{
+  "status": "RUNNING",
+  "phase": "native_2D_meshing",
+  "observed_UTC": "2026-11-03T14:47:02.429115+00:00",
+  "seconds": 178.99810381699353,
+  "CPU_seconds": 252.357600626,
+  "phases": {
+    "import_source_visibility": {
+      "wall_seconds": 0.40273745101876557,
+      "CPU_seconds": 0.40266129500000003
+    },
+    "setup_sizing": {
+      "wall_seconds": 0.4930218099616468,
+      "CPU_seconds": 0.49292924000000005
+    },
+    "native_1D_meshing": {
+      "wall_seconds": 0.04645530413836241,
+      "CPU_seconds": 0.09700347899999984
+    }
+  },
+  "callback": {
+    "calls": 6471592,
+    "body_seconds": 6.293295073322952,
+    "by_dimension": {
+      "0": 92,
+      "1": 2716,
+      "2": 6468784
+    },
+    "by_face": {
+      "2349": 1,
+      "2385": 834990,
+      "2384": 1,
+      "2343": 1,
+      "2386": 4114,
+      "2388": 4040,
+      "2387": 1483903,
+      "2389": 1958333,
+      "2396": 1,
+      "2397": 849763,
+      "2398": 4055,
+      "2399": 992687,
+      "2400": 3896,
+      "2401": 332999
+    }
+  },
+  "api": {
+    "parametrization.getParametrizationBounds": {
+      "calls": 6961,
+      "seconds": 0.07484324742108583
+    },
+    "parametrization.getPrincipalCurvatures": {
+      "calls": 2301,
+      "seconds": 0.052848325576633215
+    },
+    "parametrization.getCurvature": {
+      "calls": 4521,
+      "seconds": 0.05804621451534331
+    },
+    "sizing.setTransfiniteCurve": {
+      "calls": 4521,
+      "seconds": 0.00825111148878932
+    },
+    "sizing.setTransfiniteSurface": {
+      "calls": 20,
+      "seconds": 0.0002599461004137993
+    }
+  },
+  "peak_RSS_MiB": 446.11328125
+}

@@ -1,0 +1,35 @@
+{
+  "status": "PREREGISTERED SINGLE CORRECTIVE REPLAY",
+  "observed_UTC": "2026-11-03T14:54:29.525193+00:00",
+  "sources_sha256": {
+    "scripts/v3_r31_worker_v2.py": "9f626257426020221015a4fb5c06d5ef64223eb1283d5b79683be891f9b301b9",
+    "scripts/v3_r31_case_runner_v2.py": "5da1f4bb83981574897eeaf8bc955e90b0bf19d7cc24d876c09a3a82f387a963",
+    "tecooledmct/v3_r31_mesh_integrity.py": "a6fadfc5aafaeb8739d9c696dfd5afbf838e5bda027fabd9091e9bc434bf3987"
+  },
+  "inputs_sha256": {
+    "data/v3_analysis_r3_20261103/geometry_restored/R3_conformal_mm.brep": "ebac7dd31fbf01e765c712ce76571238f2b6436af847cb9f9ce0f2d623feb926",
+    "data/v3_analysis_r3_20261103/audit_v2/registry.json": "7173baede2388fcadb18c3979109d43f38f6addfefd4804ed748ab5fe5b89429",
+    "data/v3_analysis_r3_20261103/surface/surface_0/size_plan.json": "70726504eb8ea59c9e1d16cbf0a58a2791eb7a53fecb574704586143a56bcec7",
+    "data/v3_analysis_r3_20261103/reference_replay/reference.json": "10fb6e801bf6a638e391888f1ca23ccd4324518a2d1e998d8a885a6548202063",
+    "scripts/v3_analysis_r3_surface.py": "18237354437eedaceab4a0e04026bcf73f7758d220a6ebd69655302b50378a63",
+    "scripts/v3_analysis_r3_geometry.py": "a6e02f45948c299184fc3fdb99696a0d207f966901dbfa53826eab8b227875ac",
+    "data/v3_r31_local_mesh_20261103/inventory.json": "c97a86def3c15af806c668d8221429e4c1ff74dd4f0f4a2c4efa89c12db6681a"
+  },
+  "cases": [
+    {
+      "id": "C_directional_corrected__detector_bonds",
+      "strategy": "C_directional",
+      "fixture": "detector_bonds"
+    }
+  ],
+  "correction": "Exact saved source angular knots replace invalid uniform boundary match; interior48/80um and all original gates unchanged",
+  "max_replays": 1,
+  "seconds_per_case": 180,
+  "CPUs": 4,
+  "memory_GiB": 8,
+  "original_failure": "C_directional__detector_bonds",
+  "remaining_C_leads": "NOT RUN",
+  "no_CAD_operations": true,
+  "No_Global_Surface": true,
+  "No_PDE": true
+}

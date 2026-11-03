@@ -1,0 +1,62 @@
+{
+  "status": "RUNNING",
+  "phase": "source_parametric_grid",
+  "observed_UTC": "2026-11-03T14:49:07.550219+00:00",
+  "seconds": 0.509983577998355,
+  "CPU_seconds": 0.91723902,
+  "phases": {
+    "import_source_visibility": {
+      "wall_seconds": 0.40469713788479567,
+      "CPU_seconds": 0.40456591599999997
+    },
+    "setup_sizing": {
+      "wall_seconds": 0.0007000530604273081,
+      "CPU_seconds": 0.0007009099999999435
+    },
+    "native_1D_meshing": {
+      "wall_seconds": 0.056243933038786054,
+      "CPU_seconds": 0.10574129899999996
+    },
+    "source_parametric_grid": {
+      "wall_seconds": 0.007314528105780482,
+      "CPU_seconds": 0.007324247999999978
+    }
+  },
+  "callback": {
+    "calls": 0,
+    "body_seconds": 0.0,
+    "by_dimension": {},
+    "by_face": {}
+  },
+  "api": {
+    "sizing.setTransfiniteCurve": {
+      "calls": 30,
+      "seconds": 9.73802525550127e-05
+    },
+    "sizing.add": {
+      "calls": 11,
+      "seconds": 6.357114762067795e-05
+    },
+    "sizing.setString": {
+      "calls": 5,
+      "seconds": 3.682984970510006e-05
+    },
+    "sizing.setNumber": {
+      "calls": 10,
+      "seconds": 2.274010330438614e-05
+    },
+    "sizing.setNumbers": {
+      "calls": 6,
+      "seconds": 7.813121192157269e-05
+    },
+    "sizing.setAsBackgroundMesh": {
+      "calls": 1,
+      "seconds": 7.950002327561378e-06
+    },
+    "parametrization.getValue": {
+      "calls": 1,
+      "seconds": 0.00012337090447545052
+    }
+  },
+  "peak_RSS_MiB": 137.03125
+}

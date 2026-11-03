@@ -20,6 +20,13 @@ faces, with 1,416,664 triangles passing the 1% per-face CAD-area criterion.
 That high-density 2D surface mesh is not an accepted 3D volume discretization.
 See [R2 evidence](docs/V3_ANALYSIS_R2_GEOMETRY_AND_MESHABILITY_20261103.md).
 
+**New local methods result:** [R3.1 benchmark](docs/V3_R31_LOCAL_MESH_BENCHMARK_20261103.md)
+qualifies local methods on54 native R3 faces. The corrected bond fixture has
+27,080 triangles,0.285334% maximum face-area error and1.463s end-to-end runtime;
+the same14 accepted R2 ancestors used1,036,146 triangles (38.26× more). Failed
+callback/native/directional attempts remain visible. This is local source/mesh
+verification, not a new global surface, volume mesh, PDE or device result.
+
 **Physics limitations:** All new R3 material/interface constitutive coefficients
 remain UNSET. The separate local V3 electrical Gate B remains STOP
 (raw P1 current-cut error **81.241662%**; recovered loss discrepancy
@@ -27,10 +34,10 @@ remain UNSET. The separate local V3 electrical Gate B remains STOP
 200 K scenarios **are not V3 R3 device predictions**. Rev3 is a preserved
 38-page historical/conditional engineering assessment, not V3 validation.
 
-**Immediate priority:** one separately authorized, bounded assessment of
-periodic-wire face sizing/performance on the frozen R3 geometry before
-another global meshing attempt. Do not restart electrical forensics or
-retune physical geometry merely to make a mesh or numerical gate pass.
+**Next proposed step:** one separately authorized, bounded global **surface-only**
+trial of the frozen native/directional hybrid, with strict2440-face area and
+ownership gates. R3.1 execution is complete; this next trial is NOT RUN and is
+not automatically authorized. Do not restart electrical forensics or retune geometry.
 
 **First read:** [Dated status and reviewer guide](docs/V3_CURRENT_STATUS_20261103.md)
 → [R3 report](docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md)
@@ -68,6 +75,7 @@ milestone instructions have been relocated to historical context.
 
 | Question | Read / run |
 | --- | --- |
+| Which local meshing bottlenecks and faster methods are actually measured? | [R3.1 local benchmark](docs/V3_R31_LOCAL_MESH_BENCHMARK_20261103.md):54 native faces;8 accepted and4 failed/censored workers. Callback bond fixture STOP180s; native variants finish but FAIL elbow area. One exact-source-boundary directional correction passes with27,080 triangles/1.463s. Source geometry/Rev3 unchanged; global hybrid plan is prospective NOT RUN. |
 | What did the bounded R3 global-mesh attempt establish? | [R3 source-conservative geometry/mesh record](docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md):430 domains/2440 faces,824 source/378 contact identities, exact6 full/4 partial jacket regions and0.077162028mm³ gas displacement independently audited. Meridian optimization STOPPED on source-face lineage; one adaptive surface attempt STOPPED at600s without a completed mesh. No3–5x reduction, new surface accuracy or global3D qualification claimed; PDE NOT RUN, all laws UNSET. Accepted R2/physical STEP/Rev3 unchanged. |
 | Has the V3 global-meshing obstruction improved? | [R2 analysis-only thin-feature reduction](docs/V3_ANALYSIS_R2_GEOMETRY_AND_MESHABILITY_20261103.md):428 conformal domains/2422 faces, original824 sources/378 contacts preserved, connected gas, one fully CAD-area-accurate 2D global surface mesh (1.417M triangles,0 face fails at1%), and real local lead/pin 3D mesh38,496 tets. Whole-device 3D tetra mesh and physical shell/film laws still NOT QUALIFIED; physical V3 R1 unchanged. |
 | Why did the earlier (pre-R2) global V3 mesh fail? | [Historical bounded full-model meshability gate](docs/V3_GLOBAL_MESHABILITY_AND_LAW_GATE_20261103.md): all438 volume/2456 boundary labels mapped, but2D candidate FAILS174 face-area gates and two3D attempts STOP on TEC lead/insulation face2395 overlapping facets. No global3D mesh or PDE qualified; all domain/interface law values remain UNSET. |

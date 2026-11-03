@@ -5,7 +5,24 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
-**Current R3 outcome: SOURCE MIGRATION PASS; GLOBAL MESH STOP (2026-11-03).**
+**Current R3.1 outcome: LOCAL mesh benchmark PASS; GLOBAL NOT RUN (2026-11-03).**
+Read [R3.1 measured methods/results](docs/V3_R31_LOCAL_MESH_BENCHMARK_20261103.md),
+baseline b009f36; existing sim:0.0, one execution agent only.54 native faces,
+12 actual local workers:8 PASS/4 FAIL or STOP, one permitted correction; original
+C leads remains NOT RUN. Corrected exact-boundary directional bonds:27,080 triangles,
+13,544 used surface nodes,1.463s end-to-end,maxarea0.285334%;38.26x fewer triangles
+than the same14 accepted R2 ancestors. Callback bond timed out180s; native/all
+and selective bonds failed4.117/4.142% area gates. No false success or global
+speedup: only54/2440 faces benchmarked; the complete600s causal budget is unknown.
+715 applicable/11 runtime skips,58 focused,archive/master/both legacy and5636
+baseline/93 input/85 preexisting trial-file guards PASS. Publication/exact CI only,
+then halt. Frozen prospective hybrid plan is NOT EXECUTED; one future bounded
+global surface-only trial is PROPOSED and requires new authorization. No Boolean,
+global surface/tet mesh,PDE,physical redesign or electrical forensics now.
+All430 domains/824 sources/378 contacts,jacket exclusion,pin heterogeneity,laws
+UNSET,original STEP/R2/R3/38-page Rev3 and failed gates remain immutable;issue#2 OPEN.
+
+**Prior R3 outcome: SOURCE MIGRATION PASS; GLOBAL MESH STOP (2026-11-03).**
 Read [R3 registration/results](docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md),
 baseline4955177, existing sim:0.0 only. Saved unimprinted R3 has430 conformal
 domains/2440 owned faces, all824 sources/378 contacts, exact6 full/4 partial
@@ -385,11 +402,11 @@ inspect every page of a rebuilt master before publication.
 
 ## Ordered next science milestones
 
-**Current: R3 experiment closed at source-PASS/global-mesh-STOP.**
-Read `docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md` and its frozen release manifest.
-No further Boolean, surface retry, full3D attempt or PDE under this checkpoint.
-One proposed future task is a small instrumented periodic-wire sizing/lineage
-benchmark on unchanged saved geometry, requiring separate user authorization.
+**Current: R3.1 LOCAL benchmark complete; publication/exact CI only.**
+Read the R3.1 note and preserved R3 source/STOP. Native local sizing and exact
+source-boundary UV directional meshing are measured, not global qualification.
+A single future global surface-only hybrid trial is PROPOSED, not authorized;
+do not restart the campaign, rerun its one correction or enter3D/PDE automatically.
 All previous electrical, gas and coupled-thermal STOPs remain constraints.
 
 **Historical source-gate attempt:**

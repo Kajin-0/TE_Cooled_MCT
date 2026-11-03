@@ -1,0 +1,93 @@
+[
+  {
+    "name": "applicable_no_new_PDE",
+    "argv": [
+      "./fem/run.sh",
+      "env",
+      "-u",
+      "TE_FEM_SMOKE",
+      "OPENBLAS_NUM_THREADS=1",
+      "OMP_NUM_THREADS=4",
+      "timeout",
+      "600",
+      "python",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "--ignore=outputs"
+    ],
+    "exit_code": 0,
+    "seconds": 119.80298968497664,
+    "observed_UTC": "2026-11-03T15:10:08.035107+00:00"
+  },
+  {
+    "name": "master",
+    "argv": [
+      "python3",
+      "-B",
+      "-m",
+      "reports.master.validate",
+      "--current"
+    ],
+    "exit_code": 0,
+    "seconds": 0.8729804090689868,
+    "observed_UTC": "2026-11-03T15:10:08.908456+00:00"
+  },
+  {
+    "name": "archive",
+    "argv": [
+      "./fem/run.sh",
+      "python",
+      "-B",
+      "fem/archive_bath_spatial_device.py",
+      "--verify"
+    ],
+    "exit_code": 0,
+    "seconds": 47.29576215194538,
+    "observed_UTC": "2026-11-03T15:10:56.204710+00:00"
+  },
+  {
+    "name": "legacy_cli",
+    "argv": [
+      "./fem/run.sh",
+      "python",
+      "-B",
+      "-m",
+      "tecooledmct.cli",
+      "--quick",
+      "--out",
+      "outputs/v3-r31-local-20261103/legacy-cli"
+    ],
+    "exit_code": 0,
+    "seconds": 2.5232983159366995,
+    "observed_UTC": "2026-11-03T15:10:58.728413+00:00"
+  },
+  {
+    "name": "legacy_geometry",
+    "argv": [
+      "./fem/run.sh",
+      "python",
+      "-B",
+      "-m",
+      "tecooledmct.geometry_demo",
+      "--out",
+      "outputs/v3-r31-local-20261103/legacy-geometry"
+    ],
+    "exit_code": 0,
+    "seconds": 5.794914773898199,
+    "observed_UTC": "2026-11-03T15:11:04.523792+00:00"
+  },
+  {
+    "name": "historical_guard",
+    "argv": [
+      "./fem/run.sh",
+      "python",
+      "-B",
+      "scripts/verify_synthetic_v3_checkpoint.py"
+    ],
+    "exit_code": 0,
+    "seconds": 4.6798481771256775,
+    "observed_UTC": "2026-11-03T15:11:09.204135+00:00"
+  }
+]

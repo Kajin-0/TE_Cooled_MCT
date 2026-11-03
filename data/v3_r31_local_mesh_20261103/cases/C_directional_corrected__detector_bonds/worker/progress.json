@@ -1,0 +1,78 @@
+{
+  "status": "RUNNING",
+  "phase": "independent_area_topology_validation",
+  "observed_UTC": "2026-11-03T14:54:31.265820+00:00",
+  "seconds": 0.900342128938064,
+  "CPU_seconds": 1.43664866,
+  "phases": {
+    "import_source_visibility": {
+      "wall_seconds": 0.3824871501419693,
+      "CPU_seconds": 0.38241917200000003
+    },
+    "setup_sizing": {
+      "wall_seconds": 0.0005928829777985811,
+      "CPU_seconds": 0.0005929599999999757
+    },
+    "native_1D_meshing": {
+      "wall_seconds": 0.040079759899526834,
+      "CPU_seconds": 0.08038342600000004
+    },
+    "source_parametric_grid": {
+      "wall_seconds": 0.1708178580738604,
+      "CPU_seconds": 0.16346474899999996
+    },
+    "native_2D_meshing": {
+      "wall_seconds": 0.022747599985450506,
+      "CPU_seconds": 0.07371254000000005
+    },
+    "write_native_MSH": {
+      "wall_seconds": 0.06270688911899924,
+      "CPU_seconds": 0.07265124600000017
+    },
+    "independent_area_topology_validation": {
+      "wall_seconds": 0.1660629289690405,
+      "CPU_seconds": 0.16604159899999993
+    }
+  },
+  "callback": {
+    "calls": 0,
+    "body_seconds": 0.0,
+    "by_dimension": {},
+    "by_face": {}
+  },
+  "api": {
+    "sizing.setTransfiniteCurve": {
+      "calls": 30,
+      "seconds": 8.419272489845753e-05
+    },
+    "sizing.add": {
+      "calls": 11,
+      "seconds": 5.4098665714263916e-05
+    },
+    "sizing.setString": {
+      "calls": 5,
+      "seconds": 1.6398960724473e-05
+    },
+    "sizing.setNumber": {
+      "calls": 10,
+      "seconds": 1.8769409507513046e-05
+    },
+    "sizing.setNumbers": {
+      "calls": 6,
+      "seconds": 5.972897633910179e-05
+    },
+    "sizing.setAsBackgroundMesh": {
+      "calls": 1,
+      "seconds": 4.81889583170414e-06
+    },
+    "parametrization.getParametrization": {
+      "calls": 10,
+      "seconds": 0.0013333531096577644
+    },
+    "parametrization.getValue": {
+      "calls": 20,
+      "seconds": 0.0014089748729020357
+    }
+  },
+  "peak_RSS_MiB": 148.05859375
+}

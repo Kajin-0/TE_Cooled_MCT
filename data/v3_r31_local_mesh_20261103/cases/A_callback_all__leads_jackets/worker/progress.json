@@ -1,0 +1,99 @@
+{
+  "status": "RUNNING",
+  "phase": "independent_area_topology_validation",
+  "observed_UTC": "2026-11-03T14:44:02.135709+00:00",
+  "seconds": 3.7363296118564904,
+  "CPU_seconds": 6.992710674,
+  "phases": {
+    "import_source_visibility": {
+      "wall_seconds": 0.40008885017596185,
+      "CPU_seconds": 0.3992286380000001
+    },
+    "setup_sizing": {
+      "wall_seconds": 0.5039038639515638,
+      "CPU_seconds": 0.503244517
+    },
+    "native_1D_meshing": {
+      "wall_seconds": 0.047576919198036194,
+      "CPU_seconds": 0.07980541099999994
+    },
+    "native_2D_meshing": {
+      "wall_seconds": 1.9596353489905596,
+      "CPU_seconds": 4.2187047799999995
+    },
+    "write_native_MSH": {
+      "wall_seconds": 0.26028107409365475,
+      "CPU_seconds": 0.2572810109999999
+    },
+    "independent_area_topology_validation": {
+      "wall_seconds": 0.5129983481019735,
+      "CPU_seconds": 0.5043694829999996
+    }
+  },
+  "callback": {
+    "calls": 31096,
+    "body_seconds": 0.05377198616042733,
+    "by_dimension": {
+      "0": 140,
+      "1": 3362,
+      "2": 27594
+    },
+    "by_face": {
+      "2352": 4,
+      "2355": 4,
+      "2358": 308,
+      "2357": 392,
+      "2360": 3292,
+      "2359": 731,
+      "2361": 727,
+      "2362": 480,
+      "2363": 386,
+      "2366": 4,
+      "2369": 4,
+      "2371": 391,
+      "2372": 312,
+      "2373": 740,
+      "2374": 5930,
+      "2375": 731,
+      "2376": 479,
+      "2377": 395,
+      "2427": 270,
+      "2428": 49,
+      "2429": 654,
+      "2430": 2854,
+      "2431": 652,
+      "2432": 415,
+      "2433": 49,
+      "2434": 278,
+      "2435": 49,
+      "2436": 651,
+      "2437": 5243,
+      "2438": 654,
+      "2439": 417,
+      "2440": 49
+    }
+  },
+  "api": {
+    "parametrization.getParametrizationBounds": {
+      "calls": 6961,
+      "seconds": 0.07541091949678957
+    },
+    "parametrization.getPrincipalCurvatures": {
+      "calls": 2301,
+      "seconds": 0.053903087275102735
+    },
+    "parametrization.getCurvature": {
+      "calls": 4521,
+      "seconds": 0.05995296826586127
+    },
+    "sizing.setTransfiniteCurve": {
+      "calls": 4521,
+      "seconds": 0.00694254832342267
+    },
+    "sizing.setTransfiniteSurface": {
+      "calls": 20,
+      "seconds": 0.00019692652858793736
+    }
+  },
+  "peak_RSS_MiB": 170.421875
+}
