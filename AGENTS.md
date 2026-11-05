@@ -5,6 +5,39 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.13 non-affine regional refinement gate (2026-11-05): BOUNDARY-EXACT GEOMETRY PASS; MESH/ERROR CONVERGENCE FAIL/STOP.**
+Read [full quantitative R3.13 record](docs/V3_R313_NONAFFINE_FIXED_BOUNDARY_REFINEMENT_20261105.md)
+and [replayable source + preserved negative results](data/v3_r313_nonaffine_refinement_20261105/attempt01/manifest.json).
+Gold detector-bond8 R3.9 region420 unit-scalar non-affine manufactured
+quadratic u=sum(((x-o)/s)^2), analytic f=-Delta u and nonzero Neumann
+flux on all native region faces except native Dirichlet face2399.
+Registered three-level 1->4 interior-centroid tetra refinement:
+25905/103620/414480 tets; all13540 original interface/exterior
+region TRI3 preserved byte-for-byte as node triplets, all positive
+tetra volumes, no nonmanifold face and constant CAD region volume by
+independent complete face-complex audit. But minimum normalized q
+DETERIORATED1.38495e-4->7.99442e-5->3.26535e-5; q<0.05 fraction
+69.13%->71.71%->77.80%. Levels0/1 ILU-GMRES PASS 9/32 iterations,
+true relative residual3.40e-11/3.46e-10. EXACT integrated relative
+H1 gradient error only1.631253%->1.627525%, 0.2285% relative
+improvement despite 4x tets; third level133337 freeDOF SOLVER
+STOP after3300 iterations true residual1.8447e-7>1e-8 acceptance.
+The failed L2 solve has NO H1 error qualification; do not invent one.
+The fixed original boundary facets mean global mesh hmax stays
+UNCHANGED, so this mesh sequence is NOT asymptotically refining;
+moreover shape quality deteriorates. 125-case independent quadratic
+Gaussian quadrature verified H1 exact-moment integration to6.1e-16
+relative discrepancy. Peak Python RAM741.3MiB,4CPU/8GiB and total
+110.945s; NOT resource blocked. Preserve the negative gate without
+rerunning centroid refinement or claiming non-affine convergence.
+Potential R3.14: P2 p-enrichment with original planar CAD facets
+geometrically intact; new source-face ownership/requalification would
+be needed for actual boundary-refining h-mesh. Full430-domain
+thermoelectric/electrical PDE remains NOT RUN; GateB STOP,
+thermal C/D NOT RUN, canonical Rev3 frozen, issue#2 OPEN,
+all protected R3.3-R3.12 sources and failures unchanged.
+No Codex usage.
+
 **Current R3.12 solver recovery (2026-11-05): REGIONAL SCALAR ILU-GMRES AND MIXED-BC MANUFACTURED TEST PASS; FULL DEVICE/CONVERGENCE UNQUALIFIED.**
 Read [R3.12 measured solver technical report](docs/V3_R312_GOLD_BOND_SOLVER_RECOVERY_20261105.md)
 and [source hashes/benchmarks](data/v3_r312_solver_20261105/attempt01/manifest.json).

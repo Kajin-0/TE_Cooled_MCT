@@ -1,0 +1,84 @@
+{
+  "milestone": "R3.13 boundary-preserving interior tetra centroid refinement non-affine manufactured test",
+  "scientific_status": "FAIL/STOP full mesh convergence qualification; 0-1 tiny H1 gain, level2 ILU-GMRES stops",
+  "utc": "2026-11-05T22:21:30.021499+00:00",
+  "baseline_commit": "23efb16ad624a5779be77e3fc439befe3caabc24",
+  "parent_R38_R39_R310_R311_mesh_files_changed": false,
+  "source_R39_ele_sha256": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570",
+  "source_R38_node_sha256": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+  "source_R38_face_sha256": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18",
+  "region420_original_boundary_facets_preserved": 13540,
+  "native_Dirichlet_face": 2399,
+  "mesh_levels_tetrahedra": [
+    25905,
+    103620,
+    414480
+  ],
+  "geometry_gate": "PASS all 3 levels - exact original 13540 facets, zero nonmanifold, zero inverted, constant volume",
+  "solver_gate": [
+    "PASS level0",
+    "PASS level1",
+    "STOP level2 residual 1.84e-7 after3300 iterations"
+  ],
+  "relative_H1_error": [
+    0.016312532036686683,
+    0.016275250026085604,
+    null
+  ],
+  "hmax_surface_unchanged": true,
+  "full_mesh_asymptotic_convergence": "NOT DEMONSTRATED",
+  "independent_H1_formula_quadrature_max_relative_error": 6.010248041553518e-16,
+  "peak_Python_RSS_MiB": 741.3,
+  "no_full_device_physical_PDE": true,
+  "runtime_recovered_image_ID": "sha256:97526dcefe0324c06197ce2a2dc632840ddd27a06493c6220002a85fb7a9ef14",
+  "files": {
+    "H1_integration_independent_check.json": {
+      "sha256": "02f4e72b18e88ec547297bf9a0532e0dba5f00f7ecad13afedb83422d3a6fc75",
+      "bytes": 433
+    },
+    "H1_integration_independent_check.py": {
+      "sha256": "34277a4da21f96235ea3f95d8ed5ff56c6eaf2c53295539a5bf18cdec0483fa8",
+      "bytes": 1379
+    },
+    "convergence.log": {
+      "sha256": "7114df8d7f916842a86c7c1a097d06f09e0c45f9f8bbd58dbe6fa53e9b068e15",
+      "bytes": 820
+    },
+    "convergence.py": {
+      "sha256": "0317e824cbbb466e6869ae71f6aae2b9ef866f013a2e2f99842c7d4a86f986a3",
+      "bytes": 10426
+    },
+    "convergence_result.json": {
+      "sha256": "ccda9ca08bab544b971c9f49ecfdf5f01b6b17b2505f0c9581372eac84ce59e9",
+      "bytes": 3878
+    },
+    "independent_refinement_topology.json": {
+      "sha256": "47122499cbff3da581e286d733e5cc722a5d1d6c1d04cfba477892f7eb0dd9da",
+      "bytes": 1609
+    },
+    "independent_topology.log": {
+      "sha256": "975c1843c1364296dfc39dc3eb18a44e0373efbc7a7610f61a353c580fd55367",
+      "bytes": 1110
+    },
+    "independent_topology.py": {
+      "sha256": "68a8e5f2b40efe18df642763ad669d6fcc97db448f888c3b6a7579eb5705b5c9",
+      "bytes": 3618
+    },
+    "level0_result.json": {
+      "sha256": "5a7c3c60cf755616f6258a439501b097cb6fc38f4ee6c784c0c14c909b4ee6d4",
+      "bytes": 861
+    },
+    "level1_result.json": {
+      "sha256": "7a17744bc35305dcee55efd144d61874d4615de6e24d9e594cc08784afdc5ba3",
+      "bytes": 868
+    },
+    "level2_result.json": {
+      "sha256": "71fb9d06f448f786bd8ca62c940c8d3c080ca3fa7ccbd40c94563d532701f45b",
+      "bytes": 620
+    },
+    "preregistration.json": {
+      "sha256": "e9eb41e1b8aecbcc6b0d88c322ba61f4e5f4dcc121efc785491bda3f6aa37907",
+      "bytes": 879
+    }
+  }
+}
