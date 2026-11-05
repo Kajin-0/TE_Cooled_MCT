@@ -5,6 +5,36 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.11 gold-bond actual scalar FEM conditioning benchmark (2026-11-05): GEOMETRIC TARGETED MESH PASS; MIXED-BC NUMERICAL GATE FAIL.**
+Read [R3.11 measured report](docs/V3_R311_BOND8_CONDITIONING_20261105.md)
+and [full archived code/results](data/v3_r311_bond8_conditioning_20261105/attempt01/manifest.json).
+Gold detector bonds7/8 P1 tetrahedral scalar Poisson/Laplace source
+operator was assembled and checked against affine manufactured solution
+(max absolute error<8e-15) with all boundaries Dirichlet. Such fully
+locked-boundary benchmark hides constrained-surface numerical modes:
+bond8 free DOF112, unscaled spectral condition R3.9=15.44, R3.10=24.99,
+and CG iterations30->33 (worse with smoothing). More revealing mixed-BC
+bond8 benchmark (only native face2399 Dirichlet, other faces Neumann)
+has3812 free DOF; Jacobi-CG FAIL 2500 max iterations with relative
+residual R3.9=6.314, R3.10=6.400. Sparse direct solve gives small
+~1.3e-9 algebraic residual, but shift-invert eigen near5.71e-8 shows
+weak modes; one geometrically connected tetrahedron region (no proven
+geometric disconnection). One target-only bond8 conservative same-material
+3-to-2 pass accepted242 flips, R3.9-derived global tets1010119->1009877,
+bond8 q<0.05 17908->17623, q<0.01 7369->7248. Full independent
+geometry audit PASS exactly320522 facets/2440 face markers,430 material
+regions,378 contacts,zero missing/extra/mismatched/nonmanifold faces and
+zero nonpositive signed tets. But mixed-BC Jacobi-CG again FAIL 2500
+iterations, residual6.720, worse than R3.9 despite q improvement.
+This is a scalar benchmark with artificial boundary conditions, not
+electrical, thermoelectric or full-package physics. NO real solver
+conditioning/convergence qualification; global nonlocal tet-overlap NOT
+audited. STOP prioritizing low-q count alone; next focus on robust
+preconditioners, boundary-condition rank/scaling and a measured local
+mesh-resolution convergence benchmark. Preserve full R3.8-R3.10 meshes,
+historical R3.3/R3.4 failures, original824-solid STEP, canonical Rev3
+and issue#2. Electrical GateB STOP; thermal C/D NOT RUN.
+
 **Current R3.10 global mesh free-node optimization (2026-11-05): GEOMETRIC PASS, VERY LIMITED QUALITY GAIN; FEM UNQUALIFIED.**
 Read [actual R3.10 measurements](docs/V3_R310_INTERIOR_NODE_QUALITY_20261105.md)
 and [independent candidate/sha evidence](data/v3_r310_interior_relocation_20261105/attempt01/manifest.json).

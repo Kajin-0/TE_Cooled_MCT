@@ -1,0 +1,144 @@
+{
+  "status": "R3.11 targeted bond8 geometry PASS; scalar mixed-BC numerical conditioning gate FAIL",
+  "utc": "2026-11-05T20:53:26.575961+00:00",
+  "baseline_git_commit": "9ef3fbfe4721bdb27a2b118f5d9bb8bdec8f8824",
+  "original_R38_R39_R310_unchanged": true,
+  "source_R39_ele_sha256": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570",
+  "target_R311_ele_sha256": "9c355e694a102a8856cc7bde21a93e42412beaa69a260cbf82612c2d0cc8094a",
+  "candidate_archive_sha256": "777dbde8bce14e1902acda2dbd727bc530df63d262cb7aad846962b6b1414d00",
+  "bond8_targeted_3_to_2_flips": 242,
+  "R39_global_bad_tets_q_lt_0p05": 241754,
+  "R311_global_bad_tets_q_lt_0p05": 241469,
+  "R39_bond8_bad_tets_q_lt_0p05": 17908,
+  "R311_bond8_bad_tets_q_lt_0p05": 17623,
+  "geometry_constrained_facets": 320522,
+  "regions": 430,
+  "finite_contacts": 378,
+  "mixedBC_CG_rtol": 1e-08,
+  "mixedBC_CG_iteration_limit": 2500,
+  "mixedBC_CG_info": {
+    "R39": 2500,
+    "R310": 2500,
+    "R311": 2500
+  },
+  "mixedBC_CG_relative_residual": {
+    "R39": 6.313994577452877,
+    "R310": 6.399800534643181,
+    "R311": 6.719502839141294
+  },
+  "smallest_R39_mixedBC_shift_invert_eigenvalue": 5.712900999088774e-08,
+  "FEM_physics": "NONE; scalar manufactured Laplace/Poisson only",
+  "limitations": [
+    "All-boundary Dirichlet test masks constrained-boundary stiffness modes",
+    "Mixed-BC Jacobi CG exhausted 2500 iterations for all tested meshes",
+    "Sparse-direct residual near 1.3e-9, but conditioning severe",
+    "No global nonlocal tetrahedron intersection audit",
+    "No thermal/electrical/thermoelectric PDE for device"
+  ],
+  "files": {
+    "candidate_bond8_mesh_and_flips.tar.zst": {
+      "sha256": "777dbde8bce14e1902acda2dbd727bc530df63d262cb7aad846962b6b1414d00",
+      "bytes": 11639126
+    },
+    "initial_flip_hash_error.log": {
+      "sha256": "39213b3923570b4aedb9aa7f859efd85e539bbf8cdc6d427ca899eaa613d3f12",
+      "bytes": 267
+    },
+    "mixed_bc_benchmark.log": {
+      "sha256": "6b9fe78d96ae171c8580164a67168f0a1604d16ced7b2f1f4d9df03841b75533",
+      "bytes": 181
+    },
+    "mixed_bc_diagnostic.json": {
+      "sha256": "88d1a681da1cd54fc6a9444eecf4d5d45d7b7920c8bcef3a584362ca72414287",
+      "bytes": 5170
+    },
+    "mixed_bc_diagnostic.log": {
+      "sha256": "27f4ac46b81e7f1de279e4b0b31370de801cf81f25c26d04995b49a01d88bdfd",
+      "bytes": 1216
+    },
+    "mixed_bc_diagnostic_source.py": {
+      "sha256": "d88c5eae75a7918ab61189e41a3498cd2b1d91448b27cca5e9144e2d6d029c68",
+      "bytes": 4727
+    },
+    "mixed_bc_scalar_fem.json": {
+      "sha256": "cd306056891df09eb4f96b0931f662752362979721c05b59b4a2100aa2385404",
+      "bytes": 1447
+    },
+    "mixed_bc_scalar_fem_source.py": {
+      "sha256": "56da50df55fe5aacfc5f4847456703370591b11e7f2bdc59e0743f9cc8169d3e",
+      "bytes": 3594
+    },
+    "mixed_bc_spectrum.json": {
+      "sha256": "048846a7879f4b9a426835b905fec437cb5b46c9021f85272a193a386c7fa968",
+      "bytes": 3128
+    },
+    "mixed_bc_spectrum.log": {
+      "sha256": "023894ca4610a5d73199d2ad205e25db16aaf750cd7e24968e84c9133fc7aa1d",
+      "bytes": 842
+    },
+    "mixed_bc_spectrum_source.py": {
+      "sha256": "80b42859c2aed457c1b4da0ff9f1f290204dc0b1b669c39451df4de08d651d55",
+      "bytes": 5930
+    },
+    "mixed_bc_targeted_flip.json": {
+      "sha256": "35284cad7bcfc3a950dd85459d24b858f8b273d327acb4092f4661302419fdd1",
+      "bytes": 2800
+    },
+    "mixed_bc_targeted_flip.log": {
+      "sha256": "63605190678ef9a7298ac5b48ec30309a78aa47ca030396967378a6e1846635a",
+      "bytes": 625
+    },
+    "mixed_bc_targeted_flip_source.py": {
+      "sha256": "2f25bd13c0999376ac815b314127236c2dd758bb27100b2b4930d063c8ca069b",
+      "bytes": 4695
+    },
+    "per_region_quality.json": {
+      "sha256": "3a02a70ca4b15f6c2017ba73c000d91d96f3b8055f6ad236b0d49c30a9e884fc",
+      "bytes": 190632
+    },
+    "per_region_quality.log": {
+      "sha256": "8fc71ab38f55b31133b3021a469efbeebfd3b02b6e7cd8a872297fa868bf6a13",
+      "bytes": 1193
+    },
+    "per_region_quality_source.py": {
+      "sha256": "cfb18746720297c376a96c4402a80be0eebe2726971a7fbf3449054a14a9f5fa",
+      "bytes": 3051
+    },
+    "regional_scalar_fem.log": {
+      "sha256": "455a3c79f542606fda92c5b65fd438525806947546a2a2ae096b72c4b0fb344c",
+      "bytes": 686
+    },
+    "regional_scalar_fem_benchmark.json": {
+      "sha256": "7b904a58357e79ba2907d858f80ad3aba7aa323c0a239fb2e31912e62f87fd68",
+      "bytes": 5247
+    },
+    "regional_scalar_fem_source.py": {
+      "sha256": "c39f4dad8d81b96de068927b93db08503aa7cfef220b222a6a9329a043959038",
+      "bytes": 6208
+    },
+    "saved_mesh_auditor_source.py": {
+      "sha256": "3992babf08a0f7d7ce7df5589d7b0cc3bd692dfec6e80d002d5bd63747ca9eb7",
+      "bytes": 10718
+    },
+    "saved_mesh_geometric_audit.json": {
+      "sha256": "94583181bf490099145d71c7e41795bb0562273092f32b9730647c87ddc0c723",
+      "bytes": 29957
+    },
+    "saved_mesh_geometric_audit.log": {
+      "sha256": "464a07f70b5d213c3bb0bc505f63fdb28504c66a7d015c508a57fd2d1bcb3a9e",
+      "bytes": 1105
+    },
+    "targeted_flip.log": {
+      "sha256": "7dad6eb15d811141ac269360947914c03a7ab5378201b882b3b71a75733f4202",
+      "bytes": 1240
+    },
+    "targeted_flip_source.py": {
+      "sha256": "521b51d912f6e23b905aa39a52101b4627db895a119e588cb3874543f09723b5",
+      "bytes": 8493
+    },
+    "targeted_quality_result.json": {
+      "sha256": "a1b0c6769f3397e4bd126a043c1377fa30304513610a656430adf9a317b0ee83",
+      "bytes": 1038
+    }
+  }
+}
