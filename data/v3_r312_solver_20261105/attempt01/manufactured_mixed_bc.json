@@ -1,0 +1,55 @@
+{
+  "status": "PASS MIXED BOUNDARY MANUFACTURED AFFINE HARMONIC TEST ON GOLD BOND 8",
+  "formulation": "Unit scalar Laplace \u0394u=0; Dirichlet u=x+2y\u22120.3z on face 2399; analytic natural Neumann flux on all remaining native CAD faces; P1 tetrahedral FE",
+  "not_physical_transport": true,
+  "not_mesh_refinement_or_convergence": true,
+  "source_R38_nodes_sha256": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+  "source_R39_elements_sha256": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570",
+  "source_R311_elements_sha256": "9c355e694a102a8856cc7bde21a93e42412beaa69a260cbf82612c2d0cc8094a",
+  "results": {
+    "R39": {
+      "region_nodes": 6884,
+      "tetrahedra": 25905,
+      "native_boundary_triangles": 13540,
+      "fixed_face": 2399,
+      "free_nodes": 3812,
+      "affine_analytic_harmonic": [
+        1.0,
+        2.0,
+        -0.3
+      ],
+      "integrated_total_neumann_flux": 1.3877787807814457e-17,
+      "analytic_exact_discrete_residual": 1.6372401655675017e-14,
+      "direct_true_relative_residual": 1.988951397376305e-14,
+      "direct_solution_relative_error_vs_affine": 3.698234134695794e-10,
+      "ILU_GMRES_info": 0,
+      "ILU_GMRES_iterations": 7,
+      "ILU_GMRES_true_relative_residual": 4.904122332194234e-10,
+      "ILU_GMRES_solution_relative_error_vs_affine": 3.09618545182602e-10,
+      "wall_seconds": 0.912
+    },
+    "R311": {
+      "region_nodes": 6884,
+      "tetrahedra": 25663,
+      "native_boundary_triangles": 13540,
+      "fixed_face": 2399,
+      "free_nodes": 3812,
+      "affine_analytic_harmonic": [
+        1.0,
+        2.0,
+        -0.3
+      ],
+      "integrated_total_neumann_flux": 1.3877787807814457e-17,
+      "analytic_exact_discrete_residual": 1.653051107645253e-14,
+      "direct_true_relative_residual": 1.914576972813144e-14,
+      "direct_solution_relative_error_vs_affine": 2.51108396682361e-10,
+      "ILU_GMRES_info": 0,
+      "ILU_GMRES_iterations": 7,
+      "ILU_GMRES_true_relative_residual": 5.863961569424686e-10,
+      "ILU_GMRES_solution_relative_error_vs_affine": 5.935944917237057e-10,
+      "wall_seconds": 0.933
+    }
+  },
+  "total_wall_seconds": 2.341,
+  "peak_RSS_MiB": 196.76
+}

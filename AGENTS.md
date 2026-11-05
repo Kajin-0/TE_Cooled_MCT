@@ -5,6 +5,35 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.12 solver recovery (2026-11-05): REGIONAL SCALAR ILU-GMRES AND MIXED-BC MANUFACTURED TEST PASS; FULL DEVICE/CONVERGENCE UNQUALIFIED.**
+Read [R3.12 measured solver technical report](docs/V3_R312_GOLD_BOND_SOLVER_RECOVERY_20261105.md)
+and [source hashes/benchmarks](data/v3_r312_solver_20261105/attempt01/manifest.json).
+Preserved unchanged R3.9/R3.10/R3.11 Au detector bond8 regional P1
+unit-scalar diffusion on actual native volume420; native CAD face2399
+Dirichlet, remaining faces Neumann,3812 free DOF. Previous R3.11
+Jacobi-preconditioned CG failures at2500 iterations are REPRODUCED,
+relative residuals6.314/6.400/6.720. Sparse-direct residual~1.3e-9.
+Without changing source mesh, coefficients, physical boundary constraints
+or regularizing the matrix, SciPy spilu(drop_tol1e-3,fill_factor8)+GMRES
+converges in88/88/87 iterations, true relative residual<5e-9. Stronger
+spilu(drop_tol1e-5,fill_factor16)+GMRES converges10/11/10 iterations
+with true ||Au-b||/||b||<1e-8 and relative solution differences from
+sparse-direct <3e-10. New independently integrated analytic nonzero
+Neumann harmonic affine solution u=x+2y-0.3z: all13540 actual region
+boundary TRI3 match registered native facets, exact nodal residual
+~1.6e-14, total integrated boundary flux~1.4e-17; strong ILU-GMRES
+converges7 iterations R3.9 and R3.11, solution L2 errors<6e-10.
+This resolves a REGIONAL scalar linear solver/preconditioner obstacle,
+NOT physical gold conductivity, device-level electrothermal PDE,
+non-affine interpolation/mesh convergence, global tetra quality or
+full430-domain solver readiness. Original mesh/CAD and all historical
+failed Jacobi, R3.3/R3.4, original 824 STEP, 378 contacts, Rev3 frozen
+and issue#2 unchanged. Electrical GateB STOP, thermal C/D NOT RUN.
+No Codex consumed; runtime 4CPU/8GiB, max Python RSS about197MiB.
+Next separately authorized R3.13 should examine non-affine analytic
+manufactured convergence on boundary-preserving regional refinement
+before any physical operator claims.
+
 **Current R3.11 gold-bond actual scalar FEM conditioning benchmark (2026-11-05): GEOMETRIC TARGETED MESH PASS; MIXED-BC NUMERICAL GATE FAIL.**
 Read [R3.11 measured report](docs/V3_R311_BOND8_CONDITIONING_20261105.md)
 and [full archived code/results](data/v3_r311_bond8_conditioning_20261105/attempt01/manifest.json).

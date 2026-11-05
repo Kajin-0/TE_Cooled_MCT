@@ -1,0 +1,31 @@
+{
+  "baseline_commit": "170b63ecdf4cc265c79112de4cd9116eb6b85725",
+  "utc": "2026-11-05T21:03:56.954008+00:00",
+  "script_sha256": "b3b563a12d396bacb8eefb878d5fc18e69c7d59a838b88aec4b5c25eea82e852",
+  "max_CPu": 4,
+  "max_ram_gib": 8,
+  "max_wall_seconds": 180,
+  "source_files_read_only": true,
+  "model": "Au bond8 scalar unit Poisson fixed R311 face2399 Dirichlet otherwise Neumann",
+  "compared_meshes": [
+    "R39",
+    "R310",
+    "R311"
+  ],
+  "solvers": [
+    "spsolve",
+    "Jacobi CG rtol1e-8 maxiter2500",
+    "spilu(1e-3,fill8)+GMRES",
+    "spilu(1e-5,fill16)+GMRES"
+  ],
+  "validation": [
+    "independent affine gradient identity",
+    "source exact hashes",
+    "symmetry",
+    "positive signed tet volumes",
+    "true unpreconditioned residual"
+  ],
+  "no_geometry_changes": true,
+  "no_physical_device_PDE": true,
+  "no_mesh_convergence_claim": true
+}

@@ -1,0 +1,57 @@
+{
+  "milestone": "R3.12 regional Au-bond8 scalar solver comparison and independently integrated mixed-boundary manufactured test",
+  "status": "PASS REGIONAL ILU-GMRES ALGEBRAIC AND ANALYTIC BENCHMARK; FULL-PACKAGE AND MESH-CONVERGENCE UNQUALIFIED",
+  "utc": "2026-11-05T21:06:43.896637+00:00",
+  "baseline_commit": "170b63ecdf4cc265c79112de4cd9116eb6b85725",
+  "R38_R39_R310_R311_meshes_immutable": true,
+  "PDE_full_device": "NOT RUN",
+  "original_R39_ele_sha256": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570",
+  "original_R311_ele_sha256": "9c355e694a102a8856cc7bde21a93e42412beaa69a260cbf82612c2d0cc8094a",
+  "boundary_nodes_locked": true,
+  "Dirichlet_native_face": 2399,
+  "mixedBC_free_DOF": 3812,
+  "preconditioner": "Scipy spilu + GMRES: drop1e-3 fill8 and drop1e-5 fill16",
+  "strong_ILU_GMRES_iterations": {
+    "R39": 10,
+    "R310": 11,
+    "R311": 10
+  },
+  "strong_ILU_true_relative_residual": {
+    "R39": 7.338532808421787e-09,
+    "R310": 7.987153272147848e-10,
+    "R311": 1.659183756968677e-09
+  },
+  "manufactured_mixedBC_test": "PASS both R39/R311, analytic outward flux independently integrated over13540 native region boundary triangles",
+  "physical_qualification": "NONE; conductivity k=1 and manufactured affine field; no voltage/temperature/TEC predictions",
+  "mesh_convergence": "NOT RUN, no regional refinement hierarchy established",
+  "files": {
+    "manufactured_mixed_bc.json": {
+      "sha256": "a2a6bad84df21d3be7ab413c94d8f2756c5684f169be48a119d8177a70e16c9a",
+      "bytes": 2206
+    },
+    "manufactured_mixed_bc.log": {
+      "sha256": "c98d3e76d17b2d179f244f8fb94e2f9480324780b09adc4293f018573fa29465",
+      "bytes": 1348
+    },
+    "manufactured_mixed_bc.py": {
+      "sha256": "4cb5780ab03f8ce09a2c46664d1066979945c61c460a6db3df54c21bf2fd2de2",
+      "bytes": 5770
+    },
+    "preregistration.json": {
+      "sha256": "60f5162e7121fd01ae7f4a60f5ac73c6449092ffd21f95b4b3218cae3ecb417f",
+      "bytes": 869
+    },
+    "solver_comparison.json": {
+      "sha256": "ba794d40de65fbcfd6255802e5556b425d506e8ef3f43246b9e8501f64083f76",
+      "bytes": 6659
+    },
+    "solver_comparison.log": {
+      "sha256": "a30596353f8c3638d2b24ce6c01de15b9fb0af006707e2bc7d863f82c8e05876",
+      "bytes": 5586
+    },
+    "solver_comparison.py": {
+      "sha256": "b3b563a12d396bacb8eefb878d5fc18e69c7d59a838b88aec4b5c25eea82e852",
+      "bytes": 8251
+    }
+  }
+}
