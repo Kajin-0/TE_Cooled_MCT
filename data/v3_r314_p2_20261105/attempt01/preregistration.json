@@ -1,0 +1,21 @@
+{
+  "baseline_git_commit": "2d167a47c65b10b3ecf2e220ff2be3875741bf27",
+  "timestamp_utc": "2026-11-05T23:53:42.919002+00:00",
+  "code_SHA256": "4f7b7fe38a781a1d771f534a0428984d594c48d2e6dbf6400bf62e3f05584d34",
+  "source_geometric_mesh": "R39 Au bond8 25905 TET4 + R38 source node/face",
+  "source_read_only": true,
+  "P2": "quadratic solution basis with unique edge midpoint DOFs, linear geometric map",
+  "manufactured": [
+    "quadratic exact P2",
+    "quadratic plus sinusoidal P1",
+    "quadratic plus sinusoidal P2"
+  ],
+  "limit_CPU": 4,
+  "limit_RAM_GiB": 8,
+  "hard_timeout_seconds": 270,
+  "preconditioner": "spilu(1e-5,fill_factor16)+GMRES",
+  "acceptance": "positive tetra volumes; exact P2 quadratic; nonlinear P2 H1 error improvement relative to P1; true residual <1e-8",
+  "no_full_device_PDE": true,
+  "no_mesh_h_convergence_claim": true,
+  "no_CAD_source_mutations": true
+}

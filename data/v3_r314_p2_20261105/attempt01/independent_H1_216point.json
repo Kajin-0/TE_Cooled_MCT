@@ -1,0 +1,45 @@
+{
+  "status": "PASS independently re-evaluated P1/P2 gradient H1 errors on 216-point tetra Duffy integration",
+  "source_R39_sha256": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570",
+  "source_R38_node_sha256": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+  "source_nodes_modified": false,
+  "boundary_geometry_modified": false,
+  "tetrahedra": 25905,
+  "unique_P2_global_edges": 39558,
+  "quadrature_integral_total": 0.9999999999999998,
+  "independent_P1_P2_nonlinear_error_ratio": 1440.7893616957563,
+  "runs": [
+    {
+      "order": 2,
+      "nonpolynomial": false,
+      "quadrature": "independent 216-point 6x6x6 Duffy Gauss-Legendre",
+      "replay_solution_sha256": "23314be91b4bd191f37d0cb416597a539754a26b1f96866e6c0af154bb308c3b",
+      "independent_H1_relative": 1.6565212463677367e-08,
+      "original_64point_H1_relative": 1.6565211938976346e-08,
+      "relative_error_between_quadratures": 3.1674875217083745e-08,
+      "seconds": 4.98
+    },
+    {
+      "order": 1,
+      "nonpolynomial": true,
+      "quadrature": "independent 216-point 6x6x6 Duffy Gauss-Legendre",
+      "replay_solution_sha256": "929acd0e5aa8eb9330e838a8294e2576f5bab4192379a4ee7fd23bacc2c800e5",
+      "independent_H1_relative": 0.017079216983354555,
+      "original_64point_H1_relative": 0.017079216983355332,
+      "relative_error_between_quadratures": 4.5503029676067256e-14,
+      "seconds": 1.56
+    },
+    {
+      "order": 2,
+      "nonpolynomial": true,
+      "quadrature": "independent 216-point 6x6x6 Duffy Gauss-Legendre",
+      "replay_solution_sha256": "08b20e3f0f6b61e5b8779bb480bb5f895d47e854e36f0b650b086a92b1b42f72",
+      "independent_H1_relative": 1.1854069329921302e-05,
+      "original_64point_H1_relative": 1.1854070369446652e-05,
+      "relative_error_between_quadratures": 8.769353629831705e-08,
+      "seconds": 5.39
+    }
+  ],
+  "total_seconds": 12.65,
+  "peak_RSS_MiB": 78.6
+}

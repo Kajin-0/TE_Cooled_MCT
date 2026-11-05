@@ -1,0 +1,124 @@
+{
+  "milestone": "R3.14 fixed-geometric TET4 quadratic P2 vs linear P1 non-polynomial manufactured regional FEM",
+  "scientific_status": "PASS scalar regional P2 polynomial exactness and non-polynomial accuracy; no coupled physics or spatial mesh convergence",
+  "utc": "2026-11-05T23:58:14.314050+00:00",
+  "parent_git_commit": "2d167a47c65b10b3ecf2e220ff2be3875741bf27",
+  "original_R38_R39_mesh_changed": false,
+  "region420_original_tetrahedra": 25905,
+  "original_registered_region_TRI3_unchanged": 13540,
+  "native_Dirichlet_CAD_face": 2399,
+  "P1_total_DOF": 6884,
+  "P2_total_DOF": 46442,
+  "P2_free_DOF": 34250,
+  "P2_unique_interior_or_boundary_edge_DOF": 39558,
+  "P2_quadratic_manufactured_H1_relative_error": 1.6565211938976346e-08,
+  "P1_nonpoly_H1_relative_error": 0.017079216983355332,
+  "P2_nonpoly_H1_relative_error": 1.1854070369446652e-05,
+  "P1_P2_H1_accuracy_gain_independent_216pt": 1440.7893616957563,
+  "P1_P2_accuracy_replay_reproduced": true,
+  "source_geometry_approximation": "Straight TET4 CAD triangle facets unchanged; P2 field only, not curved geometric mapping",
+  "P2_strong_ILU_GMRES_iterations_nonpoly": 11,
+  "source_input_SHA256": {
+    "R39_430_domains.1.ele": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570",
+    "R38_430_domains.1.node": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+    "R38_430_domains.1.face": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18"
+  },
+  "runtime_seconds": 11.04,
+  "peak_RSS_MiB": 366.7,
+  "physical_thermoelectric_electrical_PDE": "NOT RUN",
+  "mesh_convergence": "NOT DEMONSTRATED, single fixed mesh and p-order comparison",
+  "limitations": [
+    "Scalar manufactured unit-diffusion only; not physical material laws",
+    "P2 gives higher polynomial order on unchanged poor-quality tetrahedral geometric map",
+    "No 430-domain assembled coupled physical PDE or material-interface laws",
+    "No independent global tetrahedron overlap check",
+    "No asymptotic mesh-convergence study"
+  ],
+  "initial_preflight_error_preserved": "first_preflight_code_error.log",
+  "files": {
+    "P1_P2_comparison.json": {
+      "sha256": "c4b323384002962a0f19d539c03766195ea3463857bae9b1744f608b7db7c847",
+      "bytes": 3600
+    },
+    "P2_comparison.log": {
+      "sha256": "cef7b931a071a45f65aa5b91f1ce06227bfd273bd37d450062b89c9afe0a9944",
+      "bytes": 2081
+    },
+    "P2_comparison.py": {
+      "sha256": "246f0f731bfc6facf2e4af5992d1faffcc5fe3e6edc085a6c8512a966c49e32b",
+      "bytes": 13219
+    },
+    "first_preflight_code_error.log": {
+      "sha256": "98092b3c6d9828135633f42cf127e4f032483aa46e96f6d8f984f5ddc7fbc921",
+      "bytes": 368
+    },
+    "independent_H1_216point.json": {
+      "sha256": "2840b62618b07c87f476a4ec584d4f36c85eaee88e09a8be5b8c4c8377235fe4",
+      "bytes": 1931
+    },
+    "independent_H1_216point.log": {
+      "sha256": "2b47476c761b6d43b0218e65cf6f8d56090737508a06bdf1fbe4d0fdc92ac50b",
+      "bytes": 1246
+    },
+    "independent_H1_216point.py": {
+      "sha256": "cf974acb5dcd7384ee65f62d6d1a76a96d4e7a9043031ef11203c8c9d142b664",
+      "bytes": 4575
+    },
+    "order1_nonlinear.json": {
+      "sha256": "14dd6ce1c3a108479814878ab52c1a4352df084cccf4cc07db5972950f5016aa",
+      "bytes": 633
+    },
+    "order2_exact_quadratic.json": {
+      "sha256": "99703fe17cd435e5e439771f0a148f064f2461edba64d08682822d22b1e4dde9",
+      "bytes": 622
+    },
+    "order2_nonlinear.json": {
+      "sha256": "e247e5584f438257c3e42e82dfedad3b82d1f77a70820cfa96144c835d6d68d7",
+      "bytes": 642
+    },
+    "preregistration.json": {
+      "sha256": "01603eda89ad7401ea8804fcf5bfc1e53359b2cebfd4f9d5bb53ac82c8612bd0",
+      "bytes": 891
+    },
+    "quadrature_moment_audit.json": {
+      "sha256": "d560f5a01d77fd967fa85665e15f029dcecd45ef003b954e4d6d0d7297267e32",
+      "bytes": 2795
+    },
+    "quadrature_moment_audit.py": {
+      "sha256": "29d8f8a727b2099855861267d35779d4a9b6f137aa3069c6b972230757216c52",
+      "bytes": 2251
+    },
+    "replay/P1_P2_comparison.json": {
+      "sha256": "fb184b71cfb6f36aa75c5c37764b49eb44dbce1f0063b6d31eece33f74a10238",
+      "bytes": 3600
+    },
+    "replay/P2_replay.log": {
+      "sha256": "27ade23ba1964d4e298955c2aaa20ba53aafdfec7fa57e6a47160a8099f8677d",
+      "bytes": 2081
+    },
+    "replay/P2_replay.py": {
+      "sha256": "c5874323468c7cdc49f960a15398178b49be3204808f75ae6b26db50062d080e",
+      "bytes": 13307
+    },
+    "replay/order1_nonlinear_solution.npz": {
+      "sha256": "929acd0e5aa8eb9330e838a8294e2576f5bab4192379a4ee7fd23bacc2c800e5",
+      "bytes": 51678
+    },
+    "replay/order2_nonlinear_solution.npz": {
+      "sha256": "08b20e3f0f6b61e5b8779bb480bb5f895d47e854e36f0b650b086a92b1b42f72",
+      "bytes": 343682
+    },
+    "replay/order2_quadratic_solution.npz": {
+      "sha256": "23314be91b4bd191f37d0cb416597a539754a26b1f96866e6c0af154bb308c3b",
+      "bytes": 345649
+    },
+    "replay/preregistration.json": {
+      "sha256": "b48ec47f2c965c7b1af308a861a7155febc6cd359d61b32b76d0ca640645ca03",
+      "bytes": 628
+    },
+    "source_correction.json": {
+      "sha256": "4d2f38a66ba53a715a3f56997963d7c7e6f35c86ae33cfaaf838d3379cbf7ed2",
+      "bytes": 530
+    }
+  }
+}

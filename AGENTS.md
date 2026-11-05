@@ -5,6 +5,42 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.14 fixed-geometric P2 FEM regional accuracy milestone (2026-11-05): STRONG P1/P2 MANUFACTURED SCALAR ERROR IMPROVEMENT PASS, FULL PHYSICS UNQUALIFIED.**
+Read [complete R3.14 quantitative report](docs/V3_R314_P2_REGIONAL_ACCURACY_20261105.md)
+and [all source, replay, independent H1 and hash evidence](data/v3_r314_p2_20261105/attempt01/manifest.json).
+Using immutable source R3.9 25905 straight TET4, region420 Au bond8
+6884 original mesh vertices and 13540 native source contact/boundary
+TRI3, construct global quadratic P2 solution basis on39558 original
+unique edges, yielding46442 P2 field DOF (34250 free) vs6884 P1
+field DOF (3812 free). Native face2399 prescribed Dirichlet and
+analytic Neumann elsewhere, exact manufactured source f=-Delta u;
+NO geometric boundary/node/contact/owner modifications.
+P2 basis polynomial/interpolation preflight passed. Primary Keast
+11-pt degree4 tetra and Dunavant7-pt degree5 face integration
+moment-audited all70/56 simplex monomials to <1e-14 absolute.
+P2 exact quadratic manufactured solution H1_rel1.65652e-8.
+Genuinely non-polynomial quadratic+sinusoidal manufactured field:
+P1 H1_rel0.0170792169833553 (1.70792%) vs P2 H1_rel
+1.18540703694e-5 (0.001185407%), a confirmed1440.789x
+gradient-error reduction ON THE SAME TET4 GEOMETRIC MESH.
+ILU-GMRES iterations9 P1 /11 P2, independently computed true
+relative residual2.74e-11/1.82e-11. Independently replayed all
+P1/P2 solutions and reintegrated grad error with216-point
+6x6x6 Duffy quadrature, agreeing with primary64-point within
+8.77e-8 relative (P2 nonpoly). Peak Python RAM366.7MiB,
+wall11.04s for3 solves; no Codex consumed.
+This is a narrow scalar regional approximation accuracy result,
+NOT full430-material coupled electrical/thermal model, measured
+material laws, physical TEC/detector prediction, CAD curvature
+refinement, asymptotic p/h convergence or GateB qualification.
+First preflight NumPy structured-array comparison failure before
+FEM saved separately; corrected method verifies edge ID uniqueness.
+Recommend next R3.15 exact two-material transmission P2 interface
+conservation/flux test on native CAD shared region face.
+All protected original CAD, R3.3/R3.4 failed receipts, source
+meshes and historical R3.8-R3.13 results preserved, Rev3 frozen
+issue#2 OPEN, electrical GateB STOP and thermal C/D NOT RUN.
+
 **Current R3.13 non-affine regional refinement gate (2026-11-05): BOUNDARY-EXACT GEOMETRY PASS; MESH/ERROR CONVERGENCE FAIL/STOP.**
 Read [full quantitative R3.13 record](docs/V3_R313_NONAFFINE_FIXED_BOUNDARY_REFINEMENT_20261105.md)
 and [replayable source + preserved negative results](data/v3_r313_nonaffine_refinement_20261105/attempt01/manifest.json).

@@ -1,0 +1,32 @@
+R314_BASIS_PREFLIGHT nodes 6884 edges 39558 P2_DOFS 46442 boundary_TRI3 13540 Dirichlet_vertex 3072 Dirichlet_P2 12192
+R314_SOLVE {"status": "PASS", "order": 2, "manufactured": "exact quadratic", "tets": 25905, "mesh_geometry_order": 1, "dofs_total": 46442, "fixed_dofs": 12192, "free_dofs": 34250, "matrix_NNZ": 705150, "ILU_factor_NNZ": 6081925, "ILU_GMRES_info": 0, "ILU_GMRES_iterations": 11, "true_relative_residual": 2.823554206179606e-11, "factor_and_solver_seconds": 1.487, "assembly_plus_solver_seconds": 2.824}
+R314_H1 2 False 1.6565211938976346e-08 sec 4.481
+R314_SOLVE {"status": "PASS", "order": 1, "manufactured": "nonpolynomial sinusoidal+quadratic", "tets": 25905, "mesh_geometry_order": 1, "dofs_total": 6884, "fixed_dofs": 3072, "free_dofs": 3812, "matrix_NNZ": 43206, "ILU_factor_NNZ": 233354, "ILU_GMRES_info": 0, "ILU_GMRES_iterations": 9, "true_relative_residual": 2.7368384890941102e-11, "factor_and_solver_seconds": 0.033, "assembly_plus_solver_seconds": 0.631}
+R314_H1 1 True 0.017079216983355332 sec 1.16
+R314_SOLVE {"status": "PASS", "order": 2, "manufactured": "nonpolynomial sinusoidal+quadratic", "tets": 25905, "mesh_geometry_order": 1, "dofs_total": 46442, "fixed_dofs": 12192, "free_dofs": 34250, "matrix_NNZ": 705150, "ILU_factor_NNZ": 6081925, "ILU_GMRES_info": 0, "ILU_GMRES_iterations": 11, "true_relative_residual": 1.817394084893069e-11, "factor_and_solver_seconds": 1.077, "assembly_plus_solver_seconds": 2.335}
+R314_H1 2 True 1.1854070369446652e-05 sec 4.247
+R314_RESULT {
+  "status": "PASS P2 EXACT POLYNOMIAL AND NONPOLYNOMIAL H1 COMPARISON",
+  "seconds": 11.04,
+  "peak_RSS_MiB": 366.7,
+  "outcomes": [
+    {
+      "order": 2,
+      "nonlinearity": "exact quadratic",
+      "status": "PASS",
+      "H1": 1.6565211938976346e-08
+    },
+    {
+      "order": 1,
+      "nonlinearity": "nonpolynomial sinusoidal+quadratic",
+      "status": "PASS",
+      "H1": 0.017079216983355332
+    },
+    {
+      "order": 2,
+      "nonlinearity": "nonpolynomial sinusoidal+quadratic",
+      "status": "PASS",
+      "H1": 1.1854070369446652e-05
+    }
+  ]
+}
