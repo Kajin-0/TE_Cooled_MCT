@@ -5,6 +5,19 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.6 fixture quality follow-up (2026-11-05): EXECUTED 3-TO-2 CONNECTIVITY IMPROVEMENT, NOT GLOBAL 3D QUALIFICATION.**
+Read [measured fixture report](docs/V3_R36_LOCAL_QUALITY_20261105.md)
+and [candidate hashes/results](data/v3_r36_quality_20261105/attempt01/manifest.json).
+Actual bounded VPS run produced 193 disjoint, locally validated same-region
+3-to-2 flips over three passes (113+53+27), reducing tetrahedra 15676->15483
+and elements with quality<0.05 377->176, quality<0.01 18->7. Original
+7106 external and material-interface facets, node coordinates and per-region
+volumes retained; all signed tet volumes positive. Minimum quality 0.008017
+UNCHANGED. Global tetrahedron overlap, solver conditioning, full430-domain PLC
+seeds/ownership/budget, and any PDE remain NOT QUALIFIED / NOT RUN.
+R3.5 source immutable; original R3.3/R3.4 FAILs preserved; original 824-body
+STEP, Rev3 PDF and open issue#2 unchanged. Do not infer a global meshing PASS.
+
 **Current R3.5 fixture milestone (2026-11-05): BOUNDARY-PRESERVING TETGEN PLC PASS ON A SMALL CURVED FIXTURE; GLOBAL3D NOT RUN.**
 Read [the measured R3.5 report](docs/V3_R35_TETGEN_CONSTRAINED_FIXTURE_20261105.md)
 and [immutable fixture inputs/output checksums](data/v3_r35_tetgen_plc_20261105/manifest.json).
