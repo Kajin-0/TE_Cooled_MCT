@@ -1,0 +1,107 @@
+{
+  "milestone": "R3.9 ONE-PASS INTERIOR 3-TO-2 QUALITY IMPROVEMENT; QUALIFIED 3D GEOMETRY BUT NO FEM",
+  "utc": "2026-11-05T16:21:03.695859+00:00",
+  "base_git_commit": "f01cb53571afaa57afe0e764c11e539bda847225",
+  "original_R38_mesh_immutable": true,
+  "global_TetGen_remeshing": false,
+  "PDE": false,
+  "baseline_tetrahedra": 1043314,
+  "derived_tetrahedra": 1010119,
+  "accepted_flips": 33195,
+  "constrained_facets_unchanged": 320522,
+  "regions": 430,
+  "original_vertices_retained": 156765,
+  "original_R38_ele_sha256": "2317ad5cceec621e878711ee7d626ddc20e5b3ec4b3132d1dbc68525c206fd06",
+  "derived_R39_ele_sha256": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570",
+  "candidate_archive_sha256": "fb3efe643c7e07e269cc31dc9d4e46563bd924a1fdc57da2e5d443d234ea8af6",
+  "baseline_quality": {
+    "min": 2.6566150747514636e-05,
+    "p01": 0.0015721878688724797,
+    "p05": 0.008592484845594509,
+    "median": 0.1516590241221753,
+    "below_0p01": 56586,
+    "below_0p05": 280430,
+    "below_0p1": 409723,
+    "nonpositive_signed": 0
+  },
+  "derived_quality": {
+    "min": 0.0001384952481687012,
+    "p01": 0.0015731478590158923,
+    "p05": 0.008827812712110625,
+    "median": 0.16038055695217604,
+    "below_0p01": 53490,
+    "below_0p05": 241754,
+    "below_0p1": 375065,
+    "nonpositive_signed": 0
+  },
+  "geometry_verdict": "PASS GEOMETRIC 3D GATES; QUALITY/PHYSICS UNQUALIFIED",
+  "FEM_status": "NOT QUALIFIED: 241754 tets below mean-ratio q=0.05; solver conditioning not measured",
+  "limitations": [
+    "No global independent tetrahedron collision/overlap search",
+    "No PDE, solver conditioning, or mesh-convergence study",
+    "Only one maximal disjoint batch of locally volume-conservative 3-to-2 flips",
+    "R3.8 .node/.face unchanged and referenced rather than duplicated"
+  ],
+  "files": {
+    "candidate_mesh_and_flips.tar.zst": {
+      "sha256": "fb3efe643c7e07e269cc31dc9d4e46563bd924a1fdc57da2e5d443d234ea8af6",
+      "bytes": 13799200
+    },
+    "candidate_result.json": {
+      "sha256": "71425a40687f3601cb397021db0e05d09729d6cc4eae9d4e8a38889b018d8d51",
+      "bytes": 1143
+    },
+    "edge_feasibility.json": {
+      "sha256": "3761cdfd5456df91899db9d033500ea87c0e39187aa27ed41acc626f478f6dbc",
+      "bytes": 1461
+    },
+    "edge_feasibility.py": {
+      "sha256": "47ca24b6121f770350c64f7aa82b8bb48dabfc79a68af36f34be28c4a2511ddc",
+      "bytes": 2721
+    },
+    "independent_audit.log": {
+      "sha256": "8911fcc8e19a436389d94de123ca7df584988d3c40f4885d158c80b38b53dfb2",
+      "bytes": 1104
+    },
+    "independent_mesh_audit.py": {
+      "sha256": "8d4c79b651ea57a204e5af7c108c4379875b4dbd7f57460f83edb98b168a4fcd",
+      "bytes": 10714
+    },
+    "independent_saved_mesh_audit.json": {
+      "sha256": "78df35e5de3b13d6e510025855c37c0047bb6361cb35ba973e5007afb1138ff1",
+      "bytes": 29958
+    },
+    "initial_optimizer_code_failure.log": {
+      "sha256": "0188c1f639491b109585aa47b79f213fce2f4c40295402b464cd81a8dedd4ef8",
+      "bytes": 510
+    },
+    "optimization.log": {
+      "sha256": "eeeece0c72f3064e3eb578c0c5e5e75e1bb16e2c2354a8b73477e2773078d2ea",
+      "bytes": 7433
+    },
+    "optimizer.py": {
+      "sha256": "8bdf8dee7067e1f33a2882cdeb389746b403dde6f191c946e41d3a3262372348",
+      "bytes": 8424
+    },
+    "per_region_quality.json": {
+      "sha256": "f2c5bed3e6a7a15ddef50608033640623b9ebfc33cc91fdac97208d7fe1eeb7f",
+      "bytes": 190635
+    },
+    "per_region_quality.log": {
+      "sha256": "db53bad2e933ca2935bfec6f6220bb4e092b7a6ea717c13e011a87877665bb6a",
+      "bytes": 1193
+    },
+    "per_region_quality.py": {
+      "sha256": "0a30d47503d3a5345cd59215e44d7e0e47852b49d895df2952ece9a4651888b3",
+      "bytes": 3047
+    },
+    "registration.json": {
+      "sha256": "eef60fe6afdb3ae5ccb691fd3628c9916bba67ff9c3d8052463faffb906b8b81",
+      "bytes": 662
+    },
+    "source_correction.json": {
+      "sha256": "b56d5d6a3b2b5e593da0edd1ea4388d544658cd503d5fb67f082d2f6cc2070f6",
+      "bytes": 402
+    }
+  }
+}

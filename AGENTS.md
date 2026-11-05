@@ -5,6 +5,31 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.9 global tetra quality derivative (2026-11-05): LOCAL MESH QUALITY IMPROVED, GEOMETRIC PASS; FEM STILL NOT QUALIFIED.**
+Read [R3.9 measured report](docs/V3_R39_GLOBAL_QUALITY_20261105.md)
+and [separately versioned complete candidate evidence](data/v3_r39_quality_20261105/attempt01/manifest.json).
+Read-only preflight of the protected R3.8 1043314-tet/156765-node mesh
+found 148610 three-cell same-material internal edges; 50418 touched a
+bad element (mean-ratio q<0.05). One bounded local 3-to-2 screening admitted
+39362 valid candidate topology flips, and a deterministic disjoint batch
+accepted33195, yielding 1010119 tets. Bad q<0.05 count280430->241754,
+q<0.01 56586->53490, min q2.6566e-5->1.38495e-4. Independently re-audited
+the NEW saved tetrahedral face complex: all320522 original constrained
+facets/2440 CAD face markers and all430 region owners remain exact, 0
+extra/missing interfaces,0 nonmanifold faces,0 inverted tets and unchanged
+CAD volume errors (max0.497162%). All378 finite contacts remain preserved.
+Initial local-screen code STOPPED on a Python set literal TypeError before
+any output; corrected code plus original initial-failure log both archived.
+No TetGen remeshing, source node coordinate changes, PDE, convergence or
+solver conditioning was run. **Still 241754/1010119 (~23.93%) q<0.05**,
+so this is NOT a qualified FEM discretization; global nonlocal tet overlap
+NOT independently checked. Original R3.8 source mesh and R3.3/R3.4 failures,
+physical824 STEP, old finite contacts, canonical Rev3 and issue#2 unchanged.
+Next separately authorized work should prioritize unconstrained interior
+nodes, gold detector-bond quality and conservative conditioning assessment,
+not silently re-tetrahedralize whole package. Electrical GateB STOP;
+thermal C/D NOT RUN.
+
 **Current R3.8 global 430-domain tetrahedral milestone (2026-11-05): GEOMETRIC 3D MESH PASS; ELEMENT QUALITY UNQUALIFIED; NO PDE.**
 Read [exact measured record](docs/V3_R38_GLOBAL_TETGEN_20261105.md)
 and [full saved mesh provenance/archive](data/v3_r38_global_tetgen_20261105/attempt01/manifest.json).

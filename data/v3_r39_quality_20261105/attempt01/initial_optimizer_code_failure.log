@@ -1,0 +1,7 @@
+R39_BASELINE {'n_tets': 1043314, 'q_min': 2.6566150747514636e-05, 'q_lt_0p01': 56586, 'q_lt_0p05': 280430, 'q_p01': 0.0015721878688724797} s 1.07
+R39_SCREENING_START 50418 s 2.5
+Traceback (most recent call last):
+  File "/r39/optimize_once.py", line 94, in <module>
+    if set(sides)!=set((ring[0],ring[1]),(ring[0],ring[2]),(ring[1],ring[2])) or any(v!=1 for v in sides.values()):
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: set expected at most 1 argument, got 3
