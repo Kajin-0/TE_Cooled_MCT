@@ -5,6 +5,26 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.7 whole-package PLC preflight (2026-11-05): PASS INPUT/REGION/IDENTITY; FULL 3D NOT RUN.**
+Read [R3.7 technical report](docs/V3_R37_FULL_PLC_PREFLIGHT_20261105.md)
+and [final PLC evidence](data/v3_r37_plc_preflight_20261105/manifest.json).
+The original R3.3 320522 TRI3/156599 node MSH is preserved unchanged; an
+independent *input-only* TetGen PLC has 2440 CAD face markers,430 volume
+attributes,2397 shared faces,43 exterior faces and all378 finite contact
+witnesses. No duplicate triangle triplets, zero bad per-volume edge incidence
+and 430 unique OCC inside-volume seeds. 409 cad centroids+1 bbox midpoint+
+20 tested inward-offset seeds; six near-boundary seeds subsequently moved
+to >=0.0005 mm nearest-CAD-face clearance with no facet changes.
+Final PLC SHA256 is recorded in the manifest. The original PLC and FAIL
+archives remain untouched. Fixture-ratio extrapolation roughly0.71/1.41/
+2.83million tets for 1x/2x/4x but is NOT a bounded 430-domain tet/RAM
+forecast; TetGen whole-package recoverability, mesh quality, contact
+Jacobian, PDE and solver conditioning NOT TESTED. Do not launch global
+TetGen until the next explicit one-run registration with read-only PLC
+acceptance and output/kill/resource guards. All R3.3/R3.4 STOPs, R3.5/R3.6
+small-fixture evidence, frozen physical CAD/Rev3, issue#2 and electrical
+GateB STOP, thermal C/D NOT RUN remain preserved.
+
 **Current R3.6 fixture quality follow-up (2026-11-05): EXECUTED 3-TO-2 CONNECTIVITY IMPROVEMENT, NOT GLOBAL 3D QUALIFICATION.**
 Read [measured fixture report](docs/V3_R36_LOCAL_QUALITY_20261105.md)
 and [candidate hashes/results](data/v3_r36_quality_20261105/attempt01/manifest.json).
