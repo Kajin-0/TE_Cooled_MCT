@@ -1,0 +1,134 @@
+{
+  "classification": "INDEPENDENT BOUNDARY-PRESERVING CURVED 15um CU/PI/GAS FIXTURE; NOT FULL PACKAGE",
+  "created_utc": "2026-11-05T07:11:18.659415+00:00",
+  "git_previous_baseline": "c40cb394ac2be5bff72e1f1a6e20bfb3f07a55ec",
+  "gmsh_runtime_image": "sha256:97526dcefe0324c06197ce2a2dc632840ddd27a06493c6220002a85fb7a9ef14",
+  "tetgen_source_git_commit": "e05aca7df74e3f531bc35733ed87d36d437266c5",
+  "tetgen_binary_sha256": "361f99ea481c3bf2ce630a181fdc883a564f0e6698bb8654bdf60ee07712d08f",
+  "TetGen_flags": "-pYYA -V; strict no-boundary-Steiner / PLC / material attributes, no quality-refinement",
+  "CAD_fixture": "0.4mm-long concentric cylinders, copper r=0.100mm, polyimide radial thickness 0.015mm, gas outer radius=0.220mm",
+  "coarse": {
+    "status": "FAIL ONE OR MORE STRICT GATES",
+    "facets": 2960,
+    "tetrahedra": 6315,
+    "CAD_relative_volume_error": {
+      "copper_core": -0.014594987946138338,
+      "polyimide_15um": 0.0016539537414426153,
+      "gas": -0.00015722319836575238
+    }
+  },
+  "refined": {
+    "status": "PASS STRICT FACET/OWNERSHIP/JACOBIAN/VOLUME GATES",
+    "facets": 7106,
+    "tetrahedra": 15676,
+    "regions": {
+      "1": 3367,
+      "2": 4357,
+      "3": 7952
+    },
+    "zero_modified_facets": true,
+    "zero_missing_original_nodes": true,
+    "zero_moved_original_nodes": true,
+    "zero_duplicate_facets": true,
+    "zero_interface_ownership_errors": true,
+    "zero_nonmanifold_faces": true,
+    "zero_inverted_tets": true,
+    "CAD_relative_volume_error": {
+      "copper_core": -0.0056700617534819475,
+      "polyimide_15um": -0.0005457534780479723,
+      "gas": -2.949079532865717e-05
+    },
+    "mean_ratio_quality": {
+      "min": 0.008017208416012856,
+      "p01": 0.02123690978915401,
+      "p05": 0.10875152033785901,
+      "median": 0.306243758719771,
+      "p95": 0.9577846204328229,
+      "max": 0.9998592686002677,
+      "quality_below_0p01": 18,
+      "quality_below_0p05": 377,
+      "quality_below_0p1": 676
+    },
+    "quality_gate_qualifications": "positive finite element shape proven; thin-feature conditioning and solver convergence NOT QUALIFIED"
+  },
+  "still_unqualified": [
+    "This is a 3-material small fixture, not 430-domain full CAD",
+    "Low min tet quality and 377 tets q<0.05",
+    "No full-device global3D attempt",
+    "No PDE/thermal/electrical solver fields"
+  ],
+  "source_data": {
+    "coarse/coaxial_15um.poly": {
+      "bytes": 152787,
+      "sha256": "e3d4b0daf3aa2a2543c0128e8caeb2f194bfa49267533a045bb4bfd5c1e4a03d"
+    },
+    "coarse/fixture_reference.json": {
+      "bytes": 301814,
+      "sha256": "e1f3c39a065f29b134aa0648729e5edf16b5af416f98cea61c71811866debeda"
+    },
+    "coarse/generate_fixture.py": {
+      "bytes": 3444,
+      "sha256": "7f2595d8da24a2049acb75dd453992a837e501574e0670bf10c90c30c0dbfb62"
+    },
+    "coarse/tetgen.log": {
+      "bytes": 4833,
+      "sha256": "fec7ceb5dc2e3b54d441e606b0c19b897fe61cbf9f6e850aaeeb4945ce1e08c8"
+    },
+    "coarse/verified_result.json": {
+      "bytes": 1651,
+      "sha256": "5d0883b074b47d488fc1844c6b0253f5480a80bc32cee19115726952b85788ae"
+    },
+    "coarse/verify.py": {
+      "bytes": 5921,
+      "sha256": "e3ceb1b83411e47ddb895f2995cb61cffbc469eee92c3652113b55d1ac58c076"
+    },
+    "refined/coaxial_15um.1.edge": {
+      "bytes": 243867,
+      "sha256": "eb272ec3bd0f6de8d673f4c2660fbdc1dd8ef859ccf84090a1eb72b252c11484"
+    },
+    "refined/coaxial_15um.1.ele": {
+      "bytes": 580151,
+      "sha256": "4ddb7fe7492b259e7f150ed59e60308169a5a4c3f86a1f47fb16cd627f32d682"
+    },
+    "refined/coaxial_15um.1.face": {
+      "bytes": 213315,
+      "sha256": "084f9d1dcb6b1bf43355baa07ea8e4f3eeff5177c0c26388b7842431031b9766"
+    },
+    "refined/coaxial_15um.1.node": {
+      "bytes": 243451,
+      "sha256": "533591038d5fff3740756ceb3b3e8c41c217d85bb5f6967fb225b35a6b23adce"
+    },
+    "refined/coaxial_15um.poly": {
+      "bytes": 380891,
+      "sha256": "5e1da577d77760441300c1a51cc7218388c13632eeb62ced63a974af244f2122"
+    },
+    "refined/fixture_reference.json": {
+      "bytes": 738420,
+      "sha256": "5ecac5f2697bc384d779ec9645097db0f77a2cd73c3e310f8a84c25e4a757c65"
+    },
+    "refined/generate_fixture.py": {
+      "bytes": 3444,
+      "sha256": "46047667754e16c555017e2725a77ca62c8d6539d0cf3c7aa6be736fc5046873"
+    },
+    "refined/quality.py": {
+      "bytes": 1821,
+      "sha256": "4bd84a7a50277f07c20f638e480213c59604da5e3a8443475062637e3b14da6c"
+    },
+    "refined/quality_result.json": {
+      "bytes": 879,
+      "sha256": "2b67d0719cccde3d46df7f1d785be8f209b2fa2094976f07ee4a151e8e74d6fa"
+    },
+    "refined/tetgen.log": {
+      "bytes": 4768,
+      "sha256": "08d2e052bdb55917b4ba3599ba3a726c28b5208c61847cd6bc930eedb92cd5d3"
+    },
+    "refined/verified_result.json": {
+      "bytes": 1682,
+      "sha256": "dca946c53321ce0be0eba4446ed5ec264141058b814757566fcf1f25b25653dd"
+    },
+    "refined/verify.py": {
+      "bytes": 5921,
+      "sha256": "e3ceb1b83411e47ddb895f2995cb61cffbc469eee92c3652113b55d1ac58c076"
+    }
+  }
+}

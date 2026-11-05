@@ -1,0 +1,117 @@
+Opening /var/tmp/r35_tetgen_plc_20261105/refined_01/coaxial_15um.poly.
+  Initializing memorypools.
+  tetrahedron per block: 8188.
+  Size of a point: 136 bytes.
+  Size of a tetrahedron: 104 (112) bytes.
+  Size of a shellface: 200 (200) bytes.
+  Initializing robust predicates.
+  sizeof(double) =  8
+  machine epsilon =   2.22045e-16 [IEEE 754 64-bit macheps]
+Delaunizing vertices...
+  Permuting vertices.
+  Sorting vertices.
+  Incrementally inserting vertices.
+Delaunay seconds:  0.017006
+  Point sorting seconds:  0.000309
+Creating surface mesh ...
+  7106 (10597) subfaces (segments).
+Surface mesh seconds:  0.009126
+Recovering boundaries...
+  Creating the segment-endpoints map.
+  Found 10597 segments.
+  Recovering segments.
+  10597 (0) segments are recovered (missing).
+  Recovering facets.
+  7106 (0) subfaces are recovered (missing).
+Boundary recovery seconds:  0.01375
+  Segment recovery seconds:  0.009023
+  Facet recovery seconds:  0.004727
+Removing exterior tetrahedra ...
+Spreading region attributes.
+  Found 3 subdomains.
+Exterior tets removal seconds:  0.003984
+Recovering Delaunayness...
+Delaunay recovery seconds:  0.007066
+Improving mesh...
+  Target maximum aspect ratio = 1000.
+  Target maximum dihedral angle = 179.9.
+  Maximum flip level   = 3.
+  Number of iterations = 3.
+  Removed 578 edges/faces.
+Mesh improvement seconds:  0.00606
+
+Writing /var/tmp/r35_tetgen_plc_20261105/refined_01/coaxial_15um.1.node.
+Writing /var/tmp/r35_tetgen_plc_20261105/refined_01/coaxial_15um.1.ele.
+Writing /var/tmp/r35_tetgen_plc_20261105/refined_01/coaxial_15um.1.face.
+Writing /var/tmp/r35_tetgen_plc_20261105/refined_01/coaxial_15um.1.edge.
+
+Output seconds:  0.01627
+Total running seconds:  0.073716
+
+Statistics:
+
+  Input points: 3493
+  Input facets: 7106
+  Input segments: 10597
+  Input holes: 0
+  Input regions: 3
+
+  Mesh points: 3493
+  Mesh tetrahedra: 15676
+  Mesh faces: 33530
+  Mesh faces on exterior boundary: 4356
+  Mesh faces on input facets: 7106
+  Mesh edges on input segments: 10597
+
+Mesh quality statistics:
+
+  Smallest volume:       1.8684e-08   |  Largest volume:        0.0003679
+  Shortest edge:           0.012262   |  Longest edge:            0.20026
+  Smallest asp.ratio:        1.2405   |  Largest asp.ratio:        999.11
+  Smallest facangle:         6.0713   |  Largest facangle:       159.4550
+  Smallest dihedral:       0.084566   |  Largest dihedral:       179.7997
+
+  Aspect ratio histogram:
+         < 1.5       :       436      |      6 - 10         :      2238
+     1.5 - 2         :      2622      |     10 - 15         :      1005
+       2 - 2.5       :      1093      |     15 - 25         :       516
+     2.5 - 3         :       666      |     25 - 50         :       268
+       3 - 4         :       675      |     50 - 100        :       197
+       4 - 6         :      5607      |    100 -            :       353
+  (A tetrahedron's aspect ratio is its longest edge length divided by its
+    smallest side height)
+
+  Face angle histogram:
+      0 -  10 degrees:       740      |     90 - 100 degrees:      2124
+     10 -  20 degrees:     13191      |    100 - 110 degrees:      1685
+     20 -  30 degrees:      3684      |    110 - 120 degrees:      2223
+     30 -  40 degrees:      6004      |    120 - 130 degrees:      1605
+     40 -  50 degrees:      7773      |    130 - 140 degrees:       700
+     50 -  60 degrees:     19361      |    140 - 150 degrees:       876
+     60 -  70 degrees:     15613      |    150 - 160 degrees:       410
+     70 -  80 degrees:      7869      |    160 - 170 degrees:         0
+     80 -  90 degrees:     16732      |    170 - 180 degrees:         0
+
+  Dihedral angle histogram:
+       0 -  5 degrees:      2381      |     80 - 110 degrees:     19689
+       5 - 10 degrees:      1964      |    110 - 120 degrees:      4345
+      10 - 20 degrees:      7318      |    120 - 130 degrees:      2672
+      20 - 30 degrees:      2823      |    130 - 140 degrees:      2090
+      30 - 40 degrees:      4021      |    140 - 150 degrees:       998
+      40 - 50 degrees:      6601      |    150 - 160 degrees:       665
+      50 - 60 degrees:     11684      |    160 - 170 degrees:      1515
+      60 - 70 degrees:     16850      |    170 - 175 degrees:       405
+      70 - 80 degrees:      7208      |    175 - 180 degrees:       827
+  Minimum input dihedral angle is 87.2874 (degree).
+
+
+Memory usage statistics:
+
+  Maximum number of tetrahedra:  29346
+  Maximum number of tet blocks (blocksize = 8188):  4
+  Approximate memory for tetrahedral mesh (bytes):  9,446,600
+  Approximate memory for extra pointers (bytes):  1,603,520
+  Approximate memory for algorithms (bytes):  5,015,072
+  Approximate memory for working arrays (bytes):  169,552
+  Approximate total used memory (bytes):  16,234,744
+

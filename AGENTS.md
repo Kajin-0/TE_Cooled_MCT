@@ -5,6 +5,25 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.5 fixture milestone (2026-11-05): BOUNDARY-PRESERVING TETGEN PLC PASS ON A SMALL CURVED FIXTURE; GLOBAL3D NOT RUN.**
+Read [the measured R3.5 report](docs/V3_R35_TETGEN_CONSTRAINED_FIXTURE_20261105.md)
+and [immutable fixture inputs/output checksums](data/v3_r35_tetgen_plc_20261105/manifest.json).
+TetGen source commit e05aca7 from libigl/tetgen, -pYYA command, yields
+15,676 tetrahedra from a conformal0.4mm Cu core/15um polyimide/gas
+annular fixture. All7106 input triangles preserved exactly, zero duplicate
+or missing faces, zero altered input nodes, zero cross-material face ownership
+mismatches, no nonmanifold or nonpositive signed tetrahedra. Actual CAD volume
+errors: core-0.5670%,polyimide-0.0546%,gas-0.00295%; strict <1% PASS.
+Preserve prior coarse fixture FAIL: core volume error-1.4595% despite
+6315 positive tets/facet identity. Element mean-ratio quality is poor at
+the lower tail: min0.008017, 377/15676 tets <0.05. This does NOT establish
+conditioned FEM, converged fields, 430-region global mesh or solver readiness.
+Next priority: evaluate quality-constrained same-facet meshing and prepare
+read-only full430-domain PLC provenance/inside-region seed checks. Do NOT
+launch global tetrahedralization until scalability/ownership/budget controls
+are explicitly registered and all protected mesh/physical source hashes
+pass. NO PDE; electrical GateB STOP, thermal C/D NOT RUN, Rev3 frozen.
+
 **Current R3.3/R3.4 outcome (2026-11-05): POSTHOC SURFACE PASS; GLOBAL3D STOP.**
 Read [the latest measured record](docs/V3_R33_R34_SURFACE_VOLUME_HANDOFF_20261105.md)
 and [machine evidence](data/v3_r34_handoff_review_20261105/summary.json).
