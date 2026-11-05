@@ -1,0 +1,72 @@
+{
+  "milestone": "R3.10 bounded interior-node relocation on R3.9; geometric 3D PASS but FEM not qualified",
+  "date_utc": "2026-11-05T19:50:37.861148+00:00",
+  "baseline_git_commit": "1520e1a637ec7de271684dddf54b09ab514ee8d9",
+  "R39_parent_immutable": true,
+  "global_remeshing": false,
+  "PDE": "NOT RUN",
+  "total_nodes": 156765,
+  "fixed_boundary_nodes": 156599,
+  "movable_interior_nodes": 166,
+  "bad_tets_adjacent_to_movable_nodes": 13378,
+  "bad_tets_not_adjacent_to_movable_nodes": 228376,
+  "accepted_interior_node_relocations": 66,
+  "poor_tets_below_0p05_before": 241754,
+  "poor_tets_below_0p05_after": 241514,
+  "very_poor_tets_below_0p01_before": 53490,
+  "very_poor_tets_below_0p01_after": 53420,
+  "min_quality_before": 0.0001384952481687012,
+  "min_quality_after": 0.0001384952481687012,
+  "max_native_CAD_volume_error": 0.004971617001572448,
+  "facet_and_owner_mismatches": 0,
+  "nonpositive_tets": 0,
+  "new_node_sha256": "26957504acf57b590153a08ea33a841e7049eff82ab514b72f47f833ec1940bd",
+  "candidate_archive_sha256": "f32f58ef3b5be03f71f8539cd014e2a382f2e3289d9734c90ee17e2ec04d870c",
+  "FEM_qualification": "NOT ACHIEVED: 241514 tetrahedra below quality 0.05; global nonlocal overlap/solver-conditioning still unmeasured",
+  "files": {
+    "candidate_nodes_and_moves.tar.zst": {
+      "sha256": "f32f58ef3b5be03f71f8539cd014e2a382f2e3289d9734c90ee17e2ec04d870c",
+      "bytes": 3841029
+    },
+    "candidate_result.json": {
+      "sha256": "8d37bf36d1b16ce354beddbadcc62bb97a17881b3e07c6086070f53d5de3aaa7",
+      "bytes": 974
+    },
+    "census.log": {
+      "sha256": "ad6ee1d613dfedeed06ffca137cd8ff31d5e559ed5666ae71c6db04984b4f7a8",
+      "bytes": 3350
+    },
+    "free_node_census.json": {
+      "sha256": "519e2c3d67c4a809c19a3340ae10af69c3b8737e55faca062b656ceafcbbc679",
+      "bytes": 110778
+    },
+    "free_node_census.py": {
+      "sha256": "94cfe4b4119de71ad07c44b84f6ba986e1ecd359843648c94020d33ebf787349",
+      "bytes": 4606
+    },
+    "independent_audit.log": {
+      "sha256": "7dad0b1405e82c3ba60366c211968687ad28188722b63a1e6d000a0baf009eb3",
+      "bytes": 1104
+    },
+    "independent_mesh_audit.py": {
+      "sha256": "ea92a34b6ea32f4e496a46207e507695df7cbabe4c083079a427ba21a3784c08",
+      "bytes": 10714
+    },
+    "independent_saved_mesh_audit.json": {
+      "sha256": "05f8b7b6f7ec6c353409d791c10de9bb7457374eb2f3af59b488586248cf9ecb",
+      "bytes": 29958
+    },
+    "interior_relocation.py": {
+      "sha256": "55cb8f5a0f3e4bde6e99b1588bce263eee0a2a19f42504d4bd9bcbb421bc01a2",
+      "bytes": 6553
+    },
+    "registration.json": {
+      "sha256": "ea28837651759429f7c4c4371b644b51e12d3eddc20a1cef482ba0b323fb00da",
+      "bytes": 392
+    },
+    "relocation.log": {
+      "sha256": "0d9d258723b520d4559cd5f0e9f379a9677e1c9aa9956a2fecf88fc24b4b0601",
+      "bytes": 1226
+    }
+  }
+}

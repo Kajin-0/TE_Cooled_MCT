@@ -5,6 +5,31 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.10 global mesh free-node optimization (2026-11-05): GEOMETRIC PASS, VERY LIMITED QUALITY GAIN; FEM UNQUALIFIED.**
+Read [actual R3.10 measurements](docs/V3_R310_INTERIOR_NODE_QUALITY_20261105.md)
+and [independent candidate/sha evidence](data/v3_r310_interior_relocation_20261105/attempt01/manifest.json).
+Full R3.9 node-incidence census finds only166 movable interior nodes out
+of156765; 156599 fixed vertices lie on original registered surface/interface
+facets. 13378 of241754 q<0.05 tetrahedra (5.53%) even touch a free node;
+228376 (94.47%) do not. One preregistered bounded interior-node relocation
+accepted66 moves in3.12s without changing tetrahedral connectivity, fixed
+surface or material-interface nodes. Independent FULL saved-mesh audit:
+all320522 original TRI3/2440 native owner markers and all430 regions,
+378 contact witnesses,0 missing/extra/mismatched facets,0 nonmanifold
+faces,0 nonpositive tetrahedral volumes; max CAD region-volume error
+remains0.497162% (pin4). Bad q<0.05 count241754->241514 (~0.0993%
+relative gain), q<0.01 53490->53420, minimum q0.000138495 unchanged.
+THIS IS NOT FEM READY; global nonadjacent tet overlap, solver conditioning,
+and physical model convergence unqualified. Do NOT continue generic
+interior-node smoothing, since 94.47% bad tetrahedra have no free node.
+Investigate strictly same-facet local topology or constrained additional
+interior points on a representative difficult region with numerical
+conditioning/convergence benchmarks; no PDE or whole-device remeshing
+without separately authorized and registered gate. Original R3.9/R3.8
+parents, historic R3.3/R3.4 FAIL/STOP records, canonical Rev3, source
+824-body STEP and issue#2 remain unchanged. Electrical GateB STOP,
+thermal C/D NOT RUN.
+
 **Current R3.9 global tetra quality derivative (2026-11-05): LOCAL MESH QUALITY IMPROVED, GEOMETRIC PASS; FEM STILL NOT QUALIFIED.**
 Read [R3.9 measured report](docs/V3_R39_GLOBAL_QUALITY_20261105.md)
 and [separately versioned complete candidate evidence](data/v3_r39_quality_20261105/attempt01/manifest.json).
