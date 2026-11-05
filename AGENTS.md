@@ -5,6 +5,32 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.8 global 430-domain tetrahedral milestone (2026-11-05): GEOMETRIC 3D MESH PASS; ELEMENT QUALITY UNQUALIFIED; NO PDE.**
+Read [exact measured record](docs/V3_R38_GLOBAL_TETGEN_20261105.md)
+and [full saved mesh provenance/archive](data/v3_r38_global_tetgen_20261105/attempt01/manifest.json).
+One and only one registered TetGen -pYYAC -V whole-package attempt (4 CPU,
+8GiB, 900s hard wall, output/memory guards) succeeded in25.7496s using the
+immutable R3.7 PLC. Saved1043314 positive-volume tetrahedra/156765 nodes
+(including166 *interior* added nodes), EXACTLY retained320522 original
+registered TRI3 faces/2440 native markers, all430 nonempty source region
+attributes, all378 finite contacts, zero unregistered or missing exterior
+or material-interface facets, zero tet-face nonmanifold incidences, and
+max native CAD material-volume error0.497162% (pin4, <1%). Input original
+CAD/mesh/PLC, R3.3 producer FAIL and R3.4 STOP trials remained unchanged.
+Original initial saved-mesh independent audit FALSE FAILED because np.sort
+result was discarded; corrected + separately cleaned independent full-mesh
+audit agree on geometric PASS, and original false-failure code/log preserved.
+**Mesh NOT FEM READY:** q_min2.6566e-5, 56586/1043314 q<0.01 and
+280430/1043314 q<0.05 (~26.9%), worst gas/lead/pins/Au detector bonds.
+TetGen max allocated1580488 tets is NOT saved count. No global
+nonadjacent-tet overlap audit or conditioning/convergence, constitutive
+law/PDE/TEC performance validation performed. Electrical Gate B STOP,
+thermal C/D NOT RUN, 38-page master Rev3 frozen, issue#2 OPEN.
+Next authorization should focus on a separately versioned READ-ONLY
+global-mesh element-quality localization and candidate quality fixes
+while preserving ALL registered source facets/contacts/region volumes.
+Do not automatically re-mesh whole package or launch PDE solvers.
+
 **Current R3.7 whole-package PLC preflight (2026-11-05): PASS INPUT/REGION/IDENTITY; FULL 3D NOT RUN.**
 Read [R3.7 technical report](docs/V3_R37_FULL_PLC_PREFLIGHT_20261105.md)
 and [final PLC evidence](data/v3_r37_plc_preflight_20261105/manifest.json).

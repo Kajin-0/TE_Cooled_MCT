@@ -1,0 +1,9 @@
+AUDIT loading node and element records seconds 0.08
+AUDIT loading source PLC for exact node, triangle and marker comparisons seconds 0.74
+AUDIT signed 3D volumes and shape metrics on every saved tetrahedron seconds 1.87
+AUDIT building tetrahedral face complex and checking global manifold/interface ownership seconds 2.75
+Traceback (most recent call last):
+  File "/trial/audit.py", line 157, in <module>
+    assert missing_count==0 and extra_count==0,("Input facet/tet boundary disagreement",missing_count,extra_count)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('Input facet/tet boundary disagreement', 245170, 3430551)
