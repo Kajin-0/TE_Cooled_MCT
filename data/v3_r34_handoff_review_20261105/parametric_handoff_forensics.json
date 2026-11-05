@@ -1,0 +1,40 @@
+{
+  "status": "STOP; NO QUALIFIED GLOBAL VOLUME MESH",
+  "date_utc": "2026-11-05T06:09:29.404764+00:00",
+  "original_R33_surface_mesh": "/home/User/TE_Cooled_MCT/data/v3_r33_surface_20261105/attempt_01/run/global_surface.msh",
+  "parametric_reconstruction": {
+    "status": "PASS RECONSTRUCTED PARAMETRIC 2D BOUNDARY; 3D NOT RUN",
+    "preserved_classified_nodes": 156599,
+    "preserved_TRI3": 320522,
+    "restored_curve_nodes": 14747,
+    "restored_surface_nodes": 139111,
+    "roundtrip_max_mm": 6.750155989720952e-14,
+    "exact_identity_pre_post_and_reimport": true,
+    "file_sha256": "59762fde3d6c1f7dedaa943e9c159b315ef31be6468928b90f8c8ef9eef96649"
+  },
+  "global_3D_attempt": {
+    "status": "STOP GLOBAL3D MESHER",
+    "algorithm": 1,
+    "time_s": 2.746031779097393,
+    "peak_RSS_MiB": 238.6796875,
+    "error": "Exception('Invalid boundary mesh (overlapping facets) on surface 2360 surface 2360')",
+    "tetrahedralization": "FAILED",
+    "PDE": "NOT RUN"
+  },
+  "deterministic_preserved_boundary_2D_stage_test": {
+    "MeshOnlyEmpty": 1,
+    "before_triangles_face2360": 7018,
+    "after_triangles_face2360": 310,
+    "after_unique_node_triplets_face2360": 264,
+    "before_triangles_face1": 90,
+    "after_triangles_face1": 92,
+    "before_triangles_face2230": 260,
+    "after_triangles_face2230": 164,
+    "surface_triangulation_preserved": false,
+    "surface2360_duplicate_node_triplets_after_generate2": 46,
+    "note": "The 2D-stage test was done in disposable Gmsh process; no 3D mesh generation was called in this test"
+  },
+  "scientific_inference": "The corrected MSH node parametrization is complete and geometrically faithful, but Gmsh 4.13.1 remodels nonempty CAD face meshes during generate(2) even with MeshOnlyEmpty=1 for this 430-domain model, introducing duplicate facets. A volume mesher method that locks original surface triangles or transfers them into a compatible discrete-volume workflow must first be proven on a smaller surrogate.",
+  "no_repo_modifications_by_this_analysis": true,
+  "next_step": "Do not run another whole-device 3D mesh until a fixture demonstrates unchanged surface triangle identity across all 2D stages and a valid tetrahedralization of thin-layer geometry."
+}

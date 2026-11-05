@@ -1,0 +1,60 @@
+{
+  "planar_copper_polyimide_gas": {
+    "status": "FAIL_NO_TETS_OR_CHANGED_BOUNDARY",
+    "input_faces": {
+      "triangles": 632,
+      "digest": "af219e0f5ae8e74e1c33ac14440e143c33362e1b21123eb7f1ab4a702370f3fd"
+    },
+    "post_createGeometry": {
+      "triangles": 632,
+      "digest": "af219e0f5ae8e74e1c33ac14440e143c33362e1b21123eb7f1ab4a702370f3fd"
+    },
+    "post_3d": {
+      "triangles": 634,
+      "digest": "504222a593e44460373e9731595caaa80f908aa7c8f08d13621c953373ae1153"
+    },
+    "volume_entities": 3,
+    "tetrahedra": 1114,
+    "error": null,
+    "log_tail": [
+      "Info: 0.30 < quality < 0.40 :         6 elements",
+      "Info: 0.40 < quality < 0.50 :         6 elements",
+      "Info: 0.50 < quality < 0.60 :        21 elements",
+      "Info: 0.60 < quality < 0.70 :       101 elements",
+      "Info: 0.70 < quality < 0.80 :       138 elements",
+      "Info: 0.80 < quality < 0.90 :       142 elements",
+      "Info: 0.90 < quality < 1.00 :        77 elements",
+      "Info: Done optimizing mesh (Wall 0.00137206s, CPU 0.001365s)",
+      "Info: 343 nodes 1872 elements"
+    ]
+  },
+  "curved_coaxial_copper_polyimide_gas": {
+    "status": "STOP",
+    "input_faces": {
+      "triangles": 2960,
+      "digest": "ad8e519cf2c20242f134244c56b28d100c75ffb41f7573b24a8a557696c4187f"
+    },
+    "post_createGeometry": {
+      "triangles": 2960,
+      "digest": "ad8e519cf2c20242f134244c56b28d100c75ffb41f7573b24a8a557696c4187f"
+    },
+    "post_3d": {
+      "triangles": 0,
+      "digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "volume_entities": 3,
+    "tetrahedra": 0,
+    "error": "The 1D mesh seems not to be forming a closed loop (2 boundary nodes are considered once)",
+    "log_tail": [
+      "Progress: Meshing 1D...",
+      "Progress: Meshing 1D...",
+      "Progress: Meshing 1D...",
+      "Progress: Meshing 1D...",
+      "Info: Done meshing 1D (Wall 9.75709e-05s, CPU 7.6e-05s)",
+      "Info: Meshing 2D...",
+      "Info: Meshing surface 1 (Discrete surface, Frontal-Delaunay)",
+      "Error: The 1D mesh seems not to be forming a closed loop (2 boundary nodes are considered once)",
+      "Progress: Meshing 2D..."
+    ]
+  }
+}

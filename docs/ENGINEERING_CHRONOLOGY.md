@@ -438,3 +438,27 @@ Against efd853c, [the R3.2 failure record](V3_R32_GLOBAL_SURFACE_20261103.md) pr
 ## 2026-11-03T21:37:13.856483Z — PASS PUBLICATION / GLOBAL SURFACE STOP — R3.2 exact CI
 
 Observed source/evidence [12faf57698ff57e796f171b66a66e1ddd56ccddd](https://github.com/Kajin-0/TE_Cooled_MCT/commit/12faf57698ff57e796f171b66a66e1ddd56ccddd) pushed with [exact-commit CI41722977176 PASS](https://github.com/Kajin-0/TE_Cooled_MCT/actions/runs/41722977176), including Python3.11 tests and both legacy demos. This receipt changes no producer, numerical evidence, CAD, mesh, field or PDF; scientific STOP/no MSH/all2440 mesh gates unmeasured remain, issue#2 OPEN and no further experiment authorized; verify the receipt-only successor exact CI for final handoff.
+
+## 2026-11-05T04:07:14.368463Z — STOP PREFLIGHT / NOT RUN — Authorized R3.3 detached replay
+
+At clean tracked3d7eb2a in existing sim:0.0, minimal Docker preflight found both the prescribed tag and exact a0b22cf image absent (only unrelated dolfinx image listed); [preflight/result](../data/v3_r33_surface_20261105/result.json) records zero mesh attempts and no PID. No new meshing code/runtime build/substitution, PDE, tests, PDF, CI, commit or push; original sources/evidence/untracked trials preserved, detached launch blocked pending exact pinned-runtime restoration.
+
+## 2026-11-05T05:17:41.024030+00:00 — PENDING — Authorized recovered-runtime R3.3 detached surface replay
+
+User explicitly permits qualified NON-bit-identical image97526dce, retaining original a0b22cf identity as history; separate attempt_01 preserves earlier no-image STOP. One source-frozen surface worker only, immediate native MSH retention before counts/seed comparison, tag-independent geometry/incidence, unchanged strict gates,600s/4CPU/8GiB with early7.5GiB guard; no polling, retry, tet/PDE, broad tests, CI, commit/push or report changes.
+
+## 2026-11-05T05:20:31.856883+00:00 — DETACHED R3.3 ENDED / REVIEW PENDING
+
+One authorized attempt_01 container ended; actual status FAIL GLOBAL SURFACE GATE; NO RETRY in `data/v3_r33_surface_20261105/attempt_01/run/result.json`. Unfinished gates remain NOT MEASURED; no retry, tet/PDE, release/CI, commit or push was performed by this unattended worker.
+
+## 2026-11-05 — R3.3 independent saved-MSH requalification (POSTHOC PASS, original FAIL intact)
+
+The separate [R3.3/R3.4 measured record](V3_R33_R34_SURFACE_VOLUME_HANDOFF_20261105.md) recomputes2440 native face areas (max0.285334%),2422 ancestor areas,430 closed oriented skins, zero corrected mixed normal signs, and a complete2,228,647-filtered-pair facet BVH (143.643s):98 original floating-point flags were same-vertex touches excluded via exact rational intersection checks; zero confirmed interior intersections. This post-hoc review does not rewrite the original R3.3 worker FAIL, does not establish 3D meshability or change the original320522-triangle MSH.
+
+## 2026-11-05 — R3.4 two independent whole-device Delaunay attempts STOP
+
+Attempt1 failed after0.751s/147.629MiB due to missing imported curve/surface UV and irrecoverable curve1 edge. Fresh reconstruction of14747 curve-node and139111 surface-node parametric coordinates preserved all original node/element identities and passed saved-file readback in25.36s (maximum CAD-roundtrip drift6.75e-14mm). Attempt2 failed after2.746s/238.680MiB due to duplicate facets at lead/polyimide face2360. An isolated no-tet2D-stage replay reproduced face2360 7018->310 entries, 46 duplicate node triplets, despite MeshOnlyEmpty=1. Neither run produced a qualified global tet mesh. No PDE or retry. Scientific evidence and protected sources unchanged.
+
+## 2026-11-05 — Discrete Cu/polyimide/gas fixtures reject boundary preservation
+
+A strict saved-boundary comparison of separate three-material geometry fixtures finds planar case1114 tetrahedra but surface632->634 TRI3, **FAIL unchanged boundary**; coaxial15um annulus case failed discrete closed-1D-loop and yielded0 tetrahedra, **STOP**. Earlier small-box tetra output was not proof of unchanged input boundary. All trials retained and recorded in [evidence](../data/v3_r34_handoff_review_20261105/boundary_preserving_fixture_results.json). Next whole-device 3D mesh is blocked pending a representative curved thin-feature fixture with strictly preserved facets and volume/Jacobian verification. Rev3 frozen; electrical GateB STOP, C/D NOT RUN.

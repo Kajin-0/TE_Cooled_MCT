@@ -1,0 +1,92 @@
+{
+  "scope": "POSTHOC R3.3 AND R3.4 GEOMETRY REVIEW; NO GLOBAL 3D OR PDE QUALIFICATION",
+  "created_utc": "2026-11-05T06:40:40.359556+00:00",
+  "baseline_git_commit": "3d7eb2a9bfd77d7e10d52034b77df402a4e0acad",
+  "source_global_surface_MSH_SHA256": "3ee984051366990cb912c71e88332021a4c7b3f2cc1484f35ca546fd265d859b",
+  "source_global_surface_triangles": 320522,
+  "source_domains": 430,
+  "source_faces": 2440,
+  "historical_R33_producer_status": "FAIL GLOBAL SURFACE GATE; NO RETRY (unchanged)",
+  "posthoc_surface_validation": "PASS within recorded numerical checks; not historical producer PASS",
+  "attempt_1": {
+    "status": "STOP GLOBAL3D MESHER",
+    "algorithm": 1,
+    "input_BREP_sha256": "ebac7dd31fbf01e765c712ce76571238f2b6436af847cb9f9ce0f2d623feb926",
+    "input_surface_sha256": "3ee984051366990cb912c71e88332021a4c7b3f2cc1484f35ca546fd265d859b",
+    "no_PDE": true,
+    "solver_ready": false,
+    "error": "Exception('Unable to recover the edge 342532 (1/2) on curve 1 (on surface 1)')",
+    "seconds": 0.7510584709234536,
+    "peak_RSS_MiB": 147.62890625
+  },
+  "attempt_2": {
+    "status": "STOP GLOBAL3D MESHER",
+    "algorithm": 1,
+    "input_BREP_sha256": "ebac7dd31fbf01e765c712ce76571238f2b6436af847cb9f9ce0f2d623feb926",
+    "input_surface_sha256": "59762fde3d6c1f7dedaa943e9c159b315ef31be6468928b90f8c8ef9eef96649",
+    "no_PDE": true,
+    "solver_ready": false,
+    "error": "Exception('Invalid boundary mesh (overlapping facets) on surface 2360 surface 2360')",
+    "seconds": 2.746031779097393,
+    "peak_RSS_MiB": 238.6796875
+  },
+  "parametric_handoff": {
+    "input_MSH_sha256": "3ee984051366990cb912c71e88332021a4c7b3f2cc1484f35ca546fd265d859b",
+    "output_MSH_sha256": "59762fde3d6c1f7dedaa943e9c159b315ef31be6468928b90f8c8ef9eef96649",
+    "same_element_tags_coordinates_connectivity": true,
+    "restored_curve_nodes": 14747,
+    "restored_surface_nodes": 139111
+  },
+  "fixtures": {
+    "planar_copper_polyimide_gas": {
+      "status": "FAIL_NO_TETS_OR_CHANGED_BOUNDARY",
+      "tetrahedra": 1114,
+      "initial_triangles": 632,
+      "after_3d_triangles": 634,
+      "surface_exact_preservation": false,
+      "error": null
+    },
+    "curved_coaxial_copper_polyimide_gas": {
+      "status": "STOP",
+      "tetrahedra": 0,
+      "initial_triangles": 2960,
+      "after_3d_triangles": 0,
+      "surface_exact_preservation": false,
+      "error": "The 1D mesh seems not to be forming a closed loop (2 boundary nodes are considered once)"
+    }
+  },
+  "unresolved": [
+    "No boundary-preserving whole-device tetrahedral mesher",
+    "Generate(3) invokes a 2D stage that can alter imported surfaces even if Mesh.MeshOnlyEmpty=1",
+    "Discrete-volume treatment of periodic curves and annular shells",
+    "3D finite-element current/heat/energy/solver qualification, material/interface laws UNSET"
+  ],
+  "files": {
+    "surface_posthoc.json": {
+      "sha256": "ff75c8cf48025cb4274a0192079c505bb65146eca961b3c62637e14e8259dba0",
+      "bytes": 2631
+    },
+    "parametric_preflight.json": {
+      "sha256": "c49f305292f011158389d206e1f6aac5b1f560cad1ce65823e2af913a6f6ff2b",
+      "bytes": 1393
+    },
+    "original_volume_failure.json": {
+      "sha256": "647db0c4449555db15cc9252d2649ae7f00d1244b8ff017d955fcb4d3beb7fdc",
+      "bytes": 443
+    },
+    "parametric_volume_failure.json": {
+      "sha256": "d8c189be18da526b2909f5117730bad36bda6357ccaf8d6cd4a8c4b815b1ea45",
+      "bytes": 447
+    },
+    "parametric_handoff_forensics.json": {
+      "sha256": "b7475f3e337533d9dd47c6f44d6ea9e0c009468c8ea43f6bcd5eb3a9739fed53",
+      "bytes": 2226
+    },
+    "boundary_preserving_fixture_results.json": {
+      "sha256": "784c8b6bd231abba16011bcd4c43b6c4a39adef03b28cf4cf0b39a7ff0601ebc",
+      "bytes": 2196
+    }
+  },
+  "Rev3_master_pdf_modified": false,
+  "PDE_RUN": false
+}

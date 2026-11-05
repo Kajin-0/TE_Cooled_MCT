@@ -5,6 +5,30 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.3/R3.4 outcome (2026-11-05): POSTHOC SURFACE PASS; GLOBAL3D STOP.**
+Read [the latest measured record](docs/V3_R33_R34_SURFACE_VOLUME_HANDOFF_20261105.md)
+and [machine evidence](data/v3_r34_handoff_review_20261105/summary.json).
+Original R3.3 worker FAIL remains immutable. Independent saved-MSH recheck
+passes2440/2440 face areas (<1%),2422 ancestors,430 oriented closed skins,
+zero corrected mixed-normal signs, completeBVH with98 shared-vertex false
+positives rejected using exact rational geometry (zero confirmed interior hits).
+The saved320522-triangle surface and source CAD stay frozen. Two independent
+global3D Delaunay attempts both STOP: first on missing CAD UV/edge recovery,
+second on Gmsh remeshing imported 2D boundaries despite MeshOnlyEmpty=1,
+introducing duplicates at copper/polyimide face2360. Parametric restoration
+of14747 curve and139111 surface nodes passes exact input-identity comparison,
+but does NOT prevent 2D replacement. Discrete planar 15um dielectric fixture
+generated1114 tets but FAILS unchanged-boundary gate (632->634 triangles);
+curved coaxial fixture STOPPED on unclosed discrete curve loop, zero tets.
+NO QUALIFIED GLOBAL3D MESH OR PDE. Recovered image97526dce is NOT identical
+to historical a0b22cf. STOP further whole-device meshing until a small curved
+thin-feature conformal fixture demonstrates *exactly unchanged* surface facets,
+positive tets and material interface ownership. Rev3 master remains frozen,
+electrical GateB STOP, thermal C/D NOT RUN, issue#2 OPEN. Preserve every failed
+receipt, original physical824-solid STEP,824 source mappings,378 contacts,
+R2/R3 CAD, old meshes and untracked archives. Existing sim:0.0 only for
+authorized agent work; prefer bounded direct diagnostics to conserve Codex.
+
 **Current R3.2 outcome: GLOBAL SURFACE TRIAL STOP; NO MESH SAVED.**
 Read [the measured failure record](docs/V3_R32_GLOBAL_SURFACE_20261103.md),
 baseline efd853c, existing sim:0.0, one builder. Exactly ONE worker ended in

@@ -1,0 +1,62 @@
+{
+  "category": "INDEPENDENT READ-ONLY POSTHOC ANALYSIS; NO HISTORICAL RELEASE STATUS CHANGE",
+  "observed_utc": "2026-11-05T05:49:02.284801+00:00",
+  "original_run_status": "FAIL GLOBAL SURFACE GATE; NO RETRY",
+  "physical_model_changed": false,
+  "original_mesh_modified": false,
+  "PDE_run": false,
+  "tetrahedralization_run": false,
+  "mesh": "/home/User/TE_Cooled_MCT/data/v3_r33_surface_20261105/attempt_01/run/global_surface.msh",
+  "mesh_sha256": "3ee984051366990cb912c71e88332021a4c7b3f2cc1484f35ca546fd265d859b",
+  "independent_readback": {
+    "surface_faces": 2440,
+    "volume_count": 430,
+    "triangles": 320522,
+    "nodes": 156599,
+    "max_relative_face_area_error": 0.0028533426503675186,
+    "R2_ancestors_checked": 2422,
+    "area_failures": 0,
+    "R2_ancestor_failures": 0,
+    "corrected_CAD_normal_mixed_faces": 0,
+    "max_abs_normal_angle_deg": 5.261044974073927,
+    "minimum_abs_normal_cosine": 0.9957872701988747,
+    "all_430_closed_volume_skins": true
+  },
+  "intersection_BVH": {
+    "status": "PASS COMPLETE LINEAR FACET INTERSECTION CHECK",
+    "traversal_complete": true,
+    "measured_proper_intersections": 0,
+    "witnesses": [],
+    "visited_node_pairs": 930338,
+    "broad_candidate_pairs": 19032493,
+    "tested_pairs": 2228647,
+    "seconds": 143.64311509998515,
+    "boundary_touching_excluded": true,
+    "leaf_size": 16,
+    "relative_tolerance": 1e-10,
+    "coplanar_distance_mm": 1e-09
+  },
+  "intersection_precision": {
+    "method": "retained original BVH/triangle predicate, with exact Fraction.from_float arithmetic applied ONLY to independently recheck flagged nonparallel triangle pairs having shared vertex",
+    "original_double_precision_flags": 98,
+    "rejected_shared_vertex_numerical_false_positives": 98,
+    "confirmed_intersections": 0,
+    "full_traversal_completed": true
+  },
+  "thin_feature_quality": {
+    "minimum_triangle_quality": 0.0057734385426015476,
+    "faces_below_0p01": 12,
+    "faces_below_0p05": 202,
+    "faces_below_0p10": 472,
+    "max_edge_aspect_ratio": 300.00166666087154,
+    "note": "Severe anisotropy in thin metal sidewalls; not a 3D tetrahedral mesh qualification"
+  },
+  "status": "POSTHOC GATED SURFACE RECHECK SUPPORTS GEOMETRIC ACCEPTABILITY; FORMAL REVIEW STILL REQUIRED",
+  "limitations": [
+    "Original R3.3 registered FAIL remains historical truth",
+    "R3.3 fixed-source CAD and real foil/film/contact laws remain physically UNQUALIFIED",
+    "No global tetrahedral mesh or PDE solved",
+    "Thin-feature volume meshability remains unresolved",
+    "This standalone read-only replay did not create a new project release"
+  ]
+}
