@@ -1,0 +1,270 @@
+{
+  "status": "PASS R3.17 SYNTHETIC THREE-REGION TWO-CONTACT NETWORK",
+  "source_CAD_regions": [
+    408,
+    410,
+    420
+  ],
+  "source_CAD_contact_faces": [
+    2336,
+    2349
+  ],
+  "contact_pairs": [
+    [
+      408,
+      410
+    ],
+    [
+      410,
+      420
+    ]
+  ],
+  "artificial_k": {
+    "408": 2.0,
+    "410": 1.0,
+    "420": 10.0
+  },
+  "artificial_G": {
+    "2336": 4.0,
+    "2349": 5.0
+  },
+  "manufactured_variable_normal_flux_q": "1 + 1.8 (x+0.35) + 2.5 y",
+  "manufactured_field": "A*((x+0.35)^2+y^2)+q(x,y)*s_r(z)+ beta sin(W(y-y_min)), piecewise affine s with nonzero contact jump",
+  "source_mesh_geometry_modified": false,
+  "two_contact_source_facets_exact": true,
+  "true_physical_electrothermal_model": "NOT RUN",
+  "mesh_convergence": "NOT RUN",
+  "input_source_SHA256": {
+    "R38_430_domains.1.node": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+    "R38_430_domains.1.face": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18",
+    "R39_430_domains.1.ele": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570"
+  },
+  "results": [
+    {
+      "order": 1,
+      "nonlinear": false,
+      "status": "PASS",
+      "source_tetrahedra": 26290,
+      "total_DOF": 7055,
+      "free_DOF": 3983,
+      "fixed_DOF": 3072,
+      "ILU_GMRES_iterations": 8,
+      "ILU_GMRES_info": 0,
+      "true_residual": 9.399668762622693e-12,
+      "matrix_NNZ": 45369,
+      "symmetric_relative": 4.85856596558808e-17,
+      "H1_relative_4pt": 0.1070875236787333,
+      "contacts": {
+        "2336": {
+          "volume_pair": [
+            408,
+            410
+          ],
+          "source_shared_triangles": 6,
+          "source_face_area_mm2": 0.0021,
+          "analytic_variable_q_RMS": 1.0006174829685028,
+          "analytic_q_range": [
+            0.9348333333333334,
+            1.0651666666666666
+          ],
+          "contact_jump_RMS_err_relative_to_q": 0.0004563976594445751,
+          "flux_balance_RMS_rel": 0.14509504359954956,
+          "Robin_RMS_rel": 0.1353318940546624,
+          "signed_net_flux_mismatch_integral": 3.233771229196476e-05,
+          "mean_manufactured_contact_jump": -0.25,
+          "mean_computed_contact_jump": -0.2499999999964278
+        },
+        "2349": {
+          "volume_pair": [
+            410,
+            420
+          ],
+          "source_shared_triangles": 48,
+          "source_face_area_mm2": 0.00025374291767578025,
+          "analytic_variable_q_RMS": 1.0000850410368158,
+          "analytic_q_range": [
+            0.9815673477027854,
+            1.0184326522972147
+          ],
+          "contact_jump_RMS_err_relative_to_q": 6.580536148238997e-05,
+          "flux_balance_RMS_rel": 0.01675374683592884,
+          "Robin_RMS_rel": 0.017350550100322774,
+          "signed_net_flux_mismatch_integral": 4.4977144960598923e-07,
+          "mean_manufactured_contact_jump": -0.19999999999999996,
+          "mean_computed_contact_jump": -0.20000000001123436
+        }
+      },
+      "wall_seconds": 1.075
+    },
+    {
+      "order": 2,
+      "nonlinear": false,
+      "status": "PASS",
+      "source_tetrahedra": 26290,
+      "total_DOF": 47334,
+      "free_DOF": 35142,
+      "fixed_DOF": 12192,
+      "ILU_GMRES_iterations": 12,
+      "ILU_GMRES_info": 0,
+      "true_residual": 5.371866209635529e-12,
+      "matrix_NNZ": 725046,
+      "symmetric_relative": 2.296412197216196e-17,
+      "H1_relative_4pt": 1.0577523871405172e-09,
+      "contacts": {
+        "2336": {
+          "volume_pair": [
+            408,
+            410
+          ],
+          "source_shared_triangles": 6,
+          "source_face_area_mm2": 0.0021,
+          "analytic_variable_q_RMS": 1.0006174829685028,
+          "analytic_q_range": [
+            0.9348333333333334,
+            1.0651666666666666
+          ],
+          "contact_jump_RMS_err_relative_to_q": 1.8487202870913226e-10,
+          "flux_balance_RMS_rel": 5.434435539163605e-10,
+          "Robin_RMS_rel": 7.354526658835433e-10,
+          "signed_net_flux_mismatch_integral": 9.991899016514871e-13,
+          "mean_manufactured_contact_jump": -0.25,
+          "mean_computed_contact_jump": -0.24999999981510634
+        },
+        "2349": {
+          "volume_pair": [
+            410,
+            420
+          ],
+          "source_shared_triangles": 48,
+          "source_face_area_mm2": 0.00025374291767578025,
+          "analytic_variable_q_RMS": 1.0000850410368158,
+          "analytic_q_range": [
+            0.9815673477027854,
+            1.0184326522972147
+          ],
+          "contact_jump_RMS_err_relative_to_q": 1.3210303433181747e-10,
+          "flux_balance_RMS_rel": 2.4913610295999145e-09,
+          "Robin_RMS_rel": 5.7572352351290086e-09,
+          "signed_net_flux_mismatch_integral": -2.342331959086646e-13,
+          "mean_manufactured_contact_jump": -0.19999999999999996,
+          "mean_computed_contact_jump": -0.2000000001320238
+        }
+      },
+      "wall_seconds": 5.351
+    },
+    {
+      "order": 1,
+      "nonlinear": true,
+      "status": "PASS",
+      "source_tetrahedra": 26290,
+      "total_DOF": 7055,
+      "free_DOF": 3983,
+      "fixed_DOF": 3072,
+      "ILU_GMRES_iterations": 8,
+      "ILU_GMRES_info": 0,
+      "true_residual": 9.561479170084029e-12,
+      "matrix_NNZ": 45369,
+      "symmetric_relative": 4.85856596558808e-17,
+      "H1_relative_4pt": 0.11078928803990355,
+      "contacts": {
+        "2336": {
+          "volume_pair": [
+            408,
+            410
+          ],
+          "source_shared_triangles": 6,
+          "source_face_area_mm2": 0.0021,
+          "analytic_variable_q_RMS": 1.0006174829685028,
+          "analytic_q_range": [
+            0.9348333333333334,
+            1.0651666666666666
+          ],
+          "contact_jump_RMS_err_relative_to_q": 0.0004561036673831482,
+          "flux_balance_RMS_rel": 0.1452377252059796,
+          "Robin_RMS_rel": 0.13546700547048723,
+          "signed_net_flux_mismatch_integral": 3.282907789100537e-05,
+          "mean_manufactured_contact_jump": -0.25,
+          "mean_computed_contact_jump": -0.24999999999614675
+        },
+        "2349": {
+          "volume_pair": [
+            410,
+            420
+          ],
+          "source_shared_triangles": 48,
+          "source_face_area_mm2": 0.00025374291767578025,
+          "analytic_variable_q_RMS": 1.0000850410368158,
+          "analytic_q_range": [
+            0.9815673477027854,
+            1.0184326522972147
+          ],
+          "contact_jump_RMS_err_relative_to_q": 6.578264029082058e-05,
+          "flux_balance_RMS_rel": 0.01675330250515385,
+          "Robin_RMS_rel": 0.01735085984352371,
+          "signed_net_flux_mismatch_integral": 4.5226656585995326e-07,
+          "mean_manufactured_contact_jump": -0.19999999999999996,
+          "mean_computed_contact_jump": -0.200000000017429
+        }
+      },
+      "wall_seconds": 0.645
+    },
+    {
+      "order": 2,
+      "nonlinear": true,
+      "status": "PASS",
+      "source_tetrahedra": 26290,
+      "total_DOF": 47334,
+      "free_DOF": 35142,
+      "fixed_DOF": 12192,
+      "ILU_GMRES_iterations": 12,
+      "ILU_GMRES_info": 0,
+      "true_residual": 5.1197033984534655e-12,
+      "matrix_NNZ": 725046,
+      "symmetric_relative": 2.296412197216196e-17,
+      "H1_relative_4pt": 1.7378266747419572e-05,
+      "contacts": {
+        "2336": {
+          "volume_pair": [
+            408,
+            410
+          ],
+          "source_shared_triangles": 6,
+          "source_face_area_mm2": 0.0021,
+          "analytic_variable_q_RMS": 1.0006174829685028,
+          "analytic_q_range": [
+            0.9348333333333334,
+            1.0651666666666666
+          ],
+          "contact_jump_RMS_err_relative_to_q": 7.209966771053991e-08,
+          "flux_balance_RMS_rel": 8.818162546020583e-06,
+          "Robin_RMS_rel": 8.823444968508346e-06,
+          "signed_net_flux_mismatch_integral": 1.4959676357768908e-08,
+          "mean_manufactured_contact_jump": -0.25,
+          "mean_computed_contact_jump": -0.25000000722355775
+        },
+        "2349": {
+          "volume_pair": [
+            410,
+            420
+          ],
+          "source_shared_triangles": 48,
+          "source_face_area_mm2": 0.00025374291767578025,
+          "analytic_variable_q_RMS": 1.0000850410368158,
+          "analytic_q_range": [
+            0.9815673477027854,
+            1.0184326522972147
+          ],
+          "contact_jump_RMS_err_relative_to_q": 3.296929075275418e-09,
+          "flux_balance_RMS_rel": 2.1217601341276908e-07,
+          "Robin_RMS_rel": 1.3390127360953607e-07,
+          "signed_net_flux_mismatch_integral": 4.083447736692411e-12,
+          "mean_manufactured_contact_jump": -0.19999999999999996,
+          "mean_computed_contact_jump": -0.20000000016768524
+        }
+      },
+      "wall_seconds": 2.844
+    }
+  ],
+  "elapsed_seconds": 15.702,
+  "peak_RSS_MiB": 392.6
+}

@@ -5,6 +5,50 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.17 genuine three-material two-native-contact FEM network (2026-11-06): SYNTHETIC VARIABLE NORMAL-FLUX AND TWO ROBIN CONTACT LAWS PASS; REAL ELECTRICAL/THERMOELECTRIC PDE UNQUALIFIED.**
+Read [R3.17 quantitative record](docs/V3_R317_TWO_CONTACT_NETWORK_20261106.md)
+and [pinned code, four field solutions and independent receipts](data/v3_r317_two_contact_network_20261106/attempt01/manifest.json).
+Original R3.9 TET4 source, actual native CAD material chain
+408 p-HgCdTe photoconductor -> native face2336 (6 conformal TRI3)
+->410 composite detector8 wedge foot->native face2349 (48 conformal
+TRI3)->420 Au detector bond8. Three-region subset26290 tetra,
+6998 ORIGINAL geometric nodes, 13766 registered exterior TRI3.
+All source mesh ownership, geometry, contact witness records unchanged.
+Mathematical-only coefficients k408=2,k410=1,k420=10,
+Robin conductances G2336=4,G2349=5 and variable normal-gradient
+flux q(x,y)=1+1.8*(x+.35)+2.5*y; both interfaces have distinct
+manufactured spatially varying potential jump -q/G and exact normal
+flux continuity. Each material has its own field trace (P1 total7055
+DOF/free3983; P2 total47334/free35142), positive weak Robin
+surface operators, exact non-contact manufactured body/exterior
+flux and Dirichlet native face2399.
+All four P1/P2 quadratic and quadratic+sinusoidal scalar
+benchmarks passed true operator residual<1e-8, ILU-GMRES8/12
+iterations. Independent216pt tetra H1_nonpolynomial relative P1
+0.110789151 and P2 2.50996255e-5, improvement4413.976x.
+P2 nonpolynomial native contact 2336 Robin RMS8.823445e-6
+and outward-normal flux imbalance8.818163e-6; contact2349
+Robin RMS1.339013e-7 and imbalance2.121760e-7. Both pass
+preregistered 1e-5 tolerance, but 2336 is close to threshold
+and has only6 original TRI3. Variable q ranges .93483..1.06517
+(face2336) and .98157..1.01843 (face2349).
+Primary four-point nonpolynomial P2 H1 1.7378267e-5
+UNDERSTATED independent216pt 2.5099625e-5 by44.431% relative
+to primary; use only independent216pt error for qualification.
+Separate full interface face ownership/flux and saved-field 216pt
+H1 audit PASS. This is separate FACE-LOCAL contact conservation
+not global network current closure: original contact areas differ
+and there are manufactured distributed/exterior forcing fluxes.
+No physical HgCdTe/Au/composite conductivity, contact resistivity,
+thermal/electrical junction/TEC PDE, mesh refinement convergence,
+full430-region solve, or measured detector operating point.
+Protected original STEP, all R3.3-R3.16 archives/failures,
+Rev3 38-page canonical and issue#2 remain unchanged.
+Electrical GateB STOP, thermal C/D NOT RUN. No additional compute
+or Codex used. Next require physical subassembly constitutive laws
+with fully integrated electrical current/reaction closure before
+any device-wide electrothermal claims.
+
 **Current R3.16 native finite-contact split-trace scalar P1/P2 (2026-11-05): MATHEMATICAL ROBIN TRANSMISSION, NONPOLYNOMIAL FLUX AND INDEPENDENT H1 PASS; PHYSICAL CONTACT LAWS UNQUALIFIED.**
 Read [R3.16 technical report](docs/V3_R316_FINITE_CONTACT_INTERFACE_20261105.md)
 and [saved full SHA evidence](data/v3_r316_finite_contact_20261105/attempt02/manifest.json).

@@ -1,0 +1,120 @@
+{
+  "milestone": "R3.17 3 native CAD regions HgCdTe/composite/Au and 2 finite contacts, independent spatially varying Robin-flux network",
+  "verdict": "PASS regional synthetic 2-contact scalar FEM with independent high-order verification; NOT actual physical device model or whole-package mass closure",
+  "utc": "2026-11-06T17:00:22.724931+00:00",
+  "baseline_git_commit": "5fa9e9a6dc4717e501f7ae311c8119122de56b95",
+  "native_CAD_regions": [
+    408,
+    410,
+    420
+  ],
+  "native_CAD_face_tags": [
+    2336,
+    2349
+  ],
+  "native_face_TRIs": {
+    "2336": 6,
+    "2349": 48
+  },
+  "material_identity": {
+    "408": "pHgCdTe_PC",
+    "410": "COMPOSITE_MULTILAYER",
+    "420": "Au"
+  },
+  "mathematical_coefficients": {
+    "408": 2.0,
+    "410": 1.0,
+    "420": 10.0
+  },
+  "mathematical_contact_G": {
+    "2336": 4.0,
+    "2349": 5.0
+  },
+  "mathematical_normal_q": "1 + 1.8*(x+0.35)+2.5*y (spatially varying)",
+  "native_tetrahedra_unchanged": 26290,
+  "original_geometric_nodes_unchanged": 6998,
+  "split_P1_field_vertices": 7055,
+  "split_P2_field_DOFS": 47334,
+  "original_R38_R39_files_unchanged": true,
+  "P2_nonlinear_RMS_Robin_2336": 8.823444968535996e-06,
+  "P2_nonlinear_RMS_Robin_2349": 1.3390127356050278e-07,
+  "P2_nonlinear_RMS_normal_balance_2336": 8.818162546080883e-06,
+  "P2_nonlinear_RMS_normal_balance_2349": 2.12176013382462e-07,
+  "P1_nonlinear_H1_relative_216pt": 0.11078915105788685,
+  "P2_nonlinear_H1_relative_216pt": 2.509962549789755e-05,
+  "P1_over_P2_nonlinear_H1_gain": 4413.97625901498,
+  "P2_nonlinear_primary_H1_4pt_underestimate_relative_to_primary": 0.4443112113942256,
+  "qualifications": [
+    "Manufactured synthetic scalar k/G and nonphysical contact jumps; no validated semiconductor/Au material law",
+    "Two contact interfaces across only 3 of 430 source regions",
+    "Separate per-contact relative normal-flux balances checked; global physical current/energy closure through network NOT measured, because manufactured exterior flux and volumetric forcing may vary between cross sections",
+    "P2 is exact polynomial for quadratic component; only one nonpolynomial benchmark, no asymptotic h/p convergence",
+    "Original poor shape quality and CAD surface-area differences remain",
+    "No physical detector, TEC, thermoelastic or electrothermal PDE run"
+  ],
+  "physical_current_conservation_gate": "NOT RUN",
+  "electrical_Gate_B": "STOP",
+  "thermal_Gates_C_D": "NOT RUN",
+  "files": {
+    "P1_nonlin0_field.npz": {
+      "sha256": "245589a2437b5c07008c19001c920c4c0af0244313ebebdee78c2ece6fa78f01",
+      "bytes": 53576
+    },
+    "P1_nonlin0_result.json": {
+      "sha256": "83b1002be34585a5853b2bb76333ec9bd2d7cd2ee4f63d373086c50d1ac2d652",
+      "bytes": 1690
+    },
+    "P1_nonlin1_field.npz": {
+      "sha256": "35b80319b15d20b19f3e9e6208b0f5f3778feab761d39fa83ced2683847cace9",
+      "bytes": 53436
+    },
+    "P1_nonlin1_result.json": {
+      "sha256": "cacaa0346b5f58b986a7dd7ac2e4a0afc1be4d7c7b8abcd780247364d6c09cbb",
+      "bytes": 1688
+    },
+    "P2_nonlin0_field.npz": {
+      "sha256": "06499536a12cfb51200bb78ae5310b0278e88b23ae908a6c63cd4d9749aa6db9",
+      "bytes": 351743
+    },
+    "P2_nonlin0_result.json": {
+      "sha256": "f491889488bfb2717441a9a15e8f57aaa3d463fbebaf5f9b1817169168fa0f42",
+      "bytes": 1712
+    },
+    "P2_nonlin1_field.npz": {
+      "sha256": "8a0ff3e219046c1a2fa1b00874d12327dbd0eb2cb4c55af3fabc9970599e404f",
+      "bytes": 350433
+    },
+    "P2_nonlin1_result.json": {
+      "sha256": "dcab6c7be4457e8333cf0983eca6b86312b0489728235e34ae33610977ccbc47",
+      "bytes": 1711
+    },
+    "independent_network.log": {
+      "sha256": "eda1d5b8b1209b00591f86489c40478ddd462c5f298c914d943ccee18f2ae20b",
+      "bytes": 773
+    },
+    "independent_network_audit.json": {
+      "sha256": "756c4a4163c65f629be76cf51f493b31a61c835b1a2d0f1501a5930c3b57d067",
+      "bytes": 6300
+    },
+    "independent_network_audit.py": {
+      "sha256": "41450163af8a24b6fe95b18ca55598cdb2b101cbda1a22e313e59cc539f26703",
+      "bytes": 7846
+    },
+    "network.log": {
+      "sha256": "3a0f969d566182cd174db51839db5985f8dd8ade8bea7f3975b054c0a94730c6",
+      "bytes": 6332
+    },
+    "network.py": {
+      "sha256": "9153e4c6cb304736d847e168f4b20fc3f15ec1644c8e0f20a56cb9e0dd7a5949",
+      "bytes": 19411
+    },
+    "network_summary.json": {
+      "sha256": "af0e4e8045a78fb99d4f742ae37fc720ff200c42ee7212547d42bb7a0d61f113",
+      "bytes": 8873
+    },
+    "preregistration.json": {
+      "sha256": "491ef998e2ba7c88e44c7ebe2d1dc868e84967ef54ddde955cf73d07961f30c3",
+      "bytes": 846
+    }
+  }
+}
