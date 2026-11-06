@@ -1,0 +1,57 @@
+R315_TRANSMISSION_PREFLIGHT {"materials": {"410": "COMPOSITE_MULTILAYER", "420": "Au"}, "artificial_K": {"410": 1.0, "420": 10.0}, "cells": 26053, "geometric_nodes": 6908, "registered_shared_TRI3": 48, "native_outer_TRI3": 13586, "P2_edges": 39753, "P2_total_DOF": 46661, "P1_fixed": 3072, "P2_fixed": 12192, "P2_interface_trace_shared": true}
+R315_SOLVE {"order": 1, "status": "PASS", "free_DOFS": 3836, "total_DOFS": 6908, "fixed_DOFS": 3072, "P1_TET_geometry_unchanged": true, "symmetric_relative": 4.859347446443082e-17, "matrix_NNZ": 43620, "ILU_nnz": 233292, "ILU_GMRES_iterations": 8, "ILU_GMRES_info": 0, "original_operator_true_relative_residual": 9.350206505322745e-11, "factor_and_solve_seconds": 0.034}
+R315_CONSERVATION 1 H1 0.0066321860318296596 flux_jump_L2 0.03581520600091041
+R315_SOLVE {"order": 2, "status": "PASS", "free_DOFS": 34469, "total_DOFS": 46661, "fixed_DOFS": 12192, "P1_TET_geometry_unchanged": true, "symmetric_relative": 2.2965436661851576e-17, "matrix_NNZ": 711255, "ILU_nnz": 6122943, "ILU_GMRES_iterations": 11, "ILU_GMRES_info": 0, "original_operator_true_relative_residual": 4.0369054834432355e-12, "factor_and_solve_seconds": 1.002}
+R315_CONSERVATION 2 H1 1.2619080209925854e-08 flux_jump_L2 1.0868271234845164e-08
+R315_FINAL {
+  "status": "PASS TWO-MATERIAL CONTINUOUS-FLUX P1/P2 BENCHMARK",
+  "runs": [
+    {
+      "order": 1,
+      "status": "PASS",
+      "free_DOFS": 3836,
+      "total_DOFS": 6908,
+      "fixed_DOFS": 3072,
+      "P1_TET_geometry_unchanged": true,
+      "symmetric_relative": 4.859347446443082e-17,
+      "matrix_NNZ": 43620,
+      "ILU_nnz": 233292,
+      "ILU_GMRES_iterations": 8,
+      "ILU_GMRES_info": 0,
+      "original_operator_true_relative_residual": 9.350206505322745e-11,
+      "factor_and_solve_seconds": 0.034,
+      "interface_normal_flux_jump_relative_L2": 0.03581520600091041,
+      "interface_normal_flux_jump_max_rel": 0.03641279662367691,
+      "signed_net_internal_face_flux_integral": -9.08765198223325e-06,
+      "interface_area_mm2": 0.00025374291767578025,
+      "P2_trace_C0_by_shared_node_edge_tags": true,
+      "H1_relative_error": 0.0066321860318296596,
+      "H1_absolute_error": 8.604482864518405e-05,
+      "full_computation_seconds": 0.602
+    },
+    {
+      "order": 2,
+      "status": "PASS",
+      "free_DOFS": 34469,
+      "total_DOFS": 46661,
+      "fixed_DOFS": 12192,
+      "P1_TET_geometry_unchanged": true,
+      "symmetric_relative": 2.2965436661851576e-17,
+      "matrix_NNZ": 711255,
+      "ILU_nnz": 6122943,
+      "ILU_GMRES_iterations": 11,
+      "ILU_GMRES_info": 0,
+      "original_operator_true_relative_residual": 4.0369054834432355e-12,
+      "factor_and_solve_seconds": 1.002,
+      "interface_normal_flux_jump_relative_L2": 1.0868271234845164e-08,
+      "interface_normal_flux_jump_max_rel": 1.82949705385127e-08,
+      "signed_net_internal_face_flux_integral": 2.5829162313711534e-12,
+      "interface_area_mm2": 0.00025374291767578025,
+      "P2_trace_C0_by_shared_node_edge_tags": true,
+      "H1_relative_error": 1.2619080209925854e-08,
+      "H1_absolute_error": 1.6371775295684156e-10,
+      "full_computation_seconds": 2.313
+    }
+  ],
+  "sec": 4.351
+}

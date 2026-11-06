@@ -5,6 +5,46 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.15 first native two-region CAD-interface P2 transmission benchmark (2026-11-05): SYNTHETIC TWO-MATERIAL SCALAR CONTINUITY/FLUX PASS; PHYSICAL COEFFICIENTS AND TEC PHYSICS UNQUALIFIED.**
+Read [full R3.15 report](docs/V3_R315_TWO_MATERIAL_P2_INTERFACE_20261105.md)
+and [replayable geometric, independent flux, H1 and SHA receipts](data/v3_r315_interface_20261105/attempt01/manifest.json).
+Identified actual source face2349 between source composite detector
+wedge-foot CAD volume410 and Au detector bond CAD volume420.
+Independent R3.9 preserved-mesh preflight confirms EXACT 48 native
+TRI3 shared by both regions,49 shared vertices,26053 combined
+tetrahedra(148 composite/25905 Au),6908 original union nodes,
+13586 outer triangles, interface plane z=5.7849mm, source CAD to
+saved planar area discrepancy -0.285334% (previous accepted
+surface CAD approximation). All original CAD/face/node IDs unchanged.
+Artificial mathematical scalar k410=1 and k420=10 (NOT measured
+real conductivities), manufactured continuous piecewise quadratic
+u=A*((x-x0)^2+(y-y0)^2)+B*(z-z0)^2+Q/k_r*(z-z0),
+A=0.025,B=0.05,Q=1. Exact normal flux k_r du/dz=Q across face2349;
+analytical body forces and outward natural flux on other surfaces,
+true CAD face2399 Dirichlet. Joint multi-domain shared-DOF P1 and
+P2 solvers PASS ILU-GMRES8/11 iterations, residual9.35e-11/
+4.04e-12. P1 relative H1 gradient error0.006632186 vs P2
+1.261908e-8; P1 relative interface RMS normal flux jump0.0358152
+versus P2 1.086827e-8. Same preserved TET4 original geometry,
+P2 solution DOF46661 total/34469 free; no new geometric nodes
+or shared facets. Independent 216pt tetra H1 and separately
+reconstructed BOTH-side interface flux checks agree; interface trace
+difference <1.7e-18, signed net mismatch P2 ~2.58e-12.
+The massive P1/P2 improvement is expected P2 EXACT POLYNOMIAL
+REPRESENTATION under a synthetic quadratic manufactured solution,
+NOT a realistic real-material accuracy claim or mesh h-convergence.
+All preflight implementation failures (same-region internal-face
+classification, NumPy face-triplet sort) preserved, corrected without
+remeshing or editing sources. No contact resistance, anisotropic
+composite/thermoelectric transport, measured properties, global
+430-region PDE, GateB physics, thermal C/D or detector temperature.
+Next R3.16 separately register finite-interface contact jump laws
+or a non-polynomial two-material transmission benchmark.
+Protected 824-solid STEP, canonical 38-page Rev3, original
+R3.3-R3.14 source/historical receipts, all378 finite contacts
+and issue#2 preserved. GateB STOP, thermal C/D NOT RUN.
+No Codex usage or resource uplift needed.
+
 **Current R3.14 fixed-geometric P2 FEM regional accuracy milestone (2026-11-05): STRONG P1/P2 MANUFACTURED SCALAR ERROR IMPROVEMENT PASS, FULL PHYSICS UNQUALIFIED.**
 Read [complete R3.14 quantitative report](docs/V3_R314_P2_REGIONAL_ACCURACY_20261105.md)
 and [all source, replay, independent H1 and hash evidence](data/v3_r314_p2_20261105/attempt01/manifest.json).

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/out/native_interface_preflight.py", line 37, in <module>
+    print('INTERFACE_DIAGNOSTIC',len(shared),len(i_expected),'shared_unique',len(set(key(shared))), 'registered_unique',len(set(key(i_expected))), 'missing',len(set(key(i_expected))-set(key(shared))), 'extra',len(set(key(shared))-set(key(i_expected))),flush=True)
+                                                                                 ^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'writeable void-scalar'

@@ -1,0 +1,141 @@
+{
+  "milestone": "V3 R3.15 native CAD interface2349 two-material P1/P2 scalar manufactured transmission test",
+  "verdict": "PASS independent interface conformity, continuity and synthetic-flux conservation; physical material laws/TEC prediction NOT QUALIFIED",
+  "timestamp_utc": "2026-11-06T00:49:02.976791+00:00",
+  "base_commit": "28a62ca26ac6181d4cb8907a3a56920c589604f9",
+  "registered_shared_CAD_face": 2349,
+  "source_regions": [
+    410,
+    420
+  ],
+  "source_material_identity": {
+    "410": "COMPOSITE_MULTILAYER",
+    "420": "Au"
+  },
+  "synthetic_diffusion_coefficients": {
+    "410": 1,
+    "420": 10
+  },
+  "physical_constitutive_laws": "UNSET",
+  "native_shared_TRI3_exact": 48,
+  "native_shared_vertices": 49,
+  "R39_tetrahedra_in_two_domains": 26053,
+  "original_nodes_in_two_domains": 6908,
+  "original_outer_TRI3": 13586,
+  "CAD_interface_area_relative_discrepancy": -0.0028533426503677406,
+  "P2_total_DOFS": 46661,
+  "P2_free_DOFS": 34469,
+  "P1_H1_relative": 0.0066321860318296335,
+  "P2_H1_relative": 1.2619080645620018e-08,
+  "P1_RMS_flux_jump_relative": 0.035815206000910434,
+  "P2_RMS_flux_jump_relative": 1.0868271229467484e-08,
+  "P2_interface_trace_max_absolute_jump": 1.6948070483374482e-18,
+  "P1_P2_relative_H1_improvement": 525568.0836092931,
+  "P1_P2_interface_flux_improvement": 3295391.2581610535,
+  "source_mesh_SHA256": {
+    "R38_430_domains.1.node": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+    "R39_430_domains.1.ele": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570",
+    "R38_430_domains.1.face": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18"
+  },
+  "source_430_domain_mesh_immutable": true,
+  "full_430_domain_physical_PDE": "NOT RUN",
+  "global_interface_constitutive_convergence": "NOT VALIDATED",
+  "limitations": [
+    "Synthetic 10:1 diffusion coefficients are not measured composite/Au properties",
+    "Exact manufactured polynomial representability by P2 on one linear geometric mesh, not h- or p-convergence",
+    "Flux mismatch is one-sided pointwise normal flux from discrete traces; full mixed-boundary conservation across a network not tested",
+    "No thermoelectric junction laws or electrical contact resistance, no device physics prediction",
+    "Known interface area discretization discrepancy 0.285334% remains"
+  ],
+  "historical_initial_preflight_code_failures_preserved": true,
+  "files": {
+    "P1_result.json": {
+      "sha256": "39931db3a443f04497b9f1515c235a5301459f0d9c70cedc5dc979eb10dcdfda",
+      "bytes": 806
+    },
+    "P2_result.json": {
+      "sha256": "b725531c6132ab540ed63685714fcd6c5757ecd3edf03ee73eb0012c4a7beb3a",
+      "bytes": 821
+    },
+    "first_diagnostic_unhashable_structured_array.log": {
+      "sha256": "f7ed37d7cdfa8d6c5c75402943aeb8fb75ceca72837d786c1f1f7d95becc01f8",
+      "bytes": 515
+    },
+    "independent_interface_audit.json": {
+      "sha256": "24eac04b2bb170dc26d0f93f3639285ddfa906461134a3b8a2223bbf84452692",
+      "bytes": 1560
+    },
+    "independent_interface_audit.log": {
+      "sha256": "d15cbb2d22fb56942f7f2319b0850fd75be1e5719e3a447aa3c5508063f77037",
+      "bytes": 1071
+    },
+    "independent_interface_audit.py": {
+      "sha256": "e466ef066a1ffcc8c2ba96bbd9f1d61c640a40e700e8c2600c48780036442c20",
+      "bytes": 7460
+    },
+    "initial_preflight_internal_face_error.log": {
+      "sha256": "36aec2b1f02163851daf0a1b4d69f2927cd910b34d46374e7595172d9b95e37f",
+      "bytes": 256
+    },
+    "native_interface_preflight.json": {
+      "sha256": "e479e30a7cd805dfb371217b187401be6e143e3c029373392f28410d1f82415a",
+      "bytes": 1662
+    },
+    "native_interface_preflight.log": {
+      "sha256": "165565ae69a6d3cb788d8f39ac8ca935196fafe241bfb6f08c8605d55e8ff32d",
+      "bytes": 1522
+    },
+    "native_interface_preflight.py": {
+      "sha256": "545d80fc5f40bbb99a0b091b2768071ae0b1f8c8e219069824a7b5e4c71683fe",
+      "bytes": 4050
+    },
+    "preregistration.json": {
+      "sha256": "11f7d976f25df64c0bb4cb0364ce063fb4585c3b6ba2b3146e463678c5745706",
+      "bytes": 911
+    },
+    "replay/P1_coefficients.npz": {
+      "sha256": "4eb7c26dba0a9a2e2cf1bf5a0612b99ca755e96d17d14858977aa60873473022",
+      "bytes": 45902
+    },
+    "replay/P2_coefficients.npz": {
+      "sha256": "e85fb434c9c8dfcf979ea0463c5cac0492278555d3a537e926871a60d5d948ed",
+      "bytes": 323103
+    },
+    "replay/preregistration.json": {
+      "sha256": "18b1392f1b8d1feb7f0f2b86db55aca9b74deebbea2a55c81e79401df74fffb7",
+      "bytes": 545
+    },
+    "replay/replay.log": {
+      "sha256": "86fdb6d27489684b90f70bbc048236f896e32ab6b027cc97d528868a7f3f299e",
+      "bytes": 3178
+    },
+    "replay/two_material_comparison.json": {
+      "sha256": "f714f664ffe667de0e206af0f126b4cf731e74019183acb3d29f9e64a7d0daeb",
+      "bytes": 3185
+    },
+    "replay/two_material_replay.py": {
+      "sha256": "613062cc6d3bac4abba52857feaebd104380d1304b78d95c0ee768aca64994d0",
+      "bytes": 15508
+    },
+    "second_diagnostic_face_sort_failure.log": {
+      "sha256": "77867d3d34318812f4d55bf5a6b11553a7fb24e857972f567a25bbe89f49693d",
+      "bytes": 720
+    },
+    "second_preflight_face_match_stop.log": {
+      "sha256": "ed10b3bf47f0d360e8fc3fc6a440160465214a2f40d67c8eb98ed07163c05bfa",
+      "bytes": 262
+    },
+    "two_material.log": {
+      "sha256": "2c467c5aee7407fd08bac9c45036b5d71370d673674c5c6ff14e54a905254cbb",
+      "bytes": 3178
+    },
+    "two_material_P1_P2.py": {
+      "sha256": "86ccedd970e749eb0a388b244da21c3f8021bbce7330f0c1ba25161ee57b2dd7",
+      "bytes": 15433
+    },
+    "two_material_comparison.json": {
+      "sha256": "afb61177e38e7df92b6b1d346fc74294d518976b2908c9fa3f873954b84f52c0",
+      "bytes": 3185
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "status": "PASS independent reconstructed shared CAD face 2349 flux and H1 integration on saved P1/P2 two-material solutions",
+  "source": "Native immutable 410/420 shared tetra geometry and saved regional field coefficient arrays",
+  "interfaces": {
+    "tag": 2349,
+    "regions": [
+      410,
+      420
+    ],
+    "triangles": 48,
+    "synthetic_k_ratio": 10.0
+  },
+  "separate_216pt_Duffy_H1": true,
+  "P2_global_single_trace": true,
+  "not_physical_material_model": true,
+  "cases": [
+    {
+      "order": 1,
+      "source_solution_sha256": "4eb7c26dba0a9a2e2cf1bf5a0612b99ca755e96d17d14858977aa60873473022",
+      "shared_cad_face_TRI3": 48,
+      "shared_trace_max_abs_difference": 1.751664134921893e-18,
+      "independent_interface_flux_jump_RMS_relative": 0.035815206000910434,
+      "independent_interface_flux_jump_integral": -9.087651982233253e-06,
+      "independent_H1_gradient_relative": 0.0066321860318296335,
+      "shared_interface_area_mm2": 0.00025374291767578025
+    },
+    {
+      "order": 2,
+      "source_solution_sha256": "e85fb434c9c8dfcf979ea0463c5cac0492278555d3a537e926871a60d5d948ed",
+      "shared_cad_face_TRI3": 48,
+      "shared_trace_max_abs_difference": 1.6948070483374482e-18,
+      "independent_interface_flux_jump_RMS_relative": 1.0868271229467484e-08,
+      "independent_interface_flux_jump_integral": 2.5829162293170087e-12,
+      "independent_H1_gradient_relative": 1.2619080645620018e-08,
+      "shared_interface_area_mm2": 0.00025374291767578025
+    }
+  ],
+  "elapsed_seconds": 10.13,
+  "peak_RSS_MiB": 143.5
+}

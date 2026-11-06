@@ -1,0 +1,8 @@
+INTERFACE_DIAGNOSTIC 8 48 shared_unique 8 registered_unique 48 missing 46 extra 6
+INTERFACE_MISSING_EXAMPLES [(12681, 12682, 76440), (12712, 12713, 76440), (12690, 12691, 76440), (12675, 12676, 76440), (12682, 12683, 76440), (12701, 12702, 76440), (12705, 12706, 76440), (12686, 12687, 76440)]
+INTERFACE_EXTRA_EXAMPLES [(12687, 76440, 12688), (12680, 76440, 12681), (12686, 76440, 12687), (12676, 12675, 76440), (12683, 12682, 76440), (12695, 76440, 12694)]
+Traceback (most recent call last):
+  File "/out/native_interface_preflight.py", line 42, in <module>
+    assert np.array_equal(np.sort(key(shared)),np.sort(key(i_expected)))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
