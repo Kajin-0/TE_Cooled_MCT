@@ -5,6 +5,41 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**Current R3.16 native finite-contact split-trace scalar P1/P2 (2026-11-05): MATHEMATICAL ROBIN TRANSMISSION, NONPOLYNOMIAL FLUX AND INDEPENDENT H1 PASS; PHYSICAL CONTACT LAWS UNQUALIFIED.**
+Read [R3.16 technical report](docs/V3_R316_FINITE_CONTACT_INTERFACE_20261105.md)
+and [saved full SHA evidence](data/v3_r316_finite_contact_20261105/attempt02/manifest.json).
+Retain original full R3.9 geometric TET4 CAD source; actual shared
+CAD face2349 has48 native facets between region410 composite wedge foot
+and region420 Au detector bond,26053 total tetrahedra/6908 original
+geometric nodes. Introduced distinct per-material scalar field traces:
+P1 6957 total DOF/3885 free, P2 46806 total/34614 free, without
+changing source mesh/CAD or surface geometry. Artificial k410=1,
+k420=10, finite contact G=5, exact potential jump=-0.2 for the
+standard diffusive q=-k grad u sign and analytic Q_grad=1.
+Robin form G int_interface (u410-u420)(v410-v420) is positive.
+Quadratic and nonpolynomial quadratic+sinusoidal manufactured source
+f and outer Neumann, native face2399 prescribed Dirichlet.
+All four P1/P2 scalar ILU-GMRES cases pass7/11 iterations, independent
+true residuals<1e-9, mean interface jump~-0.2. Nonpolynomial P1
+vs P2 independent H1_relative 0.0079282100 vs 3.0287548e-5
+=261.765x less with P2, P2 relative RMS normal flux imbalance
+4.7348e-7 and Robin mismatch2.9610e-7, verified through
+independent saved solution coefficients and216pt tetra quadrature.
+Important: source P2 four-point quadrature underestimates
+nonpolynomial H1 by21.6447% relative to that original estimate:
+2.489837e-5 reported initially vs authoritative3.028755e-5.
+Preserved registered initial code STOP when same-material face was
+counted as material interface, and sign-law FAILED source/run with
+opposite initial assumed jump; corrected documented standard diffusive
+sign without source mesh edits. No real G,k measurements/contact
+resistivity, junction heat or Seebeck/Peltier, full430 material PDE,
+mesh spatial convergence, TEC/detector temperature prediction.
+All protected original CAD, source R3.3-R3.15/failures, canonical Rev3
+and issue#2 remain unchanged. GateB electrical STOP, C/D thermal
+NOT RUN. No Codex or resource increase.
+Next investigate multi-interface network conservation and nonconstant
+normal contact flux with separately measured physical material laws.
+
 **Current R3.15 first native two-region CAD-interface P2 transmission benchmark (2026-11-05): SYNTHETIC TWO-MATERIAL SCALAR CONTINUITY/FLUX PASS; PHYSICAL COEFFICIENTS AND TEC PHYSICS UNQUALIFIED.**
 Read [full R3.15 report](docs/V3_R315_TWO_MATERIAL_P2_INTERFACE_20261105.md)
 and [replayable geometric, independent flux, H1 and SHA receipts](data/v3_r315_interface_20261105/attempt01/manifest.json).

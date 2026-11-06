@@ -1,0 +1,27 @@
+{
+  "base": "040b6a36e0b207ed361171527c2f225f83a45750",
+  "script_sha256": "569b1fb259945d8da2613cf055aeada56cbc610ea58ebb38793614e82e1ab06f",
+  "UTC": "2026-11-06T03:26:37.291559+00:00",
+  "source_interface": "actual CAD face2349 shared regions410/420, native R39 mesh",
+  "mathematical_k": {
+    "410": 1,
+    "420": 10
+  },
+  "mathematical_G": 5,
+  "analytic_jump": 0.2,
+  "method": "split solution traces on interface, positive semidefinite interior Robin face bilinear form",
+  "runs": [
+    "P1 quadratic",
+    "P2 quadratic",
+    "P1 sinusoidal+quadratic",
+    "P2 sinusoidal+quadratic"
+  ],
+  "acceptance": "true solver residual<1e-8; P2 flux mismatch and contact law<1e-6; P2 nonpolynomial H1<.01 P1",
+  "limits": {
+    "CPU": 4,
+    "RAM_GiB": 8,
+    "wall_s": 300
+  },
+  "mesh_and_CAD_read_only": true,
+  "physical_transport_model": false
+}

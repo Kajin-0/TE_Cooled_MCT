@@ -1,0 +1,150 @@
+{
+  "milestone": "V3 R3.16 native CAD2349 finite-contact split-trace P1/P2 mathematical transmission and nonlinear approximation",
+  "status": "PASS mathematical contact Robin and independent flux/H1; physical law and full-device FEM UNQUALIFIED",
+  "utc": "2026-11-06T03:33:34.615006+00:00",
+  "baseline_git_commit": "040b6a36e0b207ed361171527c2f225f83a45750",
+  "original_430_domain_R38_R39_mesh_unchanged": true,
+  "original_interface_CAD_tag": 2349,
+  "material_owner_ids": [
+    410,
+    420
+  ],
+  "source_materials": {
+    "410": "COMPOSITE_MULTILAYER",
+    "420": "Au"
+  },
+  "native_interface_TRI3": 48,
+  "native_tetrahedra": 26053,
+  "original_geometric_union_vertices": 6908,
+  "doubled_P1_field_vertices": 6957,
+  "P2_field_DOFS": 46806,
+  "synthetic_k": {
+    "410": 1,
+    "420": 10
+  },
+  "synthetic_contact_G": 5,
+  "negative_manufactured_jump": -0.2,
+  "contact_interface_law": "-k410 (gradient u410 dot n410) = G (u410-u420); outward n410=+z and n420=-z; k410 du410/dz=Q=1",
+  "numeric_results_verified_against_independent_saved_coefficient_216pt_quadrature": true,
+  "authoritative_nonpolynomial_P1_H1_relative": 0.007928210007076325,
+  "authoritative_nonpolynomial_P2_H1_relative": 3.0287547993620896e-05,
+  "authoritative_nonpoly_H1_gain": 261.76467004678454,
+  "P2_nonpoly_contact_Robin_RMS_rel": 2.961007458012138e-07,
+  "P2_nonpoly_flux_balance_RMS_rel": 4.734787638793279e-07,
+  "P2_nonpoly_mean_jump": -0.2000000000181983,
+  "original_quadrature_P2_nonpoly_relative_underestimate": 0.2164470281267802,
+  "corrected_run_relative_L2_solver_residual": 8.333631417853783e-12,
+  "independent_audit_separate_source": true,
+  "original_contact_sign_failed_case_preserved": true,
+  "unqualified_physical_G_or_material_k": true,
+  "no_device_thermoelectric_electrical_PDE": true,
+  "no_h_mesh_convergence": true,
+  "runtime_s": 7.679,
+  "peak_python_RSS_MiB": 362.4,
+  "source_mesh_SHA256": {
+    "R38_430_domains.1.node": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+    "R38_430_domains.1.face": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18",
+    "R39_430_domains.1.ele": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570"
+  },
+  "limitations": [
+    "G, k410 and k420 are mathematical artificial parameters and do not represent validated physical contact resistivity or material conductivities",
+    "Only two of 430 regions and a local CAD face; no full-device current or heat conservation",
+    "Single fixed straight geometric mesh, not h/p mesh convergence",
+    "Synthetic nonpolynomial field has smooth tangential sine, analytic constant normal contact jump",
+    "Original 4-point quadrature underestimates nonpolynomial P2 H1 error by ~21.6%; 216-point independent result is authoritative"
+  ],
+  "file_hashes": {
+    "P1_nonpolynomial_coefficients.npz": {
+      "sha256": "dda8861928f4ef9c4885e7e6a77720f6eca957fb664f270f281f8fabbce70d62",
+      "bytes": 51282
+    },
+    "P1_nonpolynomial_result.json": {
+      "sha256": "c25922fc5eeece989193aac69094a9c95539fe9d47f102cd7f30e0237970d3e3",
+      "bytes": 913
+    },
+    "P1_quadratic_coefficients.npz": {
+      "sha256": "4f651ac6de31e4800a79cb784a7b1153e1645b11b18aed5a80b0773bcaed5d36",
+      "bytes": 46186
+    },
+    "P1_quadratic_result.json": {
+      "sha256": "228b490e7088680fbb9aae63339c49e917897abd560abd06f8f310951aa8b7f0",
+      "bytes": 916
+    },
+    "P2_nonpolynomial_coefficients.npz": {
+      "sha256": "6d12ee71aec858a87433d875a23e042d7c27f8b317750aeca680eb306a01f9c9",
+      "bytes": 337652
+    },
+    "P2_nonpolynomial_result.json": {
+      "sha256": "cb2fcb066d80b408e564f78c396feab9db1e0420b1fdd0e7c2149961b0feb625",
+      "bytes": 921
+    },
+    "P2_quadratic_coefficients.npz": {
+      "sha256": "36aed97f0f40dae2b6dde99550f534c0b73b446dff013244b91826b707c3e1a4",
+      "bytes": 322816
+    },
+    "P2_quadratic_result.json": {
+      "sha256": "d9415a3e622e2556cfb4dc3786f0fd5defde03d7aca28e3f9c48d81d49ee84b7",
+      "bytes": 926
+    },
+    "finite_contact.log": {
+      "sha256": "6c4e696b45a6642cd8f57bd2bbd2111fb984c86324d95b8f3b242e8b0b1cf0e0",
+      "bytes": 3534
+    },
+    "finite_contact.py": {
+      "sha256": "58eeb149e6f8021e4afda65980f29a80f307c779726094c47fc7cf8df01757b0",
+      "bytes": 18793
+    },
+    "finite_contact_summary.json": {
+      "sha256": "f8a2dbd6bfd6f2f3f07a7c0aa7d701046d1813ebd87237d720b4f220f4df7524",
+      "bytes": 5227
+    },
+    "independent_contact_audit.json": {
+      "sha256": "e834bcf1455a969e0c76b90caca611b8c5ea7c281a829ff011b5aa84ef98b9d1",
+      "bytes": 2852
+    },
+    "independent_contact_audit.log": {
+      "sha256": "d0502f690a1d8a8c2265690f2dd387fc23c6d4d26fa0a784267bc86d34f539f4",
+      "bytes": 2245
+    },
+    "independent_contact_audit.py": {
+      "sha256": "dd9a14ecff8de7a8b7660101040c6334563960fd076194ba13c4c26dfef6ae50",
+      "bytes": 7111
+    },
+    "initial_independent_audit_missing_mount.log": {
+      "sha256": "ffd5ef4b2957e1e8582487e569a85bef811437f7d1cfd41cdf93eae7e4d0cd45",
+      "bytes": 697
+    },
+    "initial_independent_audit_quadrature_disagreement_STOP.log": {
+      "sha256": "c715cc5541c0183905ac8dde469650fb5a00a3bac05c5ded09f7ad0df42ec362",
+      "bytes": 2367
+    },
+    "initial_positive_jump_failed.log": {
+      "sha256": "e17f52578b488d5d3c2ef9525c097aff03bc353c4a7fd327658df324ecfa4b42",
+      "bytes": 3470
+    },
+    "initial_positive_jump_failed_summary.json": {
+      "sha256": "7ea357cf3b0dea00c47a12759e2c1b0fbb364ae506a09b3da8a7c25f87ca2c7d",
+      "bytes": 5139
+    },
+    "initial_source_incidence_classification_stop.log": {
+      "sha256": "7afeea4187e539d8b9ee6c16b879e81a03c1a2ac41dca97a299e62bd0cbf3d9e",
+      "bytes": 278
+    },
+    "initial_source_positive_jump_failed.py": {
+      "sha256": "5f01f747d2e03c38941997515e3f7337093ed3865fa61ac6d52bff47b2f476c7",
+      "bytes": 18727
+    },
+    "original_preregistered_source.py": {
+      "sha256": "569b1fb259945d8da2613cf055aeada56cbc610ea58ebb38793614e82e1ab06f",
+      "bytes": 18698
+    },
+    "preregistration.json": {
+      "sha256": "33e90433d2d1fe13e4f340427b872daedbb3e1d23369c63ec5de3f22739a9f28",
+      "bytes": 852
+    },
+    "sign_correction_receipt.json": {
+      "sha256": "4546c27956b03e19ec4ebf2ce4022f54786536b8b40dfface7eb8ba70bb6ed5d",
+      "bytes": 617
+    }
+  }
+}
