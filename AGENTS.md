@@ -51,6 +51,27 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**P0 Gate B actual face-level current attribution (2026-11-06, no solve).**
+Review [face-resolved 11-interface engineering report](docs/V3_GATE_B_FACE_FLUX_DIAGNOSTIC_20261106.md),
+[1574-original-interface-triangle receipt](data/v3_physical_blocker_closure_20261106/attempt01/gate_B_face_flux_diagnostic.json),
+and [read-only reproducer](scripts/v3_gate_B_face_flux_diagnostic.py).
+Rebuilt original 28691-tet fine mesh face adjacency and all 11 original
+raw one-sided gradient-current integrals from saved J and exact native
+CAD source face/owner IDs, within4e-13 of unit-drive current.
+Original worst film0->lead_land: 204 source faces, raw-side
+I_A=4.893986A vs weak contact current34.046305A and raw opposite
+outward-36.328540A. 35.19% of face area flows reverse relative to
+net side-A current; top10% of faces supply45.89% of absolute raw
+current and local gross/net flux ratio1.74. But joint6->film2 and
+joint4->film0 show 28.9597A and29.4122A signed opposite-side
+raw mismatch without any side-A sign reversal, ruling out any
+single blanket backflow explanation. Zero-branch high
+gross/net cancellation is NOT a physical high circuit current.
+This is FACE-LEVEL failure localization, NOT root-cause isolation,
+flux-conforming physical qualification, or an original B PASS.
+Keep full original16-cut 0.1% gate, voltage boundedness and archived
+failure untouched. No Codex, PDE, CAD/mesh/field/material edits.
+
 The 2026-11-06 physical-readiness result is a NO-SOLVE STOP, not
 another accepted FEM analysis or material-law release.
 
