@@ -113,6 +113,20 @@ The four registered *external package pin* CAD faces are pin1=2414, pin7=2418, p
 
 **P3 — Full-package physical multiphysics.** Only after subassembly physical current/heat closure, release the 430-domain material/face schema, verify global mesh accuracy and nonlocal overlaps, couple TEC leg transport, bypass heat, gas and radiation, and calculate detector stage temperature and full terminal V–I. Validate against independent measurements/OEM specifications **without fitting the same parameters to the validation target**. This gate is blocked today.
 
+### November 6 update: one prospective P2 method comparison ran and STOPPED
+
+The original coupon's first explicitly registered, same-geometry P2 raw-gradient
+experiment has now been completed once. See the [one-shot P2 engineering report](V3_GATE_B_ORIGINAL_P2_CORRECTION_20261106.md) and
+[source-hashed 16-cut receipt](../data/v3_gate_B_original_P2_20261106/attempt01/manifest.json).
+It reduced worst raw-cut error **85.6255% (original P1) → 8.0993%
+(prospective P2)** but still failed **11/16 cuts** and worsened
+the voltage lower bound to **−9.14946×10⁻⁷ V**. The original
+P1 Gate B FAIL is not changed. Independent saved-field re-integration
+reproduced native contact/terminal currents; no P2 mesh convergence,
+physical material release or coupled TEC physics was demonstrated.
+**The P2 attempt is now STOPPED; no iterative solver/mesh follow-up
+is authorized by this receipt.**
+
 ## 5 — Anti-churn execution contract
 
 A new milestone is justified only when it produces **at least one** of:

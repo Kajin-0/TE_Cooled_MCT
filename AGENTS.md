@@ -51,6 +51,48 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-06 original Gate B one-shot P2 raw-gradient comparator: MAJOR NUMERICAL IMPROVEMENT BUT PROSPECTIVE GATE FAIL/STOP; ORIGINAL P1 Gate B STILL FAIL.**
+Review [original real coupon P2 correction/stop report](docs/V3_GATE_B_ORIGINAL_P2_CORRECTION_20261106.md),
+[pinned preregistration, P2 source/field/16-cut and independent audit receipt](data/v3_gate_B_original_P2_20261106/attempt01/manifest.json),
+[producer](scripts/v3_gate_B_p2_coupon_attempt.py), and
+[independent saved-field readback](scripts/v3_gate_B_p2_saved_field_audit.py).
+Original 28691 TET4 original fine coupon, 105 native CAD face
+registry/12 original material regions, original NOM anisotropic
+sigma tensors and contact R=1e-11 Ohm*m^2 and actual internal 1/0V
+coupon electrodes unchanged. Single prospective P2 TEN-node
+scalar field, same linear TET4 geometry, distinct material-trace
+vertex and edge DOFs (58993 total/57227 free), preserved 1574
+physical interface triangles and all16 original signed raw-current
+cut tests. ONE registered bounded4CPU/8GiB/180s attempt ran
+8.507 seconds,451.2MiB Python RSS; six ILU-GMRES iterations,
+true residual1.09324e-11, independent IV/bulk-contact
+power closure6.339e-9. P2 worst raw cut8.099302% at
+lead9->lead_land versus original P1 worst85.62550%
+at film0->lead_land. Original highest location film0->lead_land
+improved85.6255% to1.80522%. Of16 original cuts, P2 improves15
+but still FAILS11/16 (>0.1% limit); lead9_mid worsens
+0.061289% PASS to0.131997% FAIL. P2 min voltage
+-9.14946e-7 V, WORSE than original-7.35136e-7 V and
+outside original -1e-8V bound. Source unitV current
+33.8422517A (original P1 34.0463045A); NOT device rating.
+Separate no-PDE saved-field auditor independently reproduced
+both one-sided raw gradient and finite-contact weak integrals
+at ALL 1574 native source contact triangles/11 material pairs
+and both terminals within3.5861e-13 relative drive current.
+Three native interior-plane P2 cut integrals are from original
+registered producer (not independently recalculated).
+P2 physical mesh refinement NOT RUN. This isolates P1 gradient
+approximation order as a significant original numerical failure
+contributor, but does NOT qualify P2 B, explain every
+remaining mismatch, permit voltage boundedness relaxation
+or justify full TEC physics. DO NOT automatically rerun meshes,
+tune candidate, or fit arbitrary interface laws. Next only
+READ-ONLY remaining lead9-land/pin geometry and local
+gradient/shape attribution before any new separately authorised
+physical solver gate. No Codex, protected geometry, CAD,
+Rev3, original P1 failure or past archives changed.
+Gate B FAIL/STOP, C/D NOT RUN, 430 physical laws UNSET.
+
 **P0 Gate B actual face-level current attribution (2026-11-06, no solve).**
 Review [face-resolved 11-interface engineering report](docs/V3_GATE_B_FACE_FLUX_DIAGNOSTIC_20261106.md),
 [1574-original-interface-triangle receipt](data/v3_physical_blocker_closure_20261106/attempt01/gate_B_face_flux_diagnostic.json),
