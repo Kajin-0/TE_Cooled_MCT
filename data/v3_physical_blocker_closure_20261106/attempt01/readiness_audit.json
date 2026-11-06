@@ -1,0 +1,199 @@
+{
+  "audit_date_utc": "2026-11-06T22:30:55.281286+00:00",
+  "critical_r3_volume_roles": {
+    "Detector_composite_contact": {
+      "constitutive_requirement": "REQUIRES_EFFECTIVE_TENSOR_AND_INTERFACE_LAW",
+      "id": 410,
+      "law_status": "UNSET",
+      "layer_stack": [
+        {
+          "material": "Au_ohmic",
+          "thickness_mm": 0.00039999999999995595
+        },
+        {
+          "material": "Ni",
+          "thickness_mm": 0.0007500000000000284
+        },
+        {
+          "material": "Au",
+          "thickness_mm": 0.0015000000000000568
+        },
+        {
+          "material": "Au",
+          "thickness_mm": 0.006000000000000227
+        }
+      ],
+      "material_role": "COMPOSITE_MULTILAYER",
+      "name": "det8_wedge_foot",
+      "solver_ready": false
+    },
+    "Gold_detector_bond": {
+      "constitutive_requirement": "SOURCE_MATERIAL_UNQUALIFIED",
+      "id": 420,
+      "law_status": "UNSET",
+      "layer_stack": null,
+      "material_role": "Au",
+      "name": "detector_bond8",
+      "solver_ready": false
+    },
+    "HgCdTe_active": {
+      "constitutive_requirement": "SOURCE_MATERIAL_UNQUALIFIED",
+      "id": 408,
+      "law_status": "UNSET",
+      "layer_stack": null,
+      "material_role": "pHgCdTe_PC",
+      "name": "p_HgCdTe_photoconductor",
+      "solver_ready": false
+    },
+    "TEC_Cu_lead9": {
+      "constitutive_requirement": "SOURCE_MATERIAL_UNQUALIFIED",
+      "id": 416,
+      "law_status": "UNSET",
+      "layer_stack": null,
+      "material_role": "Cu",
+      "name": "TEC_lead9",
+      "solver_ready": false
+    }
+  },
+  "frozen_geometry": {
+    "R39_derived_tetrahedra": 1010119,
+    "all_430_region_physical_PDE": "NOT RUN",
+    "global_R38_nodes": 156765,
+    "global_R38_tetrahedra": 1043314,
+    "global_mesh_quality": "NOT QUALIFIED FOR PREDICTIVE FEM",
+    "global_nonadjacent_overlap": "NOT RUN"
+  },
+  "historical_law_registry": {
+    "active_domains": 430,
+    "active_faces": 2440,
+    "active_law_registry_status": "NOT PORTED; historical 438-domain table is NOT active 430-domain qualified law release",
+    "delta_domains": -8,
+    "delta_faces": -16,
+    "fallback_to_material_defaults": "PROHIBITED",
+    "historical_domains": 438,
+    "historical_faces": 2456
+  },
+  "original_gate_B": {
+    "C": "NOT RUN",
+    "D": "NOT RUN",
+    "fine_power_relative_error": 9.918732502001149e-13,
+    "fine_voltage_boundedness": "FAIL",
+    "gate_status": "FAIL; no re-interpretation based on algebraic contact/reaction conservation",
+    "multiple_of_limit": 856.2549986750948,
+    "power_limit": 0.005,
+    "preregistered_gate_results": {
+      "R_refinement_1pct": true,
+      "cuts_0p1pct": false,
+      "power_0p5pct": true,
+      "voltage_bounded": false
+    },
+    "registered_cut_limit": 0.001,
+    "resistance_refinement_error": 0.0031580285826545706,
+    "resistance_refinement_limit": 0.01,
+    "status": "FAIL/STOP",
+    "test_case": "V3 original net88/lead9 local coupon, not full physical TEC",
+    "worst_fine_raw_current_cut_relative_error": 0.8562549986750948
+  },
+  "physical_contact_faces": {
+    "2336": {
+      "CAD_area_mm2": 0.0021,
+      "law_status": "UNSET",
+      "owner_volume_ids": [
+        408,
+        410
+      ],
+      "qualification": "GEOMETRY_ONLY; physical contact law UNSET"
+    },
+    "2349": {
+      "CAD_area_mm2": 0.00025446900494077436,
+      "law_status": "UNSET",
+      "owner_volume_ids": [
+        410,
+        420
+      ],
+      "qualification": "GEOMETRY_ONLY; physical contact law UNSET"
+    }
+  },
+  "physical_input_evidence": {
+    "native_gas_nonlocal_contact_matched_target_sensitivity": "NOT RUN",
+    "prior_reduced_model_is_current_V3_430_domain_PDE": false,
+    "prior_reduced_model_material_uncertainty_qualified": false,
+    "prior_reduced_model_nominal_temperature_K": 199.99991183818915,
+    "prior_reduced_model_terminal_power_W": 0.5619734306920677
+  },
+  "physical_input_population": {
+    "CAD_domains": 430,
+    "CAD_faces": 2440,
+    "face_class_counts": {
+      "EXTERIOR": 43,
+      "GAS_SOLID": 1840,
+      "SOLID_SOLID": 557
+    },
+    "face_law_status": {
+      "UNSET": 2440
+    },
+    "material_counts": {
+      "Al2O3": 4,
+      "Au": 4,
+      "COMPOSITE_MULTILAYER": 98,
+      "Cu": 5,
+      "EFFECTIVE_AXIAL_KOVAR_NI_AU": 4,
+      "EP29LPSP": 2,
+      "Glass": 9,
+      "IDEALIZED_CAVITY_GAS": 1,
+      "In52Sn48": 3,
+      "Kovar": 1,
+      "Kovar_pin": 5,
+      "N": 44,
+      "P": 44,
+      "Polyimide_candidate": 2,
+      "Sapphire": 1,
+      "SnBi57_43": 23,
+      "SnSb": 176,
+      "Steel": 2,
+      "ZnSe_candidate": 1,
+      "pHgCdTe_PC": 1
+    },
+    "registered_contacts": 378,
+    "source_law_values_released": false,
+    "source_solver_ready_domains": 0,
+    "source_solver_ready_faces": 0,
+    "terminal_faces": {
+      "pin1": [
+        2414
+      ],
+      "pin7": [
+        2418
+      ],
+      "pin8": [
+        2422
+      ],
+      "pin9": [
+        2426
+      ]
+    },
+    "volume_law_status": {
+      "UNSET": 430
+    }
+  },
+  "readiness_decisions": {
+    "Gate_B": "STOP",
+    "Gates_C_D": "NOT RUN",
+    "full_430_domain_electrothermal_simulation": "DO NOT LAUNCH",
+    "material_law_release": "STOP",
+    "new_synthetic_scalar_benchmarks": "PAUSE",
+    "next_action": "Preserve Gate B and commission strictly scoped raw-cut/geometry/trace audit with actual previous coupon, plus evidence-backed 430-domain material and contact-law assignment."
+  },
+  "source_SHA256": {
+    "data/physical_input_qualification_20261101/evidence_analysis.json": "28e012e60a96af96646945e5e9cd2c0150fb668b375368cbde61329b9b809aef",
+    "data/v3_global_mesh_gate_20261103/physics_law_requirements.json": "d35e3bd812c1683613f94533cd3ccb811f1c4e8f9a15086cf01f1c0894b5b6b8",
+    "data/v3_interconnect_et_20261102/B/gate_B.json": "46993813dfa478fbd3527a02aec02226ef85545bb7c03ec91a80f4f3e9c4a1b0",
+    "data/v3_interconnect_et_20261102/operator_definitions.json": "83bf8b385060112469c37203223b221145c60b0ba123226f781695ad05e7387d",
+    "data/v3_r317_two_contact_network_20261106/attempt01/manifest.json": "3b20bf520268bef2a888a1375129086fb33987a64277618c26b136a5549d13c9",
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/v3_r38_global_tetgen_20261105/attempt01/saved_mesh_audit.json": "27c4c99d16518ed0f1c09118918689b7bdcbf306c9bbaf78844f4332304ccf2c",
+    "data/v3_r39_quality_20261105/attempt01/manifest.json": "251092e077e2085d49bdf672c593c227ca0edb81a8fa4a73104cf5e06bf8f0be"
+  },
+  "source_of_truth": "current R3 430-domain derived CAD and preserved V3 electrical coupon",
+  "status": "STOP PHYSICAL ELECTROTHERMAL READINESS \u2014 source-backed no-solve audit"
+}

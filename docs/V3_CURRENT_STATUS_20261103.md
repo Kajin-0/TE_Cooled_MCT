@@ -1,5 +1,13 @@
 # Current V3 project status and reviewer guide
 
+**HISTORICAL SNAPSHOT (2026-11-03).** This document is retained for
+source-level chronology, but its "no global 3D mesh" statements have
+been superseded by R3.8's successful 430-domain mesh and later R3.9–R3.17
+regional scalar results. The **current physical-model disposition** is
+[November 6 physical blocker closure](V3_PHYSICAL_BLOCKER_CLOSURE_20261106.md)
+with an independently source-hashed [430-domain readiness STOP](../data/v3_physical_blocker_closure_20261106/attempt01/readiness_audit.json).
+Do not use this November 3 snapshot as current project status.
+
 **As of 2026-11-03; documentation-only snapshot.** The authoritative contract
 is [AGENTS.md](../AGENTS.md). This guide distinguishes current geometry from
 historical physical and numerical failures. It does not grant new numerical,

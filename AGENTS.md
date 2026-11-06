@@ -5,6 +5,55 @@ work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
+**CURRENT ENGINEERING PRIORITY — 2026-11-06 PHYSICAL BLOCKER CLOSURE: STOP SYNTHETIC FEM FEATURE WORK.**
+Read the [strict no-solve physical readiness and Gate B audit](docs/V3_PHYSICAL_BLOCKER_CLOSURE_20261106.md),
+the [current 430-domain source-backed receipt](data/v3_physical_blocker_closure_20261106/attempt01/readiness_audit.json),
+and [reproducible fail-closed script](scripts/v3_physical_readiness_gate.py).
+V3 source 430 regions/2440 native faces/378 finite contact witnesses and
+global saved conformal R3.8/R3.9 mesh are real numerical achievements,
+but physical transport is NOT qualified. Current original R3 source
+metadata has430/430 domain laws UNSET and2440/2440 face laws UNSET
+and all source solver_ready false. Historical 438/2456-law registry
+is NOT portable directly to 430/2440 without source-tag conversion and
+evidence-backed physical coefficients; no bulk-material fallback.
+Original V3 net88/lead9 GateB electrical coupon FAIL remains:
+raw film0→lead_land current-cut worst error85.6254999% versus0.1%
+registered limit, terminal-cut errors0.8363%/3.3223%, voltage
+boundedness FAIL despite verified algebraic IV-loss closure and
+0.315803% two-mesh resistance difference. R3.12-R3.17 prove
+regional synthetic scalar P1/P2 and two-contact mathematical
+functionality only, NEVER the original failed physical coupon,
+physical current closure, thermal or TEC performance.
+Do NOT launch additional synthetic manufactured PDE/contact examples,
+global meshing, heat solvers or project-wide physical FEM until
+separately identified named STOP blockers are closed.
+Priority P0: original preserved coupon read-only raw current/mesh
+flux-failure attribution (no reruns) with unchanged GateB receipt;
+P1: exact 430-domain/2440-face material/contact/terminal law ledger
+with source, temperature range, evidence class and uncertainty;
+P2: smallest real physical TEC couple subassembly ONLY when physical
+coefficients and electrical Gate B candidate criteria are qualified;
+P3: full 430-domain multiphysics only after physical network current
+and heat closure, mesh accuracy and independent source evidence.
+Any new physical coupon discretization comparator must be separately
+preregistered, preserve old criterion/negative evidence and cannot
+relabel old B FAIL. Gate B STOP, thermal C/D NOT RUN.
+Original physical824-solid STEP, protected38-page Rev3, all
+R3.3-R3.17 successes/failures and open issue#2 remain immutable.
+Additional P0 READ-ONLY original coupon cut ledger:
+[data/v3_physical_blocker_closure_20261106/attempt01/gate_B_cut_triage.json](data/v3_physical_blocker_closure_20261106/attempt01/gate_B_cut_triage.json).
+Of16 original cuts, 13 fine-mesh FAIL the preserved0.1% raw
+flux gate and3 PASS; 13 coarse->fine error improvements and3
+worsenings. Worst film0->lead_land145.216% coarse->85.6255%
+fine, joint6->film2 81.557%, joint4->film0 79.877%,
+film2->pn87_solder 79.756% fine. Worsened tab88->joint4,
+lead9->lead_land, and joint5->film1. The two tab88 interior
+cuts pass; lead9_mid passes at0.061289%. This ranks original
+source current cuts and does not isolate a single causal mechanism,
+justify relaxation of B, or prove any physical model.
+The 2026-11-06 physical-readiness result is a NO-SOLVE STOP, not
+another accepted FEM analysis or material-law release.
+
 **Current R3.17 genuine three-material two-native-contact FEM network (2026-11-06): SYNTHETIC VARIABLE NORMAL-FLUX AND TWO ROBIN CONTACT LAWS PASS; REAL ELECTRICAL/THERMOELECTRIC PDE UNQUALIFIED.**
 Read [R3.17 quantitative record](docs/V3_R317_TWO_CONTACT_NETWORK_20261106.md)
 and [pinned code, four field solutions and independent receipts](data/v3_r317_two_contact_network_20261106/attempt01/manifest.json).
