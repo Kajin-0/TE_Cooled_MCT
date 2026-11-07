@@ -51,6 +51,41 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-07 FIRST ORIGINAL R3.9 3D KOVAR HEADER-ONLY SPREADING: NUMERICAL PASS under ONE hypothetical isothermal underside BC, PHYSICAL PORT STILL STOP.**
+Read [original source-header 47702-tet numerical report](docs/V3_R3_HEADER_ONE_CONDITION_3D_SPREADING_20261107.md),
+[preregistered source-hashed 3D results](data/v3_r3_header_spreading_20261107/attempt01/result.json),
+[immutable evidence manifest and first-launch setup failure](data/v3_r3_header_spreading_20261107/attempt01/manifest.json),
+[original TET4 3D heat solver](scripts/v3_r3_header_one_condition.py).
+Source original R3.9 tets1,010,119; header386 only
+47,702 TET4 and16,277 nodes, 5,195 bottom Dirichlet
+nodes. Native source face2228 Ni/header input37.21mm2
+(1000 TRI3), underside exterior face2225 ~333.961mm2
+(9617 TRI3). One hypothetical condition: ENTIRE
+UNDERSIDE fixed300K, positive uniform source Q=.587030W
+from previous conditional R3 reduced nominal0.4A
+wires-ON hypothetical sink5K/W case, other header faces
+insulated; header Kovar k17.3W/mK generic constant
+293K bulk proxy, NOT OEM measured header.
+One FEM original saved P1 tetra solve yields area-weighted
+top header temperature300.92576665K, maximum301.20624K,
+header-only effective area-weighted spreading
+R=1.57703529K/W, source/sink relative closure4.887e-12,
+discrete energy-work identity6.129e-16, zero inverted
+tets. This is ONE MESH with known global R3.9 shape
+defects, NOT h-converged or a 3D as-built heat sink
+qualification. First Docker launch failed BEFORE SOLVE
+due missing bind mount, retained log; one completed
+solver after mount corrected. Original Ni/Au multilayers,
+solder, ceramic, external contact area/pressure, gas,
+radiation and 430-domain TEC electrothermal coupling
+excluded. Do NOT add header1.577K/W to prior effective
+5K/W sink: double counting! This component 3D calculation
+does NOT alter predicted reduced die T or establish
+real mounting resistance; all material and face laws
+remain UNSET. Gate B original P1 FAIL/STOP and
+prospective P2 STOP, full 430-domain thermal C/D NOT RUN.
+No source CAD/mesh edits, no more scenarios or Codex.
+
 **2026-11-07 SOURCE-CAD HOT-MOUNT THERMAL READINESS: real geometric layer and header underside verified; external sink and spreading STOP.**
 Read [source face-tagged package mounting resistance readiness](docs/V3_R3_HOT_MOUNT_THERMAL_READINESS_20261107.md),
 [original CAD area and 1D evidence receipt](data/v3_hot_mount_readiness_20261107/attempt01/thermal_path_audit.json),
