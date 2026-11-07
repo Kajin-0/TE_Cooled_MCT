@@ -1,5 +1,61 @@
 # CURRENT PROJECT CONTRACT
 
+**V3.1 INTEGRATED NATIVE-PAD NONUNIFORM HEAT FEEDBACK (2026-11-07): WORKING END-TO-END PROVISIONAL BASELINE, NUMERICAL PASS; NOT 430-DOMAIN SPATIAL E/T.**
+Read [V3.1 concise original 3D ceramics and 88-leg
+nonuniform heat-feedback report](docs/V3_1_NATIVE_PAD_FEEDBACK_20261107.md),
+[full V3.1 0.4A detector/TEC/pad heat source results](data/v3_1_native_pad_feedback_20261107/attempt02/result.json),
+[real original-geometry ceramic nodal T fields](data/v3_1_native_pad_feedback_20261107/attempt02/source_native_ceramics_V3_1.npz),
+[saved-field no-solve acceptance](data/v3_1_native_pad_feedback_20261107/attempt02/read_only_acceptance.json),
+[source and original-mesh hashed manifest](data/v3_1_native_pad_feedback_20261107/manifest.json),
+[reproducible integrated nonlinear plus original 3D FEM
+source](scripts/v3_1_native_pad_feedback.py).
+PRESERVE the separately runnable V1/V2/V3 baselines.
+At same source CAD29/11/4, current0.4A,ambient300K,
+detector2mW and unmatched research P/N transport:
+V3.1 now applies each of the 88 leg calculated actual
+hot/cold heat currents to ORIGINAL 91 source-leg ceramic
+metal pads, together with source Cu lead correction
+on ceramic0 native face36, original detector carrier
+on ceramic3 face119 and original thermal sink via
+ceramic0 underside face6. Solve the same four ORIGINAL
+ceramic R3.9 meshes 11791 TET4 with k30W/mK
+HYPOTHETICAL Al2O3, reusing direct source P1
+Neumann FEM influence vectors. Iterate all original
+88 separate 32-slice nonlinear P/N leg transport at
+their actual local 3D original CAD pad temperatures
+until full-source pad/ceramic thermal self-consistency.
+Original V3 frozen uniform per-pad flux source defect
+up to44.8% now addressed BY CONSTRUCTION for
+selected source native pads. Last V3.1 solve
+11 spatial outer iterations; maximum spatial field
+update1.3181e-7K <2e-7K, all original ceramic
+heat imbalance2.22e-15W, whole TEC and detector
+thermal-electrical energy residual1.36e-10W,
+max separate leg energy residual1.18e-13W,
+max stage mismatch1.32e-10W.
+V3.1 Tdie209.803293K vs V3 209.688407K
+(+0.114887K), Vterminal1.513296654V,
+Pel0.605318662W, sinkQ0.586173695W.
+FAILED attempt01 loose2e-5K final stage balance
+preserved as negative evidence, prospective tightened
+attempt02 numerical PASS. Read-only original CAD
+face and source heat audit passed; no extra PDE or
+heavy regression test suite or Codex used. THIS IS
+STILL HYBRID, NOT source430 full spatial TE:
+original P/N legs still nonlinear axial1D and
+solder/metallization local Joule/Peltier, gas/rad
+and real transport k(T), P/N grades or contacts
+remain unmeasured. Real as-built T UNQUALIFIED.
+Original P1 Gate B FAIL/STOP, prospective P2 STOP,
+first actual 3D pair P1 raw currents FAIL 8/8,
+full source430-domain C/D NOT RUN. NEXT: maintain
+V3.1 as a working complete baseline; prioritize
+first source spatial P/N coupled device prototype
+ONLY if it delivers directly comparable whole-system
+I/V/P/Tdie/energy and stable resolution improvement,
+not another isolated current microaudit. Continue
+USER PRIORITY: coarse working system before details.
+
 **V3 COMPLETE 88-LEG SOURCE-CAD SPATIAL NONLINEAR THERMOELECTRIC HYBRID WORKING BASELINE (2026-11-07): REPLAY PASS, LOCAL PAD HEAT FEEDBACK NOT CLOSED.**
 Read [V3 full working 88 individual P/N leg + original
 source ceramic integration report](docs/V3_INTEGRATED_LEG_RESOLVED_20261107.md),
