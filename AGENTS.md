@@ -51,6 +51,36 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-06 Original Gate B lead9 P1/P2 interface-shape attribution: NO-SOLVE DIAGNOSTIC PASS, PHYSICAL GATES REMAIN STOP.**
+Read [source-grade 318-triangle lead9 shape/flux report](docs/V3_GATE_B_LEAD9_GEOMETRY_ATTRIBUTION_20261106.md),
+[pinned source field and shape-quality receipt](data/v3_physical_blocker_closure_20261106/attempt01/lead9_shape_attribution.json),
+and [read-only replayable source](scripts/v3_gate_B_lead9_shape_attribution.py).
+Same frozen original 28691 TET4 GateB NOM fields and already-stopped
+58993-DOF same-mesh P2 correction, no new PDE/mesh/constitutive laws.
+Native lead9->lead_land face43 uses158 original TRI3; lead9->lead_pin
+face47 uses160. P2 errors8.099302%/6.852908%, both FAIL0.1% limit,
+versus original P1 29.17271%/30.01540%. Independent saved-gradient
+and contact edge trace integrals reproduce previously archived P1/P2
+currents at both interfaces within1e-11 relative to drive current.
+Normalized adjacent pairwise minimum mean-ratio q: face43 q_min
+0.17530, median0.46344; face47 q_min0.21451, median0.49930.
+ZERO source contact area has q<0.1 at EITHER face. Gross absolute
+two-sided P2 raw mismatch3.9521A face43 and2.9662A face47;
+top10% most mismatched TRI3 carry22.98%/20.89% of gross mismatch,
+not a small set of degenerate elements. Actual meshed polygonal
+face areas3.13836383e-8m2 vs source CAD circles3.14159265e-8m2,
+−0.102777% area difference both, close to0.1% numeric gate but
+cannot by itself explain6.85–8.10% raw flux mismatch.
+Conclusion: extremely poor tetrahedron SHAPE quality in original
+immediately incident cells is not the dominant obvious mechanism;
+raw P2 nonconforming interface flux mismatch is distributed.
+Do not launch remeshing/solver tests based on global q optimization.
+Next only bounded read-only weak-contact-vs-raw interface flux
+consistency/area feasibility diagnostic (if genuinely informative).
+Original P1 GateB FAIL/STOP, prospective P2 STOP, thermal C/D NOT RUN.
+No Codex used; protect all original CAD/mesh fields, laws, Rev3,
+histories and open issue#2.
+
 **2026-11-06 original Gate B one-shot P2 raw-gradient comparator: MAJOR NUMERICAL IMPROVEMENT BUT PROSPECTIVE GATE FAIL/STOP; ORIGINAL P1 Gate B STILL FAIL.**
 Review [original real coupon P2 correction/stop report](docs/V3_GATE_B_ORIGINAL_P2_CORRECTION_20261106.md),
 [pinned preregistration, P2 source/field/16-cut and independent audit receipt](data/v3_gate_B_original_P2_20261106/attempt01/manifest.json),
