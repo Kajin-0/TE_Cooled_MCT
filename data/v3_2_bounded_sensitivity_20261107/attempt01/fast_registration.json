@@ -1,0 +1,115 @@
+{
+  "model": "Bounded FAST reduced whole-device V1 original source 29/11/4 nonlinear TEC screen, 0.4A; NOT V3.2 spatial run",
+  "parent_commit": "15d574621e421578a0f4c18bdf6f443a9c614da7",
+  "operating_point_I_A": 0.4,
+  "reference_ambient_and_Cu_Au_pins_K": 300.0,
+  "same_current_case_screens": [
+    {
+      "id": "baseline",
+      "parameter": "none",
+      "scale_S_rho_k": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.002
+    },
+    {
+      "id": "S_plus10pct",
+      "parameter": "Seebeck_S",
+      "scale_S_rho_k": [
+        1.1,
+        1.0,
+        1.0
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.002
+    },
+    {
+      "id": "rho_plus20pct",
+      "parameter": "PN_electrical_resistivity",
+      "scale_S_rho_k": [
+        1.0,
+        1.2,
+        1.0
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.002
+    },
+    {
+      "id": "k_plus20pct",
+      "parameter": "PN_thermal_conductivity",
+      "scale_S_rho_k": [
+        1.0,
+        1.0,
+        1.2
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.002
+    },
+    {
+      "id": "radiator_3_vs_2_K_W",
+      "parameter": "radiator_incremental_R",
+      "scale_S_rho_k": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "R_total_K_W": 6.281295229192457,
+      "die_W": 0.002
+    },
+    {
+      "id": "detector_4_vs_2_mW",
+      "parameter": "detector_bias_heat",
+      "scale_S_rho_k": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.004
+    },
+    {
+      "id": "combined_lower_material",
+      "parameter": "coherent lower transport hypothesis",
+      "scale_S_rho_k": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.002
+    },
+    {
+      "id": "combined_higher_material",
+      "parameter": "coherent higher transport hypothesis",
+      "scale_S_rho_k": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.002
+    }
+  ],
+  "no_statistical_uncertainty_claim": true,
+  "V3_2_source_still_canonical": true,
+  "V3_2_lumped_solder_and_contact_losses_NOT_REPRESENTED_in_screen": true,
+  "no_original_mesh_or_CAD_mutation": true,
+  "source_hashes": {
+    "V1_baseline": "b8ecb0216059814956c7a69dc807cd8678c551a187f7b805e70e61d4187a0922",
+    "V3_2_working_reference": "16315c427f6dea2840dd9b6161f13863555bbde0fee5d565d8d06596aa8cd5a7",
+    "original_source_geometry": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "original_nonlin_TE_solver": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "whole_device_reduced_solver": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "source_cad_wires": "9787b06849c93cd4a268611f288543a972810e15381137e181158fa06008fc52",
+    "source_material": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "source_SnSb_electrical_contact_bounds": "214cc5de3b27fa4e8c0ebf8d408bcaf1649f4acd1e83ad097cb7a54164b13892"
+  },
+  "script_sha256": "7444e261967456b99e8c4a17fcfcc5608aa91618e226d1fc779ce9edd3e5898f",
+  "base_original_P1_Gate_B": "FAIL/STOP",
+  "full_original_430_domain_C_D": "NOT RUN",
+  "case_budget_seconds": 14.0,
+  "all_cases_budget_seconds": 135.0
+}

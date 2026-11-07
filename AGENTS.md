@@ -1,5 +1,58 @@
 # CURRENT PROJECT CONTRACT
 
+**2026-11-07 USER-DIRECTED ANTI-CHURN WHOLE-SYSTEM SENSITIVITY SCREEN: FAST EVIDENCE CONFIRMS P/N TRANSPORT SHOULD TAKE PRIORITY OVER MORE GEOMETRY.**
+Read [same-current 8-case nonlinear source 29/11/4
+material/boundary screening report](docs/V3_2_WHOLE_SYSTEM_SENSITIVITY_DECISION_20261107.md),
+[8 accepted source-hashed reduced full-device inputs and
+I/V/P/Tdie sensitivity results](data/v3_2_bounded_sensitivity_20261107/attempt01/fast_results.json),
+[0-PDE read-only acceptance](data/v3_2_bounded_sensitivity_20261107/attempt01/read_only_acceptance.json),
+[fast 14.2-second runnable source screening
+script](scripts/v3_2_fast_system_sensitivity.py),
+and [source hash/failed-expensive-run manifest](data/v3_2_bounded_sensitivity_20261107/attempt01/manifest.json).
+Original full V3.2 88-leg + 11,791 source 3D
+ceramics and solder/contact working baseline
+STAYS UNCHANGED, Tdie209.987981K at 0.4A,
+Pel.609628W. Explicitly STOPPED a preregistered
+6-case full V3.2 nonlinear 3D sensitivity campaign:
+first S+10% case did not produce any accepted
+result after approximately 6min. ZERO full-V3.2
+sensitivity outcomes are available; stopped
+source, log and registration archived. Do not
+silently reuse the discarded case as physics.
+Instead 8 original-CAD V1 reduced end-to-end
+nonlinear source/Cu/Au/sink/2mW die cases all
+passed exact energy/IV acceptance in14.19s,
+nominal V1 Tdie209.059878K verified. Same
+0.4A V1 reduced one-parameter changes:
+S(P/N)+10% -> dTdie-6.600K;
+rho(P/N)+20% ->+2.428K;
+k(P/N)+20% ->+10.217K;
+radiator 2->3K/W ->+0.264K;
+detector2->4mW ->+0.627K.
+Coherent lower PN scales(S.9,rho1.2,k1.2)
+->+19.581K; coherent higher(S1.1,rho.8,k.8)
+->-22.189K. These are DIFFERENT fidelity V1
+screening DELTAS, never claim full V3.2 spatial
+sensitivities, confidence intervals, or as-built
+T errors; scaled published unmatched Zhang
+research materials, not real OEM grade. Per1%
+input change S and k large; choose to obtain
+actual PN material grade and S(T),rho(T),k(T)
+for both carriers around200-305K and validate
+source transport instead of another fine FEM.
+Current active next step: secure materials source
+or physically calibrate from legitimate published/
+client-provided matched measurements, then re-run
+the SAME source V3.2 case; if not available,
+use FAST screened high-impact alternative within
+a tiny specified full V3.2 confirmation budget.
+Don't expand a full spatial parameter grid.
+Preserve original P1 GateB FAIL/STOP, first
+original coupled pair raw current FAIL8/8,
+prospective P2 STOP, full 430-domain C/D
+NOT RUN and as-built predictive release UNSET.
+No Codex, CAD change or original mesh change.
+
 **2026-11-07 V3.2 WORKING INTEGRATED SOLDER + ELECTRICAL CONTACT JOULE FEEDBACK: ONE CONDITIONAL FULL SYSTEM NUMERICAL PASS.**
 Read [V3.2 whole-system energy and physics scope](docs/V3_2_SOLDER_CONTACT_JOULE_FEEDBACK_20261107.md),
 [original 176 SnSb and 352 interface added electrical

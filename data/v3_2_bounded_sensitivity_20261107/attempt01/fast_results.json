@@ -1,0 +1,324 @@
+{
+  "status": "V1 SOURCE CAD REDUCED NONLINEAR WHOLE-DEVICE FAST SENSITIVITY SCREEN, NOT V3.2 SPATIAL SENSITIVITY",
+  "baseline_V1_Tdie_K": 209.05987836610808,
+  "V3_2_spatial_current_model_Tdie_K": 209.9879813984419,
+  "source_29_11_4": true,
+  "conditions": [
+    {
+      "id": "baseline",
+      "parameter": "none",
+      "scale_S_rho_k": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.002
+    },
+    {
+      "id": "S_plus10pct",
+      "parameter": "Seebeck_S",
+      "scale_S_rho_k": [
+        1.1,
+        1.0,
+        1.0
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.002
+    },
+    {
+      "id": "rho_plus20pct",
+      "parameter": "PN_electrical_resistivity",
+      "scale_S_rho_k": [
+        1.0,
+        1.2,
+        1.0
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.002
+    },
+    {
+      "id": "k_plus20pct",
+      "parameter": "PN_thermal_conductivity",
+      "scale_S_rho_k": [
+        1.0,
+        1.0,
+        1.2
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.002
+    },
+    {
+      "id": "radiator_3_vs_2_K_W",
+      "parameter": "radiator_incremental_R",
+      "scale_S_rho_k": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "R_total_K_W": 6.281295229192457,
+      "die_W": 0.002
+    },
+    {
+      "id": "detector_4_vs_2_mW",
+      "parameter": "detector_bias_heat",
+      "scale_S_rho_k": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.004
+    },
+    {
+      "id": "combined_lower_material",
+      "parameter": "coherent lower transport hypothesis",
+      "scale_S_rho_k": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.002
+    },
+    {
+      "id": "combined_higher_material",
+      "parameter": "coherent higher transport hypothesis",
+      "scale_S_rho_k": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "R_total_K_W": 5.281295229192457,
+      "die_W": 0.002
+    }
+  ],
+  "cases": [
+    {
+      "id": "baseline",
+      "parameter": "none",
+      "status": "CONDITIONAL_REDUCED_FULL_DEVICE_NUMERICAL_PASS",
+      "Tdie_K": 209.05987836610808,
+      "hot_ceramic_K": 303.0978726441729,
+      "terminal_voltage_V": 1.5063948801264457,
+      "electrical_power_W": 0.6025579520505784,
+      "bath_rejection_W": 0.5865744120967452,
+      "stage3_Q_c_W": 0.0035062398065120316,
+      "global_energy_residual_W": -3.3650859876388495e-13,
+      "max_node_residual_W": 2.379459476675727e-13,
+      "extrapolated_PN_above_300K": true,
+      "wall_s": 1.6916652650106698,
+      "source_original_P1_B": "FAIL/STOP",
+      "full_original_430_C_D": "NOT RUN"
+    },
+    {
+      "id": "S_plus10pct",
+      "parameter": "Seebeck_S",
+      "status": "CONDITIONAL_REDUCED_FULL_DEVICE_NUMERICAL_PASS",
+      "Tdie_K": 202.4602691953363,
+      "hot_ceramic_K": 303.29758662652335,
+      "terminal_voltage_V": 1.60374172405561,
+      "electrical_power_W": 0.641496689622244,
+      "bath_rejection_W": 0.6243897535392137,
+      "stage3_Q_c_W": 0.003615549029086759,
+      "global_energy_residual_W": 5.129230373768223e-14,
+      "max_node_residual_W": 2.5757174171303632e-14,
+      "extrapolated_PN_above_300K": true,
+      "wall_s": 1.692668380914256,
+      "source_original_P1_B": "FAIL/STOP",
+      "full_original_430_C_D": "NOT RUN",
+      "delta_Tdie_K": -6.599609170771771,
+      "delta_V_V": 0.09734684392916426,
+      "delta_P_W": 0.03893873757166566,
+      "delta_bath_W": 0.03781534144246845
+    },
+    {
+      "id": "rho_plus20pct",
+      "parameter": "PN_electrical_resistivity",
+      "status": "CONDITIONAL_REDUCED_FULL_DEVICE_NUMERICAL_PASS",
+      "Tdie_K": 211.48837231443758,
+      "hot_ceramic_K": 303.45854655541694,
+      "terminal_voltage_V": 1.6827927055949166,
+      "electrical_power_W": 0.6731170822379666,
+      "bath_rejection_W": 0.6548671122000237,
+      "stage3_Q_c_W": 0.0034660166989452456,
+      "global_energy_residual_W": 9.374723219934822e-13,
+      "max_node_residual_W": 4.107825191113079e-14,
+      "extrapolated_PN_above_300K": true,
+      "wall_s": 1.8100931979715824,
+      "source_original_P1_B": "FAIL/STOP",
+      "full_original_430_C_D": "NOT RUN",
+      "delta_Tdie_K": 2.4284939483295034,
+      "delta_V_V": 0.17639782546847083,
+      "delta_P_W": 0.07055913018738824,
+      "delta_bath_W": 0.06829270010327848
+    },
+    {
+      "id": "k_plus20pct",
+      "parameter": "PN_thermal_conductivity",
+      "status": "CONDITIONAL_REDUCED_FULL_DEVICE_NUMERICAL_PASS",
+      "Tdie_K": 219.2765069080321,
+      "hot_ceramic_K": 302.99740940975914,
+      "terminal_voltage_V": 1.4577115348210026,
+      "electrical_power_W": 0.583084613928401,
+      "bath_rejection_W": 0.5675519507394567,
+      "stage3_Q_c_W": 0.0033370219480121734,
+      "global_energy_residual_W": 3.809175197488912e-13,
+      "max_node_residual_W": 1.1102230246251565e-14,
+      "extrapolated_PN_above_300K": true,
+      "wall_s": 1.6043215889949352,
+      "source_original_P1_B": "FAIL/STOP",
+      "full_original_430_C_D": "NOT RUN",
+      "delta_Tdie_K": 10.216628541924024,
+      "delta_V_V": -0.04868334530544316,
+      "delta_P_W": -0.01947333812217733,
+      "delta_bath_W": -0.019022461357288467
+    },
+    {
+      "id": "radiator_3_vs_2_K_W",
+      "parameter": "radiator_incremental_R",
+      "status": "CONDITIONAL_REDUCED_FULL_DEVICE_NUMERICAL_PASS",
+      "Tdie_K": 209.32393803046048,
+      "hot_ceramic_K": 303.6743227976355,
+      "terminal_voltage_V": 1.5112714232022257,
+      "electrical_power_W": 0.6045085692808904,
+      "bath_rejection_W": 0.5849626014327571,
+      "stage3_Q_c_W": 0.0035018661899895915,
+      "global_energy_residual_W": 9.192646643896296e-14,
+      "max_node_residual_W": 3.730349362740526e-14,
+      "extrapolated_PN_above_300K": true,
+      "wall_s": 1.8126888610422611,
+      "source_original_P1_B": "FAIL/STOP",
+      "full_original_430_C_D": "NOT RUN",
+      "delta_Tdie_K": 0.264059664352402,
+      "delta_V_V": 0.004876543075780004,
+      "delta_P_W": 0.0019506172303119795,
+      "delta_bath_W": -0.001611810663988078
+    },
+    {
+      "id": "detector_4_vs_2_mW",
+      "parameter": "detector_bias_heat",
+      "status": "CONDITIONAL_REDUCED_FULL_DEVICE_NUMERICAL_PASS",
+      "Tdie_K": 209.68671561519994,
+      "hot_ceramic_K": 303.1057471065259,
+      "terminal_voltage_V": 1.5052698700055502,
+      "electrical_power_W": 0.6021079480022201,
+      "bath_rejection_W": 0.5880654217849716,
+      "stage3_Q_c_W": 0.005495857510552732,
+      "global_energy_residual_W": 1.7985612998927536e-13,
+      "max_node_residual_W": 6.905587213168474e-14,
+      "extrapolated_PN_above_300K": true,
+      "wall_s": 1.7969087650999427,
+      "source_original_P1_B": "FAIL/STOP",
+      "full_original_430_C_D": "NOT RUN",
+      "delta_Tdie_K": 0.6268372490918637,
+      "delta_V_V": -0.0011250101208954977,
+      "delta_P_W": -0.0004500040483582657,
+      "delta_bath_W": 0.0014910096882263524
+    },
+    {
+      "id": "combined_lower_material",
+      "parameter": "coherent lower transport hypothesis",
+      "status": "CONDITIONAL_REDUCED_FULL_DEVICE_NUMERICAL_PASS",
+      "Tdie_K": 228.64073963430522,
+      "hot_ceramic_K": 303.2117606513049,
+      "terminal_voltage_V": 1.5628740875154377,
+      "electrical_power_W": 0.6251496350061752,
+      "bath_rejection_W": 0.6081388204832613,
+      "stage3_Q_c_W": 0.0031819223084682533,
+      "global_energy_residual_W": 9.999778782798785e-13,
+      "max_node_residual_W": 2.398081733190338e-14,
+      "extrapolated_PN_above_300K": true,
+      "wall_s": 1.8850873818155378,
+      "source_original_P1_B": "FAIL/STOP",
+      "full_original_430_C_D": "NOT RUN",
+      "delta_Tdie_K": 19.58086126819714,
+      "delta_V_V": 0.056479207388991925,
+      "delta_P_W": 0.02259168295559677,
+      "delta_bath_W": 0.021564408386516076
+    },
+    {
+      "id": "combined_higher_material",
+      "parameter": "coherent higher transport hypothesis",
+      "status": "CONDITIONAL_REDUCED_FULL_DEVICE_NUMERICAL_PASS",
+      "Tdie_K": 186.8712746663817,
+      "hot_ceramic_K": 303.1223607521987,
+      "terminal_voltage_V": 1.5174458840805936,
+      "electrical_power_W": 0.6069783536322375,
+      "bath_rejection_W": 0.5912111739066904,
+      "stage3_Q_c_W": 0.003873749300586078,
+      "global_energy_residual_W": 1.27675647831893e-14,
+      "max_node_residual_W": 1.2045919817182948e-14,
+      "extrapolated_PN_above_300K": true,
+      "wall_s": 1.898054210934788,
+      "source_original_P1_B": "FAIL/STOP",
+      "full_original_430_C_D": "NOT RUN",
+      "delta_Tdie_K": -22.18860369972637,
+      "delta_V_V": 0.01105100395414782,
+      "delta_P_W": 0.004420401581659128,
+      "delta_bath_W": 0.004636761809945211
+    }
+  ],
+  "OAT_rank_for_registered_step_sizes": [
+    {
+      "id": "k_plus20pct",
+      "parameter": "PN_thermal_conductivity",
+      "delta_die_K": 10.216628541924024,
+      "delta_terminal_V": -0.04868334530544316,
+      "delta_terminal_power_W": -0.01947333812217733
+    },
+    {
+      "id": "S_plus10pct",
+      "parameter": "Seebeck_S",
+      "delta_die_K": -6.599609170771771,
+      "delta_terminal_V": 0.09734684392916426,
+      "delta_terminal_power_W": 0.03893873757166566
+    },
+    {
+      "id": "rho_plus20pct",
+      "parameter": "PN_electrical_resistivity",
+      "delta_die_K": 2.4284939483295034,
+      "delta_terminal_V": 0.17639782546847083,
+      "delta_terminal_power_W": 0.07055913018738824
+    },
+    {
+      "id": "detector_4_vs_2_mW",
+      "parameter": "detector_bias_heat",
+      "delta_die_K": 0.6268372490918637,
+      "delta_terminal_V": -0.0011250101208954977,
+      "delta_terminal_power_W": -0.0004500040483582657
+    },
+    {
+      "id": "radiator_3_vs_2_K_W",
+      "parameter": "radiator_incremental_R",
+      "delta_die_K": 0.264059664352402,
+      "delta_terminal_V": 0.004876543075780004,
+      "delta_terminal_power_W": 0.0019506172303119795
+    }
+  ],
+  "source_352_contact_rho_e_ohm_m2_exploratory_bounds": [
+    {
+      "label": "LOW",
+      "rho_e_ohm_m2": 1e-12,
+      "contact_series_R_ohm": 0.0021999999999999997
+    },
+    {
+      "label": "NOM",
+      "rho_e_ohm_m2": 1e-11,
+      "contact_series_R_ohm": 0.022
+    },
+    {
+      "label": "HIGH",
+      "rho_e_ohm_m2": 1e-10,
+      "contact_series_R_ohm": 0.22000000000000003
+    }
+  ],
+  "contact_rho_sensitivity_to_die_temperature": "NOT CALCULATED IN THIS REDUCED SCREEN",
+  "actual_V3_1_to_V3_2_solder_contact_added_Joule_delta_Tdie_K": 0.1846879368199268,
+  "comparability_warning": "V1 screening deltas and V3.2 new-joint delta use different model fidelity; not interchangeable as total statistical error bars or additive budget",
+  "not_measured_or_as_built_qualified": true,
+  "total_wall_seconds": 14.192617018008605,
+  "original_P1_B": "FAIL/STOP",
+  "original_P1_first_pair_raw": "FAIL 8/8",
+  "full_430_domain_C_D": "NOT RUN"
+}

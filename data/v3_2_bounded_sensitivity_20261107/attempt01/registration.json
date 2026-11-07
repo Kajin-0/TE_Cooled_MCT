@@ -1,0 +1,94 @@
+{
+  "status": "PREREGISTERED BOUNDED SOURCE V3.2 ONE AT A TIME SENSITIVITY, six scenarios, no source rewrite or new mesh",
+  "baseline_git_commit": "15d574621e421578a0f4c18bdf6f443a9c614da7",
+  "baseline_temperature_K": 209.9879813984419,
+  "baseline_current_A": 0.4,
+  "input_cases": [
+    {
+      "id": "S_plus10pct",
+      "param": "P_N_Seebeck",
+      "factor": 1.1
+    },
+    {
+      "id": "rho_plus20pct",
+      "param": "P_N_resistivity",
+      "factor": 1.2
+    },
+    {
+      "id": "k_plus20pct",
+      "param": "P_N_thermal_conductivity",
+      "factor": 1.2
+    },
+    {
+      "id": "contact_times10",
+      "param": "electrical_specific_contact_resistivity",
+      "factor": 10.0
+    },
+    {
+      "id": "radiator_3_vs_2_K_W",
+      "param": "radiator_total_resistance_K_W",
+      "nominal": 2.0,
+      "target": 3.0
+    },
+    {
+      "id": "detector_4_vs_2_mW",
+      "param": "detector_bias_heat_W",
+      "nominal": 0.002,
+      "target": 0.004
+    }
+  ],
+  "base_contact_rho_ohm_m2": 1e-11,
+  "base_radiator_total_R_K_W": 2.0,
+  "base_die_load_W": 0.002,
+  "temperature_material_interval_K": [
+    40,
+    300
+  ],
+  "above_300_material_transport": "source hypothetical extrapolation, never measured",
+  "ceramics_k_W_mK": 30.0,
+  "fixed_original_ceramic_P1_regions": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "original_ceramic_tetra": 11791,
+  "original_stage_couples": [
+    29,
+    11,
+    4
+  ],
+  "one_model_perturbation_per_case": true,
+  "iterations_cap": 18,
+  "same_spatial_convergence_tolerance_K": 2e-07,
+  "same_nonlinear_heat_residual_W": 1e-08,
+  "same_individual_leg_energy_tolerance_W": 1e-09,
+  "same_global_energy_tolerance_W": 1e-08,
+  "failed_case_policy": "FAIL visibly, do not infer a response or rerun hidden cases",
+  "whole_study_wall_budget_seconds": 660.0,
+  "source_file_sha256": {
+    "canonical_V3_2_result": "16315c427f6dea2840dd9b6161f13863555bbde0fee5d565d8d06596aa8cd5a7",
+    "canonical_V3_2_registration": "e4b16f15415067b35312782d8f42784390eecf85915aade34ac321a0ce908787",
+    "canonical_V3_2_integrated_solver": "79a87af86b11b49bb2b30461b1037558e5265a25dda2ccf70cad3e9dc4bde65a",
+    "original_nonlin_PN_transport": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "original_grade_analog_source": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "original_88_leg_CAD_mapping": "9bc6b3f71d140a586f7657c2177e465aa3b048d95d4cedfcf5930ba92dc2b560",
+    "original_CAD_metadata": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "actual_824_body_design": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "source_joints_contact_bounds": "214cc5de3b27fa4e8c0ebf8d408bcaf1649f4acd1e83ad097cb7a54164b13892",
+    "source_Cu_Au_leads": "9787b06849c93cd4a268611f288543a972810e15381137e181158fa06008fc52",
+    "source_reduced_NP_stage": "196e88ef7d9140fad1723e1161fed03ed7fe78757e72ebdfca6d291886472ef2",
+    "3D_original_ceramic_source": "2fab7640b60f0ca89c12138e08b6bba196d64c3aa421424242d3646efed79398",
+    "archived_3D_header_TIM": "9bfe0e7d5ff2933f9d48442bd769b101499f9f7edeaa377648e122f394c71e49"
+  },
+  "source_mesh_sha256": {
+    "node": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+    "ele": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570",
+    "face": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18"
+  },
+  "script_sha256": "18ab2540d4da7d6efaec4547ed475bf226a2ea8c57aa5761e4e060e5c49a363d",
+  "old_original_P1_B": "FAIL/STOP",
+  "original_first_couple_raw_P1": "FAIL 8/8",
+  "full_original_430_C_D": "NOT RUN",
+  "not_as_built_OEM_prediction": true
+}
