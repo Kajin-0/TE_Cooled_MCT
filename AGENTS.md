@@ -51,6 +51,30 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-06 Gate B rim-only correction FEASIBILITY SCREEN: NO GO, NO SOLVER.**
+Read [counterfactual stop decision](docs/V3_GATE_B_RIM_ONLY_FEASIBILITY_STOP_20261106.md),
+[source-hashed signed radial partition](data/v3_physical_blocker_closure_20261106/attempt01/rim_only_feasibility_stop.json),
+and [read-only exact replay](scripts/v3_gate_B_rim_only_feasibility.py).
+Existing lead9 contact outer-face centroid 0.9<=r/R_CAD<1.05
+accounted for78.01% (lead_land face43) and72.47% (lead_pin
+face47) of absolute OTHER-side contact-versus-raw mismatch.
+But set ALL original RIM-bin errors to zero in saved P2 field,
+while freezing INNER signed errors: other-side remaining
+1.102884% face43 and1.543405% face47 vs original0.1% GateB
+cut threshold (11.03x and15.43x too large), with lead9-side
+inner residual3.135939% and1.861681% (31.36x and18.62x).
+Therefore isolated RIM-ONLY correction of CURRENT saved flux
+would FAIL even if perfect, because inner signed bias persists.
+This is a fixed-field conditional calculation, NOT an impossibility
+result for a NEW global PDE solve that can redistribute interior
+solution. Do NOT authorize rim-only remeshing/solver on these
+results; an acceptable future comparator needs a preregistered
+FULL-interface correction, all16 raw current cuts, voltage bound,
+mesh/physics evidence and original P1/P2 failures preserved.
+Priority now source-backed exact430-domain/2440-face physical
+material/interface input ledger. GateB original P1 FAIL/STOP,
+prospective P2 STOP, thermal C/D NOT RUN. No Codex used.
+
 **2026-11-06 P0 original Gate B lead9 P2 CONTACT-LAW vs RAW-FLUX radial forensic: SOURCE-RECONSTRUCTED; BOTH GATES STOP.**
 Read [native face43/47 contact-operator engineering report](docs/V3_GATE_B_LEAD9_CONTACT_OPERATOR_20261106.md),
 [318-triangle original source-field JSON](data/v3_physical_blocker_closure_20261106/attempt01/lead9_contact_operator_audit.json)
