@@ -51,6 +51,42 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-07 CONDITIONAL PHYSICAL REFERENCE REFINEMENT: first actual accepted R3 29/11/4 SOURCE-CAD-derived nonlinear reduced TEC envelope, 9/9 numerical PASS, as-built UNQUALIFIED.**
+Read [R3 source-CAD 29/11/4 conditional 1D transport report](docs/V3_R3_REDUCED_THERMOELECTRIC_REFERENCE_20261107.md),
+[sealed nine-case study summary, complete source hashes, no-OEM-fit registration](data/v3_reference_29114_reduced_20261107/attempt01/manifest.json),
+and [standalone original-R3 geometry transfer/run script](scripts/v3_reference_29114_reduced_study.py).
+Unlike historical 28/12/4 reduced 186.484K, study imports
+source final actual R3 geometry:29/11/4 P/N couples,
+0.4x0.4x0.5mm legs, ceramics6.4/5.2/3.8/2.4mm,
+20um die attach over1mm2, full 88-leg source IDs; no new CAD/FEM.
+Existing conservative 32 interval nonlinear 1D transport and
+5-node cascade with three UNMATCHED Zhang P/N specimen law
+hypotheses lower(.9,1.2,1.2), nominal(1,1,1), higher(1.1,.8,.8).
+Preregistered hot ceramic300K ideally controlled R_sink=0,
+die2mW, currents[.15,.25,.4]A; all wires, gas, radiation,
+metal bypass OFF, attachment k=1 W/mK assumed.
+Numerically9/9 PASS original node/global/stage balances and
+all source leg field temperatures <=300K (no >300K
+continuation). Die T conditional at .15/.25/.4A:
+lower261.503/244.294/226.495K;
+nominal250.347/229.072/207.169K;
+higher235.750/210.391/185.124K.
+At.4A hypothetical current, model law scenario spread41.371K,
+NOT a confidence interval or measured true cooler bound.
+Nominal.4A predicted module terminal1.47879V,
+input0.591515W and Qc_cold2mW, all CONDITIONAL.
+At measured source domain40-300K; commercially matched
+P/N grade, source experimental validation, 3D ceramic spreading,
+real electrical/thermal contact laws, hot-sink uncertainty,
+gas/radiation/lead bypass NOT included/NOT qualified.
+Do not call 185K actual detector temperature or OEM T.
+Next source-qualified thermal contact, sink and lead/bypass
+evidence before relaxing optimistic model assumptions.
+Original P1 electrical GateB FAIL/STOP, P2 prospective STOP,
+real 430-domain coupled thermal C/D NOT RUN, actual
+production detector physical prediction UNQUALIFIED.
+No CAD change, source material-release, 3D PDE or Codex use.
+
 **2026-11-07 AS-BUILT PHYSICAL SOURCE-IDENTITY HARD GATE — STOP PRODUCT VALIDATION.**
 Read [TEC/detector manufacturer source-identity evidence and real
 thermistor-completeness issue](docs/V3_TEC_SOURCE_IDENTITY_AND_PHYSICAL_EVIDENCE_20261107.md),

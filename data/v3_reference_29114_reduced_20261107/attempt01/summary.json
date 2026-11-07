@@ -1,0 +1,425 @@
+{
+  "status": "CONDITIONAL SOURCE-CONSTRAINED 1D REFERENCE; 3D FULL DEVICE AND OEM UNQUALIFIED",
+  "actual_CAD_stage_counts": [
+    29,
+    11,
+    4
+  ],
+  "geometry": {
+    "stages": [
+      {
+        "couples": 29,
+        "leg_length_m": 0.0005,
+        "leg_area_m2": 1.6000000000000003e-07
+      },
+      {
+        "couples": 11,
+        "leg_length_m": 0.0005,
+        "leg_area_m2": 1.6000000000000003e-07
+      },
+      {
+        "couples": 4,
+        "leg_length_m": 0.0005,
+        "leg_area_m2": 1.6000000000000003e-07
+      }
+    ],
+    "ceramic_sides_area_m2": [
+      4.096000000000001e-05,
+      2.7040000000000002e-05,
+      1.4439999999999999e-05,
+      5.76e-06
+    ],
+    "die_area_m2": 1e-06,
+    "die_attach_thickness_over_area_m_inverse": 20.000000000000004,
+    "wires": [],
+    "source_sha256": {
+      "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+      "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+      "data/v3_tec_physical_port_contract_20261106/attempt01/port_and_series_graph.json": "7130b314f7a54c82f6a8e4e6a1afc992727ccde77af639be6121d8c1ce4b00f7",
+      "data/tec_material_plausibility_20261101/properties.json": "9a41aa2a56d61ec0c5c6cd4bf4b68d0d9faaf9f3827c55165089471034ea2b0a",
+      "data/v3_tec_source_identity_20261107/attempt01/source_identity_gate.json": "689bdeb5ef89789a7714020f5cb1f5b6fad17fc57324ede1ff78a9a09024d8a8",
+      "data/g2c/zhang2025_he_40_300_v2.json": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+      "tecooledmct/integrated_reference.py": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+      "tecooledmct/nonlinear_tec.py": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+      "tecooledmct/graded_tec.py": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760"
+    },
+    "source_archive": "data/synthetic_v3_assembly_20261102/source_final/design.json",
+    "material_status": "unmatched research P/N analog not production grade"
+  },
+  "scenario_registration": {
+    "version": "R3 29/11/4 source-CAD conditional 1D nine-case benchmark",
+    "baseline_commit": "52fc1d9c7f200d087503a099b2df7442e98b34c0",
+    "method": "unchanged nonlinear_tec direct 1D 32 midpoint intervals + five-node cascade",
+    "material_hypotheses": {
+      "nominal": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "lower": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "higher": [
+        1.1,
+        0.8,
+        0.8
+      ]
+    },
+    "currents_A": [
+      0.15,
+      0.25,
+      0.4
+    ],
+    "hot_side_K": 300.0,
+    "sink_R_K_per_W": 0.0,
+    "die_load_W": 0.002,
+    "external_wires": "OFF",
+    "gas": "OFF",
+    "radiation": "OFF",
+    "unknown_stage_bypass": "ZERO, OPTIMISTIC",
+    "die_attach_conductivity_W_per_mK": 1.0,
+    "source_transport_measured_domain_K": [
+      40,
+      300
+    ],
+    "allow_assumed_gt300K": false,
+    "acceptance": "node balance<1e-8W, each stage energy <1e-9W, global energy <1e-8W, all leg temperatures <=300K and >=40K",
+    "per_case_seconds": 12,
+    "total_seconds": 150,
+    "max_cpu": 4,
+    "max_RAM_GiB": 6,
+    "no_new_3D_FEM": true,
+    "no_OEM_or_grade_match": true,
+    "source_sha256": {
+      "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+      "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+      "data/v3_tec_physical_port_contract_20261106/attempt01/port_and_series_graph.json": "7130b314f7a54c82f6a8e4e6a1afc992727ccde77af639be6121d8c1ce4b00f7",
+      "data/tec_material_plausibility_20261101/properties.json": "9a41aa2a56d61ec0c5c6cd4bf4b68d0d9faaf9f3827c55165089471034ea2b0a",
+      "data/v3_tec_source_identity_20261107/attempt01/source_identity_gate.json": "689bdeb5ef89789a7714020f5cb1f5b6fad17fc57324ede1ff78a9a09024d8a8",
+      "data/g2c/zhang2025_he_40_300_v2.json": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+      "tecooledmct/integrated_reference.py": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+      "tecooledmct/nonlinear_tec.py": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+      "tecooledmct/graded_tec.py": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760"
+    }
+  },
+  "cases": [
+    {
+      "hypothesis": "nominal",
+      "current_A": 0.15,
+      "scales_S_rho_k": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "status": "ACCEPTED",
+      "reason": null,
+      "temperatures_K": {
+        "hot_ceramic": 300.0,
+        "stage1": 281.614180474978,
+        "stage2": 265.1802118696768,
+        "cold_ceramic": 250.30723581677833,
+        "MCT_die": 250.34723581678247
+      },
+      "voltage_V": 0.6725461761621938,
+      "electrical_input_W": 0.10088192642432907,
+      "Qc_cold_stage_W": 0.0020000000004165024,
+      "leg_extrema_K": [
+        250.30723581677833,
+        300.0
+      ],
+      "node_residual_W": 2.0942232323295507e-13,
+      "global_energy_residual_W": -5.056094432021041e-13,
+      "stage_energy_residual_W": [
+        -3.2890357104520263e-15,
+        3.3480163086352377e-15,
+        -1.1301723445988898e-15
+      ],
+      "assumed_T_above_300K": false,
+      "seconds": 0.33199772820807993
+    },
+    {
+      "hypothesis": "nominal",
+      "current_A": 0.25,
+      "scales_S_rho_k": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "status": "ACCEPTED",
+      "reason": null,
+      "temperatures_K": {
+        "hot_ceramic": 300.0,
+        "stage1": 272.6743850776552,
+        "stage2": 249.44220361835661,
+        "cold_ceramic": 229.03232528917047,
+        "MCT_die": 229.0723252891705
+      },
+      "voltage_V": 1.026843637012026,
+      "electrical_input_W": 0.2567109092530065,
+      "Qc_cold_stage_W": 0.00200000000000104,
+      "leg_extrema_K": [
+        229.03232528917047,
+        300.0
+      ],
+      "node_residual_W": 2.9698465908722937e-15,
+      "global_energy_residual_W": 2.2148949341271873e-14,
+      "stage_energy_residual_W": [
+        -1.0547118733938987e-14,
+        -1.0484668688803822e-14,
+        -8.951173136040325e-16
+      ],
+      "assumed_T_above_300K": false,
+      "seconds": 0.3802663180977106
+    },
+    {
+      "hypothesis": "nominal",
+      "current_A": 0.4,
+      "scales_S_rho_k": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "status": "ACCEPTED",
+      "reason": null,
+      "temperatures_K": {
+        "hot_ceramic": 300.0,
+        "stage1": 262.63327761679693,
+        "stage2": 232.62406436046805,
+        "cold_ceramic": 207.12900138874326,
+        "MCT_die": 207.16900138874328
+      },
+      "voltage_V": 1.4787866930626987,
+      "electrical_input_W": 0.5915146772250796,
+      "Qc_cold_stage_W": 0.001999999999998992,
+      "leg_extrema_K": [
+        207.12900138874326,
+        300.0
+      ],
+      "node_residual_W": 4.73232564246473e-15,
+      "global_energy_residual_W": 1.8951507030351422e-13,
+      "stage_energy_residual_W": [
+        -1.3250511798901243e-13,
+        -4.6074255521943996e-14,
+        -7.951972413877684e-15
+      ],
+      "assumed_T_above_300K": false,
+      "seconds": 0.39873959380201995
+    },
+    {
+      "hypothesis": "lower",
+      "current_A": 0.15,
+      "scales_S_rho_k": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "status": "ACCEPTED",
+      "reason": null,
+      "temperatures_K": {
+        "hot_ceramic": 300.0,
+        "stage1": 286.19142863367574,
+        "stage2": 273.4240556471291,
+        "cold_ceramic": 261.4634846435147,
+        "MCT_die": 261.5034846435147
+      },
+      "voltage_V": 0.662780789765254,
+      "electrical_input_W": 0.0994171184647881,
+      "Qc_cold_stage_W": 0.002000000000001712,
+      "leg_extrema_K": [
+        261.4634846435147,
+        300.0
+      ],
+      "node_residual_W": 5.35162192338845e-15,
+      "global_energy_residual_W": 1.0949574580365606e-14,
+      "stage_energy_residual_W": [
+        -1.0505485370515544e-14,
+        4.236194728335363e-15,
+        1.1726730697603216e-15
+      ],
+      "assumed_T_above_300K": false,
+      "seconds": 0.28263546503148973
+    },
+    {
+      "hypothesis": "lower",
+      "current_A": 0.25,
+      "scales_S_rho_k": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "status": "ACCEPTED",
+      "reason": null,
+      "temperatures_K": {
+        "hot_ceramic": 300.0,
+        "stage1": 279.607694845213,
+        "stage2": 261.3061409722635,
+        "cold_ceramic": 244.2542682194163,
+        "MCT_die": 244.29426821941897
+      },
+      "voltage_V": 1.0355366475460883,
+      "electrical_input_W": 0.2588841618865221,
+      "Qc_cold_stage_W": 0.0020000000002694785,
+      "leg_extrema_K": [
+        244.2542682194163,
+        300.0
+      ],
+      "node_residual_W": 1.3629462142228377e-13,
+      "global_energy_residual_W": -3.612110610617947e-13,
+      "stage_energy_residual_W": [
+        -2.6506574712925612e-14,
+        -1.8485213360008856e-14,
+        -1.9012569296705806e-15
+      ],
+      "assumed_T_above_300K": false,
+      "seconds": 0.30880845291540027
+    },
+    {
+      "hypothesis": "lower",
+      "current_A": 0.4,
+      "scales_S_rho_k": [
+        0.9,
+        1.2,
+        1.2
+      ],
+      "status": "ACCEPTED",
+      "reason": null,
+      "temperatures_K": {
+        "hot_ceramic": 300.0,
+        "stage1": 272.65059070084857,
+        "stage2": 248.74642640733555,
+        "cold_ceramic": 226.455427441716,
+        "MCT_die": 226.495427441716
+      },
+      "voltage_V": 1.5343874114034672,
+      "electrical_input_W": 0.6137549645613869,
+      "Qc_cold_stage_W": 0.0020000000000007165,
+      "leg_extrema_K": [
+        226.455427441716,
+        300.0
+      ],
+      "node_residual_W": 1.892930256985892e-14,
+      "global_energy_residual_W": 2.1671553440683056e-13,
+      "stage_energy_residual_W": [
+        -4.440892098500626e-14,
+        -1.1435297153639112e-14,
+        -1.3999912340523224e-13
+      ],
+      "assumed_T_above_300K": false,
+      "seconds": 0.43957056291401386
+    },
+    {
+      "hypothesis": "higher",
+      "current_A": 0.15,
+      "scales_S_rho_k": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "status": "ACCEPTED",
+      "reason": null,
+      "temperatures_K": {
+        "hot_ceramic": 300.0,
+        "stage1": 275.2086550237564,
+        "stage2": 254.0326048922118,
+        "cold_ceramic": 235.71032819701085,
+        "MCT_die": 235.75032819701084
+      },
+      "voltage_V": 0.7238286809645412,
+      "electrical_input_W": 0.10857430214468118,
+      "Qc_cold_stage_W": 0.0020000000000012924,
+      "leg_extrema_K": [
+        235.71032819701085,
+        300.0
+      ],
+      "node_residual_W": 6.196432256189155e-15,
+      "global_energy_residual_W": -2.6229018956769323e-15,
+      "stage_energy_residual_W": [
+        4.926614671774132e-15,
+        4.2223169405275485e-15,
+        -2.3765711620882257e-15
+      ],
+      "assumed_T_above_300K": false,
+      "seconds": 0.3636705509852618
+    },
+    {
+      "hypothesis": "higher",
+      "current_A": 0.25,
+      "scales_S_rho_k": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "status": "ACCEPTED",
+      "reason": null,
+      "temperatures_K": {
+        "hot_ceramic": 300.0,
+        "stage1": 263.2891469574406,
+        "stage2": 234.18499150989302,
+        "cold_ceramic": 210.35073313474183,
+        "MCT_die": 210.39073313474182
+      },
+      "voltage_V": 1.0714160589311288,
+      "electrical_input_W": 0.2678540147327822,
+      "Qc_cold_stage_W": 0.001999999999998501,
+      "leg_extrema_K": [
+        210.35073313474183,
+        300.0
+      ],
+      "node_residual_W": 1.5779044737485037e-14,
+      "global_energy_residual_W": 1.7430501486614958e-14,
+      "stage_energy_residual_W": [
+        -2.400857290751901e-14,
+        -3.6637359812630166e-15,
+        9.332812300755222e-16
+      ],
+      "assumed_T_above_300K": false,
+      "seconds": 0.3761679718736559
+    },
+    {
+      "hypothesis": "higher",
+      "current_A": 0.4,
+      "scales_S_rho_k": [
+        1.1,
+        0.8,
+        0.8
+      ],
+      "status": "ACCEPTED",
+      "reason": null,
+      "temperatures_K": {
+        "hot_ceramic": 300.0,
+        "stage1": 249.6086813825569,
+        "stage2": 213.16333119304034,
+        "cold_ceramic": 185.08430903201676,
+        "MCT_die": 185.12430903201678
+      },
+      "voltage_V": 1.4884415115639829,
+      "electrical_input_W": 0.5953766046255932,
+      "Qc_cold_stage_W": 0.002000000000001588,
+      "leg_extrema_K": [
+        185.08430903201676,
+        300.0
+      ],
+      "node_residual_W": 4.3576253716537394e-15,
+      "global_energy_residual_W": 3.963496197911809e-14,
+      "stage_energy_residual_W": [
+        -3.2585045772748344e-14,
+        -1.6653345369377348e-15,
+        -9.298117831235686e-16
+      ],
+      "assumed_T_above_300K": false,
+      "seconds": 0.4231699251104146
+    }
+  ],
+  "accepted": 9,
+  "rejected": 0,
+  "not_run": 0,
+  "original_electrical_B": "FAIL/STOP",
+  "P2_prospective_B": "STOP",
+  "real_3D_thermal_C_D": "NOT RUN",
+  "full_CAD_material_laws_released": false,
+  "actual_OEM_detector_T": "NOT QUALIFIED",
+  "elapsed_s": 3.309646076988429,
+  "max_RSS_MiB": 108.08203125
+}
