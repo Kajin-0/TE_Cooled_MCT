@@ -51,6 +51,40 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-07 AS-BUILT PHYSICAL SOURCE-IDENTITY HARD GATE — STOP PRODUCT VALIDATION.**
+Read [TEC/detector manufacturer source-identity evidence and real
+thermistor-completeness issue](docs/V3_TEC_SOURCE_IDENTITY_AND_PHYSICAL_EVIDENCE_20261107.md),
+[deterministic source-keyed receipt](data/v3_tec_source_identity_20261107/attempt01/source_identity_gate.json)
+and [read-only exact replay](scripts/v3_tec_source_identity_hard_gate.py).
+TEC Microsystems selected 3MC04-044-05 (2019) distinct from
+VIGO 3TE-TO66 detector package + separately published PCI-12 family.
+No source proves the TEC Microsystems reference is installed in
+the VIGO package. Selected 44 total couples and 6.4/2.4 mm/
+3.8mm package from TEC ref, but internally modeled 29/11/4
+stage split and interconnect metallization are INFERRED,
+not published OEM dimensions. TEC reference at300 K vacuum
+DeltaTmax113K/Qmax0.5W/Imax1.0A/Umax3.5V/ACR2.9Ohm
+separate non-simultaneous performance metrics, NOT as-built
+hybrid limits. VIGO PCI-12 2026 family typical chip210K
+at ambient293K with 3TE absolute maximum current0.45A
+and voltage3.6V; those values belong to a different detector
+family, NOT a certified comparison for the reference CAD.
+VIGO package nine-pin drawing assigns thermistor pins5/6,
+but source R3 has pin5 volume394, pin6 volume396 each
+only touching its own glass, and NO thermistor model,
+interconnect or R(T). NOT enough to invent hardware.
+Do not label prior reduced 186.5K study or TEC-only theoretical
+187K (300K-113K no load) as predicted HgCdTe detector T.
+Current physically measured matched P/N transport, contact laws,
+sink/mounting/loads and actual specific OEM revision remain
+UNKNOWN. Separate a hypothetical reference-design sensitivity
+model from real OEM device calibration and never transfer
+1.0 A source TEC Imax to VIGO PCI absolute current limit.
+Reference CAD topology still 88-leg/430 domains/2440 faces,
+but real physical model release STOP. No PDE, no Codex.
+Preserve frozen STEP/Rev3, all historical evidence,
+original P1 GateB FAIL/STOP, prospective P2 STOP, C/D NOT RUN.
+
 **CURRENT PHYSICAL PORT RESULT — November 6: exact native 88-leg electrical series network PASS, physical heat and electrical coefficients STOP.**
 Read [source CAD pin and thermal-port engineering contract](docs/V3_TEC_PHYSICAL_PORT_CONTRACT_20261106.md),
 [original 557 solid-solid face circuit graph and verified 88 leg articulation receipts](data/v3_tec_physical_port_contract_20261106/attempt01/port_and_series_graph.json),
