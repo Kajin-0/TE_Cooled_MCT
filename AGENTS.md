@@ -1,5 +1,36 @@
 # CURRENT PROJECT CONTRACT
 
+**2026-11-07 SOURCE 3D P/N GEOMETRIC SUFFICIENCY CHECK: DO NOT WASTE V4 ON AXIAL A/L SHAPE FACTORS.**
+Read [all-88-leg source original 3D unit-conductance
+result](data/v4_source_pn_3d_geometry_20261107/attempt01/result.json),
+[source registration and NO-CHURN decision](data/v4_source_pn_3d_geometry_20261107/attempt01/manifest.json),
+[exact original-TET4 P1 3D scalar conductance
+reproducer](scripts/v4_source_pn_3d_geometry.py).
+All 88 real P/N legs, 7357 source R3.9 TET4,
+source-native SnSb-facing end TRI3 surfaces used.
+Unit k, one Kelvin Dirichlet between original
+0.4x0.4mm end contacts, lateral insulation:
+effective 3D conduction vs A/L is precisely 1
+to max3.11e-15 deviation. This is expected for
+rectangular homogeneous legs with equipotential
+faces and isothermal boundary faces and confirms
+that 3D mesh alone does not justify a new integrated
+solver: V3.1 axial geometry is exact under these
+constraints. DO NOT call this 3D thermoELECTRIC
+coupling or evidence of actual 3D potential/heat
+uniformity when end temperature and metal spreading
+are nonuniform. V3.1 stays canonical executable
+full-system case, 209.803293K at conditional0.4A.
+Further fidelity should add actually missing physics
+(solder/metal electrical Joule and thermal contact,
+nonuniform end boundary/matched P/N transport) only
+when it changes the same complete current, voltage,
+die temperature and energy balances. No random mesh
+refinements or redundant V4 integrated implementation
+with correction=1. Original P1 Gate B FAIL/STOP,
+first 3D pair raw current FAIL8/8, full C/D NOT RUN,
+as-built temperature UNQUALIFIED. No Codex.
+
 **V3.1 INTEGRATED NATIVE-PAD NONUNIFORM HEAT FEEDBACK (2026-11-07): WORKING END-TO-END PROVISIONAL BASELINE, NUMERICAL PASS; NOT 430-DOMAIN SPATIAL E/T.**
 Read [V3.1 concise original 3D ceramics and 88-leg
 nonuniform heat-feedback report](docs/V3_1_NATIVE_PAD_FEEDBACK_20261107.md),
