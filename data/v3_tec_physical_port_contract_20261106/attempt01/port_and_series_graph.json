@@ -1,0 +1,1159 @@
+{
+  "status": "PASS CAD circuit topology: pin1/pin9 TEC series with all 88 mandatory leg solids; physical electrical/thermal subassembly ports STOP",
+  "analysis_scope": "exact native solid-solid shared-face graph only; no source conductivity nor measured heat/contact values",
+  "source_domains": 430,
+  "source_faces": 2440,
+  "source_solid_solid_faces_used": 557,
+  "conductive_material_labels": [
+    "Au",
+    "COMPOSITE_MULTILAYER",
+    "Cu",
+    "EFFECTIVE_AXIAL_KOVAR_NI_AU",
+    "In52Sn48",
+    "Kovar",
+    "Kovar_pin",
+    "N",
+    "P",
+    "SnBi57_43",
+    "SnSb"
+  ],
+  "conductive_CAD_volumes": 407,
+  "connected_conductor_component_sizes": [
+    389,
+    4,
+    4,
+    4,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "TEC_conductor_component_CAD_volume_count": 389,
+  "TEC_pin_port_face_tags": {
+    "pin1": 2414,
+    "pin9": 2426
+  },
+  "detector_pin_port_face_tags": {
+    "pin7": 2418,
+    "pin8": 2422
+  },
+  "TEC_pin1_pin9_graph_connected": true,
+  "detector_pin7_pin8_without_MCT_graph_connected": false,
+  "detector_pin7_pin8_with_MCT_graph_connected": true,
+  "TEC_pin1_to_detector_pin7_with_MCT_graph_connected": false,
+  "TEC_pin1_to_detector_pin8_with_MCT_graph_connected": false,
+  "HgCdTe_detector_to_two_wedge_native_face_tags": [
+    2336,
+    2337
+  ],
+  "source_leg_articulation_count": 88,
+  "thermal_hot_stack_native_contact_sequence": [
+    {
+      "source_pair_CAD_names": [
+        "VIGO_reference_header",
+        "header_finish_Ni"
+      ],
+      "source_face_tag": 2228,
+      "source_area_mm2": 37.209999999999994,
+      "physical_thermal_law_qualified": false
+    },
+    {
+      "source_pair_CAD_names": [
+        "header_finish_Ni",
+        "hot_mount_In52Sn48"
+      ],
+      "source_face_tag": 2298,
+      "source_area_mm2": 36.0,
+      "physical_thermal_law_qualified": false
+    },
+    {
+      "source_pair_CAD_names": [
+        "hot_mount_In52Sn48",
+        "underside_Au"
+      ],
+      "source_face_tag": 2303,
+      "source_area_mm2": 36.0,
+      "physical_thermal_law_qualified": false
+    },
+    {
+      "source_pair_CAD_names": [
+        "underside_Au",
+        "ceramic0"
+      ],
+      "source_face_tag": 6,
+      "source_area_mm2": 37.209999999999994,
+      "physical_thermal_law_qualified": false
+    }
+  ],
+  "thermal_detector_stack_native_contact_sequence": [
+    {
+      "source_pair_CAD_names": [
+        "ceramic3",
+        "cold_finish_Au"
+      ],
+      "source_face_tag": 119,
+      "source_area_mm2": 4.41,
+      "physical_thermal_law_qualified": false
+    },
+    {
+      "source_pair_CAD_names": [
+        "cold_finish_Au",
+        "carrier_attach_EP29LPSP"
+      ],
+      "source_face_tag": 2314,
+      "source_area_mm2": 2.5600000000000005,
+      "physical_thermal_law_qualified": false
+    },
+    {
+      "source_pair_CAD_names": [
+        "carrier_attach_EP29LPSP",
+        "sapphire_carrier"
+      ],
+      "source_face_tag": 2319,
+      "source_area_mm2": 2.5600000000000005,
+      "physical_thermal_law_qualified": false
+    },
+    {
+      "source_pair_CAD_names": [
+        "sapphire_carrier",
+        "die_attach_EP29LPSP"
+      ],
+      "source_face_tag": 2325,
+      "source_area_mm2": 1.0,
+      "physical_thermal_law_qualified": false
+    },
+    {
+      "source_pair_CAD_names": [
+        "die_attach_EP29LPSP",
+        "p_HgCdTe_photoconductor"
+      ],
+      "source_face_tag": 2330,
+      "source_area_mm2": 1.0,
+      "physical_thermal_law_qualified": false
+    }
+  ],
+  "hot_header_native_exterior_face_tags": [
+    2222,
+    2223,
+    2224,
+    2225,
+    2226,
+    2230,
+    2231,
+    2232,
+    2233,
+    2234,
+    2239,
+    2243
+  ],
+  "hot_header_exterior_faces_are_candidate_sink_ports_only": true,
+  "hot_thermal_sink_BC_qualified": false,
+  "detector_spectral_or_heat_load_boundary_qualified": false,
+  "source_88_series_leg_articulations": [
+    {
+      "chain_index": 0,
+      "CAD_name": "leg0_N",
+      "volume_id": 5,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 6,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 1,
+      "CAD_name": "leg1_P",
+      "volume_id": 8,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 10,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 2,
+      "CAD_name": "leg2_N",
+      "volume_id": 11,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 14,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 3,
+      "CAD_name": "leg3_P",
+      "volume_id": 14,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 18,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 4,
+      "CAD_name": "leg4_N",
+      "volume_id": 17,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 22,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 5,
+      "CAD_name": "leg5_P",
+      "volume_id": 20,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 26,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 6,
+      "CAD_name": "leg6_N",
+      "volume_id": 23,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 30,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 7,
+      "CAD_name": "leg7_P",
+      "volume_id": 26,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 34,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 8,
+      "CAD_name": "leg8_N",
+      "volume_id": 29,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 38,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 9,
+      "CAD_name": "leg9_P",
+      "volume_id": 32,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 42,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 10,
+      "CAD_name": "leg10_N",
+      "volume_id": 35,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 46,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 11,
+      "CAD_name": "leg11_P",
+      "volume_id": 38,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 50,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 12,
+      "CAD_name": "leg12_N",
+      "volume_id": 41,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 54,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 13,
+      "CAD_name": "leg13_P",
+      "volume_id": 44,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 58,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 14,
+      "CAD_name": "leg14_N",
+      "volume_id": 47,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 62,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 15,
+      "CAD_name": "leg15_P",
+      "volume_id": 50,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 66,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 16,
+      "CAD_name": "leg16_N",
+      "volume_id": 53,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 70,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 17,
+      "CAD_name": "leg17_P",
+      "volume_id": 56,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 74,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 18,
+      "CAD_name": "leg18_N",
+      "volume_id": 59,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 78,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 19,
+      "CAD_name": "leg19_P",
+      "volume_id": 62,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 82,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 20,
+      "CAD_name": "leg20_N",
+      "volume_id": 65,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 86,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 21,
+      "CAD_name": "leg21_P",
+      "volume_id": 68,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 90,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 22,
+      "CAD_name": "leg22_N",
+      "volume_id": 71,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 94,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 23,
+      "CAD_name": "leg23_P",
+      "volume_id": 74,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 98,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 24,
+      "CAD_name": "leg24_N",
+      "volume_id": 77,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 102,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 25,
+      "CAD_name": "leg25_P",
+      "volume_id": 80,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 106,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 26,
+      "CAD_name": "leg26_N",
+      "volume_id": 83,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 110,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 27,
+      "CAD_name": "leg27_P",
+      "volume_id": 86,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 114,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 28,
+      "CAD_name": "leg28_N",
+      "volume_id": 89,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 118,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 29,
+      "CAD_name": "leg29_P",
+      "volume_id": 92,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 122,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 30,
+      "CAD_name": "leg30_N",
+      "volume_id": 95,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 126,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 31,
+      "CAD_name": "leg31_P",
+      "volume_id": 98,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 130,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 32,
+      "CAD_name": "leg32_N",
+      "volume_id": 101,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 134,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 33,
+      "CAD_name": "leg33_P",
+      "volume_id": 104,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 138,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 34,
+      "CAD_name": "leg34_N",
+      "volume_id": 107,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 142,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 35,
+      "CAD_name": "leg35_P",
+      "volume_id": 110,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 146,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 36,
+      "CAD_name": "leg36_N",
+      "volume_id": 113,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 150,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 37,
+      "CAD_name": "leg37_P",
+      "volume_id": 116,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 154,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 38,
+      "CAD_name": "leg38_N",
+      "volume_id": 119,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 158,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 39,
+      "CAD_name": "leg39_P",
+      "volume_id": 122,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 162,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 40,
+      "CAD_name": "leg40_N",
+      "volume_id": 125,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 166,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 41,
+      "CAD_name": "leg41_P",
+      "volume_id": 128,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 170,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 42,
+      "CAD_name": "leg42_N",
+      "volume_id": 131,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 174,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 43,
+      "CAD_name": "leg43_P",
+      "volume_id": 134,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 178,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 44,
+      "CAD_name": "leg44_N",
+      "volume_id": 137,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 182,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 45,
+      "CAD_name": "leg45_P",
+      "volume_id": 140,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 186,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 46,
+      "CAD_name": "leg46_N",
+      "volume_id": 143,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 190,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 47,
+      "CAD_name": "leg47_P",
+      "volume_id": 146,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 194,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 48,
+      "CAD_name": "leg48_N",
+      "volume_id": 149,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 198,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 49,
+      "CAD_name": "leg49_P",
+      "volume_id": 152,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 202,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 50,
+      "CAD_name": "leg50_N",
+      "volume_id": 155,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 206,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 51,
+      "CAD_name": "leg51_P",
+      "volume_id": 158,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 210,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 52,
+      "CAD_name": "leg52_N",
+      "volume_id": 161,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 214,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 53,
+      "CAD_name": "leg53_P",
+      "volume_id": 164,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 218,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 54,
+      "CAD_name": "leg54_N",
+      "volume_id": 167,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 222,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 55,
+      "CAD_name": "leg55_P",
+      "volume_id": 170,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 226,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 56,
+      "CAD_name": "leg56_N",
+      "volume_id": 173,
+      "polarity": "N",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 230,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 57,
+      "CAD_name": "leg57_P",
+      "volume_id": 176,
+      "polarity": "P",
+      "stage": 0,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 234,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 58,
+      "CAD_name": "leg58_N",
+      "volume_id": 179,
+      "polarity": "N",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 246,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 59,
+      "CAD_name": "leg59_P",
+      "volume_id": 182,
+      "polarity": "P",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 250,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 60,
+      "CAD_name": "leg60_N",
+      "volume_id": 185,
+      "polarity": "N",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 254,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 61,
+      "CAD_name": "leg61_P",
+      "volume_id": 188,
+      "polarity": "P",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 258,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 62,
+      "CAD_name": "leg62_N",
+      "volume_id": 191,
+      "polarity": "N",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 262,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 63,
+      "CAD_name": "leg63_P",
+      "volume_id": 194,
+      "polarity": "P",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 266,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 64,
+      "CAD_name": "leg64_N",
+      "volume_id": 197,
+      "polarity": "N",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 270,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 65,
+      "CAD_name": "leg65_P",
+      "volume_id": 200,
+      "polarity": "P",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 274,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 66,
+      "CAD_name": "leg66_N",
+      "volume_id": 203,
+      "polarity": "N",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 278,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 67,
+      "CAD_name": "leg67_P",
+      "volume_id": 206,
+      "polarity": "P",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 282,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 68,
+      "CAD_name": "leg68_N",
+      "volume_id": 209,
+      "polarity": "N",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 286,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 69,
+      "CAD_name": "leg69_P",
+      "volume_id": 212,
+      "polarity": "P",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 290,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 70,
+      "CAD_name": "leg70_N",
+      "volume_id": 215,
+      "polarity": "N",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 294,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 71,
+      "CAD_name": "leg71_P",
+      "volume_id": 218,
+      "polarity": "P",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 298,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 72,
+      "CAD_name": "leg72_N",
+      "volume_id": 221,
+      "polarity": "N",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 302,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 73,
+      "CAD_name": "leg73_P",
+      "volume_id": 224,
+      "polarity": "P",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 306,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 74,
+      "CAD_name": "leg74_N",
+      "volume_id": 227,
+      "polarity": "N",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 310,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 75,
+      "CAD_name": "leg75_P",
+      "volume_id": 230,
+      "polarity": "P",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 314,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 76,
+      "CAD_name": "leg76_N",
+      "volume_id": 233,
+      "polarity": "N",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 318,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 77,
+      "CAD_name": "leg77_P",
+      "volume_id": 236,
+      "polarity": "P",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 322,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 78,
+      "CAD_name": "leg78_N",
+      "volume_id": 239,
+      "polarity": "N",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 326,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 79,
+      "CAD_name": "leg79_P",
+      "volume_id": 242,
+      "polarity": "P",
+      "stage": 1,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 330,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 80,
+      "CAD_name": "leg80_N",
+      "volume_id": 245,
+      "polarity": "N",
+      "stage": 2,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 342,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 81,
+      "CAD_name": "leg81_P",
+      "volume_id": 248,
+      "polarity": "P",
+      "stage": 2,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 346,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 82,
+      "CAD_name": "leg82_N",
+      "volume_id": 251,
+      "polarity": "N",
+      "stage": 2,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 350,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 83,
+      "CAD_name": "leg83_P",
+      "volume_id": 254,
+      "polarity": "P",
+      "stage": 2,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 354,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 84,
+      "CAD_name": "leg84_N",
+      "volume_id": 257,
+      "polarity": "N",
+      "stage": 2,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 358,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 85,
+      "CAD_name": "leg85_P",
+      "volume_id": 260,
+      "polarity": "P",
+      "stage": 2,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 362,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 86,
+      "CAD_name": "leg86_N",
+      "volume_id": 263,
+      "polarity": "N",
+      "stage": 2,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 366,
+      "is_mandatory_graph_articulation": true
+    },
+    {
+      "chain_index": 87,
+      "CAD_name": "leg87_P",
+      "volume_id": 266,
+      "polarity": "P",
+      "stage": 2,
+      "pin1_pin9_connection_after_removal": false,
+      "pin1_reachable_conductor_domains_after_removal": 370,
+      "is_mandatory_graph_articulation": true
+    }
+  ],
+  "interstage_nonleg_connections": [
+    {
+      "stage_transition_after_leg_index": 57,
+      "source_net_index": 58,
+      "native_distinct_net_domains": [
+        "net58_plane0.500_Cu",
+        "net58_plane1.600_Cu"
+      ],
+      "native_net_domain_ids": [
+        327,
+        328
+      ],
+      "source_connected_without_P_or_N_leg": true,
+      "source_intermediates_CAD_names": [
+        "tab_joint0",
+        "formed_tab58",
+        "tab_joint1"
+      ],
+      "local_conductive_path_CAD_names": [
+        "net58_plane0.500_Cu",
+        "tab_joint0",
+        "formed_tab58",
+        "tab_joint1",
+        "net58_plane1.600_Cu"
+      ],
+      "interpretation": "CAD connectivity only; physical solder/contact and tensor laws UNSET"
+    },
+    {
+      "stage_transition_after_leg_index": 79,
+      "source_net_index": 80,
+      "native_distinct_net_domains": [
+        "net80_plane1.600_Cu",
+        "net80_plane2.700_Cu"
+      ],
+      "native_net_domain_ids": [
+        350,
+        351
+      ],
+      "source_connected_without_P_or_N_leg": true,
+      "source_intermediates_CAD_names": [
+        "tab_joint2",
+        "formed_tab80",
+        "tab_joint3"
+      ],
+      "local_conductive_path_CAD_names": [
+        "net80_plane1.600_Cu",
+        "tab_joint2",
+        "formed_tab80",
+        "tab_joint3",
+        "net80_plane2.700_Cu"
+      ],
+      "interpretation": "CAD connectivity only; physical solder/contact and tensor laws UNSET"
+    }
+  ],
+  "TEC_input_pin1_to_stage0_net0_conductor_path": [
+    "pin1",
+    "lead1_pin_joint",
+    "TEC_lead1",
+    "lead1_land_joint",
+    "net0_plane0.500_Cu"
+  ],
+  "TEC_output_pin9_to_net88_conductor_path": [
+    "pin9",
+    "lead9_pin_joint",
+    "TEC_lead9",
+    "lead9_land_joint",
+    "net88_plane0.500_Cu"
+  ],
+  "selected_actual_first_pair": {
+    "native_N_and_P_leg_volume_ids": [
+      5,
+      8
+    ],
+    "net0_net2_volume_ids": [
+      269,
+      271
+    ],
+    "net0_net2_are_real_package_external_CAD_faces": false,
+    "net0_downstream_external_connection_to_lead1_face_tag": 1531,
+    "net2_downstream_connection_to_leg2_solder_face_tag": 162,
+    "selected_11_source_volumes": [
+      1,
+      2,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      269,
+      270,
+      271
+    ],
+    "selected_entire_source_ceramic0_and_ceramic1": true,
+    "selected_union_external_to_selection_faces": 132,
+    "selected_union_external_to_selection_face_classes": {
+      "SOLID_SOLID": 73,
+      "GAS_SOLID": 59,
+      "EXTERIOR": 0
+    },
+    "true_electrical_bcs": "NOT ASSIGNED; only package pin1 and pin9 are TEC terminals",
+    "hypothetical_cut_ports": "UNRELEASED: net0/net2 are connected to rest of real 88-leg circuit",
+    "true_hot_and_cold_thermal_bcs": "NOT ASSIGNED; whole ceramic0/ceramic1 exchange with remaining 86 legs and gas",
+    "subassembly_PDE": "NOT RUN",
+    "physical_subassembly_port_readiness": "STOP"
+  },
+  "required_inputs": {
+    "TEC_drive": "Measured pin1 to pin9 terminal I-V or imposed current; conductivity tensors and finite joining resistances must be assigned first",
+    "TEC_heat_boundary": "Physical hot-side source/sink and cooling load, including full ceramic spreading and next-stage heat, not arbitrary adiabatic cuts",
+    "isolated_couple_model": "Only a separately declared circuit/thermal network reduction with mathematical cut-boundary ports and independently supplied states/impedances; not measured physical pins",
+    "detector_bias": "pin7/pin8 are a separate HgCdTe-linked circuit; not the pin1/pin9 TEC power loop"
+  },
+  "original_P1_Gate_B": "FAIL/STOP",
+  "prospective_P2_Gate_B": "STOP",
+  "thermal_C_D": "NOT RUN",
+  "physical_material_and_face_law_release": "STOP",
+  "source_geometry_mesh_modified": false,
+  "new_PDE_runs": 0,
+  "source_input_sha256": {
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/v3_physical_law_readiness_20261106/attempt01/law_and_subassembly_inventory.json": "fad40e2837f6e3c36d47bc24a167940ea26c810671bb1d927ed35ae40db3660d",
+    "data/v3_interconnect_et_20261102/B/gate_B.json": "46993813dfa478fbd3527a02aec02226ef85545bb7c03ec91a80f4f3e9c4a1b0"
+  }
+}

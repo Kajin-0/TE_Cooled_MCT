@@ -51,6 +51,43 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**CURRENT PHYSICAL PORT RESULT — November 6: exact native 88-leg electrical series network PASS, physical heat and electrical coefficients STOP.**
+Read [source CAD pin and thermal-port engineering contract](docs/V3_TEC_PHYSICAL_PORT_CONTRACT_20261106.md),
+[original 557 solid-solid face circuit graph and verified 88 leg articulation receipts](data/v3_tec_physical_port_contract_20261106/attempt01/port_and_series_graph.json),
+and [reproducible no-solve original source graph auditor](scripts/v3_tec_electrical_port_contract.py).
+Actual TEC package electric pin1 exterior face2414 volume424 and
+pin9 exterior face2426 volume427 are in same native 389-volume
+conductor component. All88 actual original P/N leg solids are
+MANDATORY pin1-to-pin9 articulation vertices: removing any one
+opens the geometric circuit. Physical stage0 29 couples,
+stage1 11, stage2 4, with original interstage non-P/N formed
+tab58 and tab80 paths both verified; no ideal-zero-resistance
+junction law assumed. Package pins7 exterior face2418
+and8 exterior face2422 are SEPARATE detector branches
+joined by actual active HgCdTe volume408 using original
+face2336/2337, never joined to TEC via original conductor
+faces. Native TEC pin feedthroughs to first net0 and final
+net88 documented; net0 and net2 within first N/P pair are
+INTERNAL, not physical independent terminal faces.
+Selected 11 source solids include entire ceramics0/1,
+132 exterior-to-selection cut faces (73 solid-solid,
+59 gas-solid), requiring explicit physical external
+network/thermal coupling, NOT blind insulation.
+Native hot-side heat stack original face tags
+2228/2298/2303/6 (header, Ni finish, In52Sn48, Au,
+ceramic0) and cold detector path119/2314/2319/2325/2330
+(ceramic3, Au, EP29LPSP, sapphire, EP29LPSP, HgCdTe)
+are geometric verified contacts ONLY. Header has12 real
+exterior CAD sink-candidate faces; sink mounting and
+temperature/contact laws remain UNASSIGNED.
+Thus source electrical terminal identities/leg topology
+GEOMETRIC PASS but no physical I-V, leakage, thermal
+conductance, detector operating temperature or material
+parameter release. Keep source430 CAD volumes/2440 faces,
+original P1 GateB FAIL, P2 STOP, thermal C/D NOT RUN.
+Do NOT run PDE or invent thermal/electric cut ports,
+material coefficients or boundary conditions. No Codex.
+
 **CURRENT PHYSICAL PROJECT PRIORITY (2026-11-06) — COMPLETE 430-DOMAIN AND 2440-FACE SOURCE LAW INVENTORY, ACTUAL N/P CAD PAIR CONNECTIVITY PASS; PHYSICAL SOLVE STOP.**
 Review [physical electrothermal law and actual couple readiness report](docs/V3_PHYSICAL_LAW_AND_COUPLE_READINESS_20261106.md),
 [all exact source-keyed volume/face law rows, source hashes, P/N chain and missing-data ledger](data/v3_physical_law_readiness_20261106/attempt01/law_and_subassembly_inventory.json)
