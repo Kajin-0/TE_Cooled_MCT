@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/work/scripts/v3_first_couple_coupled_3d.py", line 511, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/work/scripts/v3_first_couple_coupled_3d.py", line 510, in main
+    run(read(opts.registration),opts.output,opts.verify_only)
+  File "/work/scripts/v3_first_couple_coupled_3d.py", line 493, in run
+    with out.open('x') as f:json.dump(o,f,indent=2);f.write('\n')
+                            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/usr/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable

@@ -1,0 +1,72 @@
+{
+  "scientific_disposition": "One conditional original source-CAD first couple nine-conductor 3D coupled TE attempt; no OEM/as-built or prior GateB reclassification",
+  "current_A": 0.05,
+  "T_hot_K": 298.0,
+  "T_cold_K": 296.0,
+  "current_inlet_face": 1531,
+  "current_outlet_face": 162,
+  "hot_ideal_ceramic_pad_faces": [
+    8,
+    9
+  ],
+  "cold_ideal_ceramic_pad_faces": [
+    44
+  ],
+  "side_electric_and_thermal_conditions": "electrically insulated and adiabatic except source current and prescribed ideal pad temperatures; original excluded TEC network NOT simulated",
+  "research_specimen_transport": "Zhang2025 P-HE/N-HE-1 40-300K unmatched, source-only interpolation; S(T),rho(T),k(T) all polarities",
+  "P_N_seebeck_opposite_signs": true,
+  "source_solder_materials": "Original v3 GateB bulk SnSb hypothetical rho1.7e-7 Ohm*m, k45 W/mK, S=0",
+  "source_laminate": "Original v3 GateB NOM hypothetical anisotropic effective 5-layer Ti/TiW/Cu/Ni/Au thermal and electrical tensors, S=0",
+  "r_e_ohm_m2": 1e-11,
+  "r_th_m2_K_W": 1e-07,
+  "interfaces": "Original eight solder contacts with identical deliberately hypothetical r_e/r_th, symmetric half-interface Joule energy, no independent interfacial thermopower",
+  "one_case_no_parameter_sweep": true,
+  "max_picard_steps": 35,
+  "picard_mix": 0.6,
+  "temperature_picard_abs_tolerance_K": 1e-08,
+  "min_accepted_temperature_K": 180.0,
+  "max_accepted_temperature_K": 300.0,
+  "electrical_residual_gate_A": 1e-08,
+  "energy_residual_gate_W": 1e-08,
+  "energy_global_gate_relative": 1e-07,
+  "source_9_region_ids": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    269,
+    270,
+    271
+  ],
+  "original_B": "FAIL/STOP",
+  "prospective_P2": "STOP",
+  "full_C_D": "NOT RUN",
+  "source_input_SHA256": {
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/v3_tec_contact_scale_20261107/attempt01/conditional_contact_scale.json": "214cc5de3b27fa4e8c0ebf8d408bcaf1649f4acd1e83ad097cb7a54164b13892",
+    "data/v3_tec_physical_port_contract_20261106/attempt01/port_and_series_graph.json": "7130b314f7a54c82f6a8e4e6a1afc992727ccde77af639be6121d8c1ce4b00f7",
+    "data/g2c/zhang2025_he_40_300_v2.json": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+    "tecooledmct/graded_tec.py": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "tecooledmct/v3_et_fem.py": "08f91dc5ac85049034c9ca33bb7943358acbe1b757cad9843c3a713219fd5cca",
+    "tecooledmct/material_profiles.py": "b332771e082c5e389cfdb819b184cd710f8ae7992cb597cf37b26aabc06ee7d6"
+  },
+  "source_original_mesh_SHA256": {
+    "nodes": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+    "faces": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18",
+    "tets": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570"
+  },
+  "script_SHA256": "b4a12a8f7893588f80ab3454ca5c1df8678749427750986a8f5a93e263ea7d93",
+  "runtime_limits": {
+    "wall_s": 120,
+    "cpu": 4,
+    "RAM_GiB": 5,
+    "run_attempts": 1
+  },
+  "registered_after_preflight_mesh_parser_repair": true,
+  "weak_interface_series_current_relative_gate": 1e-07,
+  "prior_failed_diagnostic_attempt_path": "/var/tmp/v3_r3_first_couple_20261107/attempt01",
+  "reason_for_new_attempt": "Correct native face owner orientation, which was triangle-dependent in attempt01 and cancelled signed contact current diagnostics; no change to physical parameters, geometry or electrical/thermal matrix"
+}

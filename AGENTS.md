@@ -51,6 +51,62 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-07 FIRST ORIGINAL SOURCE 9-CONDUCTOR 3D N/P THERMOELECTRIC COUPLED PROTOTYPE: WEAK CONSERVATION PASS, ALL 8 RAW CONTACT CURRENT CUTS FAIL.**
+Read [coupled original CAD source nine-domain P1 engineering report and crucial raw flux failure](docs/V3_FIRST_SOURCE_COUPLE_3D_COUPLED_20261107.md),
+[complete original 3D V/T saved fields at conditional test](data/v3_first_couple_coupled_20261107/attempt04/result.json),
+[independent NO SOLVE saved-field power/current/energy audit](data/v3_first_couple_coupled_20261107/attempt04/saved_field_independent_audit.json),
+[all attempt histories/metadata and source SHA](data/v3_first_couple_coupled_20261107/manifest.json),
+[3D coupled source operator](scripts/v3_first_couple_coupled_3d.py) and
+[read-only independent field audit](scripts/v3_first_couple_saved_field_audit.py).
+Real saved R3.9 source mesh original nine conductor source IDs
+5,6,7,8,9,10,269,270,271; 1000 actual tetra, 454 disjoint
+region/nodal DOFs per electric and temperature field.
+Original internal source contact tags124/125/130/135/140/
+141/146/151 = 112 TRI3 facets; mathematically defined
+series current cuts faces1531/162 are NOT independently
+accessible external package terminals; ceramic pad interfaces
+hot8/9 and cold44 idealized Dirichlet T.
+Conditional current0.05A, hot-pad298K, cold-pad296K,
+P/N dissimilar Zhang original measured source 40-300K,
+old nominal GateB solder and laminate bulk proxies and
+COMPLETELY UNMEASURED r_e1e-11Ohm*m2,
+r_th1e-7m2K/W.
+Charge J=-sigma(gradV+SgradT), heat q=ST J-kgradT,
+TOTAL energy F=q+VJ continuity, finite interface Joule
+shared halves; interfacial Seebeck term handled by
+total energy, not pure Fourier heat flux.
+One source-P1 3D coupled conditional numerical field
+converged 20 Picard steps: terminal V=.004210119V,
+P=.00021050594W; electrical independent breakdown
+bulk Joule .00016844927W + Seebeck signed
+.00004058390W + interface Joule .00000147277W,
+relative error1.39e-12; signed hot/cold energy reactions
++.004419430W / -.004208924W, residual4.40e-10
+relative. All original eight weak contact currents
+abs0.05A with worst2.21e-12 relative residual. HOWEVER
+ALL EIGHT original contact RAW one-sided constitutive
+P1 gradient currents FAIL prospective0.1% gate,
+worst original source face146 discrepancy368.62% of
+imposed source current. Do NOT call this numerically
+fully qualified contact FEM. Source T=295.983..298.017K
+is a conditional FIELD RESPONSE to prescribed
+296/298K ceramic boundaries, NOT actual cooler temp.
+Four preserved attempts: orientation diagnostic issue
+attempt01, source owner order fixed attempt02,
+attempt03 JSON scalar export failure retained, final
+attempt04 complete saved source fields and independent
+audit with NO new PDE. All current 430/2440 material
+laws remain UNSET. Historical original Gate B P1
+FAIL/STOP (not changed); P2 prospective STOP; real
+430-domain C/D NOT RUN. Further arbitrary P1 contact
+parameter sweeps are CHURN: prioritize prospective
+mixed/equilibrated H(div) current flux with independent
+mesh and interface checks, or obtain actual contact/
+material/thermal data. Do not retrofit weak reaction
+as previous raw-current pass, nor invent calibrated
+detector cooling. No source mesh/CAD/Rev3 changes
+or Codex usage.
+
 **2026-11-07 ORIGINAL SOURCE TEC SOLDER + FINITE JUNCTION PHYSICS SCALE: 352 exact CAD source interfaces, explicit future full-physics contact measurement target; NO PDE.**
 Read [exact original 88-leg solder electrical/thermal
 planning scales and future coupled 3D gate](docs/V3_TEC_SOURCE_CONTACT_SCALE_AND_COUPLED_INPUT_GATE_20261107.md),

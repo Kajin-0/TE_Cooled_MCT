@@ -1,0 +1,50 @@
+{
+  "status": "CONDITIONAL 3D COUPLED N/P SOURCE SUBASSEMBLY weak charge/energy PASS; ALL EIGHT RAW SOURCE CONTACT FLUX CUTS FAIL 0.1%; no physical full TEC qualification",
+  "baseline_commit": "8dd6253812d3fb273eb27ebfe1d4da9ee112c8da",
+  "source_geometry_changed": false,
+  "source_mesh_changed": false,
+  "original_3D_C_D": "NOT RUN",
+  "original_Gate_B": "FAIL/STOP",
+  "new_prospective_raw_current_gate": "FAIL (8 of 8 original contact interfaces)",
+  "new_prospective_weak_current_and_energy": "PASS only for explicitly hypothetical source cut/bath case",
+  "attempts": {
+    "attempt01": "Original face mesh header parsing repaired before first recorded run; solve output had inconsistent triangle-wise owner orientations and signed current cancellation. Retain.",
+    "attempt02": "Native owner orientation fixed; correct 0.05A weak interface currents; independently resolved raw P1 gradient FAIL (8/8). Retain.",
+    "attempt03": "Original incomplete JSON bytes preserved losslessly in result.partial.json.gz; numerical checks passed, JSON int64 serialization failed after calculation.",
+    "attempt04": "Only NumPy JSON scalar serialization repaired; same source mesh, same 0.05A, same 298/296K ideal bath and hypothetical coefficients; final complete prospective record."
+  },
+  "exact_script_SHA256": "848f6dc8fc897f27a1bf960a44e65f7e3fe86fb5292e1f3630331ae972fa6d2a",
+  "source_input_SHA256": {
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/v3_tec_contact_scale_20261107/attempt01/conditional_contact_scale.json": "214cc5de3b27fa4e8c0ebf8d408bcaf1649f4acd1e83ad097cb7a54164b13892",
+    "data/v3_tec_physical_port_contract_20261106/attempt01/port_and_series_graph.json": "7130b314f7a54c82f6a8e4e6a1afc992727ccde77af639be6121d8c1ce4b00f7",
+    "data/g2c/zhang2025_he_40_300_v2.json": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+    "tecooledmct/graded_tec.py": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "tecooledmct/v3_et_fem.py": "08f91dc5ac85049034c9ca33bb7943358acbe1b757cad9843c3a713219fd5cca",
+    "tecooledmct/material_profiles.py": "b332771e082c5e389cfdb819b184cd710f8ae7992cb597cf37b26aabc06ee7d6"
+  },
+  "source_original_mesh_SHA256": {
+    "nodes": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+    "faces": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18",
+    "tets": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570"
+  },
+  "archived_attempt_files_SHA256": {
+    "attempt01/registration.json": "bb0d583ff9736458a6dd968a077356beff8f51613bb31e6a5ae180f6df89cb56",
+    "attempt01/result.json": "1054c29baa4f88c8e277f8b0ec68f20aefe07a70d376a7dd5f2fca5e9876e106",
+    "attempt01/run.log": "98401ce9ae06b6bd186c79f9ea3c36dcee8cfcf2ebefa100c2c4107e2587f405",
+    "attempt02/registration.json": "3578211f06a2132d60deb8f8544b14fca396e1ad9998aad51596b9edeef3f116",
+    "attempt02/result.json": "360eed261148acd9cb0c6b9002d402875fed5859641def37e8d9998a81e4ccb7",
+    "attempt02/run.log": "f7e3a519d9f2279497d9bbc06efe945f239545aae94908f5689adbe7ba0fccd5",
+    "attempt03/registration.json": "926ad7ee43f56062b8fccfcba65a57ec96f88c431d8859d677180a01a2f58bf0",
+    "attempt03/run.log": "5a90f1a0db84217c9dbf075e33cc7090953783abcd3ed249bd586bdcc96207fd",
+    "attempt04/registration.json": "8f889cd90d40329b3f1dc7ad4edaf316e1bf216284d8aa1ef3b8921a6c5b618c",
+    "attempt04/result.json": "d997198bb237d7af2f8d1a0e7f79dbadbe241a3f94bc2b23ca698f514fe6591e",
+    "attempt04/run.log": "ae384c93828f59fe5c2ef9bdd7715cf9e783158c05194ff77128eacf55ee91de",
+    "attempt03/result.partial.json.gz": "477e0fddc606f3ed434a328b9cc7feb6d51da1b8d612719026c0fe1d6266df60"
+  },
+  "coefficient_status": "Hypothetical research unmatched P/N, previous coupon SnSb and laminate proxies, hypothetical finite contact; NO manufacturer release",
+  "full_as_built_temperature_prediction": "NOT QUALIFIED",
+  "codex_used": false,
+  "failed_attempt03_incomplete_uncompressed_SHA256": "a9d4164c576f44085140ed6eda21e91fe19d5c0a0b8cb253b2fe8cd0666881d6"
+}
