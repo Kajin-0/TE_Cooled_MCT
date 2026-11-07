@@ -1,0 +1,65 @@
+{
+  "status": "SOURCE-QUALIFIED DESIGN GUIDANCE ACQUIRED; PHYSICAL AS-BUILT SINK CONTACT AND FULL TEC STILL STOP",
+  "OEM": {
+    "manufacturer": "VIGO Photonics",
+    "title": "Thermoelectric cooling, heat sinking",
+    "revision": "V3.0 11.09.2025",
+    "document_url": "https://vigophotonics.com/app/uploads/2024/07/Thermoelectric-cooling-heat-sinking.pdf",
+    "document_page": 1,
+    "recommended_heatsink_to_environment_thermal_resistance_K_per_W_1TE_2TE_3TE": 2.0,
+    "recommended_heatsink_to_environment_thermal_resistance_K_per_W_4TE": 1.0,
+    "mounting_instruction": "Detector header BASE firmly attached to sink using thin heat-conductive epoxy or silicone thermal grease; cap/screw-only insufficient",
+    "heat_concentration_at_header_base": "nearly all TEC heat leaves header base (OEM qualitative guidance)",
+    "source_is_general_guidance_not_specific_product_mount_measurement": true,
+    "external_manufacturer_PDF_bytes_in_repository": false
+  },
+  "thermal_path_topology": [
+    "cold detector/TEC ceramic source",
+    "Al2O3 ceramic0 bulk",
+    "Au composite and joint contacts: UNKNOWN",
+    "In52Sn48 mount solder bulk",
+    "Ni composite and joint contacts: UNKNOWN",
+    "3D Kovar header",
+    "header/radiator thermal grease or epoxy interface: UNKNOWN",
+    "radiator external heat sink to 300K surrounding"
+  ],
+  "component_R_K_W": {
+    "ceramic0_through_thickness_1D_analog": 0.4479082683866345,
+    "hot_In52Sn48_1D_hypothesis": 0.07407407407407408,
+    "Kovar_header_original_mesh_3D_one_BC": 1.5770352919497193,
+    "radiator_heatsink_to_environment_OEM_typical_recommendation": 2.0
+  },
+  "component_R_sum_K_W_if_these_all_apply": 4.099017634410428,
+  "sum_definition": "illustrative sequential path only; actual 3D solder-pad and ceramic lateral conduction plus contact coupling need independent qualification",
+  "unknown_R_contact_K_W": null,
+  "unknown_R_composite_effective_K_W": null,
+  "unknown_R_3D_ceramic_spreading_K_W": null,
+  "unknown_R_header_external_clamp_patch_K_W": null,
+  "installed_radiator_R_to_ambient_measured_K_W": null,
+  "source_prior_Q_conditional_W": 0.5870297614967063,
+  "illustrative_deltaT_across_named_component_sum_K": 2.4062453442987466,
+  "illustrative_hot_temperature_if_no_unknowns_K": 302.4062453442987,
+  "header_3D_rise_K": 0.9257666513051322,
+  "solder_1D_rise_K": 0.04348368603679306,
+  "alumina_1D_rise_K": 0.26293548396340877,
+  "radiator_typical_recommendation_rise_K": 1.1740595229934125,
+  "ratio_known_to_previous_entire_effective_sink_5K_W": 0.8198035268820856,
+  "do_not_add_components_to_previous_effective_R5_K_W": true,
+  "do_not_equate_OEM_recommended_2K_W_with_header_mount_interface": true,
+  "do_not_call_illustrative_hot_temperature_a_coupled_prediction": true,
+  "no_new_3D_or_reduced_PDE_solutions": true,
+  "as_built_qualified": false,
+  "source_input_sha256": {
+    "data/v3_hot_mount_readiness_20261107/attempt01/thermal_path_audit.json": "c432a5d67009bbda603ad9340d302c3dd4deb5fc7c6177d9d80609750d18bc43",
+    "data/v3_r3_header_spreading_20261107/attempt01/result.json": "ad164e8908cc09fd1e2fa508689da02795b18373e1676ac190ced02d42ae70a8",
+    "data/v3_tec_source_identity_20261107/attempt01/source_identity_gate.json": "689bdeb5ef89789a7714020f5cb1f5b6fad17fc57324ede1ff78a9a09024d8a8",
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f"
+  },
+  "gates": {
+    "P1_original_B": "FAIL/STOP",
+    "P2_candidate": "STOP",
+    "full_3D_thermal_C_D": "NOT RUN",
+    "actual_430_2440_property_release": "STOP",
+    "OEM_CAD_identity": "UNKNOWN"
+  }
+}

@@ -51,6 +51,40 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-07 VERIFIED OEM 3TE HEAT-SINK GUIDANCE: ~2K/W radiator TO AMBIENT recommendation, NOT contact or as-built 430-domain sink release.**
+Read [VIGO 2025 manufacturer source / source-CAD conditional heat path and remaining TIM gap](docs/V3_R3_OEM_SINK_BOUNDARY_EVIDENCE_20261107.md),
+[SHA-pinned reference thermal budget](data/v3_oem_sink_boundary_20261107/attempt01/boundary_evidence.json)
+and [no-solve audit script](scripts/v3_oem_sink_boundary_evidence.py).
+VIGO original manufacturer PDF rev V3.0 Sep11 2025,
+https://vigophotonics.com/app/uploads/2024/07/Thermoelectric-cooling-heat-sinking.pdf,
+recommends ~2K/W HEATSINK-to-ambient capability for
+1TE/2TE/3TE and ~1K/W for4TE; base header firmly
+attached with thin thermally conductive epoxy/grease;
+cap or screw alone insufficient. This DOES NOT provide
+a numerical header/grease/sink-contact R, installed
+sink performance or prove VIGO + TEC Microsystems
+synthetic CAD equals an as-built product.
+Separating source header 3D one-condition1.577035K/W,
+hypothesis mount InSn solder 1D .074074K/W, alumina
+AD995 analogy 1D .447908K/W and OEM radiator design
+recommendation2K/W gives an *illustrative* component
+sum4.099018K/W before UNKNOWN interfacial contact,
+composite k tensor and ceramic spreading; this is
+not rigorous bound, validated whole-assembly R or
+coupled calculated hot ceramic temperature.
+Using prior conditional heat Q=.58702976W gives
+illustrative component drops .926,.0435,.263,1.174 K
+(~2.406 K sum), but NOT a new solved TEC temperature.
+NEVER add these parts to previous reduced whole-path
+effective R_sink=5K/W (double counting).
+Next actual physical progress requires measured
+header-base-to-ambient temperature/heat flow and
+mount TIM thickness/contact footprint/pressure or
+source-characterized fixture sink. No new FEM/mesh,
+Codex, revised Gate B or physical law release.
+Historical original P1 GateB FAIL/STOP, P2 candidate
+STOP, full 430-domain thermal C/D NOT RUN.
+
 **2026-11-07 FIRST ORIGINAL R3.9 3D KOVAR HEADER-ONLY SPREADING: NUMERICAL PASS under ONE hypothetical isothermal underside BC, PHYSICAL PORT STILL STOP.**
 Read [original source-header 47702-tet numerical report](docs/V3_R3_HEADER_ONE_CONDITION_3D_SPREADING_20261107.md),
 [preregistered source-hashed 3D results](data/v3_r3_header_spreading_20261107/attempt01/result.json),
