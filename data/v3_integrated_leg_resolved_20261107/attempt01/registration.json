@@ -1,0 +1,45 @@
+{
+  "version": "V3 first source-resolved 88-leg local ceramic contact temperatures + existing 32-interval nonlinear P/N stages, same .4A complete package",
+  "parent_commit": "7426b9cda14950a714cea71050bffd81ac81f174",
+  "source_operating_point": {
+    "current_A": 0.4,
+    "ambient_K": 300.0,
+    "die_heat_W": 0.002,
+    "optical_heat_W": 0.0,
+    "die_attach_k_W_mK": 1.0,
+    "cavity_gas_and_radiation": "OFF"
+  },
+  "88_leg_mapping": "exact original native leg-solder-metal-ceramic face graph, no nearest-neighbor guesses",
+  "local_T_from_3D": "exact TRI3-area-mean original ceramic 3D unit heat field on actual metal contact face, subtract respective all-pad area mean, scale by same ceramic through-heat",
+  "ceramic_heat_distribution_assumption": "V2 frozen uniform total heat per respective source metal pad area; leg-specific heat redistribution NOT yet solved as a spatial source term",
+  "stage_couples": [
+    29,
+    11,
+    4
+  ],
+  "leg_transport": "unchanged Zhang2025 unmatched 40-300K P and N nonlinear, 32 axial intervals and >300K assumed continuation; each leg individual hot/cold boundary",
+  "spatial_3D_PN_bulk_current_PDE": "NOT RUN",
+  "full_430_coupled_3D_C_D": "NOT RUN",
+  "first_pair_P1_raw_contact": "FAIL 8/8",
+  "original_P1_Gate_B": "FAIL/STOP",
+  "one_operating_point_only": true,
+  "max_allowed_global_energy_residual_W": 1e-08,
+  "max_allowed_individual_leg_energy_residual_W": 1e-09,
+  "max_allowed_interface_temperature_closure_K": 1e-07,
+  "max_allowed_stage_heat_balance_W": 1e-08,
+  "baseline_V2_die_K": 209.65824282752078,
+  "source_sha256": {
+    "V2_full_result": "00ae69123efd0d635134dc19a278a62f6ce6fdd516b5da9e86f97e7de90b77d5",
+    "original_3D_ceramic_operator": "79901e99311141314f331b5dd06bc0784de99eb01351210d520eac5fa533e4b7",
+    "saved_original_ceramic_field": "26908d275639282aba7480b5f6aa7694718b7c990f3c98da0b1d7c2898ecfd35",
+    "original_430_domain_face_owner_metadata": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "original_824_body_design": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "original_1D_TE_transport": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "original_PN_source_transport": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "V2_source_geometry": "9787b06849c93cd4a268611f288543a972810e15381137e181158fa06008fc52",
+    "V2_nonlinear_integrator": "83c8bf8d237380758335d200235684cc5b77843b9540f169a7254d24b552dd87",
+    "V2_hot_side_reference": "9bfe0e7d5ff2933f9d48442bd769b101499f9f7edeaa377648e122f394c71e49"
+  },
+  "original_R3_face_mesh_sha256": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18",
+  "source_script_sha256": "9bc6b3f71d140a586f7657c2177e465aa3b048d95d4cedfcf5930ba92dc2b560"
+}

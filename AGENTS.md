@@ -1,5 +1,56 @@
 # CURRENT PROJECT CONTRACT
 
+**V3 COMPLETE 88-LEG SOURCE-CAD SPATIAL NONLINEAR THERMOELECTRIC HYBRID WORKING BASELINE (2026-11-07): REPLAY PASS, LOCAL PAD HEAT FEEDBACK NOT CLOSED.**
+Read [V3 full working 88 individual P/N leg + original
+source ceramic integration report](docs/V3_INTEGRATED_LEG_RESOLVED_20261107.md),
+[V3 exact registered case and ALL 88 saved individual 33-node
+axial profiles + four 3D original ceramic fields](data/v3_integrated_leg_resolved_20261107/attempt01/result.json),
+[V3 original pad flux inconsistency quantified](data/v3_integrated_leg_resolved_20261107/attempt01/local_pad_flux_assumption_audit.json),
+[V3 full source SHA manifest](data/v3_integrated_leg_resolved_20261107/attempt01/manifest.json),
+[working V3 nonlinear integrated solver](scripts/v3_integrated_leg_resolved.py).
+Keep running V1 and V2 separately. V3 uses same 0.400A,
+300K ambient,2mW detector load and original 29/11/4
+source TEC; graph traces all original 88 P/N legs via
+two native SnSb solders, metallization net and 91
+unique original native ceramic pad faces. Sample the
+original 11,791-tet source ceramic 3D temperature
+response on exact TRI3 patch area means and solve the
+existing 32 axial slices independently for each
+original leg, then close 8 ceramic/die temperatures
+and 4 stage/ceramic heat currents plus source Cu/Au
+wire and mounted header/TIM sink terms. Full one-case
+V3 result Tdie209.688407K, Vterminal1.511733V,
+Pel0.604693W, bathQ0.586082W; relative V2
+Tdie +0.030164K (NOT source numerical error bound
+or physical measurement). 5 nonlinear evaluations;
+whole energy residual5.32e-13W; max separate leg
+energy residual7.39e-14W. Read-only original
+fields replay PASS. No Codex used.
+CRITICAL PROTOTYPE LIMIT: local ceramic 3D Neumann
+source distributions remain prior V2 area-UNIFORM
+heat patterns, NOT the individual nonuniform leg
+heat fluxes computed from V3. Independent saved-field
+source-pad L1 discrepancy (not T or conservation
+error): top ceramic0 9.64%, ceramic1 top 21.25%,
+ceramic2 top44.79%, other sides3.3-5.5%. Hot
+ceramic0 also has separate Cu wire/lead heat; source
+stage heat ≠ bath heat. DO NOT claim V3 is fully
+bidirectional *spatially* coupled, 3D P/N bulk
+current or full 430-domain FEM. NEXT coherent V3.1
+is to apply real per-leg heat to original native
+ceramic pads (Cu/gold/power-lead and detector paths
+separate), re-solve original 3D ceramic fields,
+and iterate leg-local temperatures to local heat
+balance in the SAME complete I/V/P/Tdie system.
+Keep one registered .4A operating point and compare
+to working V3; no isolated contact micro-audit
+or expensive new global mesh. Source P/N analog
+unmatched, kAl2O3=30 W/mK hypothetical; >300K
+law continuation assumed. Original P1 GateB FAIL/
+STOP, first 3D pair raw P1 FAIL 8/8, P2 STOP,
+full original 430-domain C/D NOT RUN and
+as-built T unqualified. No original source edits.
+
 **V2 INTEGRATED SPATIAL WORKING BASELINE (2026-11-07): COMPLETED, ORIGINAL 3D CERAMICS + NONLINEAR 29/11/4 TEC, HYBRID NOT FULL 3D E/T.**
 Read [source-CAD V2 numerical report and V1 comparison](docs/V2_INTEGRATED_SPATIAL_HYBRID_20261107.md),
 [canonical V2 one-case end-to-end I/V/Tdie/E result](data/v2_integrated_spatial_20261107/attempt02/v2_integrated_result.json),

@@ -1,0 +1,46 @@
+{
+  "status": "V3 conditional working complete 88-leg/4-original-ceramic spatial/reduced nonlinear TEC coupled operating point PASS at 0.4A; local ceramic per-pad heat distribution NOT self-consistent; full 430-domain NOT RUN",
+  "parent_working_commit": "7426b9cda14950a714cea71050bffd81ac81f174",
+  "physical_conditions": {
+    "current_A": 0.4,
+    "ambient_K": 300.0,
+    "detector_bias_W": 0.002,
+    "PN_grade": "unmatched Zhang research analog",
+    "Al2O3_k": "30 W/mK constant hypothetical",
+    "spatial_leg_transport": "axial 32-cell nonlinear per original source leg, NOT 3D FEM"
+  },
+  "original_source_mesh_modified": false,
+  "source_geometry_modified": false,
+  "original_source_PN_legs": 88,
+  "source_native_3D_ceramic_tetra": 11791,
+  "original_native_metal_pad_surface_tags": 91,
+  "integrated_first_attempt_solve_count": 1,
+  "read_only_replay_count": 1,
+  "source_code_SHA256": "9bc6b3f71d140a586f7657c2177e465aa3b048d95d4cedfcf5930ba92dc2b560",
+  "source_input_SHA256": {
+    "V2_full_result": "00ae69123efd0d635134dc19a278a62f6ce6fdd516b5da9e86f97e7de90b77d5",
+    "original_3D_ceramic_operator": "79901e99311141314f331b5dd06bc0784de99eb01351210d520eac5fa533e4b7",
+    "saved_original_ceramic_field": "26908d275639282aba7480b5f6aa7694718b7c990f3c98da0b1d7c2898ecfd35",
+    "original_430_domain_face_owner_metadata": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "original_824_body_design": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "original_1D_TE_transport": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "original_PN_source_transport": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "V2_source_geometry": "9787b06849c93cd4a268611f288543a972810e15381137e181158fa06008fc52",
+    "V2_nonlinear_integrator": "83c8bf8d237380758335d200235684cc5b77843b9540f169a7254d24b552dd87",
+    "V2_hot_side_reference": "9bfe0e7d5ff2933f9d48442bd769b101499f9f7edeaa377648e122f394c71e49"
+  },
+  "original_R38_source_face_mesh_SHA256": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18",
+  "archived_evidence_SHA256": {
+    "local_pad_flux_assumption_audit.json": "ad6e65b04b92f39a8a182f1bbde01f4c20e05c9ff7b96d5cf83ea477e58bb2ae",
+    "registration.json": "1f3f202a163e0b2ceadec61f788106ac4122e15a1d2397842a9e76602ab402b5",
+    "result.json": "111777b752f7da01295e25e8b4a09136e77c4dd7919dcb065888424dd5fbe4c5",
+    "v3_source_4_ceramic_and_88_leg_profiles.npz": "8274458ef8915b23f7d100bdce5c2398c32928b5814042092d79a563288467f0"
+  },
+  "current_solver_spatial_limitation": "3D ceramic shape fixed at uniform patch-area flux even when individual leg heat distribution is nonuniform; stage mean and system conservation alone not local pointwise convergence",
+  "maximum_normalized_nonuniform_pad_flux_deviation": 0.44792666506559187,
+  "source_old_P1_B": "FAIL/STOP",
+  "source_first_3D_P1_pair_raw_current": "FAIL 8/8",
+  "source_full_430_domain_C_D": "NOT RUN",
+  "physically_validated_as_built_detector": false,
+  "codex_used": false
+}

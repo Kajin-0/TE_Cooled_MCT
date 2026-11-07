@@ -1,0 +1,77 @@
+{
+  "status": "READ-ONLY V3 spatial-source distribution discrepancy: current leg heat != frozen uniform 3D ceramic surface heat; local 3D feedback NOT CLOSED",
+  "definition": "L1 over source metal patch faces sum |per-face sum of actual leg q - Q_ceramic*(face area/sum used-pad areas)| / |sum signed leg q|; excludes unrepresented lead pad and direct metal/solder heat",
+  "discrepancies": [
+    {
+      "source_ceramic_index": 0,
+      "side": "top",
+      "native_used_source_metal_pad_faces": 30,
+      "sum_individual_leg_heat_W": 0.6074516955243755,
+      "source_V3_ceramic_operator_total_heat_W": 0.5860817611752047,
+      "L1_abs_nonuniform_patch_flux_deviation_W": 0.058579382533953284,
+      "L1_nonuniform_patch_flux_deviation_per_abs_actual_heat": 0.09643463499329823,
+      "metric_not_global_energy_or_T_accuracy_error": true,
+      "unmodeled_metal_net_lead_heat_and_source_nonleg_pads": true
+    },
+    {
+      "source_ceramic_index": 1,
+      "side": "bottom",
+      "native_used_source_metal_pad_faces": 29,
+      "sum_individual_leg_heat_W": 0.1723007405236765,
+      "source_V3_ceramic_operator_total_heat_W": 0.1723007405236777,
+      "L1_abs_nonuniform_patch_flux_deviation_W": 0.009505879857876187,
+      "L1_nonuniform_patch_flux_deviation_per_abs_actual_heat": 0.055170278601152895,
+      "metric_not_global_energy_or_T_accuracy_error": true,
+      "unmodeled_metal_net_lead_heat_and_source_nonleg_pads": true
+    },
+    {
+      "source_ceramic_index": 1,
+      "side": "top",
+      "native_used_source_metal_pad_faces": 12,
+      "sum_individual_leg_heat_W": 0.17230074052368002,
+      "source_V3_ceramic_operator_total_heat_W": 0.1723007405236777,
+      "L1_abs_nonuniform_patch_flux_deviation_W": 0.03660977438957297,
+      "L1_nonuniform_patch_flux_deviation_per_abs_actual_heat": 0.21247601303571606,
+      "metric_not_global_energy_or_T_accuracy_error": true,
+      "unmodeled_metal_net_lead_heat_and_source_nonleg_pads": true
+    },
+    {
+      "source_ceramic_index": 2,
+      "side": "bottom",
+      "native_used_source_metal_pad_faces": 11,
+      "sum_individual_leg_heat_W": 0.041965451218180676,
+      "source_V3_ceramic_operator_total_heat_W": 0.041965451218181744,
+      "L1_abs_nonuniform_patch_flux_deviation_W": 0.0013757850384807416,
+      "L1_nonuniform_patch_flux_deviation_per_abs_actual_heat": 0.03278375422029803,
+      "metric_not_global_energy_or_T_accuracy_error": true,
+      "unmodeled_metal_net_lead_heat_and_source_nonleg_pads": true
+    },
+    {
+      "source_ceramic_index": 2,
+      "side": "top",
+      "native_used_source_metal_pad_faces": 5,
+      "sum_individual_leg_heat_W": 0.04196545121818202,
+      "source_V3_ceramic_operator_total_heat_W": 0.041965451218181744,
+      "L1_abs_nonuniform_patch_flux_deviation_W": 0.018797444612133053,
+      "L1_nonuniform_patch_flux_deviation_per_abs_actual_heat": 0.44792666506559187,
+      "metric_not_global_energy_or_T_accuracy_error": true,
+      "unmodeled_metal_net_lead_heat_and_source_nonleg_pads": true
+    },
+    {
+      "source_ceramic_index": 3,
+      "side": "bottom",
+      "native_used_source_metal_pad_faces": 4,
+      "sum_individual_leg_heat_W": 0.003495829503406993,
+      "source_V3_ceramic_operator_total_heat_W": 0.0034958295034067163,
+      "L1_abs_nonuniform_patch_flux_deviation_W": 0.00014253500319507252,
+      "L1_nonuniform_patch_flux_deviation_per_abs_actual_heat": 0.040772870374873725,
+      "metric_not_global_energy_or_T_accuracy_error": true,
+      "unmodeled_metal_net_lead_heat_and_source_nonleg_pads": true
+    }
+  ],
+  "global_energy_conservation_pass_does_NOT_fix_local_mismatch": true,
+  "no_new_PDE_solves": true,
+  "original_P1_B": "FAIL/STOP",
+  "source_result_sha256": "111777b752f7da01295e25e8b4a09136e77c4dd7919dcb065888424dd5fbe4c5",
+  "source_CAD_metadata_sha256": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f"
+}
