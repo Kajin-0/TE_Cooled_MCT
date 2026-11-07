@@ -1,11 +1,104 @@
 # CURRENT PROJECT CONTRACT
 
-This is the authoritative continuation contract, updated 2026-11-03. Historical
-work orders and milestone instructions describe their own checkpoints; their
+**OPERATING PRINCIPLE (2026-11-07): WORKING SYSTEM FIRST; ITERATIVE COARSE-TO-FINE DEVELOPMENT. AUTHORITATIVE USER PREFERENCE.**
+
+This is the user's normal engineering method, not just a one-off TEC exception.
+**Get an entire rudimentary system to run end-to-end first, then iterate on
+that SAME system through progressively better physics, geometry, resolution
+and validation. Do not perfect isolated details before proving that the
+integrated system operates, produces bounded outputs, and responds
+sensibly to inputs.** When choosing among next steps, prefer the one that
+gets the next complete working version delivered with the least complexity.
+
+Required development discipline:
+
+1. **Vertical slice first.** Maintain ONE canonical, reproducible working
+   simulation path from real source design inputs and drive through
+   coupled electrical/thermal calculations to outputs (I, V, P,
+   stage temperatures/heat fluxes, detector temperature and balances).
+   Start with the simplest coherent representations: the existing
+   source-CAD 29/11/4 reduced nonlinear TEC is already a CONDITIONAL
+   end-to-end baseline; evolve it into a single connected coarse device
+   calculation including representative header, mounting, detector load
+   and source current path rather than building more detached studies.
+   A coarse actual-source 3D version comes next when feasible; use
+   simplified material groups and explicitly declared proxy properties.
+2. **Refine the working baseline, don't restart from scratch.**
+   Progress V0 (working reduced conditional baseline) -> V1
+   (integrated coarse full-device thermal/electric path) -> V2
+   (first coarse source-geometry 3D coupled device, if numerically
+   practicable) -> V3+ (increase detail/resolution by measured impact).
+   Preserve previous version/case/output as a numerical comparator
+   and keep it runnable after each change. These labels describe
+   development fidelity, NOT historical V3 geometry or qualification.
+3. **Test only the essentials early:** connected electrical topology,
+   bounded temperature/current/voltage, convergence of the chosen
+   solve, charge conservation, total-energy conservation and a
+   reproducible end-to-end result. For each new iteration, compare
+   the same operating condition and record delta in T_die, terminal
+   I/V/P, stage heat flux and conservation, not merely smaller local
+   residuals. Label assumptions and numerical uncertainty honestly.
+   No arbitrary 10% or other tolerance may be called a proven error
+   bound without an actual comparator.
+4. **Prioritize what matters.** Do a small preregistered sensitivity
+   or mesh comparison ONLY after the integrated model runs, and only
+   when it can determine the next high-impact refinement. Prioritize
+   terms that materially change the full-system output, physical
+   stability, or thermoelectric conservation. Do not pursue repeated
+   micromesh/contact/flux diagnostics, exhaustive registries, high
+   order elements, supplier minutiae or special-case tests that
+   cannot improve the next integrated release.
+5. **Protect the prototype loop.** Timebox diagnostics and avoid
+   expanding a single failed subtest into an unbounded forensic
+   campaign. If a detail blocks physical qualification but not a
+   clearly labeled coarse conditional prototype, preserve its
+   FAIL/STOP record, continue building the system at the permitted
+   provisional fidelity, and revisit it only when it blocks a
+   full-system convergence or accuracy objective. Never conceal
+   failure, invent a source property, reinterpret an old gate, or
+   claim as-built predictive accuracy. Critical physical-law,
+   charge/energy, or instability errors that invalidate *even the
+   rudimentary simulation* must still be fixed.
+6. **Avoid work without an output.** Prefer one working code path and
+   a few directly useful smoke and conservation checks per iteration;
+   don't multiply solvers, tests, reports, or runs simply for
+   completeness. Keep documentation concise and update the existing
+   AGENTS.md and engineering chronology when a substantive
+   milestone is achieved. Do not exhaust scarce Codex or VPS
+   resources on optional diagnostics. Be candid when work is churn.
+7. **Distinct gates:** A CONDITIONAL/EXPLORATORY end-to-end version
+   may run without passing every high-precision physical release
+   test, but it MUST be labeled nonqualified and cannot override
+   historical original electrical Gate B FAIL/STOP, the 8/8 P1
+   raw-contact failures of the first 3D pair, prospective P2 STOP,
+   or unrun 430-domain thermal C/D. A future predictive/as-built
+   release has separate strict source-evidence and numerical
+   accuracy gates. Do not silently lower or rename old criteria.
+
+**CURRENT NEXT-STEP DECISION:** Stop further isolated interface or
+header work unless it blocks integrated execution. First use the
+existing 29/11/4 nonlinear conditional baseline to create ONE
+reproducible integrated coarse full-package electrothermal run with
+explicit detector and hot-side paths, source-contact proxies clearly
+labeled, simple geometry and useful I/V/T_die/energy output. Then
+progress toward coarse full-geometry 3D on the SAME operating case,
+refining only after observing complete-system behavior. The
+completed nine-domain coupled 3D pair is a reusable numerical
+building block with documented failed raw flux, not a prerequisite
+for another long micro-diagnostic campaign.
+
+**Historical evidence and qualification:** The following dated
+sections retain their original results, negative evidence and
+strict scientific qualification requirements, but their historical
+"next task", "current priority", and detailed audit instructions
+do NOT supersede this user-directed iterative-development rule.
+
+This is the authoritative continuation contract, with the current operating
+principle updated 2026-11-07. Historical work orders and milestone instructions describe their own checkpoints; their
 "current", "next" and report-freeze language does not override this contract.
 Their numerical evidence, original errors and acceptance criteria remain intact.
 
-**CURRENT ENGINEERING PRIORITY — 2026-11-06 PHYSICAL BLOCKER CLOSURE: STOP SYNTHETIC FEM FEATURE WORK.**
+**HISTORICAL 2026-11-06 PHYSICAL BLOCKER CLOSURE (original qualification STOP preserved; superseded as task priority by 2026-11-07 working-system-first directive).**
 Read the [strict no-solve physical readiness and Gate B audit](docs/V3_PHYSICAL_BLOCKER_CLOSURE_20261106.md),
 the [current 430-domain source-backed receipt](data/v3_physical_blocker_closure_20261106/attempt01/readiness_audit.json),
 and [reproducible fail-closed script](scripts/v3_physical_readiness_gate.py).
