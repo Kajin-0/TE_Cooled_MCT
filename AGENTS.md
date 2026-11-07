@@ -51,6 +51,40 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-06 P0 original Gate B lead9 P2 CONTACT-LAW vs RAW-FLUX radial forensic: SOURCE-RECONSTRUCTED; BOTH GATES STOP.**
+Read [native face43/47 contact-operator engineering report](docs/V3_GATE_B_LEAD9_CONTACT_OPERATOR_20261106.md),
+[318-triangle original source-field JSON](data/v3_physical_blocker_closure_20261106/attempt01/lead9_contact_operator_audit.json)
+and [exact read-only reproducer](scripts/v3_gate_B_lead9_contact_operator_audit.py).
+No PDE, no new mesh, no property/contact-law change, no Codex.
+Compared original P2 raw gradient current on each physical side with
+the P2 quadratic finite-contact-law edge-trace current at every
+registered TRI3: face43 lead9->lead_land (158), face47 lead9->lead_pin
+(160). Unit-voltage mathematical weak contact flux magnitude33.84225A
+both. Lead9-side net raw bias -1.14113A (3.3719% unit drive) face43
+and+0.64552A(1.9074%) face47; OTHER MATERIAL SIDE raw bias
++2.74099A(8.0993% unit drive) face43 and-2.31918A(6.8529%)
+face47. Thus limiting cut is on raw lead_land/pin side.
+On native CAD contact radius100um and saved triangle centroid radial
+band 0.9<=r/r_CAD<1.05, only20.42% face43 and19.23% face47
+meshed face area yields78.01%/72.47% of absolute OTHER-side
+raw-vs-weak flux error, but only17.93%/13.30% of lead9-side
+absolute error. This REFInes earlier shape analysis: top10% face
+gross TWO-SIDED RAW-RAW mismatch 23%/21%, which is NOT the same
+observable as rim-binned OTHER-side RAW-vs-CONTACT-law error.
+A single uniform raw-vs-weak density scaling explains only
+33.31%/30.85% of other-material squared density mismatch;
+do not apply such scale to model or fit contact resistance.
+Contact-edge/perimeter adjacent material gradients are now a
+source-grounded numerical diagnosis target, not a proved mechanism.
+Original CAD/saved face area discrepancy -0.102777% does not alone
+explain remaining6.85%-8.10% flux error. Original P1 B FAIL/STOP,
+prospective P2 STOP, thermal C/D NOT RUN, original0.1% raw current
+threshold and negative potential bound remain intact.
+Any future solver/perimeter-resolution change requires separate
+preregistered methodological decision and cannot reclassify the
+original P1 or prospective P2 STOP. Preserve full physical STEP,
+Rev3, all 430-volume CAD and historical evidence, issue#2.
+
 **2026-11-06 Original Gate B lead9 P1/P2 interface-shape attribution: NO-SOLVE DIAGNOSTIC PASS, PHYSICAL GATES REMAIN STOP.**
 Read [source-grade 318-triangle lead9 shape/flux report](docs/V3_GATE_B_LEAD9_GEOMETRY_ATTRIBUTION_20261106.md),
 [pinned source field and shape-quality receipt](data/v3_physical_blocker_closure_20261106/attempt01/lead9_shape_attribution.json),

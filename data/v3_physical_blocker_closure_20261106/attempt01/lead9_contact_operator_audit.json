@@ -1,0 +1,393 @@
+{
+  "status": "PASS NO-SOLVE archived P2 raw-gradient versus exact contact-law flux comparison on original lead9 interfaces; original and P2 gates remain STOP",
+  "original_P1_gate_B": "FAIL/STOP",
+  "prospective_P2_gate_B": "STOP",
+  "source_original_coupon_tets": 28691,
+  "source_P2_field_DOFS": 58993,
+  "native_lead9_triangles": 318,
+  "source_fixed_original_geometry": true,
+  "physical_laws_unchanged": true,
+  "original_0p1pct_gate_unchanged": true,
+  "metrics_interpretation": "Normalized mean-ratio q=12*(3*V)^(2/3)/sum_e(edge_length^2); q regular tetra=1, small q indicates poor shape. Local two-sided raw mismatch is nonconforming numerical trace, NOT a charge source or certified independent residual.",
+  "lead_interfaces": {
+    "lead_land": {
+      "interface": "lead9 \u2192 lead_land",
+      "source_registered_triangles": 158,
+      "source_registered_face_tags": [
+        43
+      ],
+      "source_interface_area_m2": 3.138363829113799e-08,
+      "original_P1_gate_error_rel": 0.2917270818247995,
+      "prospective_P2_gate_error_rel": 0.080993023932639,
+      "original_P1_raw_a_A": -36.99432309774009,
+      "original_P1_raw_b_out_A": 24.114075460492973,
+      "prospective_P2_raw_a_A": -34.9833832401644,
+      "prospective_P2_raw_b_out_A": 31.101265371811785,
+      "prospective_P2_contact_integral_A": -33.842251886531905,
+      "P1_signed_two_side_raw_mismatch_A": -12.880247637247125,
+      "P2_signed_two_side_raw_mismatch_A": -3.882117868352622,
+      "P1_gross_abs_two_side_raw_mismatch_A": 12.880247637247125,
+      "P2_gross_abs_two_side_raw_mismatch_A": 3.952068576057332,
+      "gross_abs_mismatch_P1_over_P2_ratio": 3.259115420030675,
+      "P2_face_abs_mismatch_top10pct_share": 0.22978976492255015,
+      "P2_face_abs_mismatch_top10pct_center_bbox_m": [
+        [
+          -0.000552038608673131,
+          0.0027757107270923675,
+          0.00211925
+        ],
+        [
+          -0.000407841215800996,
+          0.0029127851272688593,
+          0.00211925
+        ]
+      ],
+      "source_triangle_area_m2_p01_p50_p99": [
+        2.0042921456589528e-11,
+        6.522560041547303e-11,
+        1.4190321085743148e-09
+      ],
+      "adjacent_worst_tetra_meanratio_quality_min_p01_median_p99": [
+        0.1753043169592555,
+        0.20296701619502286,
+        0.46344235147823953,
+        0.8216130582084338
+      ],
+      "adjacent_worst_tetra_aspect_max_p50_p95": [
+        16.10523991976331,
+        5.035731237381435,
+        10.566741519568206
+      ],
+      "adjacent_minimum_tetra_altitude_m_p01": 2.4913483443773254e-06,
+      "adjacent_q_strata": [
+        {
+          "q_cut": 0.01,
+          "fraction_of_face_count": 0.0,
+          "fraction_of_contact_area": 0.0,
+          "fraction_of_absolute_P2_two_side_mismatch": 0.0,
+          "mean_local_relative_jump_low_quality": null,
+          "mean_local_relative_jump_other": 0.03552676231234212
+        },
+        {
+          "q_cut": 0.05,
+          "fraction_of_face_count": 0.0,
+          "fraction_of_contact_area": 0.0,
+          "fraction_of_absolute_P2_two_side_mismatch": 0.0,
+          "mean_local_relative_jump_low_quality": null,
+          "mean_local_relative_jump_other": 0.03552676231234212
+        },
+        {
+          "q_cut": 0.1,
+          "fraction_of_face_count": 0.0,
+          "fraction_of_contact_area": 0.0,
+          "fraction_of_absolute_P2_two_side_mismatch": 0.0,
+          "mean_local_relative_jump_low_quality": null,
+          "mean_local_relative_jump_other": 0.03552676231234212
+        },
+        {
+          "q_cut": 0.2,
+          "fraction_of_face_count": 0.012658227848101266,
+          "fraction_of_contact_area": 0.0013504139743643524,
+          "fraction_of_absolute_P2_two_side_mismatch": 0.0027571773984913783,
+          "mean_local_relative_jump_low_quality": 0.07623471790014677,
+          "mean_local_relative_jump_other": 0.03547171538410742
+        }
+      ],
+      "P2_local_jump_median": 0.06935735138118976,
+      "P2_local_jump_p95": 0.22828788683159956,
+      "P2_face_quality_mismatch_correlation_log10_q": 0.5591526372051631,
+      "correlation_is_not_causation": true,
+      "contact_operator_consistency": {
+        "weak_contact_current_A": -33.842251886531905,
+        "raw_lead9_oriented_current_A": -34.9833832401644,
+        "raw_other_side_oriented_current_A": -31.101265371811785,
+        "mean_contact_flux_density_A_per_m2": -1078340617.253678,
+        "P2_contact_density_sign_consistent_area_fraction": 1.0,
+        "raw_lead9_side": {
+          "signed_bias_A": -1.1411313536325018,
+          "signed_bias_relative_to_unit_drive": -0.03371913206939625,
+          "sum_absolute_face_bias_A": 1.2956766604944756,
+          "gross_to_signed_bias_ratio": 1.1354316541825076,
+          "area_share_with_same_signed_bias_as_net": 0.9203939697294119,
+          "absolute_residual_share_aligned_with_net_bias": 0.9403611597036126,
+          "raw_to_contact_integrated_current_ratio": 1.0337191318550119,
+          "uniform_contact_multiplicative_least_square_alpha": 1.0303075884827364,
+          "fraction_of_density_L2_residual_explained_by_single_scale": 0.5316881880943278,
+          "RMS_density_error_relative_to_weak_contact_density_RMS": 0.04156453015975567,
+          "max_absolute_face_mismatch_A": 0.07248110285246134,
+          "median_local_abs_flux_discrepancy_relative": 0.027482257224395214,
+          "P95_local_abs_flux_discrepancy_relative": 0.060359898982841415
+        },
+        "raw_other_material_side": {
+          "signed_bias_A": 2.74098651472012,
+          "signed_bias_relative_to_unit_drive": 0.0809930302905748,
+          "sum_absolute_face_bias_A": 3.035341366746233,
+          "gross_to_signed_bias_ratio": 1.1073901131746975,
+          "area_share_with_same_signed_bias_as_net": 0.7451677756842306,
+          "absolute_residual_share_aligned_with_net_bias": 0.9515120679257157,
+          "raw_to_contact_integrated_current_ratio": 0.9190069702243738,
+          "uniform_contact_multiplicative_least_square_alpha": 0.8954255066965262,
+          "fraction_of_density_L2_residual_explained_by_single_scale": 0.33312497013503983,
+          "RMS_density_error_relative_to_weak_contact_density_RMS": 0.18118497285025212,
+          "max_absolute_face_mismatch_A": 0.050236795209030016,
+          "median_local_abs_flux_discrepancy_relative": 0.17702636240749964,
+          "P95_local_abs_flux_discrepancy_relative": 0.5671677195917251
+        },
+        "signed_two_side_raw_difference_from_side_bias_A": -3.8821178683526156,
+        "CAD_contact_radius_m": 9.999999999999996e-05,
+        "saved_triangle_centroid_radius_over_CAD_radius_min_max": [
+          0.2958155773625142,
+          0.9822118817833458
+        ],
+        "radial_triangle_centroid_bins": [
+          {
+            "radius_over_CAD_radius_range": [
+              0.0,
+              0.5
+            ],
+            "triangle_count": 7,
+            "area_fraction": 0.26945512599945703,
+            "fraction_of_abs_mismatch_on_lead9_side": 0.26971809972249716,
+            "fraction_of_abs_mismatch_on_second_material_side": 0.00698184206461306,
+            "signed_lead9_bias_A": -0.34946744672336105,
+            "signed_other_side_bias_A": 0.013703584317282136
+          },
+          {
+            "radius_over_CAD_radius_range": [
+              0.5,
+              0.75
+            ],
+            "triangle_count": 14,
+            "area_fraction": 0.3011884644794622,
+            "fraction_of_abs_mismatch_on_lead9_side": 0.3344588261854673,
+            "fraction_of_abs_mismatch_on_second_material_side": 0.0872163401694655,
+            "signed_lead9_bias_A": -0.43335049498488853,
+            "signed_other_side_bias_A": 0.04242338170617743
+          },
+          {
+            "radius_over_CAD_radius_range": [
+              0.75,
+              0.9
+            ],
+            "triangle_count": 25,
+            "area_fraction": 0.22516869364187767,
+            "fraction_of_abs_mismatch_on_lead9_side": 0.21650499031483156,
+            "fraction_of_abs_mismatch_on_second_material_side": 0.1257426773803007,
+            "signed_lead9_bias_A": -0.2784543817411626,
+            "signed_other_side_bias_A": 0.31711377137567837
+          },
+          {
+            "radius_over_CAD_radius_range": [
+              0.9,
+              1.05
+            ],
+            "triangle_count": 112,
+            "area_fraction": 0.20418771587920292,
+            "fraction_of_abs_mismatch_on_lead9_side": 0.17931808377720412,
+            "fraction_of_abs_mismatch_on_second_material_side": 0.7800591403856209,
+            "signed_lead9_bias_A": -0.07985903018308971,
+            "signed_other_side_bias_A": 2.367745777320982
+          }
+        ],
+        "method": "No fit; P2 full element gradient integrated exactly on each flat triangle centroid; contact P2 potential jump integrated by 3 globally unique edge mids",
+        "nonconforming_raw_gradient_is_not_contact_traction": true
+      }
+    },
+    "lead_pin": {
+      "interface": "lead9 \u2192 lead_pin",
+      "source_registered_triangles": 160,
+      "source_registered_face_tags": [
+        47
+      ],
+      "source_interface_area_m2": 3.138363829113791e-08,
+      "original_P1_gate_error_rel": 0.30015402437659044,
+      "prospective_P2_gate_error_rel": 0.06852908306066172,
+      "original_P1_raw_a_A": 35.68230434259157,
+      "original_P1_raw_b_out_A": -23.827169208142294,
+      "prospective_P2_raw_a_A": 34.487772589859176,
+      "prospective_P2_raw_b_out_A": -31.52307319561811,
+      "prospective_P2_contact_integral_A": 33.842251885880906,
+      "P1_signed_two_side_raw_mismatch_A": 11.855135134449277,
+      "P2_signed_two_side_raw_mismatch_A": 2.964699394241064,
+      "P1_gross_abs_two_side_raw_mismatch_A": 11.855135134449277,
+      "P2_gross_abs_two_side_raw_mismatch_A": 2.9661917967759717,
+      "gross_abs_mismatch_P1_over_P2_ratio": 3.9967527208911173,
+      "P2_face_abs_mismatch_top10pct_share": 0.2089450677700276,
+      "P2_face_abs_mismatch_top10pct_center_bbox_m": [
+        [
+          -0.004438063825728752,
+          0.0030954952531194375,
+          0.0020234999999999997
+        ],
+        [
+          -0.004298904693470023,
+          0.0032655495488274795,
+          0.0020234999999999997
+        ]
+      ],
+      "source_triangle_area_m2_p01_p50_p99": [
+        2.00429214565899e-11,
+        6.578406237950489e-11,
+        1.263377887189128e-09
+      ],
+      "adjacent_worst_tetra_meanratio_quality_min_p01_median_p99": [
+        0.21450765364067592,
+        0.2211895217084231,
+        0.4993001714848666,
+        0.8098502768315836
+      ],
+      "adjacent_worst_tetra_aspect_max_p50_p95": [
+        13.10223949867554,
+        4.879057679364154,
+        8.731003962210512
+      ],
+      "adjacent_minimum_tetra_altitude_m_p01": 2.7518410478658028e-06,
+      "adjacent_q_strata": [
+        {
+          "q_cut": 0.01,
+          "fraction_of_face_count": 0.0,
+          "fraction_of_contact_area": 0.0,
+          "fraction_of_absolute_P2_two_side_mismatch": 0.0,
+          "mean_local_relative_jump_low_quality": null,
+          "mean_local_relative_jump_other": 0.02820753287966832
+        },
+        {
+          "q_cut": 0.05,
+          "fraction_of_face_count": 0.0,
+          "fraction_of_contact_area": 0.0,
+          "fraction_of_absolute_P2_two_side_mismatch": 0.0,
+          "mean_local_relative_jump_low_quality": null,
+          "mean_local_relative_jump_other": 0.02820753287966832
+        },
+        {
+          "q_cut": 0.1,
+          "fraction_of_face_count": 0.0,
+          "fraction_of_contact_area": 0.0,
+          "fraction_of_absolute_P2_two_side_mismatch": 0.0,
+          "mean_local_relative_jump_low_quality": null,
+          "mean_local_relative_jump_other": 0.02820753287966832
+        },
+        {
+          "q_cut": 0.2,
+          "fraction_of_face_count": 0.0,
+          "fraction_of_contact_area": 0.0,
+          "fraction_of_absolute_P2_two_side_mismatch": 0.0,
+          "mean_local_relative_jump_low_quality": null,
+          "mean_local_relative_jump_other": 0.02820753287966832
+        }
+      ],
+      "P2_local_jump_median": 0.0581313218429714,
+      "P2_local_jump_p95": 0.20062461842703028,
+      "P2_face_quality_mismatch_correlation_log10_q": 0.5183959421263447,
+      "correlation_is_not_causation": true,
+      "contact_operator_consistency": {
+        "weak_contact_current_A": 33.842251885880906,
+        "raw_lead9_oriented_current_A": 34.487772589859176,
+        "raw_other_side_oriented_current_A": 31.52307319561811,
+        "mean_contact_flux_density_A_per_m2": 1078340617.2329373,
+        "P2_contact_density_sign_consistent_area_fraction": 1.0,
+        "raw_lead9_side": {
+          "signed_bias_A": 0.6455207039782682,
+          "signed_bias_relative_to_unit_drive": 0.019074401734458585,
+          "sum_absolute_face_bias_A": 0.7326908166845068,
+          "gross_to_signed_bias_ratio": 1.1350384459693073,
+          "area_share_with_same_signed_bias_as_net": 0.9181786741005643,
+          "absolute_residual_share_aligned_with_net_bias": 0.9405137127958753,
+          "raw_to_contact_integrated_current_ratio": 1.0190744016135518,
+          "uniform_contact_multiplicative_least_square_alpha": 1.0180260284064997,
+          "fraction_of_density_L2_residual_explained_by_single_scale": 0.5729075897469889,
+          "RMS_density_error_relative_to_weak_contact_density_RMS": 0.023815393584197382,
+          "max_absolute_face_mismatch_A": 0.04492819568189854,
+          "median_local_abs_flux_discrepancy_relative": 0.015583245517526528,
+          "P95_local_abs_flux_discrepancy_relative": 0.03641090840711842
+        },
+        "raw_other_material_side": {
+          "signed_bias_A": -2.319178690262796,
+          "signed_bias_relative_to_unit_drive": -0.06852908939936546,
+          "sum_absolute_face_bias_A": 2.479281463699676,
+          "gross_to_signed_bias_ratio": 1.069034255147773,
+          "area_share_with_same_signed_bias_as_net": 0.7802896100068228,
+          "absolute_residual_share_aligned_with_net_bias": 0.967711860113299,
+          "raw_to_contact_integrated_current_ratio": 0.93147091103502,
+          "uniform_contact_multiplicative_least_square_alpha": 0.9215103040557264,
+          "fraction_of_density_L2_residual_explained_by_single_scale": 0.3085271241737806,
+          "RMS_density_error_relative_to_weak_contact_density_RMS": 0.14130774670125448,
+          "max_absolute_face_mismatch_A": 0.03158409423135562,
+          "median_local_abs_flux_discrepancy_relative": 0.15710764454998638,
+          "P95_local_abs_flux_discrepancy_relative": 0.5154340440246885
+        },
+        "signed_two_side_raw_difference_from_side_bias_A": 2.964699394241066,
+        "CAD_contact_radius_m": 9.999999999999965e-05,
+        "saved_triangle_centroid_radius_over_CAD_radius_min_max": [
+          0.19270037069997026,
+          0.9822118817833451
+        ],
+        "radial_triangle_centroid_bins": [
+          {
+            "radius_over_CAD_radius_range": [
+              0.0,
+              0.5
+            ],
+            "triangle_count": 8,
+            "area_fraction": 0.28393840512018914,
+            "fraction_of_abs_mismatch_on_lead9_side": 0.32422815857190945,
+            "fraction_of_abs_mismatch_on_second_material_side": 0.03484743502464934,
+            "signed_lead9_bias_A": 0.23755899429616611,
+            "signed_other_side_bias_A": -0.03866274745264808
+          },
+          {
+            "radius_over_CAD_radius_range": [
+              0.5,
+              0.75
+            ],
+            "triangle_count": 12,
+            "area_fraction": 0.27604089326475106,
+            "fraction_of_abs_mismatch_on_lead9_side": 0.2466113635609147,
+            "fraction_of_abs_mismatch_on_second_material_side": 0.07912703919703294,
+            "signed_lead9_bias_A": 0.1806898813711264,
+            "signed_other_side_bias_A": -0.1096062425127286
+          },
+          {
+            "radius_over_CAD_radius_range": [
+              0.75,
+              0.9
+            ],
+            "triangle_count": 29,
+            "area_fraction": 0.24776458441079027,
+            "fraction_of_abs_mismatch_on_lead9_side": 0.29611155038557896,
+            "fraction_of_abs_mismatch_on_second_material_side": 0.16127695244548787,
+            "signed_lead9_bias_A": 0.21178574374483553,
+            "signed_other_side_bias_A": -0.37405399659054955
+          },
+          {
+            "radius_over_CAD_radius_range": [
+              0.9,
+              1.05
+            ],
+            "triangle_count": 111,
+            "area_fraction": 0.19225611720426947,
+            "fraction_of_abs_mismatch_on_lead9_side": 0.13304892748159672,
+            "fraction_of_abs_mismatch_on_second_material_side": 0.7247485733328297,
+            "signed_lead9_bias_A": 0.015486084566140184,
+            "signed_other_side_bias_A": -1.79685570370687
+          }
+        ],
+        "method": "No fit; P2 full element gradient integrated exactly on each flat triangle centroid; contact P2 potential jump integrated by 3 globally unique edge mids",
+        "nonconforming_raw_gradient_is_not_contact_traction": true
+      }
+    }
+  },
+  "input_sha256": {
+    "data/v3_interconnect_et_20261102/B/fine_mesh/mesh.npz": "9e9cf24ba0b22f8047b75851cef2266cf4d0189d40e78b8025a915a3788fad63",
+    "data/v3_interconnect_et_20261102/B/fine_mesh/registry.json": "12e4179cfba36f8e3fc529de7cef2f66cfd799799c83137d3feed09691b1876b",
+    "data/v3_interconnect_et_20261102/B/fine_field/fields.npz": "7ba922cee52263ad8f057fc20f1af2e1c81c1816f56066ab3871afbae8e6b770",
+    "data/v3_interconnect_et_20261102/B/fine_field/result.json": "40431f8c46e4d692c01379da31baecc03cdb5a67b36603fe2af9ec2888093dfa",
+    "data/v3_interconnect_et_20261102/B/gate_B.json": "46993813dfa478fbd3527a02aec02226ef85545bb7c03ec91a80f4f3e9c4a1b0",
+    "data/v3_gate_B_original_P2_20261106/attempt01/P2_coupon_result.json": "e4780663273c552ed82cfbd447ce64149c846f104315bea81598a92bac928b26",
+    "data/v3_gate_B_original_P2_20261106/attempt01/P2_original_coupon_field.npz": "39c33ca95b7a8ba26d07b483a2d76739359e59739e08c57efa933eda678f5d60",
+    "data/v3_gate_B_original_P2_20261106/attempt01/independent_readback.json": "2e9933cb99a225053b226cdfc2bfa464ecc632deca94347e41dd1388676e2969"
+  },
+  "independent_original_current_integrals_reproduced": true,
+  "P2_saved_field_unchanged": true,
+  "no_PDE_or_mesh_changes": true
+}
