@@ -51,6 +51,41 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**CURRENT PHYSICAL PROJECT PRIORITY (2026-11-06) — COMPLETE 430-DOMAIN AND 2440-FACE SOURCE LAW INVENTORY, ACTUAL N/P CAD PAIR CONNECTIVITY PASS; PHYSICAL SOLVE STOP.**
+Review [physical electrothermal law and actual couple readiness report](docs/V3_PHYSICAL_LAW_AND_COUPLE_READINESS_20261106.md),
+[all exact source-keyed volume/face law rows, source hashes, P/N chain and missing-data ledger](data/v3_physical_law_readiness_20261106/attempt01/law_and_subassembly_inventory.json)
+and [reproducible strict no-solve source auditor](scripts/v3_physical_law_inventory.py).
+Source R3 exactly430 CAD volume IDs,2440 native face IDs,
+378 original contact witnesses, source88 TEC legs P44/N44,
+29/11/4 couples (58/22/8 legs),176 SnSb solders,
+98 effective multilayer domains,557 solid/solid,1840 gas/solid,
+43 external CAD faces. All430 domain laws and2440 face laws
+UNSET/NOT RELEASED. Research analog P/N transport from corrected
+Zhang2025 paper 40-300K distinct P and N specimens, NOT as-built
+grade, measured coverage above300K ABSENT, quarter-tangent prior
+continuation hypothetical. Prior reduced model28/12/4 differs from
+physical R3 29/11/4. 430/2440 ledger contains exact source
+owner/tag/geometry/required evidence and NULL numeric parameters,
+no invented sigma/k/S/contact resistance or boundary conditions.
+Selected real first stage0 N/P pair 11 native volume IDs
+[1,2,5,6,7,8,9,10,269,270,271] and 11 exact material
+interconnect CAD face tags [124,125,140,141,130,135,151,146,8,9,44];
+shared cold copper net270 provides native P/N series path.
+However whole ceramic0+ceramic1 retained and selection has132
+outside cut faces (73 solid-solid,59 gas-solid), and net0/net2
+are not independently authorized electric drive terminals.
+Therefore subassembly geometric connection PASS but physical
+ports/heat coupling STOP; no PDE should be launched. H1 actual
+P/N grade and temperature curves; H2 solders/metallization/contact
+laws; H3 real electrical port/circuit; H4 hot/cold heat paths,
+sink/load/gas/radiation; H5 qualified full current/heat solver.
+Future analysis must preserve original P1 GateB FAIL, prospective
+P2 STOP, thermal C/D NOT RUN and actual 430 full PDE unqualified.
+No new synthetic benchmarks, original source change, physical
+coefficient calibration, mesh campaign, or Codex usage. Project
+next substantive progress requires source-qualified input/port
+evidence, not another FEM diagnostic or invented TEC temperature.
+
 **2026-11-06 Gate B rim-only correction FEASIBILITY SCREEN: NO GO, NO SOLVER.**
 Read [counterfactual stop decision](docs/V3_GATE_B_RIM_ONLY_FEASIBILITY_STOP_20261106.md),
 [source-hashed signed radial partition](data/v3_physical_blocker_closure_20261106/attempt01/rim_only_feasibility_stop.json),
