@@ -1,5 +1,43 @@
 # CURRENT PROJECT CONTRACT
 
+**V1 INTEGRATED WORKING BASELINE (2026-11-07): COMPLETED, CONDITIONAL COARSE ELECTROTHERMAL NETWORK.**
+Read [one source-CAD 29/11/4 integrated package report](docs/V1_INTEGRATED_FULL_PACKAGE_20261107.md),
+[single-case source-hashed result](data/v1_integrated_full_package_20261107/attempt01/result.json),
+[evidence manifest](data/v1_integrated_full_package_20261107/attempt01/manifest.json),
+and [replayable ONE code path](scripts/v1_integrated_full_package.py).
+This V1 uses actual source-CAD 29/11/4 leg, four ceramic and
+20um die-attach dimensions; original CAD Cu/Au bond and power wire
+lengths; one existing nonlinear P/N transport cascade (32 axial
+intervals per leg), five stage/die nodes, the previous source
+47,702-TET4 Kovar+TIM Robin component R=2.759313K/W, original
+source 1D solder+Al2O3 analogs R=.074074+.447908K/W, and
+manufacturer RECOMMENDED (not installed measured) radiator
+2K/W. These parts replace old ENTIRE sink5K/W with one
+single equivalent total R=5.281295K/W, NOT added to 5!
+One registered 0.400A, 300K ambient/pin, 2mW die
+nominal research P/N analog, CAD wires ON, vacuum gas OFF,
+cavity radiation OFF: T hot303.097873K, stage1
+265.083905K, stage2 234.634353K, cold208.989754K,
+die209.059878K, terminal1.506395V, electrical0.602558W,
+bath rejection0.586574W, stage and node conservation
+<1e-8W, global residual -3.365e-13W. Source V0 same I,
+wires and die, old whole path5K/W gave die208.985312K,
+so +0.074566K for this single path change, NOT verified
+uncertainty. 303.1K exceeds 300K research measured
+limit so >300K assumed transport continuation flagged.
+V1 is a WORKING integrated reduced thermal network,
+NOT spatial full430-domain 3D PDE, calibrated material
+or as-built device prediction. Actual solder/contact
+electrical Joule and junction energy, cavity gas/radiation,
+3D ceramic/solder and unknown mounting contact NOT solved.
+DO NOT launch new isolated micromesh forensic studies.
+NEXT: V2 one coarse spatial actual-source system prototype
+keeping same operating case and V1 outputs as comparator,
+only essential convergence/charge/energy checks. Preserve
+original P1 Gate B FAIL/STOP, prospective P2 STOP,
+source N/P first-couple P1 raw 8/8 FAIL and full 430-domain
+thermal C/D NOT RUN, original CAD/Rev3 unchanged. No Codex.
+
 **OPERATING PRINCIPLE (2026-11-07): WORKING SYSTEM FIRST; ITERATIVE COARSE-TO-FINE DEVELOPMENT. AUTHORITATIVE USER PREFERENCE.**
 
 This is the user's normal engineering method, not just a one-off TEC exception.
@@ -25,7 +63,7 @@ Required development discipline:
    simplified material groups and explicitly declared proxy properties.
 2. **Refine the working baseline, don't restart from scratch.**
    Progress V0 (working reduced conditional baseline) -> V1
-   (integrated coarse full-device thermal/electric path) -> V2
+   (COMPLETED 2026-11-07 integrated coarse full-device thermal/electric path) -> V2
    (first coarse source-geometry 3D coupled device, if numerically
    practicable) -> V3+ (increase detail/resolution by measured impact).
    Preserve previous version/case/output as a numerical comparator

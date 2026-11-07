@@ -1,0 +1,174 @@
+{
+  "status": "V1 COARSE SOURCE-CAD FULL PACKAGE CONDITIONAL END-TO-END RUN NUMERICALLY PASS",
+  "development_scope": "Integrated reduced electrothermal circuit, 29/11/4 actual stage geometry; full spatial 430-domain PDE NOT RUN",
+  "one_current_A": 0.4,
+  "all_source_stage_couples": [
+    29,
+    11,
+    4
+  ],
+  "P_N_specimens": "Zhang2025 P-HE/N-HE-1 unmatched, conditional",
+  "thermal_path_components_K_W": {
+    "radiator_to_ambient_OEM_design_reference": 2.0,
+    "native_R3_3D_header_plus_reference_TIM": 2.7593128867317485,
+    "source_In52Sn48_mount_solder_1D_hypothesis": 0.07407407407407408,
+    "source_ceramic0_Al2O3_AD995_1D_analog": 0.4479082683866345
+  },
+  "thermal_path_total_effective_K_W": 5.281295229192457,
+  "external_reference_temperature_K": 300.0,
+  "hot_path_temperatures_K": {
+    "ambient": 300.0,
+    "after_radiator_to_ambient_OEM_design_reference": 301.1731488241935,
+    "after_native_R3_3D_header_plus_reference_TIM": 302.79169115851914,
+    "after_source_In52Sn48_mount_solder_1D_hypothesis": 302.8351411149708,
+    "after_source_ceramic0_Al2O3_AD995_1D_analog": 303.0978726441729
+  },
+  "hot_path_temperature_drops_K": {
+    "radiator_to_ambient_OEM_design_reference": 1.1731488241934904,
+    "native_R3_3D_header_plus_reference_TIM": 1.6185423343256482,
+    "source_In52Sn48_mount_solder_1D_hypothesis": 0.04344995645161076,
+    "source_ceramic0_Al2O3_AD995_1D_analog": 0.2627315292021613
+  },
+  "predicted_all_five_thermal_nodes_K": {
+    "hot_ceramic": 303.0978726441729,
+    "stage1": 265.0839050498259,
+    "stage2": 234.63435339462865,
+    "cold_ceramic": 208.98975356998207,
+    "MCT_die": 209.05987836610808
+  },
+  "terminal_voltage_V": 1.5063948801264457,
+  "module_voltage_V": 1.5045518107926465,
+  "terminal_electrical_input_W": 0.6025579520505784,
+  "module_electrical_input_W": 0.6018207243170587,
+  "total_bath_heat_rejected_W": 0.5865744120967452,
+  "stage_heat_current_and_power_budgets": [
+    {
+      "qc_w": 0.17128628060271184,
+      "qh_w": 0.6053269641234578,
+      "voltage_v": 1.0851017088018842,
+      "energy_residual_w": -7.771561172376096e-15,
+      "joule_w": 0.2616802192693497,
+      "conduction_w": 0.9072576468893897,
+      "leg_temperature_extrema_k": [
+        265.0839050498259,
+        303.0978726441729
+      ],
+      "max_leg_balance_residual_w_m2": 2.863037025235826e-07,
+      "max_leg_iterations": 4,
+      "high_T_assumption_applied": true,
+      "transport_domain_K": [
+        180.0,
+        390.0
+      ],
+      "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+      "intervals": 32,
+      "affine_T_axial_approximation": false
+    },
+    {
+      "qc_w": 0.04172348087643743,
+      "qh_w": 0.17128628060271772,
+      "voltage_v": 0.32390699931615247,
+      "energy_residual_w": -1.8068879725774423e-13,
+      "joule_w": 0.08068835014430613,
+      "conduction_w": 0.2967067361639383,
+      "leg_temperature_extrema_k": [
+        234.63435339462865,
+        265.0839050498259
+      ],
+      "max_leg_balance_residual_w_m2": 1.9195161257812288e-05,
+      "max_leg_iterations": 3,
+      "high_T_assumption_applied": false,
+      "transport_domain_K": [
+        180.0,
+        390.0
+      ],
+      "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+      "intervals": 32,
+      "affine_T_axial_approximation": false
+    },
+    {
+      "qc_w": 0.0035062398065120316,
+      "qh_w": 0.04172348087634538,
+      "voltage_v": 0.09554310267460986,
+      "energy_residual_w": -1.0602629885170245e-14,
+      "joule_w": 0.024385636158924043,
+      "conduction_w": 0.09763837668619396,
+      "leg_temperature_extrema_k": [
+        208.98975356998207,
+        234.63435339462865
+      ],
+      "max_leg_balance_residual_w_m2": 1.0390572697360767e-05,
+      "max_leg_iterations": 3,
+      "high_T_assumption_applied": false,
+      "transport_domain_K": [
+        180.0,
+        390.0
+      ],
+      "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+      "intervals": 32,
+      "affine_T_axial_approximation": false
+    }
+  ],
+  "detector_load_W": 0.002,
+  "detector_Au_wire_parasitic_W": 0.0015062398060625237,
+  "detector_die_attach_heat_to_cold_stage_W": 0.00350623980630047,
+  "Cu_hot_side_lead_conduction_W": -0.019121165893472448,
+  "Cu_lead_Joule_W": 0.0007372277335197068,
+  "global_energy_balance_residual_W": -3.3650859876388495e-13,
+  "max_node_energy_residual_W": 2.379459476675727e-13,
+  "max_stage_energy_residual_W": 1.8068879725774423e-13,
+  "P_IV_consistency_W": 0.0,
+  "hot_series_temperature_closure_K": 0.0,
+  "leg_local_temperature_min_max_K": [
+    208.98975356998207,
+    303.0978726441729
+  ],
+  "assumed_transport_extension_above_300K": true,
+  "source_transport_measured_interval_K": [
+    40,
+    300
+  ],
+  "relative_to_V0_5K_W_wire_ON_identical_other_inputs": {
+    "V0_die_temperature_K": 208.98531200217116,
+    "V1_die_temperature_K": 209.05987836610808,
+    "delta_die_temperature_K": 0.07456636393692406,
+    "V0_terminal_voltage_V": 1.5050191933067731,
+    "delta_terminal_voltage_V": 0.0013756868196725947,
+    "V0_bath_heat_W": 0.5870297614967063,
+    "delta_bath_heat_W": -0.00045534939996105805
+  },
+  "physics_exclusions_from_registration": [
+    "grade-matched actual TEC P/N",
+    "SnSb electrical series/contact losses",
+    "contact Peltier/junction Joule",
+    "full 3D ceramic and solder spreading",
+    "metal multilayer effective thermal tensors",
+    "real header TIM bondline/coverage/pressure",
+    "as-built radiator heat flow and T",
+    "gas transport and enclosure radiation",
+    "full 430-solid coupled spatial electric/thermal fields"
+  ],
+  "source_data_and_code_sha256": {
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/v3_tec_physical_port_contract_20261106/attempt01/port_and_series_graph.json": "7130b314f7a54c82f6a8e4e6a1afc992727ccde77af639be6121d8c1ce4b00f7",
+    "data/v3_hot_mount_readiness_20261107/attempt01/thermal_path_audit.json": "c432a5d67009bbda603ad9340d302c3dd4deb5fc7c6177d9d80609750d18bc43",
+    "data/v3_header_tim_robin_20261107/attempt01/result.json": "9bfe0e7d5ff2933f9d48442bd769b101499f9f7edeaa377648e122f394c71e49",
+    "data/v3_oem_sink_boundary_20261107/attempt01/boundary_evidence.json": "6e28966c25c4a48c046bcfd9b838341df4dceed9b4d2f419a8d730de6e40fca9",
+    "data/v3_r3_sink_wire_20261107/attempt01/summary.json": "4619b2df5c15b917b110d4ad67335722706b8bbb8ba145b3dbe0bcf016f63475",
+    "data/v3_reference_29114_reduced_20261107/attempt01/summary.json": "c5f067dbf1a15a293fb280b4ed83841e8c88889b4b6dd85fe202608da1b7b841",
+    "tecooledmct/integrated_reference.py": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "tecooledmct/nonlinear_tec.py": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "tecooledmct/graded_tec.py": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "tecooledmct/materials.py": "86e4cc066860e1b39db235f13bc95ce5d1bc45d23e8ef424e2ad77482900e8ff",
+    "scripts/v3_reference_29114_reduced_study.py": "196e88ef7d9140fad1723e1161fed03ed7fe78757e72ebdfca6d291886472ef2",
+    "scripts/v3_r3_sink_wire_sensitivity.py": "9787b06849c93cd4a268611f288543a972810e15381137e181158fa06008fc52"
+  },
+  "registered_script_sha256": "98cea1f1cfcc9b568d9579e4bd3f8eedc714b6342261e2725c600339014c603d",
+  "original_P1_B": "FAIL/STOP",
+  "original_prospective_P2": "STOP",
+  "source_3D_pair_raw_contact": "FAIL 8/8",
+  "real_430_domain_C_D": "NOT RUN",
+  "actual_OEM_detector_temperature_qualified": false,
+  "one_solve_elapsed_s": 0.4954879980068654
+}

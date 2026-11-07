@@ -1,0 +1,66 @@
+{
+  "version": "V1 coarse integrated full package source-CAD 29/11/4, one operating condition",
+  "parent_git_commit": "9f294830b072203e40b2475cf1845ec66c83e31c",
+  "source_29_11_4": true,
+  "model": "existing nonlinear source-geometry 32-slice TE stages + 5-node TEC/die equations + CAD Cu/Au wires + thermal-series-derived hot boundary; NO 3D full device PDE",
+  "operating_point": {
+    "current_A": 0.4,
+    "ambient_and_pin_reservoir_K": 300.0,
+    "P_N_material": "Zhang P-HE/N-HE-1 unmatched research analog nominal scales",
+    "detector_dissipation_W": 0.002,
+    "optical_load_W": 0.0,
+    "die_attach_k_W_mK": 1.0,
+    "cavity_gas_pressure_Pa": 0.0,
+    "cavity_radiation": "OFF",
+    "wire_model": "source CAD Cu & Au geometry, constant 293K bulk coefficients"
+  },
+  "thermal_path_components_K_W": {
+    "radiator_to_ambient_OEM_design_reference": 2.0,
+    "native_R3_3D_header_plus_reference_TIM": 2.7593128867317485,
+    "source_In52Sn48_mount_solder_1D_hypothesis": 0.07407407407407408,
+    "source_ceramic0_Al2O3_AD995_1D_analog": 0.4479082683866345
+  },
+  "thermal_path_total_K_W": 5.281295229192457,
+  "unmodeled_or_unverified": [
+    "grade-matched actual TEC P/N",
+    "SnSb electrical series/contact losses",
+    "contact Peltier/junction Joule",
+    "full 3D ceramic and solder spreading",
+    "metal multilayer effective thermal tensors",
+    "real header TIM bondline/coverage/pressure",
+    "as-built radiator heat flow and T",
+    "gas transport and enclosure radiation",
+    "full 430-solid coupled spatial electric/thermal fields"
+  ],
+  "actual_sink_or_device_measurements": "NONE",
+  "source_transport_temperature_domain_K": [
+    40.0,
+    300.0
+  ],
+  "above_300K_existing_research_continuation": "FLAG REQUIRED, not source measured",
+  "numerical_gate": "one source-I point, stage residual <1e-9W, node & global energy <1e-8W, P=IV and positive signed bath heat",
+  "preservation": {
+    "historical_P1_B": "FAIL/STOP",
+    "P2_prospective": "STOP",
+    "new_source_3D_pair_raw_contact": "FAIL 8/8",
+    "full_430_C_D": "NOT RUN"
+  },
+  "source_inputs_sha256": {
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/v3_tec_physical_port_contract_20261106/attempt01/port_and_series_graph.json": "7130b314f7a54c82f6a8e4e6a1afc992727ccde77af639be6121d8c1ce4b00f7",
+    "data/v3_hot_mount_readiness_20261107/attempt01/thermal_path_audit.json": "c432a5d67009bbda603ad9340d302c3dd4deb5fc7c6177d9d80609750d18bc43",
+    "data/v3_header_tim_robin_20261107/attempt01/result.json": "9bfe0e7d5ff2933f9d48442bd769b101499f9f7edeaa377648e122f394c71e49",
+    "data/v3_oem_sink_boundary_20261107/attempt01/boundary_evidence.json": "6e28966c25c4a48c046bcfd9b838341df4dceed9b4d2f419a8d730de6e40fca9",
+    "data/v3_r3_sink_wire_20261107/attempt01/summary.json": "4619b2df5c15b917b110d4ad67335722706b8bbb8ba145b3dbe0bcf016f63475",
+    "data/v3_reference_29114_reduced_20261107/attempt01/summary.json": "c5f067dbf1a15a293fb280b4ed83841e8c88889b4b6dd85fe202608da1b7b841",
+    "tecooledmct/integrated_reference.py": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "tecooledmct/nonlinear_tec.py": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "tecooledmct/graded_tec.py": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "tecooledmct/materials.py": "86e4cc066860e1b39db235f13bc95ce5d1bc45d23e8ef424e2ad77482900e8ff",
+    "scripts/v3_reference_29114_reduced_study.py": "196e88ef7d9140fad1723e1161fed03ed7fe78757e72ebdfca6d291886472ef2",
+    "scripts/v3_r3_sink_wire_sensitivity.py": "9787b06849c93cd4a268611f288543a972810e15381137e181158fa06008fc52"
+  },
+  "script_sha256": "98cea1f1cfcc9b568d9579e4bd3f8eedc714b6342261e2725c600339014c603d",
+  "one_condition_no_sweep": true
+}
