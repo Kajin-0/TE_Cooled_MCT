@@ -51,6 +51,44 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-07 ORIGINAL R3.9 3D HEADER + FINITE OEM-EXAMPLE TIM ROBIN + SEPARATE RADIATOR: ONE CONDITIONAL NUMERICAL PASS, PHYSICAL PRODUCT STILL STOP.**
+Read [single registered native CAD original header TIM/Radiator model and qualification boundaries](docs/V3_R3_HEADER_TIM_ROBIN_REFERENCE_20261107.md),
+[exact saved 47702-TET4 numerical receipt](data/v3_header_tim_robin_20261107/attempt01/result.json),
+[hash registration/manifest](data/v3_header_tim_robin_20261107/attempt01/manifest.json)
+and [source 3D Robin solver](scripts/v3_header_tim_robin_reference.py).
+Uses original Kovar header volume386, original R3.9 TET4
+47702/16277 nodes, face2228 uniform source Q=.58702976W
+from PRIOR conditional reduced model and native underside
+face2225 9617 triangles. VIGO AMS3140-01 separate-module
+datasheet provides TIM EXAMPLE thickness0.1mm and
+k1W/mK; NOT as-built TO66 measurement. Apply local
+full original underside Robin h=k/t=10000W/m2K, exact
+P1 surface mass integration, all other header faces
+insulated and generic Kovar k17.3W/mK. Independently
+VIGO 2025 generic 3TE recommends ~2K/W radiator
+TO AMBIENT, used as distinct isothermal-lumped radiator
+node T_rad=300K+Q*2=301.17406K, not combined in
+parallel with TIM. DO NOT ALSO APPLY AMS empirical
+nonuniformity Kf=2: would risk double counting resolved
+header spatial spreading and is for unrelated geometry.
+One source 3D solve area-mean TEC-side header302.79386K,
+header plus finite TIM R2.75931K/W, radiator+header+
+TIM R4.75931K/W, original full underside Dirichlet
+header R1.57704K/W; penalty1.18228K/W (not merely
+uniform TIM t/kA=.29940K/W; header spreading changed).
+Relative sink conservation8.380e-12 and energy identity
+2.335e-16, numerical PASS without mesh convergence
+or experimental validation. This does NOT include
+ceramic, solder, Ni/Au composites, finite other contacts
+or full 430-domain TEC; do not add to old reduced full
+R_sink5K/W or adjust existing die T208.985K.
+Remaining as-built header mounting pressure/area/TIM
+thickness and sink capability unmeasured, grade-matched
+P/N transport and whole source face laws UNSET.
+Preserve original P1 GateB FAIL/STOP, prospective P2
+STOP, full coupled C/D NOT RUN, source CAD/mesh
+untouched, no Codex.
+
 **2026-11-07 VERIFIED OEM 3TE HEAT-SINK GUIDANCE: ~2K/W radiator TO AMBIENT recommendation, NOT contact or as-built 430-domain sink release.**
 Read [VIGO 2025 manufacturer source / source-CAD conditional heat path and remaining TIM gap](docs/V3_R3_OEM_SINK_BOUNDARY_EVIDENCE_20261107.md),
 [SHA-pinned reference thermal budget](data/v3_oem_sink_boundary_20261107/attempt01/boundary_evidence.json)
