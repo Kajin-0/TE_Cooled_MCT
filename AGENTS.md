@@ -1,5 +1,57 @@
 # CURRENT PROJECT CONTRACT
 
+**2026-11-07 V3.2 WORKING INTEGRATED SOLDER + ELECTRICAL CONTACT JOULE FEEDBACK: ONE CONDITIONAL FULL SYSTEM NUMERICAL PASS.**
+Read [V3.2 whole-system energy and physics scope](docs/V3_2_SOLDER_CONTACT_JOULE_FEEDBACK_20261107.md),
+[original 176 SnSb and 352 interface added electrical
+loss full V3.2 result](data/v3_2_joint_loss_feedback_20261107/attempt01/result.json),
+[independent NO SOLVE source face and stage heat
+acceptance](data/v3_2_joint_loss_feedback_20261107/attempt01/read_only_acceptance.json),
+[unchanged V3.1-derived nonlinear integrated driver](scripts/v3_2_joint_loss_feedback.py),
+[read-only independent acceptance](scripts/v3_2_read_only_audit.py),
+[source and archived result SHA manifest](data/v3_2_joint_loss_feedback_20261107/attempt01/manifest.json).
+Same 0.4 A,300 K environment,2 mW detector,
+original source 29/11/4,88 real P/N legs and
+11791 original CAD 3D ceramic TET4, same nonlinear
+32-interval transport+native source ceramic per-pad
+heat feedback as V3.1. Added source 176 SnSb bulk
+solders rho=1.7e-7 Ohm*m prior hypothetical,
+35um thick,0.16mm2 area, plus source352 solder
+electrical interfaces hypothetical rho_c=1e-11
+Ohm*m2. Additional series R=.028545Ohm,
+delta nominal direct electrical V=.011418V,
+I²R=.0045672W, equal positive25.95uW heat into
+EACH adjacent original ceramic hot and cold
+solder pad (explicit provisional thermal partition;
+NOT physical measured contact thermal drop).
+All source contact hot/cold current loops, native
+pad Neumann heats and stage thermal balances include
+the added 4.5672mW electrical Joule work; four
+ceramics receive [.0015051,.0020760,.0007785,
+.0002076]W. V3.2 complete calculated Tdie
+209.987981K vs V3.1 209.803293K
+(+.184688K), Vterminal1.524071V vs1.513297V,
+electrical P.609628W vs.605319W,
+bathQ.590323W vs.586174W. 12 spatial outer
+iterations; max local T update1.2194e-7K,
+global energy residual1.3789e-10W; independent
+no-solve audit source face 88-leg/4-ceramic PASS
+within declared tolerance; last saved original
+source pad flux vs last leg update discrepancy
+1.0431e-10W, explicitly NONZERO finite tolerance.
+There is NO full original metallization bulk
+series R model, no joint thermal resistance, no
+contact Peltier, no 3D bulk P/N charge PDE or
+as-built material qualification. Avoid calling
+this a fully spatial 430-domain physical TEC.
+Original P1 B FAIL/STOP, first actual pair P1 raw
+current FAIL8/8, prospective P2 STOP, 430 C/D
+NOT RUN. The source CAD/mesh and prior V1-V3.1
+standalone working simulations remain untouched.
+Do NOT revisit exhaustive contact microaudit;
+prioritize whole-system measured input uncertainty
+and high-impact physics before another fine mesh.
+No Codex used.
+
 **2026-11-07 SOURCE 3D P/N GEOMETRIC SUFFICIENCY CHECK: DO NOT WASTE V4 ON AXIAL A/L SHAPE FACTORS.**
 Read [all-88-leg source original 3D unit-conductance
 result](data/v4_source_pn_3d_geometry_20261107/attempt01/result.json),
