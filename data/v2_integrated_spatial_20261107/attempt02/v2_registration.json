@@ -1,0 +1,63 @@
+{
+  "milestone": "V2 first original-source spatial plates + unchanged 29/11/4 non-linear TEC and complete 300K ambient/detector path",
+  "parent_git_commit": "350d8c60f6accaa7acdacb64b4783e6e7e01ddd0",
+  "source_stage_couples": [
+    29,
+    11,
+    4
+  ],
+  "current_A": 0.4,
+  "ambient_and_pin_reservoir_K": 300.0,
+  "die_load_W": 0.002,
+  "optical_load_W": 0.0,
+  "source_die_attach_k_W_mK": 1.0,
+  "source_nonlinear_PN": "Zhang P-HE/N-HE-1 unmatched research analog nominal 32 axial intervals; >300K engineering extension flagged",
+  "source_ceramic_P1_original_regions": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "original_ceramic_cell_count": 11791,
+  "ceramic_spatial_R_K_W": [
+    1.175880315301579,
+    2.4442992474957776,
+    3.998256188932479,
+    4.649598924439077
+  ],
+  "external_hot_path_without_ceramic0_R_K_W": 4.833386960805823,
+  "ceramic_thickness_and_3D_patches": "native R3.9 mesh and original metal contact areas, uniform patch Neumann traction, 30 W/mK constant alumina analog",
+  "thermal_Neumann_1W_normalization": "each plate top+1W and bottom-1W, all other boundaries insulated, one gauge fixed; zero bottom area-mean",
+  "spatial_coupling": "nonlinear stage heat flux -> 3D ceramic effective R -> distinct junction boundary temperatures -> new nonlinear stage heat flux until fixed point; reconstruct all four original-geometry temperature fields",
+  "boundary_copper_lead": "existing Cu thermal bath shunt and half Joule from V1 unchanged, net ceramic0 top heat approximated as bath rejected power, not individual pad resolved metal Joule",
+  "boundary_detector": "die conduction through 20um 1mm2 epoxy plus Au wire leak from 300K, cold ceramic3 resolved spreading",
+  "cavity_gas_and_radiation": "OFF, same as V1",
+  "mesh_convergence": "NOT RUN; single original mesh",
+  "as_built_material_grade_and_contact_measurements": "UNAVAILABLE",
+  "solve_tolerances": {
+    "max_node_energy_W": 1e-08,
+    "max_stage_energy_W": 1e-09,
+    "max_interface_T_K": 1e-07,
+    "global_energy_W": 1e-08
+  },
+  "original_B": "FAIL/STOP",
+  "new_first_pair_P1_raw_cut": "FAIL 8/8",
+  "full_430_C_D": "NOT RUN",
+  "source_sha256": {
+    "V1_result": "b8ecb0216059814956c7a69dc807cd8678c551a187f7b805e70e61d4187a0922",
+    "ceramic_3D_operators": "79901e99311141314f331b5dd06bc0784de99eb01351210d520eac5fa533e4b7",
+    "ceramic_3D_unit_profiles": "26908d275639282aba7480b5f6aa7694718b7c990f3c98da0b1d7c2898ecfd35",
+    "ceramic_registration": "66f1aa8837ac2d6d5ac3ddedda291c9282f3b0a88a51b73a7035d22b4a3370ec",
+    "source_3D_header_and_TIM": "9bfe0e7d5ff2933f9d48442bd769b101499f9f7edeaa377648e122f394c71e49",
+    "source_solder_bulk": "c432a5d67009bbda603ad9340d302c3dd4deb5fc7c6177d9d80609750d18bc43",
+    "existing_nonlinear_solver": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "existing_graded_source": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "source_geometry_helper": "9787b06849c93cd4a268611f288543a972810e15381137e181158fa06008fc52",
+    "source_base_geometry_helper": "196e88ef7d9140fad1723e1161fed03ed7fe78757e72ebdfca6d291886472ef2",
+    "source_integrated_heat_paths": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "source_original_CAD": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "original_source_430_domain_register": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f"
+  },
+  "script_sha256": "83c8bf8d237380758335d200235684cc5b77843b9540f169a7254d24b552dd87",
+  "one_operating_point_only": true
+}

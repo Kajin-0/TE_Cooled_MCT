@@ -1,0 +1,219 @@
+{
+  "status": "V2 COARSE SOURCE-GEOMETRY SPATIAL CERAMICS + NONLINEAR TEC TWO-WAY HYBRID ONE CASE: NUMERICAL PASS, PHYSICAL UNQUALIFIED",
+  "original_mesh_total_ceramic_tets": 11791,
+  "source_original_3D_ceramic_count": 4,
+  "original_source_stage_couples": [
+    29,
+    11,
+    4
+  ],
+  "source_current_A": 0.4,
+  "temperature_interface_nodes_K": {
+    "TEC_hot_contact": 303.5207188234791,
+    "stage0_cold_ceramic1_lower": 265.43266128789224,
+    "stage1_hot_ceramic1_upper": 265.8536349237435,
+    "stage1_cold_ceramic2_lower": 235.23311164697907,
+    "stage2_hot_ceramic2_upper": 235.4008582355628,
+    "stage2_cold_ceramic3_lower": 209.57205971737744,
+    "carrier_ceramic3_upper": 209.58831624542302,
+    "HgCdTe_die": 209.65824282752078
+  },
+  "full_detector_die_temperature_K": 209.65824282752078,
+  "terminal_voltage_V": 1.5112123910746575,
+  "terminal_electrical_power_W": 0.6044849564298631,
+  "stage_temperature_boundary_pairs_K": [
+    [
+      303.5207188234791,
+      265.43266128789224
+    ],
+    [
+      265.8536349237435,
+      235.23311164697907
+    ],
+    [
+      235.4008582355628,
+      209.57205971737744
+    ]
+  ],
+  "stage_budget": [
+    {
+      "qc_w": 0.172226717445745,
+      "qh_w": 0.6072440578010888,
+      "voltage_v": 1.0875433508884549,
+      "energy_residual_w": -3.8191672047105385e-14,
+      "joule_w": 0.26220963725991825,
+      "conduction_w": 0.9084042080071107,
+      "leg_temperature_extrema_k": [
+        265.43266128789224,
+        303.5207188234791
+      ],
+      "max_leg_balance_residual_w_m2": 1.0886092013606685e-05,
+      "max_leg_iterations": 3,
+      "high_T_assumption_applied": true,
+      "transport_domain_K": [
+        180.0,
+        390.0
+      ],
+      "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+      "intervals": 32,
+      "affine_T_axial_approximation": false
+    },
+    {
+      "qc_w": 0.04195493751703088,
+      "qh_w": 0.1722267174457426,
+      "voltage_v": 0.32567944982203667,
+      "energy_residual_w": -1.0294542995836764e-13,
+      "joule_w": 0.08104295076608876,
+      "conduction_w": 0.29788748056725634,
+      "leg_temperature_extrema_k": [
+        235.23311164697907,
+        265.8536349237435
+      ],
+      "max_leg_balance_residual_w_m2": 1.0358869758420042e-05,
+      "max_leg_iterations": 3,
+      "high_T_assumption_applied": false,
+      "transport_domain_K": [
+        180.0,
+        390.0
+      ],
+      "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+      "intervals": 32,
+      "affine_T_axial_approximation": false
+    },
+    {
+      "qc_w": 0.003496329104887235,
+      "qh_w": 0.04195493751702699,
+      "voltage_v": 0.09614652103036686,
+      "energy_residual_w": -6.994405055138486e-15,
+      "joule_w": 0.02449716792113454,
+      "conduction_w": 0.09815937479171395,
+      "leg_temperature_extrema_k": [
+        209.57205971737744,
+        235.4008582355628
+      ],
+      "max_leg_balance_residual_w_m2": 2.1099954210512806e-06,
+      "max_leg_iterations": 3,
+      "high_T_assumption_applied": false,
+      "transport_domain_K": [
+        180.0,
+        390.0
+      ],
+      "transport": "direct nonlinear conservative 1D P/N midpoint BVP",
+      "intervals": 32,
+      "affine_T_axial_approximation": false
+    }
+  ],
+  "source_original_four_ceramics_spatial_summaries": [
+    {
+      "source_original_ceramic_id": 1,
+      "source_tets": 4936,
+      "source_nodes": 1682,
+      "through_ceramic_heat_W": 0.5858815495655104,
+      "bottom_patch_area_mean_T_K": 302.83179224224665,
+      "top_patch_area_mean_T_K": 303.5207188234791,
+      "spatial_min_node_T_K": 301.222343214452,
+      "spatial_max_node_T_K": 304.2533215233607,
+      "observed_max_min_T_spread_K": 3.0309783089086864,
+      "source_3D_operator_R_K_W": 1.175880315301579,
+      "numerical_spatial_boundary_mean_residual_K": 0.0
+    },
+    {
+      "source_original_ceramic_id": 2,
+      "source_tets": 4085,
+      "source_nodes": 1363,
+      "through_ceramic_heat_W": 0.1722267174457426,
+      "bottom_patch_area_mean_T_K": 265.43266128789224,
+      "top_patch_area_mean_T_K": 265.8536349237435,
+      "spatial_min_node_T_K": 264.79144938244883,
+      "spatial_max_node_T_K": 266.14757233594275,
+      "observed_max_min_T_spread_K": 1.356122953493923,
+      "source_3D_operator_R_K_W": 2.4442992474957776,
+      "numerical_spatial_boundary_mean_residual_K": 0.0
+    },
+    {
+      "source_original_ceramic_id": 3,
+      "source_tets": 1986,
+      "source_nodes": 683,
+      "through_ceramic_heat_W": 0.04195493751702699,
+      "bottom_patch_area_mean_T_K": 235.23311164697907,
+      "top_patch_area_mean_T_K": 235.4008582355628,
+      "spatial_min_node_T_K": 235.07255859108827,
+      "spatial_max_node_T_K": 235.52249182863525,
+      "observed_max_min_T_spread_K": 0.4499332375469862,
+      "source_3D_operator_R_K_W": 3.998256188932479,
+      "numerical_spatial_boundary_mean_residual_K": 0.0
+    },
+    {
+      "source_original_ceramic_id": 4,
+      "source_tets": 784,
+      "source_nodes": 280,
+      "through_ceramic_heat_W": 0.0034963291048882177,
+      "bottom_patch_area_mean_T_K": 209.57205971737744,
+      "top_patch_area_mean_T_K": 209.58831624542302,
+      "spatial_min_node_T_K": 209.56897889619677,
+      "spatial_max_node_T_K": 209.5925904456692,
+      "observed_max_min_T_spread_K": 0.02361154947243449,
+      "source_3D_operator_R_K_W": 4.649598924439077,
+      "numerical_spatial_boundary_mean_residual_K": 0.0
+    }
+  ],
+  "source_four_ceramic_heat_W": [
+    0.5858815495655104,
+    0.1722267174457426,
+    0.04195493751702699,
+    0.0034963291048882177
+  ],
+  "detector_assumed_bias_heat_W": 0.002,
+  "source_Au_bond_leak_heat_to_die_W": 0.0014963291048877292,
+  "detector_to_carrier_die_attach_W": 0.0034963291048882177,
+  "bath_sink_rejected_heat_W": 0.5858815495655104,
+  "hot_external_R_without_ceramic0_K_W": 4.833386960805823,
+  "hot_full_spatial_effective_R_K_W": 6.009267276107402,
+  "thermal_reservoir_cu_heat_W": -0.02209973596909811,
+  "Cu_lead_total_Joule_W": 0.0007372277335197068,
+  "max_unscaled_interstage_energy_residual_W": 3.892719480091955e-15,
+  "max_unscaled_interface_temperature_residual_K": 1.3822276656583199e-14,
+  "max_stage_energy_residual_W": 1.0294542995836764e-13,
+  "global_energy_accounting_residual_W": 1.4233059175694507e-13,
+  "optimizer_iterations": 6,
+  "optimizer_success": true,
+  "spatial_ceramic_all_four_original_mesh_temperature_fields": "spatial_3D_ceramics_at_V2_point.npz",
+  "source_transport_above_300K_assumed": true,
+  "source_transport_temperature_domain_K": [
+    40,
+    300
+  ],
+  "V1_same_0p4A_comparison": {
+    "V1_die_K": 209.05987836610808,
+    "V1_terminal_voltage_V": 1.5063948801264457,
+    "V1_terminal_electrical_power_W": 0.6025579520505784,
+    "V1_bath_W": 0.5865744120967452,
+    "V2_minus_V1_die_K": 0.5983644614127002,
+    "V2_minus_V1_terminal_voltage_V": 0.004817510948211812,
+    "V2_minus_V1_ambient_heat_W": -0.0006928625312347947
+  },
+  "original_gate_B": "FAIL/STOP",
+  "first_3D_pair_raw_gradient_contact_gate": "FAIL 8/8",
+  "full_original_430_domain_C_D": "NOT RUN",
+  "true_as_built_device_validated": false,
+  "actual_four_3D_ceramic_domain_material_grade": "UNKNOWN",
+  "model_is_all_430_regions_spatial_electrothermal": false,
+  "original_CAD_and_mesh_mutated": false,
+  "source_input_SHA256": {
+    "V1_result": "b8ecb0216059814956c7a69dc807cd8678c551a187f7b805e70e61d4187a0922",
+    "ceramic_3D_operators": "79901e99311141314f331b5dd06bc0784de99eb01351210d520eac5fa533e4b7",
+    "ceramic_3D_unit_profiles": "26908d275639282aba7480b5f6aa7694718b7c990f3c98da0b1d7c2898ecfd35",
+    "ceramic_registration": "66f1aa8837ac2d6d5ac3ddedda291c9282f3b0a88a51b73a7035d22b4a3370ec",
+    "source_3D_header_and_TIM": "9bfe0e7d5ff2933f9d48442bd769b101499f9f7edeaa377648e122f394c71e49",
+    "source_solder_bulk": "c432a5d67009bbda603ad9340d302c3dd4deb5fc7c6177d9d80609750d18bc43",
+    "existing_nonlinear_solver": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "existing_graded_source": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "source_geometry_helper": "9787b06849c93cd4a268611f288543a972810e15381137e181158fa06008fc52",
+    "source_base_geometry_helper": "196e88ef7d9140fad1723e1161fed03ed7fe78757e72ebdfca6d291886472ef2",
+    "source_integrated_heat_paths": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "source_original_CAD": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "original_source_430_domain_register": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f"
+  },
+  "solver_sha256": "83c8bf8d237380758335d200235684cc5b77843b9540f169a7254d24b552dd87",
+  "run_wall_time_s": 0.5941955288872123
+}

@@ -1,0 +1,64 @@
+{
+  "status": "V2 CONDITIONAL SOURCE CAD SPATIAL CERAMIC-COUPLED COMPLETE END-TO-END NUMERICAL PASS, full 430-domain and as-built unqualified",
+  "canonical_baseline_commit": "350d8c60f6accaa7acdacb64b4783e6e7e01ddd0",
+  "four_source_CAD_original_regions": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "source_R39_original_TET4_count": 11791,
+  "source_geometry_and_mesh_modified": false,
+  "new_full_430_domain_PDE_runs": 0,
+  "source_3D_unit_ceramic_fem_runs": 4,
+  "integrated_operating_point_successful_solves": 1,
+  "independent_read_only_replay": "PASS; complete spatial field arrays bitwise equal",
+  "source_3D_ceramic_registration_SHA256": "66f1aa8837ac2d6d5ac3ddedda291c9282f3b0a88a51b73a7035d22b4a3370ec",
+  "source_integrated_3D_registration_SHA256": "bbfd1618fd35b3b32cdace3b92109112bf173361d256c519cde5daed87d36cf3",
+  "source_3D_ceramic_solver_SHA256": "2fab7640b60f0ca89c12138e08b6bba196d64c3aa421424242d3646efed79398",
+  "source_integrated_solver_SHA256": "83c8bf8d237380758335d200235684cc5b77843b9540f169a7254d24b552dd87",
+  "original_source_mesh_SHA256": {
+    "node": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+    "ele": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570",
+    "face": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18"
+  },
+  "original_input_3D_ceramic_SHA256": {
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/v1_integrated_full_package_20261107/attempt01/result.json": "b8ecb0216059814956c7a69dc807cd8678c551a187f7b805e70e61d4187a0922",
+    "tecooledmct/materials.py": "86e4cc066860e1b39db235f13bc95ce5d1bc45d23e8ef424e2ad77482900e8ff"
+  },
+  "original_input_integrated_SHA256": {
+    "V1_result": "b8ecb0216059814956c7a69dc807cd8678c551a187f7b805e70e61d4187a0922",
+    "ceramic_3D_operators": "79901e99311141314f331b5dd06bc0784de99eb01351210d520eac5fa533e4b7",
+    "ceramic_3D_unit_profiles": "26908d275639282aba7480b5f6aa7694718b7c990f3c98da0b1d7c2898ecfd35",
+    "ceramic_registration": "66f1aa8837ac2d6d5ac3ddedda291c9282f3b0a88a51b73a7035d22b4a3370ec",
+    "source_3D_header_and_TIM": "9bfe0e7d5ff2933f9d48442bd769b101499f9f7edeaa377648e122f394c71e49",
+    "source_solder_bulk": "c432a5d67009bbda603ad9340d302c3dd4deb5fc7c6177d9d80609750d18bc43",
+    "existing_nonlinear_solver": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "existing_graded_source": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "source_geometry_helper": "9787b06849c93cd4a268611f288543a972810e15381137e181158fa06008fc52",
+    "source_base_geometry_helper": "196e88ef7d9140fad1723e1161fed03ed7fe78757e72ebdfca6d291886472ef2",
+    "source_integrated_heat_paths": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "source_original_CAD": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "original_source_430_domain_register": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f"
+  },
+  "archived_data_SHA256": {
+    "attempt01/ceramic_registration.json": "66f1aa8837ac2d6d5ac3ddedda291c9282f3b0a88a51b73a7035d22b4a3370ec",
+    "attempt01/ceramic_spatial_operators.json": "79901e99311141314f331b5dd06bc0784de99eb01351210d520eac5fa533e4b7",
+    "attempt01/ceramic_spatial_profiles.npz": "26908d275639282aba7480b5f6aa7694718b7c990f3c98da0b1d7c2898ecfd35",
+    "attempt01/initial_integrated_export_failure.txt": "646c79c188a1dd597da70d60ca7b63e7dac678bdc0ba45d10dd5a763543e9076",
+    "attempt01/v2_registration.json": "e0b009ea622dc2231e52a9c428c4b08c84ff26efe7f9c5f6b7922e16d3da49a7",
+    "attempt02/registration_preflight_failure.txt": "9762247b8eaa89f1faedf0a1dafa447044957cb5879bbd4fd8d2adce94884dee",
+    "attempt02/spatial_3D_ceramics_at_V2_point.npz": "4e6d7918ed45f9c8b3560aa4eae60aa2d2a97ca3ffa8bca216c30c98a201c483",
+    "attempt02/v2_integrated_result.json": "00ae69123efd0d635134dc19a278a62f6ce6fdd516b5da9e86f97e7de90b77d5",
+    "attempt02/v2_registration.json": "bbfd1618fd35b3b32cdace3b92109112bf173361d256c519cde5daed87d36cf3"
+  },
+  "failed_attempt_note": "attempt01 nonlinear output had KeyError original_tets after actual numerical solve; first attempt02 rejected strict preregistration on extra narrative field before solver. Both notes preserved, all source parameter values unchanged.",
+  "transport_above_300K_is_extrapolated": true,
+  "alumina_room_T_bulk_k_30_W_mK_is_not_as_built_or_T_validated": true,
+  "original_electrical_P1_Gate_B": "FAIL/STOP",
+  "first_couple_raw_contact": "FAIL 8/8",
+  "full_430_domain_C_D": "NOT RUN",
+  "real_detector_T_qualified": false,
+  "codex_used": false
+}

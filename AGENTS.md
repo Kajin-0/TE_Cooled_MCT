@@ -1,5 +1,50 @@
 # CURRENT PROJECT CONTRACT
 
+**V2 INTEGRATED SPATIAL WORKING BASELINE (2026-11-07): COMPLETED, ORIGINAL 3D CERAMICS + NONLINEAR 29/11/4 TEC, HYBRID NOT FULL 3D E/T.**
+Read [source-CAD V2 numerical report and V1 comparison](docs/V2_INTEGRATED_SPATIAL_HYBRID_20261107.md),
+[canonical V2 one-case end-to-end I/V/Tdie/E result](data/v2_integrated_spatial_20261107/attempt02/v2_integrated_result.json),
+[source-hashed 4-ceramic/11,791-original-TET4 response and full spatial fields](data/v2_integrated_spatial_20261107/attempt01/ceramic_spatial_operators.json),
+[V2 source-integrity manifest](data/v2_integrated_spatial_20261107/manifest.json),
+[original CAD ceramic FEM unit response code](scripts/v2_source_ceramic_spatial.py),
+[nonlinear integrated V2 spatial-coupling driver](scripts/v2_integrated_spatial_hybrid.py).
+Retains V1 as RUNNABLE comparator, fixed 0.4 A/300K/2mW
+die, 29/11/4 original source geometry, Cu/Au wires and
+unmatched Zhang P/N 32-interval nonlinear solver.
+New: original source ceramic0..3 3D source R3.9 P1
+thermal fields (4936+4085+1986+784 = 11791 TET4;
+original native upper/lower metal pad faces), one
+constant CONDITIONAL alumina k30W/mK hypothesis,
+balanced original-pad source Neumann thermal fluxes.
+Effective ceramic 3D R=[1.175880,2.444299,3.998256,
+4.649599]K/W; these now couple TWO-WAY to eight
+separate N/P junction/ceramic/die temperatures and
+re-solve TE electric and thermal stage fluxes. V2
+0.4A terminal1.511212V, P0.604485W, bathQ0.585882W,
+source die209.658243K versus V1 209.059878K:
+V2 minus V1 +0.598364K, NOT real-device uncertainty.
+Hot-side equivalent6.009267K/W (V1 5.281295).
+One operating-point nonlinear 6 function evaluations,
+unscaled heat residual3.89e-15W, hot/cold interface T
+residual1.38e-14K, whole energy accounting1.42e-13W;
+read-only exact saved spatial field replay PASS.
+First attempt had output key typo, separate registration
+preflight rejected narrative field; both failure notes
+preserved, no material/mesh/BC sweeps. V2 original
+source ceramic temperature spatial spans: plate0 3.031K,
+plate1 1.356K, plate2 .450K, plate3 .024K. These
+3D ceramic sources remain one original mesh with
+unmatched thermal-k(T), uniform heat flux per source
+contact and no metal spreading/contact R; P/N electrical
+currents still nonlinear 1D, not full 430-domain E/T
+field, so FULL C/D NOT RUN and NO as-built T release.
+Original P1 electrical Gate B FAIL/STOP, first-pair
+raw current FAIL 8/8, P2 prospective STOP all intact.
+No Codex used; quota preserved. NEXT V3 coarse
+integrated spatial P/N + ceramics *only if* it can
+improve the same complete output I/V/P/Tdie and energy
+and preserve V1/V2 working baselines; NO microcontact
+forensic churn.
+
 **V1 INTEGRATED WORKING BASELINE (2026-11-07): COMPLETED, CONDITIONAL COARSE ELECTROTHERMAL NETWORK.**
 Read [one source-CAD 29/11/4 integrated package report](docs/V1_INTEGRATED_FULL_PACKAGE_20261107.md),
 [single-case source-hashed result](data/v1_integrated_full_package_20261107/attempt01/result.json),
