@@ -1,0 +1,135 @@
+{
+  "status": "STOP full hot mount resistance: geometry-derived 1D bulk terms identified; header spreading, contact and sink unknown",
+  "source_frozen": true,
+  "new_PDE_runs": 0,
+  "source_material_laws_modified": false,
+  "hot_stack_R3_CAD_face_tags": [
+    2228,
+    2298,
+    2303,
+    6
+  ],
+  "registered_bulk_path_terms": [
+    {
+      "source_CAD_name": "header_finish_Ni",
+      "source_face_tag": 2228,
+      "owner_pair": [
+        "VIGO_reference_header",
+        "header_finish_Ni"
+      ],
+      "source_registered_area_m2": 3.720999999999999e-05,
+      "source_thickness_m": 2e-06,
+      "effective_thermal_conductivity_W_mK": null,
+      "one_dimensional_R_K_W_using_local_face_area": null,
+      "applicability": "UNRESOLVED",
+      "evidence_status": "NO RELEASE: composite effective tensor and plating unknown"
+    },
+    {
+      "source_CAD_name": "hot_mount_In52Sn48",
+      "source_face_tag": 2298,
+      "owner_pair": [
+        "header_finish_Ni",
+        "hot_mount_In52Sn48"
+      ],
+      "source_registered_area_m2": 3.6e-05,
+      "source_thickness_m": 8e-05,
+      "effective_thermal_conductivity_W_mK": 30.0,
+      "one_dimensional_R_K_W_using_local_face_area": 0.07407407407407408,
+      "applicability": "ASSUMED UNIFORM AXIAL HEAT FLOW, not full 3D or full device",
+      "evidence_status": "ENGINEERING HYPOTHESIS: In52Sn48 k 30 W/m/K, NOT measured"
+    },
+    {
+      "source_CAD_name": "underside_Au",
+      "source_face_tag": 2303,
+      "owner_pair": [
+        "hot_mount_In52Sn48",
+        "underside_Au"
+      ],
+      "source_registered_area_m2": 3.6e-05,
+      "source_thickness_m": 2.5e-07,
+      "effective_thermal_conductivity_W_mK": null,
+      "one_dimensional_R_K_W_using_local_face_area": null,
+      "applicability": "UNRESOLVED",
+      "evidence_status": "NO RELEASE: composite multilayer k and interfaces unknown"
+    },
+    {
+      "source_CAD_name": "ceramic0",
+      "source_face_tag": 6,
+      "owner_pair": [
+        "ceramic0",
+        "underside_Au"
+      ],
+      "source_registered_area_m2": 3.720999999999999e-05,
+      "source_thickness_m": 0.0005,
+      "effective_thermal_conductivity_W_mK": 30.0,
+      "one_dimensional_R_K_W_using_local_face_area": 0.4479082683866345,
+      "applicability": "ASSUMED UNIFORM AXIAL HEAT FLOW, not full 3D or full device",
+      "evidence_status": "ANALOG: CoorsTek AD995 99.5% alumina, NOT actual TEC grade"
+    }
+  ],
+  "header": {
+    "CAD_name": "VIGO_reference_header",
+    "CAD_volume_id": 386,
+    "original_exterior_underside_face_tag": 2225,
+    "actual_exterior_underside_area_m2": 0.00033396069675687096,
+    "original_top_exterior_face_tag": 2226,
+    "original_top_exterior_area_m2": 0.00016444821115079938,
+    "mount_solder_contact_area_m2": 3.6e-05,
+    "contact_to_exterior_underside_area_ratio": 0.10779711609659448,
+    "source_header_thickness_m": 0.0015,
+    "reference_k_Kovar_W_mK": 17.3,
+    "header_1D_uniform_contact_patch_R_K_W": 2.4084778420038533,
+    "header_1D_uniform_entire_underside_R_K_W": 0.2596269655505647,
+    "spreading_solver": "NOT RUN",
+    "both_1D_values_are_illustrative_not_true_mathematical_bounds": true,
+    "real_sink_footprint_thermal_conductance_pressure_T": "UNKNOWN",
+    "contact_sink_thermal_boundary": "UNSET"
+  },
+  "ceramic_k_ALUMINA_96_grade_proxy_W_mK": 24.7,
+  "ceramic_1D_R_AD96_analog_K_W": 0.5440181397408517,
+  "ceramic_1D_R_AD995_analog_K_W": 0.4479082683866345,
+  "solder_In52Sn48_hypothesis_k_W_mK": 30.0,
+  "solder_1D_R_hypothesis_K_W": 0.07407407407407408,
+  "two_bulk_layer_1D_sum_AD995_K_W": 0.5219823424607086,
+  "unreleased_hot_mount_terms": [
+    "header spreading and nonuniform heat flow",
+    "header finish Ni composite tensor k and layer interfaces",
+    "effective underside Au multilayer tensor k and layer interfaces",
+    "In52Sn48 alloy k(T) and as-built joint geometry/void fraction",
+    "Al2O3 actual grade k(T), nonuniform ceramic spreading and local pad heat",
+    "finite solid-solid contact thermal area resistances at faces 2228/2298/2303/6",
+    "actual exterior sink mounting footprint and sink/pad pressure/contact resistance",
+    "actual header temperature field, external sink T and calorimetry"
+  ],
+  "previous_R3_reference_case": {
+    "hypothesis": "nominal",
+    "current_A": 0.4,
+    "effective_sink_scenario_K_W": 5.0,
+    "prior_T_hot_K": 302.9351488074836,
+    "prior_T_die_K": 208.98531200217116,
+    "prior_calculated_Q_sink_W": 0.5870297614967063,
+    "prior_assumed_transport_above_300K": true,
+    "Q_based_illustrative_1D_deltaT_InSn_K": 0.04348368603679306,
+    "Q_based_illustrative_1D_deltaT_Al2O3_AD995_K": 0.26293548396340877,
+    "Q_based_illustrative_1D_deltaT_total_two_bulk_terms_K": 0.30641917000020186,
+    "Q_based_1D_header_full_underside_K": 0.15240875566526157,
+    "Q_based_1D_header_local_patch_K": 1.4138481731616237,
+    "do_not_add_these_terms_to_existing_5_K_W_effective_sink": true
+  },
+  "source_input_SHA256": {
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/v3_tec_physical_port_contract_20261106/attempt01/port_and_series_graph.json": "7130b314f7a54c82f6a8e4e6a1afc992727ccde77af639be6121d8c1ce4b00f7",
+    "data/v3_r3_sink_wire_20261107/attempt01/summary.json": "4619b2df5c15b917b110d4ad67335722706b8bbb8ba145b3dbe0bcf016f63475",
+    "tecooledmct/materials.py": "86e4cc066860e1b39db235f13bc95ce5d1bc45d23e8ef424e2ad77482900e8ff",
+    "docs/V3_INTERCONNECT_ELECTROTHERMAL_20261102.md": "85dcc9ec9ba5ac17eea683e907f6b0f8ba0c0e0136c6da42bc7fcf0aed3cb399"
+  },
+  "gate_status": {
+    "source_material_and_contact_laws": "UNSET",
+    "old_original_P1_electrical_B": "FAIL/STOP",
+    "prospective_P2": "STOP",
+    "physical_430_domain_C_D": "NOT RUN",
+    "as_built_detector_operating_T": "UNQUALIFIED"
+  },
+  "decision": "NO GO for a physically released R_sink: source mount/pad dimensions alone are insufficient for header spreading and external contact"
+}

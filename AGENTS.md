@@ -51,6 +51,41 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-07 SOURCE-CAD HOT-MOUNT THERMAL READINESS: real geometric layer and header underside verified; external sink and spreading STOP.**
+Read [source face-tagged package mounting resistance readiness](docs/V3_R3_HOT_MOUNT_THERMAL_READINESS_20261107.md),
+[original CAD area and 1D evidence receipt](data/v3_hot_mount_readiness_20261107/attempt01/thermal_path_audit.json),
+and [read-only exact replay](scripts/v3_hot_mount_thermal_path_readiness.py).
+Original R3 hot path faces2228/2298/2303/6: Kovar header386,
+Ni composite401, 80um In52Sn48 solder402, Au composite403,
+500um ceramic0 volume1. Actual solder contact face36mm2,
+real header underside exterior face2225 333.961mm2, so
+mount footprint just10.78% underside area; 3D lateral
+spreading and actual sink clamping NOT determined.
+With explicitly NONRELEASED 300K k_InSn=30W/mK old
+hypothesis, 1D solder R=.07407K/W; with CoorsTek
+AD995 alumina k30W/mK analog and face37.21mm2,
+1D ceramic R=.44791K/W; sum .52198K/W.
+Alternate AD96 k24.7 gives .54402K/W ceramic.
+Kovar thickness1.5mm, k17.3W/mK bulk analog;
+uniform column 36mm2 2.408K/W versus uniform full
+underside333.96mm2 .260K/W: these are incompatible
+illustrative columns, NOT rigorous bounds on true header
+spreading! Ni/Au effective composite tensors, solder
+actual alloy/voids, every interface thermal R, actual
+fixture contact patch/pressure/sink state remain UNKNOWN.
+Under previously archived nominal .4A 5K/W reduced
+sink heat Q=.58703W, ideal 1D solder+ceramic T drop
+.3064K as comparative arithmetic ONLY; NOT new PDE
+or correction to actual hot temperature. Do NOT add
+these layer R to existing 5K/W effective R_sink:
+that would double count one modeled heat path.
+Next only independently sourced/measured external sink
+footprint/contact and material laws, then preregistered
+one-condition 3D header spreading if possible. No
+unbounded sweeps, no Codex. Source P1 GateB FAIL/STOP,
+prospective P2 STOP, full thermal C/D NOT RUN; original
+CAD/Rev3 and numerical evidence preserved.
+
 **2026-11-07 R3 29/11/4 SOURCE-CAD FINITE SINK & REAL Cu/Au LEAD SHAPE PROXY: 18-case conditional reduced PASS; as-built STILL STOP.**
 Read [bounded 3x3x2 thermal sensitivity and physical exclusions](docs/V3_R3_FINITE_SINK_AND_CAD_WIRE_SENSITIVITY_20261107.md),
 [source-hashed, preregistered 18-case original CAD wire ledger](data/v3_r3_sink_wire_20261107/attempt01/manifest.json)
