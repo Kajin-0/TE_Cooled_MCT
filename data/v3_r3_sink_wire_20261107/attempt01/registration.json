@@ -1,0 +1,51 @@
+{
+  "scientific_contract": "R3 29/11/4 CAD-derived reduced conditional thermal loss scan; no as-built prediction",
+  "source_sha256": {
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/v3_reference_29114_reduced_20261107/attempt01/summary.json": "c5f067dbf1a15a293fb280b4ed83841e8c88889b4b6dd85fe202608da1b7b841",
+    "data/v3_reference_29114_reduced_20261107/attempt01/manifest.json": "2c4b43fb493ac1df4681ce1e7aafc0fd0f19806014db84af5bd30639a11a1064",
+    "scripts/v3_reference_29114_reduced_study.py": "196e88ef7d9140fad1723e1161fed03ed7fe78757e72ebdfca6d291886472ef2",
+    "tecooledmct/materials.py": "86e4cc066860e1b39db235f13bc95ce5d1bc45d23e8ef424e2ad77482900e8ff",
+    "tecooledmct/integrated_reference.py": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "tecooledmct/nonlinear_tec.py": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d"
+  },
+  "source_script_SHA256": "9787b06849c93cd4a268611f288543a972810e15381137e181158fa06008fc52",
+  "sinks_K_W": [
+    0.0,
+    2.0,
+    5.0
+  ],
+  "pin_and_ambient_reservoir_K": 300.0,
+  "current_and_material_pairs": [
+    {
+      "hypothesis": "nominal",
+      "current_A": 0.25
+    },
+    {
+      "hypothesis": "nominal",
+      "current_A": 0.4
+    },
+    {
+      "hypothesis": "higher",
+      "current_A": 0.4
+    }
+  ],
+  "wire_modes": [
+    "OFF",
+    "CAD-derived bulk-proxy ON"
+  ],
+  "fixed_die_load_W": 0.002,
+  "gas": "OFF",
+  "radiation": "OFF",
+  "hot_side_finite_sink": "300K ambient + R_sink * actual model computed heat to bath, Cu hot-wire heat treated separately",
+  "sink_values_are_scenarios_not_measurements": true,
+  "Au_and_Cu_constant_bulk_293K_properties_are_proxies_not_measured_as_built": true,
+  "per_case_seconds": 12.0,
+  "run_budget_seconds": 150.0,
+  "no_extrapolation_pretense": "Temperature>300K uses ALREADY IMPLEMENTED quarter-slope assumed continuation; categorize separately",
+  "acceptance": "existing node <1e-8W, stage <1e-9W, global <1e-8W; all leg extrema 180..390K; no reclassification of gate B",
+  "original_P1_B": "FAIL/STOP",
+  "prospective_P2_B": "STOP",
+  "real_3D_C_D": "NOT RUN",
+  "no_OEM_fitting_no_new_geometry": true
+}

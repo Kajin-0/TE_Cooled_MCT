@@ -51,6 +51,43 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-07 R3 29/11/4 SOURCE-CAD FINITE SINK & REAL Cu/Au LEAD SHAPE PROXY: 18-case conditional reduced PASS; as-built STILL STOP.**
+Read [bounded 3x3x2 thermal sensitivity and physical exclusions](docs/V3_R3_FINITE_SINK_AND_CAD_WIRE_SENSITIVITY_20261107.md),
+[source-hashed, preregistered 18-case original CAD wire ledger](data/v3_r3_sink_wire_20261107/attempt01/manifest.json)
+and [one-shot reduced solver driver](scripts/v3_r3_sink_wire_sensitivity.py).
+Reused original accepted CAD 29/11/4 leg dimensions, actual
+TEC Cu lead1/9 curved centerline lengths3.451/4.965mm radius
+100um each, detector bond7/8 Au centerline9.679mm radius9um each.
+Room-temperature *bulk proxies* from old registry only:
+Cu k400W/mK, rho1.72e-8Ohm*m; Au k315W/mK,
+rho2.30e-8Ohm*m; no independent wire measurement.
+Registered 18 cases [nominal0.25A, nominal0.4A,
+higher0.4A]x sink Rtheta[0,2,5]K/W x wires[OFF,ON].
+Sink resistances SCENARIOS, NOT actual mounting resistances.
+Ideal ambient pin reservoir300K, die heat2mW, no gas,
+radiation, stage metal bypass, 3D ceramic gradients, or
+finite electrical/thermal contact R. Actual 1D direct
+nonlinear 32 interval measured-source P-HE/N-HE-1
+research-grade mismatch remains. All18 numerically PASS
+original node/energy/terminal IV gates; only6 have
+P/N temperatures wholly <=300K; remaining12 accepted
+only using the explicitly ASSUMED >300K quarter-tangent
+transport continuation. Nominal0.4A wires-OFF ideal
+Tdie207.169K, wires-ON sink0 207.647K, wires-ON
+sink5 208.985K, Thot302.935K, Au bond heat1.507mW,
+terminal0.602W at 5K/W. Higher0.4A wires-ON sink5
+Tdie186.813K; still NOT real detector T or true low bound.
+Physical lesson: unmodeled lead heat can be comparable
+to imposed die2mW even when T shift<1K in current
+hypothetical numerical model. No evidence to fit hot sink
+or production-grade contacts. STOP repeated arbitrary
+hypothesis sweeps; next progress needs source-qualified
+sink, contact, real detector load and transport.
+Original electrical P1 GateB FAIL/STOP, P2 candidate STOP,
+coupled 430-domain thermal C/D NOT RUN, physical inputs
+430/2440 UNSET, source identity unknown. No CAD/mesh,
+new 3D solver or Codex usage.
+
 **2026-11-07 CONDITIONAL PHYSICAL REFERENCE REFINEMENT: first actual accepted R3 29/11/4 SOURCE-CAD-derived nonlinear reduced TEC envelope, 9/9 numerical PASS, as-built UNQUALIFIED.**
 Read [R3 source-CAD 29/11/4 conditional 1D transport report](docs/V3_R3_REDUCED_THERMOELECTRIC_REFERENCE_20261107.md),
 [sealed nine-case study summary, complete source hashes, no-OEM-fit registration](data/v3_reference_29114_reduced_20261107/attempt01/manifest.json),
