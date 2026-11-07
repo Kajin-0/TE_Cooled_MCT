@@ -51,6 +51,47 @@ lead9->lead_land, and joint5->film1. The two tab88 interior
 cuts pass; lead9_mid passes at0.061289%. This ranks original
 source current cuts and does not isolate a single causal mechanism,
 justify relaxation of B, or prove any physical model.
+**2026-11-07 ORIGINAL SOURCE TEC SOLDER + FINITE JUNCTION PHYSICS SCALE: 352 exact CAD source interfaces, explicit future full-physics contact measurement target; NO PDE.**
+Read [exact original 88-leg solder electrical/thermal
+planning scales and future coupled 3D gate](docs/V3_TEC_SOURCE_CONTACT_SCALE_AND_COUPLED_INPUT_GATE_20261107.md),
+[source-hashed numerical contact scale receipt](data/v3_tec_contact_scale_20261107/attempt01/conditional_contact_scale.json)
+and [source-keyed analytic reproducer](scripts/v3_tec_contact_scale_gate.py).
+Source R3 88 mandatory P/N legs (44P/44N), 176 native
+SnSb solder solids (0.4x0.4x.035mm) and exactly352
+CAD solder contacts all0.16mm2: 88 N/SnSb, 88 P/SnSb,
+176 SnSb/metallization. Research P/N 300K NOMINAL
+unmatched transport gives R_series_legs=2.698285Ohm,
+NOT actual production resistance. Older GateB solder
+rho=1.7e-7Ohm*m unqualified hypothesis gives
+aggregate series solder bulk R=.006545Ohm (0.243% of
+leg-only 300K). Identical all352 interface
+rho_c=1e-11 Ohm*m2 hypothetical gives .022Ohm series
+resistance and .00352W Joule at0.4A; 1e-10 gives
+.220Ohm and .0352W. Specific rho_c at which electrical
+contact series is 1% of ideal leg R at300K is
+1.226493e-11 Ohm*m2, quantitative measurement
+planning threshold, NOT measured contact or an
+as-built acceptance number. Older SnSb k45W/mK
+hypothesis gives single .035mm solder slab4.861K/W
+thermal axial resistance; P/N research leg axial
+2843/2233K/W, four thermal interface terms at
+r_t1e-7m2K/W add2.5K/W per leg.
+NOTE interfacial Peltier/Thomson and local Joule
+heating still essential even when scalar r_th small.
+No valid 88-leg thermal series circuit; legs are
+parallel thermal paths each stage. First true
+nine conducting source volumes [5,6,7,8,9,10,269,
+270,271], real mathematical source current cuts
+faces1531 and162 (NOT package pins) and ceramic
+thermal faces8/9/44 require explicit energy/contact
+and stage-network cut conditions for any 3D couple.
+Do NOT reuse older GateB coupon contact coefficients
+as actual TEC interface evidence. Still NO full
+430-domain physically qualified electrothermal
+model, no material law release, no rerun synthetic
+tests, no Codex. Original electrical P1 GateB FAIL/
+STOP, P2 STOP and full thermal C/D NOT RUN.
+
 **2026-11-07 ORIGINAL R3.9 3D HEADER + FINITE OEM-EXAMPLE TIM ROBIN + SEPARATE RADIATOR: ONE CONDITIONAL NUMERICAL PASS, PHYSICAL PRODUCT STILL STOP.**
 Read [single registered native CAD original header TIM/Radiator model and qualification boundaries](docs/V3_R3_HEADER_TIM_ROBIN_REFERENCE_20261107.md),
 [exact saved 47702-TET4 numerical receipt](data/v3_header_tim_robin_20261107/attempt01/result.json),
