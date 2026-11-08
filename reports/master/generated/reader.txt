@@ -4,12 +4,12 @@ Engineering Assessment
 
 Revision 3
 
-1 November 2026
+8 November 2026
 
 Hypothetical reference article. Numerical release incomplete.
 
-Abstract. A source-referenced nine-pin, two-ear housing and an independently selected three-
-stage cooler envelope define a synthetic HgCdTe detector article. This assessment combines two
+Abstract. A source-referenced nine-pin, two-ear housing and an independently selected three-stage
+cooler envelope define a synthetic HgCdTe detector article. This assessment combines several
 distinct numerical descriptions. A genuine coupled three-dimensional solid calculation resolves
 88 thermoelectric legs, internal conductors, a header, explicit joint and attach layers, and the
 detector. At 0.1 A, 300 K underside bath and 2 mW imposed die heat, its principal fine mesh gives
@@ -31,6 +31,11 @@ result, not demonstrated assembly feasibility. A manufacturer comparison shows s
 voltage disagreement. A separate matched-200 K finite-sink study increases nominal input from 0.548
 to 0.622 W between 0 and 10 K W−1; finite-sink states require assumed above-300 K continuation,
 not a measured device-accuracy interval.
+
+A later source-mesh hybrid couples 88 axial legs and four spatial ceramic fields to an effective cavity.
+At 0.4 A and 2 mW die heat it gives 210.625214 K and 1.522462 V under the stated assumptions.
+The 430-domain geometry is distinct from the older solid-only field; full three-dimensional package
+and cavity transport remain unmodeled.
 
 Engineering interpretation. Source geometry, physical hypotheses, numerical verification and
 empirical accuracy are treated separately. Numerical digits identify conditional calculations, not
@@ -102,11 +107,14 @@ Mesh sensitivity and independent analytical benchmark
 16 Sensitivity, model-form uncertainty and physical interpretation
 35
 
-17 Overall verification and engineering conclusions
+17 Spatial ceramic and nonlinear 88-leg cavity-coupled reference
 37
 
+18 Overall verification and engineering conclusions
+41
+
 References
-38
+43
 
 2
 
@@ -3103,6 +3111,590 @@ TEC-cooled HgCdTe reference device
 Engineering assessment: Revision 3
 
 17
+Spatial ceramic and nonlinear 88-leg cavity-coupled reference
+
+A later, separately constructed hybrid reference uses a 430-domain source geometry with 29/11/4
+P–N couples. It must not be identified with the earlier 216-domain, 28/12/4 solid-field example
+in Sections 2–10. In this calculation, each of 88 legs uses a 32-interval nonlinear axial transport
+model; four ceramics use their original three-dimensional linear tetrahedral conduction operators.
+Their 11,791 tetrahedra and saved nodal temperatures are genuine source-mesh data. The whole
+430-domain assembly, the gas cavity, and the P/N electrical field are not solved as a coupled
+three-dimensional field. The geometry and transport represent a synthetic research reference; neither
+vendor’s drawing establishes a combined manufactured device.
+
+−2
+0
+2
+x (mm)
+
+−2
+
+0
+
+2
+
+y (mm)
+
+Stage 1: 29 couples
+
+P
+N
+
+−2
+0
+2
+x (mm)
+
+−2
+
+−1
+
+0
+
+1
+
+2
+
+y (mm)
+
+Stage 2: 11 couples
+
+−2
+0
+2
+x (mm)
+
+−2
+
+−1
+
+0
+
+1
+
+2
+
+y (mm)
+
+Stage 3: 4 couples
+
+Figure 26: Actual source leg-centre positions by stage and polarity; outlines show the adjacent
+ceramic footprints. The 29/11/4 series allocation is a chosen reference. Symbols identify source
+centres, not independently measured metallization or current-density fields.
+
+17.1
+Model equations and interface assumptions
+
+For each leg, axial coordinate z runs from hot to cold, with signed current density J. The implemented
+conservative equations are
+
+q = S(T)TJ −k(T)dT
+
+dz ,
+dq
+dz = J dV
+
+dz ,
+dV
+
+dz = ρ(T)J + S(T)dT
+
+dz .
+(23)
+
+Here q is heat flux in W m−2, ρ is electrical resistivity in Ωm, and S is thermopower in V K−1.
+The discrete leg heat rates obey Qh −Qc = IV with the circuit’s sign convention. Each ceramic
+solves −∇· (kc∇T) = 0 on its own source tetrahedra, with kc = 30 W m−1 K−1 assumed. Native pad
+fluxes couple the field to local leg endpoint temperatures. A lower-pad area mean fixes the thermal
+reference; unassigned faces are insulated.
+
+The P and N research specimens are distinct, not a matched commercial grade [4]. Published values
+cover 40–300 K; this calculation’s guarded implementation admits 180–390 K. Above 300 K each
+property follows an explicitly assumed quarter terminal-tangent slope. The electrical conductivity
+and Thomson coefficient remain σ = 1/ρ and τ = T dS/dT. At the 300 K knot the measured left
+derivative is used, with the assumed right derivative strictly above the knot. This continuation is
+not measured evidence.
+
+17.2
+Cavity load and package closure
+
+The boundary reservoir is at 300 K. For krypton at 100 Pa, the effective gap is 3 mm and accommo-
+dation is 0.8. The gas approximation interpolates the tabulated dilute-gas conductivity [5]; it uses
+
+37
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+−2
+0
+2
+x (mm)
+
+−2
+
+0
+
+2
+
+y (mm)
+
+Ceramic 0
+
+−2
+0
+2
+x (mm)
+
+−2
+
+−1
+
+0
+
+1
+
+2
+
+y (mm)
+
+Ceramic 1
+
+−2
+0
+2
+x (mm)
+
+−2
+
+−1
+
+0
+
+1
+
+2
+
+y (mm)
+
+Ceramic 2
+
+−1
+0
+1
+x (mm)
+
+−1.0
+
+−0.5
+
+0.0
+
+0.5
+
+1.0
+
+y (mm)
+
+Ceramic 3
+
+301.00
+
+301.50
+
+302.00
+
+302.50
+
+303.00
+
+303.50
+
+304.00
+
+304.50
+
+T (K)
+
+265.40
+
+265.60
+
+265.80
+
+266.00
+
+266.20
+
+266.40
+
+266.60
+
+T (K)
+
+235.95
+
+236.00
+
+236.05
+
+236.10
+
+236.15
+
+236.20
+
+236.25
+
+T (K)
+
+210.525
+
+210.530
+
+210.535
+
+210.540
+
+210.545
+
+210.550
+
+210.555
+
+T (K)
+
+Figure 27: Four saved ceramic temperature fields on actual top-boundary triangles of the original
+tetrahedral mesh. Each panel uses its own color scale. P1 nodal interpolation is shown only on those
+ceramic faces; no gas, metal, P/N or full-package temperature field is inferred.
+
+200
+300
+400
+T (K)
+
+−200
+
+−100
+
+0
+
+100
+
+200
+
+S (μV K−1)
+
+P
+N
+
+200
+300
+400
+T (K)
+
+4
+
+6
+
+8
+
+10
+
+12
+
+14
+
+ρ (μΩ m)
+
+200
+300
+400
+T (K)
+
+1.2
+
+1.4
+
+1.6
+
+1.8
+
+k (W m−1 K−1)
+
+Figure 28: Research-analog P/N transport laws used by the hybrid calculation. Solid curves follow the
+measured-domain digitization; shaded dashed curves indicate the assumed 300–390 K continuation.
+Source specimens are not identified with a manufactured cooler.
+
+Eucken viscosity and a temperature-jump length δ to calculate
+
+Qg,i =
+kgAi
+Lg + 2δi
+(Tr −Ti),
+Qr,i = Fiϵeff,iσBAi(T 4
+r −T 4
+i ),
+ϵeff =
+�
+ϵ−1
+r
++ ϵ−1
+i
+−1
+�−1 .
+(24)
+
+38
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+The exposed effective areas are 12.60, 8.68, 4.76 and 1.00 mm2 for the three cold ceramics and
+die. Cap/ceramic emissivities are 0.20/0.80 with assumed view factor 0.50; the die/window path
+uses 0.10 for the window and 0.70 view factor. These are lumped engineering assumptions, not a
+native-void gas PDE, resolved radiosity, optical transmission or buoyancy model. Cold ceramic loads
+are redistributed to upper metal-pad basis functions by area, rather than applied to actual exposed
+ceramic surfaces.
+
+Ceramic 1
+Ceramic 2
+Ceramic 3
+Detector
+0.0
+
+0.2
+
+0.4
+
+0.6
+
+0.8
+
+1.0
+
+1.2
+
+1.4
+
+Heat into cold node (mW)
+
+Krypton
+Gray radiation
+
+Figure 29: Saved positive gas and gray-radiation loads into the three cold ceramic nodes and the
+detector. The cavity reservoir receives the equal and opposite total. The values depend on effective
+areas, gap, accommodation and view factors; they are not direct native surface-flux predictions.
+
+The model includes a 2 mW imposed detector heat, Au detector links, Cu hot links and an effective
+4.83339 K W−1 mounting path. It adds 176 assumed SnSb joints and 352 electrical contacts: their
+assumed combined 0.028545 Ωgives 11.418 mV and 4.5672 mW at 0.4 A. These electrical losses are
+deposited on adjacent ceramic pads by assumption. Finite thermal contact resistance, contact Peltier
+terms, metal current crowding and detector carrier/optical response are excluded.
+
+17.3
+One 0.4 A operating point and version comparison
+
+At 300 K ambient and 2 mW imposed die heat, the accepted hybrid result gives die tempera-
+ture 210.625214 K, terminal voltage 1.522462 V, electrical input 0.608985 W and bath rejection
+0.594044 W. Gas and radiation contribute 3.892553 and 0.624076 mW respectively, or 4.516629 mW
+total. The cavity-off predecessor at the same current and nominal load gives 209.987981 K and
+1.524071 V. Thus this modeled cavity change raises the die temperature by 0.637233 K; it is not an
+uncertainty interval or a measurement of a manufactured detector.
+
+Stage
+Legs
+Qc (mW)
+Qh (mW)
+Leg sum V (V)
+
+1
+58
+179.960
+614.740
+1.086948
+2
+22
+46.164
+176.516
+0.325882
+3
+8
+5.158
+43.706
+0.096371
+
+The table sums the actual P/N leg results; additional joint and lead contributions belong to the
+terminal circuit. Stage-to-stage heat rates differ because of the distinct joint and cavity source
+terms, not because the same interface heat has been duplicated. The signed system balance includes
+electrical input, imposed die heat, wire paths and enclosure exchange as well as bath rejection.
+
+39
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+V1
+V2
+V3
+V3.1
+V3.2
+V3.3
+209.0
+
+209.2
+
+209.4
+
+209.6
+
+209.8
+
+210.0
+
+210.2
+
+210.4
+
+210.6
+
+Detector temperature (K)
+
+V1
+V2
+V3
+V3.1
+V3.2
+V3.3
+
+1.5075
+
+1.5100
+
+1.5125
+
+1.5150
+
+1.5175
+
+1.5200
+
+1.5225
+
+Terminal voltage (V)
+
+Figure 30: Saved one-point model progression at 0.4 A, 300 K ambient and 2 mW imposed die heat.
+Each marker is a distinct implemented model; intermediate model changes include spatial ceramic
+feedback and joint losses. Voltage is a single operating point, not an I–V curve.
+
+0
+
+2
+
+4
+
+6
+
+Qc (mW leg−1)
+
+0
+20
+40
+60
+80
+Source leg index in series order
+
+10
+
+12
+
+14
+
+16
+
+18
+
+20
+
+22
+
+Leg voltage (mV)
+
+Figure 31: All 88 saved source-leg cold-side heat rates and voltage contributions at the accepted
+operating point. Red and blue markers correspond to P and N legs; dashed separators mark the
+58/22/8 legs in the three stages. These are axial leg solutions coupled to spatial ceramic pad
+temperatures, not a three-dimensional P/N current field.
+
+17.4
+Convergence, verification and limits
+
+The registered coarse coupling criterion was maximum pad-temperature update below 2 × 10−5 K.
+Five outer iterations reached 1.65345 × 10−5 K; this is iterative convergence at one discretization, not
+a spatial error bound. The whole-device energy residual is 8.8674 × 10−9 W, maximum stage/node
+residual 4.9061 × 10−9 W, ceramic net-flux residual 5.50 × 10−15 W and individual leg residual
+
+40
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+1.2364 × 10−13 W. Independent reconstruction finds a nonzero 2.535 × 10−8 W maximum difference
+between saved pad heat and the final leg update. The first attempted initial state did not reach
+acceptance and remains excluded.
+
+1
+2
+3
+4
+5
+Outer iteration
+
+10−4
+
+10−3
+
+10−2
+
+Maximum pad change (K)
+
+Registered limit
+
+1
+2
+3
+4
+5
+Outer iteration
+
+210.600
+
+210.605
+
+210.610
+
+210.615
+
+210.620
+
+210.625
+
+Detector temperature (K)
+
+Figure 32: Actual saved outer-coupling history. The dashed line is the registered coarse pad-update
+threshold; the die values are iterates, not additional independent operating points. A small algebraic
+or energy residual does not establish mesh convergence or physical accuracy.
+
+The historical 1% bath and 5% cold-interface raw-gradient gates remain failed. A separate gas
+raw-flux mismatch remains 32.6274%; the earlier source-pair raw-gradient check failed on 8/8 contacts.
+These historical tests are not replaced by hybrid conservation residuals. No as-built validation,
+full coupled 430-domain electrothermal solution, native cavity-fluid solution or release certification
+follows from this one operating point.
+
+18
 Overall verification and engineering conclusions
 
 Assessment
@@ -3178,7 +3770,13 @@ Not established
 Large joint manufacturer discrepancy; grade/construction
 uncertain
 
-17.1
+41
+
+
+TEC-cooled HgCdTe reference device
+Engineering assessment: Revision 3
+
+18.1
 Engineering conclusions
 
 The corrected 88-leg solid calculation passes electrical and conservative heat checks while retaining
@@ -3197,18 +3795,20 @@ global optimum or device confidence interval follows.
 The filled-core proxy conserves power while omitting native transport. The separate gas control
 retains its 32.6274% raw failure against 1%; those powers are not coupled here. Nonlinear scaling
 ambiguity and failed unchanged-pad realization preclude an inverse dimension claim. Independent
-geometry/material/contact evidence is required; no new coupled field or numerical release follows.
+geometry/material/contact evidence is required; no full native cavity field or numerical release
+follows.
 
-17.2
+18.2
 Reproducible scientific method
 
-Three-dimensional figures are exact intersections of archived tetrahedra and solved fields, with
-independent node/cell correspondence and voids preserved. Reduced plots use completed cases and
-independent boundary-value comparisons; rejections remain visible. Candidate geometry and proxy
-are audited separately. Source/input identities, field provenance and deterministic figure records are
-retained independently. Rebuilding figures implies no new physics solve.
+Older solid-section figures are exact intersections of archived tetrahedra and solved fields, with
+independent node/cell correspondence and voids preserved. The hybrid ceramic panels use source
+tetrahedral boundary triangles and saved nodal temperatures. Reduced plots use completed cases
+and independent boundary-value comparisons; rejections remain visible. Candidate geometry and
+proxy are audited separately. Source/input identities, field provenance and deterministic figure
+records are retained independently. Rebuilding figures implies no new physics solve.
 
-37
+42
 
 
 TEC-cooled HgCdTe reference device
@@ -3234,6 +3834,6 @@ Digitized P/N specimen transport, 40–300 K; no commercial grade identification
 [5] M. L. Huber, Thermal Conductivity of Gases, NIST/CRC (2019), NIST thermophysical-property
 tabulation. Dilute-gas conductivity data; package transport is separately approximated.
 
-38
+43
 
 

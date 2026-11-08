@@ -11,6 +11,7 @@ from .validate import validate,verify_current
 
 ACTIVE=ROOT/'reports/master/generated'
 SOURCES=['reports/master/build.py','reports/master/figures.py','reports/master/material_screening.py','reports/master/identifiability.py','reports/master/finite_sink.py','reports/master/validate.py',
+         'reports/master/v33_figures.py','reports/master/extract_v33_mesh.py',
          'reports/master/history.py','reports/master/render.py','reports/master/report.tex',
          'reports/master/references.json','reports/field_geometry.py',
          'reports/rev3_review/build.py','reports/rev3_review/latest_study.py',
@@ -27,6 +28,10 @@ def prepare(out,*,figures=True):
     if figures:
         if out.exists():raise ValueError('Choose a new staging directory')
         subprocess.run([str(ROOT/'fem/run.sh'),'python','-m','reports.master.figures','--out',str(out.relative_to(ROOT))],cwd=ROOT,check=True)
+    # This frozen-data extension is regenerated even when earlier sealed figures
+    # are reused.  It does not invoke any physics solver or change the pinned image.
+    from .v33_figures import generate as generate_v33
+    generate_v33(out)
     shutil.copy2(ROOT/'reports/master/report.tex',out/'report.tex')
     d=json.loads((out/'report_inputs.json').read_text())
     if not d.get('figure_generators'):raise ValueError('Missing figure-generation source audit; regenerate figures')
@@ -36,7 +41,7 @@ def prepare(out,*,figures=True):
     for name in SOURCES:
         target=out/'source_snapshot'/(name+'.source');target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,target)
     d['derived']={name:sha(out/name) for name in ('report.tex','numerics.tex','master_numerics.tex',
-        'screening_numerics.tex','identifiability_numerics.tex','finite_sink_numerics.tex','material_screening.json','section.npz')}
+        'screening_numerics.tex','identifiability_numerics.tex','finite_sink_numerics.tex','v33_numerics.tex','material_screening.json','section.npz')}
     write(out/'report_inputs.json',d)
     env={**os.environ,'SOURCE_DATE_EPOCH':'1793318400','TZ':'UTC'}
     for i in range(3):
@@ -66,8 +71,8 @@ def publish(out):
     verify_edition(out)
     if ACTIVE.exists():
         if not (ACTIVE/'live_master.json').exists():raise ValueError('Refuse to overwrite an unknown directory')
-        previous=ROOT/'outputs/rev3-master-previous-build'
-        if previous.exists():shutil.rmtree(previous)
+        previous=ROOT/'outputs'/('rev3-master-before-'+sha(PUBLIC)[:12])
+        if previous.exists():raise ValueError('Refuse to overwrite prior build: '+str(previous))
         ACTIVE.rename(previous)
     ACTIVE.parent.mkdir(parents=True,exist_ok=True);shutil.copytree(out,ACTIVE)
     temporary=PUBLIC.with_suffix('.pdf.pending');shutil.copy2(out/'report.pdf',temporary);temporary.replace(PUBLIC)

@@ -37,13 +37,11 @@ public-reference check now verifies the new master through that live pointer.
 The guard's message about the approved report refers to the preserved original.
 No failed raw gate, source hash, field archive or historical manifest is waived.
 
-The current master has **38 pages**. Frozen material, identifiability and finite-sink JSON
+The current master has **43 pages**, including a source-traced V3.3 hybrid section. Frozen material, identifiability and finite-sink JSON
 are projected by `reports/master/material_screening.py`, `identifiability.py` and `finite_sink.py`,
 with no transport solver calls or changed material laws during report generation.
-The latest integration adds actual nominal matched-target power, source-dependent
-finite-sink temperatures and independently audited signed lead/sink budgets.
-All 46 predecessor figures remain byte-identical, giving 50 PDF/PNG
-figure files. Earlier nonlinear geometry/material ambiguity, rank caveat,
+The earlier finite-sink integration retains its matched-target power and signed heat budgets. The latest integration adds source-mesh ceramic fields, 88 individual legs, effective cavity loads and V1--V3.3 comparisons.
+All 50 predecessor figure files remain byte-identical; seven V3.3 figures add 14 PDF/PNG files. Earlier nonlinear geometry/material ambiguity, rank caveat,
 141/181 material states, 40 rejections, source coverage,
 conditional target/sensitivity and the distinct cavity-proxy baseline remain.
 This is not device validation; all prior raw release failures remain explicit.
@@ -63,16 +61,46 @@ exact 36-page report/provenance are now retained in
 `96265010b41a9f41f53fa31c2fa4e8c3098806696675b3766e69f0554a27e006`.
 All original report hash guards remain; live references alone evolve.
 
-Every current page was rendered and visually inspected; PDF, 50 figures and
-38 rendered pages reproduce byte for byte across two independent builds. Current
-study/report checks, archive/master integrity and legacy evidence are recorded in
-`data/finite_sink_20261101/verification.json`. Previous study/report verification
+Every current page was rendered and visually inspected; PDF, 64 figure files and
+43 rendered pages reproduce byte for byte across two independently seeded builds. Prior
+finite-sink study/report checks, archive/master integrity and legacy evidence are recorded in
+`data/finite_sink_20261101/verification.json`. Current report checks are recorded in
+`reports/master/verification/v33_integration_20261108/summary.json`. Previous study/report verification
 remains in `data/tec_identifiability_20261101/verification.json`; the preceding report-only
 integration checks remain in
 `reports/master/verification/material_integration_20261101/summary.json`.
 The original report-build verification remains in `reports/master/verification/summary.json`
 as historical scope; its 300 full opt-in passes are not new executions.
 No new CAD/mesh/Elmer smoke or repeated scenario run is part of report generation.
+
+## V3.3 frozen-data reproduction
+
+The seven V3.3 figures use the saved 88-leg outputs, four original ceramic
+node-temperature arrays and a compact copy of the exact source tetrahedron
+connectivity. `reports/master/inputs/v33_ceramic_connectivity.json` retains the
+original node/element/face SHA-256 identities; the extractor cross-checks node
+coordinates and all region counts before creating the portable NPZ. No physics
+solve is run. When the original recorded mesh files are available, reproduce
+that input with `python -m reports.master.extract_v33_mesh --mesh MESH_DIR
+--out NEW_DIR` and compare both resulting input hashes.
+
+The original FEM image may be unavailable. For report-only work, the host plotting
+venv can generate the new figures and render pages while reusing the previously
+verified, hash-checked figures. This does not modify the pinned FEM wrapper:
+
+```bash
+mkdir -p outputs/NEW_STAGING
+cp -a reports/master/generated/. outputs/NEW_STAGING/
+rm outputs/NEW_STAGING/report.pdf
+TE_REPORT_PYTHON=/home/User/venvs/plotting/bin/python OPENBLAS_NUM_THREADS=1 \
+  /home/User/venvs/plotting/bin/python -B -m reports.master.build \
+  --out outputs/NEW_STAGING --reuse-figures
+```
+
+Use a second independently seeded staging directory to compare PDF and figure
+bytes, then inspect every rendered page and record the review before publication.
+The exact previous 38-page master and its provenance are sealed under
+`reports/historical/rev3_pre_v33_20261108`; it is historical evidence only.
 
 ## Build and review
 

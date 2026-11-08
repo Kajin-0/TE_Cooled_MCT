@@ -1,5 +1,8 @@
 # CURRENT PROJECT CONTRACT
 
+**2026-11-08 CANONICAL REPORT UPDATE:** The ONE current public scientific
+assessment is the [43-page Revision 3 master](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf), updated in place with V3.3 hybrid science and seven figures from frozen data. The exact preceding 38-page PDF and provenance are separately sealed historical evidence. The earlier 11-page V3.3 document is historical source material, not a competing current report. Continue improving the one master when justified; preserve all archived numerical failures and fields. No new physics solve occurred for this report update. The active engineering priority remains the working-system-first directive immediately below.
+
 **AUTHORITATIVE USER DIRECTIVE — 2026-11-07: ENGINEERING-PLAUSIBLE VIRTUAL DEVICE, WORKING END-TO-END, ITERATE COARSE TO FINE. OVERRIDES CONFLICTING LATER-DATED / HISTORICAL NEXT-STEP LABELS BELOW.**
 
 **MAIN GOAL:** Build a **realistic and physically defensible reference simulation of a three-stage thermoelectrically cooled HgCdTe detector and nine-pin package**, including actual source-derived 3D geometry as feasible, its TEC electrical/thermal transport, stage heat flow, ceramic/contact/lead paths, detector and cavity/package heat loads, mounting/sink, and eventually a practical parametric design platform. The modeled 29/11/4 source-CAD topology is a **chosen engineering reference hypothesis**, not an assertion of a TEC Microsystems or VIGO production assembly. **Do NOT try to clone, uniquely fit, validate against, or obtain proprietary data from a specific manufacturer as a prerequisite for progress. No emails, sourcing requests, or user lab data are required to continue.**
@@ -18,11 +21,6 @@
 **2026-11-08 V3.3 FIRST WORKING FULL-PACKAGE KRYPTON / GRAY-RADIATION COUPLED TEC PROTOTYPE — SOURCE 29/11/4, 88 ORIGINAL LEGS AND FOUR ORIGINAL 3D CERAMICS.**
 Read [complete 0.4A / 100Pa Kr source numerical
 and physical report](docs/V3_3_CAVITY_GAS_RADIATION_PACKAGE_20261108.md),
-[11-PAGE STANDALONE SCIENTIFIC REPRODUCTION PDF,
-INDEPENDENT OF THIS REPOSITORY](reports/generated/TEC_HgCdTe_Reference_V3_3_Standalone_Method_20261108.pdf),
-[standalone report source with six 14-node P/N curves,
-all 88 original XY leg centres and all 95 source
-ceramic-pad position/area/heat values](reports/generated/TEC_HgCdTe_Reference_V3_3_Standalone_Method_20261108.md),
 [full V3.3 electrical, heat, original 3D nodal and
 80+-field numerical result](data/v3_3_cavity_package_feedback_20261108/attempt02/result.json),
 [registered model source and actual gas/rad inputs](data/v3_3_cavity_package_feedback_20261108/attempt02/registration.json),
@@ -69,12 +67,9 @@ gas-solid outer boundary; no cavity gas PDE,
 CFD, actual radiosity all surfaces, optical
 window transmission or actual OEM product.
 Current 430 domains and29/11/4 differ from
-immutable 38-page Rev3 older 216-domain
-28/12/4 calculation. Source Rev3 untouched;
-new standalone 11p monograph fully documents
-current model so another engineer can implement
-similar source geometry and transport without
-this repo or private conversation.
+the older 216-domain 28/12/4 calculation. The
+canonical Rev3 master now distinguishes both;
+its preceding 38-page bytes are sealed evidence.
 FIRST attempt stopped early due old V3 seed/tight
 2e-7K threshold, no accepted result; trial and
 stop evidence retained. Second warmed from V3.2

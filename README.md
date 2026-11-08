@@ -1,79 +1,21 @@
 # TE_Cooled_MCT
 
-## Current project status — November 3, 2026
+**[Canonical Master Engineering Report — Revision 3](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf)**
 
-**Physical reference:** Frozen V3 R1, an 824-solid synthetic TEC-cooled HgCdTe
-assembly with *conditional physical-design acceptance*—not manufactured or
-OEM validated. The older V2 geometry STOP is historical, not the current verdict.
+The single current scientific assessment describes a synthetic three-stage
+TEC-cooled HgCdTe reference device. The latest report incorporates a 0.4 A
+hybrid calculation with 88 axial P/N legs, four actual source-mesh ceramic
+fields, and approximate krypton/radiation exchange. Its 210.625214 K die
+and 1.522462 V terminal results are conditional model outputs, not a measured
+or OEM-validated device. Earlier coupled solid-only results and their failed
+raw-flux qualification gates remain distinct and preserved.
 
-**Current computational geometry:** R3 source migration, published in
-[the R3 engineering record](docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md),
-preserves 824/824 source bodies, 378/378 declared finite-contact witnesses,
-430 conformal domains and 2,440 registered faces. R3 restores the two physical
-polyimide jackets, explicitly separates six full and four partial jacket
-regions, and excludes **0.077162028 mm³** of displaced polymer from cavity gas.
-The *R3 global surface mesh STOPPED* at 600.073 s with no completed mesh;
-there is **no qualified global tetrahedral mesh** and no R3 PDE result.
-
-**Last accepted complete surface-fidelity result:** R2, 428 domains / 2,422
-faces, with 1,416,664 triangles passing the 1% per-face CAD-area criterion.
-That high-density 2D surface mesh is not an accepted 3D volume discretization.
-See [R2 evidence](docs/V3_ANALYSIS_R2_GEOMETRY_AND_MESHABILITY_20261103.md).
-
-**New local methods result:** [R3.1 benchmark](docs/V3_R31_LOCAL_MESH_BENCHMARK_20261103.md)
-qualifies local methods on54 native R3 faces. The corrected bond fixture has
-27,080 triangles,0.285334% maximum face-area error and1.463s end-to-end runtime;
-the same14 accepted R2 ancestors used1,036,146 triangles (38.26× more). Failed
-callback/native/directional attempts remain visible. This is local source/mesh
-verification, not a new global surface, volume mesh, PDE or device result.
-
-**Latest integration trial:** [R3.2 single global surface attempt](docs/V3_R32_GLOBAL_SURFACE_20261103.md)
-STOPPED after native2D returned, in5.726s/~227MiB. A tag-sensitive guard ran
-before serialization and left no MSH: global triangle count, all2,440 mesh-area
-checks and quality/topology remain unmeasured. The failure is an implementation
-and evidence-retention error, with renumbering only a plausible mechanism.
-No second attempt, tetrahedral mesh or PDE was run; R2 remains the last accepted
-complete surface-fidelity result.
-
-**Physics limitations:** All new R3 material/interface constitutive coefficients
-remain UNSET. The separate local V3 electrical Gate B remains STOP
-(raw P1 current-cut error **81.241662%**; recovered loss discrepancy
-**0.769154%**); thermal Gates C/D are NOT RUN. The reduced-model 186 K and
-200 K scenarios **are not V3 R3 device predictions**. Rev3 is a preserved
-38-page historical/conditional engineering assessment, not V3 validation.
-
-**Next proposed step:** a separately authorized, serialization-first and
-renumber-aware **surface-only** replay of the frozen hybrid, retaining every
-candidate before checks and all2,440 strict face-area/ownership gates. R3.2 has
-consumed its single attempt; no retry is authorized. Do not restart electrical
-forensics or retune geometry.
-
-**First read:** [Dated status and reviewer guide](docs/V3_CURRENT_STATUS_20261103.md)
-→ [R3 report](docs/V3_ANALYSIS_R3_GLOBAL_MESH_20261103.md)
-→ [authoritative project contract](AGENTS.md).
-Historical results remain searchable below and must not be promoted to the
-current state.
-
-**[Master Engineering Report — Revision 3](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf)**
-
-This single, continuously maintained standalone report is the current externally
-facing scientific assessment. It distinguishes genuine corrected-geometry 3D
-solid fields from the nonlinear reduced package and preliminary cavity proxy.
-The legacy download filename is retained for compatibility; the document itself
-is the Revision 3 engineering master. Historical PDF bytes remain sealed evidence.
-The current master has 38 pages; all pages were visually reviewed and the PDF
-and source-derived figures reproduce exactly. It includes the frozen 181-case
-material screening, conditional 200 K target, rejected coverage and candid
-manufacturer lift/voltage discrepancy. It now derives the nonlinear geometry/material
-ambiguity and distinguishes a reduced residual improvement from failed native-pad
-realization. A matched-200 K finite-sink study quantifies nominal input rising
-from 0.548425 to 0.622176 W between ideal and 10 K/W sink, conditional on assumed
-continuation. Original numerical failures remain explicit.
-
-A reproducible engineering model of a **plausible synthetic** three-stage
-TEC-cooled HgCdTe detector in a nine-pin, two-ear TO-66 package. The objective
-is useful thermal budgets and sensitivity, not reconstruction of a proprietary
-assembly. [Modeling policy](docs/PLAUSIBLE_REFERENCE_MODEL_POLICY_20261030.md).
+The 430-domain, 29/11/4 geometry of the hybrid differs from the earlier
+216-domain, 28/12/4 solid field. A full 430-domain electrothermal/cavity PDE
+has not been solved. Read the authoritative [project contract](AGENTS.md) and
+[internal report build guide](docs/MASTER_REPORT_REPRODUCIBILITY.md) for
+implementation, provenance and current development priorities. The preceding
+38-page master is retained as sealed historical evidence.
 
 ## Internal implementation and reproduction notes
 
@@ -217,7 +159,7 @@ requests, with a source/domain matrix and 102 bounded local reduced calls.
 At a matched 200 K target / 2 K/W sink, equal-fraction power leverage is S, k,
 then rho; this is conditional sensitivity, not empirical uncertainty or grade
 identification. Native gas/nonlocal/contact impacts remain unqualified or NOT RUN.
-The same 38-page Rev3 is unchanged; no next experiment/acquisition is authorized.
+At that historical checkpoint, the then-current 38-page Rev3 was unchanged; later work is governed by the current contract above.
 The subsequently authorized separate source-inspired candidate now reaches its
 [registered STOP](docs/SOURCE_CONSTRAINED_TEC_CANDIDATE_20261101.md): a geometrically
 consistent29/11/4,.5mm prototype substantially improves the intrinsic comparison,
