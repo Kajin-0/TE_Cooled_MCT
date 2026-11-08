@@ -1,5 +1,21 @@
 # CURRENT PROJECT CONTRACT
 
+**AUTHORITATIVE USER DIRECTIVE — 2026-11-07: ENGINEERING-PLAUSIBLE VIRTUAL DEVICE, WORKING END-TO-END, ITERATE COARSE TO FINE. OVERRIDES CONFLICTING LATER-DATED / HISTORICAL NEXT-STEP LABELS BELOW.**
+
+**MAIN GOAL:** Build a **realistic and physically defensible reference simulation of a three-stage thermoelectrically cooled HgCdTe detector and nine-pin package**, including actual source-derived 3D geometry as feasible, its TEC electrical/thermal transport, stage heat flow, ceramic/contact/lead paths, detector and cavity/package heat loads, mounting/sink, and eventually a practical parametric design platform. The modeled 29/11/4 source-CAD topology is a **chosen engineering reference hypothesis**, not an assertion of a TEC Microsystems or VIGO production assembly. **Do NOT try to clone, uniquely fit, validate against, or obtain proprietary data from a specific manufacturer as a prerequisite for progress. No emails, sourcing requests, or user lab data are required to continue.**
+
+**WORKFLOW:** Keep ONE continuously runnable **end-to-end** model, beginning with rudimentary reduced/simplified physics, then improving that SAME system in small working steps. Make physically plausible estimates from public engineering properties, dimensions and sound transport theory where no measurements exist. Declare assumptions, temperature ranges and model limitations; use modest bounded ranges and trial-and-error when needed. An inferred parameter is **permitted for an exploratory reference design** and is **not** a reason to stop. Source-specific matched material grades and empirical OEM validation matter **only for future as-built or OEM-identity claims**, which are not our present objective. No solver revision shall invent or conceal measurement evidence.
+
+**WHAT COUNTS AS PROGRESS:** Each meaningful new version must still compute at minimum TEC current, terminal V and electrical power, three-stage hot/cold temperatures and heat fluxes, detector temperature, all major relevant heat-source/sink terms, and charge/energy closure. Compare at the SAME 0.4 A / 300 K / 2 mW detector reference case to previous working V3.2 (conditional T_die 209.987981 K, V 1.524071 V, P 0.609628 W), then expand to a small current/load sweep when the whole system is stable. Preserve V1–V3.2 as reproducible comparators. Increased spatial fidelity should produce **actual coupled original-geometry fields where claimed**, never be mislabeled a full 430-domain 3D electrothermal PDE while P/N transport remains axial.
+
+**ORDER OF ENGINEERING WORK:** (1) maintain / verify the V3.2 complete working device; (2) add the most impactful missing **whole-package physics** at a deliberately coarse fidelity using existing reusable code: cavity gas/vacuum and radiation boundary heat, package/header and realistic sink thermal pathways, plus detector bias/loads; (3) recover I–V–temperature and cooling performance across a few practical operating points, test stability, physical limits and energy conservation; (4) refine material transport, contact/spreading and spatial resolution ONLY when they materially affect the integrated outputs or robust convergence. Prioritize a working plausible multiphysics device over perfect local flux diagnostics, more source registries, or new simulated subcomponents disconnected from the detector.
+
+**EXECUTION BOUNDARIES:** Trial-and-error and reasonable proxy properties are authorized for this *synthetic reference model*. Minimize new solvers, audits, reruns and documents; implement the simplest usable next version instead of waiting for OEM input or endlessly profiling. Use existing source mesh and code; timebox compute. Historical strict original Gate B FAIL/STOP, first 3D pair raw current FAIL 8/8, prospective P2 STOP, and full 430-domain C/D NOT RUN remain historically true and cannot be reclassified; they do **not** block the explicitly conditional coarse end-to-end development. Predictive accuracy for a specific manufactured device remains **unqualified** until measured evidence is available.
+
+**PRECEDENCE:** This directive is the active task priority. Prior appended text headed "OEM material readiness blocked", "secure matched-grade data before simulation", or similar is preserved **only as historical evidence for product-specific qualification**, not as a future work-order or stop condition for the reference-design simulator. The preexisting working-system-first contract below remains authoritative. Avoid email proposals and OEM identifiability campaigns. The next substantial response to "proceed" should advance a runnable device model, not produce another no-solve audit.
+
+---
+
 **2026-11-07 SOURCE-TRACED P/N MATERIAL READINESS GATE: OEM PHYSICAL PREDICTION BLOCKED, RUNNING V3.2 UNCHANGED.**
 Read [scientific material evidence and intake report](docs/V3_2_PHYSICAL_MATERIAL_READINESS_20261107.md),
 [whole V3.2 original 88-leg material-coverage and
@@ -450,7 +466,7 @@ Required development discipline:
    release has separate strict source-evidence and numerical
    accuracy gates. Do not silently lower or rename old criteria.
 
-**CURRENT NEXT-STEP DECISION:** Stop further isolated interface or
+**HISTORICAL NEXT-STEP DECISION (completed by V1–V3.2; not the current task):** Stop further isolated interface or
 header work unless it blocks integrated execution. First use the
 existing 29/11/4 nonlinear conditional baseline to create ONE
 reproducible integrated coarse full-package electrothermal run with
