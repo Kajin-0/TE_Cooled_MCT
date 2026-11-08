@@ -2,6 +2,10 @@
 
 **Current physical architecture and model assessment: [19-page standalone engineering report](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)**
 
+**[View the actual shaded replacement TEC geometry](reports/current/figures/tec_solid_inspection.png)** | **[Inspect the three formed copper foil connections](reports/current/figures/tec_formed_tab_sections.png)**
+
+![Two opaque shaded perspectives of the actual 824-body synthetic replacement TEC. Source CAD geometry, not a hardware photograph.](reports/current/figures/tec_solid_inspection.png)
+
 **Historical methodological reference: [original 38-page Revision 3 assessment](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf)**
 
 These documents intentionally describe different objects. Original Rev3 records earlier 216-domain / 28/12/4 coupled solid geometry, numerical methodology and preserved raw numerical failures. It is restored unchanged and no longer overwritten with current model material. The 43-page interim integration is independently archived under reports/historical/rev3_v33_interim_43pp_20261108/.

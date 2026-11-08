@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 OLD='882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248'
 INTERIM='6a9cb56fc3a78ac31639f4cb0b9c40e29d68997ea73b408ac68651eb1789faf5'
-CURRENT='9b35487211156c7121f849e9339551837bd3ecd9dde01f4bdc1ff17b5855fa6c'
+CURRENT='7414831efc95ea09bfd9df483aaf04edac629c48086574a8baefd2385e8e0e66'
 def test_document_edition_identity():
     a=ROOT/'reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf'
     b=ROOT/'reports/historical/rev3_pre_v33_20261108/report.pdf'
@@ -29,7 +29,7 @@ def test_current_scientific_source_and_figures():
 def test_report_page_counts_and_model_identity():
     for filename,n in [('reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf',38),
         ('reports/historical/rev3_v33_interim_43pp_20261108/report.pdf',43),
-        ('reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf',19)]:
+        ('reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf',21)]:
         # On CI the PDF SHA assertions pin the exact page structures; MuPDF
         # page-count inspection is optional because GitHub runners lack mutool.
         if shutil.which('mutool'):
