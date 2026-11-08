@@ -1,6 +1,10 @@
 # TE_Cooled_MCT
 
-**Current physical architecture and model assessment: [19-page standalone engineering report](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)**
+**Device-oriented engineering report:** [Thermoelectric Cooling of an HgCdTe Detector: Device Design, Heat Flow, and Electrical Performance](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)
+
+**[See the package and electrical interconnection geometry](reports/current/figures/cad_package_shaded.png)** | **[Enlarged interior and feedthrough wiring](reports/current/figures/cad_package_interior_detail.png)**
+
+**Current physical architecture and model assessment: [22-page standalone engineering report](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)**
 
 **[View the depth-corrected shaded replacement TEC geometry](reports/current/figures/tec_solid_inspection.png)** | **[Inspect the three formed copper foil connections](reports/current/figures/tec_formed_tab_sections.png)**
 
