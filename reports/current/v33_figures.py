@@ -8,10 +8,10 @@ import matplotlib.pyplot as plt
 import matplotlib.tri as mtri
 from matplotlib.ticker import FormatStrFormatter
 from tecooledmct.graded_tec import props
-from .history import ROOT,sha
+from ..master.history import ROOT,sha
 
 BASE='data/v3_3_cavity_package_feedback_20261108/attempt02/'
-SOURCES=[BASE+'result.json',BASE+'registration.json',BASE+'independent_read_only_acceptance.json',BASE+'source_native_ceramics_V3_3.npz','data/v3_3_cavity_package_feedback_20261108/manifest.json','reports/master/inputs/v33_ceramic_connectivity.npz','reports/master/inputs/v33_ceramic_connectivity.json','data/synthetic_v3_assembly_20261102/source_final/design.json','data/g2c/zhang2025_he_40_300_v2.json','data/v1_integrated_full_package_20261107/attempt01/result.json','data/v2_integrated_spatial_20261107/attempt02/v2_integrated_result.json','data/v3_integrated_leg_resolved_20261107/attempt01/result.json','data/v3_1_native_pad_feedback_20261107/attempt02/result.json','data/v3_2_joint_loss_feedback_20261107/attempt01/result.json']
+SOURCES=[BASE+'result.json',BASE+'registration.json',BASE+'independent_read_only_acceptance.json',BASE+'source_native_ceramics_V3_3.npz','data/v3_3_cavity_package_feedback_20261108/manifest.json','reports/current/inputs/v33_ceramic_connectivity.npz','reports/current/inputs/v33_ceramic_connectivity.json','data/synthetic_v3_assembly_20261102/source_final/design.json','data/g2c/zhang2025_he_40_300_v2.json','data/v1_integrated_full_package_20261107/attempt01/result.json','data/v2_integrated_spatial_20261107/attempt02/v2_integrated_result.json','data/v3_integrated_leg_resolved_20261107/attempt01/result.json','data/v3_1_native_pad_feedback_20261107/attempt02/result.json','data/v3_2_joint_loss_feedback_20261107/attempt01/result.json']
 def read(name):return json.loads((ROOT/name).read_text())
 
 def generate(out):
@@ -21,8 +21,8 @@ def generate(out):
     assert d['original_ceramic_TET4']==11791 and d['source_stage_couples']==[29,11,4]
     assert d['max_last_spatial_temperature_update_K']<reg['outer_thermal_field_tolerance_K']
     assert abs(d['global_thermoelectric_energy_residual_W'])<reg['global_energy_tolerance_W']
-    assert read('reports/master/inputs/v33_ceramic_connectivity.json')['source_mesh_sha256']==reg['original_mesh_SHA256']
-    fields=np.load(ROOT/(BASE+'source_native_ceramics_V3_3.npz'));conn=np.load(ROOT/'reports/master/inputs/v33_ceramic_connectivity.npz')
+    assert read('reports/current/inputs/v33_ceramic_connectivity.json')['source_mesh_sha256']==reg['original_mesh_SHA256']
+    fields=np.load(ROOT/(BASE+'source_native_ceramics_V3_3.npz'));conn=np.load(ROOT/'reports/current/inputs/v33_ceramic_connectivity.npz')
     design=read('data/synthetic_v3_assembly_20261102/source_final/design.json');legs=d['source_individual_leg_flux_and_electric_results'];out=Path(out);fd=out/'figures';fd.mkdir(exist_ok=True)
     plt.rcParams.update({'font.size':9,'axes.titlesize':10,'axes.labelsize':9,'legend.fontsize':8,'pdf.fonttype':42,'ps.fonttype':42,'axes.spines.top':False,'axes.spines.right':False})
     made=[]
@@ -85,7 +85,7 @@ def generate(out):
     info=json.loads((out/'report_inputs.json').read_text())
     for name in SOURCES:info['inputs'][name]=sha(ROOT/name)
     for p in made:info['figures'][p.name]=sha(p)
-    info['figure_generators']['reports/master/v33_figures.py']=sha(ROOT/'reports/master/v33_figures.py')
+    info['figure_generators']['reports/current/v33_figures.py']=sha(ROOT/'reports/current/v33_figures.py')
     info['v33_scope']={'source_ceramic_tetrahedra':11791,'source_legs':88,'stages':[29,11,4],'outer_iterations':5,'gas_native_PDE':False,'three_dimensional_PN_transport':False,'full_430_domain_coupled_PDE':False,'archived_fields_used':True,'new_solves':0}
     (out/'report_inputs.json').write_text(json.dumps(info,indent=2)+'\n')
     return info['v33_scope']

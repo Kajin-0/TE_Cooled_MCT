@@ -1,4 +1,11 @@
-# Internal builder guide: single Revision 3 master
+# Historical Revision 3 build and reproducibility guide
+
+**SUPERSESSION NOTICE (2026-11-08):** This original internal builder guide below preserves the history of the period when Revision 3 was continuously overwritten as the current assessment. That publication approach is now superseded at the user's request. The original **38-page Revision 3** is restored and sealed as the historical methods/geometry reference; the 43-page interim extension is archived separately. The current assessment of the replacement TEC and V3.3 model is reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf, built by reports/current/build_current.py from reports/current/report.tex and frozen scientific data/figures. All earlier assertions below that the 43-page master was the single current report are no longer active policy. The historical Rev3 builder can be used to reproduce that old edition but must not overwrite the restored PDF as part of current-model updates.
+
+---
+
+## Preserved prior builder instructions
+
 
 The sole current public report is
 `reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf`.

@@ -1,21 +1,14 @@
 # TE_Cooled_MCT
 
-**[Canonical Master Engineering Report — Revision 3](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf)**
+**Current physical architecture and model assessment: [19-page standalone engineering report](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)**
 
-The single current scientific assessment describes a synthetic three-stage
-TEC-cooled HgCdTe reference device. The latest report incorporates a 0.4 A
-hybrid calculation with 88 axial P/N legs, four actual source-mesh ceramic
-fields, and approximate krypton/radiation exchange. Its 210.625214 K die
-and 1.522462 V terminal results are conditional model outputs, not a measured
-or OEM-validated device. Earlier coupled solid-only results and their failed
-raw-flux qualification gates remain distinct and preserved.
+**Historical methodological reference: [original 38-page Revision 3 assessment](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf)**
 
-The 430-domain, 29/11/4 geometry of the hybrid differs from the earlier
-216-domain, 28/12/4 solid field. A full 430-domain electrothermal/cavity PDE
-has not been solved. Read the authoritative [project contract](AGENTS.md) and
-[internal report build guide](docs/MASTER_REPORT_REPRODUCIBILITY.md) for
-implementation, provenance and current development priorities. The preceding
-38-page master is retained as sealed historical evidence.
+These documents intentionally describe different objects. Original Rev3 records earlier 216-domain / 28/12/4 coupled solid geometry, numerical methodology and preserved raw numerical failures. It is restored unchanged and no longer overwritten with current model material. The 43-page interim integration is independently archived under reports/historical/rev3_v33_interim_43pp_20261108/.
+
+The **replacement physical TEC** is an 824-solid formed-tab assembly with a derived 430-domain / 2,440-face geometry. Its working **V3.3 hybrid** couples 88 individually nonlinear axial legs and four original 3D ceramic fields (11,791 TET4) plus assumed joints, leads, detector, sink, krypton and radiation. At 0.4 A, 300 K, 2 mW detector load and 100 Pa krypton it predicts 210.625214 K die temperature, 1.522462 V and 0.608985 W input. This is not a fully coupled 430-domain PDE. In particular, the formed interstage tabs 58/80 and stepped return 88 still lack resolved nonlocal metal electric/thermal/Joule field coupling to the working model.
+
+**Start here:** [Current model and historical-document identity map](docs/CURRENT_MODEL_DOCUMENTATION_MAP_20261108.md). Read the [project contract](AGENTS.md) for active development rules and priorities. Geometry pass, numerical pass, material hypothesis and actual device validation must remain distinct.
 
 ## Internal implementation and reproduction notes
 
@@ -36,7 +29,7 @@ milestone instructions have been relocated to historical context.
 | Why did the earlier source-only V3 attempt stop? | [Registered V3 source/process gate](docs/V3_ASSEMBLY_SOURCE_GATE_20261102.md) and [independent review](docs/V3_ASSEMBLY_INDEPENDENT_REVIEW_20261102.md): **STOP the present assembly specification**, two architectures remain CONDITIONAL. Process-family sources and21 interface requirements expose missing joint, underside mount, die contacts and tolerances; no V3 STEP or physics existed at that historical checkpoint; the later V3 is below. IA-08 metadata independently passes; original V2/Rev3 stay frozen and issue#2 OPEN |
 | What is the frozen V3 physical design? | [Synthetic V3 manufacturing/CAD](docs/SYNTHETIC_V3_ASSEMBLY_CAD_20261102.md):824 solids,real mount/formed joints,pin1/9 leads and7/8 photoconductor bonds; independent [R1 verdict](docs/SYNTHETIC_V3_CORRECTIVE_INDEPENDENT_REVIEW_20261102.md) grants **CONDITIONAL physical-design acceptance of core/header/detector** under measured-land forming/inspection requirements. Manufacturing capability,cap/window sealing,1A andperformance remain unqualified;issue#2 OPEN. The later local electrical experiment above stopped at its numerical gate |
 | Which historical V2 physical audit must be preserved? | [Physical-source audit](docs/PHYSICAL_GEOMETRY_QUALIFICATION_20261102.md) and [separate independent review](docs/PHYSICAL_PLAUSIBILITY_INDEPENDENT_REVIEW_20261102.md): **V2 STOP**, despite nominal circuit/STEP PASS. At that checkpoint missing package leads, foil joint/process, mounting/tolerances, current rating and thermal allocation remain unqualified. Four manufacturer figure families,96 parameter records; versioned metadata correction preserves original23-source packet and adds an internal hypothesis source. [Issue#2 remains OPEN](https://github.com/Kajin-0/TE_Cooled_MCT/issues/2); safe and packet checkpoints have exact CI PASS |
-| How is the single master built and its historical evidence preserved? | [Internal report build/integrity guide](docs/MASTER_REPORT_REPRODUCIBILITY.md) |
+| How is historical Rev3 reproduced without replacing the current architecture report? | [Historical Rev3 builder guide](docs/MASTER_REPORT_REPRODUCIBILITY.md) and [current model map](docs/CURRENT_MODEL_DOCUMENTATION_MAP_20261108.md) |
 | What does the current package model solve? | [Integrated model guide](docs/INTEGRATED_REFERENCE_THERMAL_20261030.md) |
 | Which P/N laws and transport approximations are available? | [Transport and enclosure guide](docs/GRADED_TEC_AND_CORRECTED_ENCLOSURE_20261030.md) |
 | Can admitted material assumptions reach 200 K, and resemble published module curves? | [Material-hypothesis study](docs/TEC_MATERIAL_PLAUSIBILITY_20261101.md): 141/181 admitted; nominal idealized 300 K/2 mW/wires-ON sample 186.484 K at 0.4 A; substantial joint datasheet mismatch and no full-device qualification |
@@ -53,7 +46,7 @@ milestone instructions have been relocated to historical context.
 | Is there an independent native gas PDE baseline? | [Isolated cap/native gas control](docs/ISOLATED_CAP_AND_NATIVE_GAS_20261101.md): accepted SI derivative, audited connected native void, one 228,710-tet Elmer gas-only solve; **32.6274% raw balance fails 1%**. Analytic walls; no new device temperature or qualified gas budget |
 | Why do raw gas flux and conservative reactions differ? | [Frozen-field forensic audit](docs/NATIVE_GAS_FLUX_FORENSICS_20261101.md): exact interior normal-flux jumps explain the net imbalance; shared-node splitting only redistributes local budgets. No new solve or cleared raw gate |
 | What happened to the earlier bad STEP files? | [Original source-unit audit](docs/NATIVE_GAS_DOMAIN_AUDIT_20261101.md) and [quarantined first correction](docs/UNIT_CORRECT_CAP_AND_NATIVE_GAS_20261101.md) preserve both errors exactly; neither is used as current gas geometry |
-| What must future development preserve? | [Current contract](AGENTS.md), sealed numerical evidence and original historical PDFs; continuously improve the live Rev3 |
+| What must future development preserve? | [Current contract](AGENTS.md), sealed numerical evidence and original historical Rev3; improve the separate current-model report |
 
 ## Current capabilities and their scope
 

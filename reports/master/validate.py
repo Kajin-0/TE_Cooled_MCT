@@ -1,6 +1,5 @@
 """Standalone scientific reader, content, layout and live-master provenance gates."""
 import json
-import os
 import re
 import subprocess
 import unicodedata
@@ -31,8 +30,7 @@ def required_content(text):
                   '0.583231','32.6274%','engineering hypotheses',
                   'not measured commercial grades','actual reference-device feasibility',
                   'structural non-identifiability','269','260','61.339405',
-                  '0.957962','2.758235','176','finite-sink','203','288','0.548425','0.622176','13.4478',
-                  '210.625214','1.522462','11,791','29/11/4','2.535','4.516629'):
+                  '0.957962','2.758235','176','finite-sink','203','288','0.548425','0.622176','13.4478'):
         if value not in s:raise ValueError('Required scientific evidence missing: '+value)
     return True
 
@@ -58,7 +56,7 @@ def validate(out):
     (out/'metadata.txt').write_text(metadata)
     structured=subprocess.check_output(['mutool','draw','-q','-F','stext.json',str(pdf)],stderr=subprocess.DEVNULL)
     (out/'page_structure.json').write_bytes(structured);pages=json.loads(structured)['pages'];stats=[]
-    if not 18<=len(pages)<=60:raise ValueError('Unexpected master pagination')
+    if not 18<=len(pages)<=40:raise ValueError('Unexpected master pagination')
     for i,page in enumerate(pages):
         count=0
         for block in page.get('blocks',[]):
@@ -72,9 +70,8 @@ def validate(out):
     render=out/'renders';render.mkdir(exist_ok=True)
     for p in render.glob('page-*.png'):p.unlink()
     subprocess.run(['mutool','draw','-q','-r','110','-o',str(render/'page-%02d.png'),str(pdf)],check=True)
-    host_python=os.environ.get('TE_REPORT_PYTHON')
-    command=([host_python] if host_python else [str(ROOT/'fem/run.sh'),'python'])
-    subprocess.run(command+['-m','reports.master.render','--out',str(out.relative_to(ROOT))],cwd=ROOT,check=True)
+    subprocess.run([str(ROOT/'fem/run.sh'),'python','-m','reports.master.render',
+                    '--out',str(out.relative_to(ROOT))],cwd=ROOT,check=True)
     result={'passed':True,'report_revision':3,'review_draft':False,'full_qualification':False,
         'OEM_validated':False,'pages':len(pages),'pdf_sha256':sha(pdf),
         'all_pages_rendered':len(list(render.glob('page-*.png')))==len(pages),
@@ -114,10 +111,6 @@ def verify_current():
     if (sink['primary_grid'],sink['accepted'],sink['rejected'],sink['actual_target_solves'],sink['nominal_target_crossings'])!=(288,203,85,54,6):
         raise ValueError('Finite-sink evidence coverage differs')
     if sink['new_3D_runs'] or sink['real_device_feasibility']!='unresolved':raise ValueError('False finite-sink physical scope')
-    scope=d['v33_scope']
-    if (scope['source_ceramic_tetrahedra'],scope['source_legs'],scope['stages'],scope['outer_iterations'])!=(11791,88,[29,11,4],5):raise ValueError('V3.3 source scope changed')
-    if scope['gas_native_PDE'] or scope['three_dimensional_PN_transport'] or scope['full_430_domain_coupled_PDE'] or scope['new_solves']:
-        raise ValueError('False V3.3 physical scope')
     return True
 
 

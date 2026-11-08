@@ -10,21 +10,19 @@
 \setcounter{tocdepth}{1}
 \newcommand{\fig}[3]{\begin{figure}[!ht]\centering\includegraphics[width=#2\linewidth]{figures/#1.pdf}\caption{#3}\end{figure}}
 \newcommand{\fail}{\textcolor{failure}{\textbf{FAIL}}}
-\input{numerics.tex}\input{master_numerics.tex}\input{screening_numerics.tex}\input{identifiability_numerics.tex}\input{finite_sink_numerics.tex}\input{v33_numerics.tex}
+\input{numerics.tex}\input{master_numerics.tex}\input{screening_numerics.tex}\input{identifiability_numerics.tex}\input{finite_sink_numerics.tex}
 \begin{document}
 \thispagestyle{empty}
 {\Large\bfseries Thermoelectrically Cooled HgCdTe Reference Device\par}
 \vspace{4mm}{\large Engineering Assessment\par}
 \vspace{4mm}{\large\bfseries Revision 3\par}
-8 November 2026
+1 November 2026
 \vspace{3mm}\hrule\vspace{4mm}
 \textcolor{failure}{\textbf{Hypothetical reference article. Numerical release incomplete.}}
 
-\textbf{Abstract.} A source-referenced nine-pin, two-ear housing and an independently selected three-stage cooler envelope define a synthetic HgCdTe detector article. This assessment combines several distinct numerical descriptions. A genuine coupled three-dimensional solid calculation resolves 88 thermoelectric legs, internal conductors, a header, explicit joint and attach layers, and the detector. At 0.1\,A, 300\,K underside bath and 2\,mW imposed die heat, its principal fine mesh gives approximately 265.6\,K die temperature and 0.552\,V. Current and conservative heat checks pass, while original raw boundary-gradient requirements remain unmet: the principal ceramic/attach mismatch is 6.48\% against 5\%, and the best independent normal-refinement bath error is 1.069\% against 1\%. Later transverse cases remain near 1.29\%. No passing combined mesh and systematically refined comparator have established numerical release.
+\textbf{Abstract.} A source-referenced nine-pin, two-ear housing and an independently selected three-stage cooler envelope define a synthetic HgCdTe detector article. This assessment combines two distinct numerical descriptions. A genuine coupled three-dimensional solid calculation resolves 88 thermoelectric legs, internal conductors, a header, explicit joint and attach layers, and the detector. At 0.1\,A, 300\,K underside bath and 2\,mW imposed die heat, its principal fine mesh gives approximately 265.6\,K die temperature and 0.552\,V. Current and conservative heat checks pass, while original raw boundary-gradient requirements remain unmet: the principal ceramic/attach mismatch is 6.48\% against 5\%, and the best independent normal-refinement bath error is 1.069\% against 1\%. Later transverse cases remain near 1.29\%. No passing combined mesh and systematically refined comparator have established numerical release.
 
 A separate five-temperature model uses bounded nonlinear one-dimensional P/N transport, corrected wire routes, a configurable sink, imposed detector heating and preliminary gas/radiation exchange. Its enclosure is an explicitly filled stepped-core proxy inside candidate cap/window solids, not a fully resolved native cavity. At nominal 300\,K, 0.15\,A, 30\,kPa krypton and 2\,mW die heat, this model predicts approximately 232.2\,K and 1.152\,V. Its 52 accepted and 11 rejected states remain a separate comparison. A further preregistered material screening admits 141 of 181 reduced cases. With fixed 300\,K hot ceramic, 2\,mW die heat and wires ON, but enclosure and nonlocal leakage omitted, the nominal analog admits \ScreenDie\,K at 0.4\,A and \ScreenPower\,W input. This is a sampled conditional result, not demonstrated assembly feasibility. A manufacturer comparison shows substantial lift and voltage disagreement. A separate matched-200\,K finite-sink study increases nominal input from 0.548 to 0.622\,W between 0 and 10\,K\,W$^{-1}$; finite-sink states require assumed above-300\,K continuation, not a measured device-accuracy interval.
-
-A later source-mesh hybrid couples 88 axial legs and four spatial ceramic fields to an effective cavity. At 0.4\,A and 2\,mW die heat it gives 210.625214\,K and 1.522462\,V under the stated assumptions. The 430-domain geometry is distinct from the older solid-only field; full three-dimensional package and cavity transport remain unmodeled.
 
 \textbf{Engineering interpretation.} Source geometry, physical hypotheses, numerical verification and empirical accuracy are treated separately. Numerical digits identify conditional calculations, not manufacturing tolerances. Neither the VIGO housing plus candidate cooler reference nor the reduced enclosure model is a verified commercial assembly. The report supports bounded engineering exploration; it does not certify a device or a numerical release.
 \clearpage
@@ -708,61 +706,6 @@ or whether actual gas/radiation and nonlocal leakage are small. The earlier
 study; its endpoint spans are not silently replaced by these controls.
 
 \clearpage
-\clearpage
-\section{Spatial ceramic and nonlinear 88-leg cavity-coupled reference}
-A later, separately constructed hybrid reference uses a 430-domain source geometry with 29/11/4 P--N couples. It must not be identified with the earlier 216-domain, 28/12/4 solid-field example in Sections 2--10. In this calculation, each of 88 legs uses a 32-interval nonlinear axial transport model; four ceramics use their original three-dimensional linear tetrahedral conduction operators. Their 11,791 tetrahedra and saved nodal temperatures are genuine source-mesh data. The whole 430-domain assembly, the gas cavity, and the P/N electrical field are \emph{not} solved as a coupled three-dimensional field. The geometry and transport represent a synthetic research reference; neither vendor's drawing establishes a combined manufactured device.
-
-\fig{v33_topology}{.95}{Actual source leg-centre positions by stage and polarity; outlines show the adjacent ceramic footprints. The 29/11/4 series allocation is a chosen reference. Symbols identify source centres, not independently measured metallization or current-density fields.}
-
-\subsection{Model equations and interface assumptions}
-For each leg, axial coordinate $z$ runs from hot to cold, with signed current density $J$. The implemented conservative equations are
-\begin{equation}
-q=S(T)TJ-k(T)\frac{dT}{dz},\qquad
-\frac{dq}{dz}=J\frac{dV}{dz},\qquad
-\frac{dV}{dz}=\rho(T)J+S(T)\frac{dT}{dz}.
-\end{equation}
-Here $q$ is heat flux in W\,m$^{-2}$, $\rho$ is electrical resistivity in $\Omega$\,m, and $S$ is thermopower in V\,K$^{-1}$. The discrete leg heat rates obey $Q_h-Q_c=IV$ with the circuit's sign convention. Each ceramic solves $-\nabla\!\cdot(k_c\nabla T)=0$ on its own source tetrahedra, with $k_c=30$\,W\,m$^{-1}$\,K$^{-1}$ assumed. Native pad fluxes couple the field to local leg endpoint temperatures. A lower-pad area mean fixes the thermal reference; unassigned faces are insulated.
-
-\fig{v33_ceramic_fields}{.95}{Four saved ceramic temperature fields on actual top-boundary triangles of the original tetrahedral mesh. Each panel uses its own color scale. P1 nodal interpolation is shown only on those ceramic faces; no gas, metal, P/N or full-package temperature field is inferred.}
-
-The P and N research specimens are distinct, not a matched commercial grade \cite{zhang}. Published values cover 40--300\,K; this calculation's guarded implementation admits 180--390\,K. Above 300\,K each property follows an explicitly assumed quarter terminal-tangent slope. The electrical conductivity and Thomson coefficient remain $\sigma=1/\rho$ and $\tau=T\,dS/dT$. At the 300\,K knot the measured left derivative is used, with the assumed right derivative strictly above the knot. This continuation is not measured evidence.
-\fig{v33_transport}{.95}{Research-analog P/N transport laws used by the hybrid calculation. Solid curves follow the measured-domain digitization; shaded dashed curves indicate the assumed 300--390\,K continuation. Source specimens are not identified with a manufactured cooler.}
-
-\subsection{Cavity load and package closure}
-The boundary reservoir is at 300\,K. For krypton at 100\,Pa, the effective gap is 3\,mm and accommodation is 0.8. The gas approximation interpolates the tabulated dilute-gas conductivity \cite{gas}; it uses Eucken viscosity and a temperature-jump length $\delta$ to calculate
-\begin{equation}
-Q_{g,i}=\frac{k_g A_i}{L_g+2\delta_i}(T_r-T_i),\quad
-Q_{r,i}=F_i\epsilon_{\mathrm{eff},i}\sigma_{\!B}A_i(T_r^4-T_i^4),\quad
-\epsilon_{\mathrm{eff}}=\left(\epsilon_r^{-1}+\epsilon_i^{-1}-1\right)^{-1}.
-\end{equation}
-The exposed effective areas are 12.60, 8.68, 4.76 and 1.00\,mm$^2$ for the three cold ceramics and die. Cap/ceramic emissivities are 0.20/0.80 with assumed view factor 0.50; the die/window path uses 0.10 for the window and 0.70 view factor. These are lumped engineering assumptions, not a native-void gas PDE, resolved radiosity, optical transmission or buoyancy model. Cold ceramic loads are redistributed to upper metal-pad basis functions by area, rather than applied to actual exposed ceramic surfaces.
-
-\fig{v33_cavity_loads}{.91}{Saved positive gas and gray-radiation loads into the three cold ceramic nodes and the detector. The cavity reservoir receives the equal and opposite total. The values depend on effective areas, gap, accommodation and view factors; they are not direct native surface-flux predictions.}
-
-The model includes a 2\,mW imposed detector heat, Au detector links, Cu hot links and an effective 4.83339\,K\,W$^{-1}$ mounting path. It adds 176 assumed SnSb joints and 352 electrical contacts: their assumed combined 0.028545\,$\Omega$ gives 11.418\,mV and 4.5672\,mW at 0.4\,A. These electrical losses are deposited on adjacent ceramic pads by assumption. Finite thermal contact resistance, contact Peltier terms, metal current crowding and detector carrier/optical response are excluded.
-
-\subsection{One 0.4 A operating point and version comparison}
-At 300\,K ambient and 2\,mW imposed die heat, the accepted hybrid result gives die temperature \textbf{210.625214\,K}, terminal voltage \textbf{1.522462\,V}, electrical input 0.608985\,W and bath rejection 0.594044\,W. Gas and radiation contribute 3.892553 and 0.624076\,mW respectively, or 4.516629\,mW total. The cavity-off predecessor at the same current and nominal load gives 209.987981\,K and 1.524071\,V. Thus this modeled cavity change raises the die temperature by 0.637233\,K; it is not an uncertainty interval or a measurement of a manufactured detector.
-
-\fig{v33_versions}{.95}{Saved one-point model progression at 0.4\,A, 300\,K ambient and 2\,mW imposed die heat. Each marker is a distinct implemented model; intermediate model changes include spatial ceramic feedback and joint losses. Voltage is a single operating point, not an I--V curve.}
-
-\begin{center}\small
-\begin{tabular}{rrrrr}\toprule
-Stage & Legs & $Q_c$ (mW) & $Q_h$ (mW) & Leg sum $V$ (V)\\\midrule
-\VThreeStageRows
-\bottomrule\end{tabular}\end{center}
-The table sums the actual P/N leg results; additional joint and lead contributions belong to the terminal circuit. Stage-to-stage heat rates differ because of the distinct joint and cavity source terms, not because the same interface heat has been duplicated. The signed system balance includes electrical input, imposed die heat, wire paths and enclosure exchange as well as bath rejection.
-
-\fig{v33_leg_budgets}{.96}{All 88 saved source-leg cold-side heat rates and voltage contributions at the accepted operating point. Red and blue markers correspond to P and N legs; dashed separators mark the 58/22/8 legs in the three stages. These are axial leg solutions coupled to spatial ceramic pad temperatures, not a three-dimensional P/N current field.}
-
-\subsection{Convergence, verification and limits}
-The registered coarse coupling criterion was maximum pad-temperature update below $2\times10^{-5}$\,K. Five outer iterations reached $1.65345\times10^{-5}$\,K; this is iterative convergence at one discretization, not a spatial error bound. The whole-device energy residual is $8.8674\times10^{-9}$\,W, maximum stage/node residual $4.9061\times10^{-9}$\,W, ceramic net-flux residual $5.50\times10^{-15}$\,W and individual leg residual $1.2364\times10^{-13}$\,W. Independent reconstruction finds a nonzero $2.535\times10^{-8}$\,W maximum difference between saved pad heat and the final leg update. The first attempted initial state did not reach acceptance and remains excluded.
-
-\fig{v33_iterations}{.92}{Actual saved outer-coupling history. The dashed line is the registered coarse pad-update threshold; the die values are iterates, not additional independent operating points. A small algebraic or energy residual does not establish mesh convergence or physical accuracy.}
-
-The historical 1\% bath and 5\% cold-interface raw-gradient gates remain failed. A separate gas raw-flux mismatch remains 32.6274\%; the earlier source-pair raw-gradient check failed on 8/8 contacts. These historical tests are not replaced by hybrid conservation residuals. No as-built validation, full coupled 430-domain electrothermal solution, native cavity-fluid solution or release certification follows from this one operating point.
-
-
 \section{Overall verification and engineering conclusions}
 \small\begin{tabularx}{\linewidth}{p{35mm}p{30mm}X}\toprule
 Assessment & Result & Interpretation\\\midrule
@@ -784,10 +727,10 @@ The corrected 88-leg solid calculation passes electrical and conservative heat c
 
 Reduced contexts remain distinct. The 0.15\,A krypton proxy gives approximately 232.2\,K, 0.173\,W input and 0.182\,W sink rejection. Fixed-hot, exchange-OFF screening admits nominal \ScreenDie\,K at 0.4\,A, wires ON and \ScreenPower\,W input, inside measured leg coverage. At the separately solved 200\,K target, nominal input rises from \SinkIdealPower\ to \SinkFinalPower\,W between ideal and 10\,K\,W$^{-1}$ sink; finite-sink states require assumed continuation. All are conditional reduced results. Manufacturer disagreement, unknown contacts and omitted nonlocal paths prevent a physical-accuracy claim; no global optimum or device confidence interval follows.
 
-The filled-core proxy conserves power while omitting native transport. The separate gas control retains its \GasRawMismatch\% raw failure against 1\%; those powers are not coupled here. Nonlinear scaling ambiguity and failed unchanged-pad realization preclude an inverse dimension claim. Independent geometry/material/contact evidence is required; no full native cavity field or numerical release follows.
+The filled-core proxy conserves power while omitting native transport. The separate gas control retains its \GasRawMismatch\% raw failure against 1\%; those powers are not coupled here. Nonlinear scaling ambiguity and failed unchanged-pad realization preclude an inverse dimension claim. Independent geometry/material/contact evidence is required; no new coupled field or numerical release follows.
 
 \subsection{Reproducible scientific method}
-Older solid-section figures are exact intersections of archived tetrahedra and solved fields, with independent node/cell correspondence and voids preserved. The hybrid ceramic panels use source tetrahedral boundary triangles and saved nodal temperatures. Reduced plots use completed cases and independent boundary-value comparisons; rejections remain visible. Candidate geometry and proxy are audited separately. Source/input identities, field provenance and deterministic figure records are retained independently. Rebuilding figures implies no new physics solve.
+Three-dimensional figures are exact intersections of archived tetrahedra and solved fields, with independent node/cell correspondence and voids preserved. Reduced plots use completed cases and independent boundary-value comparisons; rejections remain visible. Candidate geometry and proxy are audited separately. Source/input identities, field provenance and deterministic figure records are retained independently. Rebuilding figures implies no new physics solve.
 
 \clearpage
 \phantomsection

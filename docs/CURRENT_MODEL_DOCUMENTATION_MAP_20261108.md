@@ -1,0 +1,51 @@
+# Current TEC architecture, solver and documentation map
+**8 November 2026 | Active engineering handoff | Authoritative after the user-requested report separation**
+
+## What is current?
+
+The goal is a realistic, independently defensible, runnable synthetic **three-stage thermoelectrically cooled HgCdTe detector in a nine-pin package**, developed progressively from simpler whole-system physics to better resolved local interactions. The target is **not** an exact reconstruction of a proprietary TEC Microsystems or VIGO product. Unknown material/contact properties can be given justified assumptions and bounded design studies, provided they are never described as measurements or actual OEM validation.
+
+**Replacement cooler, not legacy V3 Rev3:** A complete physical **V3 R1 824-solid STEP** was exported on November 2. It incorporates **29/11/4 thermoelectric couples**, 88 P/N legs, four ceramic plates, 176 SnSb axial solder joints, source package leads, detector bonds, a patterned-face metallization system, two formed interstage links (electrical nets 58 and 80) and a **three-foot stepped return (net 88)** with a real middle supported thermal contact. The CAD source is **data/synthetic_v3_assembly_20261102/cad_02/synthetic_v3_mm.step**. Its fabrication requirements and independent CONDITIONAL physical-design review are documented at [assembly CAD](SYNTHETIC_V3_ASSEMBLY_CAD_20261102.md) and [corrective review](SYNTHETIC_V3_CORRECTIVE_INDEPENDENT_REVIEW_20261102.md).
+
+**R3 geometry and mesh:** Physical source body identities were transformed into 430 conformal analysis material regions, 2,440 registered faces and 378 contact witnesses. R3.8 produced 1,043,314 tetrahedra; R3.9 conservatively improved the topology to **1,010,119** tetrahedra. R3.9 retained **241,754 elements with mean-ratio quality below 0.05**, so this is **not an accepted fully coupled electrical/thermal production discretization**. See [R3.8 saved global mesh audit](V3_R38_GLOBAL_TETGEN_20261105.md) and [R3.9 quality optimization](V3_R39_GLOBAL_QUALITY_20261105.md). The original P1 electrical Gate B FAIL/STOP, first N/P pair raw gradient 8/8 FAIL, prospective P2 STOP, and full 430-domain C/D NOT RUN remain distinct historical evidence.
+
+**V3.3 computational baseline:** The complete runnable forward model solves 88 individual nonlinear 32-interval **axial P/N transport** problems coupled to four genuine source ceramic 3D P1 FEM fields, containing **11,791 tetrahedra**. It also models synthetic solder/contact electrical Joule heat, effective Cu/Au *external* leads, die attach and detector load, header/TIM/radiator, 100 Pa effective Kr and gray-radiation cavity terms. At the matched **0.400 A / 300 K / 2 mW die / 100 Pa Kr** case:
+- Detector temperature: **210.625213954 K** (V3.2 cavity-off: 209.987981398 K)
+- TEC terminal voltage: **1.522462416 V**
+- Electrical input: **0.608984966 W**
+- Bath heat rejection: **0.594043746 W**
+- Cavity gas/radiation into cold components: **3.892553 / 0.624076 mW**
+- 5 outer field iterations, final pad update **1.65345e-5 K** versus **2e-5 K** stopping tolerance
+- Signed global energy residual magnitude **8.8674e-9 W**
+
+See [V3.3 equations, registered conditions and failure scope](V3_3_CAVITY_GAS_RADIATION_PACKAGE_20261108.md) and saved source result at data/v3_3_cavity_package_feedback_20261108/attempt02/result.json.
+
+## Crucial current design-to-physics gap
+
+The source CAD and its native electrical graph include formed tabs 58 and 80 and return 88. V3.3 does **not** yet include a separately resolved, temperature-dependent nonlocal **multiport electric/thermal field for these actual internal copper conductors and contact regions**. External Cu lead correction is not the same calculation. In particular the **intermediate landing of return 88 is a real third thermal port**, and a two-terminal copper shunt is insufficient. Do not treat the 210.625 K output as physically qualified performance of the fully constructed copper-interconnected device. A tiny numerical energy residual only closes the equations currently modeled.
+
+**Next high-value engineering action:** reuse the existing replacement CAD, extract actual internal metal/contact geometry and named thermal landing ports, derive a conservative temperature-dependent copper/film/solder electrothermal multiport (with defensible provisional material data), and couple it to the already runnable 88-leg/four-ceramic V3.3 solver. Check the same nominal case and quantify **change in detector temperature, voltage, P, individual stage/cavity heat balances and contact-parameter sensitivity**. Avoid creating yet another complete CAD or spending most effort on unrelated global-mesh gates before achieving this complete new device output.
+
+## The three documents, deliberately separate
+
+| Document | Status | What it genuinely represents |
+| --- | --- | --- |
+| [Current technical architecture assessment](../reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf) | **CURRENT**; independently readable, 19-page science report | Actual V3 replacement CAD imagery, R3 mesh evidence, V3.3 hybrid equations and archived fields/plots, actual tab geometry screen, 84 material values, 88 leg coordinates, 95 original pad source records, limitations and intended next work |
+| [Original 38-page Rev3 engineering assessment](../reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf) | **RESTORED HISTORICAL METHOD REFERENCE** | Earlier 216-domain / 28/12/4 cooler solid analysis, associated measured numerical fields and failed original raw acceptance gates. Valuable scientific presentation and verification, but obsolete mechanical routing |
+| [Superseded 43-page V3.3 extension](../reports/historical/rev3_v33_interim_43pp_20261108/report.pdf) | **SEALED INTERIM HISTORICAL EDITION** | Well-formatted source-traced V3.3 addition to old geometry narrative; intentionally no longer the current model document |
+
+Historical 38-page Rev3 SHA-256: **882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248**.
+
+Interim 43-page report SHA-256: **6a9cb56fc3a78ac31639f4cb0b9c40e29d68997ea73b408ac68651eb1789faf5**.
+
+The current report is independently versioned under reports/current. Its LaTeX, all source scientific figures, actual STEP image renderings, derived material/geometry tables and source SHA manifest are colocated there. Rebuild from frozen evidence using:
+
+    OPENBLAS_NUM_THREADS=1 /home/User/venvs/plotting/bin/python -B reports/current/build_current.py
+
+LaTeX/matplotlib must be installed; this is **report-only**, not a PDE solver. Do **not** run the historical master publisher with a current-model document and do **not** overwrite Rev3 again. Preserve the older 43-page source in its historical folder. A report's physical scope and model generation must be made explicit on its title page, abstract and figures.
+
+## User-preferred research process
+
+Keep one continuously functioning **end-to-end model**. Prefer meaningful whole-device changes over endless isolated verification. Use conservative physics and plausible synthetic parameters rather than treating undisclosed OEM data as a prerequisite. Independently inspect the mathematics, geometry, material assumptions and actual solver results. Preserve numerical failures and negative studies without conflating them with current success. Quantify each new physical feature at a matched reference operating point before refining expensive detail. Maintain a professional, standalone scientific report with **real source CAD images, equations, numbers, plots, tables, sensitivity and reproducibility limitations**, at the visual quality level of the historical Rev3.
+
+The one open GitHub PR is an independent **physical plausibility auditor**, not a replacement-geometry implementation. The replacement itself was committed along the project main history, especially commit 07fe3cb (November 2) and its corrective acceptance, followed by R3.8/R3.9 and V1-V3.3 implementation. The original non-qualified design and Issue #2 remain preserved as historical warnings.
