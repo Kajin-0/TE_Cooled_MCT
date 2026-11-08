@@ -1,5 +1,54 @@
 # CURRENT PROJECT CONTRACT
 
+**2026-11-07 SOURCE-TRACED P/N MATERIAL READINESS GATE: OEM PHYSICAL PREDICTION BLOCKED, RUNNING V3.2 UNCHANGED.**
+Read [scientific material evidence and intake report](docs/V3_2_PHYSICAL_MATERIAL_READINESS_20261107.md),
+[whole V3.2 original 88-leg material-coverage and
+source SHA audit](data/v3_2_material_readiness_20261107/attempt01/material_contract.json),
+[standalone no-solve source provenance and endpoint auditor](scripts/v3_2_material_readiness_contract.py),
+[grade-matched OEM/experimental data intake template](data/v3_2_material_readiness_20261107/attempt01/candidate_INGEST_TEMPLATE.json),
+[fail-closed source-grade intake validator](scripts/v3_2_material_candidate_validator.py),
+[11-evidence-item template rejection](data/v3_2_material_readiness_20261107/attempt01/candidate_template_rejection.json),
+[archived hash contract](data/v3_2_material_readiness_20261107/attempt01/manifest.json).
+The active V3.2 actual nonlinear P/N constitutive
+transport uses unchanged Zhang2025 N-HE-1 and P-HE
+research hot-extruded plots: SIX digitized figure
+curves S(T),rho(T),k(T), each 14 points, 84 source
+marker values in 40..300K. These are DIFFERENT
+research samples, NOT manufacturer-matched P/N
+grades or raw source measurement uncertainty.
+Model 300..390K behavior is a deliberately assumed
+25% of last 280..300K published piecewise slope;
+NO published evidence for actual >300K transport.
+Working source V3.2 88 leg hot/cold extrema
+209.901..304.615K, all58 first-stage legs have
+hot contact >300K, as much as4.615K above plot.
+A fast read-only audit never labels source graph
+reading +/-1.3K or property-marker digitization
+bounds as actual-grade physical accuracy.
+OEM-grade material must remain FAIL-CLOSED until
+verified original installed module/lot identity,
+P AND N six source-matched SI-unit curves and
+real uncertainty/traceability covering at least
+209.901..304.615K (ideally200..305K), validated
+supplier pairing and full I/V/load comparison.
+The input validator deliberately rejects an empty
+intake template with 11 required missing items;
+even complete schemas require independent review
+and NEVER auto-update the working model.
+NO 3D PDE, original-material source replacement,
+new fitting, mesh changes or fake OEM inputs.
+Current complete V3.2 working source 0.4A
+Tdie209.987981K remains CONDITIONAL; source
+P1 GateB FAIL/STOP, first pair raw gradient
+FAIL8/8, full 430 C/D NOT RUN unchanged.
+Next engineering event: source actual P/N manufacturer
+material or experimental curves + matched device
+I/V vs load, then separately version material
+hypothesis and compare same full I/V/P/Tdie/E.
+Do not spend resources on another unrelated PDE
+or model-prediction claim until physically justified.
+No Codex used.
+
 **2026-11-07 USER-DIRECTED ANTI-CHURN WHOLE-SYSTEM SENSITIVITY SCREEN: FAST EVIDENCE CONFIRMS P/N TRANSPORT SHOULD TAKE PRIORITY OVER MORE GEOMETRY.**
 Read [same-current 8-case nonlinear source 29/11/4
 material/boundary screening report](docs/V3_2_WHOLE_SYSTEM_SENSITIVITY_DECISION_20261107.md),
