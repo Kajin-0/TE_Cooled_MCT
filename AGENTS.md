@@ -14,6 +14,92 @@
 
 **PRECEDENCE:** This directive is the active task priority. Prior appended text headed "OEM material readiness blocked", "secure matched-grade data before simulation", or similar is preserved **only as historical evidence for product-specific qualification**, not as a future work-order or stop condition for the reference-design simulator. The preexisting working-system-first contract below remains authoritative. Avoid email proposals and OEM identifiability campaigns. The next substantial response to "proceed" should advance a runnable device model, not produce another no-solve audit.
 
+
+**2026-11-08 V3.3 FIRST WORKING FULL-PACKAGE KRYPTON / GRAY-RADIATION COUPLED TEC PROTOTYPE — SOURCE 29/11/4, 88 ORIGINAL LEGS AND FOUR ORIGINAL 3D CERAMICS.**
+Read [complete 0.4A / 100Pa Kr source numerical
+and physical report](docs/V3_3_CAVITY_GAS_RADIATION_PACKAGE_20261108.md),
+[11-PAGE STANDALONE SCIENTIFIC REPRODUCTION PDF,
+INDEPENDENT OF THIS REPOSITORY](reports/generated/TEC_HgCdTe_Reference_V3_3_Standalone_Method_20261108.pdf),
+[standalone report source with six 14-node P/N curves,
+all 88 original XY leg centres and all 95 source
+ceramic-pad position/area/heat values](reports/generated/TEC_HgCdTe_Reference_V3_3_Standalone_Method_20261108.md),
+[full V3.3 electrical, heat, original 3D nodal and
+80+-field numerical result](data/v3_3_cavity_package_feedback_20261108/attempt02/result.json),
+[registered model source and actual gas/rad inputs](data/v3_3_cavity_package_feedback_20261108/attempt02/registration.json),
+[independent no-PDE reconstruction of every stage,
+88 legs, Kr gas, gray radiation, original 4 ceramic
+face source and global energy](data/v3_3_cavity_package_feedback_20261108/attempt02/independent_read_only_acceptance.json),
+[fully runnable same source V3.2-integrated derivative](scripts/v3_3_cavity_package_feedback.py),
+[SHA source/archive and unchanged original Rev3
+provenance](data/v3_3_cavity_package_feedback_20261108/manifest.json).
+V3.2 completely preserved as cavity OFF reference:
+Tdie209.987981K, V1.524070832V, P0.609628333W,
+bathQ0.590322603W at0.4A/300K/2mW die.
+NEW V3.3 SAME current and full source original
+88-leg29/11/4 nonlinear 32-cell transport,
+4 source actual ceramic FEM plates 11791 TET4,
+per-leg native pad flux plus176 SnSb+352 contact
+hypothetical electrical Joule, die attach, Cu/Au,
+header/TIM/radiator. Added effective 100Pa Kr
+cavity with 3mm effective gap, accommodation0.8,
+NIST k 200/300/400K [.0064,.0095,.0122]W/mK;
+gray cap eps .20, ceramic .80, window .10, view
+.5/.7, warm reservoir300K. Exposed effective
+source geometry rings [12.6,8.68,4.76,1]mm2
+at C1,C2,C3,die. Gas loads total3.892553mW,
+radiation.624077mW; total cold4.516629mW,
+source 300K reservoir removes matching load.
+V3.3 Tdie210.625214K (+.637233K),
+terminal1.522462416V (-.001608416V),
+Pel.608984966W (-.000643367W),
+bathQ.594043746W (+.003721143W).
+5 spatial iterations; last original pad thermal
+change1.65345e-5K within REGISTERED COARSE
+2e-5K (not h-convergence), global energy
+8.8674e-9W within1e-8W, stage4.9061e-9W,
+ceramic net5.50e-15W, individual leg
+1.2364e-13W. Independent NO-SOLVE audit passes
+but saved source pad heat vs final P/N model has
+NONZERO 2.535e-8W finite lag, preserved.
+CRITICAL: gas/radiation is an EFFECTIVE gap/gray
+reservoir approximation and its exposed cold
+load is spread over ORIGINAL upper ceramic
+native metal pads by area, NOT over every real
+gas-solid outer boundary; no cavity gas PDE,
+CFD, actual radiosity all surfaces, optical
+window transmission or actual OEM product.
+Current 430 domains and29/11/4 differ from
+immutable 38-page Rev3 older 216-domain
+28/12/4 calculation. Source Rev3 untouched;
+new standalone 11p monograph fully documents
+current model so another engineer can implement
+similar source geometry and transport without
+this repo or private conversation.
+FIRST attempt stopped early due old V3 seed/tight
+2e-7K threshold, no accepted result; trial and
+stop evidence retained. Second warmed from V3.2
+and used explicitly coarse 2e-5K stopping
+with exact same material and gas parameters.
+NEXT WORKING-SYSTEM MILESTONE: small bounded
+current/load/pressure operating map on this SAME
+V3.3 complete coupled model, with coarse pass,
+cold/hot safety and energy checks, rather than
+another material registry or OEM email.
+KEEP full original P1 B FAIL/STOP, first source
+P1 raw contact 8/8 FAIL, prospective P2 STOP,
+full 430 C/D NOT RUN. No Codex or remesh.
+DOCUMENTATION IS A SCIENTIFIC DELIVERABLE:
+new versions must include a STANDALONE, source-
+neutral technical document with all model
+assumptions, source material tables, mechanical
+dimensions, equations, BCs, solver method, tolerances,
+and numerical comparison; no knowledge of the
+operator or this repo can be required to reproduce
+SIMILAR physical results independently. Historical
+Rev3 PDF must remain immutable and any new
+geometry-version results explicitly distinguished.
+
+
 ---
 
 **2026-11-07 SOURCE-TRACED P/N MATERIAL READINESS GATE: OEM PHYSICAL PREDICTION BLOCKED, RUNNING V3.2 UNCHANGED.**
