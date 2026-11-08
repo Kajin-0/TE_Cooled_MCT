@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 OLD='882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248'
 INTERIM='6a9cb56fc3a78ac31639f4cb0b9c40e29d68997ea73b408ac68651eb1789faf5'
-CURRENT='7414831efc95ea09bfd9df483aaf04edac629c48086574a8baefd2385e8e0e66'
+CURRENT='f79bc6958cf9e7633b915be969677760febd046c2c3c7e04b8e5c9cbe03267f2'
 def test_document_edition_identity():
     a=ROOT/'reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf'
     b=ROOT/'reports/historical/rev3_pre_v33_20261108/report.pdf'
