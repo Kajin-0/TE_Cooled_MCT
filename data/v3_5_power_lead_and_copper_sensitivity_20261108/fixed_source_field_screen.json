@@ -1,0 +1,180 @@
+{
+  "study": "V3.5 frozen actual source-ceramic local face temperature screen only; NO self-consistent detector temperature is inferred",
+  "model_lineage": "frozen accepted V3.4 source 88-leg 4-ceramic 0.4A/300K/2mW/100Pa Kr",
+  "original_source_8_36_thermal_pad_K": {
+    "8": 303.94314462845284,
+    "36": 298.39062138990175
+  },
+  "original_source_form_tab_face_temperatures_K": {
+    "38": 299.50361212754245,
+    "75": 271.3790340858984,
+    "79": 268.74043756793446,
+    "105": 247.67463535144512,
+    "36": 298.3906213839992,
+    "74": 271.388304532681,
+    "104": 247.7939184606477
+  },
+  "original_source_SHA256": {
+    "result.json": "2aa84432098907c3ac37d276fa3b430652ac77ce53a5fbac1174828b9e5d63bb",
+    "source_native_ceramics_V3_4.npz": "6554a217c014040d2ff7767e6b33f183621292d13683256c633a1cedbccf51a3"
+  },
+  "factory_wire_trim_invariant": "Only final INTERNAL route between the soldered ceramic and header pin determines this modeled TEC heat path. Extra OEM wire outside the soldered header pin is not included in L.",
+  "lead_model_hypotheses": "Copper original source reference; nickel selected commercial alternative; FeCrAl Kanthal-like hypothetical only, not identified commercial material; k and rho at near-room temperature are constant proxies",
+  "lead_screen": [
+    {
+      "alloy": "copper",
+      "internal_wire_routing_length_factor": 0.5,
+      "lead_total_R_ohm": 0.0023038366672490833,
+      "lead_Joule_W": 0.0003686138667598534,
+      "lead_conduction_to_tec_W": -0.02056955400092572,
+      "total_two_pad_heat_W": -0.02038524706754579,
+      "separate_native_pad_heat_W": {
+        "8": -0.028640807915182746,
+        "36": 0.008255560847636954
+      }
+    },
+    {
+      "alloy": "copper",
+      "internal_wire_routing_length_factor": 1.0,
+      "lead_total_R_ohm": 0.004607673334498167,
+      "lead_Joule_W": 0.0007372277335197068,
+      "lead_conduction_to_tec_W": -0.01028477700046286,
+      "total_two_pad_heat_W": -0.009916163133703007,
+      "separate_native_pad_heat_W": {
+        "8": -0.014207038010551731,
+        "36": 0.004290874876848724
+      }
+    },
+    {
+      "alloy": "copper",
+      "internal_wire_routing_length_factor": 2.0,
+      "lead_total_R_ohm": 0.009215346668996333,
+      "lead_Joule_W": 0.0014744554670394136,
+      "lead_conduction_to_tec_W": -0.00514238850023143,
+      "total_two_pad_heat_W": -0.004405160766711723,
+      "separate_native_pad_heat_W": {
+        "8": -0.0068767871111965785,
+        "36": 0.0024716263444848558
+      }
+    },
+    {
+      "alloy": "nickel_proxy",
+      "internal_wire_routing_length_factor": 0.5,
+      "lead_total_R_ohm": 0.009376079459734643,
+      "lead_Joule_W": 0.0015001727135575433,
+      "lead_conduction_to_tec_W": -0.004628149650208286,
+      "total_two_pad_heat_W": -0.0038780632934295144,
+      "separate_native_pad_heat_W": {
+        "8": -0.006153604646120319,
+        "36": 0.0022755413526908044
+      }
+    },
+    {
+      "alloy": "nickel_proxy",
+      "internal_wire_routing_length_factor": 1.0,
+      "lead_total_R_ohm": 0.018752158919469287,
+      "lead_Joule_W": 0.0030003454271150865,
+      "lead_conduction_to_tec_W": -0.002314074825104143,
+      "total_two_pad_heat_W": -0.0008139021115465997,
+      "separate_native_pad_heat_W": {
+        "8": -0.002615429282782541,
+        "36": 0.0018015271712359415
+      }
+    },
+    {
+      "alloy": "nickel_proxy",
+      "internal_wire_routing_length_factor": 2.0,
+      "lead_total_R_ohm": 0.037504317838938574,
+      "lead_Joule_W": 0.006000690854230173,
+      "lead_conduction_to_tec_W": -0.0011570374125520716,
+      "total_two_pad_heat_W": 0.001843308014563015,
+      "separate_native_pad_heat_W": {
+        "8": -0.0003849685608360346,
+        "36": 0.0022282765753990495
+      }
+    },
+    {
+      "alloy": "fecral_screen",
+      "internal_wire_routing_length_factor": 0.5,
+      "lead_total_R_ohm": 0.194218788808789,
+      "lead_Joule_W": 0.031075006209406248,
+      "lead_conduction_to_tec_W": -0.0005656627350254574,
+      "total_two_pad_heat_W": 0.014971840369677667,
+      "separate_native_pad_heat_W": {
+        "8": 0.0055816413914229,
+        "36": 0.009390198978254766
+      }
+    },
+    {
+      "alloy": "fecral_screen",
+      "internal_wire_routing_length_factor": 1.0,
+      "lead_total_R_ohm": 0.388437577617578,
+      "lead_Joule_W": 0.062150012418812496,
+      "lead_conduction_to_tec_W": -0.0002828313675127287,
+      "total_two_pad_heat_W": 0.03079217484189352,
+      "separate_native_pad_heat_W": {
+        "8": 0.01234783367289068,
+        "36": 0.01844434116900284
+      }
+    },
+    {
+      "alloy": "fecral_screen",
+      "internal_wire_routing_length_factor": 2.0,
+      "lead_total_R_ohm": 0.776875155235156,
+      "lead_Joule_W": 0.12430002483762499,
+      "lead_conduction_to_tec_W": -0.00014141568375636434,
+      "total_two_pad_heat_W": 0.06200859673505613,
+      "separate_native_pad_heat_W": {
+        "8": 0.025287942790803798,
+        "36": 0.036720653944252335
+      }
+    }
+  ],
+  "interstage_Cu_contact_screen": [
+    {
+      "r_thermal_contact_area_m2K_W": 0.0,
+      "original_source_Cu_heat_into_stage_mW": [
+        -114.47972174274278,
+        25.526602259795936,
+        91.0332511372298
+      ],
+      "Cu_Joule_mW": 2.08013165428294
+    },
+    {
+      "r_thermal_contact_area_m2K_W": 1e-07,
+      "original_source_Cu_heat_into_stage_mW": [
+        -113.8457333840184,
+        25.31522547970747,
+        90.61063955856916
+      ],
+      "Cu_Joule_mW": 2.08013165428294
+    },
+    {
+      "r_thermal_contact_area_m2K_W": 1e-06,
+      "original_source_Cu_heat_into_stage_mW": [
+        -108.47525761628462,
+        23.565981731486204,
+        86.98940753908052
+      ],
+      "Cu_Joule_mW": 2.08013165428294
+    },
+    {
+      "r_thermal_contact_area_m2K_W": 1e-05,
+      "original_source_Cu_heat_into_stage_mW": [
+        -74.69722129019205,
+        14.113836578468732,
+        62.66351636600545
+      ],
+      "Cu_Joule_mW": 2.08013165428294
+    },
+    {
+      "r_thermal_contact_area_m2K_W": 0.0001,
+      "original_source_Cu_heat_into_stage_mW": [
+        -18.823013692949285,
+        3.4100170136353656,
+        17.49312833359677
+      ],
+      "Cu_Joule_mW": 2.08013165428294
+    }
+  ]
+}

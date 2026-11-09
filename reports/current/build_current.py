@@ -170,8 +170,61 @@ for name,rows in [('vfourmetricrows',metric),('vfourstagerows',stage_rows),
 (HERE/'v34_derived_tables.tex').write_text(vfour)
 import runpy
 runpy.run_path(str(HERE/'v34_figures.py'),run_name='__main__')
+# Accepted V3.5 whole-device source state; frozen, verified, no report-time PDE.
+V35=ROOT/'data/v3_5_power_lead_and_copper_sensitivity_20261108'
+scenarios=('copper_native_pad','nickel_native_pad','high_interstage_contact_R')
+solved={name:json.loads((V35/name/'result.json').read_text()) for name in scenarios}
+independent={name:json.loads((V35/name/'independent_energy_audit.json').read_text())
+             for name in scenarios}
+for name in scenarios:
+    assert independent[name]['verdict'].startswith('PASS independent')
+    assert independent[name]['result_sha256']==hashlib.sha256((V35/name/'result.json').read_bytes()).hexdigest()
+    assert solved[name]['max_last_spatial_temperature_update_K']<3e-7
+base=solved['copper_native_pad']
+nickel=solved['nickel_native_pad']
+severe=solved['high_interstage_contact_R']
+assert abs(base['calculated_detector_temperature_K']-218.90002402868413)<1e-10
+assert abs(severe['calculated_detector_temperature_K']-212.62358247326281)<1e-10
+def operating_row(label,d):
+    return [label,f"{d['calculated_detector_temperature_K']:.3f}",
+      f"{d['terminal_voltage_V']:.5f}",f"{1000*d['electrical_power_W']:.3f}"]
+ops=[operating_row('V3.4 legacy lead map',v34),
+     operating_row('V3.5 Cu native pad',base),
+     operating_row('V3.5 Ni-like wire',nickel),
+     operating_row('V3.5 high Cu joint R',severe)]
+leadbud=[]
+for name,label in (('copper_native_pad','Copper'),
+                   ('nickel_native_pad','Nickel-like')):
+    z=solved[name]['source_tec_power_leads']
+    leadbud.append([label,
+      f"{1000*z['per_lead']['TEC_lead1']['heat_into_tec_pad_W']:+.3f}",
+      f"{1000*z['per_lead']['TEC_lead9']['heat_into_tec_pad_W']:+.3f}",
+      f"{1000*z['joule_W']:.3f}"])
+checking=[]
+for name,label in (('copper_native_pad','Copper'),
+                   ('nickel_native_pad','Nickel-like'),
+                   ('high_interstage_contact_R','High R')):
+    a=independent[name];d=solved[name]
+    checking.append([label,f"{d['max_last_spatial_temperature_update_K']:.3e}",
+       f"{a['max_stage_energy_residual_W']:.3e}",
+       f"{abs(a['global_energy_residual_W']):.3e}"])
+screen=json.loads((V35/'fixed_source_field_screen.json').read_text())
+rowscontact=[[f"{x['r_thermal_contact_area_m2K_W']:.0e}",
+    f"{x['original_source_Cu_heat_into_stage_mW'][2]:.3f}"]
+    for x in screen['interstage_Cu_contact_screen']
+    if x['r_thermal_contact_area_m2K_W']>0]
+vf='% Source-derived V3.5 frozen registered results; audit accepted.'+chr(10)
+for name,rows in (('vfiveoperatingrows',ops),('vfiveleadrows',leadbud),
+                  ('vfivecheckrows',checking),('vfivecontactrows',rowscontact)):
+    vf+=chr(92)+'newcommand{'+chr(92)+name+'}{'+rows_table(rows)+'}'+chr(10)
+(HERE/'v35_derived_tables.tex').write_text(vf)
+runpy.run_path(str(HERE/'v35_figures.py'),run_name='__main__')
 infiles=[ARCH/'result.json',ARCH/'source_native_ceramics_V3_3.npz',ROOT/'data/synthetic_v3_assembly_20261102/cad_02/synthetic_v3_mm.step',ROOT/'data/synthetic_v3_assembly_20261102/conductor_geometry_coefficients.json',
-ROOT/'data/v3_r38_global_tetgen_20261105/attempt01/saved_mesh_audit.json',ROOT/'data/v3_r39_quality_20261105/attempt01/candidate_result.json',V34/'result.json',V34/'independent_read_only_acceptance.json',V34/'independent_physics_reconstruction.json',V34/'source_native_ceramics_V3_4.npz']
+ROOT/'data/v3_r38_global_tetgen_20261105/attempt01/saved_mesh_audit.json',ROOT/'data/v3_r39_quality_20261105/attempt01/candidate_result.json',V34/'result.json',V34/'independent_read_only_acceptance.json',V34/'independent_physics_reconstruction.json',V34/'source_native_ceramics_V3_4.npz',
+V35/'fixed_source_field_screen.json',
+*([V35/name/f for name in scenarios for f in
+    ('result.json','registration.json','independent_energy_audit.json',
+     'source_native_ceramics_V3_5.npz')])]
 manifest={'kind':'data-only current science assessment','new_physics_solves':0,'source_hashes':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in infiles},
 'figures_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in FIG.iterdir()},'n_legs':len(legs),'n_pad_faces':len(pads),'n_material_rows':len(materials)}
 (HERE/'reproduction_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

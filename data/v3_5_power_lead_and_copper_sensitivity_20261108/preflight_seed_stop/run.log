@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/User/TE_Cooled_MCT/scripts/v3_5_power_lead_and_copper_sensitivity.py", line 571, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/home/User/TE_Cooled_MCT/scripts/v3_5_power_lead_and_copper_sensitivity.py", line 550, in main
+    out,arrays=solve(reg)
+               ~~~~~^^^^^
+  File "/home/User/TE_Cooled_MCT/scripts/v3_5_power_lead_and_copper_sensitivity.py", line 347, in solve
+    fields,offset=spatial.solve(plus_solder_into_ceramic(init_rows),s3,CuJoule,qcu,Qbath,Qa)
+                  ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/User/TE_Cooled_MCT/scripts/v3_5_power_lead_and_copper_sensitivity.py", line 177, in solve
+    assert abs(imbalance)<5e-8,('CERAMIC_NET_FLUX_MISMATCH',i,imbalance)
+           ^^^^^^^^^^^^^^^^^^^
+AssertionError: ('CERAMIC_NET_FLUX_MISMATCH', 0, 0.10847525761628446)
