@@ -1,0 +1,189 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,graphicx,booktabs,tabularx,array,longtable,xcolor,fancyhdr,titlesec}
+\usepackage[margin=19mm,headheight=15pt,bottom=20mm]{geometry}
+\usepackage{hyperref}
+\usepackage{caption}
+\definecolor{navy}{HTML}{19334B}
+\definecolor{blue}{HTML}{3E7099}
+\hypersetup{colorlinks=true,linkcolor=navy,urlcolor=blue,pdftitle={Three-Stage Thermoelectric Cooler and TO-Package Engineering Assessment},pdfauthor={}}
+\pdfinfoomitdate=1\pdftrailerid{}\pdfsuppressptexinfo=15
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\scriptsize THREE-STAGE TEC | THERMAL ENGINEERING}\fancyhead[R]{\scriptsize 09 NOV 2026}
+\fancyfoot[L]{\scriptsize Synthetic construction; numerical results not OEM-validated}\fancyfoot[R]{\scriptsize\thepage}
+\setlength{\parindent}{0pt}\setlength{\parskip}{5pt}\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.15}
+\titleformat{\section}{\Large\bfseries\color{navy}}{\thesection}{.5em}{}
+\captionsetup{font=small,labelfont=bf}
+\newcommand{\fp}{../current/figures/}
+\begin{document}
+\thispagestyle{empty}
+\vspace*{8mm}{\color{navy}\rule{\linewidth}{1.4pt}}\vspace{8mm}
+{\Huge\bfseries\color{navy}Thermal Performance of a\\[2mm] Three-Stage Thermoelectric Cooler\par}
+\vspace{5mm}{\LARGE A TO-Package Engineering Assessment\par}
+\vspace{7mm}{\large Construction, electrothermal transport, backfill gas, and operating trade-offs\par}
+\vspace{6mm}{\small 9 November 2026 \quad|\quad Standalone engineering assessment \quad|\quad Steady-state analysis\par}
+\vspace{7mm}
+\begin{center}\includegraphics[width=.91\linewidth,height=84mm,keepaspectratio]{\fp cad_package_shaded.png}\end{center}
+{\small\color{navy}Three-stage TEC within a nine-pin TO package, shown with cap fitted and removed. Original synthetic CAD geometry and finite copper interstage links; not a manufactured module.}
+\vfill
+\fbox{\begin{minipage}{.96\linewidth}\small
+\textbf{Scope.} The subject is the \textbf{thermoelectric cooler and its TO package}, not the infrared detector's semiconductor behavior. Detector dissipation is a prescribed thermal load. Numerical calculations pass independent conservation checks; material grades, joint impedances and cavity construction have \textbf{not} been calibrated against an actual manufactured module.
+\end{minipage}}\par
+\vspace{8mm}{\color{navy}\rule{\linewidth}{1pt}}
+\clearpage
+\section*{Engineering summary}\addcontentsline{toc}{section}{Engineering summary}
+\textbf{Design question.} What limits the final cold-stage temperature, and how do cooler construction and packaging parameters change the temperature achieved per unit electrical input?
+
+The modeled device has \textbf{44 P/N thermoelectric couples distributed 29/11/4} over three stages. Its 88 P/N legs and four original ceramic substrates are coupled to the copper interstage links, TEC supply leads, nine-pin TO package, a finite mounting resistance, an effective enclosure gas model, radiation and a prescribed 2 mW detector thermal load.
+
+At \textbf{0.400 A TEC current}, a \textbf{300 K reservoir}, \textbf{100 Pa krypton} and \textbf{2.0 mW} imposed die heat:
+\[
+\boxed{T_{\rm top\ ceramic}=218.807\ {\rm K}}\quad
+\boxed{T_{\rm die}=218.900\ {\rm K}}\quad
+\boxed{P_{\rm TEC}=0.59567\ {\rm W}}.
+\]
+The TEC terminal voltage is \textbf{1.48917 V}. These are conditional predictions, not measured cooler performance or a rated maximum temperature drop.
+
+\textbf{New result:} Seven controlled gas cases were computed using the same source-geometry cooler, with only backfill species and pressure altered. The table shows how gases alter the usable cold-stage temperature.
+\begin{center}\small
+\begin{tabular}{lrrr}\toprule
+Backfill & Top ceramic (K) & Device mount (K) & Gas load (mW)\\\midrule
+Vacuum, gas conduction off & 218.353 & 218.437 & 0.000\\
+Kr, 100 Pa & 218.807 & 218.900 & 3.420\\
+Kr, 30 kPa & 218.845 & 218.939 & 3.724\\
+Kr, 101.325 kPa & 218.845 & 218.939 & 3.725\\
+Ar, 30 kPa & 219.277 & 219.380 & 6.966\\
+N$_2$, 30 kPa & 219.703 & 219.815 & 10.170\\
+N$_2$, 101.325 kPa & 219.703 & 219.815 & 10.172\\
+\bottomrule\end{tabular}
+\end{center}
+At \textbf{30 kPa}, N$_2$ increases modeled mounting temperature \textbf{0.875 K} above Kr and adds \textbf{6.446 mW} of gas heat leak. The assumed uniform \textbf{3 mm effective gap} is a substantial model limitation; inter-pellet gaps and surfaces are not yet included as real 3D cavity geometry. The small pressure change above 100 Pa is therefore \textbf{not} proof that a real TO package saturates so early.
+
+\textbf{Physical priority.} Correlated P/N material properties, pellet cross-section/length, interstage foil and solder contact transfer, cavity gap geometry, and external mounting dominate the useful optimization questions. A colder device is not necessarily a better cooler if electrical demand becomes excessive.
+\clearpage
+\tableofcontents\clearpage
+\section{Physical assembly and thermal boundaries}
+The synthetic TEC has four ceramic substrates, nominal lateral dimensions \textbf{6.4, 5.2, 3.8 and 2.4 mm}. P/N legs are \textbf{0.40 $\times$ 0.40 $\times$ 0.50 mm} on a \textbf{0.58 mm pitch}; stages contain \textbf{29, 11 and 4 pairs} from hot to cold. The top ceramic supports a carrier, die attach and an imposed detector heat load.
+
+\begin{center}\includegraphics[width=.87\linewidth,height=78mm,keepaspectratio]{\fp tec_solid_inspection.png}\end{center}
+{\small\textit{Figure 1.} Opaque depth-correct inspection of the same three-stage cooler from two fixed views, showing four ceramics, P/N pellets, pattern metallization and actual formed-copper link routing. These are source-coordinate solids, not computed metal fields or an OEM assembly.}
+
+Three formed copper-foil electrical bridges connect the ceramic stage networks (nets \textbf{58, 80 and 88}); the return has an intermediate supported third landing. They conduct both electric current and parasitic heat, so a low-resistance electrical link is not automatically an optimal thermal link. Two independently landed TEC leads connect via the package to power pins 1 and 9, with their \emph{installed, trimmed lengths} entering thermal/Ohmic conductance.
+
+The model separates \textbf{top-stage ceramic temperature}, the \textbf{detector-side mounting temperature} beyond its carrier/attach, and \textbf{bottom hot ceramic temperature}. An assumed finite mounting resistance lets the hot TEC plate run above the 300 K external reservoir. The detector is modeled strictly as a fixed \textbf{2 mW} thermal load; there is no semiconductor gain, resistance, quantum efficiency or noise calculation in the new backfill study.
+
+The assembly is a synthetic combination of cooler and package reference envelopes. Neither the inferred 29/11/4 stage allocation nor the specific metal and solder construction identifies the proprietary internals of a commercial part.
+\clearpage
+\section{Thermoelectric equations and package heat paths}
+For each nonlinear P/N pellet the source model uses, with $z$ from hot to cold,
+\[
+q=STj-k\frac{dT}{dz},\qquad
+\frac{dq}{dz}=j\left(\rho j+S\frac{dT}{dz}\right),\qquad j=I/A.
+\]
+Here $S(T)$ is Seebeck coefficient, $\rho(T)$ is resistivity and $k(T)$ is thermal conductivity. The solver conserves endpoint heat and electric work over \textbf{32 axial intervals per leg}. Its research-specimen P/N properties are not identified with actual production pellets; an explicitly unmeasured law extends them above the source's 300 K measurement limit. Temperature-dependent thermopower effects are already included in the transport formulation rather than double-counted as additional Thomson source heat.
+
+A first-order geometry scaling is
+\[
+R_{\rm leg}\sim \rho L/A,\qquad K_{\rm leg}\sim kA/L.
+\]
+Increased cross-section reduces electric heating but increases thermal back-conduction; pellet area and length cannot be optimized independently from current, stage layout, solder and thermal contact area. Realistic construction changes also alter current paths, leg spacing, foil bends and available gas volume.
+
+The interstage copper network approximates $G=kA/L$ for each foil segment and finite landing conductance $G_c=A_c/r''_{T,c}$. The two terminal leads include finite conductor thermal exchange and $I^2R$ heating with a reduced half-Joule partition. These are modeled independently of the package gas and radiation loads.
+
+\textbf{Computational resolution.} All \textbf{88 P/N legs} are individually solved and coupled to \textbf{four actual 3D source-coordinate P1 ceramic fields totaling 11,791 tetrahedral elements}, including distributed native pad heating. The copper and wiring path is a geometry-based conservative \emph{reduced network}, not a completed full 3D metal-current field. The enclosure gas is a four-surface effective network, not volume-resolved CFD.
+
+At the nominal 0.400 A condition, the \textbf{top cold ceramic is 218.807 K}, while the imposed load and carrier/attach produce \textbf{218.900 K} on the detector-side node. The two temperatures answer related but distinct engineering questions; neither is a measured hardware condition.
+\clearpage
+\section{Gas species, pressure and rarefaction}
+The heat imported from the warm enclosure into cold surface branch $i$ is
+\[
+Q_{{\rm gas},i}=G_{{\rm gas},i}(T_{\rm env}-T_i),\qquad
+G_{{\rm gas},i}=\frac{k_{\rm gas}(\bar T)A_i}{g+2\ell_{\rm jump}(p,\bar T,\alpha)}.
+\]
+The declared \emph{effective} gas gap is \textbf{$g=3$ mm}; thermal accommodation $\alpha=0.8$. Four area proxies are \textbf{12.60, 8.68, 4.76 and 1.00 mm$^2$}, summing to 27.04 mm$^2$. Temperature-dependent thermal conductivity and an Eucken/mean-free-path jump approximation are used for Kr, Ar and N$_2$. At $p=0$ the gas path is zero while radiation and solid conduction remain active.
+
+\begin{center}\includegraphics[width=.96\linewidth,height=96mm,keepaspectratio]{\fp v311_backfill_species_pressure_cold_temperature.pdf}\end{center}
+{\small\textit{Figure 2.} Seven fully solved backfill conditions at 0.400 A, 300 K external reservoir and a constant 2.0 mW detector heat load. The chart displays detector-side mounting temperatures; top TEC ceramic values are tabulated separately.}
+
+At 30 kPa, calculated gas heat increases from \textbf{3.724 mW in Kr} to \textbf{6.966 mW in Ar} and \textbf{10.170 mW in N$_2$}; this is the principal physical reason for the altered cold-stage temperature. The assumed area network does not include the complete bare leg sidewalls, metallization faces and native inter-pellet gap topology. Those omitted paths are potentially more important than computing many additional pressure values with the same simplified 3 mm model.
+\clearpage
+\section{Pressure sensitivity and electrical trade-offs}
+\begin{center}\includegraphics[width=.92\linewidth,height=75mm,keepaspectratio]{\fp v311_krypton_pressure_sensitivity.pdf}\end{center}
+{\small\textit{Figure 3.} Computed Kr pressure effect at one current. Connected points are an aid to reading a discrete experiment, not an independently validated continuous pressure curve.}
+
+With the assumed effective gas-gap closure, rising from vacuum to 100 Pa Kr warms the device \textbf{0.4634 K}; raising Kr from 100 Pa to 30 kPa adds just \textbf{0.0393 K}. This model reaches its near-continuum conductance limit, but \emph{the pressure at which that occurs is strongly dependent on gas-gap and surface accommodation assumptions}.
+
+\begin{center}\small
+\begin{tabular}{lrrr}\toprule
+Backfill & Gas heating (mW) & Radiation (mW) & TEC input (W)\\\midrule
+Vacuum & 0.000 & 0.565 & 0.596111\\
+Kr, 100 Pa & 3.420 & 0.563 & 0.595668\\
+Kr, 30 kPa & 3.724 & 0.562 & 0.595630\\
+Ar, 30 kPa & 6.966 & 0.561 & 0.595209\\
+N$_2$, 30 kPa & 10.170 & 0.559 & 0.594792\\
+\bottomrule\end{tabular}
+\end{center}
+The TEC terminal power is $IV_{\rm TEC}$, \emph{not} the sum of heat entering the cold surfaces. Gas loads, detector load, thermal lead flows, Joule heating and TEC heat pumping all appear in the overall energy balance.
+
+\subsection{Second solved drive current}
+A separate \textbf{0.550 A, 30 kPa Kr} run produced
+\[
+T_{\rm cold}=205.931\ {\rm K},\quad T_{\rm die}=206.032\ {\rm K},\quad
+P_{\rm TEC}=1.06462\ {\rm W}.
+\]
+Compared with \textbf{0.400 A} at the same Kr pressure, this is \textbf{12.908 K colder} at the detector-side mount, with TEC input increased from \textbf{0.59563 W to 1.06462 W}. The two-point tradeoff is useful, but \textbf{does not} establish a physically rated maximum current or a global minimum achievable temperature.
+\clearpage
+\section{What can be optimized?}
+The new gas results can be compared with prior \emph{accepted experiments on this same replacement architecture}, provided hypothesis ranges are not confused with measured material tolerances.
+\begin{center}\small
+\begin{tabularx}{\linewidth}{p{47mm}p{36mm}X}\toprule
+Declared model variation & Conditional result & Engineering interpretation\\\midrule
+P/N $k$ multiplied by 0.8--1.2 & 19.815 K spread & Large Fourier backflow sensitivity; actual paired grade unknown.\\
+P/N $S$ multiplied by 0.9--1.1 & 13.318 K spread & Strong Peltier-pumping sensitivity; material properties correlate.\\
+P/N $\rho$ multiplied by 0.8--1.2 & 4.750 K spread & Current, terminal voltage and Joule heat coupled.\\
+External mounting $R_T$ increased by 10 K/W & +2.956 K at 0.4 A & Hot-side mounting/interface quality matters.\\
+Gas: 30 kPa N$_2$ instead of Kr & +0.875 K at 0.4 A & Package gas and exposed cold surfaces are consequential.\\
+Imposed die load increased 1--6 mW & $\sim$1.56 K span & Load is a useful boundary-condition knob independent of detector physics.\\\bottomrule
+\end{tabularx}
+\end{center}
+The chosen input ranges are not probability distributions, statistical confidence bounds or available production specifications. Their raw output spans should therefore \textbf{not} be treated as a rigorous ranked uncertainty budget.
+
+\textbf{Optimization problem.} Minimize top ceramic temperature for a specified load and external sink boundary,
+\[
+\min_{I,A,L,\ \mathrm{package}}\ T_{\rm cold}
+\]
+subject to realistic limits on current, terminal voltage, total input power, material operating range, pellet/ceramic spacing, solder/foil joint integrity and thermal contact area. Minimum $T_{\rm cold}$ and maximum cooling COP need not occur at the same input current.
+
+\subsection{Next meaningful construction experiments}
+Investigate (1) pellet area and axial height, from the reference \textbf{0.4 $\times$ 0.4 $\times$ 0.5 mm} geometry; (2) true source-native exposed inter-pellet gas gaps; (3) formed-foil contact thermal and electrical conductance; and (4) header-to-heatsink contact resistance. A \emph{transport-only} pellet screen must be labeled as such if pads, solder areas and actual gas gaps are not rebuilt. Only a consistently modified synthetic CAD and new validated thermal mapping can support a full construction-design comparison.
+\clearpage
+\section{Independent audit, evidence and scientific limitations}
+Every new backfill case independently archives an exact registration, full 88-leg nonlinear source state, original ceramic temperature-field arrays, complete iteration history, numerical outputs and a \textbf{no-PDE independent thermal/electric audit}. The audit reconstructs lead/foil Joule and heat, three-stage balances, global sink energy and Kr/Ar/N$_2$ conductance and four-branch gas exchange directly from the source laws.
+
+\begin{center}\small
+\begin{tabular}{lr}\toprule
+Numerical verification quantity & Accepted result\\\midrule
+Independent accepted whole-system conditions & 8\\
+Individually conserved nonlinear P/N legs & 88 each\\
+Native 3D ceramic tetrahedra & 11,791\\
+Maximum global energy residual & $1.503\times10^{-9}$ W\\
+Maximum independent stage-energy residual & $1.732\times10^{-9}$ W\\
+Original 0.400 A, 100 Pa Kr reference & Exact scalar reproduction\\
+Independent gas and copper/lead checks & PASS for all 8 cases\\\bottomrule
+\end{tabular}
+\end{center}
+\textbf{Outstanding physical uncertainties.} Production P/N materials, quantitative solder contact properties, true metal current spreading, interleg gas surfaces/areas, accommodation coefficients, cap thermal gradients, die attach and mounting interface are unqualified. The original full-domain multi-material 3D electrothermal solution remains incomplete. Excellent algebraic residuals do \emph{not} imply these inputs reproduce any manufacturer's cooler.
+
+\subsection{Complete reproducibility resources}
+All exact source files and case archives are in the \href{https://github.com/Kajin-0/TE_Cooled_MCT}{TE\_Cooled\_MCT repository}. Each gas-study case includes its registered inputs, original 3D ceramic nodal fields, nonlinear outputs, independent energy audit and source hashes. The study index and numerical manifest identify each file unambiguously. Report figures are rendered from saved accepted operating points and do not rerun a new PDE.
+
+\subsection{External physical references}
+\begin{enumerate}\setlength{\itemsep}{2pt}
+\item TEC Microsystems, 3MC04-044-05 cooler datasheet (2019): nominal cooler envelope, not proprietary joint construction.
+\item VIGO Photonics, nine-pin TO-66 package drawing ZTM-TO66-Z030, Rev. 9 (2024): package envelope, not identification of this synthetic assembly.
+\item Zhang et al., \emph{Chinese Physics Letters} \textbf{42}, 056304 (2025), temperature-dependent Bi-Te research material curves; \href{https://doi.org/10.1088/0256-307X/42/5/056304}{doi:10.1088/0256-307X/42/5/056304}.
+\item NIST/CRC-informed thermal-property tables for Kr/Ar/N$_2$; the Eucken and gas temperature-jump gap closure are additional explicitly chosen modeling assumptions.
+\end{enumerate}
+\vfill{\color{navy}\rule{\linewidth}{1pt}}
+{\small \textbf{Research use.} Use these results to identify design sensitivities and plan hardware measurements. Do not infer commercial cooler specifications, a measured backfill recipe, detector noise/response or absolute performance without independent physical qualification.}
+\end{document}

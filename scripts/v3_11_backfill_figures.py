@@ -49,7 +49,7 @@ def main():
  fig.text(.08,.952,'Gas backfill changes the cooled device temperature',weight='bold',fontsize=15.3,color='#213b4e')
  fig.text(.08,.900,'Same source TEC and TO package  |  0.400 A TEC  |  2.0 mW fixed die heat  |  300 K reservoir',fontsize=9.6,color='#596e7e')
  fig.text(.08,.080,'Cavity treatment: four effective gas-surface branches, 3 mm gap and 0.8 accommodation; NOT native gas CFD.',fontsize=8.7,color='#65788b')
- fig.text(.08,.048,'Old Rev3 geometry/results excluded; all plotted points re-solved with the physical 29/11/4-source cooler.',fontsize=8.7,color='#65788b')
+ fig.text(.08,.048,'All plotted points re-solved with this 29/11/4 three-stage cooler; source construction remains fixed.',fontsize=8.7,color='#65788b')
  save(fig,'v311_backfill_species_pressure_cold_temperature')
  fig=plt.figure(figsize=(10.1,5.3),facecolor='white')
  a=fig.add_axes([.12,.24,.75,.56])
