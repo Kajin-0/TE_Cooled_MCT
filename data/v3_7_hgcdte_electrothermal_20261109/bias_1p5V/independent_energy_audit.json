@@ -1,0 +1,72 @@
+{
+  "verdict": "PASS V3.7 independently reconstructed detector R/I/P and source TEC stage/global energy; NO nonlinear PDE rerun",
+  "scenario": "bias_1p5V",
+  "result_sha256": "784fc9bb08ba21acc82db32c44c1f9b596d271ba891bb36c4803012cb8011382",
+  "registration_sha256": "b984474d05907a84fb4d92d96c3926b17572380c577eb6f530b04821101f07db",
+  "lead_source_native_faces": {
+    "1": {
+      "face_tag": 8,
+      "pad_T_K": 303.31010906516053,
+      "electrical_R_ohm": 0.0018894324506607207,
+      "Q_into_ceramic_W": -0.011901962391718106
+    },
+    "9": {
+      "face_tag": 36,
+      "pad_T_K": 299.33036676890936,
+      "electrical_R_ohm": 0.002718240883837446,
+      "Q_into_ceramic_W": 0.001912333576106903
+    }
+  },
+  "Cu_source_networks": {
+    "58": {
+      "Cu_Joule_W": 0.0005477655202174079,
+      "heat_into_source_faces_W": {
+        "38": -0.05513585715255639,
+        "75": 0.05568362267277652
+      }
+    },
+    "80": {
+      "Cu_Joule_W": 0.0004960808040985174,
+      "heat_into_source_faces_W": {
+        "79": -0.04024159594372441,
+        "105": 0.04073767674781857
+      }
+    },
+    "88": {
+      "Cu_Joule_W": 0.0010394517260787612,
+      "heat_into_source_faces_W": {
+        "36": -0.055137600627453855,
+        "74": 0.01036594435413716,
+        "104": 0.045811107999400885
+      }
+    }
+  },
+  "independently_reconstructed_stage_heat_W": {
+    "0": -0.11027345778001024,
+    "1": 0.025807971083189267,
+    "2": 0.08654878474721946
+  },
+  "independently_reconstructed_stage_energy_residual_W": {
+    "hot_sink_W": 0.0,
+    "middle0_W": 1.0827658422640773e-09,
+    "middle1_W": -1.3706981383254657e-10,
+    "detector_ceramic_W": -7.058525503455745e-12
+  },
+  "max_stage_energy_residual_W": 1.0827658422640773e-09,
+  "global_energy_residual_W": -9.377949528044383e-10,
+  "copper_heat_minus_Joule_W": 3.79514128456826e-15,
+  "lead_ceramic_heat_minus_conduction_and_half_Joule_W": -1.734723475976807e-18,
+  "detector_T_K": 219.842855344823,
+  "detector_bias_V": 1.5,
+  "detector_R_ohm": 496.6012911233063,
+  "detector_I_A": 0.003020531816594793,
+  "detector_bias_P_W": 0.004530797724892189,
+  "detector_absorbed_P_W": 0.0005,
+  "detector_dPdT_W_K": 3.263610542504022e-05,
+  "detector_total_heat_W": 0.00503079772489219,
+  "current_A": 0.4,
+  "terminal_V": 1.4876293225206707,
+  "lead_material": "copper",
+  "Cu_contact_Rth_m2K_W": 1e-06,
+  "limitations": "HgCdTe effective R(T) and optical heating are unmeasured independent hypotheses, no I-V/noise calibration; Cu/lead proxy and not 3D complete metal PDE."
+}
