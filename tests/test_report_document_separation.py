@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 OLD='882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248'
 INTERIM='6a9cb56fc3a78ac31639f4cb0b9c40e29d68997ea73b408ac68651eb1789faf5'
-CURRENT='6584d10c5763d040bcd2d95b384fa23f8ac0211d2fec5700831ec82a054b5fcb'
+CURRENT='3cf7c1ea39dd765c31e521c730ede6a431ec8ac59c7afb58046e03f327cfcfd1'
 def test_document_edition_identity():
     a=ROOT/'reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf'
     b=ROOT/'reports/historical/rev3_pre_v33_20261108/report.pdf'
@@ -30,6 +30,7 @@ def test_current_scientific_source_and_figures():
     assert 'formed' in (p/'report.tex').read_text()
     assert 'v34_copper_stage_temperature_comparison' in (p/'report.tex').read_text()
     assert 'v34_copper_face_heat_budget' in (p/'report.tex').read_text()
+    assert 'v33_ceramic_fields' in (p/'report.tex').read_text()
     assert 'v35_original_spatial_ceramic_fields' in (p/'report.tex').read_text()
     assert 'v35_full_system_scenario_temperature' in (p/'report.tex').read_text()
     for n in ('v35_full_system_scenario_temperature.pdf', 'v35_original_spatial_ceramic_fields.pdf'):
@@ -41,7 +42,7 @@ def test_current_scientific_source_and_figures():
 def test_report_page_counts_and_model_identity():
     for filename,n in [('reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf',38),
         ('reports/historical/rev3_v33_interim_43pp_20261108/report.pdf',43),
-        ('reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf',29)]:
+        ('reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf',30)]:
         # On CI the PDF SHA assertions pin the exact page structures; MuPDF
         # page-count inspection is optional because GitHub runners lack mutool.
         if shutil.which('mutool'):
@@ -50,3 +51,30 @@ def test_report_page_counts_and_model_identity():
     m=(ROOT/'docs/CURRENT_MODEL_DOCUMENTATION_MAP_20261108.md').read_text()
     for marker in ('824','430','formed','net 88','NOT RUN','V3.3'):
         assert marker in m
+
+
+def test_cumulative_scientific_figures_and_previous_edition_preservation():
+    import re
+    tex=(ROOT/'reports/current/report.tex').read_text()
+    actual=set(re.findall(r"\\fig\[[^]]+\]\{([^}]+)\}",tex))
+    required={
+        'cad_package_shaded','cad_package_interior_detail','tec_solid_inspection',
+        'tec_formed_tab_sections','v33_topology','tab_screen','mesh_quality',
+        'v33_transport','v33_ceramic_fields','v33_cavity_loads','v33_versions',
+        'v33_leg_budgets','v33_iterations','v34_copper_stage_temperature_comparison',
+        'v34_copper_face_heat_budget','v35_full_system_scenario_temperature',
+        'v35_fixed_field_lead_heat_screen','v35_fixed_field_interstage_contact_screen',
+        'v35_original_spatial_ceramic_fields'
+    }
+    assert required<=actual, 'Previously published figures silently removed: '+str(required-actual)
+    edition=ROOT/'reports/historical/current_model_editions'
+    snapshots=[('v3_3_initial_19pp',19),('v3_3_hardware_22pp',22),
+        ('v3_4_copper_25pp',25),('v3_5_leads_29pp',29)]
+    for folder,pages in snapshots:
+        p=edition/folder
+        info=json.loads((p/'edition.json').read_text())
+        assert info['pages']==pages
+        assert sha(p/'report.pdf')==info['sha256']
+        assert info['source_commit']
+    assert sha(ROOT/'reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf') not in {
+        sha(edition/f/'report.pdf') for f,_ in snapshots}

@@ -4,11 +4,13 @@
 
 **[See the package and electrical interconnection geometry](reports/current/figures/cad_package_shaded.png)** | **[Enlarged interior and feedthrough wiring](reports/current/figures/cad_package_interior_detail.png)**
 
-**Current physically coupled reference: [29-page TEC–HgCdTe–TO engineering assessment with V3.5 installed lead and copper-contact sensitivity](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)**
+**Current physically coupled reference: [30-page cumulative TEC–HgCdTe–TO assessment preserving V3.3, V3.4, and V3.5 results](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)**
 
 **[View the depth-corrected shaded replacement TEC geometry](reports/current/figures/tec_solid_inspection.png)** | **[Inspect the three formed copper foil connections](reports/current/figures/tec_formed_tab_sections.png)**
 
 ![Two opaque shaded perspectives of the actual 824-body synthetic replacement TEC. Source CAD geometry, not a hardware photograph.](reports/current/figures/tec_solid_inspection.png)
+
+**[Archived original current-model editions (19, 22, 25, 29 pages)](reports/historical/current_model_editions/README.md)**
 
 **Historical methodological reference: [original 38-page Revision 3 assessment](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf)**
 
@@ -16,7 +18,8 @@ These documents intentionally describe different objects. Original Rev3 records 
 
 The **replacement physical TEC** is an 824-solid formed-foil synthetic assembly with 430 derived analysis domains and 2,440 registered faces. Its **current runnable V3.5 hybrid** includes 88 nonlinear P/N legs, four **original solved 3D ceramic FEMs** (11,791 TET4), original package/detector gas and gray-radiation loads, the Cu electrothermal foil multiport (nets 58/80/88), and **two separately source-mapped power wires** between cooler landings and the TO package pins. The last correction maps pin1 to original ceramic face8 and pin9 to face36; the two local pad temperatures can lie on opposite sides of the nominal 300 K reservoir. The cut-to-size *installed* length, not the full as-supplied external factory lead length, governs the model's internal wire conduction.
 
-**Current nominal 0.400 A / 300 K / 2 mW detector / 100 Pa Kr case, copper installed power leads and nominal Cu contact hypothesis:** detector **218.900024 K**, terminal **1.489170 V**, electrical input **0.595668 W**, sink rejection **0.592331 W**. A nickel-like wire scenario predicts **218.915286 K** at **1.495249 V**; an intentionally extreme Cu-interstage thermal joint impedance \(r_T''=10^{-4}\ {m m^2 K/W}\) predicts **212.623582 K** at **1.518772 V**. Those are three accepted full-system nonlinear simulations with separate independent energy audits, not empirical temperature accuracy bounds or a fully coupled 430-domain metal PDE. Actual solder and material properties remain conditional; Kanthal-like wire is **screened only**, not identified on any actual TEC. The preceding V3.4 nominal combined-power-lead result (218.832895 K) and V3.3 original no-bridge result (210.625214 K) remain preserved as prior comparison generations.
+**Current nominal 0.400 A / 300 K / 2 mW detector / 100 Pa Kr case, copper installed power leads and nominal Cu contact hypothesis:** detector **218.900024 K**, terminal **1.489170 V**, electrical input **0.595668 W**, sink rejection **0.592331 W**. A nickel-like wire scenario predicts **218.915286 K** at **1.495249 V**; an intentionally extreme Cu-interstage thermal joint impedance \(r_T''=10^{-4}\ {
+m m^2 K/W}\) predicts **212.623582 K** at **1.518772 V**. Those are three accepted full-system nonlinear simulations with separate independent energy audits, not empirical temperature accuracy bounds or a fully coupled 430-domain metal PDE. Actual solder and material properties remain conditional; Kanthal-like wire is **screened only**, not identified on any actual TEC. The preceding V3.4 nominal combined-power-lead result (218.832895 K) and V3.3 original no-bridge result (210.625214 K) remain preserved as prior comparison generations.
 
 **[Current V3.5 terminal wiring and copper-interface physics, full measured-versus-assumed distinction](docs/V3_5_POWER_LEAD_AND_INTERSTAGE_CONTACT_20261108.md)** | [All three source-registered full-system operating points](data/v3_5_power_lead_and_copper_sensitivity_20261108/) | [Current device temperature comparison](reports/current/figures/v35_full_system_scenario_temperature.png) | [Current source-mesh ceramic temperature fields](reports/current/figures/v35_original_spatial_ceramic_fields.png).
 

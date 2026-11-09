@@ -236,6 +236,12 @@ K_{ab}=\sum_e\int_{\Omega_e}k_c\nabla N_a\cdot\nabla N_b\,d\Omega,\quad
 b_a=\sum_f\int_{A_f}N_a q_f\,dA,
 \]
 with \(k_c=30\,\mathrm{W/(m\,K)}\) a selected constant-property alumina analogue. Original face-specific P/N leg heat and assumed joint/cavity contributions are distributed over native TRI3 pad faces; source-local pad means feed back into leg end temperatures. Four archived source meshes contain 4,936 / 4,085 / 1,986 / 784 TET4 elements, totaling 11,791 tetrahedra.
+\subsection{Preserved spatial evidence: original V3.3 and current V3.5}
+The original source-ceramic temperature field from the earlier V3.3 reference is retained below as a \emph{historical baseline}. Its thermal state omits the later copper-interstage multiport and independently located TEC lead boundary conditions; it must not be mistaken for a field from the present operating-point calculation.
+\fig[.96]{v33_ceramic_fields}{pdf}{Preserved original V3.3 four-ceramic spatial FEM fields and source tetrahedral surface triangulations, calculated for the older reference without the V3.4 formed-copper heat network or V3.5 corrected TEC lead-pad heat. This is the original evidence, not a replacement or a claim of validated device temperature.}
+\clearpage
+\subsection{Current V3.5 source-ceramic temperature field}
+The revised V3.5 temperature plots use the \emph{same original ceramic discretization} but a different, more complete interstage copper/terminal-wire heat budget. These two figures intentionally coexist: the old field is preserved, and the updated field is appended with its own physical assumptions.
 \fig[.96]{v35_original_spatial_ceramic_fields}{pdf}{Accepted current V3.5 operating-point temperature on the original frozen 11,791 source-ceramic TET4 elements. The original upper-surface TRI3 boundary is colored by the saved spatial FEM nodal solution at 0.400 A, 300 K, 2 mW detector load, 100 Pa krypton and nominal Cu contacts. These are actual solved ceramic temperature fields; there is no claim of full 430-domain bulk-metal electrothermal FEM.}
 The four fields share their temperature gauge and stage heat exchange with the nonlocal reduced network. This is a single-mesh spatial result; no independent mesh-converged thermal accuracy bound is available.
 \clearpage

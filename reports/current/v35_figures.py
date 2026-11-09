@@ -33,27 +33,59 @@ def make():
     plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10,
        'axes.spines.top':False,'axes.spines.right':False,
        'pdf.fonttype':42,'savefig.facecolor':'white'})
-    titles=['V3.4: combined lead approximation','V3.5: separate copper leads',
-       'V3.5: separate nickel-like leads','V3.5: high interstage contact R']
-    values=[old['calculated_detector_temperature_K']]+[r[x]['calculated_detector_temperature_K'] for x in names]
-    fig,ax=plt.subplots(figsize=(9.5,4.4),layout='constrained')
-    yy=np.arange(4)
-    colors=['#8894a2','#406e8e','#63928d','#b27347']
-    ax.scatter(values,yy,s=110,c=colors,zorder=4)
-    for j,v in enumerate(values):
-        ax.plot([values[1],v],[j,j],linewidth=2,color=colors[j],alpha=.65,zorder=3)
-    ax.axvline(values[1],linestyle='--',linewidth=1.0,color='#7690a0',alpha=.8)
-    ax.set_yticks(yy,titles);ax.invert_yaxis()
-    ax.set_xlim(210.7,221)
-    ax.set_xlabel('Calculated HgCdTe temperature at 0.4 A (K)')
-    ax.set_title('Whole-device response to terminal leads and copper joints',
-                 fontsize=13,fontweight='bold')
-    ax.grid(axis='x',alpha=.2)
-    ax.set_axisbelow(True)
-    for i,v in enumerate(values):
-        ax.text(v+.17,i,f'{v:.3f} K',va='center',fontsize=10,weight='bold')
-    ax.text(.01,.02,'Synthetic selected material/contact laws; not a measured prediction',
-            transform=ax.transAxes,fontsize=8,color='#545b65')
+    # Hardware-first figure: two clearly labeled scales for two distinct
+    # physical questions. The left panel is the full temperature envelope;
+    # the right panel resolves the tiny source-lead-material corrections.
+    # No extrapolated points, interpolating lines, error bars, or fitted
+    # uncertainty distributions. Every symbol is an accepted saved result.
+    values=np.array([old['calculated_detector_temperature_K']]+
+                    [r[x]['calculated_detector_temperature_K'] for x in names],float)
+    fig=plt.figure(figsize=(10.7,4.65),facecolor='white')
+    ax=fig.add_axes([.10,.25,.42,.58])
+    ax2=fig.add_axes([.64,.25,.33,.58])
+    baseline=values[1]
+    # The large design-physics effect: source Cu joint conductance.
+    ys=[1,0]
+    bigx=[values[1],values[3]]
+    ax.hlines(y=0,xmin=values[3],xmax=values[1],color='#adb6c0',lw=2.2,zorder=1)
+    ax.scatter(bigx,ys,s=82,c=['#285a78','#b87950'],zorder=3)
+    ax.set_yticks([1,0],['Nominal Cu contact','High contact resistance'])
+    ax.set_xlim(210.7,220.8)
+    ax.set_ylim(-.55,1.65)
+    ax.set_xticks([212,214,216,218,220])
+    ax.set_xlabel('Detector temperature (K)',fontsize=10)
+    ax.set_title('Interstage contact effect',loc='left',
+                 fontsize=11,fontweight='bold',color='#24384d')
+    ax.grid(axis='x',alpha=.18)
+    for y,v in zip(ys,bigx):
+        ax.annotate(f'{v:.3f} K',(v,y),xytext=(0,10),textcoords='offset points',
+                    ha='center',fontsize=9.5,fontweight='medium',color='#253c50')
+    # Resolve the ~0.01-0.07K differences on their own x scale, explicitly
+    # labeled as a zoom rather than sharing the left absolute axis range.
+    micro=1000*(values[:3]-baseline)
+    micro_lbl=['V3.4 combined-lead model','V3.5 Cu leads (reference)',
+               'V3.5 nickel-like leads']
+    my=np.array([2,1,0])
+    ax2.axvline(0,color='#627c90',lw=1.2,ls='--',zorder=0)
+    ax2.scatter(micro,my,s=77,c=['#808d9a','#285a78','#6e958b'],zorder=3)
+    ax2.set_yticks(my,['V3.4 approximation','V3.5 Cu leads','V3.5 Ni-like leads'])
+    ax2.set_ylim(-.55,2.65)
+    ax2.set_xlim(-90,55)
+    ax2.set_xticks([-80,-40,0,40])
+    ax2.set_xlabel(r'$\Delta T$ relative to V3.5 Cu (mK)',fontsize=10)
+    ax2.set_title('Supply-lead sensitivity',loc='left',
+                  fontsize=11,fontweight='bold',color='#24384d')
+    ax2.grid(axis='x',alpha=.18)
+    for y,v in zip(my,micro):
+        ax2.annotate(f'{v:+.1f} mK',(v,y),xytext=(0,10),textcoords='offset points',
+                     ha='center',fontsize=9.1,color='#253c50')
+    fig.text(.04,.95,'Detector temperature: two different sensitivity scales',fontsize=15.2,
+             weight='bold',color='#25384d')
+    fig.text(.04,.894,'Matched 0.400 A  |  300 K reservoir  |  2 mW detector load  |  100 Pa krypton',
+             fontsize=9.5,color='#4e6275')
+    fig.text(.04,.075,'Synthetic parameter hypotheses, not uncertainty intervals. '
+             'Separate absolute-temperature and millikelvin axes.',
+             fontsize=8.9,color='#576a7b')
     save(fig,'v35_full_system_scenario_temperature')
     # Plot lead heat at original separate pads, using ONLY the saved source-field screen.
     labels=['Copper','Nickel proxy','FeCrAl screen']
