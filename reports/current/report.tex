@@ -6,7 +6,7 @@
 \pdfinfoomitdate=1\pdftrailerid{}\pdfsuppressptexinfo=15
 \definecolor{navy}{HTML}{19334B}\definecolor{blue}{HTML}{3E7099}\definecolor{rust}{HTML}{A35437}
 \hypersetup{colorlinks=true,linkcolor=navy,urlcolor=blue}
-\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\scriptsize HgCdTe DETECTOR | THERMAL AND ELECTRICAL ENGINEERING}\fancyhead[R]{\scriptsize 08 NOV 2026}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\scriptsize HgCdTe DETECTOR | THERMAL AND ELECTRICAL ENGINEERING}\fancyhead[R]{\scriptsize 09 NOV 2026}
 \fancyfoot[L]{\scriptsize Synthetic reference; not OEM-validated}\fancyfoot[R]{\scriptsize\thepage}
 \setlength{\parindent}{0pt}\setlength{\parskip}{4pt}\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
 \setcounter{tocdepth}{1}
@@ -15,13 +15,14 @@
 \input{derived_tables.tex}
 \input{v34_derived_tables.tex}
 \input{v35_derived_tables.tex}
+\input{v36_derived_tables.tex}
 \begin{document}
 \thispagestyle{empty}\vspace*{6mm}
 {\color{navy}\rule{\linewidth}{1.5pt}}
 \vspace{8mm}
 {\Huge\bfseries\color{navy} Thermoelectric Cooling\\[2mm] of an HgCdTe Detector\par}
 \vspace{7mm}{\LARGE Device Design, Heat Flow, and Electrical Performance\par}
-\vspace{8mm}{\large Three-stage cooler in a nine-pin package \quad|\quad 8 November 2026\par}
+\vspace{8mm}{\large Three-stage cooler in a nine-pin package \quad|\quad 9 November 2026\par}
 \vspace{5mm}
 \noindent\fbox{\begin{minipage}{.96\linewidth}\small
 \textbf{PHYSICAL SCOPE.} A three-stage cooler with a HgCdTe detector is evaluated using literature-informed thermoelectric properties, explicitly chosen package and joint assumptions, and calculated heat and current flow. The results describe a synthetic reference device, not a measured commercial product. Interstage foil heat leakage is now included through a conditional, source-CAD-based electrothermal multiport. True three-dimensional metal current spreading, deposited-film heat flow and measured joint impedances remain unresolved.
@@ -115,6 +116,40 @@ The wire and Cu laws are declared approximations, not measured low-temperature t
 
 
 \clearpage
+\section{Current versus cooling performance: an operating envelope (V3.6)}
+The previous V3.5 model demonstrated a realistic source-connected 0.400~A operating point, but a hardware engineer needs to know how detector temperature and dissipated electrical power change with \emph{TEC drive current}. V3.6 varies only the imposed current and detector heat load, using the \emph{same} 88 source P/N transport legs, 11,791 ceramic tetrahedra, copper-foil interstage links, actual terminal feedthrough connections, krypton cavity and mounting sink assumptions. No material law or geometry was fitted to produce this curve.
+
+At 300~K mounting reservoir, 2.00~mW detector heat and 100~Pa krypton, four independently conserved operating points give:
+\begin{center}\small
+\begin{tabular}{rrrr}\toprule
+TEC current (A) & HgCdTe T (K) & Terminal V (V) & Input (W)\\\midrule
+\vsixcurrentrows
+\bottomrule\end{tabular}
+\end{center}
+\fig[.97]{v36_current_temperature_power}{pdf}{Four full-system source-model cases showing the decrease in detector temperature and increasing electrical input from 0.25 to 0.60~A. The line segments connect individually solved points; they are not a fitted continuous performance or safe-current curve. Other parameters are fixed at the nominal V3.5 physical hypotheses.}
+The upper-stage hot substrate cools from 260.43~K at 0.25~A to 237.36~K at 0.60~A, while the mounting-side TEC ceramic warms from 301.66 to 307.71~K because it must reject more heat through finite package impedance. The extra electrical cost of a further kelvin of detector cooling rises markedly:
+\begin{center}\small
+\begin{tabular}{rrrr}\toprule
+Current step (A) & Cooling gained (K) & Extra input (mW) & Incremental mW/K\\\midrule
+\vsixcostrows
+\bottomrule\end{tabular}
+\end{center}
+No minimum in detector temperature or safe current rating is claimed beyond the four tested conditions; increasing current still improved cooling at the upper tested 0.60~A boundary. The power budget is \emph{module terminal input}, not the entire external power-supply wall consumption.
+\clearpage
+\subsection{Sensitivity to real detector heating}
+At fixed 0.400~A, an imposed thermal load is an essential proxy for absorbed photons, bias heating and parasitic package heat before the HgCdTe transport physics is self-consistently integrated. The following points resolve the full TEC--ceramic--package feedback, not a single isolated thermal resistance:
+\begin{center}\small
+\begin{tabular}{rrrr}\toprule
+Detector load (mW) & HgCdTe T (K) & TEC V (V) & Input (W)\\\midrule
+\vsixloadrows
+\bottomrule\end{tabular}
+\end{center}
+\fig[.87]{v36_detector_heat_load_response}{pdf}{Source-based thermal load sweep at fixed 0.400~A, 300~K sink and 100~Pa krypton. The calculated full-device temperature changes by about 0.311~K per additional milliwatt across the tested 1--6~mW range. The HgCdTe resistance, signal and noise are not yet solved from semiconductor transport.}
+From 1 to 2~mW the observed secant is 310.734~K/W; from 2 to 6~mW it is 311.184~K/W. This approximately \textbf{311~K/W effective device thermal sensitivity} applies to the specified module and drive condition, not a measured intrinsic die thermal resistance. It demonstrates what the platform can now predict about tolerable bias/optical heat and electrical cost \emph{before} an HgCdTe device-transport model supplies that heat self-consistently.
+
+\textbf{Numerical evidence and limitations.} All six cases retain 88 nonlinear leg solutions, original four source ceramic fields and source-to-pin metal face heat accounting; separate no-solve audits recomputed each stage, copper, lead and global balance below \(2\\times10^{-9}\)~W. The unmodified 0.400~A/2.00~mW V3.5 reference is reproduced exactly. Two failed off-reference initializations were preserved and corrected by keeping the frozen 0.4~A heat budget during the first \emph{warm start}; all physical equations and 3\(\\times10^{-7}\)~K pad-update gates remain unchanged. These curves remain conditional on selected copper/solder, thermoelectric and mounting properties; no photoconductive gain, infrared detectivity or detector noise is inferred. All original earlier V3.3--V3.5 scientific results follow as independent historical evidence.
+\clearpage
+
 \section{Original V3.4 copper-bridge result and its physical explanation}
 A thermoelectric cooler transfers heat toward its hot side while electrical interconnects must also cross between ceramic stages. The three short formed copper-foil connections in the current cooler provide a real electrical path, but they simultaneously create passive conductive paths that partially undo the cooling. This effect is absent from the original V3.3 prediction. A new V3.4 calculation adds the actual two-foot and three-foot link topology with physically separate ceramic-pad thermal terminals.
 
@@ -302,7 +337,7 @@ An independent read-only field/load audit reconstructs the saved energy terms wi
 \clearpage
 \section{Device engineering implications and next experiment}
 The physical cooler is now represented by a functioning complete thermal/electrical model including a first conservative three-branch copper network tied to original ceramic pads. The present V3.5 corrected-power-lead reference gives 218.900 K (versus V3.4 218.833 K and earlier V3.3 210.625 K); these are conditional modeled values, not manufactured device temperatures. It is \emph{not} necessary to restart cooler CAD development. However, full three-dimensional copper/metal fields and actual thermal-contact characterization are not yet available.
-The next practical milestone is to quantify uncertainty in the \emph{already integrated} multiport: copper conductivity and resistivity versus temperature, contact thermal/electrical impedances, foil thickness and metallization-sheet heat spreading. Use a small, bounded source-informed screening study to select the few conditions that justify complete nonlinear recomputations. Full 3D copper FEM may be justified if compact validated metal substructures cannot bound current crowding or nonlocal heat flow.
+The current and detector-heat-load operating envelope now exists as the accepted V3.6 extension above. The next practical milestone is to couple bounded HgCdTe photoconductor resistance and bias/optical dissipation to that solved thermal environment, while quantifying uncertainty in the \emph{already integrated} multiport: copper conductivity/resistivity versus temperature, joint thermal/electrical impedances, foil thickness and metal-film heat spreading. Use targeted source-informed screening to select conditions that merit expensive full-system recomputation. Full 3D copper FEM may be justified if compact validated metal substructures cannot bound current crowding or nonlocal heat flow.
 The older 38-page Revision 3 is preserved because of its unusually useful FEM methodology and publication-level plots, \emph{not} because it describes the current metal layout. The 43-page interim extension is historical, not the latest design reference.
 
 \section{Model provenance and numerical evidence hierarchy}

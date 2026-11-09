@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 OLD='882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248'
 INTERIM='6a9cb56fc3a78ac31639f4cb0b9c40e29d68997ea73b408ac68651eb1789faf5'
-CURRENT='f989d75f0987456cf78a049f9876b420abf31969e1ea2fa84f04c9d31afe3e6c'
+CURRENT='a017bdfd614e34c8fa8ae5b410862c9bdb24be681163f7408ebe018c153a0168'
 def test_document_edition_identity():
     a=ROOT/'reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf'
     b=ROOT/'reports/historical/rev3_pre_v33_20261108/report.pdf'
@@ -33,6 +33,15 @@ def test_current_scientific_source_and_figures():
     assert 'v33_ceramic_fields' in (p/'report.tex').read_text()
     assert 'v35_original_spatial_ceramic_fields' in (p/'report.tex').read_text()
     assert 'v35_full_system_scenario_temperature' in (p/'report.tex').read_text()
+    assert 'v36_current_temperature_power' in (p/'report.tex').read_text()
+    assert 'v36_detector_heat_load_response' in (p/'report.tex').read_text()
+    for n in ('v36_current_temperature_power.pdf','v36_detector_heat_load_response.pdf'):
+        assert sha(p/'figures'/n)==m['figures_sha256'][n]
+    for c in ('I025_Q002_corrected','I040_Q002','I055_Q002_corrected',
+              'I060_Q002_corrected','I040_Q001','I040_Q006'):
+        f=ROOT/'data/v3_6_operating_envelope_20261109'/c/'result.json'
+        assert sha(f)==m['source_hashes'][str(f.relative_to(ROOT))]
+
     for n in ('v35_full_system_scenario_temperature.pdf', 'v35_original_spatial_ceramic_fields.pdf'):
         assert sha(p/'figures'/n)==m['figures_sha256'][n]
     for name in ('v34_copper_stage_temperature_comparison.pdf','v34_copper_face_heat_budget.pdf'):
@@ -42,7 +51,7 @@ def test_current_scientific_source_and_figures():
 def test_report_page_counts_and_model_identity():
     for filename,n in [('reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf',38),
         ('reports/historical/rev3_v33_interim_43pp_20261108/report.pdf',43),
-        ('reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf',28)]:
+        ('reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf',30)]:
         # On CI the PDF SHA assertions pin the exact page structures; MuPDF
         # page-count inspection is optional because GitHub runners lack mutool.
         if shutil.which('mutool'):
@@ -64,12 +73,13 @@ def test_cumulative_scientific_figures_and_previous_edition_preservation():
         'v33_leg_budgets','v33_iterations','v34_copper_stage_temperature_comparison',
         'v34_copper_face_heat_budget','v35_full_system_scenario_temperature',
         'v35_fixed_field_lead_heat_screen','v35_fixed_field_interstage_contact_screen',
-        'v35_original_spatial_ceramic_fields'
+        'v35_original_spatial_ceramic_fields',
+        'v36_current_temperature_power','v36_detector_heat_load_response'
     }
     assert required<=actual, 'Previously published figures silently removed: '+str(required-actual)
     edition=ROOT/'reports/historical/current_model_editions'
     snapshots=[('v3_3_initial_19pp',19),('v3_3_hardware_22pp',22),
-        ('v3_4_copper_25pp',25),('v3_5_leads_29pp',29),('v3_5_cumulative_30pp',30)]
+        ('v3_4_copper_25pp',25),('v3_5_leads_29pp',29),('v3_5_cumulative_30pp',30),('v3_5_full_audit_28pp',28)]
     for folder,pages in snapshots:
         p=edition/folder
         info=json.loads((p/'edition.json').read_text())

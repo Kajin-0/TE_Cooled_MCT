@@ -229,12 +229,50 @@ for name,rows in (('vfiveoperatingrows',ops),('vfiveleadrows',leadbud),
     vf+=chr(92)+'newcommand{'+chr(92)+name+'}{'+rows_table(rows)+'}'+chr(10)
 (HERE/'v35_derived_tables.tex').write_text(vf)
 runpy.run_path(str(HERE/'v35_figures.py'),run_name='__main__')
+# V3.6: expand actual accepted source-temperature operating envelope without
+# modifying any V3.3-V3.5 scientific plot, table, or archived original.
+V36=ROOT/'data/v3_6_operating_envelope_20261109'
+runpy.run_path(str(HERE/'v36_operating_envelope_figures.py'),run_name='__main__')
+v36sum=json.loads((V36/'accepted_envelope_summary.json').read_text())
+assert len(v36sum['current_cases'])==4 and len(v36sum['load_cases'])==3
+v36names=sorted({z['name'] for z in v36sum['current_cases']+v36sum['load_cases']})
+assert len(v36names)==6
+for case in v36names:
+    r=json.loads((V36/case/'registration.json').read_text())
+    d=json.loads((V36/case/'result.json').read_text())
+    a=json.loads((V36/case/'independent_energy_audit.json').read_text())
+    assert a['verdict'].startswith('PASS V3.6')
+    assert hashlib.sha256((V36/case/'result.json').read_bytes()).hexdigest()==a['result_sha256']
+    assert d['max_last_spatial_temperature_update_K']<3e-7
+    assert a['max_stage_energy_residual_W']<1e-8
+    assert abs(a['global_energy_residual_W'])<1e-8
+    assert d['original_ceramic_TET4']==11791 and len(d['source_individual_leg_flux_and_electric_results'])==88
+rows_current=[[f"{z['current_A']:.3f}",f"{z['detector_temperature_K']:.3f}",
+    f"{z['TEC_voltage_V']:.5f}",f"{z['TEC_input_W']:.5f}"] for z in v36sum['current_cases']]
+rows_load=[[f"{z['detector_heat_mW']:.2f}",f"{z['detector_temperature_K']:.3f}",
+    f"{z['TEC_voltage_V']:.5f}",f"{z['TEC_input_W']:.5f}"] for z in v36sum['load_cases']]
+rows_cost=[]
+for a,b in zip(v36sum['current_cases'][:-1],v36sum['current_cases'][1:]):
+    delta_cooling=a['detector_temperature_K']-b['detector_temperature_K']
+    delta_power=b['TEC_input_W']-a['TEC_input_W']
+    assert delta_cooling>0 and delta_power>0
+    rows_cost.append([f"{a['current_A']:.2f}--{b['current_A']:.2f}",
+        f'{delta_cooling:.3f}',f'{1000*delta_power:.2f}',f'{1000*delta_power/delta_cooling:.2f}'])
+vt='% V3.6 full-system accepted source results, independent audits verified.'+chr(10)
+for name,rows in [('vsixcurrentrows',rows_current),('vsixloadrows',rows_load),('vsixcostrows',rows_cost)]:
+    vt+=chr(92)+'newcommand{'+chr(92)+name+'}{'+rows_table(rows)+'}'+chr(10)
+(HERE/'v36_derived_tables.tex').write_text(vt)
 infiles=[ARCH/'result.json',ARCH/'source_native_ceramics_V3_3.npz',ROOT/'data/synthetic_v3_assembly_20261102/source_final/design.json',ROOT/'data/synthetic_v3_assembly_20261102/cad_02/synthetic_v3_mm.step',ROOT/'data/synthetic_v3_assembly_20261102/conductor_geometry_coefficients.json',
 ROOT/'data/v3_r38_global_tetgen_20261105/attempt01/saved_mesh_audit.json',ROOT/'data/v3_r39_quality_20261105/attempt01/candidate_result.json',V34/'result.json',V34/'independent_read_only_acceptance.json',V34/'independent_physics_reconstruction.json',V34/'source_native_ceramics_V3_4.npz',
 V35/'fixed_source_field_screen.json',
 *([V35/name/f for name in scenarios for f in
     ('result.json','registration.json','independent_energy_audit.json',
-     'source_native_ceramics_V3_5.npz')])]
+     'source_native_ceramics_V3_5.npz')]),
+V36/'accepted_envelope_summary.json',
+V36/'attempt01_initial_warm_start_source.py',
+*([V36/case/f for case in v36names for f in
+    ('registration.json','result.json','independent_energy_audit.json',
+     'source_native_ceramics_V3_6.npz')])]
 manifest={'kind':'data-only current science assessment','new_physics_solves':0,'source_hashes':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in infiles},
 'figures_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in FIG.iterdir()},'n_legs':len(legs),'n_pad_faces':len(pads),'n_material_rows':len(materials)}
 (HERE/'reproduction_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

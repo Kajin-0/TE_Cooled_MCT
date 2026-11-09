@@ -4,19 +4,21 @@
 
 **[See the package and electrical interconnection geometry](reports/current/figures/cad_package_shaded.png)** | **[Actual nine-pin circuit assignments](reports/current/figures/cad_package_pinout.png)**
 
-**Current physically coupled reference: [28-page audited cumulative TEC–HgCdTe–TO assessment preserving V3.3, V3.4, and V3.5 results](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)**
+**Current engineering reference: [30-page cumulative TEC–HgCdTe–TO assessment, including the V3.6 operating-current and detector-load envelope](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)**
 
 **[View the depth-corrected shaded replacement TEC geometry](reports/current/figures/tec_solid_inspection.png)** | **[Inspect the three formed copper foil connections](reports/current/figures/tec_formed_tab_sections.png)**
 
 ![Two opaque shaded perspectives of the actual 824-body synthetic replacement TEC. Source CAD geometry, not a hardware photograph.](reports/current/figures/tec_solid_inspection.png)
 
-**[Archived earlier editions (19, 22, 25, 29, and 30 pages)](reports/historical/current_model_editions/README.md)**
+**[Archived earlier editions (19, 22, 25, 29, 30, and audited 28 pages)](reports/historical/current_model_editions/README.md)**
 
 **Historical methodological reference: [original 38-page Revision 3 assessment](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf)**
 
 These documents intentionally describe different objects. Original Rev3 records earlier 216-domain / 28/12/4 coupled solid geometry, numerical methodology and preserved raw numerical failures. It is restored unchanged and no longer overwritten with current model material. The 43-page interim integration is independently archived under reports/historical/rev3_v33_interim_43pp_20261108/.
 
 The **replacement physical TEC** is an 824-solid formed-foil synthetic assembly with 430 derived analysis domains and 2,440 registered faces. Its **current runnable V3.5 hybrid** includes 88 nonlinear P/N legs, four **original solved 3D ceramic FEMs** (11,791 TET4), original package/detector gas and gray-radiation loads, the Cu electrothermal foil multiport (nets 58/80/88), and **two separately source-mapped power wires** between cooler landings and the TO package pins. The last correction maps pin1 to original ceramic face8 and pin9 to face36; the two local pad temperatures can lie on opposite sides of the nominal 300 K reservoir. The cut-to-size *installed* length, not the full as-supplied external factory lead length, governs the model's internal wire conduction.
+
+**New V3.6 full-device operating envelope:** [Current-versus-detector-temperature and electrical-power figure](reports/current/figures/v36_current_temperature_power.png) and [detector thermal-load sensitivity](reports/current/figures/v36_detector_heat_load_response.png), with [six accepted source-registered numerical cases and independent audits](docs/V3_6_CURRENT_AND_DETECTOR_LOAD_OPERATING_ENVELOPE_20261109.md). At 300 K mounting temperature and 2 mW imposed detector heat, **0.25 / 0.40 / 0.55 / 0.60 A** yield HgCdTe temperatures **238.568 / 218.900 / 205.992 / 202.777 K**, with module electrical input **0.252 / 0.596 / 1.065 / 1.249 W**. Incremental power cost per additional kelvin rises as current increases; no optimum current established. The separate 0.4 A detector heat sweep (1/2/6 mW) yields an approximately **311 K/W** source-system thermal response. This is V3.5 physical modeling with variable current and detector loading, not a new CAD or empirically validated device. Original V3.5 and all prior reports remain preserved.
 
 **Current nominal 0.400 A / 300 K / 2 mW detector / 100 Pa Kr case, copper installed power leads and nominal Cu contact hypothesis:** detector **218.900024 K**, terminal **1.489170 V**, electrical input **0.595668 W**, sink rejection **0.592331 W**. A nickel-like wire scenario predicts **218.915286 K** at **1.495249 V**; an intentionally extreme Cu-interstage thermal joint impedance \(r_T''=10^{-4}\ {
 m m^2 K/W}\) predicts **212.623582 K** at **1.518772 V**. Those are three accepted full-system nonlinear simulations with separate independent energy audits, not empirical temperature accuracy bounds or a fully coupled 430-domain metal PDE. Actual solder and material properties remain conditional; Kanthal-like wire is **screened only**, not identified on any actual TEC. The preceding V3.4 nominal combined-power-lead result (218.832895 K) and V3.3 original no-bridge result (210.625214 K) remain preserved as prior comparison generations.

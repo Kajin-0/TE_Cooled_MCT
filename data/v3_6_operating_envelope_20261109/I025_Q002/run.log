@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/home/User/TE_Cooled_MCT/scripts/v3_6_current_heatload_envelope.py", line 575, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/home/User/TE_Cooled_MCT/scripts/v3_6_current_heatload_envelope.py", line 554, in main
+    out,arrays=solve(reg)
+               ~~~~~^^^^^
+  File "/home/User/TE_Cooled_MCT/scripts/v3_6_current_heatload_envelope.py", line 348, in solve
+    fields,offset=spatial.solve(plus_solder_into_ceramic(init_rows),s3,CuJoule,qcu,Qbath,Qa,
+                  ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      metal_face_heat_W={int(k):v for k,v in previous['Cu_form_tab_electrothermal_result']['heat_into_face_W'].items()},
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      external_ceramic_W=[0.]+[a+b for a,b in zip(previous['cavity_gas_heat_into_three_ceramics_and_die_W'][:3],previous['gray_radiation_heat_into_three_ceramics_and_die_W'][:3])])
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/User/TE_Cooled_MCT/scripts/v3_6_current_heatload_envelope.py", line 177, in solve
+    assert abs(imbalance)<5e-8,('CERAMIC_NET_FLUX_MISMATCH',i,imbalance)
+           ^^^^^^^^^^^^^^^^^^^
+AssertionError: ('CERAMIC_NET_FLUX_MISMATCH', 0, -0.0011417943875569325)

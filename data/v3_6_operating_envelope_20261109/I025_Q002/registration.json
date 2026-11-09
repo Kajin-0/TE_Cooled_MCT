@@ -1,0 +1,221 @@
+{
+  "model": "V3.6 source-faithful TEC current and detector heat-load operating envelope",
+  "parent_commit": "885c8d6bd717d41c8b67c7b760c1125feb30d69a",
+  "source_3D_reference_baseline": "data/v3_2_joint_loss_feedback_20261107/attempt01/result.json",
+  "gas_species": "Kr",
+  "gas_pressure_Pa": 100.0,
+  "gas_gap_m": 0.003,
+  "gas_accommodation": 0.8,
+  "gas_area_scale": 1.0,
+  "cap_gray_emissivity": 0.2,
+  "ceramic_gray_emissivity": 0.8,
+  "die_window_gray_emissivity": 0.1,
+  "ceramic_view_factor": 0.5,
+  "die_window_view_factor": 0.7,
+  "original_CAD_ceramic_halfwidth_mm": [
+    3.2,
+    2.6,
+    1.9,
+    1.2
+  ],
+  "original_CAD_die_width_mm": 1.0,
+  "source_gas_radiation_contact_distribution": "ceramic1/2/3 exposed annular area source and die top effective-to-reservoir Q, applied through area weighted actual upper metallization native TRI3 pads as approximate proxy, NOT actual exposed outer ceramic face",
+  "cavity_cap_and_window_temperature_K": 300.0,
+  "gas_model": "existing NIST k 200/300/400K, Eucken lambda + two temperature jumps, explicit p=0 limit and above/below range labels",
+  "gas_cavity_shape_is_native_3D_void": "NO, area gap and view assumptions only",
+  "prior_running_V31": "data/v3_1_native_pad_feedback_20261107/attempt02/result.json",
+  "solder_contact_Joule_placement": "both hot and cold solder joint bulk and two contacts, all electrical Joule deposited into corresponding source ceramic metal-pad, zero thermal contact temperature jumps by assumption",
+  "unmeasured_hypothetical_contact_rho_e_ohm_m2": 1e-11,
+  "hypothetical_bulk_SnSb_rho_ohm_m": 1.7e-07,
+  "source_SnSb_joint_thickness_m": 3.5000000000000004e-05,
+  "source_SnSb_contact_face_area_m2": 1.6e-07,
+  "source_SnSb_joint_count": 176,
+  "source_SnSb_interface_count": 352,
+  "thermal_interface_R_and_SnSb_axial_k": "NOT ADDED THIS ITERATION",
+  "current_A": 0.25,
+  "ambient_K": 300.0,
+  "detector_heat_W": 0.002,
+  "contact_heat_mapping": "88 original source leg-solder-net-native ceramic face tag, nonuniform each individual leg P/N qh and qc, Cu lead+half-Joule original tag36, detector original tag119 and bottom mount face6",
+  "actual_mesh_regions": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "original_source_ceramic_TET4": 11791,
+  "ceramic_k_proxy_W_mK": 30.0,
+  "unmodeled_metal_joule_or_interface": "Other metal net and interface thermal contact not modeled; hypothetical original 176 SnSb bulk Joule and 352 electrical contact losses added only",
+  "spatial_method": "per-native-source-pad Neumann P1 FEM superposition precomputed one time, fixed lower pad mean, iterative full TEC nonlinear axial transport and spatial ceramic thermal feedback",
+  "source_3D_PN_electrical": "NOT RUN, source legs axial 1D nonlinear P/N",
+  "nominal_research_transport_above_300K": "unmeasured extrapolation used",
+  "one_operating_point_only": false,
+  "operating_envelope_current_range_A": [
+    0.15,
+    0.6
+  ],
+  "operating_envelope_detector_load_range_W": [
+    0.001,
+    0.008
+  ],
+  "outer_steps_cap": 26,
+  "outer_thermal_field_tolerance_K": 3e-07,
+  "global_energy_tolerance_W": 1e-08,
+  "local_plate_net_heat_tolerance_W": 5e-08,
+  "individual_leg_energy_tolerance_W": 1e-09,
+  "inner_balance_tolerance_W": 1e-08,
+  "prior_v3_die_K": 209.68840656324153,
+  "original_B": "FAIL/STOP",
+  "first_pair_raw_flux": "FAIL 8/8",
+  "full_430_C_D": "NOT RUN",
+  "source_SHA256": {
+    "V3_working_baseline": "111777b752f7da01295e25e8b4a09136e77c4dd7919dcb065888424dd5fbe4c5",
+    "V2_working_baseline": "00ae69123efd0d635134dc19a278a62f6ce6fdd516b5da9e86f97e7de90b77d5",
+    "R3_original_CAD_tags": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "original_824_body_design": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "original_frozen_ceramic_FEM_source": "2fab7640b60f0ca89c12138e08b6bba196d64c3aa421424242d3646efed79398",
+    "original_frozen_88_leg_source": "9bc6b3f71d140a586f7657c2177e465aa3b048d95d4cedfcf5930ba92dc2b560",
+    "unchanged_TE_law": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "unchanged_research_transport": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "wire_and_die_geometry": "9787b06849c93cd4a268611f288543a972810e15381137e181158fa06008fc52",
+    "canonical_V3_1_baseline": "498012f1a731fcc861d104ef906524f9ef20e0760c02681f74ae7f279c5a6052",
+    "source_SnSb_and_contact_scale": "214cc5de3b27fa4e8c0ebf8d408bcaf1649f4acd1e83ad097cb7a54164b13892",
+    "V3_2_original_integrated_baseline": "16315c427f6dea2840dd9b6161f13863555bbde0fee5d565d8d06596aa8cd5a7",
+    "existing_verified_gas_radiation_operators": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51",
+    "source_gas_NIST_property_operators": "9e827673ec748129a8e69ee493bcc75b0cda30f9fcb7f2d2517abda03415d08f"
+  },
+  "original_mesh_SHA256": {
+    "node": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+    "ele": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570",
+    "face": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18"
+  },
+  "script_SHA256": "08b0d21fd16038e24b3a7b7c4e20e329811e1d13d0f29cdb6ff8fd4748b7bd58",
+  "source_Cu_multiport_geometry_sha256": "af86568d04ce07ef82b305cb4812f5d9aff33f259877a7755029c7b6624a206e",
+  "source_Cu_cad": {
+    "58": {
+      "net": 58,
+      "faces": [
+        38,
+        75
+      ],
+      "stage": [
+        0,
+        1
+      ],
+      "source_centerline_total_length_m": 0.001960619449019235,
+      "contact_centre_span_m": 0.0016606194490192345,
+      "segments_m": [
+        0.0016606194490192345
+      ],
+      "cross_section_m2": 9e-09,
+      "contact_area_m2": [
+        6.000000000000006e-08,
+        6.000000000000006e-08
+      ],
+      "joining_source_solids": [
+        "tab_joint0",
+        "tab_joint1"
+      ]
+    },
+    "80": {
+      "net": 80,
+      "faces": [
+        79,
+        105
+      ],
+      "stage": [
+        1,
+        2
+      ],
+      "source_centerline_total_length_m": 0.0019706194490192322,
+      "contact_centre_span_m": 0.0016706194490192319,
+      "segments_m": [
+        0.0016706194490192319
+      ],
+      "cross_section_m2": 9e-09,
+      "contact_area_m2": [
+        6.000000000000003e-08,
+        5.999999999999997e-08
+      ],
+      "joining_source_solids": [
+        "tab_joint2",
+        "tab_joint3"
+      ]
+    },
+    "88": {
+      "net": 88,
+      "faces": [
+        36,
+        74,
+        104
+      ],
+      "stage": [
+        0,
+        1,
+        2
+      ],
+      "source_centerline_total_length_m": 0.003706238898038467,
+      "contact_centre_span_m": 0.0034062388980384667,
+      "segments_m": [
+        0.0016606194490192342,
+        0.0017456194490192325
+      ],
+      "cross_section_m2": 9e-09,
+      "contact_area_m2": [
+        6.000000000000006e-08,
+        6.000000000000006e-08,
+        6e-08
+      ],
+      "joining_source_solids": [
+        "tab_joint4",
+        "tab_joint5",
+        "tab_joint6"
+      ]
+    }
+  },
+  "Cu_port_thermal_Rarea_m2K_W": 1e-06,
+  "Cu_port_electrical_Rarea_ohm_m2": 1e-11,
+  "Cu_port_mapping": {
+    "58": [
+      38,
+      75
+    ],
+    "80": [
+      79,
+      105
+    ],
+    "88": [
+      36,
+      74,
+      104
+    ]
+  },
+  "selected_Cu_bulk_law": "rho293=1.724e-8 ohm*m, alpha=0.0039/K, k=385 W/m/K; unmeasured hypothetical; local face-coupled thermal multiport",
+  "internal_form_tab_contact_thermopower": "NOT MODELED; joule allocated into contact-associated ceramic pad; isolated trace losses omitted",
+  "source_copper_field": "1D centerline lumped multiport with thermal contact impedance, not full 3D metal current/thermal PDE",
+  "v3_3_original_case_immutable": "data/v3_3_cavity_package_feedback_20261108/attempt02/result.json",
+  "v3_4_original_case_immutable": "data/v3_4_copper_multiport_20261108/attempt03/result.json",
+  "lead_alloy_scenario": "copper",
+  "lead_internal_path_length_factor": 1.0,
+  "lead_source_pins_and_pad_faces": {
+    "1": 8,
+    "9": 36
+  },
+  "lead_alloy_selected_properties": {
+    "copper": {
+      "k_W_mK": 400.0,
+      "rho_ohm_m": 1.72e-08,
+      "meaning": "Frozen V3.4 source copper material proxy"
+    },
+    "nickel_proxy": {
+      "k_W_mK": 90.0,
+      "rho_ohm_m": 7e-08,
+      "meaning": "Selected near-room-temperature pure-Ni proxy; not lead vendor identity"
+    },
+    "fecral_screen": {
+      "k_W_mK": 11.0,
+      "rho_ohm_m": 1.45e-06,
+      "meaning": "Illustrative Kanthal A1-like FeCrAl; no claim this alloy solders/ships with TEC"
+    }
+  },
+  "source_separate_power_lead_script_sha256": "37910d61be09d8a2d460d24b909da5d778a80f644a1e9ee5cc287a6af44cae16"
+}

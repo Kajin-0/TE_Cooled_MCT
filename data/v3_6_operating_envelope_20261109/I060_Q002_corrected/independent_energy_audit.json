@@ -1,0 +1,66 @@
+{
+  "verdict": "PASS V3.6 independent saved-source lead/pad/multiport/stage/global energy reconstruction; NO nonlinear PDE/transport rerun",
+  "scenario": "I060_Q002_corrected",
+  "result_sha256": "aa7750cb3c1358a0bea2d9c7905d0e0e8f0520e2dcee35383e8441cd81914ebf",
+  "registration_sha256": "f7cab9383f71b843a8127e8743f325734d4514f1a284ed36f632729f7eacf119",
+  "lead_source_native_faces": {
+    "1": {
+      "face_tag": 8,
+      "pad_T_K": 306.24656104109107,
+      "electrical_R_ohm": 0.0018894324506607207,
+      "Q_into_ceramic_W": -0.022405536673456093
+    },
+    "9": {
+      "face_tag": 36,
+      "pad_T_K": 300.67800940879266,
+      "electrical_R_ohm": 0.002718240883837446,
+      "Q_into_ceramic_W": -0.001226791459822352
+    }
+  },
+  "Cu_source_networks": {
+    "58": {
+      "Cu_Joule_W": 0.0012265988601503858,
+      "heat_into_source_faces_W": {
+        "38": -0.0680500425366322,
+        "75": 0.0692766413967835
+      }
+    },
+    "80": {
+      "Cu_Joule_W": 0.0010812151635373709,
+      "heat_into_source_faces_W": {
+        "79": -0.04931437084112279,
+        "105": 0.050395586004661055
+      }
+    },
+    "88": {
+      "Cu_Joule_W": 0.002296215416240016,
+      "heat_into_source_faces_W": {
+        "36": -0.06698425543233817,
+        "74": 0.012612172114790222,
+        "104": 0.05666829873378304
+      }
+    }
+  },
+  "independently_reconstructed_stage_heat_W": {
+    "0": -0.13503429796897037,
+    "1": 0.032574442670450926,
+    "2": 0.1070638847384441
+  },
+  "independently_reconstructed_stage_energy_residual_W": {
+    "hot_sink_W": 0.0,
+    "middle0_W": 1.1603051019992705e-09,
+    "middle1_W": -1.460268433950418e-10,
+    "detector_ceramic_W": -7.680717444436685e-12
+  },
+  "max_stage_energy_residual_W": 1.1603051019992705e-09,
+  "global_energy_residual_W": -1.0057827903864336e-09,
+  "copper_heat_minus_Joule_W": -3.125104341972218e-15,
+  "lead_ceramic_heat_minus_conduction_and_half_Joule_W": -1.0842021724855044e-18,
+  "detector_T_K": 202.77678882409998,
+  "detector_imposed_heat_W": 0.002,
+  "current_A": 0.6,
+  "terminal_V": 2.080911009000852,
+  "lead_material": "copper",
+  "Cu_contact_Rth_m2K_W": 1e-06,
+  "limitations": "Cu thermal/electrical 1D proxy, leads metal constant k/rho; no actual certification or full source 430-domain 3D field."
+}
