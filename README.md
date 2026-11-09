@@ -43,6 +43,8 @@ m m^2 K/W}\) predicts **212.623582 K** at **1.518772 V**. Those are three accept
 
 **Start here:** [Current model and historical-document identity map](docs/CURRENT_MODEL_DOCUMENTATION_MAP_20261108.md). Read the [project contract](AGENTS.md) for active development rules and priorities. Geometry pass, numerical pass, material hypothesis and actual device validation must remain distinct.
 
+**Current cumulative TEC/TO engineering report (9 Nov 2026):** [37-page expanded assessment](reports/current/TEC_HgCdTe_Cumulative_TEC_TO_20261109.pdf) integrates the original 30-page hardware and thermal assessment with verified V3.8/3.9 material and mounting studies and V3.11 gas backfill. The original 30-page PDF and 9-page supplemental report remain archived; neither was overwritten. The [cumulative report source](reports/current/cumulative_report.tex) imports the [new technical sections](reports/current/expanded_tec_to_studies_20261109.tex) and uses archived accepted physics results only.
+
 ## Internal implementation and reproduction notes
 
 Development starts with the authoritative [CURRENT PROJECT CONTRACT](AGENTS.md).
