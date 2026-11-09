@@ -10,6 +10,7 @@
 \fancyfoot[L]{\scriptsize Synthetic reference; not OEM-validated}\fancyfoot[R]{\scriptsize\thepage}
 \setlength{\parindent}{0pt}\setlength{\parskip}{4pt}\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
 \setcounter{tocdepth}{1}
+\widowpenalty=10000\clubpenalty=10000
 \titleformat{\section}{\Large\bfseries\color{navy}}{\thesection}{.55em}{}
 \newcommand{\fig}[4][.91]{\begin{figure}[!htbp]\centering\includegraphics[width=#1\linewidth]{figures/#2.#3}\caption{#4}\end{figure}}
 \input{derived_tables.tex}
@@ -53,7 +54,7 @@ This corresponds to an \emph{approximately 81.10 K detector-to-reservoir tempera
 \textbf{Engineering use:} The calculation identifies where energy is pumped, dissipated, parasitically imported or rejected, including about 110.6 mW removed from the hotter substrate through the V3.5 formed copper interstage connections, of which 87.2 mW enters the upper substrate; it predicts temperature, voltage and stage-by-stage heat loads under declared assumptions; and it provides a reusable starting point for evaluating metallurgy, foil geometry, contact thermal resistance, gas pressure and heat-sink design. Numerical mesh details and document-history evidence appear \emph{after} the physical assessment.
 \clearpage
 \vspace{2mm}\par\textbf{Expanded TEC/TO design studies (9 November 2026).} New separately audited source-architecture results examine matched P/N material transport screens, finite TO mounting resistance and matched-temperature TEC power, high-temperature transport-law continuation, and eight cavity gas/pressure and current cases. At 0.400 A and 30 kPa, the predicted top ceramic is 218.845 K with Kr, 219.277 K with Ar and 219.703 K with nitrogen; these values use a declared effective 3 mm gap, not a native three-dimensional cavity solution. The original geometric, electrical, temperature-field and numerical appendices are retained.\par
-\tableofcontents\clearpage
+\begingroup\small\setlength{\parskip}{0pt}\tableofcontents\endgroup\clearpage
 
 \section{Terminal wires, soldered TO pins, and thermal uncertainty}
 The TEC power supply must reach the miniature cooler through real wires soldered to the metal-package feedthrough pins. As supplied, these wires may be substantially longer than the \emph{installed} length and are cut to fit the TO header. Only the final internal conductor from the cooler landing to each package pin contributes to the source ceramic-to-pin heat and current path; factory surplus outside the completed joint does not add thermal length to that connection.
@@ -102,7 +103,6 @@ Assumed \(r_{T,c}''\) (m$^2$ K/W) & Upper-plate Cu heat (mW)\\\midrule
 \end{center}
 \fig[.90]{v35_fixed_field_interstage_contact_screen}{pdf}{Source-pad-fixed heat-flux response to copper-foil interface assumptions. These intermediate screening fluxes are deliberately distinct from the three accepted fully coupled V3.5 operating-point results.}
 In the full-device copper-reference calculation, the upper plate receives \textbf{87.173 mW} through the Cu network and its hot stage-3 boundary is \textbf{247.359 K}. Under the severe interface hypothesis, those values become \textbf{21.697 mW} and \textbf{238.856 K}; the detector then equilibrates to 212.624 K. An 0.015 K lead-material change versus a 6.276 K copper-joint sensitivity identifies the next physically important question: \emph{what is the realistic electrical and thermal interface law for the formed Cu foil, its solder feet, and the plated ceramic?}
-\clearpage
 \subsection{Independent verification, limitations, and model use}
 Each V3.5 case uses the original 88 nonlinear axial P/N legs and four spatial ceramic FEMs with native source face heat. Three matched reference conditions converged with the following independent checks:
 \begin{center}\scriptsize
@@ -116,7 +116,6 @@ The stricter requirements remain below \(3\times10^{-7}\) K for the spatial upda
 The wire and Cu laws are declared approximations, not measured low-temperature transport, OEM process tolerances or an as-manufactured TO feedthrough temperature solution. Neither the 0.200 mm diameter nor the installed route exactly identifies a vendor assembly. The next physical priority is credible solder/joint thermal resistance, plated-film heat spreading and conductor temperature-dependent properties. Cut-to-size factory terminal leads should be assigned the \emph{installed} ceramic-to-pin length; an off-device surplus must never be treated as extra insulation that improves TEC temperature.
 
 
-\clearpage
 \section{Current versus cooling performance: an operating envelope (V3.6)}
 The previous V3.5 model demonstrated a realistic source-connected 0.400~A operating point, but a hardware engineer needs to know how detector temperature and dissipated electrical power change with \emph{TEC drive current}. V3.6 varies only the imposed current and detector heat load, using the \emph{same} 88 source P/N transport legs, 11,791 ceramic tetrahedra, copper-foil interstage links, actual terminal feedthrough connections, krypton cavity and mounting sink assumptions. No material law or geometry was fitted to produce this curve.
 
@@ -135,8 +134,7 @@ Current step (A) & Cooling gained (K) & Extra input (mW) & Incremental mW/K\\\mi
 \vsixcostrows
 \bottomrule\end{tabular}
 \end{center}
-No minimum in detector temperature or safe current rating is claimed beyond the four tested conditions; increasing current still improved cooling at the upper tested 0.60~A boundary. The power budget is \emph{module terminal input}, not the entire external power-supply wall consumption.
-\clearpage
+\par\nopagebreak[4] No minimum in detector temperature or safe current rating is claimed beyond the four tested conditions; increasing current still improved cooling at the upper tested 0.60~A boundary. The power budget is \emph{module terminal input}, not the entire external power-supply wall consumption.
 \subsection{Sensitivity to real detector heating}
 At fixed 0.400~A, an imposed thermal load is an essential proxy for absorbed photons, bias heating and parasitic package heat before the HgCdTe transport physics is self-consistently integrated. The following points resolve the full TEC--ceramic--package feedback, not a single isolated thermal resistance:
 \begin{center}\small
@@ -229,14 +227,11 @@ The original long, unsupported copper routing was rejected. The replacement has 
 The shaded views below tessellate the original 824-body source geometry using a true per-pixel depth buffer. The previous mean-face-depth renderer wrongly displayed hidden metallization through ceramic solids. This rendering is neither a reconstructed cooler nor an exploded assembly. All plates, P/N legs and analytically bent copper foil links retain the source positions, widths, heights, polarities and original path radii. Compared with the wireframe, the opaque solid bodies make the differences from the rejected long copper-post construction readily visible.
 
 \fig[.98]{tec_solid_inspection}{png}{Correctly depth-occluded replacement geometry from two orthographic views: four ceramic stages, 58/22/8 P/N legs, visible exposed metallization only, and actual formed copper-foil connections. The external case, leads and very thin buried film layers are intentionally omitted. Original analytic foil-bend paths are sampled for shaded display, without relocating any CAD features.}
-\clearpage
 \subsection{Actual interstage foil cross-sections}
 The design uses two short supported formed copper-foil stage links (nets 58 and 80), and a longer stepped return (net 88). The last has two vertical steps and three physical feet, including an intermediate thermal landing. Unlike a generic connecting rod, its cross-section has nominal width 0.300 mm, thickness 0.030 mm and bend radius 0.075 mm. The foil is represented at actual thickness, not enlarged for visibility.
 
 \fig[.98]{tec_formed_tab_sections}{png}{Y--Z sections reconstructed from the source analytic straight and circular-arc geometry at original coordinates, without exploded offsets. Pale blue regions indicate where ceramic cross-sections intersect each foil plane. The 30-micrometre copper thickness is drawn at true scale.}
 This original-CAD visualization establishes the mechanical design, rather than a simulated copper current or temperature field. V3.4 and V3.5 now account for foil conduction, Joule loss and finite metal/ceramic thermal contacts with a conservative reduced multiport. True three-dimensional current crowding, metallization-sheet spreading, measured joints and actual fabrication remain outside the qualified model.
-\clearpage
-
 \section{Electrical routing and interstage heat leakage}
 The CAD conductor graph verifies all 88 legs as articulation vertices in the pin-1-to-pin-9 series circuit: removing any one leg disconnects the two terminals. Native transitions pass from P leg 57 to N leg 58 through tab 58, and from P79 to N80 through tab 80. The final leg P87 is connected to pin 9 through stepped return 88. These checks prove intended topology but not the temperature-dependent electrical or thermal properties of the connections.
 \fig[.92]{v33_topology}{pdf}{Actual saved stage-specific P/N leg centroids and plate footprints. This verifies the source positions used in the working hybrid; it does not depict a solved copper-tab thermal field.}
@@ -336,7 +331,6 @@ Iteration & Die T (K) & Max pad update (K) & Local flux mismatch (W)\\\midrule
 \residualrows
 \bottomrule\end{tabular}\end{center}
 An independent read-only field/load audit reconstructs the saved energy terms without rerunning the original PDE and finds a finite \(2.535\times10^{-8}\) W pad/leg update discrepancy. Numerical closure validates the \emph{declared equations and discretization bookkeeping} at this operating point, not prediction fidelity of the as-built cooler.
-\clearpage
 \section{Device engineering implications and next experiment}
 The physical cooler is now represented by a functioning complete thermal/electrical model including a first conservative three-branch copper network tied to original ceramic pads. The present V3.5 corrected-power-lead reference gives 218.900 K (versus V3.4 218.833 K and earlier V3.3 210.625 K); these are conditional modeled values, not manufactured device temperatures. It is \emph{not} necessary to restart cooler CAD development. However, full three-dimensional copper/metal fields and actual thermal-contact characterization are not yet available.
 The current and detector-heat-load operating envelope now exists as the accepted V3.6 extension above. The next practical milestone is to couple bounded HgCdTe photoconductor resistance and bias/optical dissipation to that solved thermal environment, while quantifying uncertainty in the \emph{already integrated} multiport: copper conductivity/resistivity versus temperature, joint thermal/electrical impedances, foil thickness and metal-film heat spreading. Use targeted source-informed screening to select conditions that merit expensive full-system recomputation. Full 3D copper FEM may be justified if compact validated metal substructures cannot bound current crowding or nonlocal heat flow.
@@ -353,6 +347,7 @@ V3.4 coupled source Cu & Source ceramics plus formed Cu multiport & Archived acc
 V3.5 separated TEC leads & Source-local pin 1/9 wire heat and joint sensitivity & Three accepted conditional results; original 3D metal PDE still unqualified\\\bottomrule\end{tabularx}
 
 The cooler envelope is informed by TEC Microsystems MC04 family reference geometry; the package by a separate VIGO nine-pin TO-66 drawing. They are not identified as a commercially fabricated composite. The 29/11/4 stage split, material grades, solder properties and fabricated metal details are source-inspired or chosen synthetic hypotheses, \emph{not} proprietary OEM internals.
+\clearpage
 \section{Physical assumptions and reproducibility specification}
 An independent implementation should use the four 0.5 mm-thick 6.4/5.2/3.8/2.4 mm ceramics, the Appendix B 88 leg centers and polarities, the 29/11/4-couple electrical series order and the source-selected 0.4 by 0.4 by 0.5 mm P/N geometry. Apply all six 14-knot P/N research-material curves in Appendix A; interpolate within the experimental range and explicitly impose the unmeasured quarter-final-segment-slope continuation above 300 K.
 Solve 88 individually signed 32-interval nonlinear axial thermoelectric legs and four source-geometry P1 ceramic steady conduction systems using local native TRI3 heat-face integrals. Set the declared assumed ceramic conductivity to 30 W/(m K), add the nominal 176 SnSb joints and 352 assumed electrical contacts, Cu and Au external leads, 2 mW detector heat, the stated finite mounting resistance and the effective 100 Pa Kr/gray radiation closure. For V3.5, include distinct pin1/9 supply lead heat on faces 8 and 36, then include the three finite-contact Cu-foil connections from native faces 38/75, 79/105 and 36/74/104 and iterate to a maximum local pad change below 0.0000003 K and independently check all signed stage and total heat balances.
