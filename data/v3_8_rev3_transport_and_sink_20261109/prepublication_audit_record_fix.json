@@ -1,0 +1,7 @@
+{
+  "issue": "Prepublication V3.8 audit serialization variable shadowed scalar external sink base with full historical V3.4 result. Stage and global physical calculations were computed before shadowing, and passed; only additional result payload mislabelled.",
+  "sample_original_audit_file": "prepublication_audit_shadowed_base_field_receipt.json",
+  "sample_original_sha256": "879d6f277345a79e2d045f9ec595333eca4aa713dcd22bb1c7acec4a2c083a73",
+  "repair": "Use source_Rext_K_W separate scalar name and remove unused historical base read, regenerate all 15 independent audits from identical source results without PDE rerun",
+  "original_results_unchanged": true
+}

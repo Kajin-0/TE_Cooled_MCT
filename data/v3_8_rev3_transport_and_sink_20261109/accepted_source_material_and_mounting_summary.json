@@ -1,0 +1,86 @@
+{
+  "source": "V3.8 complete original source geometry, 88 nonlinear P/N legs, full 3D ceramic FEM and detector bias feedback",
+  "base_external_sink_R_K_W": 4.833386960805823,
+  "base_Tdie_K": 218.9000240286839,
+  "base_TEC_input_W": 0.5956680349614821,
+  "material_endpoints": [
+    {
+      "name": "Seebeck \u00b110%",
+      "low_case": "S090_I040",
+      "high_case": "S110_I040",
+      "low_T_K": 225.83273583232304,
+      "high_T_K": 212.51498014017747,
+      "low_T_delta_K": 6.932711803639137,
+      "high_T_delta_K": -6.385043888506431,
+      "endpoint_T_span_K": 13.317755692145568,
+      "low_P_W": 0.5626632457926114,
+      "high_P_W": 0.6317641065070951
+    },
+    {
+      "name": "P/N resistivity \u00b120%",
+      "low_case": "rho080_I040",
+      "high_case": "rho120_I040",
+      "low_T_K": 216.56342091608494,
+      "high_T_K": 221.31347664569023,
+      "low_T_delta_K": -2.336603112598965,
+      "high_T_delta_K": 2.413452617006328,
+      "endpoint_T_span_K": 4.750055729605293,
+      "low_P_W": 0.5236893402557227,
+      "high_P_W": 0.6689431111142761
+    },
+    {
+      "name": "P/N thermal k \u00b120%",
+      "low_case": "k080_I040",
+      "high_case": "k120_I040",
+      "low_T_K": 207.8120796167256,
+      "high_T_K": 227.62740515788101,
+      "low_T_delta_K": -11.08794441195829,
+      "high_T_delta_K": 8.727381129197113,
+      "endpoint_T_span_K": 19.815325541155403,
+      "low_P_W": 0.6166562253764833,
+      "high_P_W": 0.5793933159861577
+    }
+  ],
+  "mounting_cases": [
+    {
+      "case": "base_I040",
+      "TEC_current_A": 0.4,
+      "added_sink_R_K_W": 0.0,
+      "total_sink_R_K_W": 4.833386960805823,
+      "Tdie_K": 218.9000240286839,
+      "P_TEC_W": 0.5956680349614821
+    },
+    {
+      "case": "sink_plus05_I040",
+      "TEC_current_A": 0.4,
+      "added_sink_R_K_W": 5.0,
+      "total_sink_R_K_W": 9.833386960805823,
+      "Tdie_K": 220.39347016609176,
+      "P_TEC_W": 0.6049350713551755
+    },
+    {
+      "case": "sink_plus10_I040",
+      "TEC_current_A": 0.4,
+      "added_sink_R_K_W": 10.0,
+      "total_sink_R_K_W": 14.833386960805823,
+      "Tdie_K": 221.85604951316654,
+      "P_TEC_W": 0.6136564096764235
+    },
+    {
+      "case": "sink_plus05_I055",
+      "TEC_current_A": 0.55,
+      "added_sink_R_K_W": 5.0,
+      "total_sink_R_K_W": 9.833386960805823,
+      "Tdie_K": 208.3142791798251,
+      "P_TEC_W": 1.0924199965556294
+    },
+    {
+      "case": "sink_plus10_I055",
+      "TEC_current_A": 0.55,
+      "added_sink_R_K_W": 10.0,
+      "total_sink_R_K_W": 14.833386960805823,
+      "Tdie_K": 210.67767145196837,
+      "P_TEC_W": 1.1184647674304595
+    }
+  ]
+}

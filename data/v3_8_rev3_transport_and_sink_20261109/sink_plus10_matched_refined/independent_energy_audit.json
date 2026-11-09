@@ -1,0 +1,81 @@
+{
+  "verdict": "PASS V3.8 detector Joule, source copper/stage/global balance, mounted sink drop; NO nonlinear PDE rerun",
+  "scenario": "sink_plus10_matched_refined",
+  "result_sha256": "782067323d82260af63e0d6fa58f4b26660dab4266bc8190162f3abf6a58ea00",
+  "registration_sha256": "78beea180f628b351f59035d2f06e08935ed37547153d450ecc1d7ee46d67ed3",
+  "source_transport_scales_S_rho_k": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "base_R_sink_K_W": 4.833386960805823,
+  "added_R_sink_K_W": 10.0,
+  "total_sink_R_K_W": 14.833386960805823,
+  "independent_sink_T_closure_K": -2.7249836165310626e-08,
+  "lead_source_native_faces": {
+    "1": {
+      "face_tag": 8,
+      "pad_T_K": 309.6571514074968,
+      "electrical_R_ohm": 0.0018894324506607207,
+      "Q_into_ceramic_W": -0.03498736859049141
+    },
+    "9": {
+      "face_tag": 36,
+      "pad_T_K": 305.66440653379635,
+      "electrical_R_ohm": 0.002718240883837446,
+      "Q_into_ceramic_W": -0.014081864134320075
+    }
+  },
+  "Cu_source_networks": {
+    "58": {
+      "Cu_Joule_W": 0.0006552117682093317,
+      "heat_into_source_faces_W": {
+        "38": -0.060000791855648154,
+        "75": 0.06065600362385678
+      }
+    },
+    "80": {
+      "Cu_Joule_W": 0.0005889035776390348,
+      "heat_into_source_faces_W": {
+        "79": -0.043920104399789016,
+        "105": 0.044509007977426226
+      }
+    },
+    "88": {
+      "Cu_Joule_W": 0.0012390286353398824,
+      "heat_into_source_faces_W": {
+        "36": -0.05933526566266679,
+        "74": 0.010618640372325591,
+        "104": 0.049955653925680306
+      }
+    }
+  },
+  "independently_reconstructed_stage_heat_W": {
+    "0": -0.11933605751831494,
+    "1": 0.027354539596393355,
+    "2": 0.09446466190310654
+  },
+  "independently_reconstructed_stage_energy_residual_W": {
+    "hot_sink_W": 0.0,
+    "middle0_W": 1.7786523122398368e-09,
+    "middle1_W": -2.259292336548313e-10,
+    "detector_ceramic_W": -1.1424541840983002e-11
+  },
+  "max_stage_energy_residual_W": 1.7786523122398368e-09,
+  "global_energy_residual_W": -1.5405130504575482e-09,
+  "copper_heat_minus_Joule_W": -3.3029134982598407e-15,
+  "lead_ceramic_heat_minus_conduction_and_half_Joule_W": -5.963111948670274e-19,
+  "detector_T_K": 218.86884498811528,
+  "detector_bias_V": 0.8660254037844386,
+  "detector_R_ohm": 500.1132923432483,
+  "detector_I_A": 0.0017316584402840662,
+  "detector_bias_P_W": 0.0014996601999637397,
+  "detector_absorbed_P_W": 0.0005,
+  "detector_dPdT_W_K": 1.0898665898200238e-05,
+  "detector_total_heat_W": 0.0019996601999637395,
+  "current_A": 0.43317363705448114,
+  "terminal_V": 1.6447920676138534,
+  "lead_material": "copper",
+  "Cu_contact_Rth_m2K_W": 1e-06,
+  "limitations": "P/N source transport law scaled rather than independently recomputed; HgCdTe R(T) is unmeasured, sink is lumped; 3D ceramic FEM but not 430-domain metal PDE."
+}
