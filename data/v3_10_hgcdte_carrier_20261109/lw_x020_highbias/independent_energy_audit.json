@@ -1,0 +1,91 @@
+{
+  "verdict": "PASS V3.10 independent HSC/ni/charge neutrality/bulk conductivity/Johnson and TEC stage/global energy; NO nonlinear PDE rerun",
+  "scenario": "lw_x020_highbias",
+  "result_sha256": "a0cbd899721bdf0d8abc4fc40b88d6bddf4f3adba8a9d1f30e638355e7b2913e",
+  "registration_sha256": "58020fc8fe862ee1e2af0794c37e800074f96f83c9417647b488542ccc9e122d",
+  "source_transport_scales_S_rho_k": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "source_high_T_terminal_tangent_factor": 0.25,
+  "hot_boundary_leg_count": 58,
+  "above_300K_leg_axial_nodes_total": 267,
+  "base_R_sink_K_W": 4.833386960805823,
+  "added_R_sink_K_W": 0.0,
+  "total_sink_R_K_W": 4.833386960805823,
+  "independent_sink_T_closure_K": -8.06222244520427e-09,
+  "lead_source_native_faces": {
+    "1": {
+      "face_tag": 8,
+      "pad_T_K": 303.3147820434717,
+      "electrical_R_ohm": 0.0018894324506607207,
+      "Q_into_ceramic_W": -0.011918978131428597
+    },
+    "9": {
+      "face_tag": 36,
+      "pad_T_K": 299.33873292539306,
+      "electrical_R_ohm": 0.002718240883837446,
+      "Q_into_ceramic_W": 0.0018911584267851042
+    }
+  },
+  "Cu_source_networks": {
+    "58": {
+      "Cu_Joule_W": 0.0005478271175237146,
+      "heat_into_source_faces_W": {
+        "38": -0.05505277216472885,
+        "75": 0.05560059928225459
+      }
+    },
+    "80": {
+      "Cu_Joule_W": 0.0004962896403045661,
+      "heat_into_source_faces_W": {
+        "79": -0.04005120098956445,
+        "105": 0.040547490629865825
+      }
+    },
+    "88": {
+      "Cu_Joule_W": 0.0010397307381063594,
+      "heat_into_source_faces_W": {
+        "36": -0.055039779129902884,
+        "74": 0.010449643885813464,
+        "104": 0.04562986598219052
+      }
+    }
+  },
+  "independently_reconstructed_stage_heat_W": {
+    "0": -0.11009255129463173,
+    "1": 0.0259990421785036,
+    "2": 0.08617735661205635
+  },
+  "independently_reconstructed_stage_energy_residual_W": {
+    "hot_sink_W": 0.0,
+    "middle0_W": 1.082839665156321e-09,
+    "middle1_W": -1.3709536283990076e-10,
+    "detector_ceramic_W": -7.052925734760129e-12
+  },
+  "max_stage_energy_residual_W": 1.082839665156321e-09,
+  "global_energy_residual_W": -9.377548737532493e-10,
+  "copper_heat_minus_Joule_W": -6.4254157550180935e-15,
+  "lead_ceramic_heat_minus_conduction_and_half_Joule_W": 0.0,
+  "detector_T_K": 220.40435743300083,
+  "HgCdTe_Eg_eV": 0.12900579873599327,
+  "HgCdTe_ni_cm3": 1.2146047307049508e+16,
+  "HgCdTe_holes_cm3": 1.813493301030061e+16,
+  "HgCdTe_electrons_cm3": 8134933010300608.0,
+  "HgCdTe_bulk_conductivity_S_m": 5995.868961393678,
+  "HgCdTe_Johnson_voltage_V_sqrtHz": 9.011262779003351e-10,
+  "HgCdTe_Johnson_current_A_sqrtHz": 1.3507587699897081e-11,
+  "detector_bias_V": 0.65,
+  "detector_R_ohm": 66.71259872014016,
+  "detector_I_A": 0.009743287062264726,
+  "detector_bias_P_W": 0.006333136590472072,
+  "detector_absorbed_P_W": 0.0005,
+  "detector_dPdT_W_K": 0.00013750926912071686,
+  "detector_total_heat_W": 0.006833136590472072,
+  "current_A": 0.4,
+  "terminal_V": 1.4867108747792304,
+  "lead_material": "copper",
+  "Cu_contact_Rth_m2K_W": 1e-06,
+  "limitations": "HgCdTe mobility and geometry unmeasured, fully ionized nondegenerate bulk equilibrium only, no photocurrent/real noise; source TEC 3D ceramics but not full 430 bulk-metal FEM."
+}
