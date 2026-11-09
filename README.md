@@ -4,7 +4,7 @@
 
 **[See the package and electrical interconnection geometry](reports/current/figures/cad_package_shaded.png)** | **[Enlarged interior and feedthrough wiring](reports/current/figures/cad_package_interior_detail.png)**
 
-**Current physical architecture and model assessment: [22-page standalone engineering report](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)**
+**Current physically coupled reference: [25-page TEC–HgCdTe–TO engineering assessment with V3.4 copper heat flow](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)**
 
 **[View the depth-corrected shaded replacement TEC geometry](reports/current/figures/tec_solid_inspection.png)** | **[Inspect the three formed copper foil connections](reports/current/figures/tec_formed_tab_sections.png)**
 
@@ -14,7 +14,9 @@
 
 These documents intentionally describe different objects. Original Rev3 records earlier 216-domain / 28/12/4 coupled solid geometry, numerical methodology and preserved raw numerical failures. It is restored unchanged and no longer overwritten with current model material. The 43-page interim integration is independently archived under reports/historical/rev3_v33_interim_43pp_20261108/.
 
-The **replacement physical TEC** is an 824-solid formed-tab assembly with a derived 430-domain / 2,440-face geometry. Its working **V3.3 hybrid** couples 88 individually nonlinear axial legs and four original 3D ceramic fields (11,791 TET4) plus assumed joints, leads, detector, sink, krypton and radiation. At 0.4 A, 300 K, 2 mW detector load and 100 Pa krypton it predicts 210.625214 K die temperature, 1.522462 V and 0.608985 W input. This is not a fully coupled 430-domain PDE. In particular, the formed interstage tabs 58/80 and stepped return 88 still lack resolved nonlocal metal electric/thermal/Joule field coupling to the working model.
+The **replacement physical TEC** is an 824-solid formed-tab assembly with a derived 430-domain / 2,440-face geometry. Its **current V3.4 hybrid** retains 88 individually nonlinear axial legs and four original 3D ceramic fields (11,791 TET4), and adds a conservative geometry-derived **finite-contact copper electrothermal multiport** for interstage tabs 58/80 and the three-foot return 88. At 0.4 A, 300 K, 2 mW imposed detector heat and 100 Pa krypton it predicts **218.832895 K die temperature, 1.489440 V and 0.595776 W** electrical input. The previous V3.3, which omitted the formed-Cu thermal bypass, predicted **210.625214 K**. Thus the conditional thermal penalty of the copper network is **+8.207681 K**, despite a −13.209 mW electrical input change. **Neither is a full 430-domain coupled PDE or empirical prediction:** the metal is a reduced axial network with assumed conductivities/contact resistance and the detector has no optical/noise PDE. The original **38-page historical Rev3 stays frozen**.
+
+**New [V3.4 copper thermal-bypass engineering result](docs/V3_4_SOURCE_COPPER_MULTIPORT_20261108.md)**: native face heat transfer [38→75, 79→105, 36→74→104], 2.080 mW of copper Joule loss and 108.475 mW moved out of the hotter ceramic. [Revised stage temperatures](reports/current/figures/v34_copper_stage_temperature_comparison.png) and [net-specific copper heat flows](reports/current/figures/v34_copper_face_heat_budget.png).
 
 **Start here:** [Current model and historical-document identity map](docs/CURRENT_MODEL_DOCUMENTATION_MAP_20261108.md). Read the [project contract](AGENTS.md) for active development rules and priorities. Geometry pass, numerical pass, material hypothesis and actual device validation must remain distinct.
 

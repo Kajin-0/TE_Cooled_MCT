@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 OLD='882209b09796acdc5e7d3aafc376f1722fce2843230233c7a76542ebcb273248'
 INTERIM='6a9cb56fc3a78ac31639f4cb0b9c40e29d68997ea73b408ac68651eb1789faf5'
-CURRENT='151149e4e4a8ecd5cd325744b1172c999a9dcd8807ad7838a4ede5453bee3545'
+CURRENT='d5a66dcf76e067b8218f451bb87741b05a27fb69ae5e46bd62288eb597c5f572'
 def test_document_edition_identity():
     a=ROOT/'reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf'
     b=ROOT/'reports/historical/rev3_pre_v33_20261108/report.pdf'
@@ -28,10 +28,16 @@ def test_current_scientific_source_and_figures():
     assert 'Thermoelectric Cooling' in (p/'report.tex').read_text()
     assert 'Package parasitic heat loads' in (p/'report.tex').read_text()
     assert 'formed' in (p/'report.tex').read_text()
+    assert 'v34_copper_stage_temperature_comparison' in (p/'report.tex').read_text()
+    assert 'v34_copper_face_heat_budget' in (p/'report.tex').read_text()
+    for name in ('v34_copper_stage_temperature_comparison.pdf','v34_copper_face_heat_budget.pdf'):
+        assert sha(p/'figures'/name)==m['figures_sha256'][name]
+    source=ROOT/'data/v3_4_copper_multiport_20261108/attempt03/result.json'
+    assert sha(source)==m['source_hashes'][str(source.relative_to(ROOT))]
 def test_report_page_counts_and_model_identity():
     for filename,n in [('reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf',38),
         ('reports/historical/rev3_v33_interim_43pp_20261108/report.pdf',43),
-        ('reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf',22)]:
+        ('reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf',25)]:
         # On CI the PDF SHA assertions pin the exact page structures; MuPDF
         # page-count inspection is optional because GitHub runners lack mutool.
         if shutil.which('mutool'):

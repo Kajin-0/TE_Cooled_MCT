@@ -1,6 +1,12 @@
 # Current TEC architecture, solver and documentation map
 **8 November 2026 | Active engineering handoff | Authoritative after the user-requested report separation**
 
+## NEW V3.4 milestone — replaces V3.3 as current working device (8 November 2026)
+
+**V3.4 is now the accepted conditional complete-system model.** Native formed copper foil contacts and their real three-foot return are explicitly connected to the original source ceramic spatial FEM and nonlinear P/N legs through a conservative copper electrical/thermal multiport. At 0.400 A / 300 K / 2 mW detector / 100 Pa Kr, **V3.4 detector 218.832895 K, terminal V 1.489440 V, electrical 0.595776 W, sink 0.579830 W**. Previous frozen V3.3 without copper: 210.625214 K / 1.522462 V / 0.608985 W / **0.594044 W sink** (NOT 0.590323 W, which is older V3.2). Conditional copper bypass raises die temperature **8.207681 K**; Cu heat into stage0/1/2 hot ceramic pads = **[-108.475,+23.566,+86.989] mW**, Cu electric Joule 2.080 mW. Independently reconstructed signed stage energy max error7.959e-10 W, global6.775e-10 W, 19 fixed-point iterations. **No 3D metal PDE, plated sheet thermal conduction, or measured Cu alloy/contact properties.** Reproducing the synthetic result does not validate a commercial device. See [current V3.4 engineering analysis](V3_4_SOURCE_COPPER_MULTIPORT_20261108.md) and [updated 25-page current physical assessment](../reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf); the former V3.3 work below is a **preserved historical baseline**, not a claim about what remains unmodeled in the V3.4 source-Cu multiport.
+
+The former V3.4 to-do below, 'derive actual internal metal/contact multiport', has been **implemented at conservative 1D/finite contact fidelity**. Next improve and bound the source foil's temperature-dependent k/rho, plated trace spreading, solder/ceramic thermal resistance, formed-section tolerances and middle-return influence before treating a result as accurate enough for a design decision. All archived original 38-page Rev3, 43-page interim edition and V3.3 numerical source remain preserved.
+
 ## What is current?
 
 The goal is a realistic, independently defensible, runnable synthetic **three-stage thermoelectrically cooled HgCdTe detector in a nine-pin package**, developed progressively from simpler whole-system physics to better resolved local interactions. The target is **not** an exact reconstruction of a proprietary TEC Microsystems or VIGO product. Unknown material/contact properties can be given justified assumptions and bounded design studies, provided they are never described as measurements or actual OEM validation.
@@ -30,7 +36,7 @@ The source CAD and its native electrical graph include formed tabs 58 and 80 and
 
 | Document | Status | What it genuinely represents |
 | --- | --- | --- |
-| [Current technical architecture assessment](../reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf) | **CURRENT**; independently readable, 22-page science report | Actual V3 replacement CAD imagery, R3 mesh evidence, V3.3 hybrid equations and archived fields/plots, actual tab geometry screen, 84 material values, 88 leg coordinates, 95 original pad source records, limitations and intended next work |
+| [Current technical architecture assessment](../reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf) | **CURRENT**; independently readable, 25-page science report | Actual V3 replacement CAD imagery, R3 mesh evidence, V3.3 hybrid equations and archived fields/plots, actual tab geometry screen, 84 material values, 88 leg coordinates, 95 original pad source records, limitations and intended next work |
 | [Original 38-page Rev3 engineering assessment](../reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf) | **RESTORED HISTORICAL METHOD REFERENCE** | Earlier 216-domain / 28/12/4 cooler solid analysis, associated measured numerical fields and failed original raw acceptance gates. Valuable scientific presentation and verification, but obsolete mechanical routing |
 | [Superseded 43-page V3.3 extension](../reports/historical/rev3_v33_interim_43pp_20261108/report.pdf) | **SEALED INTERIM HISTORICAL EDITION** | Well-formatted source-traced V3.3 addition to old geometry narrative; intentionally no longer the current model document |
 

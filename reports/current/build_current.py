@@ -118,8 +118,60 @@ t=r'''% Frozen source-derived tables. Auto-generated; do not hand-edit.
 for key,rows in [('STAGEROWS',strows),('CAVITYROWS',crow),('OPERATINGROWS',summary),('NODEROWS',nodes),('ITERROWS',iters),('CHECKROWS',checks_rows),('MATERIALROWS',materials),('LEGROWS',legs),('PADROWS',pads)]:
     t=t.replace(key,rows_table(rows))
 (HERE/'derived_tables.tex').write_text(t)
+# Current source-coupled V3.4, independently checked against V3.3. This
+# generates report input tables from accepted archived results, not from a PDE.
+V34=ROOT/'data/v3_4_copper_multiport_20261108/attempt03'
+v34=json.loads((V34/'result.json').read_text())
+audit=json.loads((V34/'independent_read_only_acceptance.json').read_text())
+assert 'ACCEPTED' in audit['verdict']
+assert hashlib.sha256((V34/'result.json').read_bytes()).hexdigest()==audit['result_sha256']
+assert hashlib.sha256((ARCH/'result.json').read_bytes()).hexdigest()==audit['source_V3_3_result_sha256']
+assert abs(v34['calculated_detector_temperature_K']-audit['V3_4_Tdie_K'])<1e-12
+independent=json.loads((V34/'independent_physics_reconstruction.json').read_text())
+assert independent['status'].startswith('PASS separate algebraic')
+assert independent['archived_result_sha256']==audit['result_sha256']
+assert independent['maximum_absolute_stage_residual_W']<1e-8
+assert v34['max_last_spatial_temperature_update_K']<3e-7
+def signed(v):return f'{v:+.6f}'
+old=RESULT
+metric=[
+ ['Detector temperature (K)',f"{old['calculated_detector_temperature_K']:.6f}",
+  f"{v34['calculated_detector_temperature_K']:.6f}",
+  signed(v34['calculated_detector_temperature_K']-old['calculated_detector_temperature_K'])],
+ ['Terminal voltage (V)',f"{old['terminal_voltage_V']:.6f}",
+  f"{v34['terminal_voltage_V']:.6f}",signed(v34['terminal_voltage_V']-old['terminal_voltage_V'])],
+ ['Electrical input (W)',f"{old['electrical_power_W']:.6f}",
+  f"{v34['electrical_power_W']:.6f}",signed(v34['electrical_power_W']-old['electrical_power_W'])],
+ ['Sink heat rejection (W)',f"{old['bath_heat_rejected_W']:.6f}",
+  f"{v34['bath_heat_rejected_W']:.6f}",signed(v34['bath_heat_rejected_W']-old['bath_heat_rejected_W'])]]
+v34s=v34['source_stage_thermoelectric_budget']
+stage_rows=[[str(i+1),str(a['nlegs']),
+    f"{1000*a['qc_w']:.3f}",f"{1000*a['qh_w']:.3f}",f"{a['voltage_v']:.6f}"]
+    for i,a in enumerate(v34s)]
+cop=v34['Cu_form_tab_electrothermal_result']
+crows=[]
+for net in ('58','80','88'):
+    d=cop['net_details'][net]
+    heats={int(face):q for face,q in zip(d['face_tags'],d['face_heat_into_ceramic_W'])}
+    tags=[(38,36),(75,79,74),(105,104)]
+    h=[sum(heats.get(t,0.) for t in grp)*1e3 for grp in tags]
+    crows.append([f'Net {net}',*[f'{x:+.3f}' for x in h],f"{1000*d['electric_Joule_W']:.3f}"])
+crows.append(['ALL',*[f'{x*1000:+.3f}' for x in cop['heat_into_ceramic_by_stage_W']],
+    f"{1000*cop['total_electrical_power_W']:.3f}"])
+v34checks=[
+ ['Final pad update (K)',f"{v34['max_last_spatial_temperature_update_K']:.3e}"],
+ ['Independent stage heat residual (W)',f"{max(abs(x) for x in audit['source_stage_balance_reconstructed_W'].values()):.3e}"],
+ ['Global energy residual (W)',f"{abs(v34['global_thermoelectric_energy_residual_W']):.3e}"],
+ ['Copper Joule/heat mismatch (W)',f"{abs(audit['copper_heat_minus_electrical_work_W']):.3e}"]]
+vfour='% Source-derived V3.4 result; frozen independent audit passed.' + chr(10)
+for name,rows in [('vfourmetricrows',metric),('vfourstagerows',stage_rows),
+    ('vfourcopperrows',crows),('vfourcheckrows',v34checks)]:
+    vfour+=chr(92)+'newcommand{'+chr(92)+name+'}{'+rows_table(rows)+'}'+chr(10)
+(HERE/'v34_derived_tables.tex').write_text(vfour)
+import runpy
+runpy.run_path(str(HERE/'v34_figures.py'),run_name='__main__')
 infiles=[ARCH/'result.json',ARCH/'source_native_ceramics_V3_3.npz',ROOT/'data/synthetic_v3_assembly_20261102/cad_02/synthetic_v3_mm.step',ROOT/'data/synthetic_v3_assembly_20261102/conductor_geometry_coefficients.json',
-ROOT/'data/v3_r38_global_tetgen_20261105/attempt01/saved_mesh_audit.json',ROOT/'data/v3_r39_quality_20261105/attempt01/candidate_result.json']
+ROOT/'data/v3_r38_global_tetgen_20261105/attempt01/saved_mesh_audit.json',ROOT/'data/v3_r39_quality_20261105/attempt01/candidate_result.json',V34/'result.json',V34/'independent_read_only_acceptance.json',V34/'independent_physics_reconstruction.json',V34/'source_native_ceramics_V3_4.npz']
 manifest={'kind':'data-only current science assessment','new_physics_solves':0,'source_hashes':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in infiles},
 'figures_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in FIG.iterdir()},'n_legs':len(legs),'n_pad_faces':len(pads),'n_material_rows':len(materials)}
 (HERE/'reproduction_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
