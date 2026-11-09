@@ -117,6 +117,16 @@ t=r'''% Frozen source-derived tables. Auto-generated; do not hand-edit.
 '''
 for key,rows in [('STAGEROWS',strows),('CAVITYROWS',crow),('OPERATINGROWS',summary),('NODEROWS',nodes),('ITERROWS',iters),('CHECKROWS',checks_rows),('MATERIALROWS',materials),('LEGROWS',legs),('PADROWS',pads)]:
     t=t.replace(key,rows_table(rows))
+# Keep all 88 source leg rows intact but provide balanced two-column presentation.
+assert len(legs)==88
+t += '\n'+r'\newcommand{\legrowsA}{'+rows_table(legs[:44])+'}'+'\n'
+t += r'\newcommand{\legrowsB}{'+rows_table(legs[44:])+'}'+'\n'
+# Append all 88 original legs paired side-by-side in ONE LaTeX table:
+# unlike nested minipages, 44 paired rows cannot be split into orphan pages.
+assert len(legs)==88
+paired=[[*a,*b] for a,b in zip(legs[:44],legs[44:])]
+assert len(paired)==44 and all(len(v)==10 for v in paired)
+t += chr(10)+r'\newcommand{\legpairrows}{'+rows_table(paired)+'}'+chr(10)
 (HERE/'derived_tables.tex').write_text(t)
 # Current source-coupled V3.4, independently checked against V3.3. This
 # generates report input tables from accepted archived results, not from a PDE.
@@ -219,7 +229,7 @@ for name,rows in (('vfiveoperatingrows',ops),('vfiveleadrows',leadbud),
     vf+=chr(92)+'newcommand{'+chr(92)+name+'}{'+rows_table(rows)+'}'+chr(10)
 (HERE/'v35_derived_tables.tex').write_text(vf)
 runpy.run_path(str(HERE/'v35_figures.py'),run_name='__main__')
-infiles=[ARCH/'result.json',ARCH/'source_native_ceramics_V3_3.npz',ROOT/'data/synthetic_v3_assembly_20261102/cad_02/synthetic_v3_mm.step',ROOT/'data/synthetic_v3_assembly_20261102/conductor_geometry_coefficients.json',
+infiles=[ARCH/'result.json',ARCH/'source_native_ceramics_V3_3.npz',ROOT/'data/synthetic_v3_assembly_20261102/source_final/design.json',ROOT/'data/synthetic_v3_assembly_20261102/cad_02/synthetic_v3_mm.step',ROOT/'data/synthetic_v3_assembly_20261102/conductor_geometry_coefficients.json',
 ROOT/'data/v3_r38_global_tetgen_20261105/attempt01/saved_mesh_audit.json',ROOT/'data/v3_r39_quality_20261105/attempt01/candidate_result.json',V34/'result.json',V34/'independent_read_only_acceptance.json',V34/'independent_physics_reconstruction.json',V34/'source_native_ceramics_V3_4.npz',
 V35/'fixed_source_field_screen.json',
 *([V35/name/f for name in scenarios for f in

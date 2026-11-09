@@ -2,15 +2,15 @@
 
 **Device-oriented engineering report:** [Thermoelectric Cooling of an HgCdTe Detector: Device Design, Heat Flow, and Electrical Performance](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)
 
-**[See the package and electrical interconnection geometry](reports/current/figures/cad_package_shaded.png)** | **[Enlarged interior and feedthrough wiring](reports/current/figures/cad_package_interior_detail.png)**
+**[See the package and electrical interconnection geometry](reports/current/figures/cad_package_shaded.png)** | **[Actual nine-pin circuit assignments](reports/current/figures/cad_package_pinout.png)**
 
-**Current physically coupled reference: [30-page cumulative TEC–HgCdTe–TO assessment preserving V3.3, V3.4, and V3.5 results](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)**
+**Current physically coupled reference: [28-page audited cumulative TEC–HgCdTe–TO assessment preserving V3.3, V3.4, and V3.5 results](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)**
 
 **[View the depth-corrected shaded replacement TEC geometry](reports/current/figures/tec_solid_inspection.png)** | **[Inspect the three formed copper foil connections](reports/current/figures/tec_formed_tab_sections.png)**
 
 ![Two opaque shaded perspectives of the actual 824-body synthetic replacement TEC. Source CAD geometry, not a hardware photograph.](reports/current/figures/tec_solid_inspection.png)
 
-**[Archived original current-model editions (19, 22, 25, 29 pages)](reports/historical/current_model_editions/README.md)**
+**[Archived earlier editions (19, 22, 25, 29, and 30 pages)](reports/historical/current_model_editions/README.md)**
 
 **Historical methodological reference: [original 38-page Revision 3 assessment](reports/generated/HgCdTe_Engineering_Assessment_Rev3_REVIEW_DRAFT.pdf)**
 
