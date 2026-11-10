@@ -1,6 +1,6 @@
 # Cumulative TEC/TO engineering assessment — 9 November 2026
 
-**Primary reader-facing publication:** `TEC_TO_Reader_First_Assessment_20261110_V315.pdf` (40 pages; complete reader-first cumulative report and a new saved-field contact-perimeter attribution study). The earlier 39-page V3.14 edition and all previous reports are preserved. The V3.12 foil-foot bulk-property screen was corrected in the new edition after recognizing Bi57Sn43 joint identity; previous published PDF is unchanged but superseded on that specific contact study.
+**Primary reader-facing publication:** `TEC_TO_Reader_First_Assessment_20261110_V316.pdf` (41 pages; includes independent 2D manufactured smooth-contact and finite-tip numerical stress study). The previous 40-page V3.15 edition and all historical reports are preserved. The V3.12 foil-foot bulk-property screen was corrected in the new edition after recognizing Bi57Sn43 joint identity; previous published PDF is unchanged but superseded on that specific contact study.
 
 This edition is the **original complete 30-page assessment plus additive sections**, not a shortened new standalone study. Original `report.tex`, `TEC_HgCdTe_Current_Architecture_20261108.pdf`, original figures, and all archived simulation evidence were preserved. The separate `reports/tec_to_assessment_20261109/` nine-page assessment is supplemental, not the master report.
 
@@ -9,9 +9,9 @@ This edition is the **original complete 30-page assessment plus additive section
 From `reports/current`:
 
 ```sh
-pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261110_V315 reader_first_report.tex
-pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261110_V315 reader_first_report.tex
-pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261110_V315 reader_first_report.tex
+pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261110_V316 reader_first_report.tex
+pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261110_V316 reader_first_report.tex
+pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261110_V316 reader_first_report.tex
 ```
 
 - `cumulative_report.tex`: unabridged original report plus insertion and updated front-summary paragraph; formatting-only layout rules applied for Rev2.
@@ -43,3 +43,7 @@ Important erratum: the V3.12 bulk bondline screen must use Bi57Sn43 formed-foil 
 ## V3.15 source-native saved-field contact perimeter audit
 
 The V3.15 reader-first section is additive, not a shortened standalone replacement. It compares the original and V3.14 native 3D P2 fields at lead9 metal-to-solder interfaces by reconstructing the raw one-sided face current and the distinct finite electrical contact-law current. The contact rim accounts for roughly 72–79% of solder-side gross mismatch in only ~20% of contact area. A *frozen-field counterfactual* removing its signed bias still fails the original 0.1% limit. This is a read-only no-PDE negative control. Original physical 3D electrical Gate B remains FAIL/STOP; thermal C and Joule D remain NOT RUN. Full documentation: `docs/V3_15_LEAD9_CONTACT_PERIMETER_FIELD_DIAGNOSIS_20261110.md`, receipts and plots in `data/v3_15_lead9_perimeter_20261110/`, release hashes in `cumulative_20261109_manifest.json`.
+
+## V3.16 independent manufactured finite-interface verification
+
+The V3.16 cumulative report adds a mathematically independent **two-dimensional, dimensionless** P2 triangular finite-contact benchmark. Its smooth full-contact exact bilinear harmonic solution verifies one-sided raw gradients against the contact-law flux at ~1e-15. Abruptly truncated finite contact patch has no analytic exact patch solution and retains 4–13% integrated absolute raw/contact mismatch on the registered mesh counts. The benchmark results and source are `scripts/v3_16_contact_method_benchmark.py`, `data/v3_16_contact_method_benchmark_20261110/benchmark_results.json`, and `docs/V3_16_INDEPENDENT_CONTACT_METHOD_BENCHMARK_20261110.md`. This is not a qualified 3D TEC/copper model, and the original 3D electrical Gate B remains FAIL/STOP with thermal C/Joule D NOT RUN. V3.15 and earlier reports are unchanged.

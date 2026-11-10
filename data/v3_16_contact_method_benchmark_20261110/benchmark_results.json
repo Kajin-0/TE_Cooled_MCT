@@ -1,0 +1,195 @@
+{
+  "name": "V3.16 independent 2D polynomial-contact manufactured solution and sharp-ended finite patch stress case",
+  "scope": "Proof of planar P2 contact variational formulation on smooth polynomial exact solution; stress test without exact solution on finite contact tip",
+  "benchmark_only_no_source_3D_qualification": true,
+  "source_3D_electrical_gate_B": "FAIL/STOP; V3.14 11/16 raw cuts fail 0.1%",
+  "source_3D_thermal_gate_C": "NOT RUN",
+  "source_3D_Joule_gate_D": "NOT RUN",
+  "material_model": "dimensionless left conductivity 1, right 3, contact r=0.2. Not HgCdTe or TEC metal.",
+  "reference": "Exact harmonic bilinear Vleft/Vright; independent Q(y)=1+0.35(y-.5), interface jump rQ(y). Mixed natural y boundaries and x-end Dirichlet.",
+  "patch_coverage": "contact only y in [0.25,0.75], remaining interface insulated, same exterior boundary data; no analytic exact patch solution",
+  "predefined_cases": [
+    [
+      8,
+      false
+    ],
+    [
+      16,
+      false
+    ],
+    [
+      8,
+      true
+    ],
+    [
+      16,
+      true
+    ],
+    [
+      24,
+      true
+    ]
+  ],
+  "results": [
+    {
+      "n": 8,
+      "finite_contact_patch": false,
+      "cells": 256,
+      "dofs": 578,
+      "interface_segments": 8,
+      "max_potential_vs_exact": 1.4432899320127035e-14,
+      "raw_flux_error_vs_smooth_exact_normalized": {
+        "left_raw_exact": 1.5782899678542764e-14,
+        "right_raw_exact": 1.616530983146921e-14,
+        "contact_exact": 1.5870021346447378e-14
+      },
+      "integral_current_left_right_contact_and_smooth_ref": [
+        1.0000000000000158,
+        1.0000000000000162,
+        1.000000000000016,
+        1.0000000000000002
+      ],
+      "raw_vs_contact_abs_relative": {
+        "left": 1.1772989990295743e-15,
+        "right": 6.268134159862762e-16
+      },
+      "free_equation_residual": 1.3141001692526781e-15,
+      "relative_power_identity_error": 3.3970424605940545e-15,
+      "numerical_bulk_power": 1.562788888888844,
+      "numerical_contact_power": 0.20204166666667317,
+      "max_V": 1.4925,
+      "min_V": -0.3575,
+      "seconds": 0.03584223100915551,
+      "limitation": "2D nondimensional mathematical coupon; no source CAD, no semiconductor physics, no qualified original 3D interface"
+    },
+    {
+      "n": 16,
+      "finite_contact_patch": false,
+      "cells": 1024,
+      "dofs": 2178,
+      "interface_segments": 16,
+      "max_potential_vs_exact": 6.8833827526759706e-15,
+      "raw_flux_error_vs_smooth_exact_normalized": {
+        "left_raw_exact": 9.768806134384059e-15,
+        "right_raw_exact": 1.2745206125054488e-14,
+        "contact_exact": 1.21550146491166e-14
+      },
+      "integral_current_left_right_contact_and_smooth_ref": [
+        0.9999999999999902,
+        0.9999999999999873,
+        0.999999999999988,
+        1.0000000000000002
+      ],
+      "raw_vs_contact_abs_relative": {
+        "left": 3.262822111259527e-15,
+        "right": 1.6364224790048074e-15
+      },
+      "free_equation_residual": 2.209913606616435e-15,
+      "relative_power_identity_error": 2.3150215287010866e-14,
+      "numerical_bulk_power": 1.5627888888889891,
+      "numerical_contact_power": 0.2020416666666618,
+      "max_V": 1.4925,
+      "min_V": -0.3575,
+      "seconds": 0.14030369301326573,
+      "limitation": "2D nondimensional mathematical coupon; no source CAD, no semiconductor physics, no qualified original 3D interface"
+    },
+    {
+      "n": 8,
+      "finite_contact_patch": true,
+      "cells": 256,
+      "dofs": 578,
+      "interface_segments": 4,
+      "max_potential_vs_exact": null,
+      "raw_flux_error_vs_smooth_exact_normalized": null,
+      "integral_current_left_right_contact_and_smooth_ref": [
+        0.735965971956476,
+        0.7373802682328653,
+        0.8059797094538595,
+        0.5
+      ],
+      "raw_vs_contact_abs_relative": {
+        "left": 0.11867327656739993,
+        "right": 0.1257801022765252
+      },
+      "free_equation_residual": 1.4947524098512012e-15,
+      "relative_power_identity_error": 1.2083059411114003e-15,
+      "numerical_bulk_power": 1.2049716423653531,
+      "numerical_contact_power": 0.2651501032633847,
+      "max_V": 1.4925,
+      "min_V": -0.3575,
+      "seconds": 0.03770541003905237,
+      "limitation": "2D nondimensional mathematical coupon; no source CAD, no semiconductor physics, no qualified original 3D interface",
+      "diagnostic_edge_fraction_abs_mismatch": {
+        "left": 0.5639489324157706,
+        "right": 0.5553199147760434
+      }
+    },
+    {
+      "n": 16,
+      "finite_contact_patch": true,
+      "cells": 1024,
+      "dofs": 2178,
+      "interface_segments": 8,
+      "max_potential_vs_exact": null,
+      "raw_flux_error_vs_smooth_exact_normalized": null,
+      "integral_current_left_right_contact_and_smooth_ref": [
+        0.7683110140891625,
+        0.7690914904113997,
+        0.8047042056655898,
+        0.5
+      ],
+      "raw_vs_contact_abs_relative": {
+        "left": 0.06443890404484902,
+        "right": 0.06805757726994008
+      },
+      "free_equation_residual": 2.4481352024688972e-15,
+      "relative_power_identity_error": 2.3593199749170128e-14,
+      "numerical_bulk_power": 1.2044276570310817,
+      "numerical_contact_power": 0.2637478654317629,
+      "max_V": 1.4925,
+      "min_V": -0.3575,
+      "seconds": 0.14691879088059068,
+      "limitation": "2D nondimensional mathematical coupon; no source CAD, no semiconductor physics, no qualified original 3D interface",
+      "diagnostic_edge_fraction_abs_mismatch": {
+        "left": 0.8014629577498296,
+        "right": 0.7888469224889492
+      }
+    },
+    {
+      "n": 24,
+      "finite_contact_patch": true,
+      "cells": 2304,
+      "dofs": 4802,
+      "interface_segments": 12,
+      "max_potential_vs_exact": null,
+      "raw_flux_error_vs_smooth_exact_normalized": null,
+      "integral_current_left_right_contact_and_smooth_ref": [
+        0.7797860579565542,
+        0.7802684699684242,
+        0.8044458383429578,
+        0.5
+      ],
+      "raw_vs_contact_abs_relative": {
+        "left": 0.043943509981587456,
+        "right": 0.04638871592482376
+      },
+      "free_equation_residual": 3.4315221781879938e-15,
+      "relative_power_identity_error": 1.0755943814333374e-13,
+      "numerical_bulk_power": 1.2043442228112495,
+      "numerical_contact_power": 0.26343691129400765,
+      "max_V": 1.4925,
+      "min_V": -0.3575,
+      "seconds": 0.30017496598884463,
+      "limitation": "2D nondimensional mathematical coupon; no source CAD, no semiconductor physics, no qualified original 3D interface",
+      "diagnostic_edge_fraction_abs_mismatch": {
+        "left": 0.8897634794912479,
+        "right": 0.8843416436058993
+      }
+    }
+  ],
+  "scientific_decision": "Smooth exact interface can satisfy raw/weak flux gate; presence of a finite contact termination requires independent sharp-edge reference and refinement verification. This does NOT imply existing 3D model passed.",
+  "figure_sha256": {
+    "data/v3_16_contact_method_benchmark_20261110/v316_sharp_contact_raw_flux.pdf": "d4aba19bc9b6233ab46e96b0e11554c881935371de50543c9fe78b473e47a496",
+    "data/v3_16_contact_method_benchmark_20261110/v316_sharp_contact_raw_flux.png": "26053bd2eb5bf0f096dd900e87a8c45e575454108e3cd14bda60aabcd6a61e25"
+  }
+}

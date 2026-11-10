@@ -1,0 +1,25 @@
+\section{Independent finite-contact method benchmark and sharp-edge stress test (V3.16)}
+\label{sec:v316-method}
+The V3.14/V3.15 studies show that detailed source-native 3D current-gradient/contact-law discrepancies persist near the physical solder-contact perimeter, despite low global power and algebraic residuals. Before further attempts on the full lead9/net88 coupon, a separate \emph{two-dimensional nondimensional} method benchmark was solved with a manufactured exact potential. It is not a substitute for or calibration of the actual three-stage TEC source geometry.
+
+Consider two regions \(\Omega_-=(-1,0)\times(0,1)\), \(\Omega_+=(0,1)\times(0,1)\) with constant conductivities \(\sigma_-=1\), \(\sigma_+=3\), contact resistivity \(r_c=0.2\), and linearly varying prescribed current \(Q(y)=1+0.35(y-0.5)\). For a full-height imperfect electrical contact, the exact harmonic fields are
+\[
+V_{\pm}(x,y)=-\frac{Q(y)x}{\sigma_{\pm}}+0.2y\pm\frac{r_c Q(y)}{2},\qquad
+-\sigma_-\partial_x V_-=-\sigma_+\partial_x V_+=\frac{V_--V_+}{r_c}=Q(y).
+\]
+The variational interface bilinear form is \(\int_{\Gamma}r_c^{-1}(V_--V_+)(w_--w_+)\,d\Gamma\). Independent raw current gradients were integrated on both material sides; no contact-reaction current was substituted for those gradients. Because the exact solution is bilinear and therefore representable by quadratic triangles, this smooth test yields raw-to-contact integrated relative errors \(\mathcal O(10^{-15})\) on 578- and 2,178-DOF discretizations, with separate conserved bulk and interface dissipation.
+
+A deliberately separate contact-tip stress experiment retains the original outside boundary forcing but restricts the interface to \(0.25\leq y\leq 0.75\), insulating the two remaining central boundary segments. The preceding polynomial is no longer an exact solution. The patch test therefore measures \emph{raw-versus-contact internal disagreement}, not physical or mathematical error versus a qualified exact finite-tip field.
+
+\begin{center}\small
+\begin{tabular}{rrrr}\toprule
+2D subdivision count & Scalar P2 DOFs & Left raw/contact & Right raw/contact\\\midrule
+8 & 578 & 11.87\% & 12.58\%\\
+16 & 2,178 & 6.44\% & 6.81\%\\
+24 & 4,802 & 4.39\% & 4.64\%\\\bottomrule
+\end{tabular}
+\end{center}
+
+\fig[.90]{v316_sharp_contact_raw_flux}{pdf}{Two-dimensional dimensionless finite-contact method stress case, with sharply terminated contact region and no exact analytic patch solution. The errors are integrated absolute one-sided raw-current versus weak-contact-law discrepancies, \emph{not} the original source-native signed 3D cut-error norm. The displayed 0.1\% source gate is comparative only.}
+
+The smooth manufactured benchmark verifies the standard symmetric P2 weak-contact operator in an exactly representable case. The strong tip-case discrepancy, despite consistent power closure, shows why source-net88 contact-edge verification requires additional field-resolved numerical work. It does \emph{not} establish a singularity mechanism, certify a new discretization, qualify the existing 3D metal model, or provide a new detector temperature. The original 3D electrical Gate B remains \textbf{FAIL/STOP}; thermal Gate C and Joule Gate D remain \textbf{NOT RUN}. Full benchmark code, exact boundary conditions, error norms, and SHA-traceable results are preserved in \texttt{docs/V3\_16\_INDEPENDENT\_CONTACT\_METHOD\_BENCHMARK\_20261110.md}.

@@ -46,6 +46,7 @@ ORDER=[
  '@v313_port_qualification_section.tex',
  '@v314_p2_resolution_section.tex',
  '@v315_contact_perimeter_section.tex',
+ '@v316_contact_method_section.tex',
  'Geometric fidelity and remaining discretization risk',
  'Predicted detector temperature under enclosure loading',
  'Historical V3.3 stage temperatures, heat flow, and electrical input',
@@ -69,7 +70,7 @@ manifest={'input_source':str(SOURCE.relative_to(HERE.parent.parent)),
  'original_appendix_sha256':hashlib.sha256(APP.encode()).hexdigest(),
  'new_section_order':ORDER,
  'content_policy':'Every original scientific paragraph, figure and appendix retained; one forced page break after construction removed for pagination; two additive inputs reinserted and reader-navigation paragraph added.',
- 'added_inputs':ADD+['v313_port_qualification_section.tex','v314_p2_resolution_section.tex','v315_contact_perimeter_section.tex']}
+ 'added_inputs':ADD+['v313_port_qualification_section.tex','v314_p2_resolution_section.tex','v315_contact_perimeter_section.tex','v316_contact_method_section.tex']}
 NAV='''\\noindent\\textbf{Reader navigation.} The main assessment follows the physical device: construction and governing transport, interconnects and TO thermal paths, accepted operating conditions and sensitivity studies, then historical baseline comparisons, numerical verification and reproduction details. Historic simulations are retained as distinct source-model generations; the latest contact and material studies have explicit qualification limits.\\par\\medskip
 '''
 assert PRE.count('\\tableofcontents')==1
@@ -89,6 +90,7 @@ assert NEW.count('\\input{v312_contact_mounting_section.tex}')==1
 assert NEW.count('\\input{v313_port_qualification_section.tex}')==1
 assert NEW.count('\\input{v314_p2_resolution_section.tex}')==1
 assert NEW.count('\\input{v315_contact_perimeter_section.tex}')==1
+assert NEW.count('\\input{v316_contact_method_section.tex}')==1
 TARGET.write_text(NEW)
 manifest['new_tex_sha256']=hashlib.sha256(NEW.encode()).hexdigest()
 (HERE/'reader_first_organization_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
