@@ -1,0 +1,41 @@
+{
+  "utc": "2026-11-10T14:43:46.486856+00:00",
+  "baseline": "9fb018175f3ab7fc93d3ca63402f2307f1993919",
+  "intent": "Mapped four rigidly translated 3D ceramic domains, 88 nonlinear legs, candidate-derived Cu multiport, lead and explicit cavity proxy before any full coupled run.",
+  "conditions": {
+    "ambient_K": 300,
+    "Kr_Pa": 100,
+    "die_heat_W": 0.002,
+    "target_electrical_power_W": 0.5956680349614825,
+    "nominal_height_mm": 0.5,
+    "candidate_height_mm": 0.6
+  },
+  "budget": {
+    "max_coupled_solves": 4,
+    "seconds_per_solve": 300,
+    "cpus": 8,
+    "memory_GiB": 12
+  },
+  "gate": "No full-system run until translated source face/ownership, geometry-derived copper/lead/contact and declared conservative cavity scenario pass independent checks. If not, implement and report operators with blocker; no temperature prediction.",
+  "criteria": "source identities, 176 mapped leg faces and seven Cu foot ports, rigid tetra matrix invariance; G symmetric PSD and zero row sum; copper port heat sum=I\u00b2R; identical nominal law replay; bounded material and global energy <=1e-7 W",
+  "source_sha256": {
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/tec_height_060_cad_20261110/source_candidate/design.json": "cf580248c44f4f06ce82f046aa797ee3c2826d52f4225698eb2af1c88d95eec7",
+    "data/tec_height_060_cad_20261110/cad_attempt01/synthetic_v3_mm.step": "7f24bbb192cc7531a71fb35c75763dbbb0c38cac7722bbc6f8ff6b05616760a8",
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "scripts/v3_11_package_gas_pressure.py": "7c0f320f273b49912a9ae1f54b00d0c4d188773816d4cb95a3e45a663bb2501b",
+    "scripts/v3_4_source_copper_multiport.py": "af86568d04ce07ef82b305cb4812f5d9aff33f259877a7755029c7b6624a206e",
+    "scripts/v3_integrated_leg_resolved.py": "9bc6b3f71d140a586f7657c2177e465aa3b048d95d4cedfcf5930ba92dc2b560",
+    "scripts/v2_source_ceramic_spatial.py": "2fab7640b60f0ca89c12138e08b6bba196d64c3aa421424242d3646efed79398",
+    "tecooledmct/nonlinear_tec.py": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "tecooledmct/graded_tec.py": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "data/v3_11_rev3_backfill_source_20261109/Kr100_I040/result.json": "9393a2ad30d7fcb63a4197a6fc8b6d068d7c44b5b8e9bacb71e94dd01f3a153b",
+    "reports/current/TEC_TO_Reader_First_Assessment_20261110_V319.pdf": "9197ddc195d9d25cb2f2319f897decaae160ca519c85c595429ac8e9d21ffdc3"
+  },
+  "mesh_sha256": {
+    "/var/tmp/mct_r3_header_3d_20261107/R38_430_domains.1.node": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+    "/var/tmp/mct_r3_header_3d_20261107/R38_430_domains.1.face": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18",
+    "/var/tmp/mct_r3_header_3d_20261107/R39_430_domains.1.ele": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570"
+  },
+  "original_3D_electrical_gate": "FAIL/STOP unchanged"
+}

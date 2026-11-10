@@ -1,0 +1,50 @@
+{
+  "observed_UTC": "2026-11-10T14:52:54.081623+00:00",
+  "purpose": "Preregistered source-sealed matched-P conditional full-system cases; no gate waivers",
+  "attempt_sequence": [
+    "nominal",
+    "custom_060"
+  ],
+  "failure_policy": "Stop on any solver failure, timeout, independent audit failure or physical domain violation; no retries",
+  "matched_power_W": 0.5956680349614825,
+  "unknown_current_bounds_A": [
+    0.25,
+    0.55
+  ],
+  "initial_current_A": 0.4,
+  "outer_limit": 26,
+  "inner_nfev_limit": 45,
+  "thermal_tolerance_K": 3e-07,
+  "stage_tolerance_W": 1e-08,
+  "global_tolerance_W": 1e-08,
+  "matched_power_tolerance_W": 1e-08,
+  "max_seconds_per_case": 300,
+  "max_cpus": 8,
+  "max_memory_GiB": 12,
+  "detector_heat_W": 0.002,
+  "ambient_K": 300,
+  "Kr_Pa": 100,
+  "gas_model": "Interstage projected upper-plate area minus leg footprints and plate separation minus two 15um films; parallel 1D rarefied-jump gas links, heat exactly opposite on stage ends, distributed onto source pad faces. External 3mm reservoir proxy and grey views held constant. The proxies can share actual cavity volume and are NOT a solved native void or certified disjoint paths; fixed-field 1.5/3/6mm external sensitivity recorded separately.",
+  "copper_model": "Geometry-recomputed reduced 1D port network; net88 middle port is thermal-only and excluded from electrical series resistance in both cases; original historical proxy untouched.",
+  "ceramic_model": "95 source face TRI3 identities on four rigidly translated plates; 11791 TET4 stiffness invariant, no candidate-native conformal mesh or full 430-domain physics.",
+  "pin_leads": "hot leads unchanged, detector gold bond conductances recomputed from rebuilt path; surrounding header temperature proxy unchanged.",
+  "execution_source_sha256": {
+    "tecooledmct/height_coupling_v320.py": "522fdea8d445b797a4dcced8c9f8f814f0fc1ce5c3ae3c993886717dbcea4744",
+    "scripts/tec_height_v320_coupled.py": "8c1fa0b1b8915b8e882f4af3f8d4d368cc6c190cfc0716e2e755fea51ccbe7d9",
+    "scripts/build_tec_height_v320_solver.py": "41f124d963589a85169a8efed9315da5535349c9f8fa9029fa16d42484909c7d",
+    "scripts/tec_height_v320_independent_audit.py": "548c48da7e59daf3257f870f783c08bf4d9d8542ba18eb93eb74523522206fef",
+    "scripts/tec_height_v320_mapping_audit.py": "1d00f00b8a53f4e92049ebe27072336d76f71ed330e0cbe1ac168b0d17bf29b5",
+    "scripts/tec_height_v320_external_gap_sensitivity.py": "5d15a6a365edfa77632686247ed62d522275343705defa4d8ddcbba3d25d2f25",
+    "tests/test_tec_height_coupling_v320.py": "48dbcaaefb8b5fdd5a97a379ebe1df2ce48fdf7987ce30f61e41e0f304505294"
+  },
+  "preflight_sha256": {
+    "registration.json": "3e5f973d18ba6302c7b4e7aaf2658933d96301d9b4f76d19fa2740a1559ab7aa",
+    "source_face_mapping.json": "27840d033813a6bf181057c7ee12a97621b95b37dc6df1a5dcdb247c816c65c4",
+    "operator_specifications.json": "db92368c6503489f2227c718421a4b16d7d90611e50a8c3f33c4d52592974792",
+    "mesh_mapping_audit.json": "91c5b5217a7b8fc70e1273abf1929d119cd96042386b854c1d7909671a69ec03",
+    "translated_ceramic_nodes.npz": "8559f7f01d30fd60f648689d932f4321d40d4ced2f5bda18bfbac59a5032562e",
+    "operator_tests_final.log": "9ce6fa7fa50f3e5893c82fadf92a1f921af8660762765b0cebd2ae71244908de",
+    "external_gap_fixed_field_sensitivity.json": "7414040759aad55a0eaf35f22e7309bcb40cf3de842e6a3dd8ca71016c413256"
+  },
+  "historical_electrical_gate": "FAIL/STOP unchanged"
+}
