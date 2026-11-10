@@ -1,6 +1,6 @@
 # Cumulative TEC/TO engineering assessment — 9 November 2026
 
-**Primary reader-facing publication:** `TEC_HgCdTe_Cumulative_TEC_TO_20261109_Contact_Engineering_Rev4.pdf` (36 pages; V3.12 physical copper/joint and mounting evidence). The preceding 34-page plot-legibility Rev3 and other editions remain preserved.
+**Primary reader-facing publication:** `TEC_TO_Reader_First_Assessment_20261109_V313.pdf` (37 pages; reader-first V3.13 physics and source-gate edition). The previous 36-page V3.12 PDF and earlier editions remain preserved. The V3.12 foil-foot bulk-property screen was corrected in the new edition after recognizing Bi57Sn43 joint identity; previous published PDF is unchanged but superseded on that specific contact study.
 
 This edition is the **original complete 30-page assessment plus additive sections**, not a shortened new standalone study. Original `report.tex`, `TEC_HgCdTe_Current_Architecture_20261108.pdf`, original figures, and all archived simulation evidence were preserved. The separate `reports/tec_to_assessment_20261109/` nine-page assessment is supplemental, not the master report.
 
@@ -9,9 +9,9 @@ This edition is the **original complete 30-page assessment plus additive section
 From `reports/current`:
 
 ```sh
-pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_HgCdTe_Cumulative_TEC_TO_20261109_Contact_Engineering_Rev4 cumulative_report.tex
-pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_HgCdTe_Cumulative_TEC_TO_20261109_Contact_Engineering_Rev4 cumulative_report.tex
-pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_HgCdTe_Cumulative_TEC_TO_20261109_Contact_Engineering_Rev4 cumulative_report.tex
+pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261109_V313 reader_first_report.tex
+pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261109_V313 reader_first_report.tex
+pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261109_V313 reader_first_report.tex
 ```
 
 - `cumulative_report.tex`: unabridged original report plus insertion and updated front-summary paragraph; formatting-only layout rules applied for Rev2.
@@ -29,3 +29,9 @@ Five source-data charts were re-typeset in new `*_legible` PDF/PNG files and ref
 ## V3.12 new engineering evidence (Rev4)
 
 A new two-page source-audited scientific section, `v312_contact_mounting_section.tex`, was inserted additively after the V3.11 gas study. It retains the complete original and previous cumulative source sections and appends two figures with visible axis and legend text. Associated full study: `docs/V3_12_COPPER_JOINT_MOUNTING_EVIDENCE_20261109.md`, source script: `scripts/v3_12_contact_mounting_assessment.py`, registered result: `data/v3_12_contact_mounting_assessment_20261109/assessment.json`. The new calculation reuses the accepted V3.5/3.8/3.11 operating points, reconstructs original Cu-foil heat transfer from frozen temperatures and evaluates six static, bulk-solder contact hypotheses (not six new full-device solves). Property sources are recorded and experimental validation is not asserted. Reproducibility and figure digests appear in the V3.12 record and the cumulative manifest.
+
+## Current reader-first cumulative edition (V3.13)
+
+`reader_first_report.tex` is deterministically generated from all 18 previous major scientific sections, the unabridged legacy appendices and all additive V3.8-V3.12 sections, followed by V3.13 local foil-port evidence. Run `python3 build_reader_first.py` before LaTeX. `reader_first_organization_manifest.json` lists section preservation hashes and order. The new reader sequence starts with construction, governing physics and thermal package, then operating points, design sensitivities, historical models and appendices. Full editorial rationale is in `docs/V3_13_REPORT_ORGANIZATION_REVIEW_20261109.md`.
+
+Important erratum: the V3.12 bulk bondline screen must use Bi57Sn43 formed-foil joining feet, not Sn95Sb5 P/N leg solder. The corrected screen uses 19 W/(m K) for near-eutectic Bi58Sn42 at 85 C as an explicitly unverified family analog. The other correction is the prospective electrical dead-end middle foot on net88. The older V3.13 archived electrical Gate B still fails raw-gradient criteria; NO new spatial FEM result is asserted. See `docs/V3_13_NATIVE_FOIL_PORT_AND_3D_GATE_20261109.md`.

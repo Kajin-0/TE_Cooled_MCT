@@ -32,14 +32,14 @@ def test_source_copper_network_energy_and_port_topology():
 
 def test_bulk_bondline_geometry_and_monotone_fixed_face_effect():
     d=record();rows=d['fixed_ceramic_face_hypotheses'];assert len(rows)==6
-    for alloy,k in [('Sn95Sb5',28),('SAC305 counterfactual',61)]:
+    for alloy,k in [('Bi57Sn43 family proxy (Bi58Sn42)',19),('SAC305 counterfactual',61)]:
         a=[r for r in rows if r['alloy']==alloy]
         assert [r['assumed_bondline_thickness_um'] for r in a]==[20,25,35]
         assert all(math.isclose(r['bulk_only_Rarea_m2K_W'],
             r['assumed_bondline_thickness_um']*1e-6/k,rel_tol=1e-13) for r in a)
         assert a[0]['fixed_field_upper_Cu_heat_mW']>a[1]['fixed_field_upper_Cu_heat_mW']>a[2]['fixed_field_upper_Cu_heat_mW']
-    assert d['joint_nominal_equivalent_SnSb_bulk_thickness_um']==28.0
-    assert d['joint_high_hypothesis_equivalent_SnSb_bulk_thickness_um']==2800.0
+    assert math.isclose(d['joint_nominal_equivalent_BiSn_proxy_bulk_thickness_um'],19.0,rel_tol=1e-12)
+    assert math.isclose(d['joint_high_hypothesis_equivalent_BiSn_proxy_bulk_thickness_um'],1900.0,rel_tol=1e-12)
 
 def test_mounting_matches_previous_fully_coupled_archives():
     d=record();a=d['accepted_mounting_cases']

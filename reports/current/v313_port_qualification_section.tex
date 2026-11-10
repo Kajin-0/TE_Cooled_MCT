@@ -1,0 +1,19 @@
+\clearpage
+\section{Native foil-port qualification and the remaining 3D electrical gate (V3.13)}
+\label{sec:v313-native-ports}
+The next engineering step is not a blind global remesh. For the three-foot source return net88, the existing 1D/effective-contact thermal multiport can be reduced to an explicit three-port response for ceramic faces 36, 74 and 104. Using the current accepted source geometry and independently archived native ceramic-face temperatures, the conductance law for heat \emph{into} the interstage conductor is
+\[
+\mathbf Q_{\rm foil}=\mathbf G\mathbf T,\quad
+\frac{\mathbf G}{10^{-3}\,\mathrm{W/K}}=\begin{bmatrix}
+1.952853&-1.892256&-0.060596\\
+-1.892256&3.695323&-1.803067\\
+-0.060596&-1.803067&1.863663
+\end{bmatrix}.
+\]
+The exact assembled matrix is symmetric and positive semidefinite, has zero row/column sum to numerical precision, and reconstructs accepted 0.400~A copper interface heat to below \(10^{-11}\)~W. This is a verified \emph{reduced source-geometry port operator}, \textbf{not a 3D FEM measurement of foil/spreading conductance}. The actual thermally active middle landing is retained.
+
+\textbf{Electrical topology requiring prospective correction.} In the historical source-registered 3D net88/lead9 coupon, the middle foil foot (`tab\_joint5`, source Bi57Sn43) is an electrical dead end. The reduced V3.4--V3.12 copper law instead includes all three foil-foot electrical contacts in the through-current resistance and allocates current-driven contact heat to all three. At 0.400~A the middle-foot term corresponds to \(R_{c}=0.000166667\ \Omega\) and \(P_{J}=0.026667\)~mW. Omitting this dead-end electrical term in a prospective new source model must not remove the real middle \emph{thermal} contact. Correcting an isolated series coefficient does not establish a new coupled detector temperature or full-module voltage.
+
+\textbf{Historical 3D stop condition.} The original complete 12-region, 28,691-TET4 net88/lead9 physical coupon's fine P1 solution had a worst independent raw one-sided interfacial current-cut mismatch of \textbf{85.63\%}; the subsequent same-mesh P2 mathematical refinement reduced that mismatch to \textbf{8.10\%}, but still failed 11 of 16 mandatory cuts against the original \textbf{0.1\%} criterion. The P2 electric potential also undershot zero by about \(9.15\times10^{-7}\)~V, outside the \(10^{-8}\)~V bound. Its excellent terminal power conservation does not override those failures. Thus \textbf{electrical Gate B remains FAIL/STOP, and physical thermal Gate C and coupled Joule Gate D remain NOT RUN}. The bounded next attempt should qualify the current field and interface ownership first, then compare a genuinely spatial thermal coupon against the matrix above. The archived source mesh, unsuccessful results and gate thresholds remain unchanged.
+
+\textbf{V3.12 correction notice.} Formed-foil feet are \emph{Bi57Sn43}, not the Sn95Sb5 solder used at other TEC P/N junctions. The preceding contact screen is corrected using a \emph{nearby Bi58Sn42 85~$^\circ$C conductivity as an unvalidated family analog}; the source alloy's low-temperature transport is not qualified. Neither correction changes an accepted full-device operating state. Full source hashes, gate records and implementation notes are in \texttt{docs/V3\_13\_NATIVE\_FOIL\_PORT\_AND\_3D\_GATE\_20261109.md}.

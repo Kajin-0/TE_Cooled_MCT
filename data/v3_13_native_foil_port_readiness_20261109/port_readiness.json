@@ -1,0 +1,98 @@
+{
+  "title": "V3.13 source-net88 local 3D coupon readiness / reduced multiport audit",
+  "interpretation": "SOURCE-GROUNDED REDUCED THREE-PORT PASS; INDEPENDENT 3D ELECTRICAL B FAIL/STOP; THERMAL C/D NOT RUN",
+  "new_FEM_solves": 0,
+  "original_3D_mesh_tetrahedra": 28691,
+  "old_coupon_material_regions": 12,
+  "old_coupon_scope": "Actual net88 + lead9 12-region mesh, not full TEC or just bare copper",
+  "foil_ports_CAD_tags": [
+    36,
+    74,
+    104
+  ],
+  "foil_ports_temperature_K": [
+    299.31629036057177,
+    271.58923014842856,
+    247.88910911531934
+  ],
+  "thermal_G_positive_heat_into_foil_W_K": [
+    [
+      0.0019528525781595382,
+      -0.0018922561256079025,
+      -6.059645255504626e-05
+    ],
+    [
+      -0.001892256125604492,
+      0.0036953226673676945,
+      -0.001803066541759792
+    ],
+    [
+      -6.05964525550462e-05,
+      -0.0018030665417597901,
+      0.0018636629943148363
+    ]
+  ],
+  "thermal_G_eigenvalues_W_K": [
+    1.1371429667067176e-15,
+    0.0019671857759695965,
+    0.005544652463871339
+  ],
+  "heat_into_ceramic_at_I0_W": [
+    -0.05558300427887406,
+    0.009733804260049559,
+    0.04584920001882443
+  ],
+  "heat_into_ceramic_at_I040_W": [
+    -0.05530217334045782,
+    0.010225207031684511,
+    0.04611594866477529
+  ],
+  "Joule_port_allocation_current_reduced_W": [
+    0.0002808309384162433,
+    0.0004914027716349523,
+    0.00026674864595085945
+  ],
+  "net88_copper_and_contacts_Joule_current_model_W": 0.0010389823560019195,
+  "original_reduced_R_net88_ohm": 0.0064936397250119965,
+  "electrical_dead_end_midfoot": {
+    "CAD_foot": "tab_joint5",
+    "source_alloy": "SnBi57_43",
+    "P2_expected_current_fraction": 0,
+    "P2_weak_reaction_current_A_at_1V": -2.9265573419506863e-09,
+    "middle_contact_series_R_mistaken_if_assumed_through_current_ohm": 0.0001666666666666665,
+    "middle_contact_Joule_overcount_if_no_branch_current_at_0p4A_W": 2.6666666666666646e-05,
+    "potential_corrected_net88_contact_and_foil_R_ohm_if_no_mid_current": 0.00632697305834533,
+    "status": "OPEN prospective electrical-interface mapping correction; no source-state mutation or T prediction"
+  },
+  "3D_electrical_gates": {
+    "P1_original_gate": "FAIL/STOP",
+    "P1_worst_raw_current_cut_relative": 0.8562549986750948,
+    "P2_raw_current_cut_relative": 0.080993023932639,
+    "P2_raw_cuts_failed": 11,
+    "cut_release_threshold_relative": 0.001,
+    "P2_voltage_min_V": -9.149457931482286e-07,
+    "P2_voltage_bound_tolerance_V": 1e-08,
+    "P2_IV_minus_losses_rel": 6.338850065349001e-09,
+    "thermal_C_gate": "NOT RUN; B FAIL",
+    "Joule_coupled_D_gate": "NOT RUN; B FAIL",
+    "caveat": "Weak-form conservation and IV power agreement do not qualify raw one-sided 3D contact gradient fluxes."
+  },
+  "boundary_contract_for_next_3D_attempt": {
+    "source_mesh": "Use immutable original net88/lead9 CAD source; no stage terminal invention",
+    "electric": "Actual P87 source cut to pin9 head cut; middle pad floating (no direct current port)",
+    "thermal": "Original three ceramic underside ports C0/C1/C2 plus physical pin9 and PN87 thermal cuts, no fictitious ambient Dirichlet",
+    "contact": "Distinct electronic and thermal finite-contact laws for Bi57Sn43 joints and multilayer metallization, not P/N Sn95Sb5",
+    "port_sign": "Positive thermal Q is INTO coupon, PSD G; ceramic heat opposite sign",
+    "acceptance": "Original 0.1% raw one-sided current cut error, bounded voltage, 0.5% energy, mesh resistance convergence; no relaxation",
+    "sequential_gate": "Electrical B PASS required BEFORE new physical thermal C and coupled Joule D. No unlimited retries."
+  },
+  "scientific_limitation": "The accepted 3x3 G is a reconstruction of the existing 1D/source-geometry multiport, NOT a spatial 3D thermal PDE or a validation of 3D spreading.",
+  "source_sha256": {
+    "data/v3_5_power_lead_and_copper_sensitivity_20261108/copper_native_pad/result.json": "8a47c9a18a5e6a79b30b7bfa81cdfc05e7cfe2ba6d3b6aac8fcd1054b1c966a6",
+    "data/v3_interconnect_et_20261102/B/gate_B.json": "46993813dfa478fbd3527a02aec02226ef85545bb7c03ec91a80f4f3e9c4a1b0",
+    "data/v3_gate_B_original_P2_20261106/attempt01/P2_coupon_result.json": "e4780663273c552ed82cfbd447ce64149c846f104315bea81598a92bac928b26",
+    "data/v3_interconnect_et_20261102/B/fine_mesh/mesh.npz": "9e9cf24ba0b22f8047b75851cef2266cf4d0189d40e78b8025a915a3788fad63",
+    "data/v3_interconnect_et_20261102/B/fine_mesh/registry.json": "12e4179cfba36f8e3fc529de7cef2f66cfd799799c83137d3feed09691b1876b",
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8"
+  }
+}

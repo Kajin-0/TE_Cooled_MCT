@@ -5,17 +5,18 @@
   "high_hypothetical_Rarea_m2K_W": 0.0001,
   "joint_contact_area_m2": 6e-08,
   "Cu_foil_cross_section_m2": 9e-09,
-  "source_solder_design_identity": "95Sn5Sb synthetic source design only; actual OEM alloy unknown",
+  "source_solder_design_identity": "CAD foil feet: Bi57Sn43 (SnBi57_43); Sn95Sb5 belongs to P/N leg solder and MUST NOT be assigned to foil feet",
   "solder_reference_properties": {
-    "Sn95Sb5_k_300K_W_mK": 28.0,
+    "near_eutectic_Bi58Sn42_k_at_85C_W_mK_proxy_not_exact_alloy": 19.0,
     "SAC305_k_W_mK": 61.0,
     "sources": [
-      "https://scp.indium.com/download-files/solder_thermal_interface_materials_98049_r1.pdf",
+      "https://scp.indium.com/download-files/solder_research_kit_information_97699_r5",
       "https://documents.indium.com/qdynamo/download.php?docid=5418"
-    ]
+    ],
+    "property_warning": "k=19 W/mK is 58Bi42Sn at 85 Celsius; use as provisional family analog only"
   },
-  "joint_nominal_equivalent_SnSb_bulk_thickness_um": 28.0,
-  "joint_high_hypothesis_equivalent_SnSb_bulk_thickness_um": 2800.0,
+  "joint_nominal_equivalent_BiSn_proxy_bulk_thickness_um": 18.999999999999996,
+  "joint_high_hypothesis_equivalent_BiSn_proxy_bulk_thickness_um": 1900.0,
   "source_component_budget": {
     "Cu_net_58_mW": 55.82330578606419,
     "Cu_net_80_upper_mW": 41.05754478298673,
@@ -39,33 +40,33 @@
   },
   "fixed_ceramic_face_hypotheses": [
     {
-      "alloy": "Sn95Sb5",
-      "k_bulk_300K_W_mK": 28.0,
+      "alloy": "Bi57Sn43 family proxy (Bi58Sn42)",
+      "k_bulk_300K_W_mK": 19.0,
       "assumed_bondline_thickness_um": 20,
-      "bulk_only_Rarea_m2K_W": 7.142857142857142e-07,
-      "single_contact_R_K_W": 11.904761904761905,
-      "fixed_field_upper_Cu_heat_mW": 88.27979240934887,
-      "fixed_field_upper_Cu_delta_vs_nominal_mW": 1.1062989615868575,
+      "bulk_only_Rarea_m2K_W": 1.0526315789473683e-06,
+      "single_contact_R_K_W": 17.54385964912281,
+      "fixed_field_upper_Cu_heat_mW": 86.972940122232,
+      "fixed_field_upper_Cu_delta_vs_nominal_mW": -0.20055332553001182,
       "fixed_field_copper_Joule_mW": 2.0823737427060007
     },
     {
-      "alloy": "Sn95Sb5",
-      "k_bulk_300K_W_mK": 28.0,
+      "alloy": "Bi57Sn43 family proxy (Bi58Sn42)",
+      "k_bulk_300K_W_mK": 19.0,
       "assumed_bondline_thickness_um": 25,
-      "bulk_only_Rarea_m2K_W": 8.928571428571427e-07,
-      "single_contact_R_K_W": 14.88095238095238,
-      "fixed_field_upper_Cu_heat_mW": 87.58484929328428,
-      "fixed_field_upper_Cu_delta_vs_nominal_mW": 0.41135584552226545,
+      "bulk_only_Rarea_m2K_W": 1.3157894736842103e-06,
+      "single_contact_R_K_W": 21.929824561403507,
+      "fixed_field_upper_Cu_heat_mW": 85.98485821814046,
+      "fixed_field_upper_Cu_delta_vs_nominal_mW": -1.1886352296215512,
       "fixed_field_copper_Joule_mW": 2.0823737427060007
     },
     {
-      "alloy": "Sn95Sb5",
-      "k_bulk_300K_W_mK": 28.0,
+      "alloy": "Bi57Sn43 family proxy (Bi58Sn42)",
+      "k_bulk_300K_W_mK": 19.0,
       "assumed_bondline_thickness_um": 35,
-      "bulk_only_Rarea_m2K_W": 1.2499999999999999e-06,
-      "single_contact_R_K_W": 20.833333333333332,
-      "fixed_field_upper_Cu_heat_mW": 86.22961138896429,
-      "fixed_field_upper_Cu_delta_vs_nominal_mW": -0.9438820587977237,
+      "bulk_only_Rarea_m2K_W": 1.8421052631578946e-06,
+      "single_contact_R_K_W": 30.701754385964914,
+      "fixed_field_upper_Cu_heat_mW": 84.07926340711776,
+      "fixed_field_upper_Cu_delta_vs_nominal_mW": -3.0942300406442413,
       "fixed_field_copper_Joule_mW": 2.0823737427060007
     },
     {
@@ -148,7 +149,7 @@
     "extreme_interface_not_build_recommendation": true
   },
   "limitations": [
-    "Manufacturer bulk k at 300K not qualified over whole cooler temperature range",
+    "Bi58Sn42 family analog at 85 C is not exact CAD Bi57Sn43 or a measured 300 K or cryogenic property",
     "No measured as-built solder thickness, wetting fraction, intermetallic layer or plated spreading",
     "Static copper face temperatures for all six bulk-bondline screens; no new FEM",
     "Extreme contact full solve is an intentionally unphysical limiting hypothesis",
@@ -178,7 +179,7 @@
   "output_plot_sha256": {
     "reports/current/figures/v312_source_copper_heat_ledger.pdf": "e154c7c938d9d6207c43bb37d701ca854a910fc4624dd9533f95f28ebee60f92",
     "reports/current/figures/v312_source_copper_heat_ledger.png": "31cdaaa75c9f84e734a102d82d8f723c8cbf1803b564489bb15d5e2302ac42d4",
-    "reports/current/figures/v312_solder_contact_fixed_field_screen.pdf": "78d0cbd7bd84a320ed322fb2469dc3753254911b6a41513eb9b7fa7781e9f0c4",
-    "reports/current/figures/v312_solder_contact_fixed_field_screen.png": "0592210bf6613ad5c3d308d86f611f15b17555e574791d22d0c9b4b88909c82a"
+    "reports/current/figures/v312_solder_contact_fixed_field_screen.pdf": "c1438f923ab844ec7239cb74e4b8c486ec3506c30a022ff6dc9b7fa796e156fb",
+    "reports/current/figures/v312_solder_contact_fixed_field_screen.png": "d610205ce0fcdb58aea4445678d67cdbd4e5d6c62f0591b83e44db43f037e862"
   }
 }

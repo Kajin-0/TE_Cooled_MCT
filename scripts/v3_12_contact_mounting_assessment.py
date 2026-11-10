@@ -20,9 +20,9 @@ V311=ROOT/'data/v3_11_rev3_backfill_source_20261109'
 CURRENT=0.400
 AREAL_NOMINAL=1e-6
 CONTACT_AREA=0.06e-6
-K_SNSB=28.0 # 300 K Indium Corporation Indalloy 133 reference; not measurement on source device
+K_BISN=19.0 # Bi58Sn42 near-composition Indium 85 C analog; NOT measured Bi57Sn43 at 300 K
 K_SAC305=61.0 # Indium Corporation SAC305 300 K reference; counterfactual alloy only
-SOURCE_URL_SNSB='https://scp.indium.com/download-files/solder_thermal_interface_materials_98049_r1.pdf'
+SOURCE_URL_BISN='https://scp.indium.com/download-files/solder_research_kit_information_97699_r5'
 SOURCE_URL_SAC='https://documents.indium.com/qdynamo/download.php?docid=5418'
 
 def data(file):
@@ -67,7 +67,7 @@ def main():
     # Thin dense homogeneous bondline: R''=t/k. This assumes full area, no IMC
     # or voids, no finite lateral ceramic/film spreading, and no mechanical flaw.
     cases=[]
-    for alloy,k in [('Sn95Sb5',K_SNSB),('SAC305 counterfactual',K_SAC305)]:
+    for alloy,k in [('Bi57Sn43 family proxy (Bi58Sn42)',K_BISN),('SAC305 counterfactual',K_SAC305)]:
         for thickness_um in (20,25,35):
             areal=thickness_um*1e-6/k
             result=evaluate(CURRENT,tags,areal)
@@ -79,8 +79,8 @@ def main():
                 fixed_field_upper_Cu_heat_mW=upper*1e3,
                 fixed_field_upper_Cu_delta_vs_nominal_mW=1e3*(upper-base['heat_into_ceramic_by_stage_W'][2]),
                 fixed_field_copper_Joule_mW=1e3*result['total_electrical_power_W']))
-    nominal_equiv_um=AREAL_NOMINAL*K_SNSB*1e6
-    extreme_equiv_um=1e-4*K_SNSB*1e6
+    nominal_equiv_um=AREAL_NOMINAL*K_BISN*1e6
+    extreme_equiv_um=1e-4*K_BISN*1e6
     mount=[]
     ref=mount_cases['base_I040']
     for name in ['base_I040','sink_plus05_I040','sink_plus10_I040',
@@ -123,11 +123,11 @@ def main():
       'high_hypothetical_Rarea_m2K_W':1e-4,
       'joint_contact_area_m2':CONTACT_AREA,
       'Cu_foil_cross_section_m2':9e-9,
-      'source_solder_design_identity':'95Sn5Sb synthetic source design only; actual OEM alloy unknown',
-      'solder_reference_properties':{'Sn95Sb5_k_300K_W_mK':K_SNSB,'SAC305_k_W_mK':K_SAC305,
-                                    'sources':[SOURCE_URL_SNSB,SOURCE_URL_SAC]},
-      'joint_nominal_equivalent_SnSb_bulk_thickness_um':nominal_equiv_um,
-      'joint_high_hypothesis_equivalent_SnSb_bulk_thickness_um':extreme_equiv_um,
+      'source_solder_design_identity':'CAD foil feet: Bi57Sn43 (SnBi57_43); Sn95Sb5 belongs to P/N leg solder and MUST NOT be assigned to foil feet',
+      'solder_reference_properties':{'near_eutectic_Bi58Sn42_k_at_85C_W_mK_proxy_not_exact_alloy':K_BISN,'SAC305_k_W_mK':K_SAC305,
+                                    'sources':[SOURCE_URL_BISN,SOURCE_URL_SAC], 'property_warning':'k=19 W/mK is 58Bi42Sn at 85 Celsius; use as provisional family analog only'},
+      'joint_nominal_equivalent_BiSn_proxy_bulk_thickness_um':nominal_equiv_um,
+      'joint_high_hypothesis_equivalent_BiSn_proxy_bulk_thickness_um':extreme_equiv_um,
       'source_component_budget':component,
       'fixed_ceramic_face_hypotheses':cases,
       'accepted_mounting_cases':mount,
@@ -135,7 +135,7 @@ def main():
              'extreme_hypothesis_T_K':high['calculated_detector_temperature_K'],
              'delta_T_K':high['calculated_detector_temperature_K']-nominal['calculated_detector_temperature_K'],
              'extreme_interface_not_build_recommendation':True},
-      'limitations':['Manufacturer bulk k at 300K not qualified over whole cooler temperature range',
+      'limitations':['Bi58Sn42 family analog at 85 C is not exact CAD Bi57Sn43 or a measured 300 K or cryogenic property',
          'No measured as-built solder thickness, wetting fraction, intermetallic layer or plated spreading',
          'Static copper face temperatures for all six bulk-bondline screens; no new FEM',
          'Extreme contact full solve is an intentionally unphysical limiting hypothesis',
@@ -187,8 +187,8 @@ def main():
         figs.append(target)
     plt.close(fig)
     fig=plt.figure(figsize=(9.1,4.5),facecolor='white')
-    ax=fig.add_axes([.13,.27,.76,.59])
-    for alloy,color,mark in [('Sn95Sb5','#2c6685','o'),('SAC305 counterfactual','#b97950','s')]:
+    ax=fig.add_axes([.135,.27,.75,.52])
+    for alloy,color,mark in [('Bi57Sn43 family proxy (Bi58Sn42)','#2c6685','o'),('SAC305 counterfactual','#b97950','s')]:
         rows=[r for r in cases if r['alloy']==alloy]
         ax.plot([r['assumed_bondline_thickness_um'] for r in rows],
                 [r['fixed_field_upper_Cu_heat_mW'] for r in rows],mark+'-',color=color,
@@ -196,13 +196,13 @@ def main():
     ax.axhline(q_upper,color='#5d6f83',ls='--',lw=1.3,label='Existing nominal source contact assumption')
     ax.set_xlim(18,37)
     ax.set_xticks([20,25,35]);ax.set_xlabel('Assumed fully dense solder thickness (µm)')
-    ax.set_ylabel('Fixed-field Cu heat into upper ceramic (mW)')
+    ax.set_ylabel('Upper-stage Cu heat (mW)')
     ax.grid(alpha=.18);ax.legend(frameon=False,fontsize=9,loc='best')
-    fig.text(.06,.951,'Solder bondline screening against the nominal contact assumption',
+    fig.text(.06,.951,'BiSn foil-foot bondline: fixed-field thermal sensitivity',
              fontsize=13.8,weight='bold',color='#24384d')
-    fig.text(.06,.898,'Native Cu network, frozen source face temperatures, constant reference 300 K solder k',
+    fig.text(.06,.899,'Original Cu network and frozen ceramic face temperatures; BiSn-family k reference at 85 C',
              fontsize=9,color='#54667b')
-    fig.text(.06,.065,'Source alloy is Sn95Sb5; SAC305 is comparison only. No coupled new detector temperatures are inferred.',
+    fig.text(.06,.065,'CAD Bi57Sn43; Bi58Sn42 k=19 W/mK at 85 C is a proxy. SAC305 hypothetical; no coupled detector solve.',
              fontsize=8.5,color='#54667b')
     for suffix in ['pdf','png']:
         target=REPORT/f'v312_solder_contact_fixed_field_screen.{suffix}'
@@ -212,7 +212,7 @@ def main():
     plt.close(fig)
     output['output_plot_sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in figs}
     (OUT/'assessment.json').write_text(json.dumps(output,indent=2)+'\n')
-    print('NOMINAL_SNSB_UM',nominal_equiv_um,'HIGH_EQUIVALENT_UM',extreme_equiv_um)
+    print('NOMINAL_BISN_FAMILY_UM',nominal_equiv_um,'HIGH_EQUIVALENT_UM',extreme_equiv_um)
     print('COMPONENT',json.dumps(component,indent=2))
     print('FIXED_FIELD CASES',json.dumps(cases,indent=2))
     print('MOUNTING',json.dumps(mount,indent=2))
