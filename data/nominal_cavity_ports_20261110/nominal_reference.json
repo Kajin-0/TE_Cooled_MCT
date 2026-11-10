@@ -1,0 +1,214 @@
+{
+  "status": "CONDITIONAL synthetic original reference; not experimentally validated",
+  "design_source_sha256": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+  "source_824_solids": true,
+  "leg_cross_section_mm": [
+    0.4,
+    0.4
+  ],
+  "leg_length_mm": 0.5,
+  "couples_by_stage": [
+    29,
+    11,
+    4
+  ],
+  "gas_face_registry_sha256": "9115ca08e0adae480521e5eafde656e637e7ac93e7395ca5c5761a0bf0ace7d4",
+  "conditions": {
+    "ambient_K": 300,
+    "Kr_pressure_Pa": 100,
+    "imposed_die_W": 0.002,
+    "electrical_power_W": 0.5956680349687936
+  },
+  "reference": {
+    "case": "V3.20 nominal with internal plus external proxy gas",
+    "result_sha256": "f26e122f5a599215f972215914ce1960c256eea7be813e32819d0f9da0b2d67f",
+    "independent_audit_sha256": "685ce67d8c048116e1c1e4d05386ca99f58b17b4e81afaf6cb7f462800744767",
+    "current_A": 0.40029773652472117,
+    "voltage_V": 1.4880624610576758,
+    "power_W": 0.5956680349687936,
+    "die_K": 219.36893852571148,
+    "top_ceramic_K": 219.29768820453583,
+    "hot_ceramic_K": 303.76129125589125,
+    "bath_W": 0.5922850583164283,
+    "stage_budget": [
+      {
+        "qh_w": 0.7170577461261421,
+        "qc_w": 0.29530465026861,
+        "voltage_v": 1.0535985027542532,
+        "joule_w": 0.26629985258166267,
+        "energy_residual_w": -8.305769266803154e-13,
+        "nlegs": 58
+      },
+      {
+        "qh_w": 0.26292859723251855,
+        "qc_w": 0.13853291533862938,
+        "voltage_v": 0.31075789479568217,
+        "joule_w": 0.08563151157925297,
+        "energy_residual_w": -9.789044574937122e-15,
+        "nlegs": 22
+      },
+      {
+        "qh_w": 0.04824596337135247,
+        "qc_w": 0.0060990819724428165,
+        "voltage_v": 0.10528883266954629,
+        "joule_w": 0.026384761017977675,
+        "energy_residual_w": -3.983098573190347e-14,
+        "nlegs": 8
+      }
+    ],
+    "external_gas_W": [
+      0.0010155572640269121,
+      0.0012068667927131124,
+      0.0009747652588173306,
+      0.00020462601353075496
+    ],
+    "internal_gas_W": [
+      0.006347763354625776,
+      0.002588254538256463,
+      0.0012051272299011017
+    ],
+    "radiation_W": [
+      0.00018577989731749763,
+      0.0002033716073957491,
+      0.00014876426708452527,
+      2.239904067029919e-05
+    ],
+    "copper_stage_heat_W": [
+      -0.10998999270350994,
+      0.02533611419983671,
+      0.08671392703944528
+    ],
+    "lead_model": {
+      "alloy_scenario": "copper",
+      "length_factor_from_internal_CAD": 1.0,
+      "face_heats_W": {
+        "8": -0.011857554430447028,
+        "36": 0.0019152812287604592
+      },
+      "per_lead": {
+        "TEC_lead1": {
+          "pin": 1,
+          "face": 8,
+          "temperature_pad_K": 303.29797526829077,
+          "temperature_header_K": 300.0,
+          "length_m": 0.0034510622711917908,
+          "thermal_G_W_K": 0.003641305090104763,
+          "R_ohm": 0.0018894324506607207,
+          "conduction_into_tec_W": -0.012008934131466803,
+          "joule_wire_W": 0.0003027594020395499,
+          "heat_into_tec_pad_W": -0.011857554430447028,
+          "wire_heating_to_header_W": 0.00015137970101977496
+        },
+        "TEC_lead9": {
+          "pin": 9,
+          "face": 36,
+          "temperature_pad_K": 299.3293301217856,
+          "temperature_header_K": 300.0,
+          "length_m": 0.004964886971715783,
+          "thermal_G_W_K": 0.002531048679647271,
+          "R_ohm": 0.002718240883837446,
+          "conduction_into_tec_W": 0.0016974981097338184,
+          "joule_wire_W": 0.0004355662380532817,
+          "heat_into_tec_pad_W": 0.0019152812287604592,
+          "wire_heating_to_header_W": 0.00021778311902664085
+        }
+      },
+      "total_R_ohm": 0.004607673334498167,
+      "joule_W": 0.0007383256400928316,
+      "conduction_into_ceramic_W": -0.010311436021732985,
+      "total_pad_heat_W": -0.009942273201686568,
+      "source_SHA256": {
+        "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+        "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f"
+      }
+    },
+    "audit": {
+      "status": "PASS independent recorded-result reconstruction; engineering gas/exchange proxy remains unvalidated",
+      "variant": "nominal",
+      "I_A": 0.40029773652472117,
+      "power_W": 0.5956680349687936,
+      "T_die_K": 219.36893852571148,
+      "stage_boundary_residual_W": [
+        1.2032191193910025e-09,
+        -1.513783211195413e-10,
+        -7.675039206608836e-12,
+        -2.636779683484747e-16,
+        1.1102230246251565e-16
+      ],
+      "global_energy_residual_W": -1.0432759101064448e-09,
+      "max_leg_residual_W": 1.4773252066113685e-13,
+      "interstage_gas_W": [
+        0.006347763354625776,
+        0.002588254538256463,
+        0.0012051272299011017
+      ],
+      "source_thermal_mapping": "PASS translated coordinates and node IDs",
+      "result_sha256": "f26e122f5a599215f972215914ce1960c256eea7be813e32819d0f9da0b2d67f"
+    }
+  },
+  "operators": {
+    "PN": "88 nonlinear 1D source research legs; >300K assumed",
+    "ceramics": "four source 3D ceramic FEM fields",
+    "copper": "reduced 1D multiport, 3D electrical gate FAIL/STOP",
+    "leads": "reduced thermal/electrical wires",
+    "gas": "overlapping-possible external and interstage approximations, no source-native gas-face BC",
+    "radiation": "effective gray proxy",
+    "detector": "2mW thermal load only",
+    "heat_sink": "finite external mount proxy",
+    "calibration": "no measured experimental validation"
+  },
+  "unresolved": [
+    "per-face gas thermal mapping and contact law",
+    "metal temperature interpolation",
+    "native gas-flux 32.6274% FAIL",
+    "native 3D metal electrical gate FAIL/STOP",
+    "package sealing and actual specimen properties"
+  ],
+  "operator_sources": {
+    "coupled_nominal": {
+      "path": "scripts/tec_height_v320_coupled.py",
+      "sha256": "8c1fa0b1b8915b8e882f4af3f8d4d368cc6c190cfc0716e2e755fea51ccbe7d9"
+    },
+    "nonlinear_leg": {
+      "path": "tecooledmct/nonlinear_tec.py",
+      "sha256": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d"
+    },
+    "source_transport": {
+      "path": "tecooledmct/graded_tec.py",
+      "sha256": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760"
+    },
+    "ceramic_field": {
+      "path": "scripts/v2_source_ceramic_spatial.py",
+      "sha256": "2fab7640b60f0ca89c12138e08b6bba196d64c3aa421424242d3646efed79398"
+    },
+    "copper_multiport": {
+      "path": "scripts/v3_4_source_copper_multiport.py",
+      "sha256": "af86568d04ce07ef82b305cb4812f5d9aff33f259877a7755029c7b6624a206e"
+    },
+    "lead_wire": {
+      "path": "scripts/v3_5_supply_lead_boundary.py",
+      "sha256": "37910d61be09d8a2d460d24b909da5d778a80f644a1e9ee5cc287a6af44cae16"
+    },
+    "gas_radiation": {
+      "path": "tecooledmct/integrated_reference.py",
+      "sha256": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51"
+    },
+    "gas_properties": {
+      "path": "tecooledmct/fem_g3b_exchange.py",
+      "sha256": "9e827673ec748129a8e69ee493bcc75b0cda30f9fcb7f2d2517abda03415d08f"
+    }
+  },
+  "original_STEP": {
+    "path": "data/synthetic_v3_assembly_20261102/cad_02/synthetic_v3_mm.step",
+    "sha256": "5e46c10fb75713a9dffbc97c44a2b94ca23bee14a93df7f4c0c7c915eb761a73"
+  },
+  "historical_v311_different_proxy": {
+    "path": "data/v3_11_rev3_backfill_source_20261109/Kr100_I040/result.json",
+    "sha256": "9393a2ad30d7fcb63a4197a6fc8b6d068d7c44b5b8e9bacb71e94dd01f3a153b",
+    "audit_sha256": "e5f33018a3555d995f777a344fa48f59e9b7996cfec04880701935811d56059d",
+    "I_A": 0.4,
+    "power_W": 0.5956680349614825,
+    "die_K": 218.90002402868413,
+    "note": "different gas and net88 model from V3.20, not a measurement"
+  }
+}

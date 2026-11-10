@@ -816,3 +816,13 @@ Register disjoint physical source-face ownership, native source/CAD corresponden
 One source audit partitions 24 ceramic faces per design, cross-checks original derived CAD face areas to 1.25e-14 mm² and verifies 0.600/0.700 mm gaps. Generic port conservation and duplicate-allocation negative controls pass. Full source gas-facing metallization/foil/connected candidate port mapping remains unresolved; no new coupled temperature solves. Original V3.21 PDF and historical gas/raw electrical failures preserved. Record: docs/TEC_CAVITY_GAS_FACE_PARTITION_20261110.md; full test/CI release pending.
 
 - 2026-11-10T19:07:35.909900+00:00 — **PASS verification / STOP physical closure:** 14 focused tests, V3.20 mesh and V3.21 78-file source manifests, full archive verifier, and two matching 48-page PDF builds/raster sets pass; all pages visually reviewed. No candidate full gas-port/void mapping and zero new coupled solves. Exact-commit CI pending.
+
+## 2026-11-10T20:09:05.217530+00:00 — PENDING — original 0.50 mm nominal cavity port inventory
+
+User prioritizes the original 824-body reference; 0.60 mm variant archived and excluded. Register all nominal R3 gas-face owners and unresolved thermal mappings, screen 100 Pa Kr rarefaction and OpenFOAM feasibility, inspect archived nominal energy budget. No new coupled solve unless physical face/port gate passes.
+
+## 2026-11-10T20:17:23.574258+00:00 — PASS nominal ownership readback / STOP gas physical closure
+
+Inventoried all 1,840 original R3 gas–solid faces (903.215049791 mm², 429 owners), including 523 patterned-net faces; eight lead-joint semantic destinations and all native gas boundary conditions remain unresolved. The original V3.20 proxy operating and stage budgets independently reconstruct; hard-sphere Kr screening at 100 Pa gives Kn 0.105 for 0.570 mm and 0.333 for 0.180 mm. No CFD or new coupled solve. Source/STEP, V3.22 PDF and historical failed gates preserved; 0.60 mm variant excluded. See docs/NOMINAL_CAVITY_PORTS_AND_REGIME_20261110.md. Verification/CI pending.
+
+- 2026-11-10T20:17:59.972290+00:00 — **PASS original-only checkpoint / STOP gas closure:** Nine focused source/ownership/budget/regime tests pass, 1,840-face independent archival readback and 31-artifact nominal manifest pass; prior V3.22 PDF hash preserved and 49-page cumulative PDF twice built and all pages visually reviewed. No new coupled, gas PDE or CFD solves; exact-commit CI pending.
