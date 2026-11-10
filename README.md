@@ -1,6 +1,8 @@
 # TE_Cooled_MCT
 
-**Current original TEC/TO reference:** [49-page V3.23 cumulative engineering assessment](reports/current/TEC_TO_Reader_First_Assessment_20261110_V323.pdf) and [nominal gas-face and regime record](docs/NOMINAL_CAVITY_PORTS_AND_REGIME_20261110.md). The 0.50 mm original design is the active reference; the 0.60 mm variant is archived and frozen. All 1,840 nominal CSG gas faces are inventoried, but native gas boundary conditions remain unimplemented and no new operating temperature is claimed.
+**Current original TEC/TO assessment:** [51-page V3.24 cumulative report](reports/current/TEC_TO_Reader_First_Assessment_20261110_V324.pdf) and [nominal source-gas coupler](docs/NOMINAL_SOURCE_GAS_COUPLER_20261110.md). The active original geometry is 0.40 × 0.40 × 0.50 mm; the 0.60 mm variant is frozen archive. Source-connected lead-joint proxies and a conservative bare-face gas subset are evaluated at existing fields, but full gas physical coupling and a new detector temperature are **NOT RUN**.
+
+**Prior original TEC/TO reference:** [49-page V3.23 cumulative engineering assessment](reports/current/TEC_TO_Reader_First_Assessment_20261110_V323.pdf) and [nominal gas-face and regime record](docs/NOMINAL_CAVITY_PORTS_AND_REGIME_20261110.md). The 0.50 mm original design is the active reference; the 0.60 mm variant is archived and frozen. All 1,840 nominal CSG gas faces are inventoried, but native gas boundary conditions remain unimplemented and no new operating temperature is claimed.
 
 **Prior TEC/TO assessment:** [48-page V3.22 cumulative report](reports/current/TEC_TO_Reader_First_Assessment_20261110_V322.pdf) and [source gas-face partition](docs/TEC_CAVITY_GAS_FACE_PARTITION_20261110.md). Ceramic source-face accounting passes, while full native gas/metal port mapping and any new coupled temperature prediction remain **STOP / NOT RUN**. Earlier reports and historical failed gates are retained.
 

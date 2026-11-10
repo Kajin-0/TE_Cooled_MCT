@@ -1,0 +1,35 @@
+{
+  "observed_UTC": "2026-11-10T22:06:42.673456+00:00",
+  "head": "193eaa6fc3d91ae3dc8cbad971d19f9a8db4e757",
+  "source_sha256": {
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/nominal_cavity_ports_20261110/nominal_gas_face_ports.json": "9115ca08e0adae480521e5eafde656e637e7ac93e7395ca5c5761a0bf0ace7d4",
+    "data/tec_height_coupling_20261110/nominal/result.json": "f26e122f5a599215f972215914ce1960c256eea7be813e32819d0f9da0b2d67f",
+    "data/tec_height_coupling_20261110/nominal/ceramic_fields.npz": "efe1dcecb0fb167df19fdd130ec88d4ddf55ebcb46323cf53e19667e12628ced",
+    "reports/current/TEC_TO_Reader_First_Assessment_20261110_V323.pdf": "d9316b3a03338a9483609ffca0a2aa334a6feee90d89d45fe84d403ae43930bc",
+    "scripts/tec_height_v320_coupled.py": "8c1fa0b1b8915b8e882f4af3f8d4d368cc6c190cfc0716e2e755fea51ccbe7d9",
+    "tecooledmct/integrated_reference.py": "bc4d69438f855d345181ba8367cd07aba03ff8024c67d5973293d0b100e62d51"
+  },
+  "scope": "nominal only; bounding projection of source solids; no replacing physical source; fixed-field partial geometry proxy unless full boundary and energy gates pass",
+  "gas_geometry_contract": "pair only bare ceramic gas-facing areas with unblocked vertical prism, exclude ALL intersecting source solid bounding boxes conservatively, reject uncertain cap annulus unless geometrically disjoint; disjoint source face tags, no exterior proxy on same participating patches; no claim of true gas heat bound",
+  "conditions": {
+    "gas": "Kr",
+    "pressure_Pa": 100,
+    "accommodation_scenarios": [
+      0.5,
+      0.8,
+      1.0
+    ],
+    "source_state": "saved V3.20 nominal fixed fields"
+  },
+  "full_solve_gates": [
+    "all selected gas regions mapped to actual ceramic boundary integration",
+    "no double-counted gas area and conservative allocation",
+    "all physical port destinations and unmodeled boundaries explicit",
+    "independent stage/global/power residuals <1e-8 W"
+  ],
+  "max_new_coupled_solves": 2,
+  "per_solve_limits": "300 seconds, 4 CPUs, 8 GiB",
+  "old_B_gate": "FAIL/STOP unchanged"
+}

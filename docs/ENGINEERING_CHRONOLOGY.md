@@ -826,3 +826,13 @@ User prioritizes the original 824-body reference; 0.60 mm variant archived and e
 Inventoried all 1,840 original R3 gas–solid faces (903.215049791 mm², 429 owners), including 523 patterned-net faces; eight lead-joint semantic destinations and all native gas boundary conditions remain unresolved. The original V3.20 proxy operating and stage budgets independently reconstruct; hard-sphere Kr screening at 100 Pa gives Kn 0.105 for 0.570 mm and 0.333 for 0.180 mm. No CFD or new coupled solve. Source/STEP, V3.22 PDF and historical failed gates preserved; 0.60 mm variant excluded. See docs/NOMINAL_CAVITY_PORTS_AND_REGIME_20261110.md. Verification/CI pending.
 
 - 2026-11-10T20:17:59.972290+00:00 — **PASS original-only checkpoint / STOP gas closure:** Nine focused source/ownership/budget/regime tests pass, 1,840-face independent archival readback and 31-artifact nominal manifest pass; prior V3.22 PDF hash preserved and 49-page cumulative PDF twice built and all pages visually reviewed. No new coupled, gas PDE or CFD solves; exact-commit CI pending.
+
+## 2026-11-10T22:06:42.673456+00:00 — PENDING — nominal source-mapped gas subset and lead-joint ownership
+
+Develop original-only 1840-face temperature mapping, source-conservative gas subset, lead-joint contacts and clarified source figure. Freeze input hashes and geometry; use at most two original coupled solves only after mapped-gas and whole-package gates pass. No variant calculations.
+
+## 2026-11-10T22:15:39.612450+00:00 — PASS source-connected partial gas operator / STOP full coupling
+
+Original-only: eight lead-joint faces map to source-contact endpoint proxies; 1,667 faces have approximate thermal representations and 173 unresolved, none qualified as gas BC. Unobstructed source-column areas 7.428064/5.497517/1.979438 mm², 752 cells; at 100 Pa Kr and accommodation 0.8 source-field one-way links 2.519773/1.188742/0.506549 mW conserve stage heat. Source solver residual adapter shows old state not equilibrium; no new coupled solve. Figure 30 now identifies actual 58/22/8 leg centers. Prior sources/PDF and historical failures preserved. See docs/NOMINAL_SOURCE_GAS_COUPLER_20261110.md; CI pending.
+
+- 2026-11-10T22:18:02.788071+00:00 — **PASS local checks / STOP full gas coupling:** 14 focused nominal tests, independently recomputed 752 source-field flux cells, deterministic source figures, 44-artifact V3.24 and 31-artifact original manifests pass. Two identical 51-page PDF builds and raster review include corrected source leg-count Figure 30. No full coupled or CFD solve. Original and earlier PDF bytes preserved; exact-commit CI pending.
