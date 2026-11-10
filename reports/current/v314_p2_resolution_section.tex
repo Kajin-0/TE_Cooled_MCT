@@ -1,0 +1,25 @@
+\clearpage
+\section{Native electrical-contact spatial resolution: failed P2 qualification (V3.14)}
+\label{sec:v314-original-coupon}
+The next physical coupon experiment tests whether smaller source-CAD elements materially reduce the original 3D lead9/solder contact-gradient mismatch. The same native net88/lead9 12-region BREP, 11 physical contacts, P87-to-pin9 electrical cuts, assumed NOM material tensors and \(r''_e=10^{-11}\ \Omega\,\mathrm m^2\) were retained. Only the Gmsh maximum element size changed, from \(0.045\) to \(0.035\)~mm. No new physical contact law or geometry was fitted, and the middle Bi57Sn43 foil-foot remains a \emph{thermal} landing but an electrical dead-end. The one preregistered, bounded P2 test used 47,277 TET4 geometric cells and 92,495 separate-material quadratic potential DOFs. An independent no-solve saved-field auditor later reconstructed both one-sided interface and terminal current integrals on all 2,178 registered contact triangles, agreeing with the saved producer at \(4.52\times10^{-13}\) relative. The three internal-plane cuts remain producer-only evidence.
+
+\begin{center}\small
+\begin{tabular}{lrrl}\toprule
+Registered observable & Prior P2 & New finer P2 & Gate\\\midrule
+Original geometric tetrahedra & 28,691 & 47,277 & Same BREP\\
+P2 scalar DOFs & 58,993 & 92,495 & Same physical regions\\
+Worst raw-current mismatch & 8.0993\% & \textbf{7.0193\%} & \textbf{FAIL} (\(\leq 0.1\%\))\\
+Current cuts passing & 5/16 & \textbf{5/16} & \textbf{FAIL} (16/16)\\
+Minimum electric potential & \(-9.15\times10^{-7}\) V & \(-5.56\times10^{-7}\) V & \textbf{FAIL} (\(\geq-10^{-8}\) V)\\
+Unit-excitation coupon resistance & 0.0295489 \(\Omega\) & 0.0295302 \(\Omega\) & Conditional\\
+Relative IV--dissipation mismatch & \(6.34\times10^{-9}\) & \(1.43\times10^{-10}\) & PASS (\(\leq0.5\%\))\\\bottomrule
+\end{tabular}
+\end{center}
+
+\fig[.93]{v314_all_raw_current_cuts}{pdf}{All sixteen original source-identified raw-gradient electrical current-cut mismatches, using the same physical interfaces and criterion before and after the single geometric mesh-size reduction. Eleven of sixteen still fail. Weak/contact-reaction fluxes do not replace these independently verified one-sided element-gradient fluxes. This is not experimental validation or a full-TEC electrical resistance measurement.}
+
+\clearpage
+\clearpage
+The worst mismatch decreased about 13.33\% relative, yet remains \textbf{70.19 times above the release threshold}. Nine individual raw-cut errors improved, seven worsened. The finer source mesh also has a remaining 0.989\% volume deficit compared with the registered CAD. More importantly, even though the discretized terminal power balance remains excellent, the source contact/lead9 P2 normal-current gradients are not locally accurate to the original standard.
+
+\textbf{Qualification and decision.} The original 3D electrical Gate B remains \textbf{FAIL/STOP}; thermal Gate C and spatial Joule Gate D remain \textbf{NOT RUN}. No new detector operating point, current rating, copper heat-spreading coefficient or manufacturable geometry optimum follows from this failed local coupon. A future approach would need a new separately preregistered source-contact perimeter discretization/field formulation with independent interface and cut-port verification, not an unsupervised mesh sweep or altered acceptance criteria. The full diagnostic and source hashes are archived in \texttt{docs/V3\_14\_NATIVE\_NET88\_P2\_REFINEMENT\_20261109.md}.

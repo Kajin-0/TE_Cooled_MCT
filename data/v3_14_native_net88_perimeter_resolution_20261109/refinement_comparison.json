@@ -1,0 +1,157 @@
+{
+  "result": "FAIL/STOP source-CAD finer P2 local electrical Gate B",
+  "project": "TEC/TO physical package; local net88/lead9 coupon only",
+  "original_geometric_mesh_h_mm": 0.045,
+  "new_geometric_mesh_h_mm": 0.035,
+  "original_tetrahedra": 28691,
+  "new_tetrahedra": 47277,
+  "original_P2_dofs": 58993,
+  "new_P2_dofs": 92495,
+  "original_reduced_resistance_ohm": 0.02954886127881769,
+  "new_reduced_resistance_ohm": 0.029530248946385004,
+  "resistance_rel_delta": -0.0006298832383780928,
+  "original_worst_cut_error_pct": 8.099302393263901,
+  "new_worst_cut_error_pct": 7.019320630430186,
+  "worst_cut_relative_reduction_pct": 13.334256586492232,
+  "current_cut_acceptance_pct": 0.1,
+  "new_worst_over_limit_factor": 70.19320630430185,
+  "original_failing_cuts": 11,
+  "new_failing_cuts": 11,
+  "strictly_improved_cut_count": 9,
+  "strictly_worsened_cut_count": 7,
+  "new_voltage_min_V": -5.55524480929775e-07,
+  "voltage_bound_min_allowed_V": -1e-08,
+  "voltage_gate_pass": false,
+  "new_IV_loss_mismatch_rel": 1.432221651183918e-10,
+  "new_algebraic_relative_residual": 9.885385550032943e-11,
+  "source_mesh_volume_vs_CAD_rel": -0.009891686185397819,
+  "new_independent_contact_readback_max_rel": 4.5112383329188614e-13,
+  "interpretation": "Higher spatial resolution reduced some raw interfacial errors but not all. 3D electrical gate still fails; exact cause cannot be attributed solely to mesh refinement. FEM weak energy balance is not raw contact-flux qualification.",
+  "new_thermal_FEM_solves": 0,
+  "new_spatial_Joule_FEM_solves": 0,
+  "original_mesh_fields_immutable": true,
+  "cutwise_results": [
+    {
+      "physical_cut": "film2 / pn87_solder",
+      "original_P2_relative": 0.03892296509435853,
+      "fine_P2_relative": 0.04256177250300526,
+      "delta_percentage_points": 0.3638807408646728,
+      "new_pass": false
+    },
+    {
+      "physical_cut": "tab88 / joint4",
+      "original_P2_relative": 0.06843222466719537,
+      "fine_P2_relative": 0.06463226877450425,
+      "delta_percentage_points": -0.3799955892691123,
+      "new_pass": false
+    },
+    {
+      "physical_cut": "tab88 / joint5",
+      "original_P2_relative": 4.577569551803828e-05,
+      "fine_P2_relative": 0.0013377286928883,
+      "delta_percentage_points": 0.12919529973702618,
+      "new_pass": false
+    },
+    {
+      "physical_cut": "tab88 / joint6",
+      "original_P2_relative": 0.0671291926661886,
+      "fine_P2_relative": 0.06757284926771029,
+      "delta_percentage_points": 0.04436566015216942,
+      "new_pass": false
+    },
+    {
+      "physical_cut": "lead9 / lead_land",
+      "original_P2_relative": 0.080993023932639,
+      "fine_P2_relative": 0.07019320630430186,
+      "delta_percentage_points": -1.079981762833715,
+      "new_pass": false
+    },
+    {
+      "physical_cut": "film0 / lead_land",
+      "original_P2_relative": 0.018052189587733216,
+      "fine_P2_relative": 0.011283337242224932,
+      "delta_percentage_points": -0.6768852345508284,
+      "new_pass": false
+    },
+    {
+      "physical_cut": "lead9 / lead_pin",
+      "original_P2_relative": 0.06852908306066172,
+      "fine_P2_relative": 0.061886928123449585,
+      "delta_percentage_points": -0.6642154937212131,
+      "new_pass": false
+    },
+    {
+      "physical_cut": "lead_pin / pin_finish",
+      "original_P2_relative": 0.017087035916928565,
+      "fine_P2_relative": 0.0030658652314889704,
+      "delta_percentage_points": -1.4021170685439595,
+      "new_pass": false
+    },
+    {
+      "physical_cut": "joint4 / film0",
+      "original_P2_relative": 0.0481228932296047,
+      "fine_P2_relative": 0.05433555763236448,
+      "delta_percentage_points": 0.6212664402759777,
+      "new_pass": false
+    },
+    {
+      "physical_cut": "joint5 / film1",
+      "original_P2_relative": 0.0010657878560106028,
+      "fine_P2_relative": 0.0002426299015026384,
+      "delta_percentage_points": -0.08231579545079644,
+      "new_pass": true
+    },
+    {
+      "physical_cut": "joint6 / film2",
+      "original_P2_relative": 0.06649451531792688,
+      "fine_P2_relative": 0.04491800280373554,
+      "delta_percentage_points": -2.157651251419134,
+      "new_pass": false
+    },
+    {
+      "physical_cut": "terminal 0",
+      "original_P2_relative": 0.00022156693168283646,
+      "fine_P2_relative": 0.002583531232408117,
+      "delta_percentage_points": 0.23619643007252805,
+      "new_pass": false
+    },
+    {
+      "physical_cut": "terminal 1",
+      "original_P2_relative": 0.00013735645004281827,
+      "fine_P2_relative": 0.0005954747306821197,
+      "delta_percentage_points": 0.04581182806393014,
+      "new_pass": true
+    },
+    {
+      "physical_cut": "tab88_lower",
+      "original_P2_relative": 1.999707109367178e-08,
+      "fine_P2_relative": 3.0579245442781603e-08,
+      "delta_percentage_points": 1.0582174349109825e-06,
+      "new_pass": true
+    },
+    {
+      "physical_cut": "tab88_upper",
+      "original_P2_relative": 2.8569282804851974e-09,
+      "fine_P2_relative": 2.4271748458590953e-09,
+      "delta_percentage_points": -4.2975343462610213e-08,
+      "new_pass": true
+    },
+    {
+      "physical_cut": "lead9_mid",
+      "original_P2_relative": 0.00131996613578837,
+      "fine_P2_relative": 2.3317130145973687e-05,
+      "delta_percentage_points": -0.12966490056423963,
+      "new_pass": true
+    }
+  ],
+  "input_sha256": {
+    "data/v3_gate_B_original_P2_20261106/attempt01/P2_coupon_result.json": "e4780663273c552ed82cfbd447ce64149c846f104315bea81598a92bac928b26",
+    "data/v3_14_native_net88_perimeter_resolution_20261109/attempt01/P2_candidate_h035_result.json": "8dfd95eac8e5a85ae67b5bade133347dd1ad568035703ef88b8bc902de0a215a",
+    "data/v3_14_native_net88_perimeter_resolution_20261109/fine35/mesh_audit.json": "539859af9386456d612772f708126ff719fda106b28d76eb63136466f2811124",
+    "data/v3_14_native_net88_perimeter_resolution_20261109/attempt01/independent_readback.json": "de44d9bb2a68cfacd3aeb8258286722c6c0e4c24adb03ba4126b7e75aae15f19"
+  },
+  "figure_sha256": {
+    "reports/current/figures/v314_all_raw_current_cuts.png": "9ed02ce6957d63876964c655996dff24c1138164ec090addb44081ba6bd36e21",
+    "reports/current/figures/v314_all_raw_current_cuts.pdf": "05aba3a99e62a3f61e01d9705cb74c38c63c0581a24bc89e0a51b87ac6bd5880"
+  }
+}

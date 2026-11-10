@@ -1,0 +1,252 @@
+{
+  "status": "STOP prospective new-h P2 raw current gate",
+  "original_P1_Gate_B": "FAIL/STOP remains unchanged",
+  "physical_material_properties": "unchanged original NOM assumptions, not measured",
+  "current_gate_limit": 0.001,
+  "voltage_bound_tolerance_V": 1e-08,
+  "power_gate_limit": 0.005,
+  "solver": {
+    "GMRES_info": 0,
+    "GMRES_iterations": 41,
+    "ILU_factor_nnz": 25388915,
+    "true_reduced_relative_residual": 9.885385550032943e-11,
+    "factor_and_solve_seconds": 13.30399925983511,
+    "source_current_unitV_A": 33.86358177391582,
+    "drain_current_unitV_A": 33.86358096288863
+  },
+  "P2_unit_potential_current_A": 33.86358177391582,
+  "P2_R_coupon_ohm": 0.029530248946385004,
+  "relative_change_to_original_P1_R": 0.005395848389794233,
+  "P2_minimum_voltage_V": -5.55524480929775e-07,
+  "P2_maximum_voltage_V": 1.0,
+  "P2_current_opposite_terminal_relative_error": 2.3949834674330373e-08,
+  "P2_raw_cut_max_relative_error": 0.07019320630430186,
+  "P2_raw_cuts_passing_count": 5,
+  "P2_raw_cuts_failing_count": 11,
+  "P2_bulk_loss_unitV_W": 31.746101330209523,
+  "P2_contact_loss_unitV_W": 2.1174804485563086,
+  "P2_IV_minus_losses_relative": 1.432221651183918e-10,
+  "original_P1_worst_cut_relative_error": 0.8562549986750948,
+  "original_P1_minimum_voltage_V": -7.351361599744923e-07,
+  "source_geometry_nodes_unchanged": true,
+  "source_materials_and_contact_law_unchanged": true,
+  "P2_geometry_linear_TET4_unchanged": false,
+  "source_geometry_BREP_unchanged": true,
+  "new_mesh_target_h_mm": 0.035,
+  "P2_potential_solution_coefficient_file": "P2_candidate_h035_field.npz",
+  "source_original_mesh_SHA256": {
+    "data/v3_14_native_net88_perimeter_resolution_20261109/fine35/mesh.npz": "10dac10a2ff0c11754e68d823230cfef93761f3ef3db5abc16593e349e364644",
+    "data/v3_14_native_net88_perimeter_resolution_20261109/fine35/registry.json": "12e4179cfba36f8e3fc529de7cef2f66cfd799799c83137d3feed09691b1876b",
+    "data/v3_interconnect_et_20261102/B/fine_field/fields.npz": "7ba922cee52263ad8f057fc20f1af2e1c81c1816f56066ab3871afbae8e6b770",
+    "data/v3_interconnect_et_20261102/B/fine_field/result.json": "40431f8c46e4d692c01379da31baecc03cdb5a67b36603fe2af9ec2888093dfa",
+    "data/v3_interconnect_et_20261102/B/gate_B.json": "46993813dfa478fbd3527a02aec02226ef85545bb7c03ec91a80f4f3e9c4a1b0"
+  },
+  "P2_cuts": [
+    {
+      "pair": [
+        "film2",
+        "pn87_solder"
+      ],
+      "expected_fraction": -1,
+      "natural_A": -33.86358177703475,
+      "raw_a_A": -32.4222877103175,
+      "raw_b_A": 34.24081256481167,
+      "area_m2": 1.6000000000000003e-07,
+      "triangles": 324,
+      "natural_relative_error": 9.210291058014265e-11,
+      "raw_relative_error": 0.04256177250300526,
+      "gate_error": 0.04256177250300526
+    },
+    {
+      "pair": [
+        "tab88",
+        "joint4"
+      ],
+      "expected_fraction": 1,
+      "natural_A": 33.863581777288324,
+      "raw_a_A": 31.674901655036688,
+      "raw_b_A": -33.7578399964709,
+      "area_m2": 6.399999999999991e-08,
+      "triangles": 152,
+      "natural_relative_error": 9.959093673767175e-11,
+      "raw_relative_error": 0.06463226877450425,
+      "gate_error": 0.06463226877450425
+    },
+    {
+      "pair": [
+        "tab88",
+        "joint5"
+      ],
+      "expected_fraction": 0,
+      "natural_A": -7.430784893652786e-11,
+      "raw_a_A": -0.045300284982936465,
+      "raw_b_A": -0.0010589385706008241,
+      "area_m2": 6.39999999999998e-08,
+      "triangles": 152,
+      "natural_relative_error": 2.194329277766038e-12,
+      "raw_relative_error": 0.0013377286928883,
+      "gate_error": 0.0013377286928883
+    },
+    {
+      "pair": [
+        "tab88",
+        "joint6"
+      ],
+      "expected_fraction": -1,
+      "natural_A": -33.863581776871214,
+      "raw_a_A": -31.575323067042223,
+      "raw_b_A": 33.698803346123476,
+      "area_m2": 6.399999999999985e-08,
+      "triangles": 156,
+      "natural_relative_error": 8.727357748849334e-11,
+      "raw_relative_error": 0.06757284926771029,
+      "gate_error": 0.06757284926771029
+    },
+    {
+      "pair": [
+        "lead9",
+        "lead_land"
+      ],
+      "expected_fraction": -1,
+      "natural_A": -33.863581777551666,
+      "raw_a_A": -34.66845345789385,
+      "raw_b_A": 31.48658839225675,
+      "area_m2": 3.138363829113801e-08,
+      "triangles": 180,
+      "natural_relative_error": 1.073674723234689e-10,
+      "raw_relative_error": 0.07019320630430186,
+      "gate_error": 0.07019320630430186
+    },
+    {
+      "pair": [
+        "film0",
+        "lead_land"
+      ],
+      "expected_fraction": 1,
+      "natural_A": 33.863581777529916,
+      "raw_a_A": 33.481487560531065,
+      "raw_b_A": -33.48716492352797,
+      "area_m2": 8.034211402531323e-08,
+      "triangles": 264,
+      "natural_relative_error": 1.067251978798845e-10,
+      "raw_relative_error": 0.011283337242224932,
+      "gate_error": 0.011283337242224932
+    },
+    {
+      "pair": [
+        "lead9",
+        "lead_pin"
+      ],
+      "expected_fraction": 1,
+      "natural_A": 33.86358186051632,
+      "raw_a_A": 34.36238020847047,
+      "raw_b_A": -31.767868722670933,
+      "area_m2": 3.138363829113792e-08,
+      "triangles": 176,
+      "natural_relative_error": 2.557334353190703e-09,
+      "raw_relative_error": 0.061886928123449585,
+      "gate_error": 0.061886928123449585
+    },
+    {
+      "pair": [
+        "lead_pin",
+        "pin_finish"
+      ],
+      "expected_fraction": 1,
+      "natural_A": 33.86358151628206,
+      "raw_a_A": 33.759760595941486,
+      "raw_b_A": -33.80731243600135,
+      "area_m2": 1.255345531645518e-07,
+      "triangles": 348,
+      "natural_relative_error": 7.607989007278067e-09,
+      "raw_relative_error": 0.0030658652314889704,
+      "gate_error": 0.0030658652314889704
+    },
+    {
+      "pair": [
+        "joint4",
+        "film0"
+      ],
+      "expected_fraction": 1,
+      "natural_A": 33.863581777303054,
+      "raw_a_A": 33.636640179822585,
+      "raw_b_A": -32.02358517480093,
+      "area_m2": 6.399999999999991e-08,
+      "triangles": 142,
+      "natural_relative_error": 1.0002590404298062e-10,
+      "raw_relative_error": 0.05433555763236448,
+      "gate_error": 0.05433555763236448
+    },
+    {
+      "pair": [
+        "joint5",
+        "film1"
+      ],
+      "expected_fraction": 0,
+      "natural_A": -4.371366463251647e-11,
+      "raw_a_A": 0.0033232599155454123,
+      "raw_b_A": -0.008216317510331736,
+      "area_m2": 6.399999999999992e-08,
+      "triangles": 142,
+      "natural_relative_error": 1.2908753989569968e-12,
+      "raw_relative_error": 0.0002426299015026384,
+      "gate_error": 0.0002426299015026384
+    },
+    {
+      "pair": [
+        "joint6",
+        "film2"
+      ],
+      "expected_fraction": -1,
+      "natural_A": -33.863581776857416,
+      "raw_a_A": -33.63653994943114,
+      "raw_b_A": 32.34249731285054,
+      "area_m2": 6.399999999999999e-08,
+      "triangles": 142,
+      "natural_relative_error": 8.686609726325945e-11,
+      "raw_relative_error": 0.04491800280373554,
+      "gate_error": 0.04491800280373554
+    },
+    {
+      "terminal": 0,
+      "raw_out_A": -33.951069395069936,
+      "expected_out_A": -33.86358177391582,
+      "gate_error": 0.002583531232408117
+    },
+    {
+      "terminal": 1,
+      "raw_out_A": 33.843416866679064,
+      "expected_out_A": 33.86358177391582,
+      "gate_error": 0.0005954747306821197
+    },
+    {
+      "interior": "tab88_lower",
+      "axis": 2,
+      "position_m": 0.00268425,
+      "raw_A": -33.8635828094386,
+      "expected_A": -33.86358177391582,
+      "area_m2": 9.000000000000023e-09,
+      "gate_error": 3.0579245442781603e-08
+    },
+    {
+      "interior": "tab88_upper",
+      "axis": 2,
+      "position_m": 0.00378425,
+      "raw_A": -33.863581691722985,
+      "expected_A": -33.86358177391582,
+      "area_m2": 9.000000000000024e-09,
+      "gate_error": 2.4271748458590953e-09
+    },
+    {
+      "interior": "lead9_mid",
+      "axis": 0,
+      "position_m": -0.002434345884812358,
+      "raw_A": -33.86437137545925,
+      "expected_A": -33.86358177391582,
+      "area_m2": 3.1057887509564254e-08,
+      "gate_error": 2.3317130145973687e-05
+    }
+  ],
+  "wall_seconds": 18.729469439014792,
+  "max_RSS_MiB": 795.93359375
+}

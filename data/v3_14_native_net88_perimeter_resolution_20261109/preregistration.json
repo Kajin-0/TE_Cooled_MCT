@@ -1,0 +1,54 @@
+{
+  "task": "V3.14 single prospective source-CAD P2 spatial resolution test at original net88/lead9 contact interfaces",
+  "baseline_git_commit": "a936db4",
+  "n_attempts": 1,
+  "mesh_h_mm": 0.035,
+  "original_fine_h_mm": 0.045,
+  "minimum_geometric_size_mm": 0.001,
+  "original_source_BREP": "data/v3_interconnect_et_20261102/geometry/coupon_mm.brep",
+  "native_regions": 12,
+  "physical_interfaces": 11,
+  "electrical_terminals": "PN87 SnSb original internal cut 1V; Ni pin9 original internal cut 0V",
+  "middle_contact_joint5": "real thermal interface, zero through-current electrical branch",
+  "constitutive": "original NOM P2: unchanged 300K 12 material tensors, contact re=1e-11 Ohm m^2, anisotropic plated laminate; no physical calibration",
+  "acceptance": {
+    "all_16_raw_gradient_current_cuts_relative_max": 0.001,
+    "minimum_voltage_V": -1e-08,
+    "maximum_voltage_V": 1.00000001,
+    "IV_minus_all_bulk_and_contacts_rel_max": 0.005,
+    "operator_relative_solver_residual_max": 1e-08,
+    "max_cells": 250000
+  },
+  "provenance": {
+    "historical_P1_P2_FAIL_STOP_preserved": true,
+    "old_current_raw_cut_error_P2": 0.080993023932639,
+    "old_3D_thermal_C": "NOT RUN",
+    "old_coupled_Joule_D": "NOT RUN"
+  },
+  "compute_budget": {
+    "mesh_max_wall_seconds": 120,
+    "solve_max_wall_seconds": 180,
+    "docker_cpus": 4,
+    "docker_memory_GiB": 8
+  },
+  "stop_policy": "Single preregistered h=0.035 full-CAD P2 solve. Preflight failure, mesh>250000 TET4, solver fail, any raw flux or boundedness fail => STOP; no alternate mesh, parameter tweaks, new thermal or Joule; disclose all failures.",
+  "accepted_source_sha256": {
+    "data/v3_interconnect_et_20261102/geometry/coupon_mm.brep": "3c4afc09544c108a8d17fd28f1288953384469dbcc03ad19bae7fdb01aa590e2",
+    "data/v3_interconnect_et_20261102/geometry/geometry.json": "d393244cf483027af24396b1da43df106875b6e7163c4003fd2003a7a4f7f18b",
+    "data/v3_interconnect_et_20261102/B/fine_mesh/mesh.npz": "9e9cf24ba0b22f8047b75851cef2266cf4d0189d40e78b8025a915a3788fad63",
+    "data/v3_interconnect_et_20261102/B/fine_mesh/registry.json": "12e4179cfba36f8e3fc529de7cef2f66cfd799799c83137d3feed09691b1876b",
+    "data/v3_gate_B_original_P2_20261106/attempt01/P2_coupon_result.json": "e4780663273c552ed82cfbd447ce64149c846f104315bea81598a92bac928b26",
+    "data/v3_interconnect_et_20261102/B/fine_field/result.json": "40431f8c46e4d692c01379da31baecc03cdb5a67b36603fe2af9ec2888093dfa",
+    "data/v3_interconnect_et_20261102/B/gate_B.json": "46993813dfa478fbd3527a02aec02226ef85545bb7c03ec91a80f4f3e9c4a1b0",
+    "tecooledmct/v3_et_geometry.py": "b2c3430e7fad86c327a5794954f5f091809272e0aa8765ecea54b05545b81b15",
+    "scripts/v3_gate_B_p2_coupon_attempt.py": "a25dd905015d832069876fa0e5df8be7f77593e27677b1863422f8ee8885b1ee"
+  },
+  "frozen_candidate_mesh_sha256": {
+    "data/v3_14_native_net88_perimeter_resolution_20261109/fine35/mesh.npz": "10dac10a2ff0c11754e68d823230cfef93761f3ef3db5abc16593e349e364644",
+    "data/v3_14_native_net88_perimeter_resolution_20261109/fine35/registry.json": "12e4179cfba36f8e3fc529de7cef2f66cfd799799c83137d3feed09691b1876b",
+    "data/v3_14_native_net88_perimeter_resolution_20261109/fine35/mesh_audit.json": "539859af9386456d612772f708126ff719fda106b28d76eb63136466f2811124"
+  },
+  "candidate_producer_sha256": "9ffc91d5525053490b6547049bb79bb96e4377aa5d69d16d655b9bbe0361562a",
+  "runtime_image_sha256": "sha256:97526dcefe0324c06197ce2a2dc632840ddd27a06493c6220002a85fb7a9ef14",
+  "startup_failure": "Original legacy tecooledmct-fem:26.2.1 tag absent; no Gmsh started. Available recovered-20261105 image used, preexisting project image; no rebuild."
+}
