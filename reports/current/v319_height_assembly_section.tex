@@ -1,0 +1,17 @@
+\subsection{Constructed custom-height assembly and verification}
+The preceding feasibility discussion records the earlier coordinate-only status. A separately constructed 0.60 mm-leg \emph{custom} assembly now moves the four ceramic planes, rebuilds the 88 legs and solder joints, shifts the metallization and detector stack, reforms the three copper returns, and raises the two detector-wire paths while keeping their pin endpoints fixed. The source 0.50 mm assembly remains unchanged. The 4.10 mm stack is a design difference from the cited manufacturer's nominal envelope, not a physical impossibility or an assertion of that manufacturer's construction.
+
+\begin{center}\small\begin{tabular}{lr}\toprule
+Candidate verification & Result \\ \midrule
+Source identities / altered body geometries & 824 / 556 \\
+P/N--solder and solder--metallization contacts & 176 + 176 \\
+Minimum independently calculated rectangular overlap & 0.160 mm$^2$ \\
+Series nets; return-foil feet on 58 / 80 / 88 & 89; 2 / 2 / 3 \\
+Imported boundary contact witnesses & 923 \\
+Curved-body Boolean overlaps / separation certificates & 58 zero-volume / 1,250 \\
+Conservative shell / roof clearance lower bounds & 0.785 / 3.186 mm \\
+Minimum unrelated pin--wire clearance lower bound & 1.783 mm \\
+\bottomrule\end{tabular}\end{center}
+The exported 824-solid STEP was independently imported in SI units. A separate 1 mm cube gave $10^{-9}$ m$^3$; the maximum per-solid volume discrepancy was $1.29\times10^{-11}$ relative and the largest bounding-coordinate discrepancy was $1.00\times10^{-7}$ m. Contact witnesses establish imported face membership; the 0.160 mm$^2$ values are independently computed from the source rectangular solids. The clearance figures are conservative nominal geometric bounds, not manufacturing or tolerance qualification. The older source-audit tolerance table was hard-coded for the 3.80 mm baseline and is not a taller-candidate tolerance result.
+
+This geometry result does not complete the changed cooler's ceramic face/mesh mapping, copper thermal and electrical parameters, native cavity treatment or full-system energy balance. No matched-power comparison or new mounting temperature is claimed. The historical 3D electrical contact gate remains failed; manufacturing capability, current rating and OEM equivalence remain unqualified.

@@ -1,0 +1,24 @@
+{
+  "utc": "2026-11-10T13:08:24.668278+00:00",
+  "baseline": "c942a516384af7c9dbebb132ae5e76db9137065b",
+  "scope": "Separate 824-body 0.60mm custom source geometry; no source mutation, no solver, no manufacturing or thermal qualification",
+  "limits": "STEP attempt <=180s, 4 CPU 8GiB; source-level contacts, unlike net and geometry gate first",
+  "gates": [
+    "source identity and changed solids mapping",
+    "176 PN contacts and 176 solder/metal contacts",
+    "89-net chain and 7 foil feet including net88",
+    "no unlike-net short or box overlap",
+    "independent SI STEP + exact curved collision/clearance checks for STEP qualification",
+    "full system solver NOT RUN unless geometry and thermal mapping/gas gates pass"
+  ],
+  "source_sha256": {
+    "tecooledmct/tec_assembly_v3.py": "dfbb339b660fbcccecbe484b6161b3f11ec94e2a43d6bbd07a65406b6b03cc71",
+    "tecooledmct/tec_assembly_v3_audit.py": "49f423f803961fa570c0cc0877178a0c3e1bdbc405ac5fa540ebddcb03406e3f",
+    "tecooledmct/tec_assembly_v3_step_audit.py": "a3a00408d7ba2a854281470748be17e20ac95782384b2a18f8671d9039914964",
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/synthetic_v3_assembly_20261102/cad_02/synthetic_v3_mm.step": "5e46c10fb75713a9dffbc97c44a2b94ca23bee14a93df7f4c0c7c915eb761a73",
+    "data/tec_height_geometry_20261110/analytic_coordinate_proposal.json": "50cd8f99cea36f58dad1495b9589bc0d9b957519e087001b6380f6e208692550",
+    "data/tec_height_geometry_20261110/formed_paths_proposal.json": "560c0241c989f8d10aba6b40bf8ae220b6b5a0cad2b95d91f10b1c11716f6531",
+    "reports/current/TEC_TO_Reader_First_Assessment_20261110_V318.pdf": "c4b28cb3feabf29a5940151e00a9042c34f4ac138e563520a4ee915ac99b42b7"
+  }
+}
