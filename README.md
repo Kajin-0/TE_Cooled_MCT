@@ -1,5 +1,7 @@
 # TE_Cooled_MCT
 
+**Current master engineering assessment — [36-page cumulative V3.12 TEC/TO report](reports/current/TEC_HgCdTe_Cumulative_TEC_TO_20261109_Contact_Engineering_Rev4.pdf).** New [V3.12 copper/joint and mounting assessment](docs/V3_12_COPPER_JOINT_MOUNTING_EVIDENCE_20261109.md) independently reconstructs source copper transfer and conducts six frozen-temperature contact mechanism screens using documented solder reference properties; no new full-system FEM solves. Earlier complete editions and accepted numerical records are retained. The newest engineering direction remains source-realistic TEC/TO thermal design, not HgCdTe detector semiconductor research.
+
 **Device-oriented engineering report:** [Thermoelectric Cooling of an HgCdTe Detector: Device Design, Heat Flow, and Electrical Performance](reports/current/TEC_HgCdTe_Current_Architecture_20261108.pdf)
 
 **[See the package and electrical interconnection geometry](reports/current/figures/cad_package_shaded.png)** | **[Actual nine-pin circuit assignments](reports/current/figures/cad_package_pinout.png)**

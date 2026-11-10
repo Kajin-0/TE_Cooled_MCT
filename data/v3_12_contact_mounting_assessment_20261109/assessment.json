@@ -1,0 +1,184 @@
+{
+  "scope": "Source CAD + frozen-state conductor/mount screen; no newly coupled temperature predictions",
+  "model": "29/11/4 couples, 88 legs, 300 K reservoir, 0.400 A, 100 Pa Kr, 2 mW externally imposed die heat",
+  "nominal_interface_Rarea_m2K_W": 1e-06,
+  "high_hypothetical_Rarea_m2K_W": 0.0001,
+  "joint_contact_area_m2": 6e-08,
+  "Cu_foil_cross_section_m2": 9e-09,
+  "source_solder_design_identity": "95Sn5Sb synthetic source design only; actual OEM alloy unknown",
+  "solder_reference_properties": {
+    "Sn95Sb5_k_300K_W_mK": 28.0,
+    "SAC305_k_W_mK": 61.0,
+    "sources": [
+      "https://scp.indium.com/download-files/solder_thermal_interface_materials_98049_r1.pdf",
+      "https://documents.indium.com/qdynamo/download.php?docid=5418"
+    ]
+  },
+  "joint_nominal_equivalent_SnSb_bulk_thickness_um": 28.0,
+  "joint_high_hypothesis_equivalent_SnSb_bulk_thickness_um": 2800.0,
+  "source_component_budget": {
+    "Cu_net_58_mW": 55.82330578606419,
+    "Cu_net_80_upper_mW": 41.05754478298673,
+    "Cu_net_88_upper_mW": 46.11594866477529,
+    "Cu_net_88_middle_mW": 10.22520703168451,
+    "Cu_into_hot_ceramic_mW": -110.577817243006,
+    "Cu_into_middle_ceramic_mW": 25.486697537953315,
+    "Cu_into_upper_ceramic_mW": 87.17349344776201,
+    "Cu_total_Joule_mW": 2.0823737427060007,
+    "Cu_total_electrical_R_ohm": 0.013014835891912501,
+    "pin1_into_ceramic_mW": -11.873328424866889,
+    "pin9_into_ceramic_mW": 1.9479616508439286,
+    "two_leads_net_into_ceramic_mW": -9.92536677402296,
+    "two_leads_Joule_mW": 0.7372277335197068,
+    "gas_total_into_four_branches_mW": 3.4195310994406776,
+    "radiation_total_into_four_branches_mW": 0.5626414306966285,
+    "TEC_stage3_cold_leg_heat_lift_mW": 4.907928062560062,
+    "detector_imposed_external_heat_mW": 2.0,
+    "TEC_input_W": 0.5956680349614825,
+    "die_temperature_K": 218.90002402868413
+  },
+  "fixed_ceramic_face_hypotheses": [
+    {
+      "alloy": "Sn95Sb5",
+      "k_bulk_300K_W_mK": 28.0,
+      "assumed_bondline_thickness_um": 20,
+      "bulk_only_Rarea_m2K_W": 7.142857142857142e-07,
+      "single_contact_R_K_W": 11.904761904761905,
+      "fixed_field_upper_Cu_heat_mW": 88.27979240934887,
+      "fixed_field_upper_Cu_delta_vs_nominal_mW": 1.1062989615868575,
+      "fixed_field_copper_Joule_mW": 2.0823737427060007
+    },
+    {
+      "alloy": "Sn95Sb5",
+      "k_bulk_300K_W_mK": 28.0,
+      "assumed_bondline_thickness_um": 25,
+      "bulk_only_Rarea_m2K_W": 8.928571428571427e-07,
+      "single_contact_R_K_W": 14.88095238095238,
+      "fixed_field_upper_Cu_heat_mW": 87.58484929328428,
+      "fixed_field_upper_Cu_delta_vs_nominal_mW": 0.41135584552226545,
+      "fixed_field_copper_Joule_mW": 2.0823737427060007
+    },
+    {
+      "alloy": "Sn95Sb5",
+      "k_bulk_300K_W_mK": 28.0,
+      "assumed_bondline_thickness_um": 35,
+      "bulk_only_Rarea_m2K_W": 1.2499999999999999e-06,
+      "single_contact_R_K_W": 20.833333333333332,
+      "fixed_field_upper_Cu_heat_mW": 86.22961138896429,
+      "fixed_field_upper_Cu_delta_vs_nominal_mW": -0.9438820587977237,
+      "fixed_field_copper_Joule_mW": 2.0823737427060007
+    },
+    {
+      "alloy": "SAC305 counterfactual",
+      "k_bulk_300K_W_mK": 61.0,
+      "assumed_bondline_thickness_um": 20,
+      "bulk_only_Rarea_m2K_W": 3.2786885245901637e-07,
+      "single_contact_R_K_W": 5.46448087431694,
+      "fixed_field_upper_Cu_heat_mW": 89.82493743951116,
+      "fixed_field_upper_Cu_delta_vs_nominal_mW": 2.6514439917491446,
+      "fixed_field_copper_Joule_mW": 2.0823737427060007
+    },
+    {
+      "alloy": "SAC305 counterfactual",
+      "k_bulk_300K_W_mK": 61.0,
+      "assumed_bondline_thickness_um": 25,
+      "bulk_only_Rarea_m2K_W": 4.0983606557377047e-07,
+      "single_contact_R_K_W": 6.830601092896175,
+      "fixed_field_upper_Cu_heat_mW": 89.49234319993194,
+      "fixed_field_upper_Cu_delta_vs_nominal_mW": 2.318849752169921,
+      "fixed_field_copper_Joule_mW": 2.0823737427060007
+    },
+    {
+      "alloy": "SAC305 counterfactual",
+      "k_bulk_300K_W_mK": 61.0,
+      "assumed_bondline_thickness_um": 35,
+      "bulk_only_Rarea_m2K_W": 5.737704918032786e-07,
+      "single_contact_R_K_W": 9.562841530054644,
+      "fixed_field_upper_Cu_heat_mW": 88.83502023024892,
+      "fixed_field_upper_Cu_delta_vs_nominal_mW": 1.661526782486905,
+      "fixed_field_copper_Joule_mW": 2.0823737427060007
+    }
+  ],
+  "accepted_mounting_cases": [
+    {
+      "case": "base_I040",
+      "detector_T_K": 218.9000240286839,
+      "current_A": 0.4,
+      "input_W": 0.5956680349614821,
+      "delta_T_vs_baseline_K": 0.0,
+      "extra_power_vs_baseline_percent": 0.0
+    },
+    {
+      "case": "sink_plus05_I040",
+      "detector_T_K": 220.39347016609176,
+      "current_A": 0.4,
+      "input_W": 0.6049350713551755,
+      "delta_T_vs_baseline_K": 1.493446137407858,
+      "extra_power_vs_baseline_percent": 1.5557384062572233
+    },
+    {
+      "case": "sink_plus10_I040",
+      "detector_T_K": 221.85604951316654,
+      "current_A": 0.4,
+      "input_W": 0.6136564096764235,
+      "delta_T_vs_baseline_K": 2.9560254844826375,
+      "extra_power_vs_baseline_percent": 3.0198657069292922
+    },
+    {
+      "case": "sink_plus05_matched_refined",
+      "detector_T_K": 218.89271734688043,
+      "current_A": 0.4152859902232309,
+      "input_W": 0.6483750532482788,
+      "delta_T_vs_baseline_K": -0.007306681803470383,
+      "extra_power_vs_baseline_percent": 8.848387892797515
+    },
+    {
+      "case": "sink_plus10_matched_refined",
+      "detector_T_K": 218.86884498811528,
+      "current_A": 0.43317363705448114,
+      "input_W": 0.712480562126653,
+      "delta_T_vs_baseline_K": -0.031179040568616756,
+      "extra_power_vs_baseline_percent": 19.610340039939246
+    }
+  ],
+  "fully_coupled_extreme_contact_comparison": {
+    "nominal_T_K": 218.90002402868413,
+    "extreme_hypothesis_T_K": 212.62358247326281,
+    "delta_T_K": -6.276441555421314,
+    "extreme_interface_not_build_recommendation": true
+  },
+  "limitations": [
+    "Manufacturer bulk k at 300K not qualified over whole cooler temperature range",
+    "No measured as-built solder thickness, wetting fraction, intermetallic layer or plated spreading",
+    "Static copper face temperatures for all six bulk-bondline screens; no new FEM",
+    "Extreme contact full solve is an intentionally unphysical limiting hypothesis",
+    "Mounting cases derive from original V3.8 with provisional HgCdTe Joule proxy, unlike fixed 2mW V3.5; reference matches but off-baseline load responds differently"
+  ],
+  "input_hashes_sha256": {
+    "data/v3_5_power_lead_and_copper_sensitivity_20261108/copper_native_pad/result.json": "8a47c9a18a5e6a79b30b7bfa81cdfc05e7cfe2ba6d3b6aac8fcd1054b1c966a6",
+    "data/v3_5_power_lead_and_copper_sensitivity_20261108/copper_native_pad/independent_energy_audit.json": "6eec3c10455c3df5a60516582fc010f59763e6114cadcf7eca177c06dfdb96fc",
+    "data/v3_5_power_lead_and_copper_sensitivity_20261108/high_interstage_contact_R/result.json": "06ef83195334f72e95ade54e4773850b7dfde97c37612ec404930d03498bc68f",
+    "data/v3_5_power_lead_and_copper_sensitivity_20261108/high_interstage_contact_R/independent_energy_audit.json": "502ac734c992437c17846abdb9ced68897a300eff99b63e029fe1cd7892b77af",
+    "data/v3_11_rev3_backfill_source_20261109/Kr100_I040/result.json": "9393a2ad30d7fcb63a4197a6fc8b6d068d7c44b5b8e9bacb71e94dd01f3a153b",
+    "data/v3_11_rev3_backfill_source_20261109/Kr100_I040/independent_energy_audit.json": "e5f33018a3555d995f777a344fa48f59e9b7996cfec04880701935811d56059d",
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/synthetic_v3_assembly_20261102/conductor_geometry_coefficients.json": "61faa92c2c63a641f922d6446d17bcd2da5910814d8d0c4bb213e15c58f50d43",
+    "data/v3_8_rev3_transport_and_sink_20261109/base_I040/result.json": "af8bf35dd8392c14f50b3de76de7174d56569012f8ae39ed1361bd8e4db67e10",
+    "data/v3_8_rev3_transport_and_sink_20261109/base_I040/independent_energy_audit.json": "298a7a6de1d906bd9defb8cb2c18929351d9a080881d60a7d3ead6574d2e99ed",
+    "data/v3_8_rev3_transport_and_sink_20261109/sink_plus05_I040/result.json": "a4c57e52ef1255361c60991203322a73ba5f1fa4966fbb684abb1fe7c1302a98",
+    "data/v3_8_rev3_transport_and_sink_20261109/sink_plus05_I040/independent_energy_audit.json": "550a30d9e1922cf488b6fd8d83c7d7dfda0843ee7af043423045dd3bb3602c31",
+    "data/v3_8_rev3_transport_and_sink_20261109/sink_plus10_I040/result.json": "f52da6f54c933a90dcc8363eb8a9d4e09c5596be1b11ac335d497a6ffe50a698",
+    "data/v3_8_rev3_transport_and_sink_20261109/sink_plus10_I040/independent_energy_audit.json": "c54f7bd2eaf890115c56a4a6ffdf3a3f38cbd1a6e3077b2969a57b61cd514b16",
+    "data/v3_8_rev3_transport_and_sink_20261109/sink_plus05_matched_refined/result.json": "98dbf03543d463b9d926f53915865b66e11d0c6d3202f1a020510dbd2c8d5a77",
+    "data/v3_8_rev3_transport_and_sink_20261109/sink_plus05_matched_refined/independent_energy_audit.json": "71d5bb665d66fbaf2e68bd20def53f5a546c6bcaad66b07d75d76e671e66058d",
+    "data/v3_8_rev3_transport_and_sink_20261109/sink_plus10_matched_refined/result.json": "782067323d82260af63e0d6fa58f4b26660dab4266bc8190162f3abf6a58ea00",
+    "data/v3_8_rev3_transport_and_sink_20261109/sink_plus10_matched_refined/independent_energy_audit.json": "ec15ff34becd03652283d09c6f9bfb2232ee12fc454a9fda94c3673ab05f75d6"
+  },
+  "output_plot_sha256": {
+    "reports/current/figures/v312_source_copper_heat_ledger.pdf": "e154c7c938d9d6207c43bb37d701ca854a910fc4624dd9533f95f28ebee60f92",
+    "reports/current/figures/v312_source_copper_heat_ledger.png": "31cdaaa75c9f84e734a102d82d8f723c8cbf1803b564489bb15d5e2302ac42d4",
+    "reports/current/figures/v312_solder_contact_fixed_field_screen.pdf": "78d0cbd7bd84a320ed322fb2469dc3753254911b6a41513eb9b7fa7781e9f0c4",
+    "reports/current/figures/v312_solder_contact_fixed_field_screen.png": "0592210bf6613ad5c3d308d86f611f15b17555e574791d22d0c9b4b88909c82a"
+  }
+}
