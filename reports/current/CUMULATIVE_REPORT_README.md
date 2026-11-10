@@ -1,10 +1,14 @@
-# Cumulative TEC/TO engineering assessment — 9 November 2026
+# Cumulative TEC/TO engineering assessment — 10 November 2026
 
-**Primary reader-facing publication:** `TEC_TO_Reader_First_Assessment_20261110_V316.pdf` (41 pages; includes independent 2D manufactured smooth-contact and finite-tip numerical stress study). The previous 40-page V3.15 edition and all historical reports are preserved. The V3.12 foil-foot bulk-property screen was corrected in the new edition after recognizing Bi57Sn43 joint identity; previous published PDF is unchanged but superseded on that specific contact study.
+**Primary reader-facing publication:** `TEC_TO_Reader_First_Assessment_20261110_V321.pdf` (47 pages). V3.21 integrates six independently audited matched-power robustness cases for original 0.50 mm and custom 0.60 mm leg heights without discarding any earlier scientific section. The original 46-page V3.20 report and every earlier edition remain unchanged. The underlying source-native 3D electrical current gate remains failed; the new gas and metal thermal paths remain conditional models. The V3.12 foil-foot bulk-property screen was corrected in the new edition after recognizing Bi57Sn43 joint identity; previous published PDF is unchanged but superseded on that specific contact study.
 
 This edition is the **original complete 30-page assessment plus additive sections**, not a shortened new standalone study. Original `report.tex`, `TEC_HgCdTe_Current_Architecture_20261108.pdf`, original figures, and all archived simulation evidence were preserved. The separate `reports/tec_to_assessment_20261109/` nine-page assessment is supplemental, not the master report.
 
-## Repeatable build (no new simulation)
+## Current V3.21 source and reproducibility
+
+Full case records and SHA-verified source dependencies are under `data/tec_height_robustness_20261110/`; the additive master source is `reader_first_height_robustness_20261110.tex`. Build from the repository root with `python3 scripts/tec_height_v321_report_build.py --out outputs/a-new-empty-directory` (requires the repository's existing LaTeX and rendering dependencies). The old master is retained byte-identically.
+
+## Historical V3.16 build (no new simulation)
 
 From `reports/current`:
 

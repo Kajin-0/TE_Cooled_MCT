@@ -1,0 +1,75 @@
+{
+  "observed_UTC": "2026-11-10T15:53:44.520560+00:00",
+  "baseline_commit": "3cbe3c83bc6bf51a1c3bb2be9ab46624a0bf12ed",
+  "scenarios": {
+    "interstage_off": {
+      "interstage_factor": 0.0,
+      "outer_gap_m": 0.003,
+      "extra_sink_K_W": 0.0
+    },
+    "outer_gap_1p5mm": {
+      "interstage_factor": 1.0,
+      "outer_gap_m": 0.0015,
+      "extra_sink_K_W": 0.0
+    },
+    "sink_plus5": {
+      "interstage_factor": 1.0,
+      "outer_gap_m": 0.003,
+      "extra_sink_K_W": 5.0
+    }
+  },
+  "attempt_order": [
+    "interstage_off",
+    "outer_gap_1p5mm",
+    "sink_plus5"
+  ],
+  "geometries": [
+    "nominal",
+    "custom_060"
+  ],
+  "max_full_system_solves": 6,
+  "per_case_wall_s": 300,
+  "per_case_cpus": 2,
+  "per_case_memory_GiB": 4,
+  "max_concurrent_cases": 2,
+  "target_power_W": 0.5956680349614825,
+  "current_bracket_A": [
+    0.25,
+    0.55
+  ],
+  "ambient_K": 300,
+  "die_heat_W": 0.002,
+  "gas": "Kr",
+  "pressure_Pa": 100,
+  "no_retry": true,
+  "gates": {
+    "power_W": 1e-08,
+    "stage_W": 1e-08,
+    "global_W": 1e-08,
+    "individual_leg_W": 1e-09,
+    "spatial_K": 3e-07,
+    "sink_K": 3e-07
+  },
+  "source_sha256": {
+    "scripts/tec_height_v321_runner.py": "88e386744f3addc4e5edb515c10ed84040269cfead8f4a4f48da29d9d3bad674",
+    "scripts/tec_height_v321_audit.py": "70f4751493b5b0016de2e4fa6af74acb15d6679805a600ea711c91bc2bd3c84f",
+    "tests/test_tec_height_v321_robustness.py": "b57e23dfe23b0fa8f129c36bc440145e8dd3076adad4281d41fcfaa5202a296e",
+    "scripts/tec_height_v320_coupled.py": "8c1fa0b1b8915b8e882f4af3f8d4d368cc6c190cfc0716e2e755fea51ccbe7d9",
+    "tecooledmct/height_coupling_v320.py": "522fdea8d445b797a4dcced8c9f8f814f0fc1ce5c3ae3c993886717dbcea4744",
+    "scripts/tec_height_v320_ports_crosscheck.py": "1a45a81c5c7f56667be2c8f173a6d37122102ee01da96e55f6c0094c5b6aea77",
+    "data/tec_height_coupling_20261110/manifest.json": "dc99c0852499796aa1362253a989f0487ad9b98b6bddfe3457ad9567c4639b5b",
+    "data/tec_height_coupling_20261110/solver_contract.json": "71acae58324dbc4d57bd6fe36746ef9198726f9150f8307bc0d248885b107422",
+    "data/tec_height_coupling_20261110/nominal/result.json": "f26e122f5a599215f972215914ce1960c256eea7be813e32819d0f9da0b2d67f",
+    "data/tec_height_coupling_20261110/nominal/ceramic_fields.npz": "efe1dcecb0fb167df19fdd130ec88d4ddf55ebcb46323cf53e19667e12628ced",
+    "data/tec_height_coupling_20261110/nominal/independent_audit.json": "685ce67d8c048116e1c1e4d05386ca99f58b17b4e81afaf6cb7f462800744767",
+    "data/tec_height_coupling_20261110/custom_060/result.json": "dcaaa0deb295b1f6aaeb0c455e0d848b4f591a7c6e4c46d434f6e69473353aba",
+    "data/tec_height_coupling_20261110/custom_060/ceramic_fields.npz": "faac2f183e4d9c12f8e8bcd8519294fd67c9bf36b0fde8196f05735210f0b954",
+    "data/tec_height_coupling_20261110/custom_060/independent_audit.json": "0ef0e34f7ba65486d2a2fc3236babdbc35d98970aa0cfc4e9c85c3df89b540c4",
+    "reports/current/TEC_TO_Reader_First_Assessment_20261110_V320.pdf": "67995581ea3849ba964d75b1b311e386776dd5ce7fa415da9d05dd3146855fdf"
+  },
+  "transformed_solver_sha256": "d8e6e528ef3d3ca6951bbc333ebfcc504092acc43b06e7d3f3351755730cb154",
+  "warm_start": "Same geometry fully converged V3.20 solution; recompute all ceramic fields and physical residuals, never freeze",
+  "cavity_warning": "Outer and interstage gas proxies may overlap real cavity volume; not native gas validation",
+  "source_P_N_above_300K": "assumed continuation",
+  "old_3D_electric_B": "FAIL/STOP unchanged"
+}
