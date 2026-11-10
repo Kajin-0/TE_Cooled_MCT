@@ -766,3 +766,11 @@ User authorizes a bounded source-traced geometry sensitivity; frozen V3.11 Kr100
 ## 2026-11-10T08:11:36.457436+00:00 — PASS transport-only screening; geometry promotion NOT RUN
 
 Five preregistered 88-leg frozen-pad cases and ten fixed-current/matched-power states passed separate leg/stage/electrical audits (largest stage residual 1.025e-12 W); zero new full-system solves and no new detector temperatures. At 0.595668 W the 0.36 mm width case has +9.623 mW cold-side heat relative to nominal only under fixed boundaries; no altered candidate has qualified CAD/contacts/gas. Details and source hashes: docs/TEC_PELLET_TRANSPORT_SCREEN_20261110.md and data/tec_pellet_screen_20261110/. 22 targeted tests and archived-evidence verifier passed; the 44-page cumulative report was built twice identically and visually reviewed, prior PDF and failed gates unchanged. Next proposed work is a geometry-consistent 0.60 mm-height candidate and bounded matched-power global energy study; no further work started.
+
+## 2026-11-10T12:57:52.759613+00:00 — PENDING — 0.60 mm pellet geometry feasibility
+
+Compare immutable native 0.50 mm and separate 0.60 mm 29/11/4 source geometry with 176 contacts and package/mapping gates before any coupled solve; matched 0.595668 W only after geometry acceptance. Baseline 89fd42b, registration data/tec_height_geometry_20261110/registration.json; historical gates and report remain unchanged.
+
+## 2026-11-10T13:05:36.784266+00:00 — STOP — 0.60 mm assembly promotion and coupled comparison
+
+Source-coordinate and declared-chain checks pass for 88 legs/176 proposed axial alignments, while a fixed detector-bond apex fails the 0.15 mm bend requirement after 0.30 mm rise. Reformed paths are analytic proposals only; 824-body candidate CAD, collision/contact, ceramic/copper mapping and gas gates NOT RUN, so no coupled temperature or new global conservation result exists. See docs/TEC_060MM_GEOMETRY_FEASIBILITY_20261110.md and data/tec_height_geometry_20261110/; rejected initial net80 datum retained. Focused/source tests 36 PASS; archive verifier retry PASS after initial SIGTERM, prior V3.17 PDF and failures unchanged; cumulative 45-page report built twice identically and visually inspected. Next: new versioned source CAD/STEP with full contacts, raised bonds, foil and mapping checks before a matched-power device solve.
