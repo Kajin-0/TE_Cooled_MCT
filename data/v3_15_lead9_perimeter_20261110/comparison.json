@@ -1,0 +1,89 @@
+{
+  "status": "PASS independent numerical decomposition of saved failed P2 fields; electrical Gate B still FAIL/STOP",
+  "scope": "two physical lead9 solder joint interfaces only; zero new FEM runs; no current field correction",
+  "method": "actual source triangle-centroid radial bins; per-face exact P2 integrated current and weak contact law; frozen fields",
+  "gate_B": "FAIL/STOP",
+  "gate_C_D": "NOT RUN",
+  "preregistered_gate_raw_current_relative": 0.001,
+  "input_SHA256": {
+    "data/v3_physical_blocker_closure_20261106/attempt01/lead9_contact_operator_audit.json": "0df1db68f09110b17db987ebba8f6f9fe45f771cd0e14b0fdfdf39a88520b193",
+    "data/v3_14_native_net88_perimeter_resolution_20261109/v315_perimeter_readback.json": "07ac187249390866f1863896efc273b245b88f482772cfc1d43405c694126f4d",
+    "data/v3_gate_B_original_P2_20261106/attempt01/P2_coupon_result.json": "e4780663273c552ed82cfbd447ce64149c846f104315bea81598a92bac928b26",
+    "data/v3_14_native_net88_perimeter_resolution_20261109/attempt01/P2_candidate_h035_result.json": "8dfd95eac8e5a85ae67b5bade133347dd1ad568035703ef88b8bc902de0a215a"
+  },
+  "interfaces": {
+    "lead_land": [
+      {
+        "mesh": "prior P2",
+        "triangles": 158,
+        "contact_area_m2": 3.138363829113799e-08,
+        "P2_raw_current_gate_error_pct": 8.099302393263901,
+        "lead_side_signed_bias_A": -1.1411313536325018,
+        "solder_side_signed_bias_A": 2.74098651472012,
+        "solder_side_rim_area_share_pct": 20.418771587920293,
+        "solder_side_rim_abs_mismatch_share_pct": 78.00591403856208,
+        "lead_side_rim_abs_mismatch_share_pct": 17.93180837772041,
+        "counterfactual_no_rim_signed_solder_bias_pct": 1.1028838773010747,
+        "counterfactual_no_rim_signed_lead_bias_pct": 3.1359388664655214,
+        "counterfactual_no_rim_max_of_sides_pct": 3.1359388664655214,
+        "rms_solder_side_rel_weak_flux": 0.18118497285025212,
+        "mesh_adjacent_median_min_q": 0.46344235147823953
+      },
+      {
+        "mesh": "refined P2",
+        "triangles": 180,
+        "contact_area_m2": 3.138363829113799e-08,
+        "P2_raw_current_gate_error_pct": 7.019320630430186,
+        "lead_side_signed_bias_A": -0.8048716803423529,
+        "solder_side_signed_bias_A": 2.3769933852949823,
+        "solder_side_rim_area_share_pct": 19.699226777356095,
+        "solder_side_rim_abs_mismatch_share_pct": 79.10641819658937,
+        "lead_side_rim_abs_mismatch_share_pct": 24.432637633287072,
+        "counterfactual_no_rim_signed_solder_bias_pct": 0.5531942821197195,
+        "counterfactual_no_rim_signed_lead_bias_pct": 2.12289483356861,
+        "counterfactual_no_rim_max_of_sides_pct": 2.12289483356861,
+        "rms_solder_side_rel_weak_flux": 0.16572524095631114,
+        "mesh_adjacent_median_min_q": 0.5731287928655061
+      }
+    ],
+    "lead_pin": [
+      {
+        "mesh": "prior P2",
+        "triangles": 160,
+        "contact_area_m2": 3.138363829113791e-08,
+        "P2_raw_current_gate_error_pct": 6.852908306066172,
+        "lead_side_signed_bias_A": 0.6455207039782682,
+        "solder_side_signed_bias_A": -2.319178690262796,
+        "solder_side_rim_area_share_pct": 19.225611720426947,
+        "solder_side_rim_abs_mismatch_share_pct": 72.47485733328297,
+        "lead_side_rim_abs_mismatch_share_pct": 13.304892748159672,
+        "counterfactual_no_rim_signed_solder_bias_pct": 1.5434049472478821,
+        "counterfactual_no_rim_signed_lead_bias_pct": 1.8616805569861667,
+        "counterfactual_no_rim_max_of_sides_pct": 1.8616805569861667,
+        "rms_solder_side_rel_weak_flux": 0.14130774670125448,
+        "mesh_adjacent_median_min_q": 0.4993001714848666
+      },
+      {
+        "mesh": "refined P2",
+        "triangles": 176,
+        "contact_area_m2": 3.138363829113791e-08,
+        "P2_raw_current_gate_error_pct": 6.188692812344958,
+        "lead_side_signed_bias_A": 0.4987983479541737,
+        "solder_side_signed_bias_A": -2.0957131378455562,
+        "solder_side_rim_area_share_pct": 20.37054705777711,
+        "solder_side_rim_abs_mismatch_share_pct": 75.93871333120677,
+        "lead_side_rim_abs_mismatch_share_pct": 17.86992129043777,
+        "counterfactual_no_rim_signed_solder_bias_pct": 0.8227814241780459,
+        "counterfactual_no_rim_signed_lead_bias_pct": 1.3041247693456797,
+        "counterfactual_no_rim_max_of_sides_pct": 1.3041247693456797,
+        "rms_solder_side_rel_weak_flux": 0.1350218303684618,
+        "mesh_adjacent_median_min_q": 0.5812027555175286
+      }
+    ]
+  },
+  "decision": "STOP: larger source-CAD resolution fails original strict gate; even removing outer rim biases on frozen candidate contact field leaves >0.1% inner-region signed mismatch. Need interface-consistent field and independently bounded original raw-cut criteria, not another generic mesh sweep.",
+  "figure_SHA256": {
+    "data/v3_15_lead9_perimeter_20261110/v315_lead9_rim_mismatch.png": "47e0ceb5f9ad1aa882187b1cdb2d13d5ab694b93cddb074ae73dad688489c3e8",
+    "data/v3_15_lead9_perimeter_20261110/v315_lead9_rim_mismatch.pdf": "177cc28da32cadcce952542140e37bd7d102d0fc735d1173f29725c4d603b36f"
+  }
+}

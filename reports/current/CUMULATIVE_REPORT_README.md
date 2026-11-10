@@ -1,6 +1,6 @@
 # Cumulative TEC/TO engineering assessment — 9 November 2026
 
-**Primary reader-facing publication:** `TEC_TO_Reader_First_Assessment_20261109_V314.pdf` (39 pages; cumulative reader-first report plus one tightly bounded source-native electrical FEM resolution study). The previous 37-page V3.13 edition and all earlier reports remain preserved. The V3.12 foil-foot bulk-property screen was corrected in the new edition after recognizing Bi57Sn43 joint identity; previous published PDF is unchanged but superseded on that specific contact study.
+**Primary reader-facing publication:** `TEC_TO_Reader_First_Assessment_20261110_V315.pdf` (40 pages; complete reader-first cumulative report and a new saved-field contact-perimeter attribution study). The earlier 39-page V3.14 edition and all previous reports are preserved. The V3.12 foil-foot bulk-property screen was corrected in the new edition after recognizing Bi57Sn43 joint identity; previous published PDF is unchanged but superseded on that specific contact study.
 
 This edition is the **original complete 30-page assessment plus additive sections**, not a shortened new standalone study. Original `report.tex`, `TEC_HgCdTe_Current_Architecture_20261108.pdf`, original figures, and all archived simulation evidence were preserved. The separate `reports/tec_to_assessment_20261109/` nine-page assessment is supplemental, not the master report.
 
@@ -9,9 +9,9 @@ This edition is the **original complete 30-page assessment plus additive section
 From `reports/current`:
 
 ```sh
-pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261109_V314 reader_first_report.tex
-pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261109_V314 reader_first_report.tex
-pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261109_V314 reader_first_report.tex
+pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261110_V315 reader_first_report.tex
+pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261110_V315 reader_first_report.tex
+pdflatex -interaction=nonstopmode -halt-on-error -file-line-error -jobname=TEC_TO_Reader_First_Assessment_20261110_V315 reader_first_report.tex
 ```
 
 - `cumulative_report.tex`: unabridged original report plus insertion and updated front-summary paragraph; formatting-only layout rules applied for Rev2.
@@ -39,3 +39,7 @@ Important erratum: the V3.12 bulk bondline screen must use Bi57Sn43 formed-foil 
 ## V3.14 registered contact-perimeter source-CAD FEM experiment
 
 `v314_p2_resolution_section.tex` extends the reader-first report with one full 12-region source-BREP P2 electrical refinement from h=45um to 35um (28,691 to 47,277 tetrahedra); the original 0.1% raw-gradient electrical gate still **FAIL/STOP** with new 7.019% worst cut and 11/16 failures. Independent no-solve review of 2,178 physical triangles and both terminal cuts agrees to 4.511e-13 relative. No thermal Gate C, Joule Gate D or complete TEC rerun followed. Exact source, figure, field, mesh and result hashes are in `cumulative_20261109_manifest.json` and `data/v3_14_native_net88_perimeter_resolution_20261109/`. Source physics, original archival reports, the prior V3.13 and historical failed current gates are unchanged.
+
+## V3.15 source-native saved-field contact perimeter audit
+
+The V3.15 reader-first section is additive, not a shortened standalone replacement. It compares the original and V3.14 native 3D P2 fields at lead9 metal-to-solder interfaces by reconstructing the raw one-sided face current and the distinct finite electrical contact-law current. The contact rim accounts for roughly 72–79% of solder-side gross mismatch in only ~20% of contact area. A *frozen-field counterfactual* removing its signed bias still fails the original 0.1% limit. This is a read-only no-PDE negative control. Original physical 3D electrical Gate B remains FAIL/STOP; thermal C and Joule D remain NOT RUN. Full documentation: `docs/V3_15_LEAD9_CONTACT_PERIMETER_FIELD_DIAGNOSIS_20261110.md`, receipts and plots in `data/v3_15_lead9_perimeter_20261110/`, release hashes in `cumulative_20261109_manifest.json`.
