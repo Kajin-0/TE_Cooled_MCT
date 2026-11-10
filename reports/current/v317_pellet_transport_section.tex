@@ -1,0 +1,43 @@
+\clearpage
+\section{Pellet size and electrical power: a frozen-boundary transport screen}
+The engineering target is a lower detector-mount temperature under a specified electrical-power constraint. A source-derived screen changes the common axial P/N pellet dimensions while holding the 88 individually resolved source-pad temperatures, solder/foil electrical resistance, ceramic fields, heat-sink and cavity source state fixed. This is a \textbf{transport-only diagnostic}: the source geometry and thermal balances are not rebuilt or re-solved. It does not predict a new cold-ceramic or detector temperature.
+
+The reference is the independently audited 29/11/4-couple, 0.400 A state with a 300 K reservoir, 100 Pa krypton and 2 mW imposed die heat. Source mean hot-ceramic, top-ceramic and mounting temperatures are respectively 303.7623, 218.8067 and 218.9000 K. These are fixed inputs to all variants; individual leg endpoints retain their native-pad differences. The reference electrical input is 0.595668 W. The 3 mm effective gas gap, gray exchange and source Cu multiport are frozen; gas and metal transport are not recalculated for the modified footprints. The frozen return-network resistance retains the previously identified intermediate-contact bookkeeping limitation; the historical net88 3D electrical failure remains unqualified.
+
+For the common width $w$ and height $L$, let $A=w^2$ and $g=(A/L)/(A_0/L_0)$, with $A_0=0.16\,\mathrm{mm}^2$ and $L_0=0.50\,\mathrm{mm}$. The independently solved axial constitutive equations retain Peltier, Thomson, Fourier and Joule behavior: $J=\pm I/A$, $q=STJ-k\,dT/dz$, $dq/dz=J\,dV/dz$, $dV/dz=\rho J+S\,dT/dz$, and each leg is checked using $Q_h-Q_c=IV$. The separate P/N research specimens cover 40--300 K; all cases use the unmeasured quarter-slope continuation above 300 K. Constant-property analytic controls check the signs and voltage; the full 430-domain P/N and copper current fields remain unsolved.
+
+\subsection{Registered width and height cases}
+At fixed 0.58 mm pitch the tested widths 0.36/0.40/0.44 mm imply nominal leg-edge separations 0.22/0.18/0.14 mm. A positive leg spacing alone is not a pad or manufacturing qualification. The 0.44 mm width exceeds the 0.40 mm nominal source landing, while a 0.36 mm leg changes the actual solder contact area. Changing height by 0.10 mm also moves a leg endpoint relative to its unchanged ceramic, solder and foil. A physical variant must regenerate those interfaces, copper-tab geometry, source thermal mapping and exposed gas surfaces before any geometry-consistent claim.
+
+\begin{center}\small
+\begin{tabular}{lrrrrr}\toprule
+Case & Width & Height & $g$ & $P$ at 0.4 A & $Q_{c,3}$ at 0.4 A\\
+ & (mm) & (mm) & & (W) & (mW)\\\midrule
+Baseline & 0.40 & 0.50 & 1.0000 & 0.595668 & 4.908\\
+Shorter & 0.40 & 0.40 & 1.2500 & 0.519658 & $-18.799$\\
+Longer & 0.40 & 0.60 & 0.8333 & 0.672149 & 19.890\\
+Narrower & 0.36 & 0.50 & 0.8100 & 0.685423 & 21.906\\
+Wider & 0.44 & 0.50 & 1.2100 & 0.529686 & $-14.938$\\\bottomrule
+\end{tabular}\end{center}
+At fixed current the input powers are different. Negative cold-stage $Q_c$ denotes net heating of the imposed cold boundary; it is not a solved package equilibrium or evidence of a working cooler under the archived 2 mW load.
+
+\subsection{Equal electrical input and stage budgets}
+To avoid comparing different electrical powers, a bounded root solve holds $P=IV=0.595668$ W using a 0.25--0.55 A current bracket and the same frozen external series resistance 0.0461675 $\Omega$. Each row is a solved axial state with the target matched within 1 $\mu$W. The chosen bracket is a numerical scenario, not an allowable current or voltage rating.
+
+\begin{center}\small
+\begin{tabular}{lrrrr}\toprule
+Case & Current (A) & Terminal $V$ (V) & Stage-3 $Q_c$ (mW) & $\Delta Q_{c,3}$ (mW)\\\midrule
+Baseline & 0.400000 & 1.489170 & 4.908 & 0.000\\
+Shorter & 0.435432 & 1.367993 & $-9.823$ & $-14.731$\\
+Longer & 0.372366 & 1.599683 & 13.440 & $+8.532$\\
+Narrower & 0.368174 & 1.617899 & 14.531 & $+9.623$\\
+Wider & 0.430163 & 1.384749 & $-7.338$ & $-12.246$\\\bottomrule
+\end{tabular}\end{center}
+At these held boundary temperatures, the narrower sample has the highest sampled cold-stage heat lift at equal input power. Its current and heat difference are meaningful only for the axial sensitivity problem. No result establishes a lower final mounting temperature or an optimal manufacturable geometry: the new stages need a self-consistent package heat balance and revised physical contacts.
+
+\fig[.97]{v317_pellet_fixed_boundary}{pdf}{Frozen-pad 88-leg sensitivity. Left: stage-3 cold heat at fixed current and separately at matched terminal input; negative values heat the prescribed cold boundary. Right: solved current for equal 0.595668 W input. Axes describe hypothetical axial geometry, not a rebuilt assembly or a device temperature.}
+\fig[.97]{v317_pellet_stage_budgets}{pdf}{Cold-side heat rate in each P/N stage at the matched-power states. Independent scales show the smaller cold-stage budget. Stage-to-stage differences need not close because all source-pad temperatures and parasitic paths were prescribed rather than jointly solved.}
+
+For the length endpoints the matched-power finite-span sensitivity $dQ_{c,3}/d\ln g$ is $-57.375$ mW; for width endpoints it is $-54.489$ mW. Divided by the small 4.908 mW baseline these become $-11.690$ and $-11.102$. These are different-span secants, not statistical uncertainty estimates or derivatives of final detector temperature.
+
+Five registered cases and ten fixed-current/matched-power states pass separate saved-data leg, stage and $P=IV$ checks; the largest stage residual is $1.025\times10^{-12}$ W. The original source case passes its independently archived full-system audit. The four geometric changes have no rebuilt pads, foil, solder or gas domain and therefore were not promoted to package predictions. The original raw-current failure, gas/cold/bath numerical qualifications, and unknown source material/contact accuracy remain unchanged. A high-value next step is a separately built 0.60 mm-height geometry with aligned contacts and gas paths, followed by a bounded matched-power coupled solve and independent global heat balance.

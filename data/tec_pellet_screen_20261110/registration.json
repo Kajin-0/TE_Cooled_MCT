@@ -1,0 +1,87 @@
+{
+  "observed_UTC": "2026-11-10T07:55:21.598111+00:00",
+  "baseline_commit": "6d54cee8723d09b73c17347c4fdc464b801164ba",
+  "scope": "TRANSPORT ONLY: 88 individual 32-interval axial nonlinear legs at frozen archived pad temperatures; no coupled package or geometry variants",
+  "baseline_case": "data/v3_11_rev3_backfill_source_20261109/Kr100_I040/",
+  "geometry_cases": [
+    {
+      "id": "baseline",
+      "width_mm": 0.4,
+      "length_mm": 0.5
+    },
+    {
+      "id": "length_040",
+      "width_mm": 0.4,
+      "length_mm": 0.4
+    },
+    {
+      "id": "length_060",
+      "width_mm": 0.4,
+      "length_mm": 0.6
+    },
+    {
+      "id": "width_036",
+      "width_mm": 0.36,
+      "length_mm": 0.5
+    },
+    {
+      "id": "width_044",
+      "width_mm": 0.44,
+      "length_mm": 0.5
+    }
+  ],
+  "pitch_mm": 0.58,
+  "source_dimensions_mm": [
+    0.4,
+    0.4,
+    0.5
+  ],
+  "current_fixed_A": 0.4,
+  "matched_power_reference_W": 0.5956680349614825,
+  "matched_current_bracket_A": [
+    0.25,
+    0.55
+  ],
+  "max_root_evaluations_per_case": 14,
+  "root_power_abs_tolerance_W": 1e-06,
+  "root_current_tolerance_A": 1e-08,
+  "case_wall_seconds": 110,
+  "total_wall_seconds": 600,
+  "max_full_system_solves": 0,
+  "max_cpus": 4,
+  "memory_GiB": 8,
+  "prescribed_ambient_K": 300.0,
+  "pressure_Pa": 100.0,
+  "gas": "Kr",
+  "die_imposed_heat_W": 0.002,
+  "couple_allocation": [
+    29,
+    11,
+    4
+  ],
+  "series_auxiliary_resistance": "frozen source copper+lead+solder/contact, computed from archived baseline; constant at frozen node temperatures; no contact area rescaling",
+  "material": "unchanged Zhang P and N research specimens; 40-300 K digitized, active 180-390 K, assumed quarter slope >300 K",
+  "leg_energy_gate_W": 1e-09,
+  "stage_energy_gate_W": 1e-09,
+  "baseline_replay_abs_tolerance": 1e-10,
+  "temperature_outputs": "fixed archived endpoints only; new top ceramic and detector temperature NOT SOLVED",
+  "power_gate": "actual root solve P=I*(sum of leg volts+I*fixed external R); no interpolation across failures",
+  "geometry_gate": "all changed lengths/areas lack rebuilt pads/solder/foils/ceramics/voids and fail geometry-consistent promotion",
+  "source_sha256": {
+    "data/v3_11_rev3_backfill_source_20261109/Kr100_I040/result.json": "9393a2ad30d7fcb63a4197a6fc8b6d068d7c44b5b8e9bacb71e94dd01f3a153b",
+    "data/v3_11_rev3_backfill_source_20261109/Kr100_I040/registration.json": "c325276c190a96840a4d256976f839f9fd90875caa8f0e243d032854cfe389ef",
+    "data/v3_11_rev3_backfill_source_20261109/Kr100_I040/independent_energy_audit.json": "e5f33018a3555d995f777a344fa48f59e9b7996cfec04880701935811d56059d",
+    "tecooledmct/nonlinear_tec.py": "f4daa12f1aecccb617730feb3808ffdd707a722c7c76b07d07a3732458e6a11d",
+    "tecooledmct/graded_tec.py": "d919086ffd73bf3493db0a004d6ae41b015206f4988563dac77deadf75f30760",
+    "tecooledmct/material_profiles.py": "b332771e082c5e389cfdb819b184cd710f8ae7992cb597cf37b26aabc06ee7d6",
+    "data/g2c/zhang2025_he_40_300_v2.json": "32ebdb297168674f3240c4140e5f2ea8fa9d0527ff933d35b92d33d2eda4ef8b",
+    "scripts/v3_11_package_gas_pressure.py": "7c0f320f273b49912a9ae1f54b00d0c4d188773816d4cb95a3e45a663bb2501b",
+    "scripts/v3_4_source_copper_multiport.py": "af86568d04ce07ef82b305cb4812f5d9aff33f259877a7755029c7b6624a206e",
+    "scripts/v3_5_supply_lead_boundary.py": "37910d61be09d8a2d460d24b909da5d778a80f644a1e9ee5cc287a6af44cae16",
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "reports/current/TEC_TO_Reader_First_Assessment_20261110_V316.pdf": "a9c519cf4d92f73763cd9d322daadab9a5e33135f30ce697a8f87a5a57509c8c",
+    "reports/current/reader_first_report.tex": "9395c08b540aa0898285c0e53c380da18278d3dcfb9861ef43b1207b2e6c3dc1"
+  },
+  "original_3D_electrical_gate": "FAIL/STOP; no new contact work",
+  "no_OEM_validation": true
+}
