@@ -1,0 +1,22 @@
+{
+  "UTC": "2026-11-10T19:01:45.542011+00:00",
+  "baseline": "ec4a9daf35da1089bf39c234c0229748cef84ab3",
+  "intent": "one source audit: original and translated ceramic faces; disjoint contact, facing and outer regions; conservative blocked projections; no invented volume",
+  "sources_sha256": {
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/tec_height_060_cad_20261110/source_candidate/design.json": "cf580248c44f4f06ce82f046aa797ee3c2826d52f4225698eb2af1c88d95eec7",
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/tec_height_060_cad_20261110/cad_attempt01/synthetic_v3_mm.step": "7f24bbb192cc7531a71fb35c75763dbbb0c38cac7722bbc6f8ff6b05616760a8",
+    "scripts/tec_height_v320_coupled.py": "8c1fa0b1b8915b8e882f4af3f8d4d368cc6c190cfc0716e2e755fea51ccbe7d9",
+    "tecooledmct/height_coupling_v320.py": "522fdea8d445b797a4dcced8c9f8f814f0fc1ce5c3ae3c993886717dbcea4744",
+    "reports/current/TEC_TO_Reader_First_Assessment_20261110_V321.pdf": "f3883d1bf676f7c4d098896c3b4064dcdec030537525834e29407f85c2e6456e"
+  },
+  "gates": [
+    "physical source and derived CAD gas/contact area agreement; exact disjoint face area closure and nonnegative areas",
+    "original vs candidate rigid-translation invariant surface areas and +0.1 mm stage gap",
+    "explicit solids omissions and upper-bound overblocking",
+    "conservative gas operator with domain, zero-pressure and reciprocal energy tests before coupled solve",
+    "if cavity closure or ownership is unresolved STOP before solving"
+  ],
+  "budget": "one audit, at most two 300s/4CPU/8GiB coupled solves after gates; no full gas or metal PDE"
+}

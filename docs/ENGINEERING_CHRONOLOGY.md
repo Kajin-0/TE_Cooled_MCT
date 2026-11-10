@@ -806,3 +806,13 @@ Six new bounded fully coupled 88-leg/four spatial-ceramic cases completed as thr
 - 2026-11-10T18:31:08.775704+00:00 — **PENDING / CI repair:** Exact-commit CI for 3329bbf failed on the frozen 0.60 mm geometry exact-identity test under Python 3.11: regenerated volume differs by one floating-point ULP (0.002539382276740776 versus 0.0025393822767407754 mm³). Eight frozen candidate tests pass on the Python 3.12 source-generation runtime. Align the CI interpreter to 3.12 while retaining the geometry, test, solver, report, numerical gates and all archived hashes unchanged; full regression and new exact-commit CI pending.
 
 - 2026-11-10T18:32:59.435554+00:00 — **PASS local / PENDING CI:** Python 3.12 full default regression: 841 passed, 11 skipped; both legacy demos passed. The prior V3.21 78-file manifest, V3.20 source/mesh manifest and full archive verifier passed. Published result and prior science remain byte-identical. CI against the resulting commit remains pending.
+
+## 2026-11-10T19:01:45.542011+00:00 — PENDING — V3.22 source-derived cavity face partition
+
+Register disjoint physical source-face ownership, native source/CAD correspondence and cavity closure before any two-case coupled solve. Original V3.21, STEP and historical failure gates remain immutable. See data/tec_gas_partition_20261110/registration.json.
+
+## 2026-11-10T19:06:44.997338+00:00 — PASS ceramic face accounting / STOP native gas closure
+
+One source audit partitions 24 ceramic faces per design, cross-checks original derived CAD face areas to 1.25e-14 mm² and verifies 0.600/0.700 mm gaps. Generic port conservation and duplicate-allocation negative controls pass. Full source gas-facing metallization/foil/connected candidate port mapping remains unresolved; no new coupled temperature solves. Original V3.21 PDF and historical gas/raw electrical failures preserved. Record: docs/TEC_CAVITY_GAS_FACE_PARTITION_20261110.md; full test/CI release pending.
+
+- 2026-11-10T19:07:35.909900+00:00 — **PASS verification / STOP physical closure:** 14 focused tests, V3.20 mesh and V3.21 78-file source manifests, full archive verifier, and two matching 48-page PDF builds/raster sets pass; all pages visually reviewed. No candidate full gas-port/void mapping and zero new coupled solves. Exact-commit CI pending.
