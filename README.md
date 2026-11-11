@@ -1,6 +1,8 @@
 # TE_Cooled_MCT
 
-**Current original TEC/TO assessment:** [53-page V3.26 cumulative report](reports/current/TEC_TO_Reader_First_Assessment_20261111_V326.pdf) and [source-connected Cu thermal mapping](docs/NOMINAL_CAVITY_METAL_THERMAL_20261111.md). Thirty-nine foil face centroids now have a conditional distributed 1D thermal model. No new native gas path or package solve was qualified; the original 3D electrical and gas-flux gates remain FAIL/STOP.
+**Current original TEC/TO assessment:** [54-page V3.27 cumulative report](reports/current/TEC_TO_Reader_First_Assessment_20261111_V327.pdf) and [source-mesh die/window visibility](docs/NOMINAL_DIE_WINDOW_GAS_VISIBILITY_20261111.md). One original-only partial-cavity matched-power solve adds a source-occlusion-checked 0.694600 mm² die/window gas path and yields 218.693303 K at 0.595668 W under an assumed 300 K window. Remaining gas surfaces are adiabatic in this conditional model; native gas and metal electrical failure gates remain open.
+
+**Prior original TEC/TO assessment:** [53-page V3.26 cumulative report](reports/current/TEC_TO_Reader_First_Assessment_20261111_V326.pdf) and [source-connected Cu thermal mapping](docs/NOMINAL_CAVITY_METAL_THERMAL_20261111.md). Thirty-nine foil face centroids now have a conditional distributed 1D thermal model. No new native gas path or package solve was qualified; the original 3D electrical and gas-flux gates remain FAIL/STOP.
 
 **Prior original TEC/TO assessment:** [52-page V3.25 cumulative report](reports/current/TEC_TO_Reader_First_Assessment_20261111_V325.pdf) and [source-mesh P1 gas coupling](docs/NOMINAL_P1_GAS_COUPLING_20261111.md). The original 0.50 mm reference remains active. One conditional partial-cavity solve gives 218.659107 K at 0.595668 W; only 3.3004% of registered gas-facing area is covered, other gas surfaces are adiabatic, and the complete-cavity physics is not qualified. The original 3D electrical gate remains FAIL/STOP.
 

@@ -1,0 +1,18 @@
+{
+  "observed_utc": "2026-11-11T05:42:04.323495+00:00",
+  "executed_source_sha256": "837f9165496d245c0503f71c9213bcb2db23ac90145ebbd8f50fc2ef914ac9ab",
+  "inputs_sha256": {
+    "scripts/tec_nominal_v327_coupled.py": "01c0c3be8a715850551c90d937bc16423e0b630b3abbdba8ad0dcabdb5589872",
+    "scripts/tec_nominal_v325_coupled.py": "479c30f3243245b90ad7b21a0dbcc9a80f0b936f8b2ead76668bcc815f409c0e",
+    "tecooledmct/nominal_gas_visibility_v327.py": "de61f3b07d5c7945b2e4b52df8aa4985cc0c5641cff6718b317b6c6c148bb5e6",
+    "data/nominal_gas_visibility_v327_20261111/die_window_visibility.json": "e8226f5657bba22c064378454db957efb7246f5fcf82716e6883d07074d20f79",
+    "data/nominal_gas_visibility_v327_20261111/independent_readback.json": "cde5113f624e3cd40acd1db1bb8f2b7015c5d6b52eb037e8566990a16bc036ab",
+    "data/nominal_gas_p1_20261111/p1_operator.json": "0a37ec58881ba16a6a04a198e67d99714872f1a2ad63bca637a53b4f054f8ecd",
+    "data/nominal_gas_visibility_v327_20261111/focused_tests_initial.log": "2adf7147626c6e28c7ae8910216e3efac03be02aace9908d078d02f181d001f7"
+  },
+  "scenario": "nominal original only; V325 752 ceramic P1 patches PLUS geometric die/window 2335/2410 area; 300K window assumption; all other gas surfaces adiabatic; old gas proxies OFF; unchanged gray radiation",
+  "physical_scope": "Maxwell jump columns not full gas physics or device validation",
+  "attempts": 1,
+  "limit": "300s 4CPU 8GiB",
+  "gates": "source visibility, P1 and port/gas/global balance <1e-8 W, max spatial update <1e-6 K, matched input power 1e-8 W"
+}

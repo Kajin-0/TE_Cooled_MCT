@@ -854,3 +854,11 @@ Freeze original-only source and V3.25 evidence; preregister centerline/port mapp
 ## 2026-11-11T03:01:22.881516+00:00 — PASS conditional copper operator / STOP supplemental cavity gas path
 
 Original-only source-face reconstruction upgrades 39 formed-Cu faces (4.07249 mm²) to a conditional non-isothermal 1D model; 134 gas faces remain unresolved and existing 1667 mappings are proxies. Four foil segments conserve source heat and distributed Joule work; an independent 41/81/161-node bath control converges. No source-qualified new gas path or coupled solve: opposing trimmed patches, obstruction and disjointness remain unproved. Ten focused tests and two matching 53-page report builds pass; original PDF, CAD, P1 data and failed gates remain unchanged. Exact-commit CI pending. See [record](NOMINAL_CAVITY_METAL_THERMAL_20261111.md).
+
+## 2026-11-11T05:37:55.397807+00:00 — PENDING — original-cavity die-to-window visibility
+
+Freeze original-only source/mesh identities; preregister TRI3 common projection, conservative source-solid occlusion, opposing ownership/normals and disjoint gas areas. One conditional coupled solve only after source geometry and independent conservation gates pass. No alternate design or new mesh.
+
+## 2026-11-11T05:48:04.352466+00:00 — PASS original source die/window subset / STOP complete gas closure
+
+Original-only 301 TRI3 common polygons give 0.694599734 mm² per side after conservative all-solid occlusion, with independent face/normal, polygon, temperature-node and old-column separation checks. One 300 K-window/100 Pa Kr partial-cavity matched-power solve gives die 218.693303 K and die/window gas 0.112833 mW; independent stage/global residuals below 1.1e−9 W. The inherited audit `top_K` is carrier, not stage-2 cold interface; explicit node correction recorded. Twenty-eight focused tests, independent source and Cu/lead audits, archive verification and two identical 54-page PDF builds pass. Uncovered gas surfaces remain adiabatic in the model, original failed gates and immutable PDFs unchanged; exact-commit CI pending. See [technical record](NOMINAL_DIE_WINDOW_GAS_VISIBILITY_20261111.md).

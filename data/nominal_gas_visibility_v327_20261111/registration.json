@@ -1,0 +1,34 @@
+{
+  "observed_utc": "2026-11-11T05:37:55.397807+00:00",
+  "baseline": "81baa4a614af44f9d5e1ddd588e0143d0b834d82",
+  "scope": "original only; no variant, new mesh or source edits",
+  "source_sha256": {
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/nominal_cavity_ports_20261110/nominal_gas_face_ports.json": "9115ca08e0adae480521e5eafde656e637e7ac93e7395ca5c5761a0bf0ace7d4",
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/nominal_gas_p1_20261111/p1_operator.json": "0a37ec58881ba16a6a04a198e67d99714872f1a2ad63bca637a53b4f054f8ecd",
+    "data/nominal_gas_p1_20261111/coupled_attempt01/result.json": "ae56d10aaa4aa8877dc36d3841b420e0bb740e0e3c5853ffcae2003b8d4f65c8",
+    "data/nominal_cavity_metal_v326_20261111/manifest.json": "8b37e0b1a903cc220387678d89bab33b523be4b32bfaafffd317f64f8687f58e",
+    "reports/current/TEC_TO_Reader_First_Assessment_20261111_V326.pdf": "dcba730d90cd18a4f55fa684874b9105a4156b58513eada33748d3a260e055b0"
+  },
+  "mesh_sha256": {
+    "/var/tmp/mct_r3_header_3d_20261107/R38_430_domains.1.node": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+    "/var/tmp/mct_r3_header_3d_20261107/R38_430_domains.1.face": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18",
+    "/var/tmp/mct_r3_header_3d_20261107/R39_430_domains.1.ele": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570"
+  },
+  "candidate": "gas-facing native top die 2335 to window underside 2410, vertical projected paths, with their original die/window thermal-node proxies; no claim OEM or full-cavity physics",
+  "geometry_method": "intersect actual R38 TRI3 faces, remove conservative projections of every source solid crossing the gap; annular cap analytically prove exterior; reject any unhandled crossing solid; adjacency and surface normal from original R39 solid tets. Exact convex projected overlap and shared gas area, source mesh geometry not a curved CAD accuracy claim. Original P1 gas tags disjoint.",
+  "physical_model": "Kr Eucken/Maxwell at 100 Pa, alpha .8, opposite thermal nodes; straight columns are conditional reduced transfer, not molecular line-of-sight probability nor CFD; prior exterior/interstage proxies OFF and gray radiation retained",
+  "gates": [
+    "source identity and SI verify",
+    "face triangle area vs CAD <1%, positive area and unique triangle ownership",
+    "solid adjacent tet and opposed normals",
+    "all 824 source bounds screened; no omitted intersection with any body",
+    "window circle strictly contains candidate; cap-shell annulus analytically outside",
+    "selected projected polygon patches nonoverlapping, equal area, no V325 face reuse",
+    "zero-pressure/equal-temperature, heat reciprocity and positivity",
+    "only after all gates, optional one original coupled solve with independent 1e-8 W energy and matched-power verification"
+  ],
+  "budgets": "one original matched-power solve max, <=300 s 4CPU 8GiB; no remesh or gas PDE",
+  "failure_policy": "no new operating temperature if any geometry, source or physics control fails"
+}

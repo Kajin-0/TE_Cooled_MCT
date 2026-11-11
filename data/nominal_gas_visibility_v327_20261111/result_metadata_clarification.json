@@ -1,0 +1,41 @@
+{
+  "observed_utc": "2026-11-11T05:49:08.630337+00:00",
+  "status": "METADATA CLARIFICATION; saved fields and numerical result are unchanged",
+  "source_result_sha256": "cdfbbc1acf9a1fa6ab3ea605812e2f394bfe48ad57688aeecf515389269cb7ab",
+  "legacy_fields": {
+    "source_3D_ceramic_gas_radiation_heat_spread": "approximate native pad area weighted from exposed ceramic top area proxy; NOT source bare ceramic true surface solution",
+    "source_exposed_effective_surface_area_m2": [
+      1.2600000000000003e-05,
+      8.68e-06,
+      4.759999999999999e-06,
+      1e-06
+    ],
+    "internal_gas_geometry_proxy": [
+      {
+        "stage": 0,
+        "gap_m": 0.0005700000000000005,
+        "area_m2": 1.776e-05,
+        "substrate_gap_mm": 0.6000000000000005,
+        "method": "upper-plate projected area less leg footprints; parallel-path proxy, connected side cavity and coatings omitted"
+      },
+      {
+        "stage": 1,
+        "gap_m": 0.0005699999999999997,
+        "area_m2": 1.0919999999999997e-05,
+        "substrate_gap_mm": 0.5999999999999996,
+        "method": "upper-plate projected area less leg footprints; parallel-path proxy, connected side cavity and coatings omitted"
+      },
+      {
+        "stage": 2,
+        "gap_m": 0.0005699999999999997,
+        "area_m2": 4.4799999999999995e-06,
+        "substrate_gap_mm": 0.5999999999999996,
+        "method": "upper-plate projected area less leg footprints; parallel-path proxy, connected side cavity and coatings omitted"
+      }
+    ]
+  },
+  "actual_applied_gas": "752 source P1 common-refinement ceramic columns plus 301 source die/window overlap polygons; see solver source, ceramic_fields.npz and gas_boundary_scope",
+  "legacy_area_interpretation": "source_exposed_effective_surface_area_m2 is the unchanged gray-radiation proxy area, not the die/window gas area",
+  "legacy_internal_geometry_interpretation": "internal_gas_geometry_proxy is inherited unused 0.57mm proxy metadata; executed internal_gas is source P1 with 0.600mm ceramic gaps",
+  "reason": "The transformed source replaces gas operators but inherited baseline output-description fields. Independent energy audit evaluates actual applied paths."
+}

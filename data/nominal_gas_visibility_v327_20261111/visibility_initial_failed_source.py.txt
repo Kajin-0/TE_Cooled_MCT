@@ -1,0 +1,85 @@
+"""Original R38 TRI3 die/window common projection with all-solid conservative exclusion."""
+from pathlib import Path
+from itertools import combinations
+from collections import defaultdict
+from datetime import datetime,timezone
+import hashlib,json,math,time
+import numpy as np
+from tecooledmct.nominal_gas_visibility_v327 import open_rectangles,rectangle_poly,intersection,overlap
+from tecooledmct.nominal_gas_p1_v325 import weights
+from tecooledmct.nominal_gas_v324 import flux
+R=Path(__file__).resolve().parents[1];D=R/'data/nominal_gas_visibility_v327_20261111';M=Path('/var/tmp/mct_r3_header_3d_20261107');LOW=2335;HIGH=2410
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def main():
+ t=time.monotonic();reg=json.loads((D/'registration.json').read_text());
+ for p,h in reg['source_sha256'].items():assert sha(R/p)==h,p
+ for p,h in reg['mesh_sha256'].items():assert sha(p)==h,p
+ design=json.loads((R/'data/synthetic_v3_assembly_20261102/source_final/design.json').read_text());faces=json.loads((R/'data/nominal_cavity_ports_20261110/nominal_gas_face_ports.json').read_text())['faces'];ff={f['face_tag']:f for f in faces};lo,hi=ff[LOW],ff[HIGH];assert lo['solid_domain']=='p_HgCdTe_photoconductor' and hi['solid_domain']=='window';z0=lo['centre_mm'][2];z1=hi['centre_mm'][2];assert abs(z0-5.77625)<1e-9 and abs(z1-9.65)<1e-9
+ # The closed candidate footprint lies strictly inside the exact source window disk
+ # and the source cap-shell inner radius.  Other bodies use conservative bboxes.
+ bodies=design['bodies'];by={b['name']:b for b in bodies};die=by['p_HgCdTe_photoconductor'];box=die['bbox_mm'];bounds=(box[0],box[1],box[3],box[4]);rmax=max(math.hypot(x,y) for x in (bounds[0],bounds[2]) for y in (bounds[1],bounds[3]));assert rmax<by['window']['radius'] and rmax<by['cap_shell']['inner_radius']
+ blocks=[];screen=[];margin=1e-7
+ for b in bodies:
+  name=b['name'];q=b['bbox_mm'];assert len(q)==6 and all(math.isfinite(x) for x in q)
+  if name in ('p_HgCdTe_photoconductor','window'):continue
+  if q[5]<=z0+1e-9 or q[2]>=z1-1e-9:continue
+  if name=='cap_shell':
+   assert b['shape']=='annulus' and b['base'][:2]==[0,0] and rmax+margin<b['inner_radius'];screen.append({'name':name,'method':'analytic annulus hole'});continue
+  projected=(q[0]-margin,q[1]-margin,q[3]+margin,q[4]+margin);screen.append({'name':name,'method':'conservative original-solid 3D bbox','projected_bbox_xy_mm':projected});blocks.append(projected)
+ rects=open_rectangles(bounds,blocks);assert rects and all(not overlap(q,b) for q in rects for b in blocks)
+ nodes={}
+ with (M/'R38_430_domains.1.node').open() as f:
+  next(f)
+  for row in f:
+   z=row.split()
+   if len(z)>=4:nodes[int(z[0])]=np.array(list(map(float,z[1:4])))
+ tri={LOW:[],HIGH:[]};keys={}
+ with (M/'R38_430_domains.1.face').open() as f:
+  next(f)
+  for row in f:
+   z=row.split()
+   if len(z)!=5 or int(z[-1]) not in tri:continue
+   tag=int(z[-1]);tid=int(z[0]);ns=tuple(map(int,z[1:4]));k=tuple(sorted(ns));assert k not in keys;keys[k]=(tag,tid,ns);tri[tag].append((tid,ns))
+ adjacency=defaultdict(list)
+ with (M/'R39_430_domains.1.ele').open() as f:
+  next(f)
+  for row in f:
+   z=row.split()
+   if len(z)!=6 or int(z[-1]) not in (lo['solid_volume_id'],hi['solid_volume_id']):continue
+   ns=list(map(int,z[1:5]));rid=int(z[-1]);
+   for v in combinations(ns,3):
+    key=tuple(sorted(v))
+    if key in keys:adjacency[key].append((rid,next(x for x in ns if x not in v)))
+ arrays={};mstats={}
+ for tag in (LOW,HIGH):
+  arr=[];areas=[];signs=set()
+  for tid,ns in tri[tag]:
+   key=tuple(sorted(ns));owner=ff[tag]['solid_volume_id'];assert len(adjacency[key])==1 and adjacency[key][0][0]==owner,(tag,tid,adjacency[key]);v=np.array([nodes[n] for n in ns]);assert max(abs(v[:,2]-(z0 if tag==LOW else z1)))<1e-8
+   cr=np.cross(v[1]-v[0],v[2]-v[0]);op=nodes[adjacency[key][0][1]];n=-cr if np.dot(cr,op-v[0])>0 else cr;sign=int(np.sign(n[2]));assert sign==(1 if tag==LOW else -1);signs.add(sign);xy=v[:,:2];a=.5*abs(cr[2]);assert a>1e-14;areas.append(a);arr.append({'id':tid,'nodes':ns,'xy':xy,'bbox':(min(xy[:,0]),min(xy[:,1]),max(xy[:,0]),max(xy[:,1]))})
+  area=sum(areas);err=area/ff[tag]['area_mm2']-1;assert abs(err)<.01,(tag,area,err);mstats[str(tag)]={'triangles':len(arr),'mesh_area_mm2':area,'cad_area_mm2':ff[tag]['area_mm2'],'relative_area_error':err,'solid_outward_z_sign':next(iter(signs))};arrays[tag]=arr
+ patches=[];area=0.
+ for rect in rects:
+  lows=[x for x in arrays[LOW] if overlap(x['bbox'],rect)];highs=[x for x in arrays[HIGH] if overlap(x['bbox'],rect)];rp=rectangle_poly(rect)
+  for a in lows:
+   a0,_,ap=intersection([tuple(q) for q in a['xy']],rp)
+   if a0<=1e-14:continue
+   for b in highs:
+    if not overlap(a['bbox'],b['bbox']):continue
+    q,c,poly=intersection(ap,[tuple(z) for z in b['xy']])
+    if q<=1e-14:continue
+    wl=weights(a['xy'],c);wh=weights(b['xy'],c);assert min(wl)>-2e-8 and min(wh)>-2e-8
+    patches.append({'area_mm2':q,'centroid_xy_mm':c,'polygon_xy_mm':poly,'die':{'face_tag':LOW,'triangle_id':a['id'],'node_ids':a['nodes'],'p1_weights':wl.tolist()},'window':{'face_tag':HIGH,'triangle_id':b['id'],'node_ids':b['nodes'],'p1_weights':wh.tolist()}});area+=q
+ assert area>0 and area<=lo['area_mm2']+1e-5 and LOW not in (7,43,73,91,103,113) and HIGH not in (7,43,73,91,103,113)
+ # Compare total against independent inclusion-exclusion over each open rectangle
+ # and die triangles; a full window mesh must tile each selected die patch.
+ independent=0.
+ for rect in rects:
+  for a in arrays[LOW]:
+   if overlap(a['bbox'],rect):independent+=intersection([tuple(q) for q in a['xy']],rectangle_poly(rect))[0]
+ assert abs(independent-area)<1e-5,(independent,area)
+ prev=json.loads((R/'data/nominal_gas_p1_20261111/coupled_attempt01/result.json').read_text());Tc=prev['calculated_detector_temperature_K'];hot=300.;results={}
+ for alpha in (.5,.8,1.):results[str(alpha)]=flux(hot,Tc,area,(z1-z0)*1e-3,100.,alpha)
+ assert flux(hot,Tc,area,(z1-z0)*1e-3,0,.8)['Q_hot_to_cold_W']==0 and flux(Tc,Tc,area,(z1-z0)*1e-3,100,.8)['Q_hot_to_cold_W']==0
+ result={'status':'PASS mesh planar common projection with conservative source solid bbox exclusion; conditional Kr columns only','observed_utc':datetime.now(timezone.utc).isoformat(),'source_faces':[LOW,HIGH],'ports':['die lumped node','window 300K reservoir assumption'],'gap_mm':z1-z0,'all_source_solid_count':len(bodies),'source_candidates_crossing_gap':screen,'proof':'source bbox exclusion + exact cap annulus hole; straight prisms are unobstructed if source solid bounds are correct; actual full gas coupling not asserted','triangle_checks':mstats,'open_rectangles':rects,'blocked_bbox_count':len(blocks),'patches':patches,'paired_area_mm2':area,'independent_die_coverage_mm2':independent,'area_closure_mm2':area-independent,'V325_face_ids_disjoint':True,'screened_frozen_source_state':{'die_K':Tc,'window_K_assumed':hot,'pressure_Pa':100.,'Kr_alpha_results':results},'elapsed_s':time.monotonic()-t,'area_note':'face mesh approximation; vertical geometric columns not true gas molecules or a bound on physical heat transport'}
+ out=D/'die_window_visibility.json';assert not out.exists();out.write_text(json.dumps(result,indent=2,allow_nan=False)+'\n');print(json.dumps({k:v for k,v in result.items() if k!='patches'},indent=2))
+if __name__=='__main__':main()

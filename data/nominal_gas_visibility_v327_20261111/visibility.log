@@ -1,0 +1,318 @@
+{
+  "status": "PASS mesh planar common projection with conservative source solid bbox exclusion; conditional Kr columns only",
+  "observed_utc": "2026-11-11T05:39:28.401759+00:00",
+  "source_faces": [
+    2335,
+    2410
+  ],
+  "ports": [
+    "die lumped node",
+    "window 300K reservoir assumption"
+  ],
+  "gap_mm": 3.8737500000000002,
+  "all_source_solid_count": 824,
+  "source_candidates_crossing_gap": [
+    {
+      "name": "det7_Au_ohmic",
+      "method": "conservative original-solid 3D bbox",
+      "projected_bbox_xy_mm": [
+        0.24999989999999997,
+        -0.2500001,
+        0.45000009999999996,
+        0.2500001
+      ]
+    },
+    {
+      "name": "det7_Ni",
+      "method": "conservative original-solid 3D bbox",
+      "projected_bbox_xy_mm": [
+        0.24999989999999997,
+        -0.2500001,
+        0.45000009999999996,
+        0.2500001
+      ]
+    },
+    {
+      "name": "det7_Au",
+      "method": "conservative original-solid 3D bbox",
+      "projected_bbox_xy_mm": [
+        0.24999989999999997,
+        -0.2500001,
+        0.45000009999999996,
+        0.2500001
+      ]
+    },
+    {
+      "name": "det7_wedge_foot",
+      "method": "conservative original-solid 3D bbox",
+      "projected_bbox_xy_mm": [
+        0.31999989999999995,
+        -0.0175001,
+        0.38000009999999995,
+        0.0175001
+      ]
+    },
+    {
+      "name": "det8_Au_ohmic",
+      "method": "conservative original-solid 3D bbox",
+      "projected_bbox_xy_mm": [
+        -0.45000009999999996,
+        -0.2500001,
+        -0.24999989999999994,
+        0.2500001
+      ]
+    },
+    {
+      "name": "det8_Ni",
+      "method": "conservative original-solid 3D bbox",
+      "projected_bbox_xy_mm": [
+        -0.45000009999999996,
+        -0.2500001,
+        -0.24999989999999994,
+        0.2500001
+      ]
+    },
+    {
+      "name": "det8_Au",
+      "method": "conservative original-solid 3D bbox",
+      "projected_bbox_xy_mm": [
+        -0.45000009999999996,
+        -0.2500001,
+        -0.24999989999999994,
+        0.2500001
+      ]
+    },
+    {
+      "name": "det8_wedge_foot",
+      "method": "conservative original-solid 3D bbox",
+      "projected_bbox_xy_mm": [
+        -0.3800001,
+        -0.0175001,
+        -0.3199999,
+        0.0175001
+      ]
+    },
+    {
+      "name": "detector_bond7",
+      "method": "conservative original-solid 3D bbox",
+      "projected_bbox_xy_mm": [
+        0.34099989999999997,
+        -0.009000099999999999,
+        1.677691869624717,
+        5.144705287993831
+      ]
+    },
+    {
+      "name": "detector_bond8",
+      "method": "conservative original-solid 3D bbox",
+      "projected_bbox_xy_mm": [
+        -1.6776918696247152,
+        -0.009000100000000026,
+        -0.34099989999999997,
+        5.1447052879938315
+      ]
+    },
+    {
+      "name": "cap_shell",
+      "method": "analytic annulus hole"
+    }
+  ],
+  "proof": "source bbox exclusion + exact cap annulus hole; straight prisms are unobstructed if source solid bounds are correct; actual full gas coupling not asserted",
+  "triangle_checks": {
+    "2335": {
+      "triangles": 76,
+      "mesh_area_mm2": 0.9958000000000001,
+      "cad_area_mm2": 0.9958,
+      "relative_area_error": 2.220446049250313e-16,
+      "solid_outward_z_sign": 1
+    },
+    "2410": {
+      "triangles": 722,
+      "mesh_area_mm2": 27.29293698496451,
+      "cad_area_mm2": 27.33971006786524,
+      "relative_area_error": -0.0017108112260381114,
+      "solid_outward_z_sign": -1
+    }
+  },
+  "open_rectangles": [
+    [
+      -0.5,
+      -0.5,
+      -0.45000009999999996,
+      -0.2500001
+    ],
+    [
+      -0.5,
+      -0.2500001,
+      -0.45000009999999996,
+      -0.0175001
+    ],
+    [
+      -0.5,
+      -0.0175001,
+      -0.45000009999999996,
+      -0.009000100000000026
+    ],
+    [
+      -0.45000009999999996,
+      -0.5,
+      -0.3800001,
+      -0.2500001
+    ],
+    [
+      -0.3800001,
+      -0.5,
+      -0.34099989999999997,
+      -0.2500001
+    ],
+    [
+      -0.34099989999999997,
+      -0.5,
+      -0.3199999,
+      -0.2500001
+    ],
+    [
+      -0.34099989999999997,
+      0.2500001,
+      -0.3199999,
+      0.5
+    ],
+    [
+      -0.3199999,
+      -0.5,
+      -0.24999989999999994,
+      -0.2500001
+    ],
+    [
+      -0.3199999,
+      0.2500001,
+      -0.24999989999999994,
+      0.5
+    ],
+    [
+      -0.24999989999999994,
+      -0.5,
+      0.24999989999999997,
+      -0.2500001
+    ],
+    [
+      -0.24999989999999994,
+      -0.2500001,
+      0.24999989999999997,
+      -0.0175001
+    ],
+    [
+      -0.24999989999999994,
+      -0.0175001,
+      0.24999989999999997,
+      -0.009000100000000026
+    ],
+    [
+      -0.24999989999999994,
+      -0.009000099999999999,
+      0.24999989999999997,
+      0.0175001
+    ],
+    [
+      -0.24999989999999994,
+      0.0175001,
+      0.24999989999999997,
+      0.2500001
+    ],
+    [
+      -0.24999989999999994,
+      0.2500001,
+      0.24999989999999997,
+      0.5
+    ],
+    [
+      0.24999989999999997,
+      -0.5,
+      0.31999989999999995,
+      -0.2500001
+    ],
+    [
+      0.24999989999999997,
+      0.2500001,
+      0.31999989999999995,
+      0.5
+    ],
+    [
+      0.31999989999999995,
+      -0.5,
+      0.34099989999999997,
+      -0.2500001
+    ],
+    [
+      0.31999989999999995,
+      0.2500001,
+      0.34099989999999997,
+      0.5
+    ],
+    [
+      0.34099989999999997,
+      -0.5,
+      0.38000009999999995,
+      -0.2500001
+    ],
+    [
+      0.38000009999999995,
+      -0.5,
+      0.45000009999999996,
+      -0.2500001
+    ],
+    [
+      0.45000009999999996,
+      -0.5,
+      0.5,
+      -0.2500001
+    ],
+    [
+      0.45000009999999996,
+      -0.2500001,
+      0.5,
+      -0.0175001
+    ],
+    [
+      0.45000009999999996,
+      -0.0175001,
+      0.5,
+      -0.009000100000000026
+    ]
+  ],
+  "blocked_bbox_count": 10,
+  "paired_area_mm2": 0.6945997335999441,
+  "independent_die_coverage_mm2": 0.6945997335999438,
+  "area_closure_mm2": 3.3306690738754696e-16,
+  "V325_face_ids_disjoint": true,
+  "screened_frozen_source_state": {
+    "die_K": 218.65910654164801,
+    "window_K_assumed": 300.0,
+    "pressure_Pa": 100.0,
+    "Kr_alpha_results": {
+      "0.5": {
+        "G_W_K": 1.308227530327625e-06,
+        "Q_hot_to_cold_W": 0.0001064123961636623,
+        "k_W_mK": 0.008239216151395544,
+        "temperature_jump_m": 0.0002504193395398795,
+        "below_source_assumption": false
+      },
+      "0.8": {
+        "G_W_K": 1.3876630353083883e-06,
+        "Q_hot_to_cold_W": 0.00011287375111111294,
+        "k_W_mK": 0.008239216151395544,
+        "temperature_jump_m": 0.00012520966976993975,
+        "below_source_assumption": false
+      },
+      "1.0": {
+        "G_W_K": 1.4163295192787244e-06,
+        "Q_hot_to_cold_W": 0.0001152055085295696,
+        "k_W_mK": 0.008239216151395544,
+        "temperature_jump_m": 8.347311317995985e-05,
+        "below_source_assumption": false
+      }
+    }
+  },
+  "elapsed_s": 1.0922464882023633,
+  "area_note": "face mesh approximation; vertical geometric columns not true gas molecules or a bound on physical heat transport"
+}
