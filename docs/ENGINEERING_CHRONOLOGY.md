@@ -846,3 +846,11 @@ Register source-mesh and V3.24 subset hashes, exact paired triangle/rectangle ov
 Original-only source face intersections and independent polygon/P1 readback pass; 752 paired cells cover 3.3004% of registered gas-facing area. One partial-cavity 88-leg/four-ceramic solve gives die 218.659107 K at 0.595668 W; independent stage and global residuals are below 1.1e-9 W. Unselected gas faces are adiabatic; complete-cavity physics and 173 temperature proxies remain unresolved. Initial clipping roundoff failure and its corrected source are preserved. Twenty focused tests, two deterministic 52-page report builds, source immutability checks and prior failed gates are retained. Exact-commit CI pending. See [technical record](NOMINAL_P1_GAS_COUPLING_20261111.md).
 
 - 2026-11-11T00:51:37.135098+00:00 — **PASS archive guard:** The initial read-only verifier invocation stopped on container Git's safe-directory ownership check; the unchanged verifier then passed with a process-scoped safe-directory setting. Both logs are preserved; no Git configuration or archive was changed.
+
+## 2026-11-11T02:52:54.466357+00:00 — PENDING — original-cavity local metal thermal mapping
+
+Freeze original-only source and V3.25 evidence; preregister centerline/port mapping, 1D energy controls, geometric obstruction gates and one conditional solve maximum. Previous gas proxies and all archive gates stay unchanged.
+
+## 2026-11-11T03:01:22.881516+00:00 — PASS conditional copper operator / STOP supplemental cavity gas path
+
+Original-only source-face reconstruction upgrades 39 formed-Cu faces (4.07249 mm²) to a conditional non-isothermal 1D model; 134 gas faces remain unresolved and existing 1667 mappings are proxies. Four foil segments conserve source heat and distributed Joule work; an independent 41/81/161-node bath control converges. No source-qualified new gas path or coupled solve: opposing trimmed patches, obstruction and disjointness remain unproved. Ten focused tests and two matching 53-page report builds pass; original PDF, CAD, P1 data and failed gates remain unchanged. Exact-commit CI pending. See [record](NOMINAL_CAVITY_METAL_THERMAL_20261111.md).

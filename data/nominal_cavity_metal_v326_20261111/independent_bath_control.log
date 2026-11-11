@@ -1,0 +1,27 @@
+/workspace/scripts/tec_nominal_v326_independent.py:11: DeprecationWarning: `trapz` is deprecated. Use `trapezoid` instead, or one of the numerical integration functions in `scipy.integrate`.
+  h=1/(n-1);ab=np.zeros((3,n-2));ab[0,1:]=-G/h**2;ab[1,:]=2*G/h**2+H;ab[2,:-1]=-G/h**2;rhs=np.full(n-2,P+H*bath);rhs[0]+=G/h**2*t0;rhs[-1]+=G/h**2*t1;T=np.r_[t0,solve_banded((1,1),ab,rhs),t1];u=np.linspace(0,1,n);exact=np.array([segment_with_uniform_bath(x,t0,t1,Re,G,I,bath,H)[0] for x in u]);qgas=H*np.trapz(T-bath,u); q0=-G*(-3*T[0]+4*T[1]-T[2])/(2*h);q1=G*(3*T[-1]-4*T[-2]+T[-3])/(2*h);levels.append({'nodes':n,'max_temperature_error_K':float(max(abs(T-exact))),'independent_gas_out_W':float(qgas),'independent_global_energy_residual_W':float(q0+q1+P-qgas)})
+{
+  "observed_utc": "2026-11-11T02:57:49.285595+00:00",
+  "status": "PASS analytic 1D uniform-bath operator against independent centered-difference refinement; hypothetical benchmark only",
+  "benchmarks": [
+    {
+      "nodes": 41,
+      "max_temperature_error_K": 1.8059739659292973e-07,
+      "independent_gas_out_W": -0.0004959395325778932,
+      "independent_global_energy_residual_W": 1.4866194011703068e-08
+    },
+    {
+      "nodes": 81,
+      "max_temperature_error_K": 4.5147714899940183e-08,
+      "independent_gas_out_W": -0.0004959376185623272,
+      "independent_global_energy_residual_W": 3.764374275510608e-09
+    },
+    {
+      "nodes": 161,
+      "max_temperature_error_K": 1.1336339866829803e-08,
+      "independent_gas_out_W": -0.0004959371400607846,
+      "independent_global_energy_residual_W": 9.479347646461703e-10
+    }
+  ],
+  "scenario": "fixed synthetic temperatures/coefficients; no source cavity gas area or physical gas path inferred"
+}

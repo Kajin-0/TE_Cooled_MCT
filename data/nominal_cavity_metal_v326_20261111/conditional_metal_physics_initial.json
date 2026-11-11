@@ -1,0 +1,154 @@
+{
+  "observed_utc": "2026-11-11T02:55:22.059763+00:00",
+  "status": "PASS 1D analytic reconstruction; supplemental gas geometry STOP, no full solve",
+  "face_status": {
+    "NEAREST_SOURCE_CERAMIC_NODE_PROXY": {
+      "faces": 24,
+      "area_mm2": 119.79925000000003
+    },
+    "LINEAR_LEG_ENDPOINT_PROXY": {
+      "faces": 352,
+      "area_mm2": 70.40000000000046
+    },
+    "LEG_ENDPOINT_JOINT_PROXY": {
+      "faces": 704,
+      "area_mm2": 9.855999999999973
+    },
+    "NEAREST_CERAMIC_NODE_METAL_PROXY": {
+      "faces": 523,
+      "area_mm2": 26.347150434845783
+    },
+    "UNRESOLVED": {
+      "faces": 134,
+      "area_mm2": 13.152465354449717
+    },
+    "CONDITIONAL_DISTRIBUTED_TAB_CENTERLINE": {
+      "faces": 39,
+      "area_mm2": 4.072486677646199
+    },
+    "HEADER_RESERVOIR_PROXY": {
+      "faces": 43,
+      "area_mm2": 132.95070273827616
+    },
+    "CARRIER_LUMPED_NODE_PROXY": {
+      "faces": 5,
+      "area_mm2": 2.520000000000003
+    },
+    "DIE_LUMPED_NODE_PROXY": {
+      "faces": 5,
+      "area_mm2": 1.7958000000000007
+    },
+    "SOURCE_CONTACT_ENDPOINT_PROXY": {
+      "faces": 8,
+      "area_mm2": 0.37699111843078287
+    },
+    "RESERVOIR_TEMPERATURE_PROXY": {
+      "faces": 3,
+      "area_mm2": 521.9442034674086
+    }
+  },
+  "segments": [
+    {
+      "net": 58,
+      "segment": 0,
+      "R_ohm": 0.003089232613341736,
+      "G_W_K": 0.002086570768544495,
+      "endpoint_temperature_K": [
+        299.07840190744054,
+        272.434302683642
+      ],
+      "joule_W": 0.0004941805288687573,
+      "midpoint_temperature_K": 285.78595712229327,
+      "midpoint_joule_rise_K": 0.029604826752022716,
+      "net_heat_into_conductor_W": [
+        0.05534770833014274,
+        -0.05584188885901149
+      ],
+      "energy_residual_W": 6.071532165918825e-18
+    },
+    {
+      "net": 80,
+      "segment": 0,
+      "R_ohm": 0.002764044411934536,
+      "G_W_K": 0.0020740809656167912,
+      "endpoint_temperature_K": [
+        268.0796233240697,
+        248.3403173544808
+      ],
+      "joule_W": 0.0004421605946432626,
+      "midpoint_temperature_K": 258.2366183222839,
+      "midpoint_joule_rise_K": 0.026647983008692037,
+      "net_heat_into_conductor_W": [
+        0.04071983848868863,
+        -0.041161999083331895
+      ],
+      "energy_residual_W": 4.336808689942018e-19
+    },
+    {
+      "net": 88,
+      "segment": 0,
+      "R_ohm": 0.0030851911126541535,
+      "G_W_K": 0.0020865707685444952,
+      "endpoint_temperature_K": [
+        298.37987929843763,
+        271.71863898909095
+      ],
+      "joule_W": 0.0004935340152528556,
+      "midpoint_temperature_K": 285.07882523988553,
+      "midpoint_joule_rise_K": 0.02956609612126434,
+      "net_heat_into_conductor_W": [
+        0.05538379767499655,
+        -0.05587733169024941
+      ],
+      "energy_residual_W": -2.710505431213761e-18
+    },
+    {
+      "net": 88,
+      "segment": 1,
+      "R_ohm": 0.0029071477591293346,
+      "G_W_K": 0.0019849687180941945,
+      "endpoint_temperature_K": [
+        271.71863898909095,
+        248.54927139586667
+      ],
+      "joule_W": 0.0004650526512317484,
+      "midpoint_temperature_K": 260.1632410854373,
+      "midpoint_joule_rise_K": 0.02928589295844509,
+      "net_heat_into_conductor_W": [
+        0.0457579435649597,
+        -0.04622299621619144
+      ],
+      "energy_residual_W": 5.7462715141731735e-18
+    }
+  ],
+  "film_assumption": "15um Cu only; k=200-400 W/mK assumed illustrative, q=1000 W/m2 selected, no metal-ceramic contact resistance or lateral spreading included",
+  "film": [
+    {
+      "k_W_mK": 200.0,
+      "thickness_m": 1.5e-05,
+      "thermal_resistance_area_m2K_W": 7.5e-08,
+      "assumed_normal_flux_W_m2": 1000.0,
+      "temperature_drop_K": 7.500000000000001e-05
+    },
+    {
+      "k_W_mK": 385.0,
+      "thickness_m": 1.5e-05,
+      "thermal_resistance_area_m2K_W": 3.896103896103896e-08,
+      "assumed_normal_flux_W_m2": 1000.0,
+      "temperature_drop_K": 3.8961038961038966e-05
+    },
+    {
+      "k_W_mK": 400.0,
+      "thickness_m": 1.5e-05,
+      "thermal_resistance_area_m2K_W": 3.75e-08,
+      "assumed_normal_flux_W_m2": 1000.0,
+      "temperature_drop_K": 3.7500000000000003e-05
+    }
+  ],
+  "total_qualified_gas_boundary_area_mm2": 0,
+  "P1_paired_area_mm2": 29.810036281777183,
+  "new_supplemental_gas_pairs": 0,
+  "new_coupled_solves": 0,
+  "gas_path_stop": "source-face centroid alone does not establish a finite co-facing area, blocking-free straight columns, or disjointness from existing 752 cells; broad tab faces cannot be projected as local points. No new thermal exchange assigned.",
+  "old_raw_gate": "3D electrical and raw gas FAIL/STOP unchanged"
+}

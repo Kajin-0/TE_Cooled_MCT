@@ -1,0 +1,29 @@
+{
+  "observed_utc": "2026-11-11T02:52:54.466357+00:00",
+  "baseline": "d25da7f30a35789a905cef5a4e578901b2310453",
+  "scope": "original-only; no candidate, no mesh, no PDE or material changes",
+  "source_sha256": {
+    "data/synthetic_v3_assembly_20261102/source_final/design.json": "023d8b26931fcb758d379a4150470305f4f613bf3543aae3065a98bc5be762c8",
+    "data/nominal_cavity_ports_20261110/nominal_gas_face_ports.json": "9115ca08e0adae480521e5eafde656e637e7ac93e7395ca5c5761a0bf0ace7d4",
+    "data/nominal_gas_coupler_20261110/nominal_face_temperature_map.json": "7fbef461cf806df757b936c7ffca49b4b806e97c01be97cf77850f48c88064a0",
+    "data/nominal_gas_p1_20261111/coupled_attempt01/result.json": "ae56d10aaa4aa8877dc36d3841b420e0bb740e0e3c5853ffcae2003b8d4f65c8",
+    "data/nominal_gas_p1_20261111/p1_operator.json": "0a37ec58881ba16a6a04a198e67d99714872f1a2ad63bca637a53b4f054f8ecd",
+    "data/nominal_gas_p1_20261111/manifest.json": "c03de6a962d4dfa5d7e3f5b4a988339fb4330e59005deae34d5d392af841c4e4",
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "scripts/v3_4_source_copper_multiport.py": "af86568d04ce07ef82b305cb4812f5d9aff33f259877a7755029c7b6624a206e",
+    "reports/current/TEC_TO_Reader_First_Assessment_20261111_V325.pdf": "bcf51dc998772338723de4aa8719a8e134088826b5c63c948b89a79a72f83c0c"
+  },
+  "method": "project source 3D gas-face centroid onto tab source line/arc centerline; bounded nearest-section distance, contact-centered path; 1D source thermal nodes and distributed Joule parabolic solution with explicit endpoint weights; unresolvable or outside contact interval flagged, no invented temperature",
+  "gates": [
+    "unique 1840 face tags and exact area conservation",
+    "tab projection within half thickness plus audited tolerance and 3D width",
+    "strict identity of source segments, path lengths, Cu node sources and endpoint contacts",
+    "negative control rejects distant/off-curve, unknown node and out-of-span",
+    "endpoint exact, 1D ODE and energy conservation",
+    "no implicit isothermal net; net88 midpoint remains thermal-only",
+    "any supplemental gas link requires original-source finite facing geometry plus independent obstruction and unique disjoint area; otherwise STOP no solve"
+  ],
+  "film_assumptions": "selected engineering conductivity range and thermal flux for algebraic resistance demonstration only, no inference of contact conductance",
+  "budgets": "at most one full solve only after actual original face geometry and conservative gas path pass; 300s/4CPU/8GiB; no variant computation",
+  "release": "tests, immutable archives, additive report and reproducibility; no claim full cavity validated"
+}
