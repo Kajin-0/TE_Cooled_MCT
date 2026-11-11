@@ -1,0 +1,42 @@
+{
+  "observed_UTC": "2026-11-11T00:40:52.791568+00:00",
+  "status": "PASS selected P1 gas nodal loads on original ceramic stiffness matrices with synthetic compensating pad loads; NOT a coupled package solve",
+  "executed_solver_sha256": "d349fb0dbd90edf8a2741fe8221842aeb1ba18ba979cbdecad76d2c2b172c9d6",
+  "gas_links_W": [
+    0.002521680102887818,
+    0.0011886466311571394,
+    0.0005068611322352621
+  ],
+  "global_gas_load_W": -3.2526065174565133e-19,
+  "checks": [
+    {
+      "ceramic": 0,
+      "gas_net_W": -0.002521680102887818,
+      "compensation_W": 0.002521680102887818,
+      "max_full_nodal_residual_W": 2.4542779646693352e-18,
+      "source_nodes": 1682
+    },
+    {
+      "ceramic": 1,
+      "gas_net_W": 0.0013330334717306784,
+      "compensation_W": -0.0013330334717306784,
+      "max_full_nodal_residual_W": 1.0044963721488748e-17,
+      "source_nodes": 1363
+    },
+    {
+      "ceramic": 2,
+      "gas_net_W": 0.0006817854989218775,
+      "compensation_W": -0.0006817854989218774,
+      "max_full_nodal_residual_W": 1.3010426069826053e-18,
+      "source_nodes": 683
+    },
+    {
+      "ceramic": 3,
+      "gas_net_W": 0.000506861132235262,
+      "compensation_W": -0.000506861132235262,
+      "max_full_nodal_residual_W": 4.608706266010648e-18,
+      "source_nodes": 280
+    }
+  ],
+  "tests": "P1 source node identity; balanced Neumann; full K u - rhs; compensation synthetic"
+}

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scripts/tec_nominal_v325_operator.py", line 69, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/scripts/tec_nominal_v325_operator.py", line 57, in main
+    wh=weights(h['xy'],point);wc=weights(c['xy'],point);assert abs(sum(wh)-1)<1e-12 and abs(sum(wc)-1)<1e-12
+                                 ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/tecooledmct/nominal_gas_p1_v325.py", line 38, in weights
+    if min(w)<-2e-8 or max(w)>1+2e-8:raise ValueError(('point outside triangle',w,xy))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: ('point outside triangle', array([ 1.00021711e+00, -2.23518798e-04,  6.40705238e-06]), (2.600036349466869, 2.311142457651509))

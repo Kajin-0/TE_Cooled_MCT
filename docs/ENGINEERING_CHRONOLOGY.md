@@ -836,3 +836,13 @@ Develop original-only 1840-face temperature mapping, source-conservative gas sub
 Original-only: eight lead-joint faces map to source-contact endpoint proxies; 1,667 faces have approximate thermal representations and 173 unresolved, none qualified as gas BC. Unobstructed source-column areas 7.428064/5.497517/1.979438 mm², 752 cells; at 100 Pa Kr and accommodation 0.8 source-field one-way links 2.519773/1.188742/0.506549 mW conserve stage heat. Source solver residual adapter shows old state not equilibrium; no new coupled solve. Figure 30 now identifies actual 58/22/8 leg centers. Prior sources/PDF and historical failures preserved. See docs/NOMINAL_SOURCE_GAS_COUPLER_20261110.md; CI pending.
 
 - 2026-11-10T22:18:02.788071+00:00 — **PASS local checks / STOP full gas coupling:** 14 focused nominal tests, independently recomputed 752 source-field flux cells, deterministic source figures, 44-artifact V3.24 and 31-artifact original manifests pass. Two identical 51-page PDF builds and raster review include corrected source leg-count Figure 30. No full coupled or CFD solve. Original and earlier PDF bytes preserved; exact-commit CI pending.
+
+## 2026-11-11T00:33:07.940282+00:00 — PENDING — original nominal P1 gas-surface clipping
+
+Register source-mesh and V3.24 subset hashes, exact paired triangle/rectangle overlay, P1 shape weights, area and heat balance gates before tests; no variant work. A partial-cavity nominal solve is conditional on source-face loading and whole-package conservation.
+
+## 2026-11-11T00:49:58.528465+00:00 — PASS conditional P1 gas coupling / STOP complete cavity qualification
+
+Original-only source face intersections and independent polygon/P1 readback pass; 752 paired cells cover 3.3004% of registered gas-facing area. One partial-cavity 88-leg/four-ceramic solve gives die 218.659107 K at 0.595668 W; independent stage and global residuals are below 1.1e-9 W. Unselected gas faces are adiabatic; complete-cavity physics and 173 temperature proxies remain unresolved. Initial clipping roundoff failure and its corrected source are preserved. Twenty focused tests, two deterministic 52-page report builds, source immutability checks and prior failed gates are retained. Exact-commit CI pending. See [technical record](NOMINAL_P1_GAS_COUPLING_20261111.md).
+
+- 2026-11-11T00:51:37.135098+00:00 — **PASS archive guard:** The initial read-only verifier invocation stopped on container Git's safe-directory ownership check; the unchanged verifier then passed with a process-scoped safe-directory setting. Both logs are preserved; no Git configuration or archive was changed.

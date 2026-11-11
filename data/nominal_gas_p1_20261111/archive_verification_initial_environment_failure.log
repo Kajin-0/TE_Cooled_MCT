@@ -1,0 +1,113 @@
+fatal: detected dubious ownership in repository at '/workspace'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /workspace
+Traceback (most recent call last):
+  File "/workspace/fem/archive_geometry_rebaseline.py", line 96, in <module>
+    args=parser.parse_args();verify() if args.verify else publish()
+                             ^^^^^^^^
+  File "/workspace/fem/archive_geometry_rebaseline.py", line 47, in verify
+    if preserved()!=ledger['preserved']:raise ValueError('Baseline proof changed')
+       ^^^^^^^^^^^
+  File "/workspace/fem/archive_geometry_rebaseline.py", line 29, in preserved
+    raw=subprocess.check_output(['git','show','fcbdaa45:'+name],cwd=ROOT)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'show', 'fcbdaa45:reports/generated/HgCdTe_Engineering_Assessment.pdf']' returned non-zero exit status 128.
+Traceback (most recent call last):
+  File "/workspace/fem/archive_full_presolder_checkpoint.py", line 195, in <module>
+    verify() if args.verify else publish()
+    ^^^^^^^^
+  File "/workspace/fem/archive_full_presolder_checkpoint.py", line 45, in verify
+    subprocess.run([sys.executable,str(ROOT/'fem/archive_geometry_rebaseline.py'),'--verify'],check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/venv/bin/python', '/workspace/fem/archive_geometry_rebaseline.py', '--verify']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/workspace/fem/archive_geometry_complete.py", line 111, in <module>
+    parser=argparse.ArgumentParser();parser.add_argument('--verify',action='store_true');args=parser.parse_args();verify() if args.verify else publish()
+                                                                                                                  ^^^^^^^^
+  File "/workspace/fem/archive_geometry_complete.py", line 41, in verify
+    if old_guard()!=ledger['preserved']:raise ValueError('Changed historical evidence')
+       ^^^^^^^^^^^
+  File "/workspace/fem/archive_geometry_complete.py", line 24, in old_guard
+    subprocess.run([sys.executable,str(ROOT/'fem/archive_full_presolder_checkpoint.py'),'--verify'],check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/venv/bin/python', '/workspace/fem/archive_full_presolder_checkpoint.py', '--verify']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/workspace/fem/archive_corrected_thermal.py", line 140, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--verify',action='store_true');args=p.parse_args();verify() if args.verify else publish()
+                                                                                                   ^^^^^^^^
+  File "/workspace/fem/archive_corrected_thermal.py", line 39, in verify
+    if guard()!=ledger['preserved']:raise ValueError('Historical evidence changed')
+       ^^^^^^^
+  File "/workspace/fem/archive_corrected_thermal.py", line 22, in guard
+    subprocess.run([sys.executable,str(ROOT/'fem/archive_geometry_complete.py'),'--verify'],check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/venv/bin/python', '/workspace/fem/archive_geometry_complete.py', '--verify']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/workspace/fem/archive_cold_convergence.py", line 203, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--verify',action='store_true');a=p.parse_args();verify() if a.verify else publish()
+                                                                                                ^^^^^^^^
+  File "/workspace/fem/archive_cold_convergence.py", line 74, in verify
+    if guard()!=ledger['preserved']:raise ValueError('Prior evidence changed')
+       ^^^^^^^
+  File "/workspace/fem/archive_cold_convergence.py", line 19, in guard
+    subprocess.run([sys.executable,str(ROOT/'fem/archive_corrected_thermal.py'),'--verify'],check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/venv/bin/python', '/workspace/fem/archive_corrected_thermal.py', '--verify']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/workspace/fem/archive_cold20.py", line 155, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--verify',action='store_true');a=p.parse_args();verify() if a.verify else publish()
+                                                                                                ^^^^^^^^
+  File "/workspace/fem/archive_cold20.py", line 46, in verify
+    if guard()!=ledger['preserved']:raise ValueError('Historical evidence changed')
+       ^^^^^^^
+  File "/workspace/fem/archive_cold20.py", line 17, in guard
+    subprocess.run([sys.executable,str(ROOT/'fem/archive_cold_convergence.py'),'--verify'],check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/venv/bin/python', '/workspace/fem/archive_cold_convergence.py', '--verify']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/workspace/fem/archive_gate_refinement.py", line 91, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--verify',action='store_true');a=p.parse_args();verify() if a.verify else publish()
+                                                                                                ^^^^^^^^
+  File "/workspace/fem/archive_gate_refinement.py", line 23, in verify
+    if guard()!=d['prior_ledger_sha256']:raise ValueError('Changed prior archive')
+       ^^^^^^^
+  File "/workspace/fem/archive_gate_refinement.py", line 16, in guard
+    subprocess.run([sys.executable,str(ROOT/'fem/archive_cold20.py'),'--verify'],check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/venv/bin/python', '/workspace/fem/archive_cold20.py', '--verify']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/workspace/fem/archive_bath_spatial_diagnosis.py", line 87, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--verify',action='store_true');a=p.parse_args();verify() if a.verify else publish()
+                                                                                                ^^^^^^^^
+  File "/workspace/fem/archive_bath_spatial_diagnosis.py", line 29, in verify
+    if guard()!=d['preserved']:raise ValueError('Prior evidence or approved report changed')
+       ^^^^^^^
+  File "/workspace/fem/archive_bath_spatial_diagnosis.py", line 15, in guard
+    subprocess.run([sys.executable,str(ROOT/'fem/archive_gate_refinement.py'),'--verify'],check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/venv/bin/python', '/workspace/fem/archive_gate_refinement.py', '--verify']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/workspace/fem/archive_bath_spatial_device.py", line 85, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--verify',action='store_true');a=p.parse_args();verify() if a.verify else publish()
+                                                                                                ^^^^^^^^
+  File "/workspace/fem/archive_bath_spatial_device.py", line 32, in verify
+    if guard()!=ledger['preserved']:raise ValueError('Prior evidence changed')
+       ^^^^^^^
+  File "/workspace/fem/archive_bath_spatial_device.py", line 15, in guard
+    subprocess.run([sys.executable,str(ROOT/'fem/archive_bath_spatial_diagnosis.py'),'--verify'],check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/opt/venv/bin/python', '/workspace/fem/archive_bath_spatial_diagnosis.py', '--verify']' returned non-zero exit status 1.

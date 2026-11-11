@@ -1,0 +1,40 @@
+{
+  "observed_UTC": "2026-11-11T00:33:07.940282+00:00",
+  "head": "6bd58a04b9cd6cc273e12f1e8aab2c338b06015b",
+  "scope": "original 0.5mm source only; exact 2D overlay of 752 source rectangles against both gas-face TRI3 meshes, P1 weights, conservative loads and source field readback",
+  "source_sha256": {
+    "data/nominal_gas_coupler_20261110/source_bare_column_subset.json": "517b6535961a1f40ae49819cd3336b1bc8fa601d261f7700e1d13c46efe204d4",
+    "data/tec_height_coupling_20261110/nominal/ceramic_fields.npz": "efe1dcecb0fb167df19fdd130ec88d4ddf55ebcb46323cf53e19667e12628ced",
+    "data/v3_r32_global_surface_20261103/source_metadata.json": "73c8498e93fc14b809a165821ac04709e09d07fe8c8b1460b4d262992cbfc18f",
+    "data/nominal_gas_coupler_20261110/registration.json": "43e63bdb35625897d5a7796eaf66fa0956f165742913f5016c64a2b771c23aea",
+    "reports/current/TEC_TO_Reader_First_Assessment_20261110_V324.pdf": "e5bddb06813537bce8dcb16096018f7f9b93f9d477f00845545f62c05ab82da1",
+    "scripts/tec_height_v320_coupled.py": "8c1fa0b1b8915b8e882f4af3f8d4d368cc6c190cfc0716e2e755fea51ccbe7d9",
+    "tecooledmct/nominal_gas_v324.py": "c3eb2721660c51ebb9a0206b8eaeb7ac0b1389101ff336ba672317631400c93a"
+  },
+  "mesh_sha256": {
+    "/var/tmp/mct_r3_header_3d_20261107/R38_430_domains.1.node": "c02c51541d76790fc91ac773e3600cf52d34a63385bcdfb886b26d9a00b12e00",
+    "/var/tmp/mct_r3_header_3d_20261107/R38_430_domains.1.face": "a40699c6a2c8b92ae9fad0eee772b52c722817f502fd38a6927f70ac2284fd18",
+    "/var/tmp/mct_r3_header_3d_20261107/R39_430_domains.1.ele": "b351a07e63cc83babef19a229a3e4134f6b034a543c92391eba506bda9205570"
+  },
+  "registered_face_pairs": [
+    [
+      7,
+      43
+    ],
+    [
+      73,
+      91
+    ],
+    [
+      103,
+      113
+    ]
+  ],
+  "area_absolute_tolerance_mm2": 1e-05,
+  "pair_global_flux_tolerance_W": 1e-12,
+  "physical_gas_model": "Kr Eucken and Maxwell jump, 100Pa, accommodation 0.8 with controls 0.5 and 1, selected subset only",
+  "full_solve_gate": "only one source-nominal coupled run if clipped physical faces and P1 Neumann coupling both pass, old gas paths disabled, other cavity gas adiabatic, retained radiation, independent <=1e-8W energy and matched power; no qualified complete cavity",
+  "max_new_full_solves": 1,
+  "solve_limit": "300s, 4CPU, 8GiB",
+  "old_native_electrical_gate": "FAIL/STOP unchanged"
+}
