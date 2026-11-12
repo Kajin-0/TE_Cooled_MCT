@@ -1,0 +1,49 @@
+{
+  "status": "REGISTERED; NOT VALIDATED",
+  "registered_UTC": "2026-11-12T18:54:54.213969+00:00",
+  "cases": {
+    "k80": {
+      "k_multiplier": 0.8,
+      "cross_section_multiplier": 1.0,
+      "contact_Rarea": 1e-06
+    },
+    "k120": {
+      "k_multiplier": 1.2,
+      "cross_section_multiplier": 1.0,
+      "contact_Rarea": 1e-06
+    },
+    "contact0p1x": {
+      "k_multiplier": 1.0,
+      "cross_section_multiplier": 1.0,
+      "contact_Rarea": 1e-07
+    },
+    "contact10x": {
+      "k_multiplier": 1.0,
+      "cross_section_multiplier": 1.0,
+      "contact_Rarea": 1e-05
+    },
+    "foil80": {
+      "k_multiplier": 1.0,
+      "cross_section_multiplier": 0.8,
+      "contact_Rarea": 1e-06
+    },
+    "foil120": {
+      "k_multiplier": 1.0,
+      "cross_section_multiplier": 1.2,
+      "contact_Rarea": 1e-06
+    }
+  },
+  "run_order": [
+    "k80",
+    "k120",
+    "contact0p1x",
+    "contact10x",
+    "foil80",
+    "foil120"
+  ],
+  "source_sha256": "787f32ac6632944a8ead24366d1240de756a0f54c097761a2888d7813e3c362a",
+  "source_repository_commit": "ab92c4c3a8b023dd09363473693961ad83aa0b83",
+  "publication_gate": "All six cases independently audited PASS",
+  "no_full_3d_metal": "3D source metal Gate B FAIL/STOP",
+  "no_full_cavity": "3.45424% registered gas-facing area covered in V3.27"
+}
